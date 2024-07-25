@@ -1,0 +1,102 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:46:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="push" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:65:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="pop" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:81:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="rollback" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:104:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="commit" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:108:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="commit" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:134:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="is_full" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:139:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="get_gvt" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.hpp:144:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="peek" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/csynth.tcl:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=test_state_buffer" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/directives.tcl:6:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=test_state_buffer" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:12:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=in_stream" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:13:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=out_stream" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:14:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:20:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="test_state_buffer" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:40:29" msg_body="Inlining function 'StateBuffer::get_gvt() const' into 'test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::get_gvt() const" Caller="test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:34:24" msg_body="Inlining function 'StateBuffer::commit(ap_int&lt;32&gt;)' into 'test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::commit(ap_int&lt;32&gt;)" Caller="test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:31:24" msg_body="Inlining function 'StateBuffer::rollback(int, ap_int&lt;32&gt;)' into 'test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::rollback(int, ap_int&lt;32&gt;)" Caller="test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:27:24" msg_body="Inlining function 'StateBuffer::push(LPState const&amp;)' into 'test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::push(LPState const&amp;)" Caller="test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:107:27" msg_body="Loop 'VITIS_LOOP_107_1' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_107_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:113:31" msg_body="Loop 'VITIS_LOOP_113_2' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_113_2"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:85:26" msg_body="Loop 'VITIS_LOOP_85_1' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_85_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:11:0" msg_body="Unrolling loop 'VITIS_LOOP_107_1' (cpp/StateBuffer.hpp:107:27) in function 'test_state_buffer' completely with a factor of 64">
+        <args Factor="64" LoopLoc="cpp/StateBuffer.hpp:107:27" LoopName="VITIS_LOOP_107_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_PIPELINE" msg_id="214-189" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:11:0" msg_body="Pipeline directive for loop 'VITIS_LOOP_107_1' (cpp/StateBuffer.hpp:107:27) in function 'test_state_buffer' has been removed because the loop is unrolled completely">
+        <args LoopLoc="cpp/StateBuffer.hpp:107:27" LoopName="VITIS_LOOP_107_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:11:0" msg_body="Inlining function 'StateBuffer::StateBuffer()' into 'test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::StateBuffer()" Caller="test_state_buffer(hls::stream&lt;TestOperation, 0&gt;&amp;, hls::stream&lt;int, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="AUTOMATION_VERBOSE_PASSED" msg_id="214-335" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:0:1" msg_body="array_partition dim=1 type=cyclic factor=2 variable=buffer.lp_heads 1 test_state_buffer cpp/StateBuffer.cpp:16:14 cpp/StateBuffer.cpp:20:9buffer.lp_heads">
+        <args PragmaFunction="test_state_buffer" PragmaIsAuto="1" PragmaOptions="dim=1 type=cyclic factor=2 variable=buffer.lp_heads" PragmaSrcLoc="cpp/StateBuffer.cpp:20:9" PragmaType="array_partition" VarName="buffer.lp_heads" varLoc="cpp/StateBuffer.cpp:16:14"/>
+    </msg>
+    <msg msg_groups="AUTOMATION PRAGMA_MISC" msg_id="214-270" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:20:9" msg_body="Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'buffer.lp_heads' due to pipeline pragma">
+        <args Dim="1" Factor="2" Mode="cyclic" Name="buffer.lp_heads" PragmaType="array_partition"/>
+    </msg>
+    <msg msg_groups="AUTOMATION_VERBOSE_PASSED" msg_id="214-335" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:0:2" msg_body="array_partition dim=1 type=cyclic factor=2 variable=buffer.lp_sizes 1 test_state_buffer cpp/StateBuffer.cpp:16:14 cpp/StateBuffer.cpp:20:9buffer.lp_sizes">
+        <args PragmaFunction="test_state_buffer" PragmaIsAuto="1" PragmaOptions="dim=1 type=cyclic factor=2 variable=buffer.lp_sizes" PragmaSrcLoc="cpp/StateBuffer.cpp:20:9" PragmaType="array_partition" VarName="buffer.lp_sizes" varLoc="cpp/StateBuffer.cpp:16:14"/>
+    </msg>
+    <msg msg_groups="AUTOMATION PRAGMA_MISC" msg_id="214-270" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:20:9" msg_body="Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'buffer.lp_sizes' due to pipeline pragma">
+        <args Dim="1" Factor="2" Mode="cyclic" Name="buffer.lp_sizes" PragmaType="array_partition"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:16:14" msg_body="Applying array_partition to 'buffer.lp_heads': Cyclic partitioning with factor 2 on dimension 1.">
+        <args Dim="1" Factor="2" Mode="Cyclic" UOName="buffer.lp_heads"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:16:14" msg_body="Applying array_partition to 'buffer.lp_sizes': Cyclic partitioning with factor 2 on dimension 1.">
+        <args Dim="1" Factor="2" Mode="Cyclic" UOName="buffer.lp_sizes"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

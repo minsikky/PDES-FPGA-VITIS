@@ -1,0 +1,110 @@
+INFO: [HLS 200-10] Running '/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'minsikky' on host 'i1z.eecs.umich.edu' (Linux_x86_64 version 3.10.0-1160.102.1.el7.x86_64) on Thu Jul 25 15:56:52 EDT 2024
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Server release 7.9 (Maipo)"
+INFO: [HLS 200-10] In directory '/n/higgins/z/minsikky/PDES-FPGA-VITIS'
+Sourcing Tcl script '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csim.tcl'
+INFO: [HLS 200-1510] Running: source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csim.tcl
+INFO: [HLS 200-1510] Running: open_project pdes_fpga_vitis 
+INFO: [HLS 200-10] Opening project '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis'.
+INFO: [HLS 200-1510] Running: set_top test_state_buffer 
+INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.cpp 
+INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.hpp 
+INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/constants.hpp 
+INFO: [HLS 200-10] Adding design file 'cpp/constants.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb cpp/StateBufferTest.cpp -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'cpp/StateBufferTest.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: source ./pdes_fpga_vitis/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name test_state_buffer test_state_buffer 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../cpp/StateBufferTest.cpp in debug mode
+   Generating csim.exe
+Final GVT: 16
+LP 0 states:
+ LVT: 10
+LP 1 states:
+ LVT: 110
+ LVT: 100
+ LVT: 90
+ LVT: 80
+ LVT: 70
+ LVT: 15
+LP 2 states:
+LP 3 states:
+LP 4 states:
+LP 5 states:
+LP 6 states:
+LP 7 states:
+LP 8 states:
+LP 9 states:
+LP 10 states:
+LP 11 states:
+LP 12 states:
+LP 13 states:
+LP 14 states:
+LP 15 states:
+LP 16 states:
+LP 17 states:
+LP 18 states:
+LP 19 states:
+LP 20 states:
+LP 21 states:
+LP 22 states:
+LP 23 states:
+LP 24 states:
+LP 25 states:
+LP 26 states:
+LP 27 states:
+LP 28 states:
+LP 29 states:
+LP 30 states:
+LP 31 states:
+LP 32 states:
+LP 33 states:
+LP 34 states:
+LP 35 states:
+LP 36 states:
+LP 37 states:
+LP 38 states:
+LP 39 states:
+LP 40 states:
+LP 41 states:
+LP 42 states:
+LP 43 states:
+LP 44 states:
+LP 45 states:
+LP 46 states:
+LP 47 states:
+LP 48 states:
+LP 49 states:
+LP 50 states:
+LP 51 states:
+LP 52 states:
+LP 53 states:
+LP 54 states:
+LP 55 states:
+LP 56 states:
+LP 57 states:
+LP 58 states:
+LP 59 states:
+LP 60 states:
+LP 61 states:
+LP 62 states:
+LP 63 states:
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.44 seconds. CPU system time: 0.51 seconds. Elapsed time: 4.89 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 6.2 seconds. Total CPU system time: 1.74 seconds. Total elapsed time: 13.69 seconds; peak allocated memory: 840.184 MB.

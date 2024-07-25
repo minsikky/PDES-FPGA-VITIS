@@ -1,0 +1,145 @@
+
+
+================================================================
+== Vitis HLS Report for 'test_state_buffer_Pipeline_VITIS_LOOP_43_3'
+================================================================
+* Date:           Wed Jul 24 18:56:11 2024
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
+* Project:        pdes_fpga_2
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu9p-flga2104-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  0.987 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_43_3  |        ?|        ?|         2|          1|          1|     ?|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 1 2 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.85>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%current = alloca i32 1"   --->   Operation 5 'alloca' 'current' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %out_stream, void @empty, i32 0, i32 0, void @empty_0, i32 0, i32 0, void @empty_1, void @empty_1, void @empty_1, i32 0, i32 0, i32 0, i32 0, void @empty_1, void @empty_1, i32 4294967295, i32 0"   --->   Operation 6 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%current_2_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %current_2"   --->   Operation 7 'read' 'current_2_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.38ns)   --->   "%store_ln0 = store i32 %current_2_read, i32 %current"   --->   Operation 8 'store' 'store_ln0' <Predicate = true> <Delay = 0.38>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%br_ln0 = br void %while.cond12"   --->   Operation 9 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%current_1 = load i32 %current" [cpp/StateBuffer.cpp:44]   --->   Operation 10 'load' 'current_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%specpipeline_ln0 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 1, i32 0, void @p_str"   --->   Operation 11 'specpipeline' 'specpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.85ns)   --->   "%icmp_ln43 = icmp_eq  i32 %current_1, i32 4294967295" [cpp/StateBuffer.cpp:43]   --->   Operation 12 'icmp' 'icmp_ln43' <Predicate = true> <Delay = 0.85> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%br_ln43 = br i1 %icmp_ln43, void %while.body14, void %for.inc.exitStub" [cpp/StateBuffer.cpp:43]   --->   Operation 13 'br' 'br_ln43' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%zext_ln44 = zext i32 %current_1" [cpp/StateBuffer.cpp:44]   --->   Operation 14 'zext' 'zext_ln44' <Predicate = (!icmp_ln43)> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%buffer_buffer_state_lvt_V_addr = getelementptr i32 %buffer_buffer_state_lvt_V, i64 0, i64 %zext_ln44"   --->   Operation 15 'getelementptr' 'buffer_buffer_state_lvt_V_addr' <Predicate = (!icmp_ln43)> <Delay = 0.00>
+ST_1 : Operation 16 [2/2] (0.60ns)   --->   "%buffer_buffer_state_lvt_V_load = load i7 %buffer_buffer_state_lvt_V_addr"   --->   Operation 16 'load' 'buffer_buffer_state_lvt_V_load' <Predicate = (!icmp_ln43)> <Delay = 0.60> <CoreInst = "RAM_1WnR">   --->   Core 84 'RAM_1WnR' <Latency = 1> <II = 1> <Delay = 0.60> <Storage> <Opcode : 'load' 'store'> <Ports = 17> <Width = 32> <Depth = 128> <RAM>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%buffer_buffer_next_addr = getelementptr i32 %buffer_buffer_next, i64 0, i64 %zext_ln44" [cpp/StateBuffer.cpp:46]   --->   Operation 17 'getelementptr' 'buffer_buffer_next_addr' <Predicate = (!icmp_ln43)> <Delay = 0.00>
+ST_1 : Operation 18 [2/2] (0.60ns)   --->   "%current_3 = load i7 %buffer_buffer_next_addr" [cpp/StateBuffer.cpp:46]   --->   Operation 18 'load' 'current_3' <Predicate = (!icmp_ln43)> <Delay = 0.60> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 0.60> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 128> <RAM>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 25 'ret' 'ret_ln0' <Predicate = (icmp_ln43)> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 0.98>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%specloopname_ln44 = specloopname void @_ssdm_op_SpecLoopName, void @empty_5" [cpp/StateBuffer.cpp:44]   --->   Operation 19 'specloopname' 'specloopname_ln44' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/2] (0.60ns)   --->   "%buffer_buffer_state_lvt_V_load = load i7 %buffer_buffer_state_lvt_V_addr"   --->   Operation 20 'load' 'buffer_buffer_state_lvt_V_load' <Predicate = true> <Delay = 0.60> <CoreInst = "RAM_1WnR">   --->   Core 84 'RAM_1WnR' <Latency = 1> <II = 1> <Delay = 0.60> <Storage> <Opcode : 'load' 'store'> <Ports = 17> <Width = 32> <Depth = 128> <RAM>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%write_ln174 = write void @_ssdm_op_Write.axis.volatile.i32P128A, i32 %out_stream, i32 %buffer_buffer_state_lvt_V_load" [/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174]   --->   Operation 21 'write' 'write_ln174' <Predicate = true> <Delay = 0.00> <CoreInst = "axis">   --->   Core 123 'axis' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_2 : Operation 22 [1/2] (0.60ns)   --->   "%current_3 = load i7 %buffer_buffer_next_addr" [cpp/StateBuffer.cpp:46]   --->   Operation 22 'load' 'current_3' <Predicate = true> <Delay = 0.60> <CoreInst = "RAM">   --->   Core 83 'RAM' <Latency = 1> <II = 1> <Delay = 0.60> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 128> <RAM>
+ST_2 : Operation 23 [1/1] (0.38ns)   --->   "%store_ln43 = store i32 %current_3, i32 %current" [cpp/StateBuffer.cpp:43]   --->   Operation 23 'store' 'store_ln43' <Predicate = true> <Delay = 0.38>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%br_ln43 = br void %while.cond12" [cpp/StateBuffer.cpp:43]   --->   Operation 24 'br' 'br_ln43' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 1.35ns.
+
+ <State 1>: 0.859ns
+The critical path consists of the following:
+	'alloca' operation ('current') [5]  (0 ns)
+	'load' operation ('current', cpp/StateBuffer.cpp:44) on local variable 'current' [11]  (0 ns)
+	'icmp' operation ('icmp_ln43', cpp/StateBuffer.cpp:43) [13]  (0.859 ns)
+
+ <State 2>: 0.987ns
+The critical path consists of the following:
+	'load' operation ('current', cpp/StateBuffer.cpp:46) on array 'buffer_buffer_next' [22]  (0.6 ns)
+	'store' operation ('store_ln43', cpp/StateBuffer.cpp:43) of variable 'current', cpp/StateBuffer.cpp:46 on local variable 'current' [23]  (0.387 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

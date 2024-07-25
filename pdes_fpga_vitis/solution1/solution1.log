@@ -1,0 +1,272 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: source ./pdes_fpga_2/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name test_state_buffer test_state_buffer 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 4.68 seconds. CPU system time: 0.7 seconds. Elapsed time: 9.88 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'StateBuffer::get_gvt() const' into 'test_state_buffer(hls::stream<TestOperation, 0>&, hls::stream<int, 0>&)' (cpp/StateBuffer.cpp:40:29)
+INFO: [HLS 214-131] Inlining function 'StateBuffer::commit(ap_int<32>)' into 'test_state_buffer(hls::stream<TestOperation, 0>&, hls::stream<int, 0>&)' (cpp/StateBuffer.cpp:34:24)
+INFO: [HLS 214-131] Inlining function 'StateBuffer::rollback(int, ap_int<32>)' into 'test_state_buffer(hls::stream<TestOperation, 0>&, hls::stream<int, 0>&)' (cpp/StateBuffer.cpp:31:24)
+INFO: [HLS 214-131] Inlining function 'StateBuffer::push(LPState const&)' into 'test_state_buffer(hls::stream<TestOperation, 0>&, hls::stream<int, 0>&)' (cpp/StateBuffer.cpp:27:24)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_107_1' is marked as complete unroll implied by the pipeline pragma (cpp/StateBuffer.hpp:107:27)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_113_2' is marked as complete unroll implied by the pipeline pragma (cpp/StateBuffer.hpp:113:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_85_1' is marked as complete unroll implied by the pipeline pragma (cpp/StateBuffer.hpp:85:26)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_107_1' (cpp/StateBuffer.hpp:107:27) in function 'test_state_buffer' completely with a factor of 64 (cpp/StateBuffer.cpp:11:0)
+WARNING: [HLS 214-189] Pipeline directive for loop 'VITIS_LOOP_107_1' (cpp/StateBuffer.hpp:107:27) in function 'test_state_buffer' has been removed because the loop is unrolled completely (cpp/StateBuffer.cpp:11:0)
+INFO: [HLS 214-178] Inlining function 'StateBuffer::StateBuffer()' into 'test_state_buffer(hls::stream<TestOperation, 0>&, hls::stream<int, 0>&)' (cpp/StateBuffer.cpp:11:0)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'buffer.lp_heads' due to pipeline pragma (cpp/StateBuffer.cpp:20:9)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'buffer.lp_sizes' due to pipeline pragma (cpp/StateBuffer.cpp:20:9)
+INFO: [HLS 214-248] Applying array_partition to 'buffer.lp_heads': Cyclic partitioning with factor 2 on dimension 1. (cpp/StateBuffer.cpp:16:14)
+INFO: [HLS 214-248] Applying array_partition to 'buffer.lp_sizes': Cyclic partitioning with factor 2 on dimension 1. (cpp/StateBuffer.cpp:16:14)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 5.42 seconds. CPU system time: 0.54 seconds. Elapsed time: 10.33 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_34_1' (cpp/StateBuffer.hpp:34) in function 'test_state_buffer' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_39_2' (cpp/StateBuffer.hpp:39) in function 'test_state_buffer' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_43_3' (cpp/StateBuffer.cpp:44) in function 'test_state_buffer' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_19_1' (/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:0) in function 'test_state_buffer' for pipelining.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_85_1' (cpp/StateBuffer.hpp:86) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_113_2' (cpp/StateBuffer.hpp:114) in function 'test_state_buffer' completely: variable loop bound.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.86 seconds. CPU system time: 0.03 seconds. Elapsed time: 1 seconds; current allocated memory: 776.184 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_19_1' (/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:0) in function 'test_state_buffer' more than one sub loop.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_41_2' (cpp/StateBuffer.cpp:41:31) in function 'test_state_buffer' the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.next' (cpp/StateBuffer.hpp:35:28)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.next' (cpp/StateBuffer.hpp:37:48)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_heads' (cpp/StateBuffer.hpp:40:25)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_sizes' (cpp/StateBuffer.hpp:41:25)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.state.lvt.V' (cpp/StateBuffer.hpp:52:32)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_heads' (cpp/StateBuffer.hpp:55:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.next' (cpp/StateBuffer.hpp:56:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_sizes' (cpp/StateBuffer.hpp:58:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.next' (cpp/StateBuffer.hpp:88:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_heads' (cpp/StateBuffer.hpp:96:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_sizes' (cpp/StateBuffer.hpp:97:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_heads' (cpp/StateBuffer.hpp:117:37)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.buffer.next' (cpp/StateBuffer.hpp:122:38)
+INFO: [HLS 200-472] Inferring partial write operation for 'buffer.lp_sizes' (cpp/StateBuffer.hpp:129:29)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.82 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.86 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'test_state_buffer' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'test_state_buffer_Pipeline_VITIS_LOOP_34_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_34_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'VITIS_LOOP_34_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.33 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'test_state_buffer_Pipeline_VITIS_LOOP_39_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_39_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'VITIS_LOOP_39_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'test_state_buffer_Pipeline_VITIS_LOOP_43_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring inferring RAM_1WNR storage type for array 'buffer_buffer_state_lvt_V'. Use bind_storage pragma to override this type.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_43_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_43_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'test_state_buffer' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring inferring RAM_1WNR storage type for array 'buffer_buffer_state_lvt_V'. Use bind_storage pragma to override this type.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_19_1': contains subloop(s) that are not unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6.04 seconds. CPU system time: 0.02 seconds. Elapsed time: 6.09 seconds; current allocated memory: 904.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 3.52 seconds. CPU system time: 0.01 seconds. Elapsed time: 3.61 seconds; current allocated memory: 904.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'test_state_buffer_Pipeline_VITIS_LOOP_34_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'test_state_buffer_Pipeline_VITIS_LOOP_34_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2.36 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.48 seconds; current allocated memory: 904.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'test_state_buffer_Pipeline_VITIS_LOOP_39_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'test_state_buffer_Pipeline_VITIS_LOOP_39_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 904.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'test_state_buffer_Pipeline_VITIS_LOOP_43_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'test_state_buffer_Pipeline_VITIS_LOOP_43_3' pipeline 'VITIS_LOOP_43_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'test_state_buffer_Pipeline_VITIS_LOOP_43_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 904.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'test_state_buffer' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'test_state_buffer/in_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'test_state_buffer/out_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'test_state_buffer' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mux_21_32_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'test_state_buffer'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.57 seconds. CPU system time: 0 seconds. Elapsed time: 0.61 seconds; current allocated memory: 904.184 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================

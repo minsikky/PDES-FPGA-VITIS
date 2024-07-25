@@ -1,0 +1,7 @@
+   Build using "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling StateBufferTest.cpp_pre.cpp.tb.cpp
+   Compiling StateBuffer.cpp_pre.cpp.tb.cpp
+   Compiling apatb_test_state_buffer_util.cpp
+   Compiling apatb_test_state_buffer.cpp
+   Compiling apatb_test_state_buffer_ir.ll
+   Generating cosim.tv.exe

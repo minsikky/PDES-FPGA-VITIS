@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1721861002416">
+  <ports id="1" name="buffer_buffer_next" type="PortType" coreName="RAM" coreId="3344863856" bitwidth="32" direction="DirOut" iftype="IfTypeRegister" arraysize="128">
+    <dataInputObjs>getelementptr</dataInputObjs>
+  </ports>
+  <edges id="27" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="28" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="29" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0"/>
+  <edges id="30" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1"/>
+  <edges id="33" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="36" source_obj="//@regions.0/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="37" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="38" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="39" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.0"/>
+  <edges id="40" source_obj="//@regions.0/@basic_blocks.1/@node_objs.1" sink_obj="//@ports.0"/>
+  <edges id="43" source_obj="//@regions.0/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1"/>
+  <edges id="44" source_obj="//@regions.0/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.2"/>
+  <edges id="45" source_obj="//@regions.0/@basic_blocks.1/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="46" source_obj="//@regions.0/@basic_blocks.1/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="47" source_obj="//@regions.0/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="48" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="49" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.5"/>
+  <edges id="70" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0"/>
+  <edges id="71" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.1"/>
+  <edges id="72" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1"/>
+  <edges id="73" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0" is_back_edge="1"/>
+  <edges id="74" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0"/>
+  <edges id="75" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="76" edge_type="VirtEdge" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <blocks id="5" name="newFuncRoot" type="BlockType">
+    <controlOutputObjs>for.inc.i</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="2" name="i" originalName="i" coreId="0" bitwidth="7" opcode="alloca" m_display="0" m_topoIndex="1" m_clusterGroupNumber="-1">
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="3" name="i_write_ln0" coreId="3344188208" opcode="store" m_display="0" m_delay="0.38" m_topoIndex="2" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="4" name="br_ln0" coreId="768" opcode="br" m_display="0" m_topoIndex="3" m_clusterGroupNumber="-1">
+      <controlInputObjs>for.inc.i</controlInputObjs>
+    </node_objs>
+  </blocks>
+  <blocks id="22" name="for.end.i.exitStub" type="BlockType">
+    <controlInputObjs>for.inc.i</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="21" name="_ln0" coreId="3344885120" opcode="ret" m_display="0" m_topoIndex="14" m_clusterGroupNumber="-1"/>
+  </blocks>
+  <regions anchor_node="-1" region_type="8" interval="1" typeName="Pipeline" iiViolation="" id="78" pipe_depth="1" RegionName="VITIS_LOOP_34_1">
+    <basic_blocks id="12" name="for.inc.i" type="BlockType">
+      <controlInputObjs>newFuncRoot</controlInputObjs>
+      <controlInputObjs>for.inc.i.split</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>for.end.i.exitStub</controlOutputObjs>
+      <controlOutputObjs>for.inc.i.split</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="6" name="i_2" lineNumber="35" originalName="i" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreId="7955819" contextFuncName="StateBuffer" bitwidth="7" opcode="load" m_display="0" m_topoIndex="4" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>zext</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="8" name="icmp_ln34" lineNumber="34" fileName="cpp/StateBuffer.hpp" fileDirectory=".." rtlName="icmp_ln34_fu_53_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="StateBuffer" bitwidth="1" opcode="icmp" m_display="0" m_delay="0.59" m_topoIndex="5" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="34" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="10" name="add_ln35" lineNumber="35" fileName="cpp/StateBuffer.hpp" fileDirectory=".." rtlName="add_ln35_fu_59_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="StateBuffer" bitwidth="7" opcode="add" m_display="0" m_delay="0.7" m_topoIndex="6" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>zext</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="11" name="br_ln34" lineNumber="34" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreId="836627024" contextFuncName="StateBuffer" opcode="br" m_display="0" m_topoIndex="7" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="34" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>for.inc.i.split</controlInputObjs>
+        <controlInputObjs>for.end.i.exitStub</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="cpp/StateBuffer.hpp">
+        <validLinenumbers>35</validLinenumbers>
+        <validLinenumbers>34</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="20" name="for.inc.i.split" type="BlockType">
+      <controlInputObjs>for.inc.i</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>for.inc.i</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="13" name="trunc_ln35_cast" lineNumber="35" fileName="cpp/StateBuffer.hpp" fileDirectory=".." rtlName="trunc_ln35_cast_fu_65_p1" coreId="836628208" contextFuncName="StateBuffer" bitwidth="64" opcode="zext" m_display="0" m_topoIndex="8" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>getelementptr</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="15" name="buffer_buffer_next_addr" lineNumber="35" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreId="836628864" contextFuncName="StateBuffer" bitwidth="7" opcode="getelementptr" m_display="0" m_topoIndex="9" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>zext</dataInputObjs>
+        <dataOutputObjs>buffer_buffer_next</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="16" name="zext_ln35" lineNumber="35" fileName="cpp/StateBuffer.hpp" fileDirectory=".." rtlName="buffer_buffer_next_d0" coreId="757935405" contextFuncName="StateBuffer" bitwidth="32" opcode="zext" m_display="0" m_topoIndex="10" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="17" name="buffer_buffer_next_addr_write_ln35" lineNumber="35" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreName="RAM" implIndex="auto" control="no" opType="ram" coreId="83" contextFuncName="StateBuffer" opcode="store" m_display="0" m_delay="0.6" m_topoIndex="11" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="35" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>zext</dataInputObjs>
+        <dataInputObjs>getelementptr</dataInputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="18" name="i_write_ln34" lineNumber="34" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreId="836722400" contextFuncName="StateBuffer" opcode="store" m_display="0" m_delay="0.38" m_topoIndex="12" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="34" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="19" name="br_ln34" lineNumber="34" fileName="cpp/StateBuffer.hpp" fileDirectory=".." coreId="3344781680" contextFuncName="StateBuffer" opcode="br" m_display="0" m_topoIndex="13" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="cpp/StateBuffer.hpp" linenumber="34" fileDirectory="/n/higgins/z/minsikky/PDES-FPGA-3" functionName="StateBuffer"/>
+        <controlInputObjs>for.inc.i</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="cpp/StateBuffer.hpp">
+        <validLinenumbers>35</validLinenumbers>
+        <validLinenumbers>34</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+  </regions>
+  <ScheduleInfo time="0"/>
+  <regnodes realName="i_reg_80">
+    <nodeIds>2</nodeIds>
+  </regnodes>
+  <expressionNodes realName="add_ln35_fu_59">
+    <nodeIds>10</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln34_fu_53">
+    <nodeIds>8</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln35_fu_70">
+    <nodeIds>16</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln35_cast_fu_65">
+    <nodeIds>13</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="buffer_buffer_next_addr_gep_fu_32">
+    <nodeIds>15</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_fu_28">
+    <nodeIds>2</nodeIds>
+  </expressionNodes>
+  <ioNodes realName="i_2_load_fu_50">
+    <nodeIds>6</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln34_store_fu_75">
+    <nodeIds>18</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln0_store_fu_45">
+    <nodeIds>3</nodeIds>
+  </ioNodes>
+  <memoryPorts dataString="buffer_buffer_next">
+    <nodeIds>17</nodeIds>
+  </memoryPorts>
+  <ioPorts name="buffer_buffer_next(p0)">
+    <contents name="store">
+      <nodeIds>17</nodeIds>
+    </contents>
+  </ioPorts>
+  <fsm>
+    <states id="1">
+      <operations id="2" stage="1" latency="1"/>
+      <operations id="3" stage="1" latency="1"/>
+      <operations id="4" stage="1" latency="1"/>
+      <operations id="6" stage="1" latency="1"/>
+      <operations id="7" stage="1" latency="1"/>
+      <operations id="8" stage="1" latency="1"/>
+      <operations id="9" stage="1" latency="1"/>
+      <operations id="10" stage="1" latency="1"/>
+      <operations id="11" stage="1" latency="1"/>
+      <operations id="13" stage="1" latency="1"/>
+      <operations id="14" stage="1" latency="1"/>
+      <operations id="15" stage="1" latency="1"/>
+      <operations id="16" stage="1" latency="1"/>
+      <operations id="17" stage="1" latency="1"/>
+      <operations id="18" stage="1" latency="1"/>
+      <operations id="19" stage="1" latency="1"/>
+      <operations id="21" stage="1" latency="1"/>
+    </states>
+  </fsm>
+  <CFGRegionsRoot>
+    <cfgRegions mId="1" mTag="test_state_buffer_Pipeline_VITIS_LOOP_34_1" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="129" mMaxLatency="129">
+      <subRegions>2</subRegions>
+      <subRegions>3</subRegions>
+      <subRegions>4</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="2" mTag="Entry" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>5</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="3" mTag="VITIS_LOOP_34_1" mII="1" mDepth="1" mMinTripCount="127" mMaxTripCount="127" mMinLatency="127" mMaxLatency="127" mType="1">
+      <basicBlocks>12</basicBlocks>
+      <basicBlocks>20</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="4" mTag="Return" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>22</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+  </CFGRegionsRoot>
+</cdfg:DBCdfg>
