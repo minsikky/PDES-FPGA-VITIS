@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="StateBuffer.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp"/>
-    <originFiles name="StateBuffer.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp"/>
     <originFiles name="constants.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp"/>
+    <originFiles name="StateBuffer.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp"/>
+    <originFiles name="StateBuffer.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp"/>
+    <originFiles name="EventQueue.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"/>
+    <originFiles name="EventQueue.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp"/>
   </source>
   <testbench>
-    <originFiles name="StateBufferTest.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBufferTest.cpp"/>
+    <originFiles name="main.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

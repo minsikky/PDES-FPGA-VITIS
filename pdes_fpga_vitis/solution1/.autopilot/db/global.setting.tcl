@@ -1,5 +1,5 @@
 
-set TopModule "test_state_buffer"
+set TopModule "event_queue_kernel"
 set ClockPeriod 5
 set ClockList ap_clk
 set HasVivadoClockPeriod 0
@@ -10,11 +10,11 @@ set TrivialPipelineFlag 0
 set noPortSwitchingFlag 0
 set FloatingPointFlag 0
 set FftOrFirFlag 0
-set NbRWValue 1
+set NbRWValue 0
 set intNbAccess 0
 set NewDSPMapping 1
 set HasDSPModule 0
-set ResetLevelFlag 0
+set ResetLevelFlag 1
 set ResetStyle control
 set ResetSyncFlag 1
 set ResetRegisterFlag 0
@@ -23,7 +23,7 @@ set ResetRegisterNum 0
 set FsmEncStyle onehot
 set MaxFanout 0
 set RtlPrefix {}
-set RtlSubPrefix test_state_buffer_
+set RtlSubPrefix event_queue_kernel_
 set ExtraCCFlags {}
 set ExtraCLdFlags {}
 set SynCheckOptions {}
@@ -42,10 +42,10 @@ set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
 set TargetInfo xcvu9p:-flga2104:-2-i
-set SourceFiles {sc {} c ../../cpp/StateBuffer.cpp}
-set SourceFlags {sc {} c {{}}}
-set DirectiveFile /n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/solution1.directive
-set TBFiles {verilog ../../cpp/StateBufferTest.cpp bc ../../cpp/StateBufferTest.cpp vhdl ../../cpp/StateBufferTest.cpp sc ../../cpp/StateBufferTest.cpp cas ../../cpp/StateBufferTest.cpp c {}}
+set SourceFiles {sc {} c {../../cpp/EventQueue.cpp ../../cpp/StateBuffer.cpp}}
+set SourceFlags {sc {} c {{} {}}}
+set DirectiveFile /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive
+set TBFiles {verilog ../../cpp/main.cpp bc ../../cpp/main.cpp vhdl ../../cpp/main.cpp sc ../../cpp/main.cpp cas ../../cpp/main.cpp c {}}
 set SpecLanguage C
 set TVInFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
 set TVOutFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}

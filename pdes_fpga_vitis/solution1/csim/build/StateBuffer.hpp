@@ -3,10 +3,11 @@
 
 #include <ap_int.h>
 #include <hls_stream.h>
+#include <iostream>
 #include "constants.hpp"
 
 struct LPState {
-    int lp_id;
+    ap_int<16> lp_id;
     ap_int<32> lvt;
     ap_uint<32> rng_state; // State for random number generation
 };
@@ -100,7 +101,7 @@ public:
         return false;
     }
 
-    void commit(ap_int<32> commit_time) {
+    bool commit(ap_int<32> commit_time) {
         #pragma HLS INLINE
         current_gvt = commit_time;
 
@@ -142,6 +143,7 @@ public:
 
             lp_sizes[lp_id] -= removed;
         }
+        return true; // Commit always succeeds
     }
 
     bool is_full() const {
@@ -168,6 +170,13 @@ struct TestOperation {
     ap_int<32> time;
 };
 
-void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+bool operator==(const LPState &lhs, const LPState &rhs);
+
+// Top-level function for HLS synthesis
+void state_buffer_kernel(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+// This function is for simulation purposes only
+int test_state_buffer();
 
 #endif // STATE_BUFFER_HPP

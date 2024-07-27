@@ -3,10 +3,11 @@
 
 #include <ap_int.h>
 #include <hls_stream.h>
+#include <iostream>
 #include "constants.hpp"
 
 struct LPState {
-    int lp_id;
+    ap_int<16> lp_id;
     ap_int<32> lvt;
     ap_uint<32> rng_state; // State for random number generation
 };
@@ -100,7 +101,7 @@ public:
         return false;
     }
 
-    void commit(ap_int<32> commit_time) {
+    bool commit(ap_int<32> commit_time) {
         #pragma HLS INLINE
         current_gvt = commit_time;
 
@@ -109,25 +110,40 @@ public:
             int current = lp_heads[lp_id];
             int prev = -1;
             int removed = 0;
+            bool keep_oldest = true;
 
-            while (current != -1 && buffer[current].state.lvt <= commit_time) {
+            while (current != -1) {
                 int next = buffer[current].next;
 
-                if (prev == -1) {
-                    lp_heads[lp_id] = next;
+                if (buffer[current].state.lvt <= commit_time) {
+                    if (keep_oldest) {
+                        // Keep the oldest state (first one we encounter)
+                        keep_oldest = false;
+                        prev = current;
+                        current = next;
+                    } else {
+                        // Remove this state
+                        if (prev == -1) {
+                            lp_heads[lp_id] = next;
+                        } else {
+                            buffer[prev].next = next;
+                        }
+
+                        buffer[current].next = free_list_head;
+                        free_list_head = current;
+
+                        removed++;
+                        current = next;
+                    }
                 } else {
-                    buffer[prev].next = next;
+                    // If we've reached a state with LVT > commit_time, we can stop
+                    break;
                 }
-
-                buffer[current].next = free_list_head;
-                free_list_head = current;
-
-                removed++;
-                current = next;
             }
 
             lp_sizes[lp_id] -= removed;
         }
+        return true; // Commit always succeeds
     }
 
     bool is_full() const {
@@ -154,6 +170,13 @@ struct TestOperation {
     ap_int<32> time;
 };
 
-void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+bool operator==(const LPState &lhs, const LPState &rhs);
+
+// Top-level function for HLS synthesis
+void state_buffer_kernel(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+// This function is for simulation purposes only
+int test_state_buffer();
 
 #endif // STATE_BUFFER_HPP

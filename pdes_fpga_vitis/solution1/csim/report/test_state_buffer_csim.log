@@ -1,78 +1,31 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../cpp/StateBufferTest.cpp in debug mode
+   Compiling ../../../../cpp/main.cpp in debug mode
    Generating csim.exe
-Final GVT: 16
-LP 0 states:
- LVT: 10
-LP 1 states:
- LVT: 110
- LVT: 100
- LVT: 90
- LVT: 80
- LVT: 70
- LVT: 15
-LP 2 states:
-LP 3 states:
-LP 4 states:
-LP 5 states:
-LP 6 states:
-LP 7 states:
-LP 8 states:
-LP 9 states:
-LP 10 states:
-LP 11 states:
-LP 12 states:
-LP 13 states:
-LP 14 states:
-LP 15 states:
-LP 16 states:
-LP 17 states:
-LP 18 states:
-LP 19 states:
-LP 20 states:
-LP 21 states:
-LP 22 states:
-LP 23 states:
-LP 24 states:
-LP 25 states:
-LP 26 states:
-LP 27 states:
-LP 28 states:
-LP 29 states:
-LP 30 states:
-LP 31 states:
-LP 32 states:
-LP 33 states:
-LP 34 states:
-LP 35 states:
-LP 36 states:
-LP 37 states:
-LP 38 states:
-LP 39 states:
-LP 40 states:
-LP 41 states:
-LP 42 states:
-LP 43 states:
-LP 44 states:
-LP 45 states:
-LP 46 states:
-LP 47 states:
-LP 48 states:
-LP 49 states:
-LP 50 states:
-LP 51 states:
-LP 52 states:
-LP 53 states:
-LP 54 states:
-LP 55 states:
-LP 56 states:
-LP 57 states:
-LP 58 states:
-LP 59 states:
-LP 60 states:
-LP 61 states:
-LP 62 states:
-LP 63 states:
+All dequeued events are correctly sorted by receive time!
+
+First 10 events after sorting:
+Event[0]: {send_time: 2487, recv_time: 276, data: 15, sender_id: 139, receiver_id: 175, is_anti_message: 0}
+Event[1]: {send_time: 1636, recv_time: 409, data: 60, sender_id: 63, receiver_id: 149, is_anti_message: 0}
+Event[2]: {send_time: 1327, recv_time: 571, data: 9, sender_id: 112, receiver_id: 28, is_anti_message: 1}
+Event[3]: {send_time: 795, recv_time: 618, data: 43, sender_id: 64, receiver_id: 254, is_anti_message: 1}
+Event[4]: {send_time: 5578, recv_time: 789, data: 19, sender_id: 215, receiver_id: 171, is_anti_message: 0}
+Event[5]: {send_time: 979, recv_time: 818, data: 46, sender_id: 170, receiver_id: 233, is_anti_message: 1}
+Event[6]: {send_time: 2082, recv_time: 896, data: 13, sender_id: 58, receiver_id: 14, is_anti_message: 0}
+Event[7]: {send_time: 6501, recv_time: 923, data: 36, sender_id: 170, receiver_id: 155, is_anti_message: 0}
+Event[8]: {send_time: 1336, recv_time: 1363, data: 23, sender_id: 144, receiver_id: 134, is_anti_message: 0}
+Event[9]: {send_time: 7534, recv_time: 1546, data: 37, sender_id: 42, receiver_id: 27, is_anti_message: 0}
+
+Last 10 events after sorting:
+Event[54]: {send_time: 9497, recv_time: 7764, data: 26, sender_id: 74, receiver_id: 200, is_anti_message: 0}
+Event[55]: {send_time: 3574, recv_time: 7913, data: 17, sender_id: 146, receiver_id: 214, is_anti_message: 0}
+Event[56]: {send_time: 1192, recv_time: 8074, data: 47, sender_id: 246, receiver_id: 33, is_anti_message: 0}
+Event[57]: {send_time: 6029, recv_time: 8551, data: 3, sender_id: 85, receiver_id: 65, is_anti_message: 0}
+Event[58]: {send_time: 5391, recv_time: 8958, data: 27, sender_id: 228, receiver_id: 105, is_anti_message: 1}
+Event[59]: {send_time: 3067, recv_time: 8996, data: 32, sender_id: 22, receiver_id: 78, is_anti_message: 0}
+Event[60]: {send_time: 7301, recv_time: 9628, data: 0, sender_id: 170, receiver_id: 58, is_anti_message: 0}
+Event[61]: {send_time: 9234, recv_time: 9724, data: 50, sender_id: 143, receiver_id: 0, is_anti_message: 1}
+Event[62]: {send_time: 5733, recv_time: 9928, data: 44, sender_id: 58, receiver_id: 90, is_anti_message: 1}
+Event[63]: {send_time: 9597, recv_time: 9954, data: 58, sender_id: 176, receiver_id: 41, is_anti_message: 0}
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

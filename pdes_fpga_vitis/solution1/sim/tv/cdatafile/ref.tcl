@@ -1,5 +1,6 @@
 set depth_list {
-{in_stream 7}
-{out_stream 67}
+{input_r 1}
+{output_event 1}
+{success 1}
 }
-set trans_num 1
+set trans_num 128

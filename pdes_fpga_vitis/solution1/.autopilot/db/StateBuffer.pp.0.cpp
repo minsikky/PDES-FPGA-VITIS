@@ -5842,178 +5842,6 @@ class stream : public stream<__STREAM_T__, 0> {
 }
 # 62 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream.h" 2
 # 6 "cpp/StateBuffer.hpp" 2
-# 1 "cpp/constants.hpp" 1
-
-
-
-
-constexpr int NUM_LPS = 64;
-
-
-constexpr int NUM_LPCORE = 4;
-
-
-static constexpr int EVENT_QUEUE_CAPACITY = 128;
-static constexpr int ANTI_MSG_RESERVE = 16;
-
-
-static constexpr int STATE_BUFFER_CAPACITY = 128;
-
-
-static constexpr int EVENT_HISTORY_CAPACITY = 64;
-# 7 "cpp/StateBuffer.hpp" 2
-
-struct LPState {
-    int lp_id;
-    ap_int<32> lvt;
-    ap_uint<32> rng_state;
-};
-
-struct StateEntry {
-    LPState state;
-    int next;
-};
-
-class StateBuffer {
-public:
-    StateEntry buffer[STATE_BUFFER_CAPACITY];
-    int lp_heads[NUM_LPS];
-    int lp_sizes[NUM_LPS];
-    int free_list_head;
-    ap_int<32> current_gvt;
-
-public:
-    StateBuffer() {
-
-
-
-
-        free_list_head = 0;
-        VITIS_LOOP_34_1: for (int i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i) {
-            buffer[i].next = i + 1;
-        }
-        buffer[STATE_BUFFER_CAPACITY - 1].next = -1;
-
-        VITIS_LOOP_39_2: for (int i = 0; i < NUM_LPS; ++i) {
-            lp_heads[i] = -1;
-            lp_sizes[i] = 0;
-        }
-    }
-
-    bool push(const LPState &state) {
-#pragma HLS INLINE
- int new_head = free_list_head;
-        if (new_head == -1)
-            return false;
-
-        int next_free = buffer[new_head].next;
-        buffer[new_head].state = state;
-
-        int old_head = lp_heads[state.lp_id];
-        lp_heads[state.lp_id] = new_head;
-        buffer[new_head].next = old_head;
-
-        lp_sizes[state.lp_id]++;
-        free_list_head = next_free;
-
-        return true;
-    }
-
-    bool pop(int lp_id, LPState &result) {
-#pragma HLS INLINE
- int head = lp_heads[lp_id];
-        if (head == -1)
-            return false;
-
-        result = buffer[head].state;
-        lp_heads[lp_id] = buffer[head].next;
-
-        buffer[head].next = free_list_head;
-        free_list_head = head;
-
-        lp_sizes[lp_id]--;
-        return true;
-    }
-
-    bool rollback(int lp_id, ap_int<32> to_time) {
-#pragma HLS INLINE
- int current = lp_heads[lp_id];
-        int removed = 0;
-
-        VITIS_LOOP_85_1: while (current != -1 && buffer[current].state.lvt > to_time) {
-            int next = buffer[current].next;
-
-            buffer[current].next = free_list_head;
-            free_list_head = current;
-
-            current = next;
-            removed++;
-        }
-
-        if (removed > 0) {
-            lp_heads[lp_id] = current;
-            lp_sizes[lp_id] -= removed;
-            return true;
-        }
-        return false;
-    }
-
-    void commit(ap_int<32> commit_time) {
-#pragma HLS INLINE
- current_gvt = commit_time;
-
-        VITIS_LOOP_107_1: for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-#pragma HLS PIPELINE II=1
- int current = lp_heads[lp_id];
-            int prev = -1;
-            int removed = 0;
-
-            VITIS_LOOP_113_2: while (current != -1 && buffer[current].state.lvt <= commit_time) {
-                int next = buffer[current].next;
-
-                if (prev == -1) {
-                    lp_heads[lp_id] = next;
-                } else {
-                    buffer[prev].next = next;
-                }
-
-                buffer[current].next = free_list_head;
-                free_list_head = current;
-
-                removed++;
-                current = next;
-            }
-
-            lp_sizes[lp_id] -= removed;
-        }
-    }
-
-    bool is_full() const {
-#pragma HLS INLINE
- return free_list_head == -1;
-    }
-
-    ap_int<32> get_gvt() const {
-#pragma HLS INLINE
- return current_gvt;
-    }
-
-    LPState peek(int lp_id) const {
-#pragma HLS INLINE
- if (lp_heads[lp_id] == -1)
-            return {-1, -1, 0};
-        return buffer[lp_heads[lp_id]].state;
-    }
-};
-
-struct TestOperation {
-    int type;
-    int lp_id;
-    ap_int<32> time;
-};
-
-__attribute__((sdx_kernel("test_state_buffer", 0))) void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
-# 2 "cpp/StateBuffer.cpp" 2
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/iostream" 1 3
 # 37 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/iostream" 3
 
@@ -33819,7 +33647,205 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 }
-# 3 "cpp/StateBuffer.cpp" 2
+# 7 "cpp/StateBuffer.hpp" 2
+# 1 "cpp/constants.hpp" 1
+
+
+
+
+constexpr int NUM_LPS = 64;
+
+
+constexpr int NUM_LPCORE = 4;
+
+
+static constexpr int EVENT_QUEUE_CAPACITY = 128;
+static constexpr int ANTI_MSG_RESERVE = 16;
+
+
+static constexpr int NUM_EVENTS = 64;
+
+
+static constexpr int STATE_BUFFER_CAPACITY = 128;
+
+
+static constexpr int EVENT_HISTORY_CAPACITY = 64;
+# 8 "cpp/StateBuffer.hpp" 2
+
+struct LPState {
+    ap_int<16> lp_id;
+    ap_int<32> lvt;
+    ap_uint<32> rng_state;
+};
+
+struct StateEntry {
+    LPState state;
+    int next;
+};
+
+class StateBuffer {
+public:
+    StateEntry buffer[STATE_BUFFER_CAPACITY];
+    int lp_heads[NUM_LPS];
+    int lp_sizes[NUM_LPS];
+    int free_list_head;
+    ap_int<32> current_gvt;
+
+public:
+    StateBuffer() {
+
+
+
+
+        free_list_head = 0;
+        VITIS_LOOP_35_1: for (int i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i) {
+            buffer[i].next = i + 1;
+        }
+        buffer[STATE_BUFFER_CAPACITY - 1].next = -1;
+
+        VITIS_LOOP_40_2: for (int i = 0; i < NUM_LPS; ++i) {
+            lp_heads[i] = -1;
+            lp_sizes[i] = 0;
+        }
+    }
+
+    bool push(const LPState &state) {
+#pragma HLS INLINE
+ int new_head = free_list_head;
+        if (new_head == -1)
+            return false;
+
+        int next_free = buffer[new_head].next;
+        buffer[new_head].state = state;
+
+        int old_head = lp_heads[state.lp_id];
+        lp_heads[state.lp_id] = new_head;
+        buffer[new_head].next = old_head;
+
+        lp_sizes[state.lp_id]++;
+        free_list_head = next_free;
+
+        return true;
+    }
+
+    bool pop(int lp_id, LPState &result) {
+#pragma HLS INLINE
+ int head = lp_heads[lp_id];
+        if (head == -1)
+            return false;
+
+        result = buffer[head].state;
+        lp_heads[lp_id] = buffer[head].next;
+
+        buffer[head].next = free_list_head;
+        free_list_head = head;
+
+        lp_sizes[lp_id]--;
+        return true;
+    }
+
+    bool rollback(int lp_id, ap_int<32> to_time) {
+#pragma HLS INLINE
+ int current = lp_heads[lp_id];
+        int removed = 0;
+
+        VITIS_LOOP_86_1: while (current != -1 && buffer[current].state.lvt > to_time) {
+            int next = buffer[current].next;
+
+            buffer[current].next = free_list_head;
+            free_list_head = current;
+
+            current = next;
+            removed++;
+        }
+
+        if (removed > 0) {
+            lp_heads[lp_id] = current;
+            lp_sizes[lp_id] -= removed;
+            return true;
+        }
+        return false;
+    }
+
+    bool commit(ap_int<32> commit_time) {
+#pragma HLS INLINE
+ current_gvt = commit_time;
+
+        VITIS_LOOP_108_1: for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
+#pragma HLS PIPELINE II=1
+ int current = lp_heads[lp_id];
+            int prev = -1;
+            int removed = 0;
+            bool keep_oldest = true;
+
+            VITIS_LOOP_115_2: while (current != -1) {
+                int next = buffer[current].next;
+
+                if (buffer[current].state.lvt <= commit_time) {
+                    if (keep_oldest) {
+
+                        keep_oldest = false;
+                        prev = current;
+                        current = next;
+                    } else {
+
+                        if (prev == -1) {
+                            lp_heads[lp_id] = next;
+                        } else {
+                            buffer[prev].next = next;
+                        }
+
+                        buffer[current].next = free_list_head;
+                        free_list_head = current;
+
+                        removed++;
+                        current = next;
+                    }
+                } else {
+
+                    break;
+                }
+            }
+
+            lp_sizes[lp_id] -= removed;
+        }
+        return true;
+    }
+
+    bool is_full() const {
+#pragma HLS INLINE
+ return free_list_head == -1;
+    }
+
+    ap_int<32> get_gvt() const {
+#pragma HLS INLINE
+ return current_gvt;
+    }
+
+    LPState peek(int lp_id) const {
+#pragma HLS INLINE
+ if (lp_heads[lp_id] == -1)
+            return {-1, -1, 0};
+        return buffer[lp_heads[lp_id]].state;
+    }
+};
+
+struct TestOperation {
+    int type;
+    int lp_id;
+    ap_int<32> time;
+};
+
+
+bool operator==(const LPState &lhs, const LPState &rhs);
+
+
+void state_buffer_kernel(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+
+int test_state_buffer();
+# 2 "cpp/StateBuffer.cpp" 2
+
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/vector" 1 3
 # 59 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/vector" 3
 
@@ -37815,51 +37841,92 @@ bool operator==(const LPState &lhs, const LPState &rhs) {
 }
 
 
-__attribute__((sdx_kernel("test_state_buffer", 0))) void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream) {
-#line 17 "/n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/csynth.tcl"
-#pragma HLSDIRECTIVE TOP name=test_state_buffer
-# 11 "cpp/StateBuffer.cpp"
+struct StateBufferInput {
+    ap_uint<2> op_type;
+    ap_int<16> lp_id;
+    ap_int<32> time;
+    ap_uint<32> rng_state;
+};
 
-#line 6 "/n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/directives.tcl"
-#pragma HLSDIRECTIVE TOP name=test_state_buffer
-# 11 "cpp/StateBuffer.cpp"
 
-#pragma HLS INTERFACE axis port=in_stream
-#pragma HLS INTERFACE axis port=out_stream
-#pragma HLS INTERFACE s_axilite port=return
+StateBuffer g_state_buffer;
 
- StateBuffer buffer;
+void state_buffer_kernel(
+    StateBufferInput& input,
+    bool& success
+) {
+#pragma HLS INTERFACE ap_ctrl_hs port=return
+#pragma HLS INTERFACE ap_vld port=input
+#pragma HLS INTERFACE ap_vld port=success
 
-    TestOperation op;
-    VITIS_LOOP_19_1: while (!in_stream.empty()) {
-#pragma HLS PIPELINE II=1
- in_stream.read(op);
+ switch (input.op_type) {
+        case 0:
+        {
+            LPState state{input.lp_id, input.time, input.rng_state};
+            success = g_state_buffer.push(state);
+            break;
+        }
+        case 1:
+            success = g_state_buffer.rollback(input.lp_id, input.time);
+            break;
+        case 2:
+            success = g_state_buffer.commit(input.time);
+            break;
+        default:
+            success = false;
+    }
+}
 
-        switch (op.type) {
-            case 0:
-            {
-                LPState state{op.lp_id, op.time, 0};
-                buffer.push(state);
-                break;
-            }
-            case 1:
-                buffer.rollback(op.lp_id, op.time);
-                break;
-            case 2:
-                buffer.commit(op.time);
-                break;
+int test_state_buffer() {
+    StateBufferInput input;
+    bool success;
+
+
+    std::vector<StateBufferInput> operations = {
+        {0, 0, 10, 0},
+        {0, 1, 15, 0},
+        {0, 0, 20, 0},
+        {0, 0, 30, 0},
+        {0, 0, 40, 0},
+        {0, 0, 50, 0},
+        {0, 0, 60, 0},
+        {0, 1, 70, 0},
+        {0, 1, 80, 0},
+        {0, 1, 90, 0},
+        {0, 1, 100, 0},
+        {1, 0, 15, 0},
+        {2, 0, 12, 0},
+        {0, 1, 110, 0},
+        {2, 0, 16, 0},
+    };
+
+
+    VITIS_LOOP_71_1: for (const auto& op : operations) {
+        state_buffer_kernel(const_cast<StateBufferInput&>(op), success);
+        if (!success) {
+            std::cout << "Operation failed: type " << op.op_type << ", LP " << op.lp_id << ", time " << op.time << std::endl;
         }
     }
 
 
-    out_stream.write(buffer.get_gvt());
-    VITIS_LOOP_41_2: for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-        int current = buffer.lp_heads[lp_id];
-        VITIS_LOOP_43_3: while (current != -1) {
-            const LPState& state = buffer.buffer[current].state;
-            out_stream.write(state.lvt);
-            current = buffer.buffer[current].next;
+    int gvt = g_state_buffer.get_gvt();
+    std::vector<std::vector<LPState>> lp_states(NUM_LPS);
+
+    VITIS_LOOP_82_2: for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
+        LPState state;
+        VITIS_LOOP_84_3: while (g_state_buffer.pop(lp_id, state)) {
+            lp_states[lp_id].push_back(state);
         }
-        out_stream.write(-1);
     }
+
+
+    std::cout << "Final GVT: " << gvt << "\n";
+    VITIS_LOOP_91_4: for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
+        std::cout << "LP " << lp_id << " states:\n";
+        VITIS_LOOP_93_5: for (const auto& state : lp_states[lp_id]) {
+            std::cout << " LVT: " << state.lvt << ", RNG state: " << state.rng_state << "\n";
+        }
+    }
+
+    return 0;
 }

@@ -1,20 +1,24 @@
 INFO: [HLS 200-10] Running '/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'minsikky' on host 'i1z.eecs.umich.edu' (Linux_x86_64 version 3.10.0-1160.102.1.el7.x86_64) on Thu Jul 25 15:56:52 EDT 2024
+INFO: [HLS 200-10] For user 'minsikky' on host 'i1z.eecs.umich.edu' (Linux_x86_64 version 3.10.0-1160.102.1.el7.x86_64) on Sat Jul 27 00:11:51 EDT 2024
 INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Server release 7.9 (Maipo)"
 INFO: [HLS 200-10] In directory '/n/higgins/z/minsikky/PDES-FPGA-VITIS'
-Sourcing Tcl script '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csim.tcl'
-INFO: [HLS 200-1510] Running: source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csim.tcl
+Sourcing Tcl script '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/cosim.tcl'
+INFO: [HLS 200-1510] Running: source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/cosim.tcl
 INFO: [HLS 200-1510] Running: open_project pdes_fpga_vitis 
 INFO: [HLS 200-10] Opening project '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis'.
-INFO: [HLS 200-1510] Running: set_top test_state_buffer 
-INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.cpp 
-INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.hpp 
-INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.hpp' to the project
+INFO: [HLS 200-1510] Running: set_top event_queue_kernel 
 INFO: [HLS 200-1510] Running: add_files cpp/constants.hpp 
 INFO: [HLS 200-10] Adding design file 'cpp/constants.hpp' to the project
-INFO: [HLS 200-1510] Running: add_files -tb cpp/StateBufferTest.cpp -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
-INFO: [HLS 200-10] Adding test bench file 'cpp/StateBufferTest.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.hpp 
+INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/StateBuffer.cpp 
+INFO: [HLS 200-10] Adding design file 'cpp/StateBuffer.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/EventQueue.hpp 
+INFO: [HLS 200-10] Adding design file 'cpp/EventQueue.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files cpp/EventQueue.cpp 
+INFO: [HLS 200-10] Adding design file 'cpp/EventQueue.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb cpp/main.cpp -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'cpp/main.cpp' to the project
 INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
 INFO: [HLS 200-10] Opening solution '/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
@@ -25,86 +29,268 @@ INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
 INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
 INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
 INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
-INFO: [HLS 200-1510] Running: source ./pdes_fpga_vitis/solution1/directives.tcl
-INFO: [HLS 200-1510] Running: set_directive_top -name test_state_buffer test_state_buffer 
-INFO: [HLS 200-1510] Running: csim_design -quiet 
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../cpp/StateBufferTest.cpp in debug mode
-   Generating csim.exe
-Final GVT: 16
-LP 0 states:
- LVT: 10
-LP 1 states:
- LVT: 110
- LVT: 100
- LVT: 90
- LVT: 80
- LVT: 70
- LVT: 15
-LP 2 states:
-LP 3 states:
-LP 4 states:
-LP 5 states:
-LP 6 states:
-LP 7 states:
-LP 8 states:
-LP 9 states:
-LP 10 states:
-LP 11 states:
-LP 12 states:
-LP 13 states:
-LP 14 states:
-LP 15 states:
-LP 16 states:
-LP 17 states:
-LP 18 states:
-LP 19 states:
-LP 20 states:
-LP 21 states:
-LP 22 states:
-LP 23 states:
-LP 24 states:
-LP 25 states:
-LP 26 states:
-LP 27 states:
-LP 28 states:
-LP 29 states:
-LP 30 states:
-LP 31 states:
-LP 32 states:
-LP 33 states:
-LP 34 states:
-LP 35 states:
-LP 36 states:
-LP 37 states:
-LP 38 states:
-LP 39 states:
-LP 40 states:
-LP 41 states:
-LP 42 states:
-LP 43 states:
-LP 44 states:
-LP 45 states:
-LP 46 states:
-LP 47 states:
-LP 48 states:
-LP 49 states:
-LP 50 states:
-LP 51 states:
-LP 52 states:
-LP 53 states:
-LP 54 states:
-LP 55 states:
-LP 56 states:
-LP 57 states:
-LP 58 states:
-LP 59 states:
-LP 60 states:
-LP 61 states:
-LP 62 states:
-LP 63 states:
-INFO: [SIM 211-1] CSim done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.44 seconds. CPU system time: 0.51 seconds. Elapsed time: 4.89 seconds; current allocated memory: 0.000 MB.
-INFO: [HLS 200-112] Total CPU user time: 6.2 seconds. Total CPU system time: 1.74 seconds. Total elapsed time: 13.69 seconds; peak allocated memory: 840.184 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling StateBuffer.cpp_pre.cpp.tb.cpp
+   Compiling main.cpp_pre.cpp.tb.cpp
+   Compiling EventQueue.cpp_pre.cpp.tb.cpp
+   Compiling apatb_event_queue_kernel.cpp
+   Compiling apatb_event_queue_kernel_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+All dequeued events are correctly sorted by receive time!
+
+First 10 events after sorting:
+Event[0]: {send_time: 48, recv_time: 79, data: 28, sender_id: 183, receiver_id: 127, is_anti_message: 0}
+Event[1]: {send_time: 5132, recv_time: 134, data: 20, sender_id: 130, receiver_id: 4, is_anti_message: 0}
+Event[2]: {send_time: 8775, recv_time: 276, data: 56, sender_id: 157, receiver_id: 151, is_anti_message: 1}
+Event[3]: {send_time: 5785, recv_time: 335, data: 30, sender_id: 40, receiver_id: 2, is_anti_message: 0}
+Event[4]: {send_time: 9398, recv_time: 396, data: 16, sender_id: 226, receiver_id: 236, is_anti_message: 0}
+Event[5]: {send_time: 6226, recv_time: 691, data: 27, sender_id: 130, receiver_id: 69, is_anti_message: 1}
+Event[6]: {send_time: 1059, recv_time: 1006, data: 18, sender_id: 56, receiver_id: 50, is_anti_message: 0}
+Event[7]: {send_time: 2526, recv_time: 1316, data: 21, sender_id: 239, receiver_id: 77, is_anti_message: 1}
+Event[8]: {send_time: 5398, recv_time: 1721, data: 26, sender_id: 78, receiver_id: 65, is_anti_message: 0}
+Event[9]: {send_time: 453, recv_time: 1739, data: 42, sender_id: 84, receiver_id: 71, is_anti_message: 1}
+
+Last 10 events after sorting:
+Event[54]: {send_time: 3763, recv_time: 8269, data: 52, sender_id: 45, receiver_id: 26, is_anti_message: 0}
+Event[55]: {send_time: 670, recv_time: 8553, data: 40, sender_id: 6, receiver_id: 75, is_anti_message: 1}
+Event[56]: {send_time: 849, recv_time: 8618, data: 43, sender_id: 171, receiver_id: 1, is_anti_message: 1}
+Event[57]: {send_time: 7738, recv_time: 8789, data: 29, sender_id: 199, receiver_id: 154, is_anti_message: 1}
+Event[58]: {send_time: 1374, recv_time: 8817, data: 58, sender_id: 225, receiver_id: 102, is_anti_message: 0}
+Event[59]: {send_time: 5557, recv_time: 8983, data: 44, sender_id: 152, receiver_id: 90, is_anti_message: 1}
+Event[60]: {send_time: 3307, recv_time: 9147, data: 22, sender_id: 44, receiver_id: 51, is_anti_message: 0}
+Event[61]: {send_time: 7027, recv_time: 9220, data: 34, sender_id: 136, receiver_id: 69, is_anti_message: 1}
+Event[62]: {send_time: 9347, recv_time: 9542, data: 41, sender_id: 125, receiver_id: 109, is_anti_message: 0}
+Event[63]: {send_time: 7265, recv_time: 9850, data: 51, sender_id: 37, receiver_id: 67, is_anti_message: 0}
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2022.1
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_event_queue_kernel_top glbl -Oenable_linking_all_libraries -prj event_queue_kernel.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_20 -L floating_point_v7_1_14 --lib ieee_proposed=./ieee_proposed -s event_queue_kernel 
+Multi-threading is on. Using 30 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_event_queue_kernel_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.event_queue_kernel_g_event_queue...
+Compiling module xil_defaultlib.event_queue_kernel_g_event_queue...
+Compiling module xil_defaultlib.event_queue_kernel_g_event_queue...
+Compiling module xil_defaultlib.event_queue_kernel_g_event_queue...
+Compiling module xil_defaultlib.event_queue_kernel_event_queue_k...
+Compiling module xil_defaultlib.event_queue_kernel_event_queue_k...
+Compiling module xil_defaultlib.event_queue_kernel
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.pp_loop_intf(FSM_WIDTH=6)
+Compiling module xil_defaultlib.pp_loop_intf(FSM_WIDTH=5)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_event_queue_kernel_top
+Compiling module work.glbl
+Built simulation snapshot event_queue_kernel
+
+****** xsim v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/event_queue_kernel/xsim_script.tcl
+# xsim {event_queue_kernel} -autoloadwcfg -tclbatch {event_queue_kernel.tcl}
+Time resolution is 1 ps
+source event_queue_kernel.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 128 [n/a] @ "113000"
+// RTL Simulation : 1 / 128 [n/a] @ "168000"
+// RTL Simulation : 2 / 128 [n/a] @ "228000"
+// RTL Simulation : 3 / 128 [n/a] @ "288000"
+// RTL Simulation : 4 / 128 [n/a] @ "333000"
+// RTL Simulation : 5 / 128 [n/a] @ "403000"
+// RTL Simulation : 6 / 128 [n/a] @ "473000"
+// RTL Simulation : 7 / 128 [n/a] @ "528000"
+// RTL Simulation : 8 / 128 [n/a] @ "593000"
+// RTL Simulation : 9 / 128 [n/a] @ "638000"
+// RTL Simulation : 10 / 128 [n/a] @ "703000"
+// RTL Simulation : 11 / 128 [n/a] @ "748000"
+// RTL Simulation : 12 / 128 [n/a] @ "813000"
+// RTL Simulation : 13 / 128 [n/a] @ "858000"
+// RTL Simulation : 14 / 128 [n/a] @ "913000"
+// RTL Simulation : 15 / 128 [n/a] @ "958000"
+// RTL Simulation : 16 / 128 [n/a] @ "1003000"
+// RTL Simulation : 17 / 128 [n/a] @ "1093000"
+// RTL Simulation : 18 / 128 [n/a] @ "1148000"
+// RTL Simulation : 19 / 128 [n/a] @ "1223000"
+// RTL Simulation : 20 / 128 [n/a] @ "1268000"
+// RTL Simulation : 21 / 128 [n/a] @ "1358000"
+// RTL Simulation : 22 / 128 [n/a] @ "1413000"
+// RTL Simulation : 23 / 128 [n/a] @ "1458000"
+// RTL Simulation : 24 / 128 [n/a] @ "1503000"
+// RTL Simulation : 25 / 128 [n/a] @ "1548000"
+// RTL Simulation : 26 / 128 [n/a] @ "1603000"
+// RTL Simulation : 27 / 128 [n/a] @ "1678000"
+// RTL Simulation : 28 / 128 [n/a] @ "1753000"
+// RTL Simulation : 29 / 128 [n/a] @ "1843000"
+// RTL Simulation : 30 / 128 [n/a] @ "1888000"
+// RTL Simulation : 31 / 128 [n/a] @ "1953000"
+// RTL Simulation : 32 / 128 [n/a] @ "2018000"
+// RTL Simulation : 33 / 128 [n/a] @ "2063000"
+// RTL Simulation : 34 / 128 [n/a] @ "2118000"
+// RTL Simulation : 35 / 128 [n/a] @ "2163000"
+// RTL Simulation : 36 / 128 [n/a] @ "2218000"
+// RTL Simulation : 37 / 128 [n/a] @ "2273000"
+// RTL Simulation : 38 / 128 [n/a] @ "2318000"
+// RTL Simulation : 39 / 128 [n/a] @ "2363000"
+// RTL Simulation : 40 / 128 [n/a] @ "2428000"
+// RTL Simulation : 41 / 128 [n/a] @ "2473000"
+// RTL Simulation : 42 / 128 [n/a] @ "2518000"
+// RTL Simulation : 43 / 128 [n/a] @ "2583000"
+// RTL Simulation : 44 / 128 [n/a] @ "2628000"
+// RTL Simulation : 45 / 128 [n/a] @ "2673000"
+// RTL Simulation : 46 / 128 [n/a] @ "2728000"
+// RTL Simulation : 47 / 128 [n/a] @ "2773000"
+// RTL Simulation : 48 / 128 [n/a] @ "2818000"
+// RTL Simulation : 49 / 128 [n/a] @ "2863000"
+// RTL Simulation : 50 / 128 [n/a] @ "2928000"
+// RTL Simulation : 51 / 128 [n/a] @ "2973000"
+// RTL Simulation : 52 / 128 [n/a] @ "3018000"
+// RTL Simulation : 53 / 128 [n/a] @ "3063000"
+// RTL Simulation : 54 / 128 [n/a] @ "3108000"
+// RTL Simulation : 55 / 128 [n/a] @ "3153000"
+// RTL Simulation : 56 / 128 [n/a] @ "3208000"
+// RTL Simulation : 57 / 128 [n/a] @ "3283000"
+// RTL Simulation : 58 / 128 [n/a] @ "3328000"
+// RTL Simulation : 59 / 128 [n/a] @ "3373000"
+// RTL Simulation : 60 / 128 [n/a] @ "3428000"
+// RTL Simulation : 61 / 128 [n/a] @ "3473000"
+// RTL Simulation : 62 / 128 [n/a] @ "3528000"
+// RTL Simulation : 63 / 128 [n/a] @ "3573000"
+// RTL Simulation : 64 / 128 [n/a] @ "3638000"
+// RTL Simulation : 65 / 128 [n/a] @ "3768000"
+// RTL Simulation : 66 / 128 [n/a] @ "3898000"
+// RTL Simulation : 67 / 128 [n/a] @ "4028000"
+// RTL Simulation : 68 / 128 [n/a] @ "4138000"
+// RTL Simulation : 69 / 128 [n/a] @ "4268000"
+// RTL Simulation : 70 / 128 [n/a] @ "4398000"
+// RTL Simulation : 71 / 128 [n/a] @ "4528000"
+// RTL Simulation : 72 / 128 [n/a] @ "4643000"
+// RTL Simulation : 73 / 128 [n/a] @ "4753000"
+// RTL Simulation : 74 / 128 [n/a] @ "4863000"
+// RTL Simulation : 75 / 128 [n/a] @ "4993000"
+// RTL Simulation : 76 / 128 [n/a] @ "5103000"
+// RTL Simulation : 77 / 128 [n/a] @ "5233000"
+// RTL Simulation : 78 / 128 [n/a] @ "5348000"
+// RTL Simulation : 79 / 128 [n/a] @ "5463000"
+// RTL Simulation : 80 / 128 [n/a] @ "5578000"
+// RTL Simulation : 81 / 128 [n/a] @ "5708000"
+// RTL Simulation : 82 / 128 [n/a] @ "5803000"
+// RTL Simulation : 83 / 128 [n/a] @ "5918000"
+// RTL Simulation : 84 / 128 [n/a] @ "6033000"
+// RTL Simulation : 85 / 128 [n/a] @ "6148000"
+// RTL Simulation : 86 / 128 [n/a] @ "6278000"
+// RTL Simulation : 87 / 128 [n/a] @ "6393000"
+// RTL Simulation : 88 / 128 [n/a] @ "6508000"
+// RTL Simulation : 89 / 128 [n/a] @ "6623000"
+// RTL Simulation : 90 / 128 [n/a] @ "6753000"
+// RTL Simulation : 91 / 128 [n/a] @ "6848000"
+// RTL Simulation : 92 / 128 [n/a] @ "6978000"
+// RTL Simulation : 93 / 128 [n/a] @ "7088000"
+// RTL Simulation : 94 / 128 [n/a] @ "7203000"
+// RTL Simulation : 95 / 128 [n/a] @ "7318000"
+// RTL Simulation : 96 / 128 [n/a] @ "7433000"
+// RTL Simulation : 97 / 128 [n/a] @ "7528000"
+// RTL Simulation : 98 / 128 [n/a] @ "7608000"
+// RTL Simulation : 99 / 128 [n/a] @ "7723000"
+// RTL Simulation : 100 / 128 [n/a] @ "7838000"
+// RTL Simulation : 101 / 128 [n/a] @ "7938000"
+// RTL Simulation : 102 / 128 [n/a] @ "8053000"
+// RTL Simulation : 103 / 128 [n/a] @ "8153000"
+// RTL Simulation : 104 / 128 [n/a] @ "8268000"
+// RTL Simulation : 105 / 128 [n/a] @ "8383000"
+// RTL Simulation : 106 / 128 [n/a] @ "8498000"
+// RTL Simulation : 107 / 128 [n/a] @ "8613000"
+// RTL Simulation : 108 / 128 [n/a] @ "8713000"
+// RTL Simulation : 109 / 128 [n/a] @ "8828000"
+// RTL Simulation : 110 / 128 [n/a] @ "8928000"
+// RTL Simulation : 111 / 128 [n/a] @ "9028000"
+// RTL Simulation : 112 / 128 [n/a] @ "9128000"
+// RTL Simulation : 113 / 128 [n/a] @ "9228000"
+// RTL Simulation : 114 / 128 [n/a] @ "9328000"
+// RTL Simulation : 115 / 128 [n/a] @ "9428000"
+// RTL Simulation : 116 / 128 [n/a] @ "9528000"
+// RTL Simulation : 117 / 128 [n/a] @ "9613000"
+// RTL Simulation : 118 / 128 [n/a] @ "9678000"
+// RTL Simulation : 119 / 128 [n/a] @ "9778000"
+// RTL Simulation : 120 / 128 [n/a] @ "9878000"
+// RTL Simulation : 121 / 128 [n/a] @ "9963000"
+// RTL Simulation : 122 / 128 [n/a] @ "10048000"
+// RTL Simulation : 123 / 128 [n/a] @ "10118000"
+// RTL Simulation : 124 / 128 [n/a] @ "10183000"
+// RTL Simulation : 125 / 128 [n/a] @ "10253000"
+// RTL Simulation : 126 / 128 [n/a] @ "10303000"
+// RTL Simulation : 127 / 128 [n/a] @ "10358000"
+// RTL Simulation : 128 / 128 [n/a] @ "10373000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 10402500 ps : File "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_queue_kernel.autotb.v" Line 350
+## quit
+INFO: [Common 17-206] Exiting xsim at Sat Jul 27 00:13:09 2024...
+INFO: [COSIM 212-316] Starting C post checking ...
+All dequeued events are correctly sorted by receive time!
+
+First 10 events after sorting:
+Event[0]: {send_time: 48, recv_time: 79, data: 28, sender_id: 183, receiver_id: 127, is_anti_message: 0}
+Event[1]: {send_time: 5132, recv_time: 134, data: 20, sender_id: 130, receiver_id: 4, is_anti_message: 0}
+Event[2]: {send_time: 8775, recv_time: 276, data: 56, sender_id: 157, receiver_id: 151, is_anti_message: 1}
+Event[3]: {send_time: 5785, recv_time: 335, data: 30, sender_id: 40, receiver_id: 2, is_anti_message: 0}
+Event[4]: {send_time: 9398, recv_time: 396, data: 16, sender_id: 226, receiver_id: 236, is_anti_message: 0}
+Event[5]: {send_time: 6226, recv_time: 691, data: 27, sender_id: 130, receiver_id: 69, is_anti_message: 1}
+Event[6]: {send_time: 1059, recv_time: 1006, data: 18, sender_id: 56, receiver_id: 50, is_anti_message: 0}
+Event[7]: {send_time: 2526, recv_time: 1316, data: 21, sender_id: 239, receiver_id: 77, is_anti_message: 1}
+Event[8]: {send_time: 5398, recv_time: 1721, data: 26, sender_id: 78, receiver_id: 65, is_anti_message: 0}
+Event[9]: {send_time: 453, recv_time: 1739, data: 42, sender_id: 84, receiver_id: 71, is_anti_message: 1}
+
+Last 10 events after sorting:
+Event[54]: {send_time: 3763, recv_time: 8269, data: 52, sender_id: 45, receiver_id: 26, is_anti_message: 0}
+Event[55]: {send_time: 670, recv_time: 8553, data: 40, sender_id: 6, receiver_id: 75, is_anti_message: 1}
+Event[56]: {send_time: 849, recv_time: 8618, data: 43, sender_id: 171, receiver_id: 1, is_anti_message: 1}
+Event[57]: {send_time: 7738, recv_time: 8789, data: 29, sender_id: 199, receiver_id: 154, is_anti_message: 1}
+Event[58]: {send_time: 1374, recv_time: 8817, data: 58, sender_id: 225, receiver_id: 102, is_anti_message: 0}
+Event[59]: {send_time: 5557, recv_time: 8983, data: 44, sender_id: 152, receiver_id: 90, is_anti_message: 1}
+Event[60]: {send_time: 3307, recv_time: 9147, data: 22, sender_id: 44, receiver_id: 51, is_anti_message: 0}
+Event[61]: {send_time: 7027, recv_time: 9220, data: 34, sender_id: 136, receiver_id: 69, is_anti_message: 1}
+Event[62]: {send_time: 9347, recv_time: 9542, data: 41, sender_id: 125, receiver_id: 109, is_anti_message: 0}
+Event[63]: {send_time: 7265, recv_time: 9850, data: 51, sender_id: 37, receiver_id: 67, is_anti_message: 0}
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 21.85 seconds. CPU system time: 4.06 seconds. Elapsed time: 80.86 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 26.56 seconds. Total CPU system time: 5.15 seconds. Total elapsed time: 84.47 seconds; peak allocated memory: 776.184 MB.

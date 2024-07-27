@@ -1,0 +1,11 @@
+sv work "glbl.v"
+sv xil_defaultlib "event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W.v"
+sv xil_defaultlib "event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W.v"
+sv xil_defaultlib "event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W.v"
+sv xil_defaultlib "event_queue_kernel.autotb.v"
+sv xil_defaultlib "event_queue_kernel.v"
+sv xil_defaultlib "event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W.v"
+sv xil_defaultlib "event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1.v"
+sv xil_defaultlib "event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1.v"
+sv xil_defaultlib "dataflow_monitor.sv"
+

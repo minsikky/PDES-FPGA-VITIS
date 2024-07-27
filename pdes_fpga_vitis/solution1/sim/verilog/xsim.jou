@@ -2,13 +2,13 @@
 # xsim v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Wed Jul 24 18:57:19 2024
-# Process ID: 1061
-# Current directory: /n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/sim/verilog
-# Command line: xsim -mode tcl -source {xsim.dir/test_state_buffer/xsim_script.tcl}
-# Log file: /n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/sim/verilog/xsim.log
-# Journal file: /n/higgins/z/minsikky/PDES-FPGA-3/pdes_fpga_2/solution1/sim/verilog/xsim.jou
+# Start of session at: Sat Jul 27 00:12:26 2024
+# Process ID: 12271
+# Current directory: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog
+# Command line: xsim -mode tcl -source {xsim.dir/event_queue_kernel/xsim_script.tcl}
+# Log file: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/xsim.log
+# Journal file: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/xsim.jou
 # Running On: i1z, OS: Linux, CPU Frequency: 3000.000 MHz, CPU Physical cores: 32, Host memory: 541002 MB
 #-----------------------------------------------------------
-source xsim.dir/test_state_buffer/xsim_script.tcl
-source test_state_buffer.tcl
+source xsim.dir/event_queue_kernel/xsim_script.tcl
+source event_queue_kernel.tcl

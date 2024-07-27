@@ -11,6 +11,9 @@ constexpr int NUM_LPCORE = 4;
 static constexpr int EVENT_QUEUE_CAPACITY = 128;
 static constexpr int ANTI_MSG_RESERVE = 16;
 
+// EVENT QUEUE TEST
+static constexpr int NUM_EVENTS = 64; // Adjust as needed
+
 // STATE BUFFER
 static constexpr int STATE_BUFFER_CAPACITY = 128;
 

@@ -270,3 +270,1051 @@ Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
 Tool Version Limit: 2022.04
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.58 seconds. CPU system time: 1.5 seconds. Elapsed time: 20.87 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:66:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:69:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:76:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:82:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:26:27)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:20:12)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_48_1' is marked as complete unroll implied by the pipeline pragma (cpp/EventQueue.hpp:48:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_33_1' is marked as complete unroll implied by the pipeline pragma (cpp/EventQueue.hpp:33:26)
+INFO: [HLS 214-178] Inlining function 'EventQueue::EventQueue()' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:7:0)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'pq.heap.recv_time' due to pipeline pragma (cpp/EventQueue.cpp:25:9)
+INFO: [HLS 214-248] Applying array_partition to 'pq.heap.recv_time': Cyclic partitioning with factor 2 on dimension 1. (cpp/EventQueue.cpp:13:13)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.61 seconds. CPU system time: 0.6 seconds. Elapsed time: 8.82 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.11 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_16_1' (cpp/EventQueue.cpp:16) in function 'event_queue_kernel' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_24_2' (cpp/EventQueue.cpp:24) in function 'event_queue_kernel' for pipelining.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_48_1' (cpp/EventQueue.hpp:45) in function 'event_queue_kernel' completely: variable loop bound.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:54:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.19 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.28 seconds; current allocated memory: 840.184 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_16_1' (cpp/EventQueue.cpp:16:39) in function 'event_queue_kernel' either the parent loop or sub loop is do-while loop.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_24_2' (cpp/EventQueue.cpp:24:39) in function 'event_queue_kernel' either the parent loop or sub loop is do-while loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:68:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:36:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:42:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:81:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:55:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:61:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_16_1': contains subloop(s) that are not unrolled or flattened.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_24_2': contains subloop(s) that are not unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.41 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.54 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.42 seconds. CPU system time: 0 seconds. Elapsed time: 0.46 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/input_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/output_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/num_events' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'event_queue_kernel' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'num_events' and 'return' to AXI-Lite port control.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.63 seconds. CPU system time: 1.45 seconds. Elapsed time: 12.32 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:66:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:69:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:76:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:82:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:26:27)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:20:12)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_48_1' is marked as complete unroll implied by the pipeline pragma (cpp/EventQueue.hpp:48:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_33_1' is marked as complete unroll implied by the pipeline pragma (cpp/EventQueue.hpp:33:26)
+INFO: [HLS 214-178] Inlining function 'EventQueue::EventQueue()' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (cpp/EventQueue.cpp:7:0)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=2 dim=1' for array 'pq.heap.recv_time' due to pipeline pragma (cpp/EventQueue.cpp:25:9)
+INFO: [HLS 214-248] Applying array_partition to 'pq.heap.recv_time': Cyclic partitioning with factor 2 on dimension 1. (cpp/EventQueue.cpp:13:13)
+INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents' into 'event_queue_kernel(hls::stream<TimeWarpEvent, 0>&, hls::stream<TimeWarpEvent, 0>&, ap_uint<16>)' (/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.62 seconds. CPU system time: 0.6 seconds. Elapsed time: 4.48 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_16_1' (cpp/EventQueue.cpp:16) in function 'event_queue_kernel' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_24_2' (cpp/EventQueue.cpp:24) in function 'event_queue_kernel' for pipelining.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' completely: variable loop bound.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_48_1' (cpp/EventQueue.hpp:45) in function 'event_queue_kernel' completely: variable loop bound.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:54:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.19 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_16_1' (cpp/EventQueue.cpp:16:39) in function 'event_queue_kernel' either the parent loop or sub loop is do-while loop.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_24_2' (cpp/EventQueue.cpp:24:39) in function 'event_queue_kernel' either the parent loop or sub loop is do-while loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:68:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:36:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:42:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:81:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:55:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'pq.heap.send_time.V' (cpp/EventQueue.hpp:61:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_16_1': contains subloop(s) that are not unrolled or flattened.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_24_2': contains subloop(s) that are not unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.39 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.47 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.43 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.46 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/input_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/output_stream' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/num_events' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'event_queue_kernel' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'num_events' and 'return' to AXI-Lite port control.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.42 seconds. CPU system time: 1.51 seconds. Elapsed time: 16.24 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:66:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:69:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:76:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:82:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:17:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:19:31)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.6 seconds. CPU system time: 0.59 seconds. Elapsed time: 8.51 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.14 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_48_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:54:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'event_queue_kernel' (cpp/EventQueue.cpp:7)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.2 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:68:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:36:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:42:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:81:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:55:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:61:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+WARNING: [SYN 201-506] An incorrect offset '64' is defined with AXILite port 'success', and it will be replaced with a new offset '24'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_48_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_48_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_48_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.17 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073')) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.23 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.35 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.29 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.26 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.5 seconds. CPU system time: 1.33 seconds. Elapsed time: 12.13 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:68:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:71:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:78:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:84:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:17:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:19:31)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.58 seconds. CPU system time: 0.51 seconds. Elapsed time: 4.37 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_50_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:56:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'event_queue_kernel' (cpp/EventQueue.cpp:7)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.2 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.25 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:70:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:38:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:44:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:83:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:57:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:63:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+WARNING: [SYN 201-506] An incorrect offset '64' is defined with AXILite port 'success', and it will be replaced with a new offset '24'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_50_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_50_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_50_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.16 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.21 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.28 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.26 seconds. CPU system time: 0 seconds. Elapsed time: 0.28 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'event_queue_kernel_Pipeline_VITIS_LOOP_50_1' 
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.52 seconds. CPU system time: 1.42 seconds. Elapsed time: 12.2 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:83:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:17:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(bool, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:19:31)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.6 seconds. CPU system time: 0.57 seconds. Elapsed time: 4.44 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.1 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'event_queue_kernel' (cpp/EventQueue.cpp:7)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:69:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:37:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:43:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+WARNING: [SYN 201-506] An incorrect offset '64' is defined with AXILite port 'success', and it will be replaced with a new offset '24'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.16 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.21 seconds. CPU system time: 0 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.24 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.48 seconds. CPU system time: 1.44 seconds. Elapsed time: 16.3 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:83:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(bool, TimeWarpEvent const&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:19:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(bool, TimeWarpEvent const&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:21:38)
+INFO: [HLS 214-241] Aggregating scalar variable 'output_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:11:0)
+INFO: [HLS 214-241] Aggregating scalar variable 'input_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:11:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.58 seconds. CPU system time: 0.62 seconds. Elapsed time: 8.56 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.17 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.22 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:69:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:37:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:43:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.28 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.48 seconds. CPU system time: 1.34 seconds. Elapsed time: 12.08 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:83:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(bool, TimeWarpEvent const&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:19:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(bool, TimeWarpEvent const&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:21:38)
+INFO: [HLS 214-241] Aggregating scalar variable 'output_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:11:0)
+INFO: [HLS 214-241] Aggregating scalar variable 'input_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:11:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.53 seconds. CPU system time: 0.6 seconds. Elapsed time: 4.4 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.22 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:69:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:37:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:43:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.26 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO: ==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.4 seconds. CPU system time: 1.35 seconds. Elapsed time: 12.02 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:83:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(EventQueueInput&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:21:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(EventQueueInput&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:23:38)
+INFO: [HLS 214-241] Aggregating scalar variable 'output_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:15:0)
+INFO: [HLS 214-241] Aggregating scalar variable 'input' with compact=bit mode in 130-bits (cpp/EventQueue.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.58 seconds. CPU system time: 0.54 seconds. Elapsed time: 4.4 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.22 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:69:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:37:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:43:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.22 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.28 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.51 seconds. CPU system time: 1.48 seconds. Elapsed time: 15.85 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'StateBuffer::commit(ap_int<32>)' into 'state_buffer_kernel(StateBufferInput&, bool&)' (cpp/StateBuffer.cpp:40:38)
+INFO: [HLS 214-131] Inlining function 'StateBuffer::rollback(int, ap_int<32>)' into 'state_buffer_kernel(StateBufferInput&, bool&)' (cpp/StateBuffer.cpp:37:38)
+INFO: [HLS 214-131] Inlining function 'StateBuffer::push(LPState const&)' into 'state_buffer_kernel(StateBufferInput&, bool&)' (cpp/StateBuffer.cpp:33:38)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_115_2' is marked as complete unroll implied by the pipeline pragma (cpp/StateBuffer.hpp:115:31)
+INFO: [HLS 214-241] Aggregating scalar variable 'input' with compact=bit mode in 82-bits (cpp/StateBuffer.cpp:24:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.52 seconds. CPU system time: 0.67 seconds. Elapsed time: 12.14 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_86_1' (cpp/StateBuffer.hpp:86) in function 'state_buffer_kernel' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'VITIS_LOOP_108_1' (cpp/StateBuffer.hpp:108) in function 'state_buffer_kernel' for pipelining.
+WARNING: [HLS 200-932] Cannot unroll loop 'VITIS_LOOP_115_2' (cpp/StateBuffer.hpp:112) in function 'state_buffer_kernel' completely: variable loop bound.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.14 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.19 seconds; current allocated memory: 840.184 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_108_1' (cpp/StateBuffer.hpp:108:36) in function 'state_buffer_kernel' either the parent loop or sub loop is do-while loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.buffer.state.lvt.V' (cpp/StateBuffer.hpp:53:32)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_heads' (cpp/StateBuffer.hpp:56:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.buffer.next' (cpp/StateBuffer.hpp:57:31)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_sizes' (cpp/StateBuffer.hpp:59:30)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.buffer.next' (cpp/StateBuffer.hpp:89:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_heads' (cpp/StateBuffer.hpp:97:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_sizes' (cpp/StateBuffer.hpp:98:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_heads' (cpp/StateBuffer.hpp:127:45)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.buffer.next' (cpp/StateBuffer.hpp:129:47)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.buffer.next' (cpp/StateBuffer.hpp:132:46)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_state_buffer.lp_sizes' (cpp/StateBuffer.hpp:144:29)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.19 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'state_buffer_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'state_buffer_kernel_Pipeline_VITIS_LOOP_86_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_86_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1081')) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_86_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.22 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'state_buffer_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_108_1': contains subloop(s) that are not unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.16 seconds. CPU system time: 0 seconds. Elapsed time: 0.19 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'state_buffer_kernel_Pipeline_VITIS_LOOP_86_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'state_buffer_kernel_Pipeline_VITIS_LOOP_86_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'state_buffer_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'state_buffer_kernel/input_r' to 'ap_vld'.
+INFO: [RTGEN 206-500]==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.52 seconds. CPU system time: 1.42 seconds. Elapsed time: 16.37 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
+INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
+INFO: [HLS 214-131] Inlining function 'EventQueue::siftDown(ap_uint<16>)' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:83:13)
+INFO: [HLS 214-131] Inlining function 'EventQueue::enqueue(TimeWarpEvent const&)' into 'event_queue_kernel(EventQueueInput&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:21:33)
+INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(EventQueueInput&, TimeWarpEvent&, bool&)' (cpp/EventQueue.cpp:23:38)
+INFO: [HLS 214-241] Aggregating scalar variable 'output_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:15:0)
+INFO: [HLS 214-241] Aggregating scalar variable 'input' with compact=bit mode in 130-bits (cpp/EventQueue.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.64 seconds. CPU system time: 0.66 seconds. Elapsed time: 8.69 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 776.184 MB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_49_1' in function 'event_queue_kernel' automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.15 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.2 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:69:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:37:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:43:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
+INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'event_queue_kernel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.25 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'event_queue_kernel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+Tool Version Limit: 2022.04
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================

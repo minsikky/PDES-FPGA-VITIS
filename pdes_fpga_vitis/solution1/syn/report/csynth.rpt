@@ -1,12 +1,12 @@
 
 
 ================================================================
-== Synthesis Summary Report of 'test_state_buffer'
+== Synthesis Summary Report of 'event_queue_kernel'
 ================================================================
 + General Information: 
-    * Date:           Wed Jul 24 18:56:28 2024
+    * Date:           Sat Jul 27 00:10:18 2024
     * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
-    * Project:        pdes_fpga_2
+    * Project:        pdes_fpga_vitis
     * Solution:       solution1 (Vivado IP Flow Target)
     * Product family: virtexuplus
     * Target device:  xcvu9p-flga2104-2-i
@@ -15,144 +15,63 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-------------+------------+-----+
-    |                     Modules                    | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |    |             |            |     |
-    |                     & Loops                    | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|      FF     |     LUT    | URAM|
-    +------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-------------+------------+-----+
-    |+ test_state_buffer                             |     -|  0.98|        -|        -|         -|        -|     -|        no|     -|   -|  19731 (~0%)|  14746 (1%)|    -|
-    | + test_state_buffer_Pipeline_VITIS_LOOP_34_1   |     -|  2.34|      129|  645.000|         -|      129|     -|        no|     -|   -|      9 (~0%)|    51 (~0%)|    -|
-    |  o VITIS_LOOP_34_1                             |     -|  3.65|      127|  635.000|         1|        1|   127|       yes|     -|   -|            -|           -|    -|
-    | + test_state_buffer_Pipeline_VITIS_LOOP_39_2   |     -|  2.35|       66|  330.000|         -|       66|     -|        no|     -|   -|      9 (~0%)|    52 (~0%)|    -|
-    |  o VITIS_LOOP_39_2                             |     -|  3.65|       64|  320.000|         1|        1|    64|       yes|     -|   -|            -|           -|    -|
-    | o VITIS_LOOP_19_1                              |     -|  3.65|        -|        -|         -|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_85_1                             |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  o VITIS_LOOP_113_2                            |     -|  3.65|        -|        -|         3|        -|     -|        no|     -|   -|            -|           -|    -|
-    | o VITIS_LOOP_41_2                              |     -|  3.65|        -|        -|         -|        -|     -|        no|     -|   -|            -|           -|    -|
-    |  + test_state_buffer_Pipeline_VITIS_LOOP_43_3  |     -|  2.66|        -|        -|         -|        -|     -|        no|     -|   -|     35 (~0%)|    74 (~0%)|    -|
-    |   o VITIS_LOOP_43_3                            |     -|  3.65|        -|        -|         2|        1|     -|       yes|     -|   -|            -|           -|    -|
-    +------------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+-------------+------------+-----+
+    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+------+----+------------+------------+-----+
+    |                     Modules                    | Issue|      | Latency | Latency| Iteration|         | Trip |          |      |    |            |            |     |
+    |                     & Loops                    | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF     |     LUT    | URAM|
+    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+------+----+------------+------------+-----+
+    |+ event_queue_kernel                            |     -|  0.90|        -|       -|         -|        -|     -|        no|     -|   -|  1635 (~0%)|  2566 (~0%)|    -|
+    | + event_queue_kernel_Pipeline_VITIS_LOOP_49_1  |     -|  0.90|        -|       -|         -|        -|     -|        no|     -|   -|   628 (~0%)|   871 (~0%)|    -|
+    |  o VITIS_LOOP_49_1                             |    II|  3.65|        -|       -|         4|        3|     -|       yes|     -|   -|           -|           -|    -|
+    | + event_queue_kernel_Pipeline_VITIS_LOOP_33_1  |     -|  1.24|        -|       -|         -|        -|     -|        no|     -|   -|   138 (~0%)|   369 (~0%)|    -|
+    |  o VITIS_LOOP_33_1                             |    II|  3.65|        -|       -|         3|        2|     -|       yes|     -|   -|           -|           -|    -|
+    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+------+----+------------+------------+-----+
 
 
 ================================================================
 == HW Interfaces
 ================================================================
-* S_AXILITE Interfaces
-+---------------+------------+---------------+
-| Interface     | Data Width | Address Width |
-+---------------+------------+---------------+
-| s_axi_control | 32         | 4             |
-+---------------+------------+---------------+
-
-* S_AXILITE Registers
-+---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
-| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                           |
-+---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
-| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
-| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
-| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
-| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
-+---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
-
-* AXIS
-+------------+---------------+-------+--------+--------+
-| Interface  | Register Mode | TDATA | TREADY | TVALID |
-+------------+---------------+-------+--------+--------+
-| in_stream  | both          | 96    | 1      | 1      |
-| out_stream | both          | 32    | 1      | 1      |
-+------------+---------------+-------+--------+--------+
+* REGISTER
++--------------+--------+----------+
+| Interface    | Mode   | Bitwidth |
++--------------+--------+----------+
+| input_r      | ap_vld | 130      |
+| output_event | ap_vld | 129      |
+| success      | ap_vld | 1        |
++--------------+--------+----------+
 
 * TOP LEVEL CONTROL
-+-----------+------------+-----------+
-| Interface | Type       | Ports     |
-+-----------+------------+-----------+
-| ap_clk    | clock      | ap_clk    |
-| ap_rst_n  | reset      | ap_rst_n  |
-| interrupt | interrupt  | interrupt |
-| ap_ctrl   | ap_ctrl_hs |           |
-+-----------+------------+-----------+
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
 
 
 ================================================================
 == SW I/O Information
 ================================================================
 * Top Function Arguments
-+------------+-----------+---------------------------+
-| Argument   | Direction | Datatype                  |
-+------------+-----------+---------------------------+
-| in_stream  | in        | stream<TestOperation, 0>& |
-| out_stream | out       | stream<int, 0>&           |
-+------------+-----------+---------------------------+
++--------------+-----------+------------------+
+| Argument     | Direction | Datatype         |
++--------------+-----------+------------------+
+| input        | in        | EventQueueInput& |
+| output_event | out       | TimeWarpEvent&   |
+| success      | out       | bool&            |
++--------------+-----------+------------------+
 
 * SW-to-HW Mapping
-+------------+--------------+-----------+
-| Argument   | HW Interface | HW Type   |
-+------------+--------------+-----------+
-| in_stream  | in_stream    | interface |
-| out_stream | out_stream   | interface |
-+------------+--------------+-----------+
++--------------+---------------------+---------+
+| Argument     | HW Interface        | HW Type |
++--------------+---------------------+---------+
+| input        | input_r             | port    |
+| input        | input_r_ap_vld      | port    |
+| output_event | output_event        | port    |
+| output_event | output_event_ap_vld | port    |
+| success      | success             | port    |
+| success      | success_ap_vld      | port    |
++--------------+---------------------+---------+
 
 
 ================================================================
@@ -165,192 +84,67 @@
 ================================================================
 == Bind Op Report
 ================================================================
-+-----------------------------------------------+-----+--------+--------------+-----+--------+---------+
-| Name                                          | DSP | Pragma | Variable     | Op  | Impl   | Latency |
-+-----------------------------------------------+-----+--------+--------------+-----+--------+---------+
-| + test_state_buffer                           | 0   |        |              |     |        |         |
-|   removed_3_fu_7643_p2                        | -   |        | removed_3    | add | fabric | 0       |
-|   sub_ln129_fu_7649_p2                        | -   |        | sub_ln129    | sub | fabric | 0       |
-|   removed_5_fu_7661_p2                        | -   |        | removed_5    | add | fabric | 0       |
-|   sub_ln129_1_fu_7667_p2                      | -   |        | sub_ln129_1  | sub | fabric | 0       |
-|   removed_7_fu_7679_p2                        | -   |        | removed_7    | add | fabric | 0       |
-|   sub_ln129_2_fu_7685_p2                      | -   |        | sub_ln129_2  | sub | fabric | 0       |
-|   removed_9_fu_7697_p2                        | -   |        | removed_9    | add | fabric | 0       |
-|   sub_ln129_3_fu_7703_p2                      | -   |        | sub_ln129_3  | sub | fabric | 0       |
-|   removed_11_fu_7715_p2                       | -   |        | removed_11   | add | fabric | 0       |
-|   sub_ln129_4_fu_7721_p2                      | -   |        | sub_ln129_4  | sub | fabric | 0       |
-|   removed_13_fu_7733_p2                       | -   |        | removed_13   | add | fabric | 0       |
-|   sub_ln129_5_fu_7739_p2                      | -   |        | sub_ln129_5  | sub | fabric | 0       |
-|   removed_15_fu_7751_p2                       | -   |        | removed_15   | add | fabric | 0       |
-|   sub_ln129_6_fu_7757_p2                      | -   |        | sub_ln129_6  | sub | fabric | 0       |
-|   removed_17_fu_7769_p2                       | -   |        | removed_17   | add | fabric | 0       |
-|   sub_ln129_7_fu_7775_p2                      | -   |        | sub_ln129_7  | sub | fabric | 0       |
-|   removed_19_fu_7787_p2                       | -   |        | removed_19   | add | fabric | 0       |
-|   sub_ln129_8_fu_7793_p2                      | -   |        | sub_ln129_8  | sub | fabric | 0       |
-|   removed_21_fu_7805_p2                       | -   |        | removed_21   | add | fabric | 0       |
-|   sub_ln129_9_fu_7811_p2                      | -   |        | sub_ln129_9  | sub | fabric | 0       |
-|   removed_23_fu_7823_p2                       | -   |        | removed_23   | add | fabric | 0       |
-|   sub_ln129_10_fu_7829_p2                     | -   |        | sub_ln129_10 | sub | fabric | 0       |
-|   removed_25_fu_7841_p2                       | -   |        | removed_25   | add | fabric | 0       |
-|   sub_ln129_11_fu_7847_p2                     | -   |        | sub_ln129_11 | sub | fabric | 0       |
-|   removed_27_fu_7859_p2                       | -   |        | removed_27   | add | fabric | 0       |
-|   sub_ln129_12_fu_7865_p2                     | -   |        | sub_ln129_12 | sub | fabric | 0       |
-|   removed_29_fu_7877_p2                       | -   |        | removed_29   | add | fabric | 0       |
-|   sub_ln129_13_fu_7883_p2                     | -   |        | sub_ln129_13 | sub | fabric | 0       |
-|   removed_31_fu_7895_p2                       | -   |        | removed_31   | add | fabric | 0       |
-|   sub_ln129_14_fu_7901_p2                     | -   |        | sub_ln129_14 | sub | fabric | 0       |
-|   removed_33_fu_7913_p2                       | -   |        | removed_33   | add | fabric | 0       |
-|   sub_ln129_15_fu_7919_p2                     | -   |        | sub_ln129_15 | sub | fabric | 0       |
-|   removed_35_fu_7931_p2                       | -   |        | removed_35   | add | fabric | 0       |
-|   sub_ln129_16_fu_7937_p2                     | -   |        | sub_ln129_16 | sub | fabric | 0       |
-|   removed_37_fu_7949_p2                       | -   |        | removed_37   | add | fabric | 0       |
-|   sub_ln129_17_fu_7955_p2                     | -   |        | sub_ln129_17 | sub | fabric | 0       |
-|   removed_39_fu_7967_p2                       | -   |        | removed_39   | add | fabric | 0       |
-|   sub_ln129_18_fu_7973_p2                     | -   |        | sub_ln129_18 | sub | fabric | 0       |
-|   removed_41_fu_7985_p2                       | -   |        | removed_41   | add | fabric | 0       |
-|   sub_ln129_19_fu_7991_p2                     | -   |        | sub_ln129_19 | sub | fabric | 0       |
-|   removed_43_fu_8003_p2                       | -   |        | removed_43   | add | fabric | 0       |
-|   sub_ln129_20_fu_8009_p2                     | -   |        | sub_ln129_20 | sub | fabric | 0       |
-|   removed_45_fu_8021_p2                       | -   |        | removed_45   | add | fabric | 0       |
-|   sub_ln129_21_fu_8027_p2                     | -   |        | sub_ln129_21 | sub | fabric | 0       |
-|   removed_47_fu_8039_p2                       | -   |        | removed_47   | add | fabric | 0       |
-|   sub_ln129_22_fu_8045_p2                     | -   |        | sub_ln129_22 | sub | fabric | 0       |
-|   removed_49_fu_8057_p2                       | -   |        | removed_49   | add | fabric | 0       |
-|   sub_ln129_23_fu_8063_p2                     | -   |        | sub_ln129_23 | sub | fabric | 0       |
-|   removed_51_fu_8075_p2                       | -   |        | removed_51   | add | fabric | 0       |
-|   sub_ln129_24_fu_8081_p2                     | -   |        | sub_ln129_24 | sub | fabric | 0       |
-|   removed_53_fu_8093_p2                       | -   |        | removed_53   | add | fabric | 0       |
-|   sub_ln129_25_fu_8099_p2                     | -   |        | sub_ln129_25 | sub | fabric | 0       |
-|   removed_55_fu_8111_p2                       | -   |        | removed_55   | add | fabric | 0       |
-|   sub_ln129_26_fu_8117_p2                     | -   |        | sub_ln129_26 | sub | fabric | 0       |
-|   removed_57_fu_8129_p2                       | -   |        | removed_57   | add | fabric | 0       |
-|   sub_ln129_27_fu_8135_p2                     | -   |        | sub_ln129_27 | sub | fabric | 0       |
-|   removed_59_fu_8147_p2                       | -   |        | removed_59   | add | fabric | 0       |
-|   sub_ln129_28_fu_8153_p2                     | -   |        | sub_ln129_28 | sub | fabric | 0       |
-|   removed_61_fu_8165_p2                       | -   |        | removed_61   | add | fabric | 0       |
-|   sub_ln129_29_fu_8171_p2                     | -   |        | sub_ln129_29 | sub | fabric | 0       |
-|   removed_63_fu_8183_p2                       | -   |        | removed_63   | add | fabric | 0       |
-|   sub_ln129_30_fu_8189_p2                     | -   |        | sub_ln129_30 | sub | fabric | 0       |
-|   removed_65_fu_8201_p2                       | -   |        | removed_65   | add | fabric | 0       |
-|   sub_ln129_31_fu_8207_p2                     | -   |        | sub_ln129_31 | sub | fabric | 0       |
-|   removed_67_fu_8219_p2                       | -   |        | removed_67   | add | fabric | 0       |
-|   sub_ln129_32_fu_8225_p2                     | -   |        | sub_ln129_32 | sub | fabric | 0       |
-|   removed_69_fu_8237_p2                       | -   |        | removed_69   | add | fabric | 0       |
-|   sub_ln129_33_fu_8243_p2                     | -   |        | sub_ln129_33 | sub | fabric | 0       |
-|   removed_71_fu_8255_p2                       | -   |        | removed_71   | add | fabric | 0       |
-|   sub_ln129_34_fu_8261_p2                     | -   |        | sub_ln129_34 | sub | fabric | 0       |
-|   removed_73_fu_8273_p2                       | -   |        | removed_73   | add | fabric | 0       |
-|   sub_ln129_35_fu_8279_p2                     | -   |        | sub_ln129_35 | sub | fabric | 0       |
-|   removed_75_fu_8291_p2                       | -   |        | removed_75   | add | fabric | 0       |
-|   sub_ln129_36_fu_8297_p2                     | -   |        | sub_ln129_36 | sub | fabric | 0       |
-|   removed_77_fu_8309_p2                       | -   |        | removed_77   | add | fabric | 0       |
-|   sub_ln129_37_fu_8315_p2                     | -   |        | sub_ln129_37 | sub | fabric | 0       |
-|   removed_79_fu_8327_p2                       | -   |        | removed_79   | add | fabric | 0       |
-|   sub_ln129_38_fu_8333_p2                     | -   |        | sub_ln129_38 | sub | fabric | 0       |
-|   removed_81_fu_8345_p2                       | -   |        | removed_81   | add | fabric | 0       |
-|   sub_ln129_39_fu_8351_p2                     | -   |        | sub_ln129_39 | sub | fabric | 0       |
-|   removed_83_fu_8363_p2                       | -   |        | removed_83   | add | fabric | 0       |
-|   sub_ln129_40_fu_8369_p2                     | -   |        | sub_ln129_40 | sub | fabric | 0       |
-|   removed_85_fu_8381_p2                       | -   |        | removed_85   | add | fabric | 0       |
-|   sub_ln129_41_fu_8387_p2                     | -   |        | sub_ln129_41 | sub | fabric | 0       |
-|   removed_87_fu_8399_p2                       | -   |        | removed_87   | add | fabric | 0       |
-|   sub_ln129_42_fu_8405_p2                     | -   |        | sub_ln129_42 | sub | fabric | 0       |
-|   removed_89_fu_8417_p2                       | -   |        | removed_89   | add | fabric | 0       |
-|   sub_ln129_43_fu_8423_p2                     | -   |        | sub_ln129_43 | sub | fabric | 0       |
-|   removed_91_fu_8435_p2                       | -   |        | removed_91   | add | fabric | 0       |
-|   sub_ln129_44_fu_8441_p2                     | -   |        | sub_ln129_44 | sub | fabric | 0       |
-|   removed_93_fu_8453_p2                       | -   |        | removed_93   | add | fabric | 0       |
-|   sub_ln129_45_fu_8459_p2                     | -   |        | sub_ln129_45 | sub | fabric | 0       |
-|   removed_95_fu_8471_p2                       | -   |        | removed_95   | add | fabric | 0       |
-|   sub_ln129_46_fu_8477_p2                     | -   |        | sub_ln129_46 | sub | fabric | 0       |
-|   removed_97_fu_8489_p2                       | -   |        | removed_97   | add | fabric | 0       |
-|   sub_ln129_47_fu_8495_p2                     | -   |        | sub_ln129_47 | sub | fabric | 0       |
-|   removed_99_fu_8507_p2                       | -   |        | removed_99   | add | fabric | 0       |
-|   sub_ln129_48_fu_8513_p2                     | -   |        | sub_ln129_48 | sub | fabric | 0       |
-|   removed_101_fu_8525_p2                      | -   |        | removed_101  | add | fabric | 0       |
-|   sub_ln129_49_fu_8531_p2                     | -   |        | sub_ln129_49 | sub | fabric | 0       |
-|   removed_103_fu_8543_p2                      | -   |        | removed_103  | add | fabric | 0       |
-|   sub_ln129_50_fu_8549_p2                     | -   |        | sub_ln129_50 | sub | fabric | 0       |
-|   removed_105_fu_8561_p2                      | -   |        | removed_105  | add | fabric | 0       |
-|   sub_ln129_51_fu_8567_p2                     | -   |        | sub_ln129_51 | sub | fabric | 0       |
-|   removed_107_fu_8579_p2                      | -   |        | removed_107  | add | fabric | 0       |
-|   sub_ln129_52_fu_8585_p2                     | -   |        | sub_ln129_52 | sub | fabric | 0       |
-|   removed_109_fu_8597_p2                      | -   |        | removed_109  | add | fabric | 0       |
-|   sub_ln129_53_fu_8603_p2                     | -   |        | sub_ln129_53 | sub | fabric | 0       |
-|   removed_111_fu_8615_p2                      | -   |        | removed_111  | add | fabric | 0       |
-|   sub_ln129_54_fu_8621_p2                     | -   |        | sub_ln129_54 | sub | fabric | 0       |
-|   removed_113_fu_8633_p2                      | -   |        | removed_113  | add | fabric | 0       |
-|   sub_ln129_55_fu_8639_p2                     | -   |        | sub_ln129_55 | sub | fabric | 0       |
-|   removed_115_fu_8651_p2                      | -   |        | removed_115  | add | fabric | 0       |
-|   sub_ln129_56_fu_8657_p2                     | -   |        | sub_ln129_56 | sub | fabric | 0       |
-|   removed_117_fu_8669_p2                      | -   |        | removed_117  | add | fabric | 0       |
-|   sub_ln129_57_fu_8675_p2                     | -   |        | sub_ln129_57 | sub | fabric | 0       |
-|   removed_119_fu_8687_p2                      | -   |        | removed_119  | add | fabric | 0       |
-|   sub_ln129_58_fu_8693_p2                     | -   |        | sub_ln129_58 | sub | fabric | 0       |
-|   removed_121_fu_8705_p2                      | -   |        | removed_121  | add | fabric | 0       |
-|   sub_ln129_59_fu_8711_p2                     | -   |        | sub_ln129_59 | sub | fabric | 0       |
-|   removed_123_fu_8723_p2                      | -   |        | removed_123  | add | fabric | 0       |
-|   sub_ln129_60_fu_8729_p2                     | -   |        | sub_ln129_60 | sub | fabric | 0       |
-|   removed_125_fu_8741_p2                      | -   |        | removed_125  | add | fabric | 0       |
-|   sub_ln129_61_fu_8747_p2                     | -   |        | sub_ln129_61 | sub | fabric | 0       |
-|   removed_127_fu_8759_p2                      | -   |        | removed_127  | add | fabric | 0       |
-|   sub_ln129_62_fu_8765_p2                     | -   |        | sub_ln129_62 | sub | fabric | 0       |
-|   removed_129_fu_8777_p2                      | -   |        | removed_129  | add | fabric | 0       |
-|   sub_ln129_63_fu_8787_p2                     | -   |        | sub_ln129_63 | sub | fabric | 0       |
-|   removed_2_fu_8804_p2                        | -   |        | removed_2    | add | fabric | 0       |
-|   sub_ln97_fu_8821_p2                         | -   |        | sub_ln97     | sub | fabric | 0       |
-|   add_ln58_fu_8829_p2                         | -   |        | add_ln58     | add | fabric | 0       |
-|   add_ln41_fu_8850_p2                         | -   |        | add_ln41     | add | fabric | 0       |
-|  + test_state_buffer_Pipeline_VITIS_LOOP_34_1 | 0   |        |              |     |        |         |
-|    add_ln35_fu_59_p2                          | -   |        | add_ln35     | add | fabric | 0       |
-|  + test_state_buffer_Pipeline_VITIS_LOOP_39_2 | 0   |        |              |     |        |         |
-|    add_ln39_fu_112_p2                         | -   |        | add_ln39     | add | fabric | 0       |
-+-----------------------------------------------+-----+--------+--------------+-----+--------+---------+
++------------------------------------------------+-----+--------+--------------+-----+--------+---------+
+| Name                                           | DSP | Pragma | Variable     | Op  | Impl   | Latency |
++------------------------------------------------+-----+--------+--------------+-----+--------+---------+
+| + event_queue_kernel                           | 0   |        |              |     |        |         |
+|   add_ln887_fu_628_p2                          | -   |        | add_ln887    | add | fabric | 0       |
+|   add_ln886_fu_612_p2                          | -   |        | add_ln886    | add | fabric | 0       |
+|  + event_queue_kernel_Pipeline_VITIS_LOOP_49_1 | 0   |        |              |     |        |         |
+|    ret_V_fu_386_p2                             | -   |        | ret_V        | add | fabric | 0       |
+|    child_V_fu_456_p2                           | -   |        | child_V      | add | fabric | 0       |
+|  + event_queue_kernel_Pipeline_VITIS_LOOP_33_1 | 0   |        |              |     |        |         |
+|    i_2_fu_351_p2                               | -   |        | i_2          | add | fabric | 0       |
+|    add_ln1559_fu_289_p2                        | -   |        | add_ln1559   | add | fabric | 0       |
+|    sub_ln1559_fu_303_p2                        | -   |        | sub_ln1559   | sub | fabric | 0       |
+|    sub_ln1559_1_fu_319_p2                      | -   |        | sub_ln1559_1 | sub | fabric | 0       |
++------------------------------------------------+-----+--------+--------------+-----+--------+---------+
 
 
 ================================================================
 == Bind Storage Report
 ================================================================
-+-------------------------------+------+------+--------+---------------------------+---------+------+---------+
-| Name                          | BRAM | URAM | Pragma | Variable                  | Storage | Impl | Latency |
-+-------------------------------+------+------+--------+---------------------------+---------+------+---------+
-| + test_state_buffer           | 0    | 0    |        |                           |         |      |         |
-|   buffer_buffer_state_lvt_V_U | -    | -    |        | buffer_buffer_state_lvt_V | rom_np  | auto | 1       |
-|   buffer_buffer_next_U        | -    | -    |        | buffer_buffer_next        | ram_1p  | auto | 1       |
-|   buffer_lp_heads_U           | -    | -    |        | buffer_lp_heads           | ram_1p  | auto | 1       |
-|   buffer_lp_heads_2_U         | -    | -    |        | buffer_lp_heads_2         | ram_1p  | auto | 1       |
-|   buffer_lp_sizes_U           | -    | -    |        | buffer_lp_sizes           | ram_1p  | auto | 1       |
-|   buffer_lp_sizes_2_U         | -    | -    |        | buffer_lp_sizes_2         | ram_1p  | auto | 1       |
-+-------------------------------+------+------+--------+---------------------------+---------+------+---------+
++------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
+| Name                                     | BRAM | URAM | Pragma | Variable                             | Storage | Impl | Latency |
++------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
+| + event_queue_kernel                     | 0    | 0    |        |                                      |         |      |         |
+|   g_event_queue_heap_send_time_V_U       | -    | -    |        | g_event_queue_heap_send_time_V       | ram_1p  | auto | 1       |
+|   g_event_queue_heap_recv_time_V_U       | -    | -    |        | g_event_queue_heap_recv_time_V       | ram_t2p | auto | 1       |
+|   g_event_queue_heap_data_V_U            | -    | -    |        | g_event_queue_heap_data_V            | ram_1p  | auto | 1       |
+|   g_event_queue_heap_sender_id_V_U       | -    | -    |        | g_event_queue_heap_sender_id_V       | ram_1p  | auto | 1       |
+|   g_event_queue_heap_receiver_id_V_U     | -    | -    |        | g_event_queue_heap_receiver_id_V     | ram_1p  | auto | 1       |
+|   g_event_queue_heap_is_anti_message_V_U | -    | -    |        | g_event_queue_heap_is_anti_message_V | ram_1p  | auto | 1       |
++------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
 
 
 ================================================================
 == Pragma Report
 ================================================================
 * Valid Pragma Syntax
-+-----------+-----------------------+---------------------------------------------------------+
-| Type      | Options               | Location                                                |
-+-----------+-----------------------+---------------------------------------------------------+
-| interface | axis port=in_stream   | cpp/StateBuffer.cpp:12 in test_state_buffer, in_stream  |
-| interface | axis port=out_stream  | cpp/StateBuffer.cpp:13 in test_state_buffer, out_stream |
-| interface | s_axilite port=return | cpp/StateBuffer.cpp:14 in test_state_buffer, return     |
-| pipeline  | II=1                  | cpp/StateBuffer.cpp:20 in test_state_buffer             |
-| inline    |                       | cpp/StateBuffer.hpp:46 in push                          |
-| inline    |                       | cpp/StateBuffer.hpp:65 in pop                           |
-| inline    |                       | cpp/StateBuffer.hpp:81 in rollback                      |
-| inline    |                       | cpp/StateBuffer.hpp:104 in commit                       |
-| pipeline  | II=1                  | cpp/StateBuffer.hpp:108 in commit                       |
-| inline    |                       | cpp/StateBuffer.hpp:134 in is_full                      |
-| inline    |                       | cpp/StateBuffer.hpp:139 in get_gvt                      |
-| inline    |                       | cpp/StateBuffer.hpp:144 in peek                         |
-+-----------+-----------------------+---------------------------------------------------------+
-
-* Inferred Pragmas
-+---------------------------------+-----------------+-----------------------------------------------------+-----------------------------------------------+
-| Source Pragma                   | Inferred Pragma | Options                                             | Location                                      |
-+---------------------------------+-----------------+-----------------------------------------------------+-----------------------------------------------+
-| pipeline cpp/StateBuffer.cpp:20 | array_partition | dim=1 type=cyclic factor=2 variable=buffer.lp_heads | variable buffer.lp_heads in test_state_buffer |
-| pipeline cpp/StateBuffer.cpp:20 | array_partition | dim=1 type=cyclic factor=2 variable=buffer.lp_sizes | variable buffer.lp_sizes in test_state_buffer |
-+---------------------------------+-----------------+-----------------------------------------------------+-----------------------------------------------+
++-----------+--------------------------+-----------------------------------------------------------+
+| Type      | Options                  | Location                                                  |
++-----------+--------------------------+-----------------------------------------------------------+
+| interface | ap_vld port=input        | cpp/EventQueue.cpp:16 in event_queue_kernel, input        |
+| interface | ap_vld port=output_event | cpp/EventQueue.cpp:17 in event_queue_kernel, output_event |
+| interface | ap_vld port=success      | cpp/EventQueue.cpp:18 in event_queue_kernel, success      |
+| inline    |                          | cpp/EventQueue.hpp:31 in siftup                           |
+| inline    |                          | cpp/EventQueue.hpp:47 in siftdown                         |
+| inline    |                          | cpp/EventQueue.hpp:66 in enqueue                          |
+| inline    |                          | cpp/EventQueue.hpp:76 in dequeue                          |
+| inline    |                          | cpp/EventQueue.hpp:89 in peek                             |
+| inline    |                          | cpp/EventQueue.hpp:94 in empty                            |
+| inline    |                          | cpp/EventQueue.hpp:99 in is_full                          |
+| interface | ap_ctrl_hs port=return   | cpp/StateBuffer.cpp:25 in state_buffer_kernel, return     |
+| interface | ap_vld port=input        | cpp/StateBuffer.cpp:26 in state_buffer_kernel, input      |
+| interface | ap_vld port=success      | cpp/StateBuffer.cpp:27 in state_buffer_kernel, success    |
+| inline    |                          | cpp/StateBuffer.hpp:47 in push                            |
+| inline    |                          | cpp/StateBuffer.hpp:66 in pop                             |
+| inline    |                          | cpp/StateBuffer.hpp:82 in rollback                        |
+| inline    |                          | cpp/StateBuffer.hpp:105 in commit                         |
+| pipeline  | II=1                     | cpp/StateBuffer.hpp:109 in commit                         |
+| inline    |                          | cpp/StateBuffer.hpp:150 in is_full                        |
+| inline    |                          | cpp/StateBuffer.hpp:155 in get_gvt                        |
+| inline    |                          | cpp/StateBuffer.hpp:160 in peek                           |
++-----------+--------------------------+-----------------------------------------------------------+
 
 

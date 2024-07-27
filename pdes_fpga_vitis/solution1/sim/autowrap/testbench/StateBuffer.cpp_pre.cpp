@@ -1,10 +1,10 @@
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.cpp"
+# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 1 "<command-line>" 2
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.cpp"
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.hpp" 1
+# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp"
+# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 1
 
 
 
@@ -59354,7 +59354,7 @@ inline bool operator!=(
 }
 # 412 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_fixed.h" 2
 # 407 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int.h" 2
-# 5 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.hpp" 2
+# 5 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h" 1
 # 61 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h"
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream_thread_unsafe.h" 1
@@ -72795,8 +72795,9 @@ public:
 
 }
 # 62 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h" 2
-# 6 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.hpp" 2
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/constants.hpp" 1
+# 6 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
+
+# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp" 1
 
 
 
@@ -72811,14 +72812,17 @@ static constexpr int EVENT_QUEUE_CAPACITY = 128;
 static constexpr int ANTI_MSG_RESERVE = 16;
 
 
+static constexpr int NUM_EVENTS = 64;
+
+
 static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
-# 7 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.hpp" 2
+# 8 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
 
 struct LPState {
-    int lp_id;
+    ap_int<16> lp_id;
     ap_int<32> lvt;
     ap_uint<32> rng_state;
 };
@@ -72912,7 +72916,7 @@ public:
         return false;
     }
 
-    void commit(ap_int<32> commit_time) {
+    bool commit(ap_int<32> commit_time) {
 #pragma HLS INLINE
         current_gvt = commit_time;
 
@@ -72921,25 +72925,40 @@ public:
             int current = lp_heads[lp_id];
             int prev = -1;
             int removed = 0;
+            bool keep_oldest = true;
 
-            while (current != -1 && buffer[current].state.lvt <= commit_time) {
+            while (current != -1) {
                 int next = buffer[current].next;
 
-                if (prev == -1) {
-                    lp_heads[lp_id] = next;
+                if (buffer[current].state.lvt <= commit_time) {
+                    if (keep_oldest) {
+
+                        keep_oldest = false;
+                        prev = current;
+                        current = next;
+                    } else {
+
+                        if (prev == -1) {
+                            lp_heads[lp_id] = next;
+                        } else {
+                            buffer[prev].next = next;
+                        }
+
+                        buffer[current].next = free_list_head;
+                        free_list_head = current;
+
+                        removed++;
+                        current = next;
+                    }
                 } else {
-                    buffer[prev].next = next;
+
+                    break;
                 }
-
-                buffer[current].next = free_list_head;
-                free_list_head = current;
-
-                removed++;
-                current = next;
             }
 
             lp_sizes[lp_id] -= removed;
         }
+        return true;
     }
 
     bool is_full() const {
@@ -72966,8 +72985,15 @@ struct TestOperation {
     ap_int<32> time;
 };
 
-void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
-# 2 "/n/higgins/z/minsikky/PDES-FPGA-3/cpp/StateBuffer.cpp" 2
+
+bool operator==(const LPState &lhs, const LPState &rhs);
+
+
+void state_buffer_kernel(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
+
+
+int test_state_buffer();
+# 2 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp" 2
 
 
 
@@ -72977,43 +73003,92 @@ bool operator==(const LPState &lhs, const LPState &rhs) {
 }
 
 
-void test_state_buffer(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream) {
-#pragma HLS INTERFACE axis port=in_stream
-#pragma HLS INTERFACE axis port=out_stream
-#pragma HLS INTERFACE s_axilite port=return
+struct StateBufferInput {
+    ap_uint<2> op_type;
+    ap_int<16> lp_id;
+    ap_int<32> time;
+    ap_uint<32> rng_state;
+};
 
-    StateBuffer buffer;
 
-    TestOperation op;
-    while (!in_stream.empty()) {
-#pragma HLS PIPELINE II=1
-        in_stream.read(op);
+StateBuffer g_state_buffer;
 
-        switch (op.type) {
-            case 0:
-            {
-                LPState state{op.lp_id, op.time, 0};
-                buffer.push(state);
-                break;
-            }
-            case 1:
-                buffer.rollback(op.lp_id, op.time);
-                break;
-            case 2:
-                buffer.commit(op.time);
-                break;
+void state_buffer_kernel(
+    StateBufferInput& input,
+    bool& success
+) {
+#pragma HLS INTERFACE ap_ctrl_hs port=return
+#pragma HLS INTERFACE ap_vld port=input
+#pragma HLS INTERFACE ap_vld port=success
+
+    switch (input.op_type) {
+        case 0:
+        {
+            LPState state{input.lp_id, input.time, input.rng_state};
+            success = g_state_buffer.push(state);
+            break;
+        }
+        case 1:
+            success = g_state_buffer.rollback(input.lp_id, input.time);
+            break;
+        case 2:
+            success = g_state_buffer.commit(input.time);
+            break;
+        default:
+            success = false;
+    }
+}
+
+int test_state_buffer() {
+    StateBufferInput input;
+    bool success;
+
+
+    std::vector<StateBufferInput> operations = {
+        {0, 0, 10, 0},
+        {0, 1, 15, 0},
+        {0, 0, 20, 0},
+        {0, 0, 30, 0},
+        {0, 0, 40, 0},
+        {0, 0, 50, 0},
+        {0, 0, 60, 0},
+        {0, 1, 70, 0},
+        {0, 1, 80, 0},
+        {0, 1, 90, 0},
+        {0, 1, 100, 0},
+        {1, 0, 15, 0},
+        {2, 0, 12, 0},
+        {0, 1, 110, 0},
+        {2, 0, 16, 0},
+    };
+
+
+    for (const auto& op : operations) {
+        state_buffer_kernel(const_cast<StateBufferInput&>(op), success);
+        if (!success) {
+            std::cout << "Operation failed: type " << op.op_type << ", LP " << op.lp_id << ", time " << op.time << std::endl;
         }
     }
 
 
-    out_stream.write(buffer.get_gvt());
+    int gvt = g_state_buffer.get_gvt();
+    std::vector<std::vector<LPState>> lp_states(NUM_LPS);
+
     for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-        int current = buffer.lp_heads[lp_id];
-        while (current != -1) {
-            const LPState& state = buffer.buffer[current].state;
-            out_stream.write(state.lvt);
-            current = buffer.buffer[current].next;
+        LPState state;
+        while (g_state_buffer.pop(lp_id, state)) {
+            lp_states[lp_id].push_back(state);
         }
-        out_stream.write(-1);
     }
+
+
+    std::cout << "Final GVT: " << gvt << "\n";
+    for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
+        std::cout << "LP " << lp_id << " states:\n";
+        for (const auto& state : lp_states[lp_id]) {
+            std::cout << " LVT: " << state.lvt << ", RNG state: " << state.rng_state << "\n";
+        }
+    }
+
+    return 0;
 }

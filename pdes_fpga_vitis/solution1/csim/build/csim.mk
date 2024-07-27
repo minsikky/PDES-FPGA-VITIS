@@ -19,7 +19,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../cpp/StateBufferTest.cpp ../../../../cpp/StateBuffer.cpp
+HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/EventQueue.cpp ../../../../cpp/StateBuffer.cpp
 
 override TARGET := csim.exe
 
@@ -72,11 +72,17 @@ all: $(TARGET)
 
 
 
-$(ObjDir)/StateBufferTest.o: ../../../../cpp/StateBufferTest.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/StateBufferTest.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/main.o: ../../../../cpp/main.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/main.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/StateBufferTest.d
+-include $(ObjDir)/main.d
+
+$(ObjDir)/EventQueue.o: ../../../../cpp/EventQueue.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/EventQueue.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/EventQueue.d
 
 $(ObjDir)/StateBuffer.o: ../../../../cpp/StateBuffer.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../cpp/StateBuffer.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)

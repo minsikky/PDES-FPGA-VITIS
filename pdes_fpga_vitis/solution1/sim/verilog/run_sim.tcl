@@ -32,12 +32,12 @@ if {$ret == 1} {
 	return -code error -errorcode $::errorCode
 }
 
-if {[file isfile test_state_buffer.autotvin.dat]} {
-	file delete -force test_state_buffer.autotvin.dat
+if {[file isfile event_queue_kernel.autotvin.dat]} {
+	file delete -force event_queue_kernel.autotvin.dat
 }
 
-if {[file isfile test_state_buffer.autotvout.dat]} {
-	file delete -force test_state_buffer.autotvout.dat
+if {[file isfile event_queue_kernel.autotvout.dat]} {
+	file delete -force event_queue_kernel.autotvout.dat
 }
 
 sc_sim_check $ret $err "temp0.log"
