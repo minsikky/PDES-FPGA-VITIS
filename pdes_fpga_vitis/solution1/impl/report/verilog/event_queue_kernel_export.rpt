@@ -1,0 +1,23 @@
+
+
+Implementation tool: Xilinx Vivado v.2022.1
+Project:             pdes_fpga_vitis
+Solution:            solution1
+Device target:       xczu7ev-ffvf1517-3-e
+Report date:         Sun Jul 28 03:54:39 EDT 2024
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:           1314
+FF:            1243
+DSP:              0
+BRAM:             0
+URAM:             0
+LATCH:            0
+SRL:              0
+CLB:              0
+
+#=== Final timing ===
+CP required:                     5.000
+CP achieved post-synthesis:      1.978
+Timing met

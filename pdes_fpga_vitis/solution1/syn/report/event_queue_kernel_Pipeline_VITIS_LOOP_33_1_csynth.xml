@@ -6,8 +6,8 @@
 
 <UserAssignments>
 <unit>ns</unit>
-<ProductFamily>virtexuplus</ProductFamily>
-<Part>xcvu9p-flga2104-2-i</Part>
+<ProductFamily>zynquplus</ProductFamily>
+<Part>xczu7ev-ffvf1517-3-e</Part>
 <TopModelName>event_queue_kernel_Pipeline_VITIS_LOOP_33_1</TopModelName>
 <TargetClockPeriod>5.00</TargetClockPeriod>
 <ClockUncertainty>1.35</ClockUncertainty>
@@ -18,7 +18,7 @@
 <PipelineType>no</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>2.413</EstimatedClockPeriod>
+<EstimatedClockPeriod>3.249</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
@@ -53,11 +53,11 @@
 <URAM>0</URAM>
 </Resources>
 <AvailableResources>
-<BRAM_18K>4320</BRAM_18K>
-<DSP>6840</DSP>
-<FF>2364480</FF>
-<LUT>1182240</LUT>
-<URAM>960</URAM>
+<BRAM_18K>624</BRAM_18K>
+<DSP>1728</DSP>
+<FF>460800</FF>
+<LUT>230400</LUT>
+<URAM>96</URAM>
 </AvailableResources>
 </AreaEstimates>
 

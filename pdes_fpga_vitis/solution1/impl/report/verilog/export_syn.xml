@@ -1,0 +1,174 @@
+<profile>
+  <RunData>
+    <RUN_TYPE>synth</RUN_TYPE>
+    <VIVADO_VERSION>v.2022.1</VIVADO_VERSION>
+    <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+  </RunData>
+  <TimingReport>
+    <TargetClockPeriod>5.000</TargetClockPeriod>
+    <AchievedClockPeriod>1.978</AchievedClockPeriod>
+    <CLOCK_NAME>ap_clk</CLOCK_NAME>
+    <CP_FINAL>1.978</CP_FINAL>
+    <CP_ROUTE>NA</CP_ROUTE>
+    <CP_SYNTH>1.978</CP_SYNTH>
+    <CP_TARGET>5.000</CP_TARGET>
+    <SLACK_FINAL>3.022</SLACK_FINAL>
+    <SLACK_ROUTE/>
+    <SLACK_SYNTH>3.022</SLACK_SYNTH>
+    <TIMING_MET>TRUE</TIMING_MET>
+    <TNS_FINAL>0.000</TNS_FINAL>
+    <TNS_ROUTE>NA</TNS_ROUTE>
+    <TNS_SYNTH>0.000</TNS_SYNTH>
+    <WNS_FINAL>3.022</WNS_FINAL>
+    <WNS_ROUTE>NA</WNS_ROUTE>
+    <WNS_SYNTH>3.022</WNS_SYNTH>
+  </TimingReport>
+  <AreaReport>
+    <Resources>
+      <BRAM>0</BRAM>
+      <CLB>0</CLB>
+      <DSP>0</DSP>
+      <FF>1243</FF>
+      <LATCH>0</LATCH>
+      <LUT>1314</LUT>
+      <SRL>0</SRL>
+      <URAM>0</URAM>
+    </Resources>
+    <AvailableResources>
+      <BRAM>624</BRAM>
+      <CLB>0</CLB>
+      <DSP>1728</DSP>
+      <FF>460800</FF>
+      <LUT>230400</LUT>
+      <URAM>96</URAM>
+    </AvailableResources>
+  </AreaReport>
+  <RtlModules>
+    <RtlModule CELL="inst" DEPTH="0" IS_TOP="1" TYPE="function" MODULENAME="event_queue_kernel" DISPNAME="inst" RTLNAME="event_queue_kernel">
+      <SubModules count="8">g_event_queue_heap_data_V_U g_event_queue_heap_is_anti_message_V_U g_event_queue_heap_receiver_id_V_U g_event_queue_heap_recv_time_V_U g_event_queue_heap_send_time_V_U g_event_queue_heap_sender_id_V_U grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460</SubModules>
+      <Resources FF="1243" LUT="1314"/>
+      <LocalResources FF="732" LUT="158"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_data_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_data_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W">
+      <Resources FF="32" LUT="138"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_data_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_data_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_is_anti_message_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_is_anti_message_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W">
+      <Resources FF="1" LUT="5"/>
+      <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_is_anti_message_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_is_anti_message_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_receiver_id_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_receiver_id_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W">
+      <Resources FF="16" LUT="69"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_receiver_id_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_recv_time_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_recv_time_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W">
+      <Resources FF="64" LUT="271"/>
+      <BindNode BINDTYPE="storage" BRAM="2" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="g_event_queue_heap_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_recv_time_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_send_time_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_send_time_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W">
+      <Resources FF="32" LUT="140"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_send_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_send_time_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/g_event_queue_heap_sender_id_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DEPTH="1" TYPE="resource" MODULENAME="g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DISPNAME="g_event_queue_heap_sender_id_V_U" RTLNAME="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W">
+      <Resources FF="16" LUT="69"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_sender_id_V"/>
+    </RtlModule>
+    <RtlModule CELL="inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480" DEPTH="1" TYPE="function" MODULENAME="event_queue_kernel_Pipeline_VITIS_LOOP_33_1" DISPNAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480" RTLNAME="event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1">
+      <Resources FF="85" LUT="79"/>
+    </RtlModule>
+    <RtlModule CELL="inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460" DEPTH="1" TYPE="function" MODULENAME="event_queue_kernel_Pipeline_VITIS_LOOP_49_1" DISPNAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460" RTLNAME="event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1">
+      <Resources FF="265" LUT="385"/>
+    </RtlModule>
+  </RtlModules>
+  <TimingPaths>
+    <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="g_event_queue_heap_data_V_U/q0_reg[0]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="g_event_queue_size_V_reg[15]/C">
+      <CELL NAME="g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/q0_reg[0]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="g_event_queue_heap_data_V_U/q0_reg[10]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="g_event_queue_size_V_reg[15]/C">
+      <CELL NAME="g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/q0_reg[10]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="g_event_queue_heap_data_V_U/q0_reg[11]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="g_event_queue_size_V_reg[15]/C">
+      <CELL NAME="g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/q0_reg[11]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="g_event_queue_heap_data_V_U/q0_reg[12]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="g_event_queue_size_V_reg[15]/C">
+      <CELL NAME="g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/q0_reg[12]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="g_event_queue_heap_data_V_U/q0_reg[13]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="g_event_queue_size_V_reg[15]/C">
+      <CELL NAME="g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
+      <CELL NAME="grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+      <CELL NAME="g_event_queue_heap_data_V_U/q0_reg[13]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+    </TPATH>
+  </TimingPaths>
+  <VivadoReportFiles>
+    <ReportFile TYPE="design_analysis" PATH="verilog/report/event_queue_kernel_design_analysis_synth.rpt"/>
+    <ReportFile TYPE="failfast" PATH="verilog/report/event_queue_kernel_failfast_synth.rpt"/>
+    <ReportFile TYPE="timing" PATH="verilog/report/event_queue_kernel_timing_synth.rpt"/>
+    <ReportFile TYPE="timing_paths" PATH="verilog/report/event_queue_kernel_timing_paths_synth.rpt"/>
+    <ReportFile TYPE="utilization" PATH="verilog/report/event_queue_kernel_utilization_synth.rpt"/>
+    <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/event_queue_kernel_utilization_hierarchical_synth.rpt"/>
+  </VivadoReportFiles>
+  <GeneralInfo NAME="General Information">
+    <item NAME="Date" VALUE="Sun Jul 28 03:54:49 EDT 2024"/>
+    <item NAME="Version" VALUE="2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)"/>
+    <item NAME="Project" VALUE="pdes_fpga_vitis"/>
+    <item NAME="Solution" VALUE="solution1 (Vivado IP Flow Target)"/>
+    <item NAME="Product family" VALUE="zynquplus"/>
+    <item NAME="Target device" VALUE="xczu7ev-ffvf1517-3-e"/>
+  </GeneralInfo>
+  <RunOptions NAME="Run Constraints &amp; Options">
+    <General NAME="Design Constraints &amp; Options">
+      <item NAME="RTL Synthesis target clock" VALUE="5 ns"/>
+      <item NAME="C-Synthesis target clock" VALUE="5 ns"/>
+      <item NAME="C-Synthesis uncertainty" VALUE="27%"/>
+      <item NAME="config_export -ip_xdc_file" VALUE=""/>
+      <item NAME="config_export -ip_xdc_ooc_file" VALUE=""/>
+    </General>
+    <Syn NAME="RTL Synthesis Options">
+      <item NAME="config_export -vivado_synth_strategy" VALUE="default"/>
+      <item NAME="config_export -vivado_synth_design_args" VALUE="-directive sdx_optimization_effort_high"/>
+    </Syn>
+    <Reporting NAME="Reporting Options">
+      <item NAME="config_export -vivado_report_level" VALUE="2"/>
+      <item NAME="config_export -vivado_max_timing_paths" VALUE="10"/>
+    </Reporting>
+  </RunOptions>
+</profile>
+

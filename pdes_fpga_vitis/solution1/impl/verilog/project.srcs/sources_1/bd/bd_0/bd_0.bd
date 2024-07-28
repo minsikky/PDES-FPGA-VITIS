@@ -1,0 +1,177 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xB6281E539DB3C833",
+      "device": "xczu7ev-ffvf1517-3-e",
+      "gen_directory": "../../../../project.gen/sources_1/bd/bd_0",
+      "name": "bd_0",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "hls_inst": ""
+    },
+    "interface_ports": {
+      "ap_ctrl": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:acc_handshake:1.0",
+        "vlnv": "xilinx.com:interface:acc_handshake_rtl:1.0"
+      }
+    },
+    "ports": {
+      "ap_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "ap_rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "bd_0_ap_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "200000000.0"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "ap_rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "input_r": {
+        "type": "data",
+        "direction": "I",
+        "left": "129",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "input_r_ap_vld": {
+        "direction": "I"
+      },
+      "output_event": {
+        "type": "data",
+        "direction": "O",
+        "left": "128",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "output_event_ap_vld": {
+        "direction": "O"
+      },
+      "success": {
+        "type": "data",
+        "direction": "O",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "success_ap_vld": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "hls_inst": {
+        "vlnv": "xilinx.com:hls:event_queue_kernel:1.0",
+        "xci_name": "bd_0_hls_inst_0",
+        "xci_path": "ip/bd_0_hls_inst_0/bd_0_hls_inst_0.xci",
+        "inst_hier_path": "hls_inst"
+      }
+    },
+    "interface_nets": {
+      "ap_ctrl_0_1": {
+        "interface_ports": [
+          "ap_ctrl",
+          "hls_inst/ap_ctrl"
+        ]
+      }
+    },
+    "nets": {
+      "ap_clk_0_1": {
+        "ports": [
+          "ap_clk",
+          "hls_inst/ap_clk"
+        ]
+      },
+      "ap_rst_0_1": {
+        "ports": [
+          "ap_rst",
+          "hls_inst/ap_rst"
+        ]
+      },
+      "hls_inst_output_event": {
+        "ports": [
+          "hls_inst/output_event",
+          "output_event"
+        ]
+      },
+      "hls_inst_output_event_ap_vld": {
+        "ports": [
+          "hls_inst/output_event_ap_vld",
+          "output_event_ap_vld"
+        ]
+      },
+      "hls_inst_success": {
+        "ports": [
+          "hls_inst/success",
+          "success"
+        ]
+      },
+      "hls_inst_success_ap_vld": {
+        "ports": [
+          "hls_inst/success_ap_vld",
+          "success_ap_vld"
+        ]
+      },
+      "input_r_0_1": {
+        "ports": [
+          "input_r",
+          "hls_inst/input_r"
+        ]
+      },
+      "input_r_ap_vld_0_1": {
+        "ports": [
+          "input_r_ap_vld",
+          "hls_inst/input_r_ap_vld"
+        ]
+      }
+    }
+  }
+}

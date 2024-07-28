@@ -12,11 +12,11 @@ add_files cpp/EventQueue.hpp
 add_files cpp/EventQueue.cpp
 add_files -tb cpp/main.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1" -flow_target vivado
-set_part {xcvu9p-flga2104-2-i}
+set_part {xczu7ev-ffvf1517-3-e}
 create_clock -period 200MHz -name default
-config_interface -m_axi_latency 0
+config_export -format ip_catalog -rtl verilog -vivado_clock 200MHz
 #source "./pdes_fpga_vitis/solution1/directives.tcl"
 csim_design
 csynth_design
 cosim_design
-export_design -format ip_catalog
+export_design -flow syn -rtl verilog -format ip_catalog

@@ -1,13 +1,13 @@
-INFO-FLOW: Workspace /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1 opened at Sat Jul 27 00:09:46 EDT 2024
+INFO-FLOW: Workspace /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1 opened at Sun Jul 28 03:49:22 EDT 2024
 Execute     ap_set_clock -name default -period 5 -unit ns -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
-Execute     set_part xcvu9p-flga2104-2-i 
-Execute       create_platform xcvu9p-flga2104-2-i -board  
+Execute     set_part xczu7ev-ffvf1517-3-e 
+Execute       create_platform xczu7ev-ffvf1517-3-e -board  
 DBG:HLSDevice: Trying to load device library: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
 DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/data/parts/arch.xml
 DBG:HLSDevice: init success
-INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
-Command       create_platform done; 2.99 sec.
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvf1517-3-e'
+Command       create_platform done; 3.6 sec.
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -21,9 +21,9 @@ Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/c
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
 Command       ap_source done; 0.11 sec.
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 Execute       config_compile -quiet -complex-mul-dsp=0 
-Command     set_part done; 3.13 sec.
+Command     set_part done; 3.74 sec.
 Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Execute     get_config_interface -m_axi_latency 
@@ -31,13 +31,13 @@ Execute     get_config_interface -m_axi_alignment_byte_size
 Execute     get_config_interface -m_axi_max_widen_bitwidth 
 Execute     get_config_interface -default_interface 
 Execute     get_config_rtl -register_reset_num 
-Execute     send_msg_by_id INFO @200-1464@%s config_interface -m_axi_latency=0 
-INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
-Execute     config_interface -m_axi_latency=0 
-Command   open_solution done; 3.15 sec.
-Execute   set_part xcvu9p-flga2104-2-i 
-INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
-Execute     create_platform xcvu9p-flga2104-2-i -board  
+Execute     send_msg_by_id INFO @200-1464@%s config_export -vivado_clock=200MHz 
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=200MHz
+Execute     config_export -vivado_clock=200MHz 
+Command   open_solution done; 3.76 sec.
+Execute   set_part xczu7ev-ffvf1517-3-e 
+INFO: [HLS 200-1510] Running: set_part xczu7ev-ffvf1517-3-e 
+Execute     create_platform xczu7ev-ffvf1517-3-e -board  
 Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -50,13 +50,14 @@ Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/com
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command     ap_source done; 0.11 sec.
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 Execute     config_compile -quiet -complex-mul-dsp=0 
-Command   set_part done; 0.16 sec.
+Command   set_part done; 0.15 sec.
 Execute   create_clock -period 200MHz -name default 
 INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
-Execute   config_interface -m_axi_latency 0 
-INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+Execute   config_export -vivado_clock 200MHz 
+INFO: [HLS 200-1510] Running: config_export -vivado_clock 200MHz 
 Execute   csynth_design 
 INFO: [HLS 200-1510] Running: csynth_design 
 Execute     get_config_compile -effort 
@@ -71,69 +72,69 @@ Execute     get_config_compile -skip_transform
 Execute     get_config_compile -pre_tcl 
 Execute     get_config_compile -keep_printf 
 Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 776.184 MB.
 INFO: [HLS 200-10] Analyzing design file 'cpp/EventQueue.cpp' ... 
 INFO-FLOW: Compiling one TU...
 Execute       get_config_compile -pragma_strict_mode 
 INFO-FLOW: Handling cpp/EventQueue.cpp as C++
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: Running: GCC PP 39
 INFO-FLOW: Source preprocessing
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang cpp/EventQueue.cpp -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -I /usr/include/x86_64-linux-gnu -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.err.log 
-Command       ap_eval done; 2.06 sec.
-INFO-FLOW: Done: GCC PP 39 time: 2.1 seconds per iteration
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang cpp/EventQueue.cpp -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -I /usr/include/x86_64-linux-gnu -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.cpp.clang.err.log 
+Command       ap_eval done; 2.26 sec.
+INFO-FLOW: Done: GCC PP 39 time: 2.3 seconds per iteration
 Execute       set_directive_top event_queue_kernel -name=event_queue_kernel 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
 INFO-FLOW: Source syntax check for synthesis
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.err.log 
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.err.log 
 Command       ap_eval done; 1.26 sec.
 Execute       clang_tidy xilinx-systemc-detector -desc systemc-detector /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp std=gnu++14 -target fpga  -directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/.systemc_flag 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/.systemc_flag -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 1.75 sec.
+Command       clang_tidy done; 1.77 sec.
 INFO-FLOW: Running: clang-tidy CDT preprocess 39
 Execute       clang_tidy xilinx-directive2pragma -desc directive2pragma /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp std=gnu++14 -target fpga  -directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/all.directive.json 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/all.directive.json -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 1.16 sec.
+Command       clang_tidy done; 1.2 sec.
 Execute       clang_tidy xilinx-remove-assert -desc remove-assert /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp std=gnu++14 -target fpga  
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-remove-assert -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.77 sec.
-INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 1.9 seconds per iteration
+Command       clang_tidy done; 0.76 sec.
+INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 2 seconds per iteration
 INFO-FLOW: Calling xilinx-label-all-loops ... 
 INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
 Execute       clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp std=gnu++14 -target fpga  
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang-tidy.loop-label.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang-tidy.loop-label.err.log 
-Command         ap_eval done; 1.44 sec.
+Command         ap_eval done; 1.46 sec.
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/yaml.tcl 
-Command       clang_tidy done; 1.5 sec.
+Command       clang_tidy done; 1.52 sec.
 Execute       get_config_dataflow -strict_mode 
 Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.xilinx-dataflow-lawyer.err.log 
-Command       ap_eval done; 1.34 sec.
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command       ap_eval done; 1.39 sec.
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: compiling source code to llvm bc
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -g -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.err.log 
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -g -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.pp.0.cpp.clang.err.log 
 Command       ap_eval done; 0.98 sec.
 INFO: [HLS 200-10] Analyzing design file 'cpp/StateBuffer.cpp' ... 
 INFO-FLOW: Compiling one TU...
 Execute       get_config_compile -pragma_strict_mode 
 INFO-FLOW: Handling cpp/StateBuffer.cpp as C++
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: Running: GCC PP 39
 INFO-FLOW: Source preprocessing
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang cpp/StateBuffer.cpp -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -I /usr/include/x86_64-linux-gnu -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.err.log 
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang cpp/StateBuffer.cpp -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -I /usr/include/x86_64-linux-gnu -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.cpp.clang.err.log 
 Command       ap_eval done; 0.17 sec.
 INFO-FLOW: Done: GCC PP 39 time: 0.2 seconds per iteration
 Execute       set_directive_top event_queue_kernel -name=event_queue_kernel 
 INFO-FLOW: Source syntax check for synthesis
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.err.log 
-Command       ap_eval done; 0.68 sec.
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/clang.err.log 
+Command       ap_eval done; 0.69 sec.
 Execute       clang_tidy xilinx-systemc-detector -desc systemc-detector /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp std=gnu++14 -target fpga  -directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/.systemc_flag 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/.systemc_flag -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.63 sec.
+Command       clang_tidy done; 0.65 sec.
 INFO-FLOW: Running: clang-tidy CDT preprocess 39
 Execute       clang_tidy xilinx-directive2pragma -desc directive2pragma /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp std=gnu++14 -target fpga  -directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/all.directive.json 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/all.directive.json -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
-Command       clang_tidy done; 0.62 sec.
+Command       clang_tidy done; 0.64 sec.
 Execute       clang_tidy xilinx-remove-assert -desc remove-assert /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp std=gnu++14 -target fpga  
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-remove-assert -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
 Command       clang_tidy done; 0.63 sec.
@@ -142,44 +143,44 @@ INFO-FLOW: Calling xilinx-label-all-loops ...
 INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
 Execute       clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp std=gnu++14 -target fpga  
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang-tidy.loop-label.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang-tidy.loop-label.err.log 
-Command         ap_eval done; 1.19 sec.
-Command       clang_tidy done; 1.24 sec.
+Command         ap_eval done; 1.21 sec.
+Command       clang_tidy done; 1.27 sec.
 Execute       get_config_dataflow -strict_mode 
 Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.xilinx-dataflow-lawyer.err.log 
-Command       ap_eval done; 0.62 sec.
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command       ap_eval done; 0.63 sec.
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: compiling source code to llvm bc
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -g -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.err.log 
-Command       ap_eval done; 0.71 sec.
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.52 seconds. CPU system time: 1.42 seconds. Elapsed time: 16.37 seconds; current allocated memory: 776.184 MB.
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot -I /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E2__ -g -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.pp.0.cpp.clang.err.log 
+Command       ap_eval done; 0.72 sec.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 10.7 seconds. CPU system time: 1.46 seconds. Elapsed time: 16.74 seconds; current allocated memory: 776.184 MB.
 INFO-FLOW: Linking Debug ...
 INFO-FLOW: Linking dut bc code.
 Execute       run_link_or_opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc -args  "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.g.bc" "/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.g.bc"  
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/EventQueue.g.bc /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/StateBuffer.g.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.llvm-link.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.llvm-link.err.log 
-Command         ap_eval done; 0.2 sec.
+Command         ap_eval done; 0.21 sec.
 INFO-FLOW: 
 Command       run_link_or_opt done; 0.21 sec.
 Execute       run_link_or_opt -opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc -args /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics 
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.diag.yml /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.err.log 
-Command         ap_eval done; 1.59 sec.
+Command         ap_eval done; 1.56 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 1.59 sec.
+Command       run_link_or_opt done; 1.56 sec.
 INFO-FLOW: Linking math bc lib
 Execute       run_link_or_opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc -args /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libhlsm_39.bc /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libhlsmc++_39.bc 
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libhlsm_39.bc /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libhlsmc++_39.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.err.log 
-Command         ap_eval done; 4.46 sec.
+Command         ap_eval done; 4.37 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 4.46 sec.
+Command       run_link_or_opt done; 4.39 sec.
 Execute       run_link_or_opt -opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc -args /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=event_queue_kernel -reflow-float-conversion 
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.diag.yml /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=event_queue_kernel -reflow-float-conversion -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.err.log 
-Command         ap_eval done; 0.88 sec.
+Command         ap_eval done; 0.89 sec.
 INFO-FLOW: 
 Command       run_link_or_opt done; 0.89 sec.
 Execute       run_link_or_opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc -args /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libfloatconversion_39.bc 
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/lib/libfloatconversion_39.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.err.log 
-Command         ap_eval done; 0.18 sec.
+Command         ap_eval done; 0.19 sec.
 INFO-FLOW: 
-Command       run_link_or_opt done; 0.18 sec.
+Command       run_link_or_opt done; 0.19 sec.
 Execute       run_link_or_opt -opt -out /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc -args /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=event_queue_kernel 
 Execute         ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.diag.yml /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=event_queue_kernel -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.err.log 
 INFO-FLOW: 
@@ -225,8 +226,8 @@ INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
 Execute       is_m_axi_addr64 
 Execute       get_clock_period -ns -default 
 INFO-FLOW: Doing LTO.
-Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=event_queue_kernel -mllvm -hls-db-dir -mllvm /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -assume-maxi-align=0 -mllvm -no-unaligned-maxi-accesses -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -x ir /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.lto.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=virtexuplus_medium -device-resource-info=BRAM_4320.000000_DSP_6840.000000_FF_2364480.000000_LUT_1182240.000000_SLICE_147780.000000_SLR_3.000000_URAM_960.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.err.log 
-Command       ap_eval done; 1.04 sec.
+Execute       ap_eval exec -ignorestderr /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=event_queue_kernel -mllvm -hls-db-dir -mllvm /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -assume-maxi-align=0 -mllvm -no-unaligned-maxi-accesses -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -x ir /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.5.gdce.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.lto.bc -hls-platform-db-name=/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynquplus_fast -device-resource-info=BRAM_624.000000_DSP_1728.000000_FF_460800.000000_LUT_230400.000000_SLICE_28800.000000_URAM_96.000000 > /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.out.log 2> /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.ld.0.bc.clang.err.log 
+Command       ap_eval done; 1.02 sec.
 INFO: [HLS 214-131] Inlining function 'EventQueue::is_full(ap_uint<1>) const' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:67:6)
 INFO: [HLS 214-131] Inlining function 'EventQueue::siftUp(ap_uint<16>)' into 'EventQueue::enqueue(TimeWarpEvent const&)' (cpp/EventQueue.hpp:70:9)
 INFO: [HLS 214-131] Inlining function 'EventQueue::empty() const' into 'EventQueue::dequeue()' (cpp/EventQueue.hpp:77:6)
@@ -236,14 +237,14 @@ INFO: [HLS 214-131] Inlining function 'EventQueue::dequeue()' into 'event_queue_
 INFO: [HLS 214-241] Aggregating scalar variable 'output_event' with compact=bit mode in 129-bits (cpp/EventQueue.cpp:15:0)
 INFO: [HLS 214-241] Aggregating scalar variable 'input' with compact=bit mode in 130-bits (cpp/EventQueue.cpp:15:0)
 INFO-FLOW: DBG:PUTS: copy_raw_kernel_xml ap_link_39: kernel.xml not generated: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/kernel.internal.xml
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.64 seconds. CPU system time: 0.66 seconds. Elapsed time: 8.69 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.64 seconds. CPU system time: 0.65 seconds. Elapsed time: 8.58 seconds; current allocated memory: 776.184 MB.
 INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 776.184 MB.
 Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
 Execute         cleanup_all_models 
 INFO: [HLS 200-10] Starting code transformations ...
 INFO-FLOW: Running Standard Transforms...
 Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top event_queue_kernel -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.0.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 776.184 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO-FLOW: Checking Synthesizability 1/2..
 Execute         transform -hls -syn-check -check-rec-only -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -pag -array-normalize -instcombine -dce -array-seg-normalize -instcombine -dce -data-pack -instcombine -dce -inst-simplify -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -resolve-double-ptr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.1.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.g.2.prechk.bc -f 
@@ -260,7 +261,7 @@ Command         transform done; 0.11 sec.
 INFO-FLOW: Presyn 2...
 Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin2 -bitwidthmin2 -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -barrier -norm-name /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.o.1.tmp.bc -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/a.o.2.bc -f -phase presyn 
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (cpp/EventQueue.hpp:55:17) in function 'event_queue_kernel'... converting 3 basic blocks.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.15 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.2 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.16 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.21 seconds; current allocated memory: 840.184 MB.
 Execute         get_config_compile -enable_auto_rewind 
 Execute         get_config_compile -enable_loop_extract 
 INFO-FLOW: Building ssdm...
@@ -271,11 +272,11 @@ INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.se
 INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:82:21)
 INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:56:29)
 INFO: [HLS 200-472] Inferring partial write operation for 'g_event_queue.heap.send_time.V' (cpp/EventQueue.hpp:62:21)
-Command         transform done; 0.13 sec.
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+Command         transform done; 0.14 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
 INFO-FLOW: Finish building internal data model.
-Command       opt_and_import_c done; 0.55 sec.
-Command     elaborate done; 25.61 sec.
+Command       opt_and_import_c done; 0.56 sec.
+Command     elaborate done; 25.89 sec.
 Execute     ap_eval exec zip -j /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/dut.hcp $dbDir/a.o.3.bc $dbDir/${topname}.rtl_wrap.cfg.tcl $dbDir/apatb_${topname}.cpp $dbDir/apatb_${topname}_util.cpp $dbDir/apatb_${topname}_ir.ll $dbDir/mapper_${topname}.cpp $dbDir/top-io-fe.xml $dbDir/kernel.internal.xml $workdir/../hls.app 
 Execute     autosyn -from_csynth_design=1 
 INFO: [HLS 200-10] Starting hardware synthesis ...
@@ -320,10 +321,10 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
 WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 1 cycles).
 WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation ('icmp_ln1073_2')) in the first pipeline iteration (II = 2 cycles).
-INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 4, loop 'VITIS_LOOP_49_1'
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 5, loop 'VITIS_LOOP_49_1'
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 0.14 sec.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.25 seconds; current allocated memory: 840.184 MB.
+Command       schedule done; 0.11 sec.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.13 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.21 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -336,11 +337,10 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.12 sec.
 Execute       db_write -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.bind.adb -f 
 INFO-FLOW: Finish binding event_queue_kernel_Pipeline_VITIS_LOOP_49_1.
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -353,7 +353,7 @@ INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
 WARNING: [HLS 200-878] Unable to schedule the loop exit test ('and' operation ('or_cond', cpp/EventQueue.hpp:33)) in the first pipeline iteration (II = 1 cycles).
 INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -366,7 +366,7 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -379,12 +379,10 @@ Execute       set_default_model event_queue_kernel
 Execute       schedule -model event_queue_kernel 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 0.18 sec.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.verbose.sched.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.12 sec.
 Execute       db_write -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.sched.adb -f 
 INFO-FLOW: Finish scheduling event_queue_kernel.
 Execute       set_default_model event_queue_kernel 
@@ -394,12 +392,11 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 0.13 sec.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.26 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 840.184 MB.
 Execute       syn_report -verbosereport -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.verbose.bind.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.23 sec.
+Command       syn_report done; 0.13 sec.
 Execute       db_write -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.bind.adb -f 
 INFO-FLOW: Finish binding event_queue_kernel.
 Execute       get_model_list event_queue_kernel -filter all-wo-channel 
@@ -417,7 +414,7 @@ Execute       get_config_rtl -module_prefix
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -top_prefix event_queue_kernel_ -sub_prefix event_queue_kernel_ -mg_file /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.26 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.29 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 840.184 MB.
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
 Execute       gen_rtl event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -style xilinx -f -lang vhdl -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/vhdl/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1 
 Execute       gen_rtl event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -style xilinx -f -lang vlog -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/verilog/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1 
@@ -430,7 +427,7 @@ Execute           get_solution -flow_target
 Execute       syn_report -verbosereport -model event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.verbose.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.15 sec.
+Command       syn_report done; 0.11 sec.
 Execute       db_write -model event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -f -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.adb 
 Execute       db_write -model event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -bindview -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/design.bindinfo.xml 
 Execute       gen_tb_info event_queue_kernel_Pipeline_VITIS_LOOP_49_1 -p /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1 
@@ -443,7 +440,7 @@ Execute       get_config_rtl -module_prefix
 Execute       get_config_rtl -module_auto_prefix 
 Execute       create_rtl_model event_queue_kernel_Pipeline_VITIS_LOOP_33_1 -top_prefix event_queue_kernel_ -sub_prefix event_queue_kernel_ -mg_file /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'event_queue_kernel_Pipeline_VITIS_LOOP_33_1'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.3 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.35 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.27 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.32 seconds; current allocated memory: 840.184 MB.
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
 Execute       gen_rtl event_queue_kernel_Pipeline_VITIS_LOOP_33_1 -style xilinx -f -lang vhdl -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/vhdl/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1 
 Execute       gen_rtl event_queue_kernel_Pipeline_VITIS_LOOP_33_1 -style xilinx -f -lang vlog -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/verilog/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1 
@@ -472,7 +469,7 @@ INFO: [RTGEN 206-500] Setting interface mode on port 'event_queue_kernel/success
 INFO: [RTGEN 206-500] Setting interface mode on function 'event_queue_kernel' to 'ap_ctrl_hs'.
 WARNING: [RTGEN 206-101] Register 'g_event_queue_size_V' is power-on initialization.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'event_queue_kernel'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 840.184 MB.
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
 Execute       gen_rtl event_queue_kernel -istop -style xilinx -f -lang vhdl -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/vhdl/event_queue_kernel 
 Execute       gen_rtl event_queue_kernel -istop -style xilinx -f -lang vlog -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/verilog/event_queue_kernel 
@@ -485,13 +482,12 @@ Execute           get_solution -flow_target
 Execute       syn_report -verbosereport -model event_queue_kernel -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.verbose.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
-Command       syn_report done; 0.28 sec.
+Command       syn_report done; 0.14 sec.
 Execute       db_write -model event_queue_kernel -f -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.adb 
 Execute       db_write -model event_queue_kernel -bindview -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/design.bindinfo.xml 
 Execute       gen_tb_info event_queue_kernel -p /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel 
 Execute       export_constraint_db -f -tool general -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.constraint.tcl 
 Execute       syn_report -designview -model event_queue_kernel -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.design.xml 
-Command       syn_report done; 0.15 sec.
 Execute       syn_report -csynthDesign -model event_queue_kernel -o /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/syn/report/csynth.rpt 
 Execute         AP::get_flow_target_display_name
 Execute           get_solution -flow_target 
@@ -566,7 +562,7 @@ Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/c
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
 Command       ap_source done; 0.11 sec.
-INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=5.000 (was NA)
+INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=5 (was NA)
 INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::generate_ip_cores gen_sim_model='1' gen_fp_models='0' gen_for_export='0' dstSCDir='' dstVhdlDir='/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/vhdl' dstVlogDir='/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/vlog' tclDir='/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db' modelList='event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W
 event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W
 event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W
@@ -576,27 +572,27 @@ event_queue_kernel_Pipeline_VITIS_LOOP_33_1
 event_queue_kernel
 ' expOnly='0'
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.compgen.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.compgen.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.compgen.tcl 
 INFO: [RTMG 210-278] Implementing memory 'event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs with power-on initialization.
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 INFO: [RTMG 210-278] Implementing memory 'event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs with power-on initialization.
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 INFO: [RTMG 210-278] Implementing memory 'event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs with power-on initialization.
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 INFO: [RTMG 210-278] Implementing memory 'event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs with power-on initialization.
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute         ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute         ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 Command       ap_source done; 0.14 sec.
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.96 seconds. CPU system time: 0.09 seconds. Elapsed time: 1.19 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.58 seconds. CPU system time: 0.09 seconds. Elapsed time: 0.8 seconds; current allocated memory: 840.184 MB.
 INFO-FLOW: DBG:PROC: ::HLSREPORTS::create_csynth_xml bind_info_var='bind_info' RtlSubPrefix='event_queue_kernel_' outfile=''
 INFO-FLOW: Running: create_csynth_xml read xml data
 INFO-FLOW: Done: create_csynth_xml read xml data time: 0 seconds per iteration
@@ -807,8 +803,8 @@ Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solut
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.tbgen.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
 Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 Execute       get_solution -flow_target 
 Execute       get_config_rtl -kernel_profile 
 Execute       get_config_rtl -kernel_profile 
@@ -820,33 +816,33 @@ Execute       source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solut
 Execute       get_config_export -ip_xdc_file 
 Execute       get_config_export -ip_xdc_ooc_file 
 Execute       get_config_debug -directory 
-INFO-FLOW: DBG:PROC: ::HLSREPORTS::add_csynth_report_sections bind_info_dict='adapter_nodes {} report_dict {TOPINST event_queue_kernel MODULE2INSTS {event_queue_kernel event_queue_kernel event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 event_queue_kernel_Pipeline_VITIS_LOOP_33_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480} INST2MODULE {event_queue_kernel event_queue_kernel grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 event_queue_kernel_Pipeline_VITIS_LOOP_33_1} INSTDATA {event_queue_kernel {DEPTH 1 CHILDREN {grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480}} grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 {DEPTH 2 CHILDREN {}} grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 {DEPTH 2 CHILDREN {}}} MODULEDATA {event_queue_kernel_Pipeline_VITIS_LOOP_49_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME ret_V_fu_386_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1541 VARIABLE ret_V LOOP VITIS_LOOP_49_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME child_V_fu_456_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE child_V LOOP VITIS_LOOP_49_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} event_queue_kernel_Pipeline_VITIS_LOOP_33_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME i_2_fu_351_p2 SOURCE cpp/EventQueue.hpp:33 VARIABLE i_2 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln1559_fu_289_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE add_ln1559 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE sub PRAGMA {} RTLNAME sub_ln1559_fu_303_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE sub_ln1559 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op sub}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE sub PRAGMA {} RTLNAME sub_ln1559_1_fu_319_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE sub_ln1559_1 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op sub}}} AREA {DSP 0 BRAM 0 URAM 0}} event_queue_kernel {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln887_fu_628_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887 VARIABLE add_ln887 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_612_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_send_time_V_U SOURCE {} VARIABLE g_event_queue_heap_send_time_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_t2p PRAGMA {} RTLNAME g_event_queue_heap_recv_time_V_U SOURCE {} VARIABLE g_event_queue_heap_recv_time_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_t2p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_data_V_U SOURCE {} VARIABLE g_event_queue_heap_data_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_sender_id_V_U SOURCE {} VARIABLE g_event_queue_heap_sender_id_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_receiver_id_V_U SOURCE {} VARIABLE g_event_queue_heap_receiver_id_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_is_anti_message_V_U SOURCE {} VARIABLE g_event_queue_heap_is_anti_message_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}}} AREA {DSP 0 BRAM 0 URAM 0}}}}'
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::add_csynth_report_sections bind_info_dict='adapter_nodes {} report_dict {TOPINST event_queue_kernel MODULE2INSTS {event_queue_kernel event_queue_kernel event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 event_queue_kernel_Pipeline_VITIS_LOOP_33_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480} INST2MODULE {event_queue_kernel event_queue_kernel grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 event_queue_kernel_Pipeline_VITIS_LOOP_33_1} INSTDATA {event_queue_kernel {DEPTH 1 CHILDREN {grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480}} grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 {DEPTH 2 CHILDREN {}} grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 {DEPTH 2 CHILDREN {}}} MODULEDATA {event_queue_kernel_Pipeline_VITIS_LOOP_49_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME ret_V_fu_386_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1541 VARIABLE ret_V LOOP VITIS_LOOP_49_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME child_V_fu_456_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE child_V LOOP VITIS_LOOP_49_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}}} AREA {DSP 0 BRAM 0 URAM 0}} event_queue_kernel_Pipeline_VITIS_LOOP_33_1 {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME i_2_fu_351_p2 SOURCE cpp/EventQueue.hpp:33 VARIABLE i_2 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln1559_fu_289_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE add_ln1559 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE sub PRAGMA {} RTLNAME sub_ln1559_fu_303_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE sub_ln1559 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op sub}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE sub PRAGMA {} RTLNAME sub_ln1559_1_fu_319_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:1559 VARIABLE sub_ln1559_1 LOOP VITIS_LOOP_33_1 BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op sub}}} AREA {DSP 0 BRAM 0 URAM 0}} event_queue_kernel {BINDINFO {{BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln887_fu_628_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887 VARIABLE add_ln887 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME add_ln886_fu_612_p2 SOURCE /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886 VARIABLE add_ln886 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_op add}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_send_time_V_U SOURCE {} VARIABLE g_event_queue_heap_send_time_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 1 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_s2p PRAGMA {} RTLNAME g_event_queue_heap_recv_time_V_U SOURCE {} VARIABLE g_event_queue_heap_recv_time_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 2 URAM 0 DISPNAME {bind_storage ram_s2p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_data_V_U SOURCE {} VARIABLE g_event_queue_heap_data_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 1 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_sender_id_V_U SOURCE {} VARIABLE g_event_queue_heap_sender_id_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 1 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_receiver_id_V_U SOURCE {} VARIABLE g_event_queue_heap_receiver_id_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 1 URAM 0 DISPNAME {bind_storage ram_1p}} {BINDTYPE storage ID {} IMPL auto LATENCY 1 OPTYPE ram_1p PRAGMA {} RTLNAME g_event_queue_heap_is_anti_message_V_U SOURCE {} VARIABLE g_event_queue_heap_is_anti_message_V LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 DISPNAME {bind_storage ram_1p}}} AREA {DSP 0 BRAM 6 URAM 0}}}}'
 INFO-FLOW: DBG:PUTS:      update_csynth_reports json2rpt_hw_sw_interfaces
 INFO-FLOW: Running: gen_csynth_sec_pragma
 INFO-FLOW: Done: gen_csynth_sec_pragma time: 0 seconds per iteration
 INFO-FLOW: DBG:PUTS:      update_csynth_reports wrote xml
 INFO-FLOW: DBG:PUTS:      update_csynth_reports appended to csynth rpt file
-INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.24 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.32 seconds; current allocated memory: 840.184 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.24 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.31 seconds; current allocated memory: 840.184 MB.
 INFO: [VHDL 208-304] Generating VHDL RTL for event_queue_kernel.
 INFO: [VLOG 209-307] Generating Verilog RTL for event_queue_kernel.
 Execute       syn_report -model event_queue_kernel -printsummary 
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
-INFO: [HLS 200-789] **** Estimated Fmax: 363.50 MHz
-Command     autosyn done; 3.58 sec.
-Command   csynth_design done; 29.28 sec.
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 17.58 seconds. CPU system time: 2.37 seconds. Elapsed time: 29.28 seconds; current allocated memory: 64.000 MB.
-Command ap_source done; 32.63 sec.
+INFO: [HLS 200-789] **** Estimated Fmax: 276.01 MHz
+Command     autosyn done; 2.59 sec.
+Command   csynth_design done; 28.57 sec.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 16.82 seconds. CPU system time: 2.4 seconds. Elapsed time: 28.57 seconds; current allocated memory: 64.000 MB.
+Command ap_source done; 32.52 sec.
 Execute cleanup_all 
-INFO-FLOW: Workspace /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1 opened at Sat Jul 27 00:11:51 EDT 2024
+INFO-FLOW: Workspace /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1 opened at Sun Jul 28 03:50:05 EDT 2024
 Execute     ap_set_clock -name default -period 5 -unit ns -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
-Execute     set_part xcvu9p-flga2104-2-i 
-Execute       create_platform xcvu9p-flga2104-2-i -board  
+Execute     set_part xczu7ev-ffvf1517-3-e 
+Execute       create_platform xczu7ev-ffvf1517-3-e -board  
 DBG:HLSDevice: Trying to load device library: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
 DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/data/parts/arch.xml
 DBG:HLSDevice: init success
-INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
-Command       create_platform done; 3 sec.
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvf1517-3-e'
+Command       create_platform done; 2.97 sec.
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -859,10 +855,9 @@ Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/c
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Command       ap_source done; 0.11 sec.
-Execute       ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 Execute       config_compile -quiet -complex-mul-dsp=0 
-Command     set_part done; 3.13 sec.
+Command     set_part done; 3.11 sec.
 Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Execute     get_config_interface -m_axi_latency 
@@ -870,13 +865,19 @@ Execute     get_config_interface -m_axi_alignment_byte_size
 Execute     get_config_interface -m_axi_max_widen_bitwidth 
 Execute     get_config_interface -default_interface 
 Execute     get_config_rtl -register_reset_num 
-Execute     send_msg_by_id INFO @200-1464@%s config_interface -m_axi_latency=0 
-INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
-Execute     config_interface -m_axi_latency=0 
-Command   open_solution done; 3.15 sec.
-Execute   set_part xcvu9p-flga2104-2-i 
-INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
-Execute     create_platform xcvu9p-flga2104-2-i -board  
+Execute     send_msg_by_id INFO @200-1464@%s config_export -format=ip_catalog 
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+Execute     config_export -format=ip_catalog 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -rtl=verilog 
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+Execute     config_export -rtl=verilog 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -vivado_clock=200MHz 
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=200MHz
+Execute     config_export -vivado_clock=200MHz 
+Command   open_solution done; 3.13 sec.
+Execute   set_part xczu7ev-ffvf1517-3-e 
+INFO: [HLS 200-1510] Running: set_part xczu7ev-ffvf1517-3-e 
+Execute     create_platform xczu7ev-ffvf1517-3-e -board  
 Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
@@ -889,13 +890,370 @@ Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/com
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command     ap_source done; 0.11 sec.
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 Execute     config_compile -quiet -complex-mul-dsp=0 
-Command   set_part done; 0.14 sec.
+Command   set_part done; 0.15 sec.
 Execute   create_clock -period 200MHz -name default 
 INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
-Execute   config_interface -m_axi_latency 0 
-INFO: [HLS 200-1510] Running: config_interface -m_axi_latency 0 
+Execute   config_export -format ip_catalog -rtl verilog -vivado_clock 200MHz 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vivado_clock 200MHz 
+Execute   export_design -flow syn -rtl verilog -format ip_catalog 
+INFO: [HLS 200-1510] Running: export_design -flow syn -rtl verilog -format ip_catalog 
+Execute     get_config_export -description 
+Execute     get_config_export -display_name 
+Execute     get_config_export -ipname 
+Execute     get_config_export -library 
+Execute     get_config_export -output 
+Execute     get_config_export -taxonomy 
+Execute     get_config_export -vendor 
+Execute     get_config_export -version 
+Execute     get_config_export -xo 
+Execute     config_export -format=ip_catalog -rtl=verilog 
+INFO-FLOW: DBG:PUTS: export_design_wrap: -format ip_catalog -flow syn -rtl verilog
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -vivado_clock 
+Execute     get_top 
+Execute     get_config_export -ipname 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_config_rtl -module_auto_prefix 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_solution -flow_target 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+INFO-FLOW: DBG:PUTS:   auto_impl: pack: -export -rtl verilog
+INFO-FLOW: DBG:PROC: ::AESL_AUTOIMPL::auto_impl args='-export -rtl verilog'
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: automg_wrap -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::auto_generate args='-export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag'
+INFO-FLOW: DBG:PUTS:     auto_generate -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     get_config_export -ip_xdc_file 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: read_platform_lib /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=5 (was NA)
+INFO-FLOW: DBG:PUTS:       initCTypeInfo top_module=event_queue_kernel xml_exists=0
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     get_config_rtl -deadlock_detection 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     get_config_rtl -module_prefix 
+INFO-FLOW: DBG:PUTS:       cosim_export_main adding deadlock detection to event_queue_kernel
+INFO-FLOW: DBG:PUTS: Skipping loadAnalyze_DB, #g_database=3
+INFO-FLOW: DBG:PUTS:       generate_json generate_bd_files=0 generate_xo_files=false #modelList=7 #gSsdmPorts=0
+INFO-FLOW: DBG:PROC: ::AP::DESIGN_DATA::generate_json generate_bd_files='0' generate_xo_files='false' modelList='event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W
+event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W
+event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W
+event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W
+event_queue_kernel_Pipeline_VITIS_LOOP_49_1
+event_queue_kernel_Pipeline_VITIS_LOOP_33_1
+event_queue_kernel
+' rtl_lang='vlog' bootstrap_tcl='false' outdir='' outfilename=''
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_solution -flow_target 
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/top-io-be.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.compgen.dataonly.tcl 
+Execute     get_config_export -format 
+Execute     get_config_export -vendor 
+Execute     get_config_export -library 
+Execute     get_config_export -version 
+Execute     get_config_export -ipname 
+Execute     get_config_export -taxonomy 
+Execute     get_config_export -description 
+Execute     get_config_export -display_name 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_49_1.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel_Pipeline_VITIS_LOOP_33_1.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     get_solution -flow_target 
+Execute     get_config_rtl -kernel_profile 
+Execute     get_config_rtl -kernel_profile 
+Execute     get_config_rtl -stall_sig_gen 
+Execute     get_config_rtl -profile 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.constraint.tcl 
+Execute     sc_get_clocks event_queue_kernel 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -ip_xdc_file 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     get_config_debug -directory 
+Execute     get_config_rtl -deadlock_detection 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     get_config_rtl -module_prefix 
+INFO-FLOW: DBG:PUTS:       cosim_export_main adding deadlock detection to event_queue_kernel
+Execute     get_config_export -format 
+INFO-FLOW: DBG:PUTS:       generate_ip_script #gSsdmPorts=0 g_lang=vlog is_sdaccel=false is_sdsoc=true xo_file=
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_debug -directory 
+INFO-FLOW: DBG:PUTS:       generate_top_info
+INFO-FLOW: DBG:PUTS:       prepArgInfo -> loadAnalyze_DB top_module=event_queue_kernel
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     get_config_export -ip_xdc_file 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.constraint.tcl 
+INFO-FLOW: DBG:PUTS:       generate_ipi_example_script
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+INFO-FLOW: DBG:PUTS:       generate_syn_sh
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:       generate_imp_constraints
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.constraint.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+INFO-FLOW: DBG:PUTS:       delete-temp-dirs (skipped for debug)
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+INFO-FLOW: DBG:PUTS: read_platform_lib /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+INFO-FLOW: DBG:PUTS:     IP package: exec /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/ip/pack.sh
+INFO-FLOW: DBG:PUTS:     IP package: success /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/ip/pack.sh
+INFO-FLOW: DBG:PUTS:   auto_impl: eval: -flow syn -rtl verilog
+INFO-FLOW: DBG:PROC: ::AESL_AUTOIMPL::auto_impl args='-flow syn -rtl verilog'
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: automg_wrap -rtl vlog -tool Vivado -impltomg_flag
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::auto_generate args='-rtl vlog -tool Vivado -impltomg_flag'
+INFO-FLOW: DBG:PUTS:     auto_generate -rtl vlog -tool Vivado -impltomg_flag
+Execute     get_config_export -xo 
+Execute     get_config_export -format 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: read_platform_lib /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+INFO-FLOW: DBG:PUTS:       generate_syn_sh
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:       generate_imp_constraints
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.constraint.tcl 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
+INFO-FLOW: DBG:PUTS:       delete-temp-dirs (skipped for debug)
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+INFO-FLOW: DBG:PUTS: read_platform_lib /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/common.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/generic/autopilot/interface.gen 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/autopilot.rtl.models.tcl 
+Execute     get_config_export -vivado_synth_run_properties 
+Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
+Execute     get_config_export -vivado_synth_strategy 
+Execute     get_config_export -vivado_synth_design_args 
+Execute     get_config_export -vivado_impl_run_properties 
+Execute     get_config_export -vivado_impl_strategy 
+Execute     get_config_export -vivado_phys_opt 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
+Execute     get_config_export -vivado_bd_cell_properties 
+Execute     get_config_export -vivado_report_level 
+Execute     get_config_export -vivado_max_timing_paths 
+Execute     get_config_export -vivado_ip_cache 
+INFO-FLOW: DBG:PUTS: debug_in_auto_impl: vlog syn exec /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/implsyn.sh
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::auto_impl_report topinfo_dict='RtlTopPrefix {} RtlSubPrefix event_queue_kernel_ TopModuleNoPrefix event_queue_kernel TopModuleWithPrefix event_queue_kernel' export_design_flow='syn' impl_dir='/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl' lang='verilog' out_dir=''
+INFO-FLOW: DBG:PUTS:     auto_impl_report: syn processing xml
+Execute     get_part 
+Execute     ap_part_info -quiet -data family -name xczu7ev-ffvf1517-3-e 
+Execute     get_project -name 
+Execute     get_solution -name 
+Execute     get_solution -flow_target 
+Execute     get_clock_period 
+Execute     get_clock_uncertainty 
+Execute     get_config_export -ip_xdc_file 
+Execute     get_config_export -ip_xdc_ooc_file 
+Execute     get_config_export -vivado_synth_strategy 
+Execute     get_config_export -vivado_synth_design_args 
+Execute     get_config_export -vivado_report_level 
+Execute     get_config_export -vivado_max_timing_paths 
+INFO-FLOW: DBG:PUTS:     writing export xml file: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/report/verilog/export_syn.xml
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::auto_impl_report_txt xml_root='domNode0x7f8db4f30c58' export_design_flow='syn' export_rpt='/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/report/verilog/export_syn.rpt' rpt_txt_var=''
+Execute     get_solution -directory 
+INFO-FLOW: DBG:PUTS:     wrote export rpt file: export_syn.rpt
+Execute     get_config_export -output 
+Execute     send_msg_by_id INFO @200-802@%s pdes_fpga_vitis/solution1/impl/export.zip 
+INFO: [HLS 200-802] Generated output file pdes_fpga_vitis/solution1/impl/export.zip
+Command   export_design done; 281.46 sec.
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 204.9 seconds. CPU system time: 38.6 seconds. Elapsed time: 281.46 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; 284.77 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1 opened at Sun Jul 28 04:00:34 EDT 2024
+Execute     ap_set_clock -name default -period 5 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+Execute     set_part xczu7ev-ffvf1517-3-e 
+Execute       create_platform xczu7ev-ffvf1517-3-e -board  
+DBG:HLSDevice: Trying to load device library: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lib/lnx64.o/librdi_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xczu7ev-ffvf1517-3-e'
+Command       create_platform done; 2.94 sec.
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 3.07 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     get_config_interface -m_axi_latency 
+Execute     get_config_interface -m_axi_alignment_byte_size 
+Execute     get_config_interface -m_axi_max_widen_bitwidth 
+Execute     get_config_interface -default_interface 
+Execute     get_config_rtl -register_reset_num 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -format=ip_catalog 
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+Execute     config_export -format=ip_catalog 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -rtl=verilog 
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+Execute     config_export -rtl=verilog 
+Execute     send_msg_by_id INFO @200-1464@%s config_export -vivado_clock=200MHz 
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=200MHz
+Execute     config_export -vivado_clock=200MHz 
+Command   open_solution done; 3.09 sec.
+Execute   set_part xczu7ev-ffvf1517-3-e 
+INFO: [HLS 200-1510] Running: set_part xczu7ev-ffvf1517-3-e 
+Execute     create_platform xczu7ev-ffvf1517-3-e -board  
+Execute     source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/common/xilinx.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/plb46.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/axi4.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfir.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
+Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.15 sec.
+Execute   create_clock -period 200MHz -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 200MHz -name default 
+Execute   config_export -format ip_catalog -rtl verilog -vivado_clock 200MHz 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog -vivado_clock 200MHz 
 Execute   cosim_design 
 INFO: [HLS 200-1510] Running: cosim_design 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
@@ -920,9 +1278,9 @@ Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/com
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/xfft.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/ip/util.gen 
 Execute       source /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/xilinx/DSP48/dsp48.gen 
-INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=5.000 (was NA)
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data names -quiet 
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info -quiet 
+INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=5 (was NA)
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data names -quiet 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info -quiet 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
@@ -931,21 +1289,21 @@ Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solutio
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
 INFO: [COSIM 212-47] Using XSIM for RTL simulation.
 INFO: [COSIM 212-14] Instrumenting C test bench ...
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: TB processing: /n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/main.cpp_pre.cpp
 Execute     clang_tidy xilinx-tb-process -desc tb-process /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/main.cpp_pre.cpp.tb.cpp std=c++14 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-tb-process -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/main.cpp_pre.cpp.tb.cpp -- -std=c++14 -fhls -ferror-limit=0
-Command     clang_tidy done; 1.36 sec.
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command     clang_tidy done; 1.34 sec.
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: TB processing: /n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/EventQueue.cpp_pre.cpp
 Execute     clang_tidy xilinx-tb-process -desc tb-process /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/EventQueue.cpp_pre.cpp.tb.cpp std=c++14 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-tb-process -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/EventQueue.cpp_pre.cpp.tb.cpp -- -std=c++14 -fhls -ferror-limit=0
-Command     clang_tidy done; 2.17 sec.
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Command     clang_tidy done; 2.21 sec.
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO-FLOW: TB processing: /n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/StateBuffer.cpp_pre.cpp
 Execute     clang_tidy xilinx-tb-process -desc tb-process /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/StateBuffer.cpp_pre.cpp.tb.cpp std=c++14 
 INFO-FLOW: exec /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-tb-process -fix-errors /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/StateBuffer.cpp_pre.cpp.tb.cpp -- -std=c++14 -fhls -ferror-limit=0
-Command     clang_tidy done; 1.19 sec.
+Command     clang_tidy done; 1.21 sec.
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/./sim/autowrap/testbench/tb.status.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/global.setting.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
@@ -953,12 +1311,12 @@ Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solutio
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.rtl_wrap.cfg.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 Execute     source .run_sim.tcl 
 INFO: [COSIM 212-302] Starting C TB testing ... 
-Command     ap_source done; 0.35 sec.
+Command     ap_source done; 0.33 sec.
 INFO: [COSIM 212-333] Generating C post check test bench ...
-Execute     ap_part_info -name xcvu9p-flga2104-2-i -data info 
+Execute     ap_part_info -name xczu7ev-ffvf1517-3-e -data info 
 INFO: [COSIM 212-12] Generating RTL test bench ...
 Execute     source ../tv/cdatafile/ref.tcl 
 Execute     source /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.autopilot/db/event_queue_kernel.tbgen.tcl 
@@ -986,9 +1344,9 @@ Execute       source .sim.status.tcl
 INFO: [COSIM 212-323] Starting verilog simulation. 
 INFO: [COSIM 212-15] Starting XSIM ...
 INFO: [COSIM 212-316] Starting C post checking ...
-Command     ap_source done; 63.65 sec.
+Command     ap_source done; 14.8 sec.
 INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
-Command   cosim_design done; 80.86 sec.
-INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 21.85 seconds. CPU system time: 4.06 seconds. Elapsed time: 80.86 seconds; current allocated memory: 0.000 MB.
-Command ap_source done; 84.19 sec.
+Command   cosim_design done; 33.6 sec.
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 22.92 seconds. CPU system time: 3.78 seconds. Elapsed time: 33.6 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; 36.87 sec.
 Execute cleanup_all 

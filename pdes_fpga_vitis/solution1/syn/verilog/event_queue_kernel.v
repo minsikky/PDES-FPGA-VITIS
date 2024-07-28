@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="event_queue_kernel_event_queue_kernel,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xcvu9p-flga2104-2-i,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=2.751000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=1635,HLS_SYN_LUT=2566,HLS_VERSION=2022_1}" *)
+(* CORE_GENERATION_INFO="event_queue_kernel_event_queue_kernel,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvf1517-3-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.623000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=6,HLS_SYN_DSP=0,HLS_SYN_FF=1538,HLS_SYN_LUT=2305,HLS_VERSION=2022_1}" *)
 
 module event_queue_kernel (
         ap_clk,
@@ -71,7 +71,6 @@ reg    g_event_queue_heap_recv_time_V_we0;
 reg   [31:0] g_event_queue_heap_recv_time_V_d0;
 wire   [31:0] g_event_queue_heap_recv_time_V_q0;
 reg    g_event_queue_heap_recv_time_V_ce1;
-reg    g_event_queue_heap_recv_time_V_we1;
 wire   [31:0] g_event_queue_heap_recv_time_V_q1;
 reg   [6:0] g_event_queue_heap_data_V_address0;
 reg    g_event_queue_heap_data_V_ce0;
@@ -157,10 +156,10 @@ wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_hea
 wire   [0:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_d0;
 wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address0;
 wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0;
+wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0;
 wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1;
 wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce1;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we1;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d1;
 wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start;
 wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_done;
 wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_idle;
@@ -278,8 +277,6 @@ g_event_queue_heap_recv_time_V_U(
     .q0(g_event_queue_heap_recv_time_V_q0),
     .address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1),
     .ce1(g_event_queue_heap_recv_time_V_ce1),
-    .we1(g_event_queue_heap_recv_time_V_we1),
-    .d1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d1),
     .q1(g_event_queue_heap_recv_time_V_q1)
 );
 
@@ -378,11 +375,11 @@ event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_k
     .g_event_queue_heap_is_anti_message_V_q0(g_event_queue_heap_is_anti_message_V_q0),
     .g_event_queue_heap_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address0),
     .g_event_queue_heap_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce0),
+    .g_event_queue_heap_recv_time_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0),
+    .g_event_queue_heap_recv_time_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0),
     .g_event_queue_heap_recv_time_V_q0(g_event_queue_heap_recv_time_V_q0),
     .g_event_queue_heap_recv_time_V_address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1),
     .g_event_queue_heap_recv_time_V_ce1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce1),
-    .g_event_queue_heap_recv_time_V_we1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we1),
-    .g_event_queue_heap_recv_time_V_d1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d1),
     .g_event_queue_heap_recv_time_V_q1(g_event_queue_heap_recv_time_V_q1)
 );
 
@@ -978,6 +975,8 @@ always @ (*) begin
         g_event_queue_heap_recv_time_V_d0 = {{input_r_in_sig[64:33]}};
     end else if ((1'b1 == ap_CS_fsm_state8)) begin
         g_event_queue_heap_recv_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        g_event_queue_heap_recv_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0;
     end else begin
         g_event_queue_heap_recv_time_V_d0 = 'bx;
     end
@@ -988,16 +987,10 @@ always @ (*) begin
         g_event_queue_heap_recv_time_V_we0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state8)) begin
         g_event_queue_heap_recv_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        g_event_queue_heap_recv_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0;
     end else begin
         g_event_queue_heap_recv_time_V_we0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_we1 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we1;
-    end else begin
-        g_event_queue_heap_recv_time_V_we1 = 1'b0;
     end
 end
 

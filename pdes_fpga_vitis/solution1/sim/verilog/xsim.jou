@@ -2,8 +2,8 @@
 # xsim v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sat Jul 27 00:12:26 2024
-# Process ID: 12271
+# Start of session at: Sun Jul 28 04:01:06 2024
+# Process ID: 22057
 # Current directory: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog
 # Command line: xsim -mode tcl -source {xsim.dir/event_queue_kernel/xsim_script.tcl}
 # Log file: /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/xsim.log

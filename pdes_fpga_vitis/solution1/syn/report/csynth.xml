@@ -4,8 +4,8 @@
     </ReportVersion>
     <UserAssignments>
         <unit>ns</unit>
-        <ProductFamily>virtexuplus</ProductFamily>
-        <Part>xcvu9p-flga2104-2-i</Part>
+        <ProductFamily>zynquplus</ProductFamily>
+        <Part>xczu7ev-ffvf1517-3-e</Part>
         <TopModelName>event_queue_kernel</TopModelName>
         <TargetClockPeriod>5.00</TargetClockPeriod>
         <ClockUncertainty>1.35</ClockUncertainty>
@@ -15,7 +15,7 @@
         <PipelineType>no</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>2.751</EstimatedClockPeriod>
+            <EstimatedClockPeriod>3.623</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
@@ -31,18 +31,18 @@
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
-            <BRAM_18K>0</BRAM_18K>
-            <FF>1635</FF>
-            <LUT>2566</LUT>
+            <BRAM_18K>6</BRAM_18K>
+            <FF>1538</FF>
+            <LUT>2305</LUT>
             <URAM>0</URAM>
             <DSP>0</DSP>
         </Resources>
         <AvailableResources>
-            <BRAM_18K>4320</BRAM_18K>
-            <DSP>6840</DSP>
-            <FF>2364480</FF>
-            <LUT>1182240</LUT>
-            <URAM>960</URAM>
+            <BRAM_18K>624</BRAM_18K>
+            <DSP>1728</DSP>
+            <FF>460800</FF>
+            <LUT>230400</LUT>
+            <URAM>96</URAM>
         </AvailableResources>
     </AreaEstimates>
     <InterfaceSummary>
@@ -217,7 +217,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.751</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.623</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -236,7 +236,7 @@
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
                         <PipelineII>3</PipelineII>
-                        <PipelineDepth>4</PipelineDepth>
+                        <PipelineDepth>5</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
                     </VITIS_LOOP_49_1>
@@ -244,20 +244,20 @@
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>628</FF>
-                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <FF>660</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>871</LUT>
-                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -275,7 +275,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.413</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -303,19 +303,19 @@
             <AreaEstimates>
                 <Resources>
                     <FF>138</FF>
-                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
                     <LUT>369</LUT>
-                    <AVAIL_LUT>1182240</AVAIL_LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>4320</AVAIL_BRAM>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
                     <UTIL_BRAM>0</UTIL_BRAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
@@ -332,7 +332,7 @@
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.751</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.623</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -347,31 +347,31 @@
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>4320</AVAIL_BRAM>
-                    <UTIL_BRAM>0</UTIL_BRAM>
-                    <FF>1635</FF>
-                    <AVAIL_FF>2364480</AVAIL_FF>
+                    <BRAM_18K>6</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>~0</UTIL_BRAM>
+                    <FF>1538</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>2566</LUT>
-                    <AVAIL_LUT>1182240</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
+                    <LUT>2305</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
-                    <AVAIL_URAM>960</AVAIL_URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
                     <DSP>0</DSP>
-                    <AVAIL_DSP>6840</AVAIL_DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
                     <UTIL_DSP>0</UTIL_DSP>
                 </Resources>
             </AreaEstimates>
             <BindNodes>
                 <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_628_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
                 <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_612_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_send_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_send_time_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_t2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_t2p" PRAGMA="" RTLNAME="g_event_queue_heap_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_recv_time_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_data_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_data_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_sender_id_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_receiver_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_send_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_send_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="2" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="g_event_queue_heap_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_recv_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_data_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_data_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_sender_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_receiver_id_V"/>
                 <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_heap_is_anti_message_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_heap_is_anti_message_V"/>
             </BindNodes>
         </Module>
@@ -412,6 +412,7 @@
         <config_storage>
             <ENTRY auto_srl_max_bits="1024 fifo" auto_srl_max_depth="2 fifo" impl="autosrl fifo" type="fifo"/>
         </config_storage>
+        <config_export vivado_clock="200MHz"/>
     </UserConfigCommands>
     <Args>
         <Arg ArgName="input" index="0" direction="in" srcType="EventQueueInput&amp;" srcSize="192">

@@ -2,7 +2,7 @@
 set TopModule "event_queue_kernel"
 set ClockPeriod 5
 set ClockList ap_clk
-set HasVivadoClockPeriod 0
+set HasVivadoClockPeriod 1
 set CombLogicFlag 0
 set PipelineFlag 0
 set DataflowTaskPipelineFlag 1
@@ -41,7 +41,7 @@ set ExportMCPathFlag 0
 set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
-set TargetInfo xcvu9p:-flga2104:-2-i
+set TargetInfo xczu7ev:-ffvf1517:-3-e
 set SourceFiles {sc {} c {../../cpp/EventQueue.cpp ../../cpp/StateBuffer.cpp}}
 set SourceFlags {sc {} c {{} {}}}
 set DirectiveFile /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive
@@ -61,5 +61,5 @@ set DefaultPlatform DefaultPlatform
 set multiClockList {}
 set SCPortClockMap {}
 set intNbAccess 0
-set PlatformFiles {{DefaultPlatform {xilinx/virtexuplus/virtexuplus}}}
+set PlatformFiles {{DefaultPlatform {xilinx/zynquplus/zynquplus}}}
 set HPFPO 0

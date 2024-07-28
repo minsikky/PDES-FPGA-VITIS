@@ -3,13 +3,13 @@
 ================================================================
 == Vitis HLS Report for 'event_queue_kernel_Pipeline_VITIS_LOOP_49_1'
 ================================================================
-* Date:           Sat Jul 27 00:10:17 2024
+* Date:           Sun Jul 28 03:49:53 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
 * Solution:       solution1 (Vivado IP Flow Target)
-* Product family: virtexuplus
-* Target device:  xcvu9p-flga2104-2-i
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvf1517-3-e
 
 
 ================================================================
@@ -20,7 +20,7 @@
     +--------+---------+----------+------------+
     |  Clock |  Target | Estimated| Uncertainty|
     +--------+---------+----------+------------+
-    |ap_clk  |  5.00 ns|  2.751 ns|     1.35 ns|
+    |ap_clk  |  5.00 ns|  3.623 ns|     1.35 ns|
     +--------+---------+----------+------------+
 
 + Latency: 
@@ -41,7 +41,7 @@
         |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
         |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
         +-------------------+---------+---------+----------+-----------+-----------+------+----------+
-        |- VITIS_LOOP_49_1  |        ?|        ?|         4|          3|          1|     ?|       yes|
+        |- VITIS_LOOP_49_1  |        ?|        ?|         5|          3|          1|     ?|       yes|
         +-------------------+---------+---------+----------+-----------+-----------+------+----------+
 
 
@@ -50,27 +50,23 @@
 == Utilization Estimates
 ================================================================
 * Summary: 
-+---------------------+---------+------+---------+---------+-----+
-|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
-+---------------------+---------+------+---------+---------+-----+
-|DSP                  |        -|     -|        -|        -|    -|
-|Expression           |        -|     -|        0|      605|    -|
-|FIFO                 |        -|     -|        -|        -|    -|
-|Instance             |        -|     -|        -|        -|    -|
-|Memory               |        -|     -|        -|        -|    -|
-|Multiplexer          |        -|     -|        -|      266|    -|
-|Register             |        -|     -|      628|        -|    -|
-+---------------------+---------+------+---------+---------+-----+
-|Total                |        0|     0|      628|      871|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available SLR        |     1440|  2280|   788160|   394080|  320|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available            |     4320|  6840|  2364480|  1182240|  960|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
-+---------------------+---------+------+---------+---------+-----+
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|     605|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|     266|    -|
+|Register         |        -|     -|     660|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     660|     871|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
 
 + Detail: 
     * Instance: 
@@ -91,17 +87,17 @@
     +-----------------------------------------+----------+----+---+----+------------+------------+
     |child_V_fu_456_p2                        |         +|   0|  0|  22|          15|           1|
     |ret_V_fu_386_p2                          |         +|   0|  0|  24|          17|           1|
-    |ap_predicate_tran4to6_state4             |       and|   0|  0|   2|           1|           1|
-    |addr_cmp11_fu_524_p2                     |      icmp|   0|  0|  29|          64|          64|
-    |addr_cmp17_fu_516_p2                     |      icmp|   0|  0|  29|          64|          64|
+    |ap_predicate_tran4to7_state4             |       and|   0|  0|   2|           1|           1|
+    |addr_cmp11_fu_522_p2                     |      icmp|   0|  0|  29|          64|          64|
+    |addr_cmp17_fu_514_p2                     |      icmp|   0|  0|  29|          64|          64|
     |addr_cmp23_fu_407_p2                     |      icmp|   0|  0|  29|          64|          64|
     |addr_cmp27_fu_416_p2                     |      icmp|   0|  0|  29|          64|          64|
     |addr_cmp31_fu_482_p2                     |      icmp|   0|  0|  29|          64|          64|
-    |addr_cmp37_fu_508_p2                     |      icmp|   0|  0|  29|          64|          64|
-    |addr_cmp5_fu_532_p2                      |      icmp|   0|  0|  29|          64|          64|
-    |addr_cmp_fu_540_p2                       |      icmp|   0|  0|  29|          64|          64|
+    |addr_cmp37_fu_506_p2                     |      icmp|   0|  0|  29|          64|          64|
+    |addr_cmp5_fu_530_p2                      |      icmp|   0|  0|  29|          64|          64|
+    |addr_cmp_fu_538_p2                       |      icmp|   0|  0|  29|          64|          64|
     |icmp_ln1073_1_fu_450_p2                  |      icmp|   0|  0|  20|          32|          32|
-    |icmp_ln1073_2_fu_496_p2                  |      icmp|   0|  0|  20|          32|          32|
+    |icmp_ln1073_2_fu_495_p2                  |      icmp|   0|  0|  20|          32|          32|
     |icmp_ln1073_fu_392_p2                    |      icmp|   0|  0|  13|          17|          17|
     |icmp_ln1077_fu_377_p2                    |      icmp|   0|  0|  13|          16|          16|
     |child_V_3_fu_371_p2                      |        or|   0|  0|  16|          16|           1|
@@ -156,21 +152,21 @@
     +-------------------------+----+----+-----+-----------+
     |           Name          | FF | LUT| Bits| Const Bits|
     +-------------------------+----+----+-----+-----------+
-    |addr_cmp11_reg_874       |   1|   0|    1|          0|
-    |addr_cmp17_reg_864       |   1|   0|    1|          0|
-    |addr_cmp23_reg_797       |   1|   0|    1|          0|
-    |addr_cmp27_reg_807       |   1|   0|    1|          0|
-    |addr_cmp37_reg_854       |   1|   0|    1|          0|
-    |addr_cmp5_reg_884        |   1|   0|    1|          0|
-    |addr_cmp_reg_894         |   1|   0|    1|          0|
+    |addr_cmp11_reg_878       |   1|   0|    1|          0|
+    |addr_cmp17_reg_868       |   1|   0|    1|          0|
+    |addr_cmp23_reg_795       |   1|   0|    1|          0|
+    |addr_cmp27_reg_805       |   1|   0|    1|          0|
+    |addr_cmp37_reg_858       |   1|   0|    1|          0|
+    |addr_cmp5_reg_888        |   1|   0|    1|          0|
+    |addr_cmp_reg_898         |   1|   0|    1|          0|
     |ap_CS_fsm                |   6|   0|    6|          0|
     |ap_enable_reg_pp0_iter0  |   1|   0|    1|          0|
     |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
-    |empty_reg_778            |   7|   0|    7|          0|
-    |icmp_ln1073_reg_787      |   1|   0|    1|          0|
-    |icmp_ln1077_reg_783      |   1|   0|    1|          0|
-    |index_V_1_reg_772        |  15|   0|   15|          0|
-    |index_V_2_reg_812        |  15|   0|   15|          0|
+    |empty_reg_776            |   7|   0|    7|          0|
+    |icmp_ln1073_reg_785      |   1|   0|    1|          0|
+    |icmp_ln1077_reg_781      |   1|   0|    1|          0|
+    |index_V_1_reg_770        |  15|   0|   15|          0|
+    |index_V_2_reg_810        |  15|   0|   15|          0|
     |index_V_fu_106           |  15|   0|   15|          0|
     |reuse_addr_reg14_fu_74   |  64|   0|   64|          0|
     |reuse_addr_reg20_fu_66   |  64|   0|   64|          0|
@@ -184,11 +180,12 @@
     |reuse_reg33_fu_62        |  32|   0|   32|          0|
     |reuse_reg7_fu_86         |  16|   0|   16|          0|
     |reuse_reg_fu_102         |   1|   0|    1|          0|
-    |zext_ln49_cast_reg_767   |  16|   0|   17|          1|
-    |zext_ln587_2_reg_817     |  15|   0|   64|         49|
-    |zext_ln587_3_reg_840     |  15|   0|   64|         49|
+    |reuse_select32_reg_835   |  32|   0|   32|          0|
+    |zext_ln49_cast_reg_765   |  16|   0|   17|          1|
+    |zext_ln587_2_reg_815     |  15|   0|   64|         49|
+    |zext_ln587_3_reg_843     |  15|   0|   64|         49|
     +-------------------------+----+----+-----+-----------+
-    |Total                    | 628|   0|  727|         99|
+    |Total                    | 660|   0|  759|         99|
     +-------------------------+----+----+-----+-----------+
 
 
@@ -238,11 +235,11 @@
 |g_event_queue_heap_is_anti_message_V_q0        |   in|    1|   ap_memory|         g_event_queue_heap_is_anti_message_V|         array|
 |g_event_queue_heap_recv_time_V_address0        |  out|    7|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 |g_event_queue_heap_recv_time_V_ce0             |  out|    1|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
+|g_event_queue_heap_recv_time_V_we0             |  out|    1|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
+|g_event_queue_heap_recv_time_V_d0              |  out|   32|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 |g_event_queue_heap_recv_time_V_q0              |   in|   32|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 |g_event_queue_heap_recv_time_V_address1        |  out|    7|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 |g_event_queue_heap_recv_time_V_ce1             |  out|    1|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
-|g_event_queue_heap_recv_time_V_we1             |  out|    1|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
-|g_event_queue_heap_recv_time_V_d1              |  out|   32|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 |g_event_queue_heap_recv_time_V_q1              |   in|   32|   ap_memory|               g_event_queue_heap_recv_time_V|         array|
 +-----------------------------------------------+-----+-----+------------+---------------------------------------------+--------------+
 

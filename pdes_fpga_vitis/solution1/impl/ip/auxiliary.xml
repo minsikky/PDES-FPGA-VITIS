@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="event_queue_kernel" xd:componentRef="event_queue_kernel" xd:initiationInterval="x" xd:clockPeriod="5" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="*(input)" xd:originalName="input" xd:direction="in" xd:interfaceRef="input_r" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="130"/>
+  <xd:arg xd:name="*(output_event)" xd:originalName="output_event" xd:direction="out" xd:interfaceRef="output_event" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="129"/>
+  <xd:arg xd:name="*(success)" xd:originalName="success" xd:direction="out" xd:interfaceRef="success" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+  <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
+  <xd:resourceEstimates xd:LUT="2305" xd:FF="1538" xd:BRAM="0" xd:DSP="0"/>
+</xd:acceleratorMap>
