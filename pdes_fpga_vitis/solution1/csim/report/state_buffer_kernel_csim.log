@@ -1,78 +1,9 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../cpp/StateBuffer.cpp in debug mode
+   Compiling ../../../../cpp/main.cpp in debug mode
+   Compiling ../../../../cpp/LinkedList.cpp in debug mode
    Generating csim.exe
-Final GVT: 16
-LP 0 states:
- LVT: 10, RNG state: 0
-LP 1 states:
- LVT: 110, RNG state: 0
- LVT: 100, RNG state: 0
- LVT: 90, RNG state: 0
- LVT: 80, RNG state: 0
- LVT: 70, RNG state: 0
- LVT: 15, RNG state: 0
-LP 2 states:
-LP 3 states:
-LP 4 states:
-LP 5 states:
-LP 6 states:
-LP 7 states:
-LP 8 states:
-LP 9 states:
-LP 10 states:
-LP 11 states:
-LP 12 states:
-LP 13 states:
-LP 14 states:
-LP 15 states:
-LP 16 states:
-LP 17 states:
-LP 18 states:
-LP 19 states:
-LP 20 states:
-LP 21 states:
-LP 22 states:
-LP 23 states:
-LP 24 states:
-LP 25 states:
-LP 26 states:
-LP 27 states:
-LP 28 states:
-LP 29 states:
-LP 30 states:
-LP 31 states:
-LP 32 states:
-LP 33 states:
-LP 34 states:
-LP 35 states:
-LP 36 states:
-LP 37 states:
-LP 38 states:
-LP 39 states:
-LP 40 states:
-LP 41 states:
-LP 42 states:
-LP 43 states:
-LP 44 states:
-LP 45 states:
-LP 46 states:
-LP 47 states:
-LP 48 states:
-LP 49 states:
-LP 50 states:
-LP 51 states:
-LP 52 states:
-LP 53 states:
-LP 54 states:
-LP 55 states:
-LP 56 states:
-LP 57 states:
-LP 58 states:
-LP 59 states:
-LP 60 states:
-LP 61 states:
-LP 62 states:
-LP 63 states:
+Pushing values: 0 10 20 30 40 50 60 70 80 90 
+Popping values: 90 80 70 60 50 40 30 20 10 0 (empty) (empty) 
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

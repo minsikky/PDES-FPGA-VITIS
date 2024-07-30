@@ -1,7 +1,7 @@
    Build using "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_state_buffer_kernel.cpp
    Compiling StateBuffer.cpp_pre.cpp.tb.cpp
    Compiling main.cpp_pre.cpp.tb.cpp
    Compiling EventQueue.cpp_pre.cpp.tb.cpp
-   Compiling apatb_event_queue_kernel.cpp
-   Compiling apatb_event_queue_kernel_ir.ll
+   Compiling apatb_state_buffer_kernel_ir.ll
    Generating cosim.tv.exe

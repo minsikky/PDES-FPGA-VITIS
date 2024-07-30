@@ -2,32 +2,32 @@
       "name": "",
       "directive": [
         {
-          "functionName": "event_queue_kernel",
+          "functionName": "state_buffer_kernel",
           "label": "",
           "functionLabel": "",
           "id": "1",
-          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "19",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "event_queue_kernel"
+                "value": "state_buffer_kernel"
               }]
           }
         },
         {
-          "functionName": "event_queue_kernel",
+          "functionName": "state_buffer_kernel",
           "label": "",
           "functionLabel": "",
           "id": "2",
-          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "19",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "event_queue_kernel"
+                "value": "state_buffer_kernel"
               }]
           }
         }

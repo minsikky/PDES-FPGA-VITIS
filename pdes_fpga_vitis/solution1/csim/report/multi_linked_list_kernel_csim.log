@@ -1,0 +1,37 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../cpp/main.cpp in debug mode
+   Compiling ../../../../cpp/LinkedList.cpp in debug mode
+   Generating csim.exe
+Pushing states:
+Pushed: LP 0, LVT 0, RNG 0
+Pushed: LP 1, LVT 10, RNG 100
+Pushed: LP 2, LVT 20, RNG 200
+Pushed: LP 3, LVT 30, RNG 300
+Pushed: LP 0, LVT 40, RNG 400
+Pushed: LP 1, LVT 50, RNG 500
+Pushed: LP 2, LVT 60, RNG 600
+Pushed: LP 3, LVT 70, RNG 700
+Pushed: LP 0, LVT 80, RNG 800
+Pushed: LP 1, LVT 90, RNG 900
+Pushed: LP 2, LVT 100, RNG 1000
+Pushed: LP 3, LVT 110, RNG 1100
+Pushed: LP 0, LVT 120, RNG 1200
+Pushed: LP 1, LVT 130, RNG 1300
+Pushed: LP 2, LVT 140, RNG 1400
+Pushed: LP 3, LVT 150, RNG 1500
+Pushed: LP 0, LVT 160, RNG 1600
+Pushed: LP 1, LVT 170, RNG 1700
+Pushed: LP 2, LVT 180, RNG 1800
+Pushed: LP 3, LVT 190, RNG 1900
+
+Committing up to LVT 100:
+Commit successful, new GVT: 100
+
+Popping states after commit:
+LP 0: (160,1600) (120,1200) (80,800) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (empty)
+LP 2: (180,1800) (140,1400) (100,1000) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (empty)
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

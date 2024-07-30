@@ -1,6 +1,7 @@
 set depth_list {
-{input_r 1}
-{output_event 1}
+{op 1}
+{state 1}
+{result 1}
 {success 1}
 }
-set trans_num 128
+set trans_num 37

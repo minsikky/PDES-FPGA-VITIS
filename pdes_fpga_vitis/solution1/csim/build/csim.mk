@@ -7,8 +7,6 @@ CSIM_DESIGN = 1
 
 __SIM_FPO__ = 1
 
-__HLS_FPO_v6_1__ = 1
-
 __SIM_MATHHLS__ = 1
 
 __SIM_FFT__ = 1
@@ -19,7 +17,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/EventQueue.cpp ../../../../cpp/StateBuffer.cpp
+HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/LinkedList.cpp ../../../../cpp/EventQueue.cpp
 
 override TARGET := csim.exe
 
@@ -49,8 +47,6 @@ IFLAG += -D__VITIS_HLS__
 
 IFLAG += -D__SIM_FPO__
 
-IFLAG += -D__HLS_FPO_v6_1__
-
 IFLAG += -D__SIM_FFT__
 
 IFLAG += -D__SIM_FIR__
@@ -78,14 +74,14 @@ $(ObjDir)/main.o: ../../../../cpp/main.cpp $(ObjDir)/.dir
 
 -include $(ObjDir)/main.d
 
+$(ObjDir)/LinkedList.o: ../../../../cpp/LinkedList.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/LinkedList.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/LinkedList.d
+
 $(ObjDir)/EventQueue.o: ../../../../cpp/EventQueue.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../cpp/EventQueue.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
 -include $(ObjDir)/EventQueue.d
-
-$(ObjDir)/StateBuffer.o: ../../../../cpp/StateBuffer.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/StateBuffer.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/StateBuffer.d

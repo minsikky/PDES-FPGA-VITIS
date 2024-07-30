@@ -1,0 +1,193 @@
+INFO: [COSIM-47] Using XSIM for RTL simulation.
+INFO: [COSIM-14] Instrumenting C test bench ...
+   Build using "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_state_buffer_kernel.cpp
+   Compiling StateBuffer.cpp_pre.cpp.tb.cpp
+   Compiling main.cpp_pre.cpp.tb.cpp
+   Compiling EventQueue.cpp_pre.cpp.tb.cpp
+   Compiling apatb_state_buffer_kernel_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM-302] Starting C TB testing ... 
+INFO: [COSIM-333] Generating C post check test bench ...
+INFO: [COSIM-12] Generating RTL test bench ...
+INFO: [COSIM-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM-323] Starting verilog simulation. 
+INFO: [COSIM-15] Starting XSIM ...
+INFO: [COSIM-316] Starting C post checking ...
+Pushing states:
+Pushed: LP 0, LVT 0, RNG 0
+Pushed: LP 1, LVT 10, RNG 100
+Pushed: LP 2, LVT 20, RNG 200
+Pushed: LP 3, LVT 30, RNG 300
+Pushed: LP 0, LVT 40, RNG 400
+Pushed: LP 1, LVT 50, RNG 500
+Pushed: LP 2, LVT 60, RNG 600
+Pushed: LP 3, LVT 70, RNG 700
+Pushed: LP 0, LVT 80, RNG 800
+Pushed: LP 1, LVT 90, RNG 900
+Pushed: LP 2, LVT 100, RNG 1000
+Pushed: LP 3, LVT 110, RNG 1100
+Pushed: LP 0, LVT 120, RNG 1200
+Pushed: LP 1, LVT 130, RNG 1300
+Pushed: LP 2, LVT 140, RNG 1400
+Pushed: LP 3, LVT 150, RNG 1500
+Pushed: LP 0, LVT 160, RNG 1600
+Pushed: LP 1, LVT 170, RNG 1700
+Pushed: LP 2, LVT 180, RNG 1800
+Pushed: LP 3, LVT 190, RNG 1900
+
+Rolling back LP 2 to LVT 70:
+Rollback successful for LP 2 to LVT 70
+
+Committing up to LVT 100:
+Commit successful, new GVT: 100
+
+Popping states after rollback and commit:
+LP 0: (160,1600) (120,1200) (80,800) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (empty)
+LP 2: (60,600) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (empty)
+Vivado Simulator v2022.1
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_state_buffer_kernel_top glbl -Oenable_linking_all_libraries -prj state_buffer_kernel.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_20 -L floating_point_v7_1_14 --lib ieee_proposed=./ieee_proposed -s state_buffer_kernel 
+Multi-threading is on. Using 10 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_list_lp_sizes_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_list_lp_sizes_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_list_nodes_state_lp_id_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_list_nodes_state_lp_id_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_state_buffer_kernel_Pipeline_VITIS_LOOP_101_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_state_buffer_kernel_Pipeline_VITIS_LOOP_101_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_list_nodes_next_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_list_nodes_next_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_list_nodes_state_lvt_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_list_nodes_state_lvt_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_state_buffer_kernel_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_list_lp_heads_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_list_lp_heads_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel_state_buffer_kernel_Pipeline_VITIS_LOOP_154_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module state_buffer_kernel_state_buffer_kernel_Pipeline_VITIS_LOOP_154_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.state_buffer_kernel_list_nodes_n...
+Compiling module xil_defaultlib.state_buffer_kernel_list_nodes_s...
+Compiling module xil_defaultlib.state_buffer_kernel_list_nodes_s...
+Compiling module xil_defaultlib.state_buffer_kernel_list_lp_head...
+Compiling module xil_defaultlib.state_buffer_kernel_list_lp_size...
+Compiling module xil_defaultlib.state_buffer_kernel_flow_control...
+Compiling module xil_defaultlib.state_buffer_kernel_state_buffer...
+Compiling module xil_defaultlib.state_buffer_kernel_state_buffer...
+Compiling module xil_defaultlib.state_buffer_kernel
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=16)
+Compiling module xil_defaultlib.upc_loop_intf
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_state_buffer_kernel_top
+Compiling module work.glbl
+Built simulation snapshot state_buffer_kernel
+
+****** xsim v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/state_buffer_kernel/xsim_script.tcl
+# xsim {state_buffer_kernel} -autoloadwcfg -tclbatch {state_buffer_kernel.tcl}
+Time resolution is 1 ps
+source state_buffer_kernel.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 37 [n/a] @ "113000"
+// RTL Simulation : 1 / 37 [n/a] @ "138000"
+// RTL Simulation : 2 / 37 [n/a] @ "158000"
+// RTL Simulation : 3 / 37 [n/a] @ "178000"
+// RTL Simulation : 4 / 37 [n/a] @ "198000"
+// RTL Simulation : 5 / 37 [n/a] @ "218000"
+// RTL Simulation : 6 / 37 [n/a] @ "238000"
+// RTL Simulation : 7 / 37 [n/a] @ "258000"
+// RTL Simulation : 8 / 37 [n/a] @ "278000"
+// RTL Simulation : 9 / 37 [n/a] @ "298000"
+// RTL Simulation : 10 / 37 [n/a] @ "318000"
+// RTL Simulation : 11 / 37 [n/a] @ "338000"
+// RTL Simulation : 12 / 37 [n/a] @ "358000"
+// RTL Simulation : 13 / 37 [n/a] @ "378000"
+// RTL Simulation : 14 / 37 [n/a] @ "398000"
+// RTL Simulation : 15 / 37 [n/a] @ "418000"
+// RTL Simulation : 16 / 37 [n/a] @ "438000"
+// RTL Simulation : 17 / 37 [n/a] @ "458000"
+// RTL Simulation : 18 / 37 [n/a] @ "478000"
+// RTL Simulation : 19 / 37 [n/a] @ "498000"
+// RTL Simulation : 20 / 37 [n/a] @ "518000"
+// RTL Simulation : 21 / 37 [n/a] @ "583000"
+// RTL Simulation : 22 / 37 [n/a] @ "2133000"
+// RTL Simulation : 23 / 37 [n/a] @ "2163000"
+// RTL Simulation : 24 / 37 [n/a] @ "2193000"
+// RTL Simulation : 25 / 37 [n/a] @ "2223000"
+// RTL Simulation : 26 / 37 [n/a] @ "2243000"
+// RTL Simulation : 27 / 37 [n/a] @ "2273000"
+// RTL Simulation : 28 / 37 [n/a] @ "2303000"
+// RTL Simulation : 29 / 37 [n/a] @ "2333000"
+// RTL Simulation : 30 / 37 [n/a] @ "2353000"
+// RTL Simulation : 31 / 37 [n/a] @ "2383000"
+// RTL Simulation : 32 / 37 [n/a] @ "2403000"
+// RTL Simulation : 33 / 37 [n/a] @ "2433000"
+// RTL Simulation : 34 / 37 [n/a] @ "2463000"
+// RTL Simulation : 35 / 37 [n/a] @ "2493000"
+// RTL Simulation : 36 / 37 [n/a] @ "2523000"
+// RTL Simulation : 37 / 37 [n/a] @ "2543000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2572500 ps : File "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel.autotb.v" Line 473
+## quit
+INFO: [Common 17-206] Exiting xsim at Tue Jul 30 03:11:11 2024...
+Pushing states:
+Pushed: LP 0, LVT 0, RNG 0
+Pushed: LP 1, LVT 10, RNG 100
+Pushed: LP 2, LVT 20, RNG 200
+Pushed: LP 3, LVT 30, RNG 300
+Pushed: LP 0, LVT 40, RNG 400
+Pushed: LP 1, LVT 50, RNG 500
+Pushed: LP 2, LVT 60, RNG 600
+Pushed: LP 3, LVT 70, RNG 700
+Pushed: LP 0, LVT 80, RNG 800
+Pushed: LP 1, LVT 90, RNG 900
+Pushed: LP 2, LVT 100, RNG 1000
+Pushed: LP 3, LVT 110, RNG 1100
+Pushed: LP 0, LVT 120, RNG 1200
+Pushed: LP 1, LVT 130, RNG 1300
+Pushed: LP 2, LVT 140, RNG 1400
+Pushed: LP 3, LVT 150, RNG 1500
+Pushed: LP 0, LVT 160, RNG 1600
+Pushed: LP 1, LVT 170, RNG 1700
+Pushed: LP 2, LVT 180, RNG 1800
+Pushed: LP 3, LVT 190, RNG 1900
+
+Rolling back LP 2 to LVT 70:
+Rollback successful for LP 2 to LVT 70
+
+Committing up to LVT 100:
+Commit successful, new GVT: 100
+
+Popping states after rollback and commit:
+LP 0: (160,1600) (120,1200) (80,800) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (empty)
+LP 2: (60,600) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (empty)
+INFO: [COSIM-1000] *** C/RTL co-simulation finished: PASS ***

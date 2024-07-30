@@ -1,3 +1,3 @@
-,AESL_inst_event_queue_kernel,,module_status1.csv
-,grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460,,module_status2.csv
-,grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480,,module_status3.csv
+,AESL_inst_state_buffer_kernel,,module_status1.csv
+,grp_state_buffer_kernel_Pipeline_VITIS_LOOP_101_2_fu_364,,module_status2.csv
+,grp_state_buffer_kernel_Pipeline_VITIS_LOOP_154_1_fu_382,,module_status3.csv

@@ -29,62 +29,62 @@
 		<link>
 			<name>source</name>
 			<type>2</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/.apc/.src</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/.apc/.src</location>
 		</link>
 		<link>
 			<name>testbench</name>
 			<type>2</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/.apc/.tb</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/.apc/.tb</location>
 		</link>
 		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.tcls</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.tcls</location>
 		</link>
 		<link>
 			<name>source/EventQueue.cpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp</location>
 		</link>
 		<link>
 			<name>source/EventQueue.hpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp</location>
 		</link>
 		<link>
 			<name>source/StateBuffer.cpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp</location>
 		</link>
 		<link>
 			<name>source/StateBuffer.hpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp</location>
 		</link>
 		<link>
 			<name>source/constants.hpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp</location>
 		</link>
 		<link>
 			<name>testbench/main.cpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive</location>
 		</link>
 		<link>
 			<name>solution1/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/directives.tcl</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/script.tcl</location>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>

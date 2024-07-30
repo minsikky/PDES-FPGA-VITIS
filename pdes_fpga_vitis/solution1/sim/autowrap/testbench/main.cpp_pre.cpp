@@ -1,10 +1,10 @@
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 1 "<command-line>" 2
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 1
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 1
 
 
 
@@ -87,24 +87,26 @@ enum {
 # 88 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_common.h" 2
 # 96 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_common.h"
 # 1 "/usr/include/assert.h" 1 3 4
-# 36 "/usr/include/assert.h" 3 4
+# 35 "/usr/include/assert.h" 3 4
 # 1 "/usr/include/features.h" 1 3 4
-# 375 "/usr/include/features.h" 3 4
+# 438 "/usr/include/features.h" 3 4
 # 1 "/usr/include/sys/cdefs.h" 1 3 4
-# 392 "/usr/include/sys/cdefs.h" 3 4
+# 499 "/usr/include/sys/cdefs.h" 3 4
 # 1 "/usr/include/bits/wordsize.h" 1 3 4
-# 393 "/usr/include/sys/cdefs.h" 2 3 4
-# 376 "/usr/include/features.h" 2 3 4
-# 399 "/usr/include/features.h" 3 4
+# 500 "/usr/include/sys/cdefs.h" 2 3 4
+# 1 "/usr/include/bits/long-double.h" 1 3 4
+# 501 "/usr/include/sys/cdefs.h" 2 3 4
+# 439 "/usr/include/features.h" 2 3 4
+# 462 "/usr/include/features.h" 3 4
 # 1 "/usr/include/gnu/stubs.h" 1 3 4
 # 10 "/usr/include/gnu/stubs.h" 3 4
 # 1 "/usr/include/gnu/stubs-64.h" 1 3 4
 # 11 "/usr/include/gnu/stubs.h" 2 3 4
-# 400 "/usr/include/features.h" 2 3 4
-# 37 "/usr/include/assert.h" 2 3 4
-# 65 "/usr/include/assert.h" 3 4
+# 463 "/usr/include/features.h" 2 3 4
+# 36 "/usr/include/assert.h" 2 3 4
+# 64 "/usr/include/assert.h" 3 4
 
-# 65 "/usr/include/assert.h" 3 4
+# 64 "/usr/include/assert.h" 3 4
 extern "C" {
 
 
@@ -128,7 +130,10 @@ extern void __assert (const char *__assertion, const char *__file, int __line)
 # 97 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_common.h" 2
 # 110 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_common.h"
 # 1 "/usr/include/stdio.h" 1 3 4
-# 29 "/usr/include/stdio.h" 3 4
+# 27 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 28 "/usr/include/stdio.h" 2 3 4
+
 extern "C" {
 
 
@@ -137,6 +142,12 @@ extern "C" {
 # 216 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 3 4
 typedef long unsigned int size_t;
 # 34 "/usr/include/stdio.h" 2 3 4
+
+
+# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdarg.h" 1 3 4
+# 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 37 "/usr/include/stdio.h" 2 3 4
 
 # 1 "/usr/include/bits/types.h" 1 3 4
 # 27 "/usr/include/bits/types.h" 3 4
@@ -165,12 +176,31 @@ typedef unsigned long int __uint64_t;
 
 
 
+typedef __int8_t __int_least8_t;
+typedef __uint8_t __uint_least8_t;
+typedef __int16_t __int_least16_t;
+typedef __uint16_t __uint_least16_t;
+typedef __int32_t __int_least32_t;
+typedef __uint32_t __uint_least32_t;
+typedef __int64_t __int_least64_t;
+typedef __uint64_t __uint_least64_t;
+
+
 
 typedef long int __quad_t;
 typedef unsigned long int __u_quad_t;
-# 130 "/usr/include/bits/types.h" 3 4
+
+
+
+
+
+
+
+typedef long int __intmax_t;
+typedef unsigned long int __uintmax_t;
+# 140 "/usr/include/bits/types.h" 3 4
 # 1 "/usr/include/bits/typesizes.h" 1 3 4
-# 131 "/usr/include/bits/types.h" 2 3 4
+# 141 "/usr/include/bits/types.h" 2 3 4
 
 
 typedef unsigned long int __dev_t;
@@ -231,7 +261,6 @@ typedef unsigned long int __syscall_ulong_t;
 
 
 typedef __off64_t __loff_t;
-typedef __quad_t *__qaddr_t;
 typedef char *__caddr_t;
 
 
@@ -239,105 +268,93 @@ typedef long int __intptr_t;
 
 
 typedef unsigned int __socklen_t;
-# 36 "/usr/include/stdio.h" 2 3 4
-# 44 "/usr/include/stdio.h" 3 4
-struct _IO_FILE;
-
-
-
-typedef struct _IO_FILE FILE;
 
 
 
 
-
-# 64 "/usr/include/stdio.h" 3 4
-typedef struct _IO_FILE __FILE;
-# 74 "/usr/include/stdio.h" 3 4
-# 1 "/usr/include/libio.h" 1 3 4
-# 32 "/usr/include/libio.h" 3 4
-# 1 "/usr/include/_G_config.h" 1 3 4
-# 15 "/usr/include/_G_config.h" 3 4
-# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 16 "/usr/include/_G_config.h" 2 3 4
+typedef int __sig_atomic_t;
+# 39 "/usr/include/stdio.h" 2 3 4
+# 1 "/usr/include/bits/types/__fpos_t.h" 1 3 4
 
 
 
 
-# 1 "/usr/include/wchar.h" 1 3 4
-# 82 "/usr/include/wchar.h" 3 4
+# 1 "/usr/include/bits/types/__mbstate_t.h" 1 3 4
+# 13 "/usr/include/bits/types/__mbstate_t.h" 3 4
 typedef struct
 {
   int __count;
   union
   {
-
     unsigned int __wch;
-
-
-
     char __wchb[4];
   } __value;
 } __mbstate_t;
-# 21 "/usr/include/_G_config.h" 2 3 4
-typedef struct
+# 6 "/usr/include/bits/types/__fpos_t.h" 2 3 4
+
+
+
+
+typedef struct _G_fpos_t
 {
   __off_t __pos;
   __mbstate_t __state;
-} _G_fpos_t;
-typedef struct
+} __fpos_t;
+# 40 "/usr/include/stdio.h" 2 3 4
+# 1 "/usr/include/bits/types/__fpos64_t.h" 1 3 4
+# 10 "/usr/include/bits/types/__fpos64_t.h" 3 4
+typedef struct _G_fpos64_t
 {
   __off64_t __pos;
   __mbstate_t __state;
-} _G_fpos64_t;
-# 33 "/usr/include/libio.h" 2 3 4
-# 50 "/usr/include/libio.h" 3 4
-# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdarg.h" 1 3 4
-# 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdarg.h" 3 4
-typedef __builtin_va_list __gnuc_va_list;
-# 51 "/usr/include/libio.h" 2 3 4
-# 145 "/usr/include/libio.h" 3 4
-struct _IO_jump_t; struct _IO_FILE;
-# 155 "/usr/include/libio.h" 3 4
+} __fpos64_t;
+# 41 "/usr/include/stdio.h" 2 3 4
+# 1 "/usr/include/bits/types/__FILE.h" 1 3 4
+
+
+
+struct _IO_FILE;
+typedef struct _IO_FILE __FILE;
+# 42 "/usr/include/stdio.h" 2 3 4
+# 1 "/usr/include/bits/types/FILE.h" 1 3 4
+
+
+
+struct _IO_FILE;
+
+
+typedef struct _IO_FILE FILE;
+# 43 "/usr/include/stdio.h" 2 3 4
+# 1 "/usr/include/bits/types/struct_FILE.h" 1 3 4
+# 35 "/usr/include/bits/types/struct_FILE.h" 3 4
+struct _IO_FILE;
+struct _IO_marker;
+struct _IO_codecvt;
+struct _IO_wide_data;
+
+
+
+
 typedef void _IO_lock_t;
 
 
 
 
 
-struct _IO_marker {
-  struct _IO_marker *_next;
-  struct _IO_FILE *_sbuf;
-
-
-
-  int _pos;
-# 178 "/usr/include/libio.h" 3 4
-};
-
-
-enum __codecvt_result
+struct _IO_FILE
 {
-  __codecvt_ok,
-  __codecvt_partial,
-  __codecvt_error,
-  __codecvt_noconv
-};
-# 246 "/usr/include/libio.h" 3 4
-struct _IO_FILE {
   int _flags;
 
 
+  char *_IO_read_ptr;
+  char *_IO_read_end;
+  char *_IO_read_base;
+  char *_IO_write_base;
+  char *_IO_write_ptr;
+  char *_IO_write_end;
+  char *_IO_buf_base;
+  char *_IO_buf_end;
 
-
-  char* _IO_read_ptr;
-  char* _IO_read_end;
-  char* _IO_read_base;
-  char* _IO_write_base;
-  char* _IO_write_ptr;
-  char* _IO_write_end;
-  char* _IO_buf_base;
-  char* _IO_buf_end;
 
   char *_IO_save_base;
   char *_IO_backup_base;
@@ -348,57 +365,40 @@ struct _IO_FILE {
   struct _IO_FILE *_chain;
 
   int _fileno;
-
-
-
   int _flags2;
-
   __off_t _old_offset;
-
 
 
   unsigned short _cur_column;
   signed char _vtable_offset;
   char _shortbuf[1];
 
-
-
   _IO_lock_t *_lock;
-# 294 "/usr/include/libio.h" 3 4
-  __off64_t _offset;
-# 303 "/usr/include/libio.h" 3 4
-  void *__pad1;
-  void *__pad2;
-  void *__pad3;
-  void *__pad4;
-  size_t __pad5;
 
+
+
+
+
+
+
+  __off64_t _offset;
+
+  struct _IO_codecvt *_codecvt;
+  struct _IO_wide_data *_wide_data;
+  struct _IO_FILE *_freeres_list;
+  void *_freeres_buf;
+  size_t __pad5;
   int _mode;
 
   char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
-
 };
+# 44 "/usr/include/stdio.h" 2 3 4
 
 
-
-
-
-struct _IO_FILE_plus;
-
-extern struct _IO_FILE_plus _IO_2_1_stdin_;
-extern struct _IO_FILE_plus _IO_2_1_stdout_;
-extern struct _IO_FILE_plus _IO_2_1_stderr_;
-# 339 "/usr/include/libio.h" 3 4
-typedef __ssize_t __io_read_fn (void *__cookie, char *__buf, size_t __nbytes);
-
-
-
-
-
-
-
-typedef __ssize_t __io_write_fn (void *__cookie, const char *__buf,
-     size_t __n);
+# 1 "/usr/include/bits/types/cookie_io_functions_t.h" 1 3 4
+# 27 "/usr/include/bits/types/cookie_io_functions_t.h" 3 4
+typedef __ssize_t cookie_read_function_t (void *__cookie, char *__buf,
+                                          size_t __nbytes);
 
 
 
@@ -406,80 +406,40 @@ typedef __ssize_t __io_write_fn (void *__cookie, const char *__buf,
 
 
 
-typedef int __io_seek_fn (void *__cookie, __off64_t *__pos, int __w);
-
-
-typedef int __io_close_fn (void *__cookie);
-
+typedef __ssize_t cookie_write_function_t (void *__cookie, const char *__buf,
+                                           size_t __nbytes);
 
 
 
-typedef __io_read_fn cookie_read_function_t;
-typedef __io_write_fn cookie_write_function_t;
-typedef __io_seek_fn cookie_seek_function_t;
-typedef __io_close_fn cookie_close_function_t;
 
 
-typedef struct
+
+
+typedef int cookie_seek_function_t (void *__cookie, __off64_t *__pos, int __w);
+
+
+typedef int cookie_close_function_t (void *__cookie);
+
+
+
+
+
+
+typedef struct _IO_cookie_io_functions_t
 {
-  __io_read_fn *read;
-  __io_write_fn *write;
-  __io_seek_fn *seek;
-  __io_close_fn *close;
-} _IO_cookie_io_functions_t;
-typedef _IO_cookie_io_functions_t cookie_io_functions_t;
+  cookie_read_function_t *read;
+  cookie_write_function_t *write;
+  cookie_seek_function_t *seek;
+  cookie_close_function_t *close;
+} cookie_io_functions_t;
+# 47 "/usr/include/stdio.h" 2 3 4
 
-struct _IO_cookie_file;
-
-
-extern void _IO_cookie_init (struct _IO_cookie_file *__cfile, int __read_write,
-        void *__cookie, _IO_cookie_io_functions_t __fns);
-
-
-
-
-extern "C" {
-
-
-extern int __underflow (_IO_FILE *);
-extern int __uflow (_IO_FILE *);
-extern int __overflow (_IO_FILE *, int);
-# 435 "/usr/include/libio.h" 3 4
-extern int _IO_getc (_IO_FILE *__fp);
-extern int _IO_putc (int __c, _IO_FILE *__fp);
-extern int _IO_feof (_IO_FILE *__fp) throw ();
-extern int _IO_ferror (_IO_FILE *__fp) throw ();
-
-extern int _IO_peekc_locked (_IO_FILE *__fp);
-
-
-
-
-
-extern void _IO_flockfile (_IO_FILE *) throw ();
-extern void _IO_funlockfile (_IO_FILE *) throw ();
-extern int _IO_ftrylockfile (_IO_FILE *) throw ();
-# 465 "/usr/include/libio.h" 3 4
-extern int _IO_vfscanf (_IO_FILE * __restrict, const char * __restrict,
-   __gnuc_va_list, int *__restrict);
-extern int _IO_vfprintf (_IO_FILE *__restrict, const char *__restrict,
-    __gnuc_va_list);
-extern __ssize_t _IO_padn (_IO_FILE *, int, __ssize_t);
-extern size_t _IO_sgetn (_IO_FILE *, void *, size_t);
-
-extern __off64_t _IO_seekoff (_IO_FILE *, __off64_t, int, int);
-extern __off64_t _IO_seekpos (_IO_FILE *, __off64_t, int);
-
-extern void _IO_free_backup_area (_IO_FILE *) throw ();
-# 527 "/usr/include/libio.h" 3 4
-}
-# 75 "/usr/include/stdio.h" 2 3 4
 
 
 
 
 typedef __gnuc_va_list va_list;
-# 90 "/usr/include/stdio.h" 3 4
+# 63 "/usr/include/stdio.h" 3 4
 typedef __off_t off_t;
 
 
@@ -492,6 +452,8 @@ typedef __off64_t off64_t;
 
 
 
+
+
 typedef __ssize_t ssize_t;
 
 
@@ -499,24 +461,21 @@ typedef __ssize_t ssize_t;
 
 
 
-
-typedef _G_fpos_t fpos_t;
-
+typedef __fpos_t fpos_t;
 
 
 
 
-typedef _G_fpos64_t fpos64_t;
-# 164 "/usr/include/stdio.h" 3 4
+typedef __fpos64_t fpos64_t;
+# 133 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/bits/stdio_lim.h" 1 3 4
-# 165 "/usr/include/stdio.h" 2 3 4
+# 134 "/usr/include/stdio.h" 2 3 4
 
 
 
-extern struct _IO_FILE *stdin;
-extern struct _IO_FILE *stdout;
-extern struct _IO_FILE *stderr;
-
+extern FILE *stdin;
+extern FILE *stdout;
+extern FILE *stderr;
 
 
 
@@ -529,10 +488,11 @@ extern int rename (const char *__old, const char *__new) throw ();
 
 
 
-
 extern int renameat (int __oldfd, const char *__old, int __newfd,
        const char *__new) throw ();
-
+# 164 "/usr/include/stdio.h" 3 4
+extern int renameat2 (int __oldfd, const char *__old, int __newfd,
+        const char *__new, unsigned int __flags) throw ();
 
 
 
@@ -541,7 +501,7 @@ extern int renameat (int __oldfd, const char *__old, int __newfd,
 
 
 extern FILE *tmpfile (void) ;
-# 205 "/usr/include/stdio.h" 3 4
+# 183 "/usr/include/stdio.h" 3 4
 extern FILE *tmpfile64 (void) ;
 
 
@@ -551,12 +511,10 @@ extern char *tmpnam (char *__s) throw () ;
 
 
 
-
 extern char *tmpnam_r (char *__s) throw () ;
-# 227 "/usr/include/stdio.h" 3 4
+# 204 "/usr/include/stdio.h" 3 4
 extern char *tempnam (const char *__dir, const char *__pfx)
      throw () __attribute__ ((__malloc__)) ;
-
 
 
 
@@ -570,20 +528,11 @@ extern int fclose (FILE *__stream);
 
 
 extern int fflush (FILE *__stream);
-
-# 252 "/usr/include/stdio.h" 3 4
+# 227 "/usr/include/stdio.h" 3 4
 extern int fflush_unlocked (FILE *__stream);
-# 262 "/usr/include/stdio.h" 3 4
+# 237 "/usr/include/stdio.h" 3 4
 extern int fcloseall (void);
-
-
-
-
-
-
-
-
-
+# 246 "/usr/include/stdio.h" 3 4
 extern FILE *fopen (const char *__restrict __filename,
       const char *__restrict __modes) ;
 
@@ -593,9 +542,7 @@ extern FILE *fopen (const char *__restrict __filename,
 extern FILE *freopen (const char *__restrict __filename,
         const char *__restrict __modes,
         FILE *__restrict __stream) ;
-# 295 "/usr/include/stdio.h" 3 4
-
-
+# 270 "/usr/include/stdio.h" 3 4
 extern FILE *fopen64 (const char *__restrict __filename,
         const char *__restrict __modes) ;
 extern FILE *freopen64 (const char *__restrict __filename,
@@ -613,7 +560,7 @@ extern FILE *fdopen (int __fd, const char *__modes) throw () ;
 
 extern FILE *fopencookie (void *__restrict __magic_cookie,
      const char *__restrict __modes,
-     _IO_cookie_io_functions_t __io_funcs) throw () ;
+     cookie_io_functions_t __io_funcs) throw () ;
 
 
 
@@ -630,7 +577,6 @@ extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) throw () ;
 
 
 
-
 extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) throw ();
 
 
@@ -641,13 +587,11 @@ extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
 
 
 
-
 extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
          size_t __size) throw ();
 
 
 extern void setlinebuf (FILE *__stream) throw ();
-
 
 
 
@@ -683,8 +627,6 @@ extern int vsprintf (char *__restrict __s, const char *__restrict __format,
 
 
 
-
-
 extern int snprintf (char *__restrict __s, size_t __maxlen,
        const char *__restrict __format, ...)
      throw () __attribute__ ((__format__ (__printf__, 3, 4)));
@@ -692,7 +634,6 @@ extern int snprintf (char *__restrict __s, size_t __maxlen,
 extern int vsnprintf (char *__restrict __s, size_t __maxlen,
         const char *__restrict __format, __gnuc_va_list __arg)
      throw () __attribute__ ((__format__ (__printf__, 3, 0)));
-
 
 
 
@@ -723,7 +664,6 @@ extern int dprintf (int __fd, const char *__restrict __fmt, ...)
 
 
 
-
 extern int fscanf (FILE *__restrict __stream,
      const char *__restrict __format, ...) ;
 
@@ -734,15 +674,7 @@ extern int scanf (const char *__restrict __format, ...) ;
 
 extern int sscanf (const char *__restrict __s,
      const char *__restrict __format, ...) throw ();
-# 463 "/usr/include/stdio.h" 3 4
-
-
-
-
-
-
-
-
+# 434 "/usr/include/stdio.h" 3 4
 extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
       __gnuc_va_list __arg)
      __attribute__ ((__format__ (__scanf__, 2, 0))) ;
@@ -758,16 +690,7 @@ extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
 extern int vsscanf (const char *__restrict __s,
       const char *__restrict __format, __gnuc_va_list __arg)
      throw () __attribute__ ((__format__ (__scanf__, 2, 0)));
-# 522 "/usr/include/stdio.h" 3 4
-
-
-
-
-
-
-
-
-
+# 491 "/usr/include/stdio.h" 3 4
 extern int fgetc (FILE *__stream);
 extern int getc (FILE *__stream);
 
@@ -777,22 +700,16 @@ extern int getc (FILE *__stream);
 
 extern int getchar (void);
 
-# 550 "/usr/include/stdio.h" 3 4
+
+
+
+
+
 extern int getc_unlocked (FILE *__stream);
 extern int getchar_unlocked (void);
-# 561 "/usr/include/stdio.h" 3 4
+# 516 "/usr/include/stdio.h" 3 4
 extern int fgetc_unlocked (FILE *__stream);
-
-
-
-
-
-
-
-
-
-
-
+# 527 "/usr/include/stdio.h" 3 4
 extern int fputc (int __c, FILE *__stream);
 extern int putc (int __c, FILE *__stream);
 
@@ -801,8 +718,7 @@ extern int putc (int __c, FILE *__stream);
 
 
 extern int putchar (int __c);
-
-# 594 "/usr/include/stdio.h" 3 4
+# 543 "/usr/include/stdio.h" 3 4
 extern int fputc_unlocked (int __c, FILE *__stream);
 
 
@@ -830,21 +746,18 @@ extern int putw (int __w, FILE *__stream);
 
 
 
-
 extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
      ;
-# 640 "/usr/include/stdio.h" 3 4
-
-# 649 "/usr/include/stdio.h" 3 4
+# 593 "/usr/include/stdio.h" 3 4
 extern char *fgets_unlocked (char *__restrict __s, int __n,
         FILE *__restrict __stream) ;
-# 665 "/usr/include/stdio.h" 3 4
+# 609 "/usr/include/stdio.h" 3 4
 extern __ssize_t __getdelim (char **__restrict __lineptr,
-          size_t *__restrict __n, int __delimiter,
-          FILE *__restrict __stream) ;
+                             size_t *__restrict __n, int __delimiter,
+                             FILE *__restrict __stream) ;
 extern __ssize_t getdelim (char **__restrict __lineptr,
-        size_t *__restrict __n, int __delimiter,
-        FILE *__restrict __stream) ;
+                           size_t *__restrict __n, int __delimiter,
+                           FILE *__restrict __stream) ;
 
 
 
@@ -853,9 +766,8 @@ extern __ssize_t getdelim (char **__restrict __lineptr,
 
 
 extern __ssize_t getline (char **__restrict __lineptr,
-       size_t *__restrict __n,
-       FILE *__restrict __stream) ;
-
+                          size_t *__restrict __n,
+                          FILE *__restrict __stream) ;
 
 
 
@@ -891,16 +803,14 @@ extern size_t fread (void *__restrict __ptr, size_t __size,
 
 extern size_t fwrite (const void *__restrict __ptr, size_t __size,
         size_t __n, FILE *__restrict __s);
-
-# 726 "/usr/include/stdio.h" 3 4
+# 668 "/usr/include/stdio.h" 3 4
 extern int fputs_unlocked (const char *__restrict __s,
       FILE *__restrict __stream);
-# 737 "/usr/include/stdio.h" 3 4
+# 679 "/usr/include/stdio.h" 3 4
 extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
          size_t __n, FILE *__restrict __stream) ;
 extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
           size_t __n, FILE *__restrict __stream);
-
 
 
 
@@ -919,36 +829,25 @@ extern long int ftell (FILE *__stream) ;
 
 
 extern void rewind (FILE *__stream);
-
-# 773 "/usr/include/stdio.h" 3 4
+# 713 "/usr/include/stdio.h" 3 4
 extern int fseeko (FILE *__stream, __off_t __off, int __whence);
 
 
 
 
 extern __off_t ftello (FILE *__stream) ;
-# 792 "/usr/include/stdio.h" 3 4
-
-
-
-
-
-
+# 737 "/usr/include/stdio.h" 3 4
 extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
 
 
 
 
 extern int fsetpos (FILE *__stream, const fpos_t *__pos);
-# 815 "/usr/include/stdio.h" 3 4
-
-
-
+# 756 "/usr/include/stdio.h" 3 4
 extern int fseeko64 (FILE *__stream, __off64_t __off, int __whence);
 extern __off64_t ftello64 (FILE *__stream) ;
 extern int fgetpos64 (FILE *__restrict __stream, fpos64_t *__restrict __pos);
 extern int fsetpos64 (FILE *__stream, const fpos64_t *__pos);
-
 
 
 
@@ -957,7 +856,6 @@ extern void clearerr (FILE *__stream) throw ();
 extern int feof (FILE *__stream) throw () ;
 
 extern int ferror (FILE *__stream) throw () ;
-
 
 
 
@@ -971,9 +869,7 @@ extern int ferror_unlocked (FILE *__stream) throw () ;
 
 
 
-
 extern void perror (const char *__s);
-
 
 
 
@@ -987,7 +883,7 @@ extern const char *const sys_errlist[];
 
 extern int _sys_nerr;
 extern const char *const _sys_errlist[];
-# 854 "/usr/include/stdio.h" 2 3 4
+# 788 "/usr/include/stdio.h" 2 3 4
 
 
 
@@ -998,7 +894,7 @@ extern int fileno (FILE *__stream) throw () ;
 
 
 extern int fileno_unlocked (FILE *__stream) throw () ;
-# 873 "/usr/include/stdio.h" 3 4
+# 806 "/usr/include/stdio.h" 3 4
 extern FILE *popen (const char *__command, const char *__modes) ;
 
 
@@ -1047,7 +943,10 @@ extern int ftrylockfile (FILE *__stream) throw () ;
 
 
 extern void funlockfile (FILE *__stream) throw ();
-# 943 "/usr/include/stdio.h" 3 4
+# 864 "/usr/include/stdio.h" 3 4
+extern int __uflow (FILE *);
+extern int __overflow (FILE *, int);
+# 879 "/usr/include/stdio.h" 3 4
 }
 # 111 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_common.h" 2
 
@@ -1088,9 +987,16 @@ namespace __gnu_cxx
 # 42 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdlib" 2 3
 # 75 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdlib" 3
 # 1 "/usr/include/stdlib.h" 1 3 4
-# 32 "/usr/include/stdlib.h" 3 4
+# 25 "/usr/include/stdlib.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 26 "/usr/include/stdlib.h" 2 3 4
+
+
+
+
+
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 33 "/usr/include/stdlib.h" 2 3 4
+# 32 "/usr/include/stdlib.h" 2 3 4
 
 extern "C" {
 
@@ -1098,77 +1004,31 @@ extern "C" {
 
 
 
-
 # 1 "/usr/include/bits/waitflags.h" 1 3 4
-# 42 "/usr/include/stdlib.h" 2 3 4
+# 40 "/usr/include/stdlib.h" 2 3 4
 # 1 "/usr/include/bits/waitstatus.h" 1 3 4
-# 64 "/usr/include/bits/waitstatus.h" 3 4
-# 1 "/usr/include/endian.h" 1 3 4
-# 36 "/usr/include/endian.h" 3 4
-# 1 "/usr/include/bits/endian.h" 1 3 4
-# 37 "/usr/include/endian.h" 2 3 4
-# 60 "/usr/include/endian.h" 3 4
-# 1 "/usr/include/bits/byteswap.h" 1 3 4
-# 28 "/usr/include/bits/byteswap.h" 3 4
-# 1 "/usr/include/bits/wordsize.h" 1 3 4
-# 29 "/usr/include/bits/byteswap.h" 2 3 4
-
-
-
-
-
-
-# 1 "/usr/include/bits/byteswap-16.h" 1 3 4
-# 36 "/usr/include/bits/byteswap.h" 2 3 4
-# 44 "/usr/include/bits/byteswap.h" 3 4
-static __inline unsigned int
-__bswap_32 (unsigned int __bsx)
-{
-  return __builtin_bswap32 (__bsx);
-}
-# 108 "/usr/include/bits/byteswap.h" 3 4
-static __inline __uint64_t
-__bswap_64 (__uint64_t __bsx)
-{
-  return __builtin_bswap64 (__bsx);
-}
-# 61 "/usr/include/endian.h" 2 3 4
-# 65 "/usr/include/bits/waitstatus.h" 2 3 4
-
-union wait
-  {
-    int w_status;
-    struct
-      {
-
- unsigned int __w_termsig:7;
- unsigned int __w_coredump:1;
- unsigned int __w_retcode:8;
- unsigned int:16;
-
-
-
-
-
-
-
-      } __wait_terminated;
-    struct
-      {
-
- unsigned int __w_stopval:8;
- unsigned int __w_stopsig:8;
- unsigned int:16;
-
-
-
-
-
-
-      } __wait_stopped;
-  };
-# 43 "/usr/include/stdlib.h" 2 3 4
-# 95 "/usr/include/stdlib.h" 3 4
+# 41 "/usr/include/stdlib.h" 2 3 4
+# 55 "/usr/include/stdlib.h" 3 4
+# 1 "/usr/include/bits/floatn.h" 1 3 4
+# 74 "/usr/include/bits/floatn.h" 3 4
+typedef _Complex float __cfloat128 __attribute__ ((__mode__ (__TC__)));
+# 86 "/usr/include/bits/floatn.h" 3 4
+typedef __float128 _Float128;
+# 119 "/usr/include/bits/floatn.h" 3 4
+# 1 "/usr/include/bits/floatn-common.h" 1 3 4
+# 24 "/usr/include/bits/floatn-common.h" 3 4
+# 1 "/usr/include/bits/long-double.h" 1 3 4
+# 25 "/usr/include/bits/floatn-common.h" 2 3 4
+# 214 "/usr/include/bits/floatn-common.h" 3 4
+typedef float _Float32;
+# 251 "/usr/include/bits/floatn-common.h" 3 4
+typedef double _Float64;
+# 268 "/usr/include/bits/floatn-common.h" 3 4
+typedef double _Float32x;
+# 285 "/usr/include/bits/floatn-common.h" 3 4
+typedef long double _Float64x;
+# 120 "/usr/include/bits/floatn.h" 2 3 4
+# 56 "/usr/include/stdlib.h" 2 3 4
 
 
 typedef struct
@@ -1189,18 +1049,13 @@ typedef struct
 
 
 
-
-
 __extension__ typedef struct
   {
     long long int quot;
     long long int rem;
   } lldiv_t;
-
-
-# 139 "/usr/include/stdlib.h" 3 4
+# 97 "/usr/include/stdlib.h" 3 4
 extern size_t __ctype_get_mb_cur_max (void) throw () ;
-
 
 
 
@@ -1215,12 +1070,8 @@ extern long int atol (const char *__nptr)
 
 
 
-
-
 __extension__ extern long long int atoll (const char *__nptr)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-
 
 
 
@@ -1230,19 +1081,41 @@ extern double strtod (const char *__restrict __nptr,
 
 
 
-
-
 extern float strtof (const char *__restrict __nptr,
        char **__restrict __endptr) throw () __attribute__ ((__nonnull__ (1)));
 
 extern long double strtold (const char *__restrict __nptr,
        char **__restrict __endptr)
      throw () __attribute__ ((__nonnull__ (1)));
+# 140 "/usr/include/stdlib.h" 3 4
+extern _Float32 strtof32 (const char *__restrict __nptr,
+     char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
 
 
 
+extern _Float64 strtof64 (const char *__restrict __nptr,
+     char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
 
 
+
+extern _Float128 strtof128 (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+
+
+
+extern _Float32x strtof32x (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+
+
+
+extern _Float64x strtof64x (const char *__restrict __nptr,
+       char **__restrict __endptr)
+     throw () __attribute__ ((__nonnull__ (1)));
+# 176 "/usr/include/stdlib.h" 3 4
 extern long int strtol (const char *__restrict __nptr,
    char **__restrict __endptr, int __base)
      throw () __attribute__ ((__nonnull__ (1)));
@@ -1250,7 +1123,6 @@ extern long int strtol (const char *__restrict __nptr,
 extern unsigned long int strtoul (const char *__restrict __nptr,
       char **__restrict __endptr, int __base)
      throw () __attribute__ ((__nonnull__ (1)));
-
 
 
 
@@ -1267,7 +1139,6 @@ extern unsigned long long int strtouq (const char *__restrict __nptr,
 
 
 
-
 __extension__
 extern long long int strtoll (const char *__restrict __nptr,
          char **__restrict __endptr, int __base)
@@ -1278,10 +1149,54 @@ extern unsigned long long int strtoull (const char *__restrict __nptr,
      char **__restrict __endptr, int __base)
      throw () __attribute__ ((__nonnull__ (1)));
 
-# 235 "/usr/include/stdlib.h" 3 4
-# 1 "/usr/include/xlocale.h" 1 3 4
-# 27 "/usr/include/xlocale.h" 3 4
-typedef struct __locale_struct
+
+
+
+extern int strfromd (char *__dest, size_t __size, const char *__format,
+       double __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+extern int strfromf (char *__dest, size_t __size, const char *__format,
+       float __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+extern int strfroml (char *__dest, size_t __size, const char *__format,
+       long double __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+# 232 "/usr/include/stdlib.h" 3 4
+extern int strfromf32 (char *__dest, size_t __size, const char * __format,
+         _Float32 __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+
+
+extern int strfromf64 (char *__dest, size_t __size, const char * __format,
+         _Float64 __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+
+
+extern int strfromf128 (char *__dest, size_t __size, const char * __format,
+   _Float128 __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+
+
+extern int strfromf32x (char *__dest, size_t __size, const char * __format,
+   _Float32x __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+
+
+
+extern int strfromf64x (char *__dest, size_t __size, const char * __format,
+   _Float64x __f)
+     throw () __attribute__ ((__nonnull__ (3)));
+# 272 "/usr/include/stdlib.h" 3 4
+# 1 "/usr/include/bits/types/locale_t.h" 1 3 4
+# 22 "/usr/include/bits/types/locale_t.h" 3 4
+# 1 "/usr/include/bits/types/__locale_t.h" 1 3 4
+# 28 "/usr/include/bits/types/__locale_t.h" 3 4
+struct __locale_struct
 {
 
   struct __locale_data *__locales[13];
@@ -1293,48 +1208,81 @@ typedef struct __locale_struct
 
 
   const char *__names[13];
-} *__locale_t;
+};
 
+typedef struct __locale_struct *__locale_t;
+# 23 "/usr/include/bits/types/locale_t.h" 2 3 4
 
 typedef __locale_t locale_t;
-# 236 "/usr/include/stdlib.h" 2 3 4
-
-
+# 273 "/usr/include/stdlib.h" 2 3 4
 
 extern long int strtol_l (const char *__restrict __nptr,
      char **__restrict __endptr, int __base,
-     __locale_t __loc) throw () __attribute__ ((__nonnull__ (1, 4)));
+     locale_t __loc) throw () __attribute__ ((__nonnull__ (1, 4)));
 
 extern unsigned long int strtoul_l (const char *__restrict __nptr,
         char **__restrict __endptr,
-        int __base, __locale_t __loc)
+        int __base, locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 4)));
 
 __extension__
 extern long long int strtoll_l (const char *__restrict __nptr,
     char **__restrict __endptr, int __base,
-    __locale_t __loc)
+    locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 4)));
 
 __extension__
 extern unsigned long long int strtoull_l (const char *__restrict __nptr,
        char **__restrict __endptr,
-       int __base, __locale_t __loc)
+       int __base, locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 4)));
 
 extern double strtod_l (const char *__restrict __nptr,
-   char **__restrict __endptr, __locale_t __loc)
+   char **__restrict __endptr, locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 3)));
 
 extern float strtof_l (const char *__restrict __nptr,
-         char **__restrict __endptr, __locale_t __loc)
+         char **__restrict __endptr, locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 3)));
 
 extern long double strtold_l (const char *__restrict __nptr,
          char **__restrict __endptr,
-         __locale_t __loc)
+         locale_t __loc)
      throw () __attribute__ ((__nonnull__ (1, 3)));
-# 305 "/usr/include/stdlib.h" 3 4
+# 316 "/usr/include/stdlib.h" 3 4
+extern _Float32 strtof32_l (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+extern _Float64 strtof64_l (const char *__restrict __nptr,
+       char **__restrict __endptr,
+       locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+extern _Float128 strtof128_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+extern _Float32x strtof32x_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+
+
+
+extern _Float64x strtof64x_l (const char *__restrict __nptr,
+         char **__restrict __endptr,
+         locale_t __loc)
+     throw () __attribute__ ((__nonnull__ (1, 3)));
+# 385 "/usr/include/stdlib.h" 3 4
 extern char *l64a (long int __n) throw () ;
 
 
@@ -1361,9 +1309,8 @@ typedef __u_quad_t u_quad_t;
 typedef __fsid_t fsid_t;
 
 
-
-
 typedef __loff_t loff_t;
+
 
 
 
@@ -1400,7 +1347,7 @@ typedef __nlink_t nlink_t;
 
 
 typedef __uid_t uid_t;
-# 98 "/usr/include/sys/types.h" 3 4
+# 97 "/usr/include/sys/types.h" 3 4
 typedef __pid_t pid_t;
 
 
@@ -1408,7 +1355,7 @@ typedef __pid_t pid_t;
 
 
 typedef __id_t id_t;
-# 115 "/usr/include/sys/types.h" 3 4
+# 114 "/usr/include/sys/types.h" 3 4
 typedef __daddr_t daddr_t;
 typedef __caddr_t caddr_t;
 
@@ -1417,27 +1364,47 @@ typedef __caddr_t caddr_t;
 
 
 typedef __key_t key_t;
-# 132 "/usr/include/sys/types.h" 3 4
-# 1 "/usr/include/time.h" 1 3 4
-# 57 "/usr/include/time.h" 3 4
+
+
+
+
+# 1 "/usr/include/bits/types/clock_t.h" 1 3 4
+
+
+
+
 
 
 typedef __clock_t clock_t;
+# 127 "/usr/include/sys/types.h" 2 3 4
+
+# 1 "/usr/include/bits/types/clockid_t.h" 1 3 4
 
 
 
-# 73 "/usr/include/time.h" 3 4
+
+
+
+typedef __clockid_t clockid_t;
+# 129 "/usr/include/sys/types.h" 2 3 4
+# 1 "/usr/include/bits/types/time_t.h" 1 3 4
+
+
+
+
 
 
 typedef __time_t time_t;
+# 130 "/usr/include/sys/types.h" 2 3 4
+# 1 "/usr/include/bits/types/timer_t.h" 1 3 4
 
 
 
-# 91 "/usr/include/time.h" 3 4
-typedef __clockid_t clockid_t;
-# 103 "/usr/include/time.h" 3 4
+
+
+
 typedef __timer_t timer_t;
-# 133 "/usr/include/sys/types.h" 2 3 4
+# 131 "/usr/include/sys/types.h" 2 3 4
 
 
 
@@ -1452,27 +1419,99 @@ typedef __suseconds_t suseconds_t;
 
 
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 147 "/usr/include/sys/types.h" 2 3 4
+# 145 "/usr/include/sys/types.h" 2 3 4
 
 
 
 typedef unsigned long int ulong;
 typedef unsigned short int ushort;
 typedef unsigned int uint;
-# 194 "/usr/include/sys/types.h" 3 4
-typedef int int8_t __attribute__ ((__mode__ (__QI__)));
-typedef int int16_t __attribute__ ((__mode__ (__HI__)));
-typedef int int32_t __attribute__ ((__mode__ (__SI__)));
-typedef int int64_t __attribute__ ((__mode__ (__DI__)));
 
 
-typedef unsigned int u_int8_t __attribute__ ((__mode__ (__QI__)));
-typedef unsigned int u_int16_t __attribute__ ((__mode__ (__HI__)));
-typedef unsigned int u_int32_t __attribute__ ((__mode__ (__SI__)));
-typedef unsigned int u_int64_t __attribute__ ((__mode__ (__DI__)));
+
+
+# 1 "/usr/include/bits/stdint-intn.h" 1 3 4
+# 24 "/usr/include/bits/stdint-intn.h" 3 4
+typedef __int8_t int8_t;
+typedef __int16_t int16_t;
+typedef __int32_t int32_t;
+typedef __int64_t int64_t;
+# 156 "/usr/include/sys/types.h" 2 3 4
+
+
+typedef __uint8_t u_int8_t;
+typedef __uint16_t u_int16_t;
+typedef __uint32_t u_int32_t;
+typedef __uint64_t u_int64_t;
+
 
 typedef int register_t __attribute__ ((__mode__ (__word__)));
-# 219 "/usr/include/sys/types.h" 3 4
+# 176 "/usr/include/sys/types.h" 3 4
+# 1 "/usr/include/endian.h" 1 3 4
+# 36 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/endian.h" 1 3 4
+# 37 "/usr/include/endian.h" 2 3 4
+# 60 "/usr/include/endian.h" 3 4
+# 1 "/usr/include/bits/byteswap.h" 1 3 4
+# 33 "/usr/include/bits/byteswap.h" 3 4
+static __inline __uint16_t
+__bswap_16 (__uint16_t __bsx)
+{
+
+  return __builtin_bswap16 (__bsx);
+
+
+
+}
+
+
+
+
+
+
+static __inline __uint32_t
+__bswap_32 (__uint32_t __bsx)
+{
+
+  return __builtin_bswap32 (__bsx);
+
+
+
+}
+# 69 "/usr/include/bits/byteswap.h" 3 4
+__extension__ static __inline __uint64_t
+__bswap_64 (__uint64_t __bsx)
+{
+
+  return __builtin_bswap64 (__bsx);
+
+
+
+}
+# 61 "/usr/include/endian.h" 2 3 4
+# 1 "/usr/include/bits/uintn-identity.h" 1 3 4
+# 32 "/usr/include/bits/uintn-identity.h" 3 4
+static __inline __uint16_t
+__uint16_identity (__uint16_t __x)
+{
+  return __x;
+}
+
+static __inline __uint32_t
+__uint32_identity (__uint32_t __x)
+{
+  return __x;
+}
+
+static __inline __uint64_t
+__uint64_identity (__uint64_t __x)
+{
+  return __x;
+}
+# 62 "/usr/include/endian.h" 2 3 4
+# 177 "/usr/include/sys/types.h" 2 3 4
+
+
 # 1 "/usr/include/sys/select.h" 1 3 4
 # 30 "/usr/include/sys/select.h" 3 4
 # 1 "/usr/include/bits/select.h" 1 3 4
@@ -1482,47 +1521,53 @@ typedef int register_t __attribute__ ((__mode__ (__word__)));
 # 31 "/usr/include/sys/select.h" 2 3 4
 
 
-# 1 "/usr/include/bits/sigset.h" 1 3 4
-# 23 "/usr/include/bits/sigset.h" 3 4
-typedef int __sig_atomic_t;
+# 1 "/usr/include/bits/types/sigset_t.h" 1 3 4
+
+
+
+# 1 "/usr/include/bits/types/__sigset_t.h" 1 3 4
 
 
 
 
 typedef struct
-  {
-    unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
-  } __sigset_t;
+{
+  unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+} __sigset_t;
+# 5 "/usr/include/bits/types/sigset_t.h" 2 3 4
+
+
+typedef __sigset_t sigset_t;
 # 34 "/usr/include/sys/select.h" 2 3 4
 
 
 
-typedef __sigset_t sigset_t;
+# 1 "/usr/include/bits/types/struct_timeval.h" 1 3 4
 
 
 
 
 
-# 1 "/usr/include/time.h" 1 3 4
-# 120 "/usr/include/time.h" 3 4
-struct timespec
-  {
-    __time_t tv_sec;
-    __syscall_slong_t tv_nsec;
-  };
-# 44 "/usr/include/sys/select.h" 2 3 4
 
-# 1 "/usr/include/bits/time.h" 1 3 4
-# 30 "/usr/include/bits/time.h" 3 4
+
 struct timeval
-  {
-    __time_t tv_sec;
-    __suseconds_t tv_usec;
-  };
-# 46 "/usr/include/sys/select.h" 2 3 4
-# 54 "/usr/include/sys/select.h" 3 4
+{
+  __time_t tv_sec;
+  __suseconds_t tv_usec;
+};
+# 38 "/usr/include/sys/select.h" 2 3 4
+
+# 1 "/usr/include/bits/types/struct_timespec.h" 1 3 4
+# 9 "/usr/include/bits/types/struct_timespec.h" 3 4
+struct timespec
+{
+  __time_t tv_sec;
+  __syscall_slong_t tv_nsec;
+};
+# 40 "/usr/include/sys/select.h" 2 3 4
+# 49 "/usr/include/sys/select.h" 3 4
 typedef long int __fd_mask;
-# 64 "/usr/include/sys/select.h" 3 4
+# 59 "/usr/include/sys/select.h" 3 4
 typedef struct
   {
 
@@ -1542,41 +1587,22 @@ typedef struct
 
 
 typedef __fd_mask fd_mask;
-# 96 "/usr/include/sys/select.h" 3 4
+# 91 "/usr/include/sys/select.h" 3 4
 extern "C" {
-# 106 "/usr/include/sys/select.h" 3 4
+# 101 "/usr/include/sys/select.h" 3 4
 extern int select (int __nfds, fd_set *__restrict __readfds,
      fd_set *__restrict __writefds,
      fd_set *__restrict __exceptfds,
      struct timeval *__restrict __timeout);
-# 118 "/usr/include/sys/select.h" 3 4
+# 113 "/usr/include/sys/select.h" 3 4
 extern int pselect (int __nfds, fd_set *__restrict __readfds,
       fd_set *__restrict __writefds,
       fd_set *__restrict __exceptfds,
       const struct timespec *__restrict __timeout,
       const __sigset_t *__restrict __sigmask);
-# 131 "/usr/include/sys/select.h" 3 4
+# 126 "/usr/include/sys/select.h" 3 4
 }
-# 220 "/usr/include/sys/types.h" 2 3 4
-
-
-# 1 "/usr/include/sys/sysmacros.h" 1 3 4
-# 29 "/usr/include/sys/sysmacros.h" 3 4
-extern "C" {
-
-__extension__
-extern unsigned int gnu_dev_major (unsigned long long int __dev)
-     throw () __attribute__ ((__const__));
-__extension__
-extern unsigned int gnu_dev_minor (unsigned long long int __dev)
-     throw () __attribute__ ((__const__));
-__extension__
-extern unsigned long long int gnu_dev_makedev (unsigned int __major,
-            unsigned int __minor)
-     throw () __attribute__ ((__const__));
-# 63 "/usr/include/sys/sysmacros.h" 3 4
-}
-# 223 "/usr/include/sys/types.h" 2 3 4
+# 180 "/usr/include/sys/types.h" 2 3 4
 
 
 
@@ -1598,7 +1624,7 @@ typedef __fsblkcnt_t fsblkcnt_t;
 
 
 typedef __fsfilcnt_t fsfilcnt_t;
-# 262 "/usr/include/sys/types.h" 3 4
+# 219 "/usr/include/sys/types.h" 3 4
 typedef __blkcnt64_t blkcnt64_t;
 typedef __fsblkcnt64_t fsblkcnt64_t;
 typedef __fsfilcnt64_t fsfilcnt64_t;
@@ -1608,21 +1634,40 @@ typedef __fsfilcnt64_t fsfilcnt64_t;
 
 
 # 1 "/usr/include/bits/pthreadtypes.h" 1 3 4
-# 21 "/usr/include/bits/pthreadtypes.h" 3 4
+# 23 "/usr/include/bits/pthreadtypes.h" 3 4
+# 1 "/usr/include/bits/thread-shared-types.h" 1 3 4
+# 77 "/usr/include/bits/thread-shared-types.h" 3 4
+# 1 "/usr/include/bits/pthreadtypes-arch.h" 1 3 4
+# 21 "/usr/include/bits/pthreadtypes-arch.h" 3 4
 # 1 "/usr/include/bits/wordsize.h" 1 3 4
-# 22 "/usr/include/bits/pthreadtypes.h" 2 3 4
-# 60 "/usr/include/bits/pthreadtypes.h" 3 4
-typedef unsigned long int pthread_t;
-
-
-union pthread_attr_t
+# 22 "/usr/include/bits/pthreadtypes-arch.h" 2 3 4
+# 65 "/usr/include/bits/pthreadtypes-arch.h" 3 4
+struct __pthread_rwlock_arch_t
 {
-  char __size[56];
-  long int __align;
+  unsigned int __readers;
+  unsigned int __writers;
+  unsigned int __wrphase_futex;
+  unsigned int __writers_futex;
+  unsigned int __pad3;
+  unsigned int __pad4;
+
+  int __cur_writer;
+  int __shared;
+  signed char __rwelision;
+
+
+
+
+  unsigned char __pad1[7];
+
+
+  unsigned long int __pad2;
+
+
+  unsigned int __flags;
+# 99 "/usr/include/bits/pthreadtypes-arch.h" 3 4
 };
-
-typedef union pthread_attr_t pthread_attr_t;
-
+# 78 "/usr/include/bits/thread-shared-types.h" 2 3 4
 
 
 
@@ -1632,29 +1677,64 @@ typedef struct __pthread_internal_list
   struct __pthread_internal_list *__prev;
   struct __pthread_internal_list *__next;
 } __pthread_list_t;
-# 90 "/usr/include/bits/pthreadtypes.h" 3 4
-typedef union
+# 118 "/usr/include/bits/thread-shared-types.h" 3 4
+struct __pthread_mutex_s
 {
-  struct __pthread_mutex_s
+  int __lock ;
+  unsigned int __count;
+  int __owner;
+
+  unsigned int __nusers;
+# 148 "/usr/include/bits/thread-shared-types.h" 3 4
+  int __kind;
+ 
+
+
+
+
+  short __spins; short __elision;
+  __pthread_list_t __list;
+# 165 "/usr/include/bits/thread-shared-types.h" 3 4
+ 
+};
+
+
+
+
+struct __pthread_cond_s
+{
+  __extension__ union
   {
-    int __lock;
-    unsigned int __count;
-    int __owner;
+    __extension__ unsigned long long int __wseq;
+    struct
+    {
+      unsigned int __low;
+      unsigned int __high;
+    } __wseq32;
+  };
+  __extension__ union
+  {
+    __extension__ unsigned long long int __g1_start;
+    struct
+    {
+      unsigned int __low;
+      unsigned int __high;
+    } __g1_start32;
+  };
+  unsigned int __g_refs[2] ;
+  unsigned int __g_size[2];
+  unsigned int __g1_orig_size;
+  unsigned int __wrefs;
+  unsigned int __g_signals[2];
+};
+# 24 "/usr/include/bits/pthreadtypes.h" 2 3 4
 
-    unsigned int __nusers;
+
+
+typedef unsigned long int pthread_t;
 
 
 
-    int __kind;
-
-    short __spins;
-    short __elision;
-    __pthread_list_t __list;
-# 125 "/usr/include/bits/pthreadtypes.h" 3 4
-  } __data;
-  char __size[40];
-  long int __align;
-} pthread_mutex_t;
 
 typedef union
 {
@@ -1664,23 +1744,6 @@ typedef union
 
 
 
-
-typedef union
-{
-  struct
-  {
-    int __lock;
-    unsigned int __futex;
-    __extension__ unsigned long long int __total_seq;
-    __extension__ unsigned long long int __wakeup_seq;
-    __extension__ unsigned long long int __woken_seq;
-    void *__mutex;
-    unsigned int __nwaiters;
-    unsigned int __broadcast_seq;
-  } __data;
-  char __size[48];
-  __extension__ long long int __align;
-} pthread_cond_t;
 
 typedef union
 {
@@ -1697,30 +1760,39 @@ typedef unsigned int pthread_key_t;
 typedef int pthread_once_t;
 
 
+union pthread_attr_t
+{
+  char __size[56];
+  long int __align;
+};
+
+typedef union pthread_attr_t pthread_attr_t;
+
 
 
 
 typedef union
 {
-
-  struct
-  {
-    int __lock;
-    unsigned int __nr_readers;
-    unsigned int __readers_wakeup;
-    unsigned int __writer_wakeup;
-    unsigned int __nr_readers_queued;
-    unsigned int __nr_writers_queued;
-    int __writer;
-    int __shared;
-    unsigned long int __pad1;
-    unsigned long int __pad2;
+  struct __pthread_mutex_s __data;
+  char __size[40];
+  long int __align;
+} pthread_mutex_t;
 
 
-    unsigned int __flags;
+typedef union
+{
+  struct __pthread_cond_s __data;
+  char __size[48];
+  __extension__ long long int __align;
+} pthread_cond_t;
 
-  } __data;
-# 212 "/usr/include/bits/pthreadtypes.h" 3 4
+
+
+
+
+typedef union
+{
+  struct __pthread_rwlock_arch_t __data;
   char __size[56];
   long int __align;
 } pthread_rwlock_t;
@@ -1751,11 +1823,11 @@ typedef union
   char __size[4];
   int __align;
 } pthread_barrierattr_t;
-# 271 "/usr/include/sys/types.h" 2 3 4
+# 228 "/usr/include/sys/types.h" 2 3 4
 
 
 }
-# 315 "/usr/include/stdlib.h" 2 3 4
+# 395 "/usr/include/stdlib.h" 2 3 4
 
 
 
@@ -1814,11 +1886,9 @@ extern int setstate_r (char *__restrict __statebuf,
 
 
 
-
 extern int rand (void) throw ();
 
 extern void srand (unsigned int __seed) throw ();
-
 
 
 
@@ -1859,7 +1929,8 @@ struct drand48_data
     unsigned short int __old_x[3];
     unsigned short int __c;
     unsigned short int __init;
-    unsigned long long int __a;
+    __extension__ unsigned long long int __a;
+
   };
 
 
@@ -1901,11 +1972,6 @@ extern int lcong48_r (unsigned short int __param[7],
 
 
 
-
-
-
-
-
 extern void *malloc (size_t __size) throw () __attribute__ ((__malloc__)) ;
 
 extern void *calloc (size_t __nmemb, size_t __size)
@@ -1916,20 +1982,21 @@ extern void *calloc (size_t __nmemb, size_t __size)
 
 
 
-
-
-
-
 extern void *realloc (void *__ptr, size_t __size)
      throw () __attribute__ ((__warn_unused_result__));
 
+
+
+
+
+
+
+extern void *reallocarray (void *__ptr, size_t __nmemb, size_t __size)
+     throw () __attribute__ ((__warn_unused_result__));
+
+
+
 extern void free (void *__ptr) throw ();
-
-
-
-
-extern void cfree (void *__ptr) throw ();
-
 
 
 # 1 "/usr/include/alloca.h" 1 3 4
@@ -1950,7 +2017,7 @@ extern void *alloca (size_t __size) throw ();
 
 
 }
-# 492 "/usr/include/stdlib.h" 2 3 4
+# 567 "/usr/include/stdlib.h" 2 3 4
 
 
 
@@ -1968,8 +2035,7 @@ extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
 
 
 extern void *aligned_alloc (size_t __alignment, size_t __size)
-     throw () __attribute__ ((__malloc__, __alloc_size__ (2)));
-
+     throw () __attribute__ ((__malloc__)) __attribute__ ((__alloc_size__ (2))) ;
 
 
 
@@ -1984,18 +2050,9 @@ extern int atexit (void (*__func) (void)) throw () __attribute__ ((__nonnull__ (
 
 extern "C++" int at_quick_exit (void (*__func) (void))
      throw () __asm ("at_quick_exit") __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-
-
+# 607 "/usr/include/stdlib.h" 3 4
 extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)
      throw () __attribute__ ((__nonnull__ (1)));
-
 
 
 
@@ -2013,17 +2070,12 @@ extern void quick_exit (int __status) throw () __attribute__ ((__noreturn__));
 
 
 
-
-
 extern void _Exit (int __status) throw () __attribute__ ((__noreturn__));
 
 
 
 
-
-
 extern char *getenv (const char *__name) throw () __attribute__ ((__nonnull__ (1))) ;
-
 
 
 
@@ -2054,40 +2106,31 @@ extern int unsetenv (const char *__name) throw () __attribute__ ((__nonnull__ (1
 
 
 extern int clearenv (void) throw ();
-# 605 "/usr/include/stdlib.h" 3 4
+# 672 "/usr/include/stdlib.h" 3 4
 extern char *mktemp (char *__template) throw () __attribute__ ((__nonnull__ (1)));
-# 619 "/usr/include/stdlib.h" 3 4
+# 685 "/usr/include/stdlib.h" 3 4
 extern int mkstemp (char *__template) __attribute__ ((__nonnull__ (1))) ;
-# 629 "/usr/include/stdlib.h" 3 4
+# 695 "/usr/include/stdlib.h" 3 4
 extern int mkstemp64 (char *__template) __attribute__ ((__nonnull__ (1))) ;
-# 641 "/usr/include/stdlib.h" 3 4
+# 707 "/usr/include/stdlib.h" 3 4
 extern int mkstemps (char *__template, int __suffixlen) __attribute__ ((__nonnull__ (1))) ;
-# 651 "/usr/include/stdlib.h" 3 4
+# 717 "/usr/include/stdlib.h" 3 4
 extern int mkstemps64 (char *__template, int __suffixlen)
      __attribute__ ((__nonnull__ (1))) ;
-# 662 "/usr/include/stdlib.h" 3 4
+# 728 "/usr/include/stdlib.h" 3 4
 extern char *mkdtemp (char *__template) throw () __attribute__ ((__nonnull__ (1))) ;
-# 673 "/usr/include/stdlib.h" 3 4
+# 739 "/usr/include/stdlib.h" 3 4
 extern int mkostemp (char *__template, int __flags) __attribute__ ((__nonnull__ (1))) ;
-# 683 "/usr/include/stdlib.h" 3 4
+# 749 "/usr/include/stdlib.h" 3 4
 extern int mkostemp64 (char *__template, int __flags) __attribute__ ((__nonnull__ (1))) ;
-# 693 "/usr/include/stdlib.h" 3 4
+# 759 "/usr/include/stdlib.h" 3 4
 extern int mkostemps (char *__template, int __suffixlen, int __flags)
      __attribute__ ((__nonnull__ (1))) ;
-# 705 "/usr/include/stdlib.h" 3 4
+# 771 "/usr/include/stdlib.h" 3 4
 extern int mkostemps64 (char *__template, int __suffixlen, int __flags)
      __attribute__ ((__nonnull__ (1))) ;
-
-
-
-
-
-
-
-
-
+# 781 "/usr/include/stdlib.h" 3 4
 extern int system (const char *__command) ;
-
 
 
 
@@ -2095,7 +2138,7 @@ extern int system (const char *__command) ;
 
 extern char *canonicalize_file_name (const char *__name)
      throw () __attribute__ ((__nonnull__ (1))) ;
-# 733 "/usr/include/stdlib.h" 3 4
+# 797 "/usr/include/stdlib.h" 3 4
 extern char *realpath (const char *__restrict __name,
          char *__restrict __resolved) throw () ;
 
@@ -2116,10 +2159,13 @@ typedef int (*__compar_d_fn_t) (const void *, const void *, void *);
 
 
 
-
 extern void *bsearch (const void *__key, const void *__base,
         size_t __nmemb, size_t __size, __compar_fn_t __compar)
      __attribute__ ((__nonnull__ (1, 2, 5))) ;
+
+
+
+
 
 
 
@@ -2137,10 +2183,8 @@ extern int abs (int __x) throw () __attribute__ ((__const__)) ;
 extern long int labs (long int __x) throw () __attribute__ ((__const__)) ;
 
 
-
 __extension__ extern long long int llabs (long long int __x)
      throw () __attribute__ ((__const__)) ;
-
 
 
 
@@ -2153,13 +2197,10 @@ extern ldiv_t ldiv (long int __numer, long int __denom)
      throw () __attribute__ ((__const__)) ;
 
 
-
-
 __extension__ extern lldiv_t lldiv (long long int __numer,
         long long int __denom)
      throw () __attribute__ ((__const__)) ;
-
-# 807 "/usr/include/stdlib.h" 3 4
+# 869 "/usr/include/stdlib.h" 3 4
 extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,
      int *__restrict __sign) throw () __attribute__ ((__nonnull__ (3, 4))) ;
 
@@ -2210,16 +2251,14 @@ extern int qfcvt_r (long double __value, int __ndigit,
 
 
 
-
-
-extern int mblen (const char *__s, size_t __n) throw () ;
+extern int mblen (const char *__s, size_t __n) throw ();
 
 
 extern int mbtowc (wchar_t *__restrict __pwc,
-     const char *__restrict __s, size_t __n) throw () ;
+     const char *__restrict __s, size_t __n) throw ();
 
 
-extern int wctomb (char *__s, wchar_t __wchar) throw () ;
+extern int wctomb (char *__s, wchar_t __wchar) throw ();
 
 
 
@@ -2236,19 +2275,12 @@ extern size_t wcstombs (char *__restrict __s,
 
 
 
-
 extern int rpmatch (const char *__response) throw () __attribute__ ((__nonnull__ (1))) ;
-# 895 "/usr/include/stdlib.h" 3 4
+# 954 "/usr/include/stdlib.h" 3 4
 extern int getsubopt (char **__restrict __optionp,
         char *const *__restrict __tokens,
         char **__restrict __valuep)
      throw () __attribute__ ((__nonnull__ (1, 2, 3))) ;
-
-
-
-
-
-extern void setkey (const char *__key) throw () __attribute__ ((__nonnull__ (1)));
 
 
 
@@ -2293,11 +2325,10 @@ extern int getpt (void);
 
 extern int getloadavg (double __loadavg[], int __nelem)
      throw () __attribute__ ((__nonnull__ (1)));
-
-
+# 1010 "/usr/include/stdlib.h" 3 4
 # 1 "/usr/include/bits/stdlib-float.h" 1 3 4
-# 952 "/usr/include/stdlib.h" 2 3 4
-# 964 "/usr/include/stdlib.h" 3 4
+# 1011 "/usr/include/stdlib.h" 2 3 4
+# 1020 "/usr/include/stdlib.h" 3 4
 }
 # 76 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdlib" 2 3
 
@@ -2646,33 +2677,39 @@ namespace __cxx11 {
 
 
 # 1 "/usr/include/wchar.h" 1 3 4
-# 39 "/usr/include/wchar.h" 3 4
+# 27 "/usr/include/wchar.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 28 "/usr/include/wchar.h" 2 3 4
+
+
+
+
+
+
+
+# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
+# 36 "/usr/include/wchar.h" 2 3 4
+
+
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdarg.h" 1 3 4
-# 40 "/usr/include/wchar.h" 2 3 4
+# 39 "/usr/include/wchar.h" 2 3 4
 
 # 1 "/usr/include/bits/wchar.h" 1 3 4
-# 22 "/usr/include/bits/wchar.h" 3 4
-# 1 "/usr/include/bits/wordsize.h" 1 3 4
-# 23 "/usr/include/bits/wchar.h" 2 3 4
-# 42 "/usr/include/wchar.h" 2 3 4
-# 51 "/usr/include/wchar.h" 3 4
-# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 357 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 3 4
+# 41 "/usr/include/wchar.h" 2 3 4
+# 1 "/usr/include/bits/types/wint_t.h" 1 3 4
+# 20 "/usr/include/bits/types/wint_t.h" 3 4
 typedef unsigned int wint_t;
-# 52 "/usr/include/wchar.h" 2 3 4
-# 104 "/usr/include/wchar.h" 3 4
+# 42 "/usr/include/wchar.h" 2 3 4
+# 1 "/usr/include/bits/types/mbstate_t.h" 1 3 4
+
+
+
 
 
 typedef __mbstate_t mbstate_t;
-
-
-
-
-
-
-# 132 "/usr/include/wchar.h" 3 4
+# 43 "/usr/include/wchar.h" 2 3 4
+# 79 "/usr/include/wchar.h" 3 4
 extern "C" {
-
 
 
 
@@ -2680,34 +2717,30 @@ struct tm;
 
 
 
-
-
-
-
-
-
 extern wchar_t *wcscpy (wchar_t *__restrict __dest,
-   const wchar_t *__restrict __src) throw ();
+   const wchar_t *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
+
 
 extern wchar_t *wcsncpy (wchar_t *__restrict __dest,
     const wchar_t *__restrict __src, size_t __n)
-     throw ();
+     throw () __attribute__ ((__nonnull__ (1, 2)));
 
 
 extern wchar_t *wcscat (wchar_t *__restrict __dest,
-   const wchar_t *__restrict __src) throw ();
+   const wchar_t *__restrict __src)
+     throw () __attribute__ ((__nonnull__ (1, 2)));
 
 extern wchar_t *wcsncat (wchar_t *__restrict __dest,
     const wchar_t *__restrict __src, size_t __n)
-     throw ();
+     throw () __attribute__ ((__nonnull__ (1, 2)));
 
 
 extern int wcscmp (const wchar_t *__s1, const wchar_t *__s2)
-     throw () __attribute__ ((__pure__));
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
 extern int wcsncmp (const wchar_t *__s1, const wchar_t *__s2, size_t __n)
-     throw () __attribute__ ((__pure__));
-
+     throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
 
 
@@ -2719,14 +2752,11 @@ extern int wcsncasecmp (const wchar_t *__s1, const wchar_t *__s2,
 
 
 
-
-
 extern int wcscasecmp_l (const wchar_t *__s1, const wchar_t *__s2,
-    __locale_t __loc) throw ();
+    locale_t __loc) throw ();
 
 extern int wcsncasecmp_l (const wchar_t *__s1, const wchar_t *__s2,
-     size_t __n, __locale_t __loc) throw ();
-
+     size_t __n, locale_t __loc) throw ();
 
 
 
@@ -2744,19 +2774,17 @@ extern size_t wcsxfrm (wchar_t *__restrict __s1,
 
 
 
-
 extern int wcscoll_l (const wchar_t *__s1, const wchar_t *__s2,
-        __locale_t __loc) throw ();
+        locale_t __loc) throw ();
 
 
 
 
 extern size_t wcsxfrm_l (wchar_t *__s1, const wchar_t *__s2,
-    size_t __n, __locale_t __loc) throw ();
+    size_t __n, locale_t __loc) throw ();
 
 
 extern wchar_t *wcsdup (const wchar_t *__s) throw () __attribute__ ((__malloc__));
-
 
 
 
@@ -2775,18 +2803,9 @@ extern "C++" wchar_t *wcsrchr (wchar_t *__wcs, wchar_t __wc)
      throw () __asm ("wcsrchr") __attribute__ ((__pure__));
 extern "C++" const wchar_t *wcsrchr (const wchar_t *__wcs, wchar_t __wc)
      throw () __asm ("wcsrchr") __attribute__ ((__pure__));
-
-
-
-
-
-
-
-
-
+# 181 "/usr/include/wchar.h" 3 4
 extern wchar_t *wcschrnul (const wchar_t *__s, wchar_t __wc)
      throw () __attribute__ ((__pure__));
-
 
 
 
@@ -2831,16 +2850,14 @@ extern size_t wcslen (const wchar_t *__s) throw () __attribute__ ((__pure__));
 
 
 
-
 extern "C++" wchar_t *wcswcs (wchar_t *__haystack, const wchar_t *__needle)
      throw () __asm ("wcswcs") __attribute__ ((__pure__));
 extern "C++" const wchar_t *wcswcs (const wchar_t *__haystack,
         const wchar_t *__needle)
      throw () __asm ("wcswcs") __attribute__ ((__pure__));
-# 306 "/usr/include/wchar.h" 3 4
+# 240 "/usr/include/wchar.h" 3 4
 extern size_t wcsnlen (const wchar_t *__s, size_t __maxlen)
      throw () __attribute__ ((__pure__));
-
 
 
 
@@ -2875,11 +2892,9 @@ extern wchar_t *wmemset (wchar_t *__s, wchar_t __c, size_t __n) throw ();
 
 
 
-
 extern wchar_t *wmempcpy (wchar_t *__restrict __s1,
      const wchar_t *__restrict __s2, size_t __n)
      throw ();
-
 
 
 
@@ -2910,11 +2925,7 @@ extern size_t __mbrlen (const char *__restrict __s, size_t __n,
    mbstate_t *__restrict __ps) throw ();
 extern size_t mbrlen (const char *__restrict __s, size_t __n,
         mbstate_t *__restrict __ps) throw ();
-
-# 405 "/usr/include/wchar.h" 3 4
-
-
-
+# 337 "/usr/include/wchar.h" 3 4
 extern size_t mbsrtowcs (wchar_t *__restrict __dst,
     const char **__restrict __src, size_t __len,
     mbstate_t *__restrict __ps) throw ();
@@ -2924,7 +2935,6 @@ extern size_t mbsrtowcs (wchar_t *__restrict __dst,
 extern size_t wcsrtombs (char *__restrict __dst,
     const wchar_t **__restrict __src, size_t __len,
     mbstate_t *__restrict __ps) throw ();
-
 
 
 
@@ -2956,11 +2966,8 @@ extern int wcswidth (const wchar_t *__s, size_t __n) throw ();
 
 
 
-
 extern double wcstod (const wchar_t *__restrict __nptr,
         wchar_t **__restrict __endptr) throw ();
-
-
 
 
 
@@ -2968,13 +2975,30 @@ extern float wcstof (const wchar_t *__restrict __nptr,
        wchar_t **__restrict __endptr) throw ();
 extern long double wcstold (const wchar_t *__restrict __nptr,
        wchar_t **__restrict __endptr) throw ();
+# 396 "/usr/include/wchar.h" 3 4
+extern _Float32 wcstof32 (const wchar_t *__restrict __nptr,
+     wchar_t **__restrict __endptr) throw ();
 
 
 
+extern _Float64 wcstof64 (const wchar_t *__restrict __nptr,
+     wchar_t **__restrict __endptr) throw ();
 
 
 
+extern _Float128 wcstof128 (const wchar_t *__restrict __nptr,
+       wchar_t **__restrict __endptr) throw ();
 
+
+
+extern _Float32x wcstof32x (const wchar_t *__restrict __nptr,
+       wchar_t **__restrict __endptr) throw ();
+
+
+
+extern _Float64x wcstof64x (const wchar_t *__restrict __nptr,
+       wchar_t **__restrict __endptr) throw ();
+# 428 "/usr/include/wchar.h" 3 4
 extern long int wcstol (const wchar_t *__restrict __nptr,
    wchar_t **__restrict __endptr, int __base) throw ();
 
@@ -2983,8 +3007,6 @@ extern long int wcstol (const wchar_t *__restrict __nptr,
 extern unsigned long int wcstoul (const wchar_t *__restrict __nptr,
       wchar_t **__restrict __endptr, int __base)
      throw ();
-
-
 
 
 
@@ -3005,7 +3027,6 @@ extern unsigned long long int wcstoull (const wchar_t *__restrict __nptr,
 
 
 
-
 __extension__
 extern long long int wcstoq (const wchar_t *__restrict __nptr,
         wchar_t **__restrict __endptr, int __base)
@@ -3017,43 +3038,71 @@ __extension__
 extern unsigned long long int wcstouq (const wchar_t *__restrict __nptr,
            wchar_t **__restrict __endptr,
            int __base) throw ();
-# 530 "/usr/include/wchar.h" 3 4
+
+
+
+
+
+
 extern long int wcstol_l (const wchar_t *__restrict __nptr,
      wchar_t **__restrict __endptr, int __base,
-     __locale_t __loc) throw ();
+     locale_t __loc) throw ();
 
 extern unsigned long int wcstoul_l (const wchar_t *__restrict __nptr,
         wchar_t **__restrict __endptr,
-        int __base, __locale_t __loc) throw ();
+        int __base, locale_t __loc) throw ();
 
 __extension__
 extern long long int wcstoll_l (const wchar_t *__restrict __nptr,
     wchar_t **__restrict __endptr,
-    int __base, __locale_t __loc) throw ();
+    int __base, locale_t __loc) throw ();
 
 __extension__
 extern unsigned long long int wcstoull_l (const wchar_t *__restrict __nptr,
        wchar_t **__restrict __endptr,
-       int __base, __locale_t __loc)
+       int __base, locale_t __loc)
      throw ();
 
 extern double wcstod_l (const wchar_t *__restrict __nptr,
-   wchar_t **__restrict __endptr, __locale_t __loc)
+   wchar_t **__restrict __endptr, locale_t __loc)
      throw ();
 
 extern float wcstof_l (const wchar_t *__restrict __nptr,
-         wchar_t **__restrict __endptr, __locale_t __loc)
+         wchar_t **__restrict __endptr, locale_t __loc)
      throw ();
 
 extern long double wcstold_l (const wchar_t *__restrict __nptr,
          wchar_t **__restrict __endptr,
-         __locale_t __loc) throw ();
+         locale_t __loc) throw ();
+# 511 "/usr/include/wchar.h" 3 4
+extern _Float32 wcstof32_l (const wchar_t *__restrict __nptr,
+       wchar_t **__restrict __endptr,
+       locale_t __loc) throw ();
 
 
 
+extern _Float64 wcstof64_l (const wchar_t *__restrict __nptr,
+       wchar_t **__restrict __endptr,
+       locale_t __loc) throw ();
 
 
 
+extern _Float128 wcstof128_l (const wchar_t *__restrict __nptr,
+         wchar_t **__restrict __endptr,
+         locale_t __loc) throw ();
+
+
+
+extern _Float32x wcstof32x_l (const wchar_t *__restrict __nptr,
+         wchar_t **__restrict __endptr,
+         locale_t __loc) throw ();
+
+
+
+extern _Float64x wcstof64x_l (const wchar_t *__restrict __nptr,
+         wchar_t **__restrict __endptr,
+         locale_t __loc) throw ();
+# 551 "/usr/include/wchar.h" 3 4
 extern wchar_t *wcpcpy (wchar_t *__restrict __dest,
    const wchar_t *__restrict __src) throw ();
 
@@ -3062,14 +3111,8 @@ extern wchar_t *wcpcpy (wchar_t *__restrict __dest,
 extern wchar_t *wcpncpy (wchar_t *__restrict __dest,
     const wchar_t *__restrict __src, size_t __n)
      throw ();
-
-
-
-
-
-
+# 567 "/usr/include/wchar.h" 3 4
 extern __FILE *open_wmemstream (wchar_t **__bufloc, size_t *__sizeloc) throw ();
-
 
 
 
@@ -3136,16 +3179,7 @@ extern int wscanf (const wchar_t *__restrict __format, ...)
 extern int swscanf (const wchar_t *__restrict __s,
       const wchar_t *__restrict __format, ...)
      throw () ;
-# 680 "/usr/include/wchar.h" 3 4
-
-
-
-
-
-
-
-
-
+# 673 "/usr/include/wchar.h" 3 4
 extern int vfwscanf (__FILE *__restrict __s,
        const wchar_t *__restrict __format,
        __gnuc_va_list __arg)
@@ -3162,16 +3196,7 @@ extern int vswscanf (const wchar_t *__restrict __s,
        const wchar_t *__restrict __format,
        __gnuc_va_list __arg)
      throw () ;
-# 736 "/usr/include/wchar.h" 3 4
-
-
-
-
-
-
-
-
-
+# 727 "/usr/include/wchar.h" 3 4
 extern wint_t fgetwc (__FILE *__stream);
 extern wint_t getwc (__FILE *__stream);
 
@@ -3217,8 +3242,7 @@ extern int fputws (const wchar_t *__restrict __ws,
 
 
 extern wint_t ungetwc (wint_t __wc, __FILE *__stream);
-
-# 801 "/usr/include/wchar.h" 3 4
+# 782 "/usr/include/wchar.h" 3 4
 extern wint_t getwc_unlocked (__FILE *__stream);
 extern wint_t getwchar_unlocked (void);
 
@@ -3237,10 +3261,10 @@ extern wint_t fgetwc_unlocked (__FILE *__stream);
 
 
 extern wint_t fputwc_unlocked (wchar_t __wc, __FILE *__stream);
-# 827 "/usr/include/wchar.h" 3 4
+# 808 "/usr/include/wchar.h" 3 4
 extern wint_t putwc_unlocked (wchar_t __wc, __FILE *__stream);
 extern wint_t putwchar_unlocked (wchar_t __wc);
-# 837 "/usr/include/wchar.h" 3 4
+# 818 "/usr/include/wchar.h" 3 4
 extern wchar_t *fgetws_unlocked (wchar_t *__restrict __ws, int __n,
      __FILE *__restrict __stream);
 
@@ -3258,7 +3282,6 @@ extern int fputws_unlocked (const wchar_t *__restrict __ws,
 
 
 
-
 extern size_t wcsftime (wchar_t *__restrict __s, size_t __maxsize,
    const wchar_t *__restrict __format,
    const struct tm *__restrict __tp) throw ();
@@ -3266,14 +3289,11 @@ extern size_t wcsftime (wchar_t *__restrict __s, size_t __maxsize,
 
 
 
-
-
-
 extern size_t wcsftime_l (wchar_t *__restrict __s, size_t __maxsize,
      const wchar_t *__restrict __format,
      const struct tm *__restrict __tp,
-     __locale_t __loc) throw ();
-# 891 "/usr/include/wchar.h" 3 4
+     locale_t __loc) throw ();
+# 857 "/usr/include/wchar.h" 3 4
 }
 # 45 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 2 3
 # 62 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 3
@@ -10813,12 +10833,6 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 39 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 3
        
 # 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 3
-
-
-
-
-# 1 "/usr/include/wchar.h" 1 3 4
-# 45 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 2 3
 # 42 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/bits/char_traits.h" 2 3
 
 
@@ -11212,55 +11226,66 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdint.h" 1 3 4
 # 9 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdint.h" 3 4
 # 1 "/usr/include/stdint.h" 1 3 4
-# 27 "/usr/include/stdint.h" 3 4
+# 26 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 27 "/usr/include/stdint.h" 2 3 4
+
+
 # 1 "/usr/include/bits/wordsize.h" 1 3 4
-# 28 "/usr/include/stdint.h" 2 3 4
-# 48 "/usr/include/stdint.h" 3 4
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-
-typedef unsigned int uint32_t;
-
-
-
-typedef unsigned long int uint64_t;
-# 65 "/usr/include/stdint.h" 3 4
-typedef signed char int_least8_t;
-typedef short int int_least16_t;
-typedef int int_least32_t;
-
-typedef long int int_least64_t;
+# 30 "/usr/include/stdint.h" 2 3 4
 
 
 
 
 
 
-typedef unsigned char uint_least8_t;
-typedef unsigned short int uint_least16_t;
-typedef unsigned int uint_least32_t;
 
-typedef unsigned long int uint_least64_t;
-# 90 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/bits/stdint-uintn.h" 1 3 4
+# 24 "/usr/include/bits/stdint-uintn.h" 3 4
+typedef __uint8_t uint8_t;
+typedef __uint16_t uint16_t;
+typedef __uint32_t uint32_t;
+typedef __uint64_t uint64_t;
+# 38 "/usr/include/stdint.h" 2 3 4
+
+
+
+
+
+typedef __int_least8_t int_least8_t;
+typedef __int_least16_t int_least16_t;
+typedef __int_least32_t int_least32_t;
+typedef __int_least64_t int_least64_t;
+
+
+typedef __uint_least8_t uint_least8_t;
+typedef __uint_least16_t uint_least16_t;
+typedef __uint_least32_t uint_least32_t;
+typedef __uint_least64_t uint_least64_t;
+
+
+
+
+
 typedef signed char int_fast8_t;
 
 typedef long int int_fast16_t;
 typedef long int int_fast32_t;
 typedef long int int_fast64_t;
-# 103 "/usr/include/stdint.h" 3 4
+# 71 "/usr/include/stdint.h" 3 4
 typedef unsigned char uint_fast8_t;
 
 typedef unsigned long int uint_fast16_t;
 typedef unsigned long int uint_fast32_t;
 typedef unsigned long int uint_fast64_t;
-# 119 "/usr/include/stdint.h" 3 4
+# 87 "/usr/include/stdint.h" 3 4
 typedef long int intptr_t;
 
 
 typedef unsigned long int uintptr_t;
-# 134 "/usr/include/stdint.h" 3 4
-typedef long int intmax_t;
-typedef unsigned long int uintmax_t;
+# 101 "/usr/include/stdint.h" 3 4
+typedef __intmax_t intmax_t;
+typedef __uintmax_t uintmax_t;
 # 10 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stdint.h" 2 3 4
 # 42 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdint" 2 3
 
@@ -11526,17 +11551,14 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 # 1 "/usr/include/locale.h" 1 3 4
-# 29 "/usr/include/locale.h" 3 4
+# 28 "/usr/include/locale.h" 3 4
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 30 "/usr/include/locale.h" 2 3 4
+# 29 "/usr/include/locale.h" 2 3 4
 # 1 "/usr/include/bits/locale.h" 1 3 4
-# 31 "/usr/include/locale.h" 2 3 4
+# 30 "/usr/include/locale.h" 2 3 4
 
 extern "C" {
 # 51 "/usr/include/locale.h" 3 4
-
-
-
 struct lconv
 {
 
@@ -11596,7 +11618,7 @@ struct lconv
 
   char int_p_sign_posn;
   char int_n_sign_posn;
-# 121 "/usr/include/locale.h" 3 4
+# 118 "/usr/include/locale.h" 3 4
 };
 
 
@@ -11605,24 +11627,22 @@ extern char *setlocale (int __category, const char *__locale) throw ();
 
 
 extern struct lconv *localeconv (void) throw ();
-
-
-# 152 "/usr/include/locale.h" 3 4
-extern __locale_t newlocale (int __category_mask, const char *__locale,
-        __locale_t __base) throw ();
-# 187 "/usr/include/locale.h" 3 4
-extern __locale_t duplocale (__locale_t __dataset) throw ();
+# 141 "/usr/include/locale.h" 3 4
+extern locale_t newlocale (int __category_mask, const char *__locale,
+      locale_t __base) throw ();
+# 176 "/usr/include/locale.h" 3 4
+extern locale_t duplocale (locale_t __dataset) throw ();
 
 
 
-extern void freelocale (__locale_t __dataset) throw ();
+extern void freelocale (locale_t __dataset) throw ();
 
 
 
 
 
 
-extern __locale_t uselocale (__locale_t __dataset) throw ();
+extern locale_t uselocale (locale_t __dataset) throw ();
 
 
 
@@ -11709,9 +11729,9 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 # 1 "/usr/include/ctype.h" 1 3 4
-# 29 "/usr/include/ctype.h" 3 4
+# 28 "/usr/include/ctype.h" 3 4
 extern "C" {
-# 47 "/usr/include/ctype.h" 3 4
+# 46 "/usr/include/ctype.h" 3 4
 enum
 {
   _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
@@ -11727,20 +11747,14 @@ enum
   _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
   _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
 };
-# 80 "/usr/include/ctype.h" 3 4
+# 79 "/usr/include/ctype.h" 3 4
 extern const unsigned short int **__ctype_b_loc (void)
      throw () __attribute__ ((__const__));
 extern const __int32_t **__ctype_tolower_loc (void)
      throw () __attribute__ ((__const__));
 extern const __int32_t **__ctype_toupper_loc (void)
      throw () __attribute__ ((__const__));
-# 105 "/usr/include/ctype.h" 3 4
-
-
-
-
-
-
+# 108 "/usr/include/ctype.h" 3 4
 extern int isalnum (int) throw ();
 extern int isalpha (int) throw ();
 extern int iscntrl (int) throw ();
@@ -11763,13 +11777,7 @@ extern int toupper (int __c) throw ();
 
 
 
-
-
-
-
 extern int isblank (int) throw ();
-
-
 
 
 
@@ -11791,30 +11799,30 @@ extern int toascii (int __c) throw ();
 
 extern int _toupper (int) throw ();
 extern int _tolower (int) throw ();
-# 272 "/usr/include/ctype.h" 3 4
-extern int isalnum_l (int, __locale_t) throw ();
-extern int isalpha_l (int, __locale_t) throw ();
-extern int iscntrl_l (int, __locale_t) throw ();
-extern int isdigit_l (int, __locale_t) throw ();
-extern int islower_l (int, __locale_t) throw ();
-extern int isgraph_l (int, __locale_t) throw ();
-extern int isprint_l (int, __locale_t) throw ();
-extern int ispunct_l (int, __locale_t) throw ();
-extern int isspace_l (int, __locale_t) throw ();
-extern int isupper_l (int, __locale_t) throw ();
-extern int isxdigit_l (int, __locale_t) throw ();
+# 251 "/usr/include/ctype.h" 3 4
+extern int isalnum_l (int, locale_t) throw ();
+extern int isalpha_l (int, locale_t) throw ();
+extern int iscntrl_l (int, locale_t) throw ();
+extern int isdigit_l (int, locale_t) throw ();
+extern int islower_l (int, locale_t) throw ();
+extern int isgraph_l (int, locale_t) throw ();
+extern int isprint_l (int, locale_t) throw ();
+extern int ispunct_l (int, locale_t) throw ();
+extern int isspace_l (int, locale_t) throw ();
+extern int isupper_l (int, locale_t) throw ();
+extern int isxdigit_l (int, locale_t) throw ();
 
-extern int isblank_l (int, __locale_t) throw ();
-
-
-
-extern int __tolower_l (int __c, __locale_t __l) throw ();
-extern int tolower_l (int __c, __locale_t __l) throw ();
+extern int isblank_l (int, locale_t) throw ();
 
 
-extern int __toupper_l (int __c, __locale_t __l) throw ();
-extern int toupper_l (int __c, __locale_t __l) throw ();
-# 348 "/usr/include/ctype.h" 3 4
+
+extern int __tolower_l (int __c, locale_t __l) throw ();
+extern int tolower_l (int __c, locale_t __l) throw ();
+
+
+extern int __toupper_l (int __c, locale_t __l) throw ();
+extern int toupper_l (int __c, locale_t __l) throw ();
+# 327 "/usr/include/ctype.h" 3 4
 }
 # 43 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cctype" 2 3
 # 62 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cctype" 3
@@ -12025,18 +12033,16 @@ namespace __cxx11 {
 # 29 "/usr/include/sched.h" 3 4
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
 # 30 "/usr/include/sched.h" 2 3 4
-
-
-
-# 1 "/usr/include/time.h" 1 3 4
-# 34 "/usr/include/sched.h" 2 3 4
-# 42 "/usr/include/sched.h" 3 4
+# 43 "/usr/include/sched.h" 3 4
 # 1 "/usr/include/bits/sched.h" 1 3 4
-# 73 "/usr/include/bits/sched.h" 3 4
+# 74 "/usr/include/bits/sched.h" 3 4
+# 1 "/usr/include/bits/types/struct_sched_param.h" 1 3 4
+# 23 "/usr/include/bits/types/struct_sched_param.h" 3 4
 struct sched_param
-  {
-    int __sched_priority;
-  };
+{
+  int sched_priority;
+};
+# 75 "/usr/include/bits/sched.h" 2 3 4
 
 extern "C" {
 
@@ -12055,20 +12061,10 @@ extern int sched_getcpu (void) throw ();
 extern int setns (int __fd, int __nstype) throw ();
 
 
-
 }
-
-
-
-
-
-
-
-struct __sched_param
-  {
-    int __sched_priority;
-  };
-# 119 "/usr/include/bits/sched.h" 3 4
+# 44 "/usr/include/sched.h" 2 3 4
+# 1 "/usr/include/bits/cpu-set.h" 1 3 4
+# 32 "/usr/include/bits/cpu-set.h" 3 4
 typedef unsigned long int __cpu_mask;
 
 
@@ -12080,16 +12076,18 @@ typedef struct
 {
   __cpu_mask __bits[1024 / (8 * sizeof (__cpu_mask))];
 } cpu_set_t;
-# 202 "/usr/include/bits/sched.h" 3 4
+# 115 "/usr/include/bits/cpu-set.h" 3 4
 extern "C" {
 
 extern int __sched_cpucount (size_t __setsize, const cpu_set_t *__setp)
-  throw ();
+     throw ();
 extern cpu_set_t *__sched_cpualloc (size_t __count) throw () ;
 extern void __sched_cpufree (cpu_set_t *__set) throw ();
 
 }
-# 43 "/usr/include/sched.h" 2 3 4
+# 45 "/usr/include/sched.h" 2 3 4
+
+
 
 
 
@@ -12121,7 +12119,7 @@ extern int sched_get_priority_min (int __algorithm) throw ();
 
 
 extern int sched_rr_get_interval (__pid_t __pid, struct timespec *__t) throw ();
-# 117 "/usr/include/sched.h" 3 4
+# 121 "/usr/include/sched.h" 3 4
 extern int sched_setaffinity (__pid_t __pid, size_t __cpusetsize,
          const cpu_set_t *__cpuset) throw ();
 
@@ -12134,23 +12132,15 @@ extern int sched_getaffinity (__pid_t __pid, size_t __cpusetsize,
 # 24 "/usr/include/pthread.h" 2 3 4
 # 1 "/usr/include/time.h" 1 3 4
 # 29 "/usr/include/time.h" 3 4
-extern "C" {
-
-
-
-
-
-
-
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 38 "/usr/include/time.h" 2 3 4
+# 30 "/usr/include/time.h" 2 3 4
 
 
 
 # 1 "/usr/include/bits/time.h" 1 3 4
-# 88 "/usr/include/bits/time.h" 3 4
+# 73 "/usr/include/bits/time.h" 3 4
 # 1 "/usr/include/bits/timex.h" 1 3 4
-# 25 "/usr/include/bits/timex.h" 3 4
+# 26 "/usr/include/bits/timex.h" 3 4
 struct timex
 {
   unsigned int modes;
@@ -12180,7 +12170,7 @@ struct timex
   int :32; int :32; int :32; int :32;
   int :32; int :32; int :32;
 };
-# 89 "/usr/include/bits/time.h" 2 3 4
+# 74 "/usr/include/bits/time.h" 2 3 4
 
 extern "C" {
 
@@ -12188,8 +12178,17 @@ extern "C" {
 extern int clock_adjtime (__clockid_t __clock_id, struct timex *__utx) throw ();
 
 }
-# 42 "/usr/include/time.h" 2 3 4
-# 131 "/usr/include/time.h" 3 4
+# 34 "/usr/include/time.h" 2 3 4
+
+
+
+
+
+# 1 "/usr/include/bits/types/struct_tm.h" 1 3 4
+
+
+
+
 
 
 struct tm
@@ -12212,7 +12211,9 @@ struct tm
 
 
 };
-
+# 40 "/usr/include/time.h" 2 3 4
+# 48 "/usr/include/time.h" 3 4
+# 1 "/usr/include/bits/types/struct_itimerspec.h" 1 3 4
 
 
 
@@ -12225,10 +12226,10 @@ struct itimerspec
     struct timespec it_interval;
     struct timespec it_value;
   };
-
-
+# 49 "/usr/include/time.h" 2 3 4
 struct sigevent;
-# 186 "/usr/include/time.h" 3 4
+# 68 "/usr/include/time.h" 3 4
+extern "C" {
 
 
 
@@ -12255,7 +12256,6 @@ extern size_t strftime (char *__restrict __s, size_t __maxsize,
 
 
 
-
 extern char *strptime (const char *__restrict __s,
          const char *__restrict __fmt, struct tm *__tp)
      throw ();
@@ -12265,18 +12265,16 @@ extern char *strptime (const char *__restrict __s,
 
 
 
-
 extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
      const char *__restrict __format,
      const struct tm *__restrict __tp,
-     __locale_t __loc) throw ();
+     locale_t __loc) throw ();
 
 
 
 extern char *strptime_l (const char *__restrict __s,
     const char *__restrict __fmt, struct tm *__tp,
-    __locale_t __loc) throw ();
-
+    locale_t __loc) throw ();
 
 
 
@@ -12287,7 +12285,6 @@ extern struct tm *gmtime (const time_t *__timer) throw ();
 
 
 extern struct tm *localtime (const time_t *__timer) throw ();
-
 
 
 
@@ -12303,12 +12300,10 @@ extern struct tm *localtime_r (const time_t *__restrict __timer,
 
 
 
-
 extern char *asctime (const struct tm *__tp) throw ();
 
 
 extern char *ctime (const time_t *__timer) throw ();
-
 
 
 
@@ -12348,7 +12343,7 @@ extern long int timezone;
 
 
 extern int stime (const time_t *__when) throw ();
-# 319 "/usr/include/time.h" 3 4
+# 196 "/usr/include/time.h" 3 4
 extern time_t timegm (struct tm *__tp) throw ();
 
 
@@ -12356,7 +12351,7 @@ extern time_t timelocal (struct tm *__tp) throw ();
 
 
 extern int dysize (int __year) throw () __attribute__ ((__const__));
-# 334 "/usr/include/time.h" 3 4
+# 211 "/usr/include/time.h" 3 4
 extern int nanosleep (const struct timespec *__requested_time,
         struct timespec *__remaining);
 
@@ -12411,11 +12406,11 @@ extern int timer_getoverrun (timer_t __timerid) throw ();
 
 extern int timespec_get (struct timespec *__ts, int __base)
      throw () __attribute__ ((__nonnull__ (1)));
-# 403 "/usr/include/time.h" 3 4
+# 280 "/usr/include/time.h" 3 4
 extern int getdate_err;
-# 412 "/usr/include/time.h" 3 4
+# 289 "/usr/include/time.h" 3 4
 extern struct tm *getdate (const char *__string);
-# 426 "/usr/include/time.h" 3 4
+# 303 "/usr/include/time.h" 3 4
 extern int getdate_r (const char *__restrict __string,
         struct tm *__restrict __resbufp);
 
@@ -12436,6 +12431,7 @@ typedef long int __jmp_buf[8];
 # 28 "/usr/include/pthread.h" 2 3 4
 # 1 "/usr/include/bits/wordsize.h" 1 3 4
 # 29 "/usr/include/pthread.h" 2 3 4
+
 
 
 
@@ -12489,7 +12485,7 @@ enum
   PTHREAD_PRIO_INHERIT,
   PTHREAD_PRIO_PROTECT
 };
-# 116 "/usr/include/pthread.h" 3 4
+# 115 "/usr/include/pthread.h" 3 4
 enum
 {
   PTHREAD_RWLOCK_PREFER_READER_NP,
@@ -12497,7 +12493,7 @@ enum
   PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP,
   PTHREAD_RWLOCK_DEFAULT_NP = PTHREAD_RWLOCK_PREFER_READER_NP
 };
-# 157 "/usr/include/pthread.h" 3 4
+# 156 "/usr/include/pthread.h" 3 4
 enum
 {
   PTHREAD_INHERIT_SCHED,
@@ -12525,7 +12521,7 @@ enum
   PTHREAD_PROCESS_SHARED
 
 };
-# 192 "/usr/include/pthread.h" 3 4
+# 191 "/usr/include/pthread.h" 3 4
 struct _pthread_cleanup_buffer
 {
   void (*__routine) (void *);
@@ -12549,7 +12545,7 @@ enum
   PTHREAD_CANCEL_ASYNCHRONOUS
 
 };
-# 230 "/usr/include/pthread.h" 3 4
+# 229 "/usr/include/pthread.h" 3 4
 extern "C" {
 
 
@@ -12731,6 +12727,14 @@ extern int pthread_attr_getaffinity_np (const pthread_attr_t *__attr,
      throw () __attribute__ ((__nonnull__ (1, 3)));
 
 
+extern int pthread_getattr_default_np (pthread_attr_t *__attr)
+     throw () __attribute__ ((__nonnull__ (1)));
+
+
+
+extern int pthread_setattr_default_np (const pthread_attr_t *__attr)
+     throw () __attribute__ ((__nonnull__ (1)));
+
 
 
 
@@ -12796,10 +12800,10 @@ extern int pthread_setaffinity_np (pthread_t __th, size_t __cpusetsize,
 extern int pthread_getaffinity_np (pthread_t __th, size_t __cpusetsize,
        cpu_set_t *__cpuset)
      throw () __attribute__ ((__nonnull__ (3)));
-# 488 "/usr/include/pthread.h" 3 4
+# 495 "/usr/include/pthread.h" 3 4
 extern int pthread_once (pthread_once_t *__once_control,
     void (*__init_routine) (void)) __attribute__ ((__nonnull__ (1, 2)));
-# 500 "/usr/include/pthread.h" 3 4
+# 507 "/usr/include/pthread.h" 3 4
 extern int pthread_setcancelstate (int __state, int *__oldstate);
 
 
@@ -12826,7 +12830,7 @@ typedef struct
   } __cancel_jmp_buf[1];
   void *__pad[4];
 } __pthread_unwind_buf_t __attribute__ ((__aligned__));
-# 534 "/usr/include/pthread.h" 3 4
+# 541 "/usr/include/pthread.h" 3 4
 struct __pthread_cleanup_frame
 {
   void (*__cancel_routine) (void *);
@@ -12854,7 +12858,7 @@ class __pthread_cleanup_class
         &__cancel_type); }
   void __restore () const { pthread_setcanceltype (__cancel_type, 0); }
 };
-# 736 "/usr/include/pthread.h" 3 4
+# 743 "/usr/include/pthread.h" 3 4
 struct __jmp_buf_tag;
 extern int __sigsetjmp (struct __jmp_buf_tag *__env, int __savemask) throw ();
 
@@ -12911,7 +12915,7 @@ extern int pthread_mutex_consistent (pthread_mutex_t *__mutex)
 
 extern int pthread_mutex_consistent_np (pthread_mutex_t *__mutex)
      throw () __attribute__ ((__nonnull__ (1)));
-# 800 "/usr/include/pthread.h" 3 4
+# 807 "/usr/include/pthread.h" 3 4
 extern int pthread_mutexattr_init (pthread_mutexattr_t *__attr)
      throw () __attribute__ ((__nonnull__ (1)));
 
@@ -12985,7 +12989,7 @@ extern int pthread_mutexattr_setrobust (pthread_mutexattr_t *__attr,
 extern int pthread_mutexattr_setrobust_np (pthread_mutexattr_t *__attr,
         int __robustness)
      throw () __attribute__ ((__nonnull__ (1)));
-# 882 "/usr/include/pthread.h" 3 4
+# 889 "/usr/include/pthread.h" 3 4
 extern int pthread_rwlock_init (pthread_rwlock_t *__restrict __rwlock,
     const pthread_rwlockattr_t *__restrict
     __attr) throw () __attribute__ ((__nonnull__ (1)));
@@ -13090,7 +13094,7 @@ extern int pthread_cond_broadcast (pthread_cond_t *__cond)
 extern int pthread_cond_wait (pthread_cond_t *__restrict __cond,
          pthread_mutex_t *__restrict __mutex)
      __attribute__ ((__nonnull__ (1, 2)));
-# 994 "/usr/include/pthread.h" 3 4
+# 1001 "/usr/include/pthread.h" 3 4
 extern int pthread_cond_timedwait (pthread_cond_t *__restrict __cond,
        pthread_mutex_t *__restrict __mutex,
        const struct timespec *__restrict __abstime)
@@ -13127,7 +13131,7 @@ extern int pthread_condattr_getclock (const pthread_condattr_t *
 extern int pthread_condattr_setclock (pthread_condattr_t *__attr,
           __clockid_t __clock_id)
      throw () __attribute__ ((__nonnull__ (1)));
-# 1038 "/usr/include/pthread.h" 3 4
+# 1045 "/usr/include/pthread.h" 3 4
 extern int pthread_spin_init (pthread_spinlock_t *__lock, int __pshared)
      throw () __attribute__ ((__nonnull__ (1)));
 
@@ -13184,7 +13188,7 @@ extern int pthread_barrierattr_getpshared (const pthread_barrierattr_t *
 extern int pthread_barrierattr_setpshared (pthread_barrierattr_t *__attr,
         int __pshared)
      throw () __attribute__ ((__nonnull__ (1)));
-# 1105 "/usr/include/pthread.h" 3 4
+# 1112 "/usr/include/pthread.h" 3 4
 extern int pthread_key_create (pthread_key_t *__key,
           void (*__destr_function) (void *))
      throw () __attribute__ ((__nonnull__ (1)));
@@ -13205,11 +13209,11 @@ extern int pthread_setspecific (pthread_key_t __key,
 extern int pthread_getcpuclockid (pthread_t __thread_id,
       __clockid_t *__clock_id)
      throw () __attribute__ ((__nonnull__ (2)));
-# 1139 "/usr/include/pthread.h" 3 4
+# 1146 "/usr/include/pthread.h" 3 4
 extern int pthread_atfork (void (*__prepare) (void),
       void (*__parent) (void),
       void (*__child) (void)) throw ();
-# 1153 "/usr/include/pthread.h" 3 4
+# 1160 "/usr/include/pthread.h" 3 4
 }
 # 36 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/x86_64-pc-linux-gnu/bits/gthr-default.h" 2 3
 # 47 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/x86_64-pc-linux-gnu/bits/gthr-default.h" 3
@@ -17939,12 +17943,6 @@ namespace __cxx11 {
 # 39 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 3
        
 # 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 3
-
-
-
-
-# 1 "/usr/include/wchar.h" 1 3 4
-# 45 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwchar" 2 3
 # 43 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/ext/string_conversions.h" 2 3
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdio" 1 3
 # 39 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstdio" 3
@@ -18031,35 +18029,49 @@ namespace std
 
 
 # 1 "/usr/include/errno.h" 1 3 4
-# 31 "/usr/include/errno.h" 3 4
-extern "C" {
-
-
-
+# 28 "/usr/include/errno.h" 3 4
 # 1 "/usr/include/bits/errno.h" 1 3 4
-# 24 "/usr/include/bits/errno.h" 3 4
+# 26 "/usr/include/bits/errno.h" 3 4
 # 1 "/usr/include/linux/errno.h" 1 3 4
 # 1 "/usr/include/asm/errno.h" 1 3 4
 # 1 "/usr/include/asm-generic/errno.h" 1 3 4
 
 
 
+
 # 1 "/usr/include/asm-generic/errno-base.h" 1 3 4
-# 5 "/usr/include/asm-generic/errno.h" 2 3 4
+# 6 "/usr/include/asm-generic/errno.h" 2 3 4
 # 1 "/usr/include/asm/errno.h" 2 3 4
 # 1 "/usr/include/linux/errno.h" 2 3 4
-# 25 "/usr/include/bits/errno.h" 2 3 4
-# 50 "/usr/include/bits/errno.h" 3 4
+# 27 "/usr/include/bits/errno.h" 2 3 4
+# 29 "/usr/include/errno.h" 2 3 4
+
+
+
+
+
+extern "C" {
+
+
 extern int *__errno_location (void) throw () __attribute__ ((__const__));
-# 36 "/usr/include/errno.h" 2 3 4
-# 54 "/usr/include/errno.h" 3 4
-extern char *program_invocation_name, *program_invocation_short_name;
+
+
+
+
+
+
+
+extern char *program_invocation_name;
+extern char *program_invocation_short_name;
+
+# 1 "/usr/include/bits/types/error_t.h" 1 3 4
+# 22 "/usr/include/bits/types/error_t.h" 3 4
+typedef int error_t;
+# 49 "/usr/include/errno.h" 2 3 4
 
 
 
 }
-# 68 "/usr/include/errno.h" 3 4
-typedef int error_t;
 # 43 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cerrno" 2 3
 # 45 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/ext/string_conversions.h" 2 3
 
@@ -20391,10 +20403,6 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 39 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cerrno" 3
        
 # 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cerrno" 3
-
-
-# 1 "/usr/include/errno.h" 1 3 4
-# 43 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cerrno" 2 3
 # 35 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/x86_64-pc-linux-gnu/bits/error_constants.h" 2 3
 
 namespace std __attribute__ ((__visibility__ ("default")))
@@ -22406,16 +22414,11 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 40 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwctype" 3
 # 50 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cwctype" 3
 # 1 "/usr/include/wctype.h" 1 3 4
-# 33 "/usr/include/wctype.h" 3 4
-# 1 "/usr/include/wchar.h" 1 3 4
-# 34 "/usr/include/wctype.h" 2 3 4
-# 49 "/usr/include/wctype.h" 3 4
-
-
-
+# 38 "/usr/include/wctype.h" 3 4
+# 1 "/usr/include/bits/wctype-wchar.h" 1 3 4
+# 38 "/usr/include/bits/wctype-wchar.h" 3 4
 typedef unsigned long int wctype_t;
-
-# 71 "/usr/include/wctype.h" 3 4
+# 56 "/usr/include/bits/wctype-wchar.h" 3 4
 enum
 {
   __ISwupper = 0,
@@ -22448,7 +22451,6 @@ enum
 
 
 extern "C" {
-
 
 
 
@@ -22508,7 +22510,7 @@ extern int iswxdigit (wint_t __wc) throw ();
 
 
 extern int iswblank (wint_t __wc) throw ();
-# 171 "/usr/include/wctype.h" 3 4
+# 155 "/usr/include/bits/wctype-wchar.h" 3 4
 extern wctype_t wctype (const char *__property) throw ();
 
 
@@ -22520,28 +22522,23 @@ extern int iswctype (wint_t __wc, wctype_t __desc) throw ();
 
 
 
-
-
-
-
-typedef const __int32_t *wctrans_t;
-
-
-
-
-
-
-
 extern wint_t towlower (wint_t __wc) throw ();
 
 
 extern wint_t towupper (wint_t __wc) throw ();
 
-
 }
-# 213 "/usr/include/wctype.h" 3 4
+# 39 "/usr/include/wctype.h" 2 3 4
+
+
+
+
+
 extern "C" {
 
+
+
+typedef const __int32_t *wctrans_t;
 
 
 
@@ -22556,67 +22553,66 @@ extern wint_t towctrans (wint_t __wc, wctrans_t __desc) throw ();
 
 
 
-
-extern int iswalnum_l (wint_t __wc, __locale_t __locale) throw ();
-
+extern int iswalnum_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswalpha_l (wint_t __wc, __locale_t __locale) throw ();
+
+extern int iswalpha_l (wint_t __wc, locale_t __locale) throw ();
 
 
-extern int iswcntrl_l (wint_t __wc, __locale_t __locale) throw ();
-
-
-
-extern int iswdigit_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswcntrl_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
-extern int iswgraph_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswdigit_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
-
-extern int iswlower_l (wint_t __wc, __locale_t __locale) throw ();
-
-
-extern int iswprint_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswgraph_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswpunct_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswlower_l (wint_t __wc, locale_t __locale) throw ();
+
+
+extern int iswprint_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswspace_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswpunct_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswupper_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswspace_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswxdigit_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswupper_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
 
-extern int iswblank_l (wint_t __wc, __locale_t __locale) throw ();
+extern int iswxdigit_l (wint_t __wc, locale_t __locale) throw ();
 
 
 
-extern wctype_t wctype_l (const char *__property, __locale_t __locale)
+
+extern int iswblank_l (wint_t __wc, locale_t __locale) throw ();
+
+
+
+extern wctype_t wctype_l (const char *__property, locale_t __locale)
      throw ();
 
 
 
-extern int iswctype_l (wint_t __wc, wctype_t __desc, __locale_t __locale)
+extern int iswctype_l (wint_t __wc, wctype_t __desc, locale_t __locale)
      throw ();
 
 
@@ -22624,20 +22620,19 @@ extern int iswctype_l (wint_t __wc, wctype_t __desc, __locale_t __locale)
 
 
 
-
-extern wint_t towlower_l (wint_t __wc, __locale_t __locale) throw ();
-
-
-extern wint_t towupper_l (wint_t __wc, __locale_t __locale) throw ();
+extern wint_t towlower_l (wint_t __wc, locale_t __locale) throw ();
 
 
+extern wint_t towupper_l (wint_t __wc, locale_t __locale) throw ();
 
-extern wctrans_t wctrans_l (const char *__property, __locale_t __locale)
+
+
+extern wctrans_t wctrans_l (const char *__property, locale_t __locale)
      throw ();
 
 
 extern wint_t towctrans_l (wint_t __wc, wctrans_t __desc,
-      __locale_t __locale) throw ();
+      locale_t __locale) throw ();
 
 
 
@@ -29380,41 +29375,90 @@ class half;
 
 
 # 1 "/usr/include/math.h" 1 3 4
-# 29 "/usr/include/math.h" 3 4
+# 27 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 28 "/usr/include/math.h" 2 3 4
 
-# 29 "/usr/include/math.h" 3 4
+
+
+
+
+
+
+# 34 "/usr/include/math.h" 3 4
 extern "C" {
 
 
 
-# 1 "/usr/include/bits/huge_val.h" 1 3 4
-# 34 "/usr/include/math.h" 2 3 4
-
-# 1 "/usr/include/bits/huge_valf.h" 1 3 4
-# 36 "/usr/include/math.h" 2 3 4
-# 1 "/usr/include/bits/huge_vall.h" 1 3 4
-# 37 "/usr/include/math.h" 2 3 4
 
 
-# 1 "/usr/include/bits/inf.h" 1 3 4
-# 40 "/usr/include/math.h" 2 3 4
-
-
-# 1 "/usr/include/bits/nan.h" 1 3 4
-# 43 "/usr/include/math.h" 2 3 4
-
-
-
-# 1 "/usr/include/bits/mathdef.h" 1 3 4
-# 28 "/usr/include/bits/mathdef.h" 3 4
+# 1 "/usr/include/bits/math-vector.h" 1 3 4
+# 25 "/usr/include/bits/math-vector.h" 3 4
+# 1 "/usr/include/bits/libm-simd-decl-stubs.h" 1 3 4
+# 26 "/usr/include/bits/math-vector.h" 2 3 4
+# 41 "/usr/include/math.h" 2 3 4
+# 138 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/flt-eval-method.h" 1 3 4
+# 139 "/usr/include/math.h" 2 3 4
+# 149 "/usr/include/math.h" 3 4
 typedef float float_t;
 typedef double double_t;
-# 47 "/usr/include/math.h" 2 3 4
-# 70 "/usr/include/math.h" 3 4
+# 190 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/fp-logb.h" 1 3 4
+# 191 "/usr/include/math.h" 2 3 4
+# 233 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/fp-fast.h" 1 3 4
+# 234 "/usr/include/math.h" 2 3 4
+
+
+
+enum
+  {
+    FP_INT_UPWARD =
+
+      0,
+    FP_INT_DOWNWARD =
+
+      1,
+    FP_INT_TOWARDZERO =
+
+      2,
+    FP_INT_TONEARESTFROMZERO =
+
+      3,
+    FP_INT_TONEAREST =
+
+      4,
+  };
+# 289 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-helper-functions.h" 1 3 4
+# 21 "/usr/include/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassify (double __value) throw ()
+     __attribute__ ((__const__));
+
+
+extern int __signbit (double __value) throw ()
+     __attribute__ ((__const__));
+
+
+
+extern int __isinf (double __value) throw () __attribute__ ((__const__));
+
+
+extern int __finite (double __value) throw () __attribute__ ((__const__));
+
+
+extern int __isnan (double __value) throw () __attribute__ ((__const__));
+
+
+extern int __iseqsig (double __x, double __y) throw ();
+
+
+extern int __issignaling (double __value) throw ()
+     __attribute__ ((__const__));
+# 290 "/usr/include/math.h" 2 3 4
 # 1 "/usr/include/bits/mathcalls.h" 1 3 4
-# 52 "/usr/include/bits/mathcalls.h" 3 4
-
-
+# 53 "/usr/include/bits/mathcalls.h" 3 4
 extern double acos (double __x) throw (); extern double __acos (double __x) throw ();
 
 extern double asin (double __x) throw (); extern double __asin (double __x) throw ();
@@ -29424,9 +29468,9 @@ extern double atan (double __x) throw (); extern double __atan (double __x) thro
 extern double atan2 (double __y, double __x) throw (); extern double __atan2 (double __y, double __x) throw ();
 
 
-extern double cos (double __x) throw (); extern double __cos (double __x) throw ();
+ extern double cos (double __x) throw (); extern double __cos (double __x) throw ();
 
-extern double sin (double __x) throw (); extern double __sin (double __x) throw ();
+ extern double sin (double __x) throw (); extern double __sin (double __x) throw ();
 
 extern double tan (double __x) throw (); extern double __tan (double __x) throw ();
 
@@ -29441,10 +29485,8 @@ extern double tanh (double __x) throw (); extern double __tanh (double __x) thro
 
 
 
-
-extern void sincos (double __x, double *__sinx, double *__cosx) throw (); extern void __sincos (double __x, double *__sinx, double *__cosx) throw ()
-                                                           ;
-
+ extern void sincos (double __x, double *__sinx, double *__cosx) throw (); extern void __sincos (double __x, double *__sinx, double *__cosx) throw ()
+                                                        ;
 
 
 
@@ -29459,9 +29501,7 @@ extern double atanh (double __x) throw (); extern double __atanh (double __x) th
 
 
 
-
-
-extern double exp (double __x) throw (); extern double __exp (double __x) throw ();
+ extern double exp (double __x) throw (); extern double __exp (double __x) throw ();
 
 
 extern double frexp (double __x, int *__exponent) throw (); extern double __frexp (double __x, int *__exponent) throw ();
@@ -29470,22 +29510,17 @@ extern double frexp (double __x, int *__exponent) throw (); extern double __frex
 extern double ldexp (double __x, int __exponent) throw (); extern double __ldexp (double __x, int __exponent) throw ();
 
 
-extern double log (double __x) throw (); extern double __log (double __x) throw ();
+ extern double log (double __x) throw (); extern double __log (double __x) throw ();
 
 
 extern double log10 (double __x) throw (); extern double __log10 (double __x) throw ();
 
 
-extern double modf (double __x, double *__iptr) throw (); extern double __modf (double __x, double *__iptr) throw ()
-     __attribute__ ((__nonnull__ (2)));
-
+extern double modf (double __x, double *__iptr) throw (); extern double __modf (double __x, double *__iptr) throw () __attribute__ ((__nonnull__ (2)));
 
 
 
 extern double exp10 (double __x) throw (); extern double __exp10 (double __x) throw ();
-
-extern double pow10 (double __x) throw (); extern double __pow10 (double __x) throw ();
-
 
 
 
@@ -29501,8 +29536,6 @@ extern double logb (double __x) throw (); extern double __logb (double __x) thro
 
 
 
-
-
 extern double exp2 (double __x) throw (); extern double __exp2 (double __x) throw ();
 
 
@@ -29513,14 +29546,10 @@ extern double log2 (double __x) throw (); extern double __log2 (double __x) thro
 
 
 
-
-
-extern double pow (double __x, double __y) throw (); extern double __pow (double __x, double __y) throw ();
+ extern double pow (double __x, double __y) throw (); extern double __pow (double __x, double __y) throw ();
 
 
 extern double sqrt (double __x) throw (); extern double __sqrt (double __x) throw ();
-
-
 
 
 
@@ -29529,11 +29558,7 @@ extern double hypot (double __x, double __y) throw (); extern double __hypot (do
 
 
 
-
-
 extern double cbrt (double __x) throw (); extern double __cbrt (double __x) throw ();
-
-
 
 
 
@@ -29550,22 +29575,7 @@ extern double floor (double __x) throw () __attribute__ ((__const__)); extern do
 
 
 extern double fmod (double __x, double __y) throw (); extern double __fmod (double __x, double __y) throw ();
-
-
-
-
-extern int __isinf (double __value) throw () __attribute__ ((__const__));
-
-
-extern int __finite (double __value) throw () __attribute__ ((__const__));
-
-
-
-
-
-extern int isinf (double __value) throw () __attribute__ ((__const__));
-
-
+# 182 "/usr/include/bits/mathcalls.h" 3 4
 extern int finite (double __value) throw () __attribute__ ((__const__));
 
 
@@ -29579,26 +29589,14 @@ extern double significand (double __x) throw (); extern double __significand (do
 
 
 
+
 extern double copysign (double __x, double __y) throw () __attribute__ ((__const__)); extern double __copysign (double __x, double __y) throw () __attribute__ ((__const__));
 
 
 
 
-
-
-extern double nan (const char *__tagb) throw () __attribute__ ((__const__)); extern double __nan (const char *__tagb) throw () __attribute__ ((__const__));
-
-
-
-
-
-extern int __isnan (double __value) throw () __attribute__ ((__const__));
-
-
-
-extern int isnan (double __value) throw () __attribute__ ((__const__));
-
-
+extern double nan (const char *__tagb) throw (); extern double __nan (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
 extern double j0 (double) throw (); extern double __j0 (double) throw ();
 extern double j1 (double) throw (); extern double __j1 (double) throw ();
 extern double jn (int, double) throw (); extern double __jn (int, double) throw ();
@@ -29610,12 +29608,9 @@ extern double yn (int, double) throw (); extern double __yn (int, double) throw 
 
 
 
-
 extern double erf (double) throw (); extern double __erf (double) throw ();
 extern double erfc (double) throw (); extern double __erfc (double) throw ();
 extern double lgamma (double) throw (); extern double __lgamma (double) throw ();
-
-
 
 
 
@@ -29633,8 +29628,8 @@ extern double gamma (double) throw (); extern double __gamma (double) throw ();
 
 
 
-extern double lgamma_r (double, int *__signgamp) throw (); extern double __lgamma_r (double, int *__signgamp) throw ();
 
+extern double lgamma_r (double, int *__signgamp) throw (); extern double __lgamma_r (double, int *__signgamp) throw ();
 
 
 
@@ -29644,9 +29639,16 @@ extern double lgamma_r (double, int *__signgamp) throw (); extern double __lgamm
 extern double rint (double __x) throw (); extern double __rint (double __x) throw ();
 
 
-extern double nextafter (double __x, double __y) throw () __attribute__ ((__const__)); extern double __nextafter (double __x, double __y) throw () __attribute__ ((__const__));
+extern double nextafter (double __x, double __y) throw (); extern double __nextafter (double __x, double __y) throw ();
 
-extern double nexttoward (double __x, long double __y) throw () __attribute__ ((__const__)); extern double __nexttoward (double __x, long double __y) throw () __attribute__ ((__const__));
+extern double nexttoward (double __x, long double __y) throw (); extern double __nexttoward (double __x, long double __y) throw ();
+
+
+
+
+extern double nextdown (double __x) throw (); extern double __nextdown (double __x) throw ();
+
+extern double nextup (double __x) throw (); extern double __nextup (double __x) throw ();
 
 
 
@@ -29659,6 +29661,11 @@ extern double scalbn (double __x, int __n) throw (); extern double __scalbn (dou
 
 
 extern int ilogb (double __x) throw (); extern int __ilogb (double __x) throw ();
+
+
+
+
+extern long int llogb (double __x) throw (); extern long int __llogb (double __x) throw ();
 
 
 
@@ -29688,11 +29695,13 @@ extern double remquo (double __x, double __y, int *__quo) throw (); extern doubl
 
 
 extern long int lrint (double __x) throw (); extern long int __lrint (double __x) throw ();
+__extension__
 extern long long int llrint (double __x) throw (); extern long long int __llrint (double __x) throw ();
 
 
 
 extern long int lround (double __x) throw (); extern long int __lround (double __x) throw ();
+__extension__
 extern long long int llround (double __x) throw (); extern long long int __llround (double __x) throw ();
 
 
@@ -29706,18 +29715,60 @@ extern double fmax (double __x, double __y) throw () __attribute__ ((__const__))
 extern double fmin (double __x, double __y) throw () __attribute__ ((__const__)); extern double __fmin (double __x, double __y) throw () __attribute__ ((__const__));
 
 
-
-extern int __fpclassify (double __value) throw ()
-     __attribute__ ((__const__));
-
-
-extern int __signbit (double __value) throw ()
-     __attribute__ ((__const__));
-
-
-
 extern double fma (double __x, double __y, double __z) throw (); extern double __fma (double __x, double __y, double __z) throw ();
 
+
+
+
+extern double roundeven (double __x) throw () __attribute__ ((__const__)); extern double __roundeven (double __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfp (double __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfp (double __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfp (double __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfp (double __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpx (double __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpx (double __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpx (double __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpx (double __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern double fmaxmag (double __x, double __y) throw () __attribute__ ((__const__)); extern double __fmaxmag (double __x, double __y) throw () __attribute__ ((__const__));
+
+
+extern double fminmag (double __x, double __y) throw () __attribute__ ((__const__)); extern double __fminmag (double __x, double __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorder (double __x, double __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermag (double __x, double __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalize (double *__cx, const double *__x) throw ();
+
+
+extern double getpayload (const double *__x) throw (); extern double __getpayload (const double *__x) throw ();
+
+
+extern int setpayload (double *__x, double __payload) throw ();
+
+
+extern int setpayloadsig (double *__x, double __payload) throw ();
 
 
 
@@ -29726,12 +29777,36 @@ extern double fma (double __x, double __y, double __z) throw (); extern double _
 
 
 extern double scalb (double __x, double __n) throw (); extern double __scalb (double __x, double __n) throw ();
-# 71 "/usr/include/math.h" 2 3 4
-# 89 "/usr/include/math.h" 3 4
+# 291 "/usr/include/math.h" 2 3 4
+# 306 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-helper-functions.h" 1 3 4
+# 21 "/usr/include/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassifyf (float __value) throw ()
+     __attribute__ ((__const__));
+
+
+extern int __signbitf (float __value) throw ()
+     __attribute__ ((__const__));
+
+
+
+extern int __isinff (float __value) throw () __attribute__ ((__const__));
+
+
+extern int __finitef (float __value) throw () __attribute__ ((__const__));
+
+
+extern int __isnanf (float __value) throw () __attribute__ ((__const__));
+
+
+extern int __iseqsigf (float __x, float __y) throw ();
+
+
+extern int __issignalingf (float __value) throw ()
+     __attribute__ ((__const__));
+# 307 "/usr/include/math.h" 2 3 4
 # 1 "/usr/include/bits/mathcalls.h" 1 3 4
-# 52 "/usr/include/bits/mathcalls.h" 3 4
-
-
+# 53 "/usr/include/bits/mathcalls.h" 3 4
 extern float acosf (float __x) throw (); extern float __acosf (float __x) throw ();
 
 extern float asinf (float __x) throw (); extern float __asinf (float __x) throw ();
@@ -29741,9 +29816,9 @@ extern float atanf (float __x) throw (); extern float __atanf (float __x) throw 
 extern float atan2f (float __y, float __x) throw (); extern float __atan2f (float __y, float __x) throw ();
 
 
-extern float cosf (float __x) throw (); extern float __cosf (float __x) throw ();
+ extern float cosf (float __x) throw (); extern float __cosf (float __x) throw ();
 
-extern float sinf (float __x) throw (); extern float __sinf (float __x) throw ();
+ extern float sinf (float __x) throw (); extern float __sinf (float __x) throw ();
 
 extern float tanf (float __x) throw (); extern float __tanf (float __x) throw ();
 
@@ -29758,10 +29833,8 @@ extern float tanhf (float __x) throw (); extern float __tanhf (float __x) throw 
 
 
 
-
-extern void sincosf (float __x, float *__sinx, float *__cosx) throw (); extern void __sincosf (float __x, float *__sinx, float *__cosx) throw ()
-                                                           ;
-
+ extern void sincosf (float __x, float *__sinx, float *__cosx) throw (); extern void __sincosf (float __x, float *__sinx, float *__cosx) throw ()
+                                                        ;
 
 
 
@@ -29776,9 +29849,7 @@ extern float atanhf (float __x) throw (); extern float __atanhf (float __x) thro
 
 
 
-
-
-extern float expf (float __x) throw (); extern float __expf (float __x) throw ();
+ extern float expf (float __x) throw (); extern float __expf (float __x) throw ();
 
 
 extern float frexpf (float __x, int *__exponent) throw (); extern float __frexpf (float __x, int *__exponent) throw ();
@@ -29787,22 +29858,17 @@ extern float frexpf (float __x, int *__exponent) throw (); extern float __frexpf
 extern float ldexpf (float __x, int __exponent) throw (); extern float __ldexpf (float __x, int __exponent) throw ();
 
 
-extern float logf (float __x) throw (); extern float __logf (float __x) throw ();
+ extern float logf (float __x) throw (); extern float __logf (float __x) throw ();
 
 
 extern float log10f (float __x) throw (); extern float __log10f (float __x) throw ();
 
 
-extern float modff (float __x, float *__iptr) throw (); extern float __modff (float __x, float *__iptr) throw ()
-     __attribute__ ((__nonnull__ (2)));
-
+extern float modff (float __x, float *__iptr) throw (); extern float __modff (float __x, float *__iptr) throw () __attribute__ ((__nonnull__ (2)));
 
 
 
 extern float exp10f (float __x) throw (); extern float __exp10f (float __x) throw ();
-
-extern float pow10f (float __x) throw (); extern float __pow10f (float __x) throw ();
-
 
 
 
@@ -29818,8 +29884,6 @@ extern float logbf (float __x) throw (); extern float __logbf (float __x) throw 
 
 
 
-
-
 extern float exp2f (float __x) throw (); extern float __exp2f (float __x) throw ();
 
 
@@ -29830,14 +29894,10 @@ extern float log2f (float __x) throw (); extern float __log2f (float __x) throw 
 
 
 
-
-
-extern float powf (float __x, float __y) throw (); extern float __powf (float __x, float __y) throw ();
+ extern float powf (float __x, float __y) throw (); extern float __powf (float __x, float __y) throw ();
 
 
 extern float sqrtf (float __x) throw (); extern float __sqrtf (float __x) throw ();
-
-
 
 
 
@@ -29846,11 +29906,7 @@ extern float hypotf (float __x, float __y) throw (); extern float __hypotf (floa
 
 
 
-
-
 extern float cbrtf (float __x) throw (); extern float __cbrtf (float __x) throw ();
-
-
 
 
 
@@ -29867,20 +29923,10 @@ extern float floorf (float __x) throw () __attribute__ ((__const__)); extern flo
 
 
 extern float fmodf (float __x, float __y) throw (); extern float __fmodf (float __x, float __y) throw ();
-
-
-
-
-extern int __isinff (float __value) throw () __attribute__ ((__const__));
-
-
-extern int __finitef (float __value) throw () __attribute__ ((__const__));
-
-
-
-
-
+# 177 "/usr/include/bits/mathcalls.h" 3 4
 extern int isinff (float __value) throw () __attribute__ ((__const__));
+
+
 
 
 extern int finitef (float __value) throw () __attribute__ ((__const__));
@@ -29896,24 +29942,18 @@ extern float significandf (float __x) throw (); extern float __significandf (flo
 
 
 
+
 extern float copysignf (float __x, float __y) throw () __attribute__ ((__const__)); extern float __copysignf (float __x, float __y) throw () __attribute__ ((__const__));
 
 
 
 
-
-
-extern float nanf (const char *__tagb) throw () __attribute__ ((__const__)); extern float __nanf (const char *__tagb) throw () __attribute__ ((__const__));
-
-
-
-
-
-extern int __isnanf (float __value) throw () __attribute__ ((__const__));
-
-
-
+extern float nanf (const char *__tagb) throw (); extern float __nanf (const char *__tagb) throw ();
+# 211 "/usr/include/bits/mathcalls.h" 3 4
 extern int isnanf (float __value) throw () __attribute__ ((__const__));
+
+
+
 
 
 extern float j0f (float) throw (); extern float __j0f (float) throw ();
@@ -29927,12 +29967,9 @@ extern float ynf (int, float) throw (); extern float __ynf (int, float) throw ()
 
 
 
-
 extern float erff (float) throw (); extern float __erff (float) throw ();
 extern float erfcf (float) throw (); extern float __erfcf (float) throw ();
 extern float lgammaf (float) throw (); extern float __lgammaf (float) throw ();
-
-
 
 
 
@@ -29950,8 +29987,8 @@ extern float gammaf (float) throw (); extern float __gammaf (float) throw ();
 
 
 
-extern float lgammaf_r (float, int *__signgamp) throw (); extern float __lgammaf_r (float, int *__signgamp) throw ();
 
+extern float lgammaf_r (float, int *__signgamp) throw (); extern float __lgammaf_r (float, int *__signgamp) throw ();
 
 
 
@@ -29961,9 +29998,16 @@ extern float lgammaf_r (float, int *__signgamp) throw (); extern float __lgammaf
 extern float rintf (float __x) throw (); extern float __rintf (float __x) throw ();
 
 
-extern float nextafterf (float __x, float __y) throw () __attribute__ ((__const__)); extern float __nextafterf (float __x, float __y) throw () __attribute__ ((__const__));
+extern float nextafterf (float __x, float __y) throw (); extern float __nextafterf (float __x, float __y) throw ();
 
-extern float nexttowardf (float __x, long double __y) throw () __attribute__ ((__const__)); extern float __nexttowardf (float __x, long double __y) throw () __attribute__ ((__const__));
+extern float nexttowardf (float __x, long double __y) throw (); extern float __nexttowardf (float __x, long double __y) throw ();
+
+
+
+
+extern float nextdownf (float __x) throw (); extern float __nextdownf (float __x) throw ();
+
+extern float nextupf (float __x) throw (); extern float __nextupf (float __x) throw ();
 
 
 
@@ -29976,6 +30020,11 @@ extern float scalbnf (float __x, int __n) throw (); extern float __scalbnf (floa
 
 
 extern int ilogbf (float __x) throw (); extern int __ilogbf (float __x) throw ();
+
+
+
+
+extern long int llogbf (float __x) throw (); extern long int __llogbf (float __x) throw ();
 
 
 
@@ -30005,11 +30054,13 @@ extern float remquof (float __x, float __y, int *__quo) throw (); extern float _
 
 
 extern long int lrintf (float __x) throw (); extern long int __lrintf (float __x) throw ();
+__extension__
 extern long long int llrintf (float __x) throw (); extern long long int __llrintf (float __x) throw ();
 
 
 
 extern long int lroundf (float __x) throw (); extern long int __lroundf (float __x) throw ();
+__extension__
 extern long long int llroundf (float __x) throw (); extern long long int __llroundf (float __x) throw ();
 
 
@@ -30023,18 +30074,60 @@ extern float fmaxf (float __x, float __y) throw () __attribute__ ((__const__)); 
 extern float fminf (float __x, float __y) throw () __attribute__ ((__const__)); extern float __fminf (float __x, float __y) throw () __attribute__ ((__const__));
 
 
-
-extern int __fpclassifyf (float __value) throw ()
-     __attribute__ ((__const__));
-
-
-extern int __signbitf (float __value) throw ()
-     __attribute__ ((__const__));
-
-
-
 extern float fmaf (float __x, float __y, float __z) throw (); extern float __fmaf (float __x, float __y, float __z) throw ();
 
+
+
+
+extern float roundevenf (float __x) throw () __attribute__ ((__const__)); extern float __roundevenf (float __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf (float __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf (float __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf (float __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf (float __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf (float __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf (float __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf (float __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf (float __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern float fmaxmagf (float __x, float __y) throw () __attribute__ ((__const__)); extern float __fmaxmagf (float __x, float __y) throw () __attribute__ ((__const__));
+
+
+extern float fminmagf (float __x, float __y) throw () __attribute__ ((__const__)); extern float __fminmagf (float __x, float __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf (float __x, float __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf (float __x, float __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef (float *__cx, const float *__x) throw ();
+
+
+extern float getpayloadf (const float *__x) throw (); extern float __getpayloadf (const float *__x) throw ();
+
+
+extern int setpayloadf (float *__x, float __payload) throw ();
+
+
+extern int setpayloadsigf (float *__x, float __payload) throw ();
 
 
 
@@ -30043,12 +30136,36 @@ extern float fmaf (float __x, float __y, float __z) throw (); extern float __fma
 
 
 extern float scalbf (float __x, float __n) throw (); extern float __scalbf (float __x, float __n) throw ();
-# 90 "/usr/include/math.h" 2 3 4
-# 133 "/usr/include/math.h" 3 4
+# 308 "/usr/include/math.h" 2 3 4
+# 349 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-helper-functions.h" 1 3 4
+# 21 "/usr/include/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassifyl (long double __value) throw ()
+     __attribute__ ((__const__));
+
+
+extern int __signbitl (long double __value) throw ()
+     __attribute__ ((__const__));
+
+
+
+extern int __isinfl (long double __value) throw () __attribute__ ((__const__));
+
+
+extern int __finitel (long double __value) throw () __attribute__ ((__const__));
+
+
+extern int __isnanl (long double __value) throw () __attribute__ ((__const__));
+
+
+extern int __iseqsigl (long double __x, long double __y) throw ();
+
+
+extern int __issignalingl (long double __value) throw ()
+     __attribute__ ((__const__));
+# 350 "/usr/include/math.h" 2 3 4
 # 1 "/usr/include/bits/mathcalls.h" 1 3 4
-# 52 "/usr/include/bits/mathcalls.h" 3 4
-
-
+# 53 "/usr/include/bits/mathcalls.h" 3 4
 extern long double acosl (long double __x) throw (); extern long double __acosl (long double __x) throw ();
 
 extern long double asinl (long double __x) throw (); extern long double __asinl (long double __x) throw ();
@@ -30058,9 +30175,9 @@ extern long double atanl (long double __x) throw (); extern long double __atanl 
 extern long double atan2l (long double __y, long double __x) throw (); extern long double __atan2l (long double __y, long double __x) throw ();
 
 
-extern long double cosl (long double __x) throw (); extern long double __cosl (long double __x) throw ();
+ extern long double cosl (long double __x) throw (); extern long double __cosl (long double __x) throw ();
 
-extern long double sinl (long double __x) throw (); extern long double __sinl (long double __x) throw ();
+ extern long double sinl (long double __x) throw (); extern long double __sinl (long double __x) throw ();
 
 extern long double tanl (long double __x) throw (); extern long double __tanl (long double __x) throw ();
 
@@ -30075,10 +30192,8 @@ extern long double tanhl (long double __x) throw (); extern long double __tanhl 
 
 
 
-
-extern void sincosl (long double __x, long double *__sinx, long double *__cosx) throw (); extern void __sincosl (long double __x, long double *__sinx, long double *__cosx) throw ()
-                                                           ;
-
+ extern void sincosl (long double __x, long double *__sinx, long double *__cosx) throw (); extern void __sincosl (long double __x, long double *__sinx, long double *__cosx) throw ()
+                                                        ;
 
 
 
@@ -30093,9 +30208,7 @@ extern long double atanhl (long double __x) throw (); extern long double __atanh
 
 
 
-
-
-extern long double expl (long double __x) throw (); extern long double __expl (long double __x) throw ();
+ extern long double expl (long double __x) throw (); extern long double __expl (long double __x) throw ();
 
 
 extern long double frexpl (long double __x, int *__exponent) throw (); extern long double __frexpl (long double __x, int *__exponent) throw ();
@@ -30104,22 +30217,17 @@ extern long double frexpl (long double __x, int *__exponent) throw (); extern lo
 extern long double ldexpl (long double __x, int __exponent) throw (); extern long double __ldexpl (long double __x, int __exponent) throw ();
 
 
-extern long double logl (long double __x) throw (); extern long double __logl (long double __x) throw ();
+ extern long double logl (long double __x) throw (); extern long double __logl (long double __x) throw ();
 
 
 extern long double log10l (long double __x) throw (); extern long double __log10l (long double __x) throw ();
 
 
-extern long double modfl (long double __x, long double *__iptr) throw (); extern long double __modfl (long double __x, long double *__iptr) throw ()
-     __attribute__ ((__nonnull__ (2)));
-
+extern long double modfl (long double __x, long double *__iptr) throw (); extern long double __modfl (long double __x, long double *__iptr) throw () __attribute__ ((__nonnull__ (2)));
 
 
 
 extern long double exp10l (long double __x) throw (); extern long double __exp10l (long double __x) throw ();
-
-extern long double pow10l (long double __x) throw (); extern long double __pow10l (long double __x) throw ();
-
 
 
 
@@ -30135,8 +30243,6 @@ extern long double logbl (long double __x) throw (); extern long double __logbl 
 
 
 
-
-
 extern long double exp2l (long double __x) throw (); extern long double __exp2l (long double __x) throw ();
 
 
@@ -30147,14 +30253,10 @@ extern long double log2l (long double __x) throw (); extern long double __log2l 
 
 
 
-
-
-extern long double powl (long double __x, long double __y) throw (); extern long double __powl (long double __x, long double __y) throw ();
+ extern long double powl (long double __x, long double __y) throw (); extern long double __powl (long double __x, long double __y) throw ();
 
 
 extern long double sqrtl (long double __x) throw (); extern long double __sqrtl (long double __x) throw ();
-
-
 
 
 
@@ -30163,11 +30265,7 @@ extern long double hypotl (long double __x, long double __y) throw (); extern lo
 
 
 
-
-
 extern long double cbrtl (long double __x) throw (); extern long double __cbrtl (long double __x) throw ();
-
-
 
 
 
@@ -30184,20 +30282,10 @@ extern long double floorl (long double __x) throw () __attribute__ ((__const__))
 
 
 extern long double fmodl (long double __x, long double __y) throw (); extern long double __fmodl (long double __x, long double __y) throw ();
-
-
-
-
-extern int __isinfl (long double __value) throw () __attribute__ ((__const__));
-
-
-extern int __finitel (long double __value) throw () __attribute__ ((__const__));
-
-
-
-
-
+# 177 "/usr/include/bits/mathcalls.h" 3 4
 extern int isinfl (long double __value) throw () __attribute__ ((__const__));
+
+
 
 
 extern int finitel (long double __value) throw () __attribute__ ((__const__));
@@ -30213,24 +30301,18 @@ extern long double significandl (long double __x) throw (); extern long double _
 
 
 
+
 extern long double copysignl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __copysignl (long double __x, long double __y) throw () __attribute__ ((__const__));
 
 
 
 
-
-
-extern long double nanl (const char *__tagb) throw () __attribute__ ((__const__)); extern long double __nanl (const char *__tagb) throw () __attribute__ ((__const__));
-
-
-
-
-
-extern int __isnanl (long double __value) throw () __attribute__ ((__const__));
-
-
-
+extern long double nanl (const char *__tagb) throw (); extern long double __nanl (const char *__tagb) throw ();
+# 211 "/usr/include/bits/mathcalls.h" 3 4
 extern int isnanl (long double __value) throw () __attribute__ ((__const__));
+
+
+
 
 
 extern long double j0l (long double) throw (); extern long double __j0l (long double) throw ();
@@ -30244,12 +30326,9 @@ extern long double ynl (int, long double) throw (); extern long double __ynl (in
 
 
 
-
 extern long double erfl (long double) throw (); extern long double __erfl (long double) throw ();
 extern long double erfcl (long double) throw (); extern long double __erfcl (long double) throw ();
 extern long double lgammal (long double) throw (); extern long double __lgammal (long double) throw ();
-
-
 
 
 
@@ -30267,8 +30346,8 @@ extern long double gammal (long double) throw (); extern long double __gammal (l
 
 
 
-extern long double lgammal_r (long double, int *__signgamp) throw (); extern long double __lgammal_r (long double, int *__signgamp) throw ();
 
+extern long double lgammal_r (long double, int *__signgamp) throw (); extern long double __lgammal_r (long double, int *__signgamp) throw ();
 
 
 
@@ -30278,9 +30357,16 @@ extern long double lgammal_r (long double, int *__signgamp) throw (); extern lon
 extern long double rintl (long double __x) throw (); extern long double __rintl (long double __x) throw ();
 
 
-extern long double nextafterl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __nextafterl (long double __x, long double __y) throw () __attribute__ ((__const__));
+extern long double nextafterl (long double __x, long double __y) throw (); extern long double __nextafterl (long double __x, long double __y) throw ();
 
-extern long double nexttowardl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __nexttowardl (long double __x, long double __y) throw () __attribute__ ((__const__));
+extern long double nexttowardl (long double __x, long double __y) throw (); extern long double __nexttowardl (long double __x, long double __y) throw ();
+
+
+
+
+extern long double nextdownl (long double __x) throw (); extern long double __nextdownl (long double __x) throw ();
+
+extern long double nextupl (long double __x) throw (); extern long double __nextupl (long double __x) throw ();
 
 
 
@@ -30293,6 +30379,11 @@ extern long double scalbnl (long double __x, int __n) throw (); extern long doub
 
 
 extern int ilogbl (long double __x) throw (); extern int __ilogbl (long double __x) throw ();
+
+
+
+
+extern long int llogbl (long double __x) throw (); extern long int __llogbl (long double __x) throw ();
 
 
 
@@ -30322,11 +30413,13 @@ extern long double remquol (long double __x, long double __y, int *__quo) throw 
 
 
 extern long int lrintl (long double __x) throw (); extern long int __lrintl (long double __x) throw ();
+__extension__
 extern long long int llrintl (long double __x) throw (); extern long long int __llrintl (long double __x) throw ();
 
 
 
 extern long int lroundl (long double __x) throw (); extern long int __lroundl (long double __x) throw ();
+__extension__
 extern long long int llroundl (long double __x) throw (); extern long long int __llroundl (long double __x) throw ();
 
 
@@ -30340,18 +30433,60 @@ extern long double fmaxl (long double __x, long double __y) throw () __attribute
 extern long double fminl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __fminl (long double __x, long double __y) throw () __attribute__ ((__const__));
 
 
-
-extern int __fpclassifyl (long double __value) throw ()
-     __attribute__ ((__const__));
-
-
-extern int __signbitl (long double __value) throw ()
-     __attribute__ ((__const__));
-
-
-
 extern long double fmal (long double __x, long double __y, long double __z) throw (); extern long double __fmal (long double __x, long double __y, long double __z) throw ();
 
+
+
+
+extern long double roundevenl (long double __x) throw () __attribute__ ((__const__)); extern long double __roundevenl (long double __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpl (long double __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpl (long double __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpl (long double __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpl (long double __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxl (long double __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxl (long double __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxl (long double __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxl (long double __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern long double fmaxmagl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __fmaxmagl (long double __x, long double __y) throw () __attribute__ ((__const__));
+
+
+extern long double fminmagl (long double __x, long double __y) throw () __attribute__ ((__const__)); extern long double __fminmagl (long double __x, long double __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderl (long double __x, long double __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagl (long double __x, long double __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizel (long double *__cx, const long double *__x) throw ();
+
+
+extern long double getpayloadl (const long double *__x) throw (); extern long double __getpayloadl (const long double *__x) throw ();
+
+
+extern int setpayloadl (long double *__x, long double __payload) throw ();
+
+
+extern int setpayloadsigl (long double *__x, long double __payload) throw ();
 
 
 
@@ -30360,10 +30495,1660 @@ extern long double fmal (long double __x, long double __y, long double __z) thro
 
 
 extern long double scalbl (long double __x, long double __n) throw (); extern long double __scalbl (long double __x, long double __n) throw ();
-# 134 "/usr/include/math.h" 2 3 4
-# 149 "/usr/include/math.h" 3 4
+# 351 "/usr/include/math.h" 2 3 4
+# 389 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32 acosf32 (_Float32 __x) throw (); extern _Float32 __acosf32 (_Float32 __x) throw ();
+
+extern _Float32 asinf32 (_Float32 __x) throw (); extern _Float32 __asinf32 (_Float32 __x) throw ();
+
+extern _Float32 atanf32 (_Float32 __x) throw (); extern _Float32 __atanf32 (_Float32 __x) throw ();
+
+extern _Float32 atan2f32 (_Float32 __y, _Float32 __x) throw (); extern _Float32 __atan2f32 (_Float32 __y, _Float32 __x) throw ();
+
+
+ extern _Float32 cosf32 (_Float32 __x) throw (); extern _Float32 __cosf32 (_Float32 __x) throw ();
+
+ extern _Float32 sinf32 (_Float32 __x) throw (); extern _Float32 __sinf32 (_Float32 __x) throw ();
+
+extern _Float32 tanf32 (_Float32 __x) throw (); extern _Float32 __tanf32 (_Float32 __x) throw ();
+
+
+
+
+extern _Float32 coshf32 (_Float32 __x) throw (); extern _Float32 __coshf32 (_Float32 __x) throw ();
+
+extern _Float32 sinhf32 (_Float32 __x) throw (); extern _Float32 __sinhf32 (_Float32 __x) throw ();
+
+extern _Float32 tanhf32 (_Float32 __x) throw (); extern _Float32 __tanhf32 (_Float32 __x) throw ();
+
+
+
+ extern void sincosf32 (_Float32 __x, _Float32 *__sinx, _Float32 *__cosx) throw (); extern void __sincosf32 (_Float32 __x, _Float32 *__sinx, _Float32 *__cosx) throw ()
+                                                        ;
+
+
+
+
+extern _Float32 acoshf32 (_Float32 __x) throw (); extern _Float32 __acoshf32 (_Float32 __x) throw ();
+
+extern _Float32 asinhf32 (_Float32 __x) throw (); extern _Float32 __asinhf32 (_Float32 __x) throw ();
+
+extern _Float32 atanhf32 (_Float32 __x) throw (); extern _Float32 __atanhf32 (_Float32 __x) throw ();
+
+
+
+
+
+ extern _Float32 expf32 (_Float32 __x) throw (); extern _Float32 __expf32 (_Float32 __x) throw ();
+
+
+extern _Float32 frexpf32 (_Float32 __x, int *__exponent) throw (); extern _Float32 __frexpf32 (_Float32 __x, int *__exponent) throw ();
+
+
+extern _Float32 ldexpf32 (_Float32 __x, int __exponent) throw (); extern _Float32 __ldexpf32 (_Float32 __x, int __exponent) throw ();
+
+
+ extern _Float32 logf32 (_Float32 __x) throw (); extern _Float32 __logf32 (_Float32 __x) throw ();
+
+
+extern _Float32 log10f32 (_Float32 __x) throw (); extern _Float32 __log10f32 (_Float32 __x) throw ();
+
+
+extern _Float32 modff32 (_Float32 __x, _Float32 *__iptr) throw (); extern _Float32 __modff32 (_Float32 __x, _Float32 *__iptr) throw () __attribute__ ((__nonnull__ (2)));
+
+
+
+extern _Float32 exp10f32 (_Float32 __x) throw (); extern _Float32 __exp10f32 (_Float32 __x) throw ();
+
+
+
+
+extern _Float32 expm1f32 (_Float32 __x) throw (); extern _Float32 __expm1f32 (_Float32 __x) throw ();
+
+
+extern _Float32 log1pf32 (_Float32 __x) throw (); extern _Float32 __log1pf32 (_Float32 __x) throw ();
+
+
+extern _Float32 logbf32 (_Float32 __x) throw (); extern _Float32 __logbf32 (_Float32 __x) throw ();
+
+
+
+
+extern _Float32 exp2f32 (_Float32 __x) throw (); extern _Float32 __exp2f32 (_Float32 __x) throw ();
+
+
+extern _Float32 log2f32 (_Float32 __x) throw (); extern _Float32 __log2f32 (_Float32 __x) throw ();
+
+
+
+
+
+
+ extern _Float32 powf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __powf32 (_Float32 __x, _Float32 __y) throw ();
+
+
+extern _Float32 sqrtf32 (_Float32 __x) throw (); extern _Float32 __sqrtf32 (_Float32 __x) throw ();
+
+
+
+extern _Float32 hypotf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __hypotf32 (_Float32 __x, _Float32 __y) throw ();
+
+
+
+
+extern _Float32 cbrtf32 (_Float32 __x) throw (); extern _Float32 __cbrtf32 (_Float32 __x) throw ();
+
+
+
+
+
+
+extern _Float32 ceilf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __ceilf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32 fabsf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __fabsf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32 floorf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __floorf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32 fmodf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __fmodf32 (_Float32 __x, _Float32 __y) throw ();
+# 196 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32 copysignf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__)); extern _Float32 __copysignf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float32 nanf32 (const char *__tagb) throw (); extern _Float32 __nanf32 (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32 j0f32 (_Float32) throw (); extern _Float32 __j0f32 (_Float32) throw ();
+extern _Float32 j1f32 (_Float32) throw (); extern _Float32 __j1f32 (_Float32) throw ();
+extern _Float32 jnf32 (int, _Float32) throw (); extern _Float32 __jnf32 (int, _Float32) throw ();
+extern _Float32 y0f32 (_Float32) throw (); extern _Float32 __y0f32 (_Float32) throw ();
+extern _Float32 y1f32 (_Float32) throw (); extern _Float32 __y1f32 (_Float32) throw ();
+extern _Float32 ynf32 (int, _Float32) throw (); extern _Float32 __ynf32 (int, _Float32) throw ();
+
+
+
+
+
+extern _Float32 erff32 (_Float32) throw (); extern _Float32 __erff32 (_Float32) throw ();
+extern _Float32 erfcf32 (_Float32) throw (); extern _Float32 __erfcf32 (_Float32) throw ();
+extern _Float32 lgammaf32 (_Float32) throw (); extern _Float32 __lgammaf32 (_Float32) throw ();
+
+
+
+
+extern _Float32 tgammaf32 (_Float32) throw (); extern _Float32 __tgammaf32 (_Float32) throw ();
+# 249 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32 lgammaf32_r (_Float32, int *__signgamp) throw (); extern _Float32 __lgammaf32_r (_Float32, int *__signgamp) throw ();
+
+
+
+
+
+
+extern _Float32 rintf32 (_Float32 __x) throw (); extern _Float32 __rintf32 (_Float32 __x) throw ();
+
+
+extern _Float32 nextafterf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __nextafterf32 (_Float32 __x, _Float32 __y) throw ();
+
+
+
+
+
+
+extern _Float32 nextdownf32 (_Float32 __x) throw (); extern _Float32 __nextdownf32 (_Float32 __x) throw ();
+
+extern _Float32 nextupf32 (_Float32 __x) throw (); extern _Float32 __nextupf32 (_Float32 __x) throw ();
+
+
+
+extern _Float32 remainderf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __remainderf32 (_Float32 __x, _Float32 __y) throw ();
+
+
+
+extern _Float32 scalbnf32 (_Float32 __x, int __n) throw (); extern _Float32 __scalbnf32 (_Float32 __x, int __n) throw ();
+
+
+
+extern int ilogbf32 (_Float32 __x) throw (); extern int __ilogbf32 (_Float32 __x) throw ();
+
+
+
+
+extern long int llogbf32 (_Float32 __x) throw (); extern long int __llogbf32 (_Float32 __x) throw ();
+
+
+
+
+extern _Float32 scalblnf32 (_Float32 __x, long int __n) throw (); extern _Float32 __scalblnf32 (_Float32 __x, long int __n) throw ();
+
+
+
+extern _Float32 nearbyintf32 (_Float32 __x) throw (); extern _Float32 __nearbyintf32 (_Float32 __x) throw ();
+
+
+
+extern _Float32 roundf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __roundf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+
+extern _Float32 truncf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __truncf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float32 remquof32 (_Float32 __x, _Float32 __y, int *__quo) throw (); extern _Float32 __remquof32 (_Float32 __x, _Float32 __y, int *__quo) throw ();
+
+
+
+
+
+
+extern long int lrintf32 (_Float32 __x) throw (); extern long int __lrintf32 (_Float32 __x) throw ();
+__extension__
+extern long long int llrintf32 (_Float32 __x) throw (); extern long long int __llrintf32 (_Float32 __x) throw ();
+
+
+
+extern long int lroundf32 (_Float32 __x) throw (); extern long int __lroundf32 (_Float32 __x) throw ();
+__extension__
+extern long long int llroundf32 (_Float32 __x) throw (); extern long long int __llroundf32 (_Float32 __x) throw ();
+
+
+
+extern _Float32 fdimf32 (_Float32 __x, _Float32 __y) throw (); extern _Float32 __fdimf32 (_Float32 __x, _Float32 __y) throw ();
+
+
+extern _Float32 fmaxf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__)); extern _Float32 __fmaxf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32 fminf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__)); extern _Float32 __fminf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32 fmaf32 (_Float32 __x, _Float32 __y, _Float32 __z) throw (); extern _Float32 __fmaf32 (_Float32 __x, _Float32 __y, _Float32 __z) throw ();
+
+
+
+
+extern _Float32 roundevenf32 (_Float32 __x) throw () __attribute__ ((__const__)); extern _Float32 __roundevenf32 (_Float32 __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf32 (_Float32 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf32 (_Float32 __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf32 (_Float32 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf32 (_Float32 __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf32 (_Float32 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf32 (_Float32 __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf32 (_Float32 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf32 (_Float32 __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern _Float32 fmaxmagf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__)); extern _Float32 __fmaxmagf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32 fminmagf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__)); extern _Float32 __fminmagf32 (_Float32 __x, _Float32 __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf32 (_Float32 __x, _Float32 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf32 (_Float32 __x, _Float32 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef32 (_Float32 *__cx, const _Float32 *__x) throw ();
+
+
+extern _Float32 getpayloadf32 (const _Float32 *__x) throw (); extern _Float32 __getpayloadf32 (const _Float32 *__x) throw ();
+
+
+extern int setpayloadf32 (_Float32 *__x, _Float32 __payload) throw ();
+
+
+extern int setpayloadsigf32 (_Float32 *__x, _Float32 __payload) throw ();
+# 390 "/usr/include/math.h" 2 3 4
+# 406 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64 acosf64 (_Float64 __x) throw (); extern _Float64 __acosf64 (_Float64 __x) throw ();
+
+extern _Float64 asinf64 (_Float64 __x) throw (); extern _Float64 __asinf64 (_Float64 __x) throw ();
+
+extern _Float64 atanf64 (_Float64 __x) throw (); extern _Float64 __atanf64 (_Float64 __x) throw ();
+
+extern _Float64 atan2f64 (_Float64 __y, _Float64 __x) throw (); extern _Float64 __atan2f64 (_Float64 __y, _Float64 __x) throw ();
+
+
+ extern _Float64 cosf64 (_Float64 __x) throw (); extern _Float64 __cosf64 (_Float64 __x) throw ();
+
+ extern _Float64 sinf64 (_Float64 __x) throw (); extern _Float64 __sinf64 (_Float64 __x) throw ();
+
+extern _Float64 tanf64 (_Float64 __x) throw (); extern _Float64 __tanf64 (_Float64 __x) throw ();
+
+
+
+
+extern _Float64 coshf64 (_Float64 __x) throw (); extern _Float64 __coshf64 (_Float64 __x) throw ();
+
+extern _Float64 sinhf64 (_Float64 __x) throw (); extern _Float64 __sinhf64 (_Float64 __x) throw ();
+
+extern _Float64 tanhf64 (_Float64 __x) throw (); extern _Float64 __tanhf64 (_Float64 __x) throw ();
+
+
+
+ extern void sincosf64 (_Float64 __x, _Float64 *__sinx, _Float64 *__cosx) throw (); extern void __sincosf64 (_Float64 __x, _Float64 *__sinx, _Float64 *__cosx) throw ()
+                                                        ;
+
+
+
+
+extern _Float64 acoshf64 (_Float64 __x) throw (); extern _Float64 __acoshf64 (_Float64 __x) throw ();
+
+extern _Float64 asinhf64 (_Float64 __x) throw (); extern _Float64 __asinhf64 (_Float64 __x) throw ();
+
+extern _Float64 atanhf64 (_Float64 __x) throw (); extern _Float64 __atanhf64 (_Float64 __x) throw ();
+
+
+
+
+
+ extern _Float64 expf64 (_Float64 __x) throw (); extern _Float64 __expf64 (_Float64 __x) throw ();
+
+
+extern _Float64 frexpf64 (_Float64 __x, int *__exponent) throw (); extern _Float64 __frexpf64 (_Float64 __x, int *__exponent) throw ();
+
+
+extern _Float64 ldexpf64 (_Float64 __x, int __exponent) throw (); extern _Float64 __ldexpf64 (_Float64 __x, int __exponent) throw ();
+
+
+ extern _Float64 logf64 (_Float64 __x) throw (); extern _Float64 __logf64 (_Float64 __x) throw ();
+
+
+extern _Float64 log10f64 (_Float64 __x) throw (); extern _Float64 __log10f64 (_Float64 __x) throw ();
+
+
+extern _Float64 modff64 (_Float64 __x, _Float64 *__iptr) throw (); extern _Float64 __modff64 (_Float64 __x, _Float64 *__iptr) throw () __attribute__ ((__nonnull__ (2)));
+
+
+
+extern _Float64 exp10f64 (_Float64 __x) throw (); extern _Float64 __exp10f64 (_Float64 __x) throw ();
+
+
+
+
+extern _Float64 expm1f64 (_Float64 __x) throw (); extern _Float64 __expm1f64 (_Float64 __x) throw ();
+
+
+extern _Float64 log1pf64 (_Float64 __x) throw (); extern _Float64 __log1pf64 (_Float64 __x) throw ();
+
+
+extern _Float64 logbf64 (_Float64 __x) throw (); extern _Float64 __logbf64 (_Float64 __x) throw ();
+
+
+
+
+extern _Float64 exp2f64 (_Float64 __x) throw (); extern _Float64 __exp2f64 (_Float64 __x) throw ();
+
+
+extern _Float64 log2f64 (_Float64 __x) throw (); extern _Float64 __log2f64 (_Float64 __x) throw ();
+
+
+
+
+
+
+ extern _Float64 powf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __powf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float64 sqrtf64 (_Float64 __x) throw (); extern _Float64 __sqrtf64 (_Float64 __x) throw ();
+
+
+
+extern _Float64 hypotf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __hypotf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+
+
+extern _Float64 cbrtf64 (_Float64 __x) throw (); extern _Float64 __cbrtf64 (_Float64 __x) throw ();
+
+
+
+
+
+
+extern _Float64 ceilf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __ceilf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64 fabsf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __fabsf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64 floorf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __floorf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64 fmodf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __fmodf64 (_Float64 __x, _Float64 __y) throw ();
+# 196 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64 copysignf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__)); extern _Float64 __copysignf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float64 nanf64 (const char *__tagb) throw (); extern _Float64 __nanf64 (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64 j0f64 (_Float64) throw (); extern _Float64 __j0f64 (_Float64) throw ();
+extern _Float64 j1f64 (_Float64) throw (); extern _Float64 __j1f64 (_Float64) throw ();
+extern _Float64 jnf64 (int, _Float64) throw (); extern _Float64 __jnf64 (int, _Float64) throw ();
+extern _Float64 y0f64 (_Float64) throw (); extern _Float64 __y0f64 (_Float64) throw ();
+extern _Float64 y1f64 (_Float64) throw (); extern _Float64 __y1f64 (_Float64) throw ();
+extern _Float64 ynf64 (int, _Float64) throw (); extern _Float64 __ynf64 (int, _Float64) throw ();
+
+
+
+
+
+extern _Float64 erff64 (_Float64) throw (); extern _Float64 __erff64 (_Float64) throw ();
+extern _Float64 erfcf64 (_Float64) throw (); extern _Float64 __erfcf64 (_Float64) throw ();
+extern _Float64 lgammaf64 (_Float64) throw (); extern _Float64 __lgammaf64 (_Float64) throw ();
+
+
+
+
+extern _Float64 tgammaf64 (_Float64) throw (); extern _Float64 __tgammaf64 (_Float64) throw ();
+# 249 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64 lgammaf64_r (_Float64, int *__signgamp) throw (); extern _Float64 __lgammaf64_r (_Float64, int *__signgamp) throw ();
+
+
+
+
+
+
+extern _Float64 rintf64 (_Float64 __x) throw (); extern _Float64 __rintf64 (_Float64 __x) throw ();
+
+
+extern _Float64 nextafterf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __nextafterf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+
+
+
+
+extern _Float64 nextdownf64 (_Float64 __x) throw (); extern _Float64 __nextdownf64 (_Float64 __x) throw ();
+
+extern _Float64 nextupf64 (_Float64 __x) throw (); extern _Float64 __nextupf64 (_Float64 __x) throw ();
+
+
+
+extern _Float64 remainderf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __remainderf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+
+extern _Float64 scalbnf64 (_Float64 __x, int __n) throw (); extern _Float64 __scalbnf64 (_Float64 __x, int __n) throw ();
+
+
+
+extern int ilogbf64 (_Float64 __x) throw (); extern int __ilogbf64 (_Float64 __x) throw ();
+
+
+
+
+extern long int llogbf64 (_Float64 __x) throw (); extern long int __llogbf64 (_Float64 __x) throw ();
+
+
+
+
+extern _Float64 scalblnf64 (_Float64 __x, long int __n) throw (); extern _Float64 __scalblnf64 (_Float64 __x, long int __n) throw ();
+
+
+
+extern _Float64 nearbyintf64 (_Float64 __x) throw (); extern _Float64 __nearbyintf64 (_Float64 __x) throw ();
+
+
+
+extern _Float64 roundf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __roundf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+
+extern _Float64 truncf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __truncf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float64 remquof64 (_Float64 __x, _Float64 __y, int *__quo) throw (); extern _Float64 __remquof64 (_Float64 __x, _Float64 __y, int *__quo) throw ();
+
+
+
+
+
+
+extern long int lrintf64 (_Float64 __x) throw (); extern long int __lrintf64 (_Float64 __x) throw ();
+__extension__
+extern long long int llrintf64 (_Float64 __x) throw (); extern long long int __llrintf64 (_Float64 __x) throw ();
+
+
+
+extern long int lroundf64 (_Float64 __x) throw (); extern long int __lroundf64 (_Float64 __x) throw ();
+__extension__
+extern long long int llroundf64 (_Float64 __x) throw (); extern long long int __llroundf64 (_Float64 __x) throw ();
+
+
+
+extern _Float64 fdimf64 (_Float64 __x, _Float64 __y) throw (); extern _Float64 __fdimf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float64 fmaxf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__)); extern _Float64 __fmaxf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64 fminf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__)); extern _Float64 __fminf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64 fmaf64 (_Float64 __x, _Float64 __y, _Float64 __z) throw (); extern _Float64 __fmaf64 (_Float64 __x, _Float64 __y, _Float64 __z) throw ();
+
+
+
+
+extern _Float64 roundevenf64 (_Float64 __x) throw () __attribute__ ((__const__)); extern _Float64 __roundevenf64 (_Float64 __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf64 (_Float64 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf64 (_Float64 __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf64 (_Float64 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf64 (_Float64 __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf64 (_Float64 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf64 (_Float64 __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf64 (_Float64 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf64 (_Float64 __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern _Float64 fmaxmagf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__)); extern _Float64 __fmaxmagf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64 fminmagf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__)); extern _Float64 __fminmagf64 (_Float64 __x, _Float64 __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf64 (_Float64 __x, _Float64 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf64 (_Float64 __x, _Float64 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef64 (_Float64 *__cx, const _Float64 *__x) throw ();
+
+
+extern _Float64 getpayloadf64 (const _Float64 *__x) throw (); extern _Float64 __getpayloadf64 (const _Float64 *__x) throw ();
+
+
+extern int setpayloadf64 (_Float64 *__x, _Float64 __payload) throw ();
+
+
+extern int setpayloadsigf64 (_Float64 *__x, _Float64 __payload) throw ();
+# 407 "/usr/include/math.h" 2 3 4
+# 420 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-helper-functions.h" 1 3 4
+# 21 "/usr/include/bits/mathcalls-helper-functions.h" 3 4
+extern int __fpclassifyf128 (_Float128 __value) throw ()
+     __attribute__ ((__const__));
+
+
+extern int __signbitf128 (_Float128 __value) throw ()
+     __attribute__ ((__const__));
+
+
+
+extern int __isinff128 (_Float128 __value) throw () __attribute__ ((__const__));
+
+
+extern int __finitef128 (_Float128 __value) throw () __attribute__ ((__const__));
+
+
+extern int __isnanf128 (_Float128 __value) throw () __attribute__ ((__const__));
+
+
+extern int __iseqsigf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern int __issignalingf128 (_Float128 __value) throw ()
+     __attribute__ ((__const__));
+# 421 "/usr/include/math.h" 2 3 4
+
+
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float128 acosf128 (_Float128 __x) throw (); extern _Float128 __acosf128 (_Float128 __x) throw ();
+
+extern _Float128 asinf128 (_Float128 __x) throw (); extern _Float128 __asinf128 (_Float128 __x) throw ();
+
+extern _Float128 atanf128 (_Float128 __x) throw (); extern _Float128 __atanf128 (_Float128 __x) throw ();
+
+extern _Float128 atan2f128 (_Float128 __y, _Float128 __x) throw (); extern _Float128 __atan2f128 (_Float128 __y, _Float128 __x) throw ();
+
+
+ extern _Float128 cosf128 (_Float128 __x) throw (); extern _Float128 __cosf128 (_Float128 __x) throw ();
+
+ extern _Float128 sinf128 (_Float128 __x) throw (); extern _Float128 __sinf128 (_Float128 __x) throw ();
+
+extern _Float128 tanf128 (_Float128 __x) throw (); extern _Float128 __tanf128 (_Float128 __x) throw ();
+
+
+
+
+extern _Float128 coshf128 (_Float128 __x) throw (); extern _Float128 __coshf128 (_Float128 __x) throw ();
+
+extern _Float128 sinhf128 (_Float128 __x) throw (); extern _Float128 __sinhf128 (_Float128 __x) throw ();
+
+extern _Float128 tanhf128 (_Float128 __x) throw (); extern _Float128 __tanhf128 (_Float128 __x) throw ();
+
+
+
+ extern void sincosf128 (_Float128 __x, _Float128 *__sinx, _Float128 *__cosx) throw (); extern void __sincosf128 (_Float128 __x, _Float128 *__sinx, _Float128 *__cosx) throw ()
+                                                        ;
+
+
+
+
+extern _Float128 acoshf128 (_Float128 __x) throw (); extern _Float128 __acoshf128 (_Float128 __x) throw ();
+
+extern _Float128 asinhf128 (_Float128 __x) throw (); extern _Float128 __asinhf128 (_Float128 __x) throw ();
+
+extern _Float128 atanhf128 (_Float128 __x) throw (); extern _Float128 __atanhf128 (_Float128 __x) throw ();
+
+
+
+
+
+ extern _Float128 expf128 (_Float128 __x) throw (); extern _Float128 __expf128 (_Float128 __x) throw ();
+
+
+extern _Float128 frexpf128 (_Float128 __x, int *__exponent) throw (); extern _Float128 __frexpf128 (_Float128 __x, int *__exponent) throw ();
+
+
+extern _Float128 ldexpf128 (_Float128 __x, int __exponent) throw (); extern _Float128 __ldexpf128 (_Float128 __x, int __exponent) throw ();
+
+
+ extern _Float128 logf128 (_Float128 __x) throw (); extern _Float128 __logf128 (_Float128 __x) throw ();
+
+
+extern _Float128 log10f128 (_Float128 __x) throw (); extern _Float128 __log10f128 (_Float128 __x) throw ();
+
+
+extern _Float128 modff128 (_Float128 __x, _Float128 *__iptr) throw (); extern _Float128 __modff128 (_Float128 __x, _Float128 *__iptr) throw () __attribute__ ((__nonnull__ (2)));
+
+
+
+extern _Float128 exp10f128 (_Float128 __x) throw (); extern _Float128 __exp10f128 (_Float128 __x) throw ();
+
+
+
+
+extern _Float128 expm1f128 (_Float128 __x) throw (); extern _Float128 __expm1f128 (_Float128 __x) throw ();
+
+
+extern _Float128 log1pf128 (_Float128 __x) throw (); extern _Float128 __log1pf128 (_Float128 __x) throw ();
+
+
+extern _Float128 logbf128 (_Float128 __x) throw (); extern _Float128 __logbf128 (_Float128 __x) throw ();
+
+
+
+
+extern _Float128 exp2f128 (_Float128 __x) throw (); extern _Float128 __exp2f128 (_Float128 __x) throw ();
+
+
+extern _Float128 log2f128 (_Float128 __x) throw (); extern _Float128 __log2f128 (_Float128 __x) throw ();
+
+
+
+
+
+
+ extern _Float128 powf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __powf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float128 sqrtf128 (_Float128 __x) throw (); extern _Float128 __sqrtf128 (_Float128 __x) throw ();
+
+
+
+extern _Float128 hypotf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __hypotf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+
+
+extern _Float128 cbrtf128 (_Float128 __x) throw (); extern _Float128 __cbrtf128 (_Float128 __x) throw ();
+
+
+
+
+
+
+extern _Float128 ceilf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __ceilf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float128 fabsf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __fabsf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float128 floorf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __floorf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+extern _Float128 fmodf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __fmodf128 (_Float128 __x, _Float128 __y) throw ();
+# 196 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float128 copysignf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__)); extern _Float128 __copysignf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float128 nanf128 (const char *__tagb) throw (); extern _Float128 __nanf128 (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float128 j0f128 (_Float128) throw (); extern _Float128 __j0f128 (_Float128) throw ();
+extern _Float128 j1f128 (_Float128) throw (); extern _Float128 __j1f128 (_Float128) throw ();
+extern _Float128 jnf128 (int, _Float128) throw (); extern _Float128 __jnf128 (int, _Float128) throw ();
+extern _Float128 y0f128 (_Float128) throw (); extern _Float128 __y0f128 (_Float128) throw ();
+extern _Float128 y1f128 (_Float128) throw (); extern _Float128 __y1f128 (_Float128) throw ();
+extern _Float128 ynf128 (int, _Float128) throw (); extern _Float128 __ynf128 (int, _Float128) throw ();
+
+
+
+
+
+extern _Float128 erff128 (_Float128) throw (); extern _Float128 __erff128 (_Float128) throw ();
+extern _Float128 erfcf128 (_Float128) throw (); extern _Float128 __erfcf128 (_Float128) throw ();
+extern _Float128 lgammaf128 (_Float128) throw (); extern _Float128 __lgammaf128 (_Float128) throw ();
+
+
+
+
+extern _Float128 tgammaf128 (_Float128) throw (); extern _Float128 __tgammaf128 (_Float128) throw ();
+# 249 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float128 lgammaf128_r (_Float128, int *__signgamp) throw (); extern _Float128 __lgammaf128_r (_Float128, int *__signgamp) throw ();
+
+
+
+
+
+
+extern _Float128 rintf128 (_Float128 __x) throw (); extern _Float128 __rintf128 (_Float128 __x) throw ();
+
+
+extern _Float128 nextafterf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __nextafterf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+
+
+
+
+extern _Float128 nextdownf128 (_Float128 __x) throw (); extern _Float128 __nextdownf128 (_Float128 __x) throw ();
+
+extern _Float128 nextupf128 (_Float128 __x) throw (); extern _Float128 __nextupf128 (_Float128 __x) throw ();
+
+
+
+extern _Float128 remainderf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __remainderf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+
+extern _Float128 scalbnf128 (_Float128 __x, int __n) throw (); extern _Float128 __scalbnf128 (_Float128 __x, int __n) throw ();
+
+
+
+extern int ilogbf128 (_Float128 __x) throw (); extern int __ilogbf128 (_Float128 __x) throw ();
+
+
+
+
+extern long int llogbf128 (_Float128 __x) throw (); extern long int __llogbf128 (_Float128 __x) throw ();
+
+
+
+
+extern _Float128 scalblnf128 (_Float128 __x, long int __n) throw (); extern _Float128 __scalblnf128 (_Float128 __x, long int __n) throw ();
+
+
+
+extern _Float128 nearbyintf128 (_Float128 __x) throw (); extern _Float128 __nearbyintf128 (_Float128 __x) throw ();
+
+
+
+extern _Float128 roundf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __roundf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+
+extern _Float128 truncf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __truncf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float128 remquof128 (_Float128 __x, _Float128 __y, int *__quo) throw (); extern _Float128 __remquof128 (_Float128 __x, _Float128 __y, int *__quo) throw ();
+
+
+
+
+
+
+extern long int lrintf128 (_Float128 __x) throw (); extern long int __lrintf128 (_Float128 __x) throw ();
+__extension__
+extern long long int llrintf128 (_Float128 __x) throw (); extern long long int __llrintf128 (_Float128 __x) throw ();
+
+
+
+extern long int lroundf128 (_Float128 __x) throw (); extern long int __lroundf128 (_Float128 __x) throw ();
+__extension__
+extern long long int llroundf128 (_Float128 __x) throw (); extern long long int __llroundf128 (_Float128 __x) throw ();
+
+
+
+extern _Float128 fdimf128 (_Float128 __x, _Float128 __y) throw (); extern _Float128 __fdimf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float128 fmaxf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__)); extern _Float128 __fmaxf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float128 fminf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__)); extern _Float128 __fminf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float128 fmaf128 (_Float128 __x, _Float128 __y, _Float128 __z) throw (); extern _Float128 __fmaf128 (_Float128 __x, _Float128 __y, _Float128 __z) throw ();
+
+
+
+
+extern _Float128 roundevenf128 (_Float128 __x) throw () __attribute__ ((__const__)); extern _Float128 __roundevenf128 (_Float128 __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf128 (_Float128 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf128 (_Float128 __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf128 (_Float128 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf128 (_Float128 __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf128 (_Float128 __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf128 (_Float128 __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf128 (_Float128 __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf128 (_Float128 __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern _Float128 fmaxmagf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__)); extern _Float128 __fmaxmagf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__));
+
+
+extern _Float128 fminmagf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__)); extern _Float128 __fminmagf128 (_Float128 __x, _Float128 __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf128 (_Float128 __x, _Float128 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf128 (_Float128 __x, _Float128 __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef128 (_Float128 *__cx, const _Float128 *__x) throw ();
+
+
+extern _Float128 getpayloadf128 (const _Float128 *__x) throw (); extern _Float128 __getpayloadf128 (const _Float128 *__x) throw ();
+
+
+extern int setpayloadf128 (_Float128 *__x, _Float128 __payload) throw ();
+
+
+extern int setpayloadsigf128 (_Float128 *__x, _Float128 __payload) throw ();
+# 424 "/usr/include/math.h" 2 3 4
+# 440 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32x acosf32x (_Float32x __x) throw (); extern _Float32x __acosf32x (_Float32x __x) throw ();
+
+extern _Float32x asinf32x (_Float32x __x) throw (); extern _Float32x __asinf32x (_Float32x __x) throw ();
+
+extern _Float32x atanf32x (_Float32x __x) throw (); extern _Float32x __atanf32x (_Float32x __x) throw ();
+
+extern _Float32x atan2f32x (_Float32x __y, _Float32x __x) throw (); extern _Float32x __atan2f32x (_Float32x __y, _Float32x __x) throw ();
+
+
+ extern _Float32x cosf32x (_Float32x __x) throw (); extern _Float32x __cosf32x (_Float32x __x) throw ();
+
+ extern _Float32x sinf32x (_Float32x __x) throw (); extern _Float32x __sinf32x (_Float32x __x) throw ();
+
+extern _Float32x tanf32x (_Float32x __x) throw (); extern _Float32x __tanf32x (_Float32x __x) throw ();
+
+
+
+
+extern _Float32x coshf32x (_Float32x __x) throw (); extern _Float32x __coshf32x (_Float32x __x) throw ();
+
+extern _Float32x sinhf32x (_Float32x __x) throw (); extern _Float32x __sinhf32x (_Float32x __x) throw ();
+
+extern _Float32x tanhf32x (_Float32x __x) throw (); extern _Float32x __tanhf32x (_Float32x __x) throw ();
+
+
+
+ extern void sincosf32x (_Float32x __x, _Float32x *__sinx, _Float32x *__cosx) throw (); extern void __sincosf32x (_Float32x __x, _Float32x *__sinx, _Float32x *__cosx) throw ()
+                                                        ;
+
+
+
+
+extern _Float32x acoshf32x (_Float32x __x) throw (); extern _Float32x __acoshf32x (_Float32x __x) throw ();
+
+extern _Float32x asinhf32x (_Float32x __x) throw (); extern _Float32x __asinhf32x (_Float32x __x) throw ();
+
+extern _Float32x atanhf32x (_Float32x __x) throw (); extern _Float32x __atanhf32x (_Float32x __x) throw ();
+
+
+
+
+
+ extern _Float32x expf32x (_Float32x __x) throw (); extern _Float32x __expf32x (_Float32x __x) throw ();
+
+
+extern _Float32x frexpf32x (_Float32x __x, int *__exponent) throw (); extern _Float32x __frexpf32x (_Float32x __x, int *__exponent) throw ();
+
+
+extern _Float32x ldexpf32x (_Float32x __x, int __exponent) throw (); extern _Float32x __ldexpf32x (_Float32x __x, int __exponent) throw ();
+
+
+ extern _Float32x logf32x (_Float32x __x) throw (); extern _Float32x __logf32x (_Float32x __x) throw ();
+
+
+extern _Float32x log10f32x (_Float32x __x) throw (); extern _Float32x __log10f32x (_Float32x __x) throw ();
+
+
+extern _Float32x modff32x (_Float32x __x, _Float32x *__iptr) throw (); extern _Float32x __modff32x (_Float32x __x, _Float32x *__iptr) throw () __attribute__ ((__nonnull__ (2)));
+
+
+
+extern _Float32x exp10f32x (_Float32x __x) throw (); extern _Float32x __exp10f32x (_Float32x __x) throw ();
+
+
+
+
+extern _Float32x expm1f32x (_Float32x __x) throw (); extern _Float32x __expm1f32x (_Float32x __x) throw ();
+
+
+extern _Float32x log1pf32x (_Float32x __x) throw (); extern _Float32x __log1pf32x (_Float32x __x) throw ();
+
+
+extern _Float32x logbf32x (_Float32x __x) throw (); extern _Float32x __logbf32x (_Float32x __x) throw ();
+
+
+
+
+extern _Float32x exp2f32x (_Float32x __x) throw (); extern _Float32x __exp2f32x (_Float32x __x) throw ();
+
+
+extern _Float32x log2f32x (_Float32x __x) throw (); extern _Float32x __log2f32x (_Float32x __x) throw ();
+
+
+
+
+
+
+ extern _Float32x powf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __powf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+extern _Float32x sqrtf32x (_Float32x __x) throw (); extern _Float32x __sqrtf32x (_Float32x __x) throw ();
+
+
+
+extern _Float32x hypotf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __hypotf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+
+
+extern _Float32x cbrtf32x (_Float32x __x) throw (); extern _Float32x __cbrtf32x (_Float32x __x) throw ();
+
+
+
+
+
+
+extern _Float32x ceilf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __ceilf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32x fabsf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __fabsf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32x floorf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __floorf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float32x fmodf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __fmodf32x (_Float32x __x, _Float32x __y) throw ();
+# 196 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32x copysignf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__)); extern _Float32x __copysignf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float32x nanf32x (const char *__tagb) throw (); extern _Float32x __nanf32x (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32x j0f32x (_Float32x) throw (); extern _Float32x __j0f32x (_Float32x) throw ();
+extern _Float32x j1f32x (_Float32x) throw (); extern _Float32x __j1f32x (_Float32x) throw ();
+extern _Float32x jnf32x (int, _Float32x) throw (); extern _Float32x __jnf32x (int, _Float32x) throw ();
+extern _Float32x y0f32x (_Float32x) throw (); extern _Float32x __y0f32x (_Float32x) throw ();
+extern _Float32x y1f32x (_Float32x) throw (); extern _Float32x __y1f32x (_Float32x) throw ();
+extern _Float32x ynf32x (int, _Float32x) throw (); extern _Float32x __ynf32x (int, _Float32x) throw ();
+
+
+
+
+
+extern _Float32x erff32x (_Float32x) throw (); extern _Float32x __erff32x (_Float32x) throw ();
+extern _Float32x erfcf32x (_Float32x) throw (); extern _Float32x __erfcf32x (_Float32x) throw ();
+extern _Float32x lgammaf32x (_Float32x) throw (); extern _Float32x __lgammaf32x (_Float32x) throw ();
+
+
+
+
+extern _Float32x tgammaf32x (_Float32x) throw (); extern _Float32x __tgammaf32x (_Float32x) throw ();
+# 249 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float32x lgammaf32x_r (_Float32x, int *__signgamp) throw (); extern _Float32x __lgammaf32x_r (_Float32x, int *__signgamp) throw ();
+
+
+
+
+
+
+extern _Float32x rintf32x (_Float32x __x) throw (); extern _Float32x __rintf32x (_Float32x __x) throw ();
+
+
+extern _Float32x nextafterf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __nextafterf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+
+
+
+
+extern _Float32x nextdownf32x (_Float32x __x) throw (); extern _Float32x __nextdownf32x (_Float32x __x) throw ();
+
+extern _Float32x nextupf32x (_Float32x __x) throw (); extern _Float32x __nextupf32x (_Float32x __x) throw ();
+
+
+
+extern _Float32x remainderf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __remainderf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+
+extern _Float32x scalbnf32x (_Float32x __x, int __n) throw (); extern _Float32x __scalbnf32x (_Float32x __x, int __n) throw ();
+
+
+
+extern int ilogbf32x (_Float32x __x) throw (); extern int __ilogbf32x (_Float32x __x) throw ();
+
+
+
+
+extern long int llogbf32x (_Float32x __x) throw (); extern long int __llogbf32x (_Float32x __x) throw ();
+
+
+
+
+extern _Float32x scalblnf32x (_Float32x __x, long int __n) throw (); extern _Float32x __scalblnf32x (_Float32x __x, long int __n) throw ();
+
+
+
+extern _Float32x nearbyintf32x (_Float32x __x) throw (); extern _Float32x __nearbyintf32x (_Float32x __x) throw ();
+
+
+
+extern _Float32x roundf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __roundf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+
+extern _Float32x truncf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __truncf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float32x remquof32x (_Float32x __x, _Float32x __y, int *__quo) throw (); extern _Float32x __remquof32x (_Float32x __x, _Float32x __y, int *__quo) throw ();
+
+
+
+
+
+
+extern long int lrintf32x (_Float32x __x) throw (); extern long int __lrintf32x (_Float32x __x) throw ();
+__extension__
+extern long long int llrintf32x (_Float32x __x) throw (); extern long long int __llrintf32x (_Float32x __x) throw ();
+
+
+
+extern long int lroundf32x (_Float32x __x) throw (); extern long int __lroundf32x (_Float32x __x) throw ();
+__extension__
+extern long long int llroundf32x (_Float32x __x) throw (); extern long long int __llroundf32x (_Float32x __x) throw ();
+
+
+
+extern _Float32x fdimf32x (_Float32x __x, _Float32x __y) throw (); extern _Float32x __fdimf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+extern _Float32x fmaxf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__)); extern _Float32x __fmaxf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32x fminf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__)); extern _Float32x __fminf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32x fmaf32x (_Float32x __x, _Float32x __y, _Float32x __z) throw (); extern _Float32x __fmaf32x (_Float32x __x, _Float32x __y, _Float32x __z) throw ();
+
+
+
+
+extern _Float32x roundevenf32x (_Float32x __x) throw () __attribute__ ((__const__)); extern _Float32x __roundevenf32x (_Float32x __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf32x (_Float32x __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf32x (_Float32x __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf32x (_Float32x __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf32x (_Float32x __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf32x (_Float32x __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf32x (_Float32x __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf32x (_Float32x __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf32x (_Float32x __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern _Float32x fmaxmagf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__)); extern _Float32x __fmaxmagf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float32x fminmagf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__)); extern _Float32x __fminmagf32x (_Float32x __x, _Float32x __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf32x (_Float32x __x, _Float32x __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf32x (_Float32x __x, _Float32x __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef32x (_Float32x *__cx, const _Float32x *__x) throw ();
+
+
+extern _Float32x getpayloadf32x (const _Float32x *__x) throw (); extern _Float32x __getpayloadf32x (const _Float32x *__x) throw ();
+
+
+extern int setpayloadf32x (_Float32x *__x, _Float32x __payload) throw ();
+
+
+extern int setpayloadsigf32x (_Float32x *__x, _Float32x __payload) throw ();
+# 441 "/usr/include/math.h" 2 3 4
+# 457 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls.h" 1 3 4
+# 53 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64x acosf64x (_Float64x __x) throw (); extern _Float64x __acosf64x (_Float64x __x) throw ();
+
+extern _Float64x asinf64x (_Float64x __x) throw (); extern _Float64x __asinf64x (_Float64x __x) throw ();
+
+extern _Float64x atanf64x (_Float64x __x) throw (); extern _Float64x __atanf64x (_Float64x __x) throw ();
+
+extern _Float64x atan2f64x (_Float64x __y, _Float64x __x) throw (); extern _Float64x __atan2f64x (_Float64x __y, _Float64x __x) throw ();
+
+
+ extern _Float64x cosf64x (_Float64x __x) throw (); extern _Float64x __cosf64x (_Float64x __x) throw ();
+
+ extern _Float64x sinf64x (_Float64x __x) throw (); extern _Float64x __sinf64x (_Float64x __x) throw ();
+
+extern _Float64x tanf64x (_Float64x __x) throw (); extern _Float64x __tanf64x (_Float64x __x) throw ();
+
+
+
+
+extern _Float64x coshf64x (_Float64x __x) throw (); extern _Float64x __coshf64x (_Float64x __x) throw ();
+
+extern _Float64x sinhf64x (_Float64x __x) throw (); extern _Float64x __sinhf64x (_Float64x __x) throw ();
+
+extern _Float64x tanhf64x (_Float64x __x) throw (); extern _Float64x __tanhf64x (_Float64x __x) throw ();
+
+
+
+ extern void sincosf64x (_Float64x __x, _Float64x *__sinx, _Float64x *__cosx) throw (); extern void __sincosf64x (_Float64x __x, _Float64x *__sinx, _Float64x *__cosx) throw ()
+                                                        ;
+
+
+
+
+extern _Float64x acoshf64x (_Float64x __x) throw (); extern _Float64x __acoshf64x (_Float64x __x) throw ();
+
+extern _Float64x asinhf64x (_Float64x __x) throw (); extern _Float64x __asinhf64x (_Float64x __x) throw ();
+
+extern _Float64x atanhf64x (_Float64x __x) throw (); extern _Float64x __atanhf64x (_Float64x __x) throw ();
+
+
+
+
+
+ extern _Float64x expf64x (_Float64x __x) throw (); extern _Float64x __expf64x (_Float64x __x) throw ();
+
+
+extern _Float64x frexpf64x (_Float64x __x, int *__exponent) throw (); extern _Float64x __frexpf64x (_Float64x __x, int *__exponent) throw ();
+
+
+extern _Float64x ldexpf64x (_Float64x __x, int __exponent) throw (); extern _Float64x __ldexpf64x (_Float64x __x, int __exponent) throw ();
+
+
+ extern _Float64x logf64x (_Float64x __x) throw (); extern _Float64x __logf64x (_Float64x __x) throw ();
+
+
+extern _Float64x log10f64x (_Float64x __x) throw (); extern _Float64x __log10f64x (_Float64x __x) throw ();
+
+
+extern _Float64x modff64x (_Float64x __x, _Float64x *__iptr) throw (); extern _Float64x __modff64x (_Float64x __x, _Float64x *__iptr) throw () __attribute__ ((__nonnull__ (2)));
+
+
+
+extern _Float64x exp10f64x (_Float64x __x) throw (); extern _Float64x __exp10f64x (_Float64x __x) throw ();
+
+
+
+
+extern _Float64x expm1f64x (_Float64x __x) throw (); extern _Float64x __expm1f64x (_Float64x __x) throw ();
+
+
+extern _Float64x log1pf64x (_Float64x __x) throw (); extern _Float64x __log1pf64x (_Float64x __x) throw ();
+
+
+extern _Float64x logbf64x (_Float64x __x) throw (); extern _Float64x __logbf64x (_Float64x __x) throw ();
+
+
+
+
+extern _Float64x exp2f64x (_Float64x __x) throw (); extern _Float64x __exp2f64x (_Float64x __x) throw ();
+
+
+extern _Float64x log2f64x (_Float64x __x) throw (); extern _Float64x __log2f64x (_Float64x __x) throw ();
+
+
+
+
+
+
+ extern _Float64x powf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __powf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float64x sqrtf64x (_Float64x __x) throw (); extern _Float64x __sqrtf64x (_Float64x __x) throw ();
+
+
+
+extern _Float64x hypotf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __hypotf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+
+
+extern _Float64x cbrtf64x (_Float64x __x) throw (); extern _Float64x __cbrtf64x (_Float64x __x) throw ();
+
+
+
+
+
+
+extern _Float64x ceilf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __ceilf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64x fabsf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __fabsf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64x floorf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __floorf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+extern _Float64x fmodf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __fmodf64x (_Float64x __x, _Float64x __y) throw ();
+# 196 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64x copysignf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__)); extern _Float64x __copysignf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float64x nanf64x (const char *__tagb) throw (); extern _Float64x __nanf64x (const char *__tagb) throw ();
+# 217 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64x j0f64x (_Float64x) throw (); extern _Float64x __j0f64x (_Float64x) throw ();
+extern _Float64x j1f64x (_Float64x) throw (); extern _Float64x __j1f64x (_Float64x) throw ();
+extern _Float64x jnf64x (int, _Float64x) throw (); extern _Float64x __jnf64x (int, _Float64x) throw ();
+extern _Float64x y0f64x (_Float64x) throw (); extern _Float64x __y0f64x (_Float64x) throw ();
+extern _Float64x y1f64x (_Float64x) throw (); extern _Float64x __y1f64x (_Float64x) throw ();
+extern _Float64x ynf64x (int, _Float64x) throw (); extern _Float64x __ynf64x (int, _Float64x) throw ();
+
+
+
+
+
+extern _Float64x erff64x (_Float64x) throw (); extern _Float64x __erff64x (_Float64x) throw ();
+extern _Float64x erfcf64x (_Float64x) throw (); extern _Float64x __erfcf64x (_Float64x) throw ();
+extern _Float64x lgammaf64x (_Float64x) throw (); extern _Float64x __lgammaf64x (_Float64x) throw ();
+
+
+
+
+extern _Float64x tgammaf64x (_Float64x) throw (); extern _Float64x __tgammaf64x (_Float64x) throw ();
+# 249 "/usr/include/bits/mathcalls.h" 3 4
+extern _Float64x lgammaf64x_r (_Float64x, int *__signgamp) throw (); extern _Float64x __lgammaf64x_r (_Float64x, int *__signgamp) throw ();
+
+
+
+
+
+
+extern _Float64x rintf64x (_Float64x __x) throw (); extern _Float64x __rintf64x (_Float64x __x) throw ();
+
+
+extern _Float64x nextafterf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __nextafterf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+
+
+
+
+extern _Float64x nextdownf64x (_Float64x __x) throw (); extern _Float64x __nextdownf64x (_Float64x __x) throw ();
+
+extern _Float64x nextupf64x (_Float64x __x) throw (); extern _Float64x __nextupf64x (_Float64x __x) throw ();
+
+
+
+extern _Float64x remainderf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __remainderf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+
+extern _Float64x scalbnf64x (_Float64x __x, int __n) throw (); extern _Float64x __scalbnf64x (_Float64x __x, int __n) throw ();
+
+
+
+extern int ilogbf64x (_Float64x __x) throw (); extern int __ilogbf64x (_Float64x __x) throw ();
+
+
+
+
+extern long int llogbf64x (_Float64x __x) throw (); extern long int __llogbf64x (_Float64x __x) throw ();
+
+
+
+
+extern _Float64x scalblnf64x (_Float64x __x, long int __n) throw (); extern _Float64x __scalblnf64x (_Float64x __x, long int __n) throw ();
+
+
+
+extern _Float64x nearbyintf64x (_Float64x __x) throw (); extern _Float64x __nearbyintf64x (_Float64x __x) throw ();
+
+
+
+extern _Float64x roundf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __roundf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+
+extern _Float64x truncf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __truncf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+
+
+extern _Float64x remquof64x (_Float64x __x, _Float64x __y, int *__quo) throw (); extern _Float64x __remquof64x (_Float64x __x, _Float64x __y, int *__quo) throw ();
+
+
+
+
+
+
+extern long int lrintf64x (_Float64x __x) throw (); extern long int __lrintf64x (_Float64x __x) throw ();
+__extension__
+extern long long int llrintf64x (_Float64x __x) throw (); extern long long int __llrintf64x (_Float64x __x) throw ();
+
+
+
+extern long int lroundf64x (_Float64x __x) throw (); extern long int __lroundf64x (_Float64x __x) throw ();
+__extension__
+extern long long int llroundf64x (_Float64x __x) throw (); extern long long int __llroundf64x (_Float64x __x) throw ();
+
+
+
+extern _Float64x fdimf64x (_Float64x __x, _Float64x __y) throw (); extern _Float64x __fdimf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float64x fmaxf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__)); extern _Float64x __fmaxf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64x fminf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__)); extern _Float64x __fminf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64x fmaf64x (_Float64x __x, _Float64x __y, _Float64x __z) throw (); extern _Float64x __fmaf64x (_Float64x __x, _Float64x __y, _Float64x __z) throw ();
+
+
+
+
+extern _Float64x roundevenf64x (_Float64x __x) throw () __attribute__ ((__const__)); extern _Float64x __roundevenf64x (_Float64x __x) throw () __attribute__ ((__const__));
+
+
+
+extern __intmax_t fromfpf64x (_Float64x __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpf64x (_Float64x __x, int __round, unsigned int __width) throw ()
+                            ;
+
+
+
+extern __uintmax_t ufromfpf64x (_Float64x __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpf64x (_Float64x __x, int __round, unsigned int __width) throw ()
+                              ;
+
+
+
+
+extern __intmax_t fromfpxf64x (_Float64x __x, int __round, unsigned int __width) throw (); extern __intmax_t __fromfpxf64x (_Float64x __x, int __round, unsigned int __width) throw ()
+                             ;
+
+
+
+
+extern __uintmax_t ufromfpxf64x (_Float64x __x, int __round, unsigned int __width) throw (); extern __uintmax_t __ufromfpxf64x (_Float64x __x, int __round, unsigned int __width) throw ()
+                               ;
+
+
+extern _Float64x fmaxmagf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__)); extern _Float64x __fmaxmagf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__));
+
+
+extern _Float64x fminmagf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__)); extern _Float64x __fminmagf64x (_Float64x __x, _Float64x __y) throw () __attribute__ ((__const__));
+
+
+extern int totalorderf64x (_Float64x __x, _Float64x __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int totalordermagf64x (_Float64x __x, _Float64x __y) throw ()
+     __attribute__ ((__const__));
+
+
+extern int canonicalizef64x (_Float64x *__cx, const _Float64x *__x) throw ();
+
+
+extern _Float64x getpayloadf64x (const _Float64x *__x) throw (); extern _Float64x __getpayloadf64x (const _Float64x *__x) throw ();
+
+
+extern int setpayloadf64x (_Float64x *__x, _Float64x __payload) throw ();
+
+
+extern int setpayloadsigf64x (_Float64x *__x, _Float64x __payload) throw ();
+# 458 "/usr/include/math.h" 2 3 4
+# 503 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern float fadd (double __x, double __y) throw ();
+
+
+extern float fdiv (double __x, double __y) throw ();
+
+
+extern float fmul (double __x, double __y) throw ();
+
+
+extern float fsub (double __x, double __y) throw ();
+# 504 "/usr/include/math.h" 2 3 4
+# 517 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern float faddl (long double __x, long double __y) throw ();
+
+
+extern float fdivl (long double __x, long double __y) throw ();
+
+
+extern float fmull (long double __x, long double __y) throw ();
+
+
+extern float fsubl (long double __x, long double __y) throw ();
+# 518 "/usr/include/math.h" 2 3 4
+# 537 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern double daddl (long double __x, long double __y) throw ();
+
+
+extern double ddivl (long double __x, long double __y) throw ();
+
+
+extern double dmull (long double __x, long double __y) throw ();
+
+
+extern double dsubl (long double __x, long double __y) throw ();
+# 538 "/usr/include/math.h" 2 3 4
+# 616 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32 f32addf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+extern _Float32 f32divf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+extern _Float32 f32mulf32x (_Float32x __x, _Float32x __y) throw ();
+
+
+extern _Float32 f32subf32x (_Float32x __x, _Float32x __y) throw ();
+# 617 "/usr/include/math.h" 2 3 4
+# 626 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32 f32addf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32 f32divf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32 f32mulf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32 f32subf64 (_Float64 __x, _Float64 __y) throw ();
+# 627 "/usr/include/math.h" 2 3 4
+# 636 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32 f32addf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32 f32divf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32 f32mulf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32 f32subf64x (_Float64x __x, _Float64x __y) throw ();
+# 637 "/usr/include/math.h" 2 3 4
+# 646 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32 f32addf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32 f32divf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32 f32mulf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32 f32subf128 (_Float128 __x, _Float128 __y) throw ();
+# 647 "/usr/include/math.h" 2 3 4
+# 666 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32x f32xaddf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32x f32xdivf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32x f32xmulf64 (_Float64 __x, _Float64 __y) throw ();
+
+
+extern _Float32x f32xsubf64 (_Float64 __x, _Float64 __y) throw ();
+# 667 "/usr/include/math.h" 2 3 4
+# 676 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32x f32xaddf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32x f32xdivf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32x f32xmulf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float32x f32xsubf64x (_Float64x __x, _Float64x __y) throw ();
+# 677 "/usr/include/math.h" 2 3 4
+# 686 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float32x f32xaddf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32x f32xdivf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32x f32xmulf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float32x f32xsubf128 (_Float128 __x, _Float128 __y) throw ();
+# 687 "/usr/include/math.h" 2 3 4
+# 706 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float64 f64addf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float64 f64divf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float64 f64mulf64x (_Float64x __x, _Float64x __y) throw ();
+
+
+extern _Float64 f64subf64x (_Float64x __x, _Float64x __y) throw ();
+# 707 "/usr/include/math.h" 2 3 4
+# 716 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float64 f64addf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64 f64divf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64 f64mulf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64 f64subf128 (_Float128 __x, _Float128 __y) throw ();
+# 717 "/usr/include/math.h" 2 3 4
+# 736 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/mathcalls-narrow.h" 1 3 4
+# 24 "/usr/include/bits/mathcalls-narrow.h" 3 4
+extern _Float64x f64xaddf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64x f64xdivf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64x f64xmulf128 (_Float128 __x, _Float128 __y) throw ();
+
+
+extern _Float64x f64xsubf128 (_Float128 __x, _Float128 __y) throw ();
+# 737 "/usr/include/math.h" 2 3 4
+# 773 "/usr/include/math.h" 3 4
 extern int signgam;
-# 190 "/usr/include/math.h" 3 4
+# 853 "/usr/include/math.h" 3 4
 enum
   {
     FP_NAN =
@@ -30382,36 +32167,111 @@ enum
 
       4
   };
-# 288 "/usr/include/math.h" 3 4
-typedef enum
+# 973 "/usr/include/math.h" 3 4
+# 1 "/usr/include/bits/iscanonical.h" 1 3 4
+# 23 "/usr/include/bits/iscanonical.h" 3 4
+extern int __iscanonicall (long double __x)
+     throw () __attribute__ ((__const__));
+# 46 "/usr/include/bits/iscanonical.h" 3 4
+extern "C++" {
+inline int iscanonical (float __val) { return ((void) (__typeof (__val)) (__val), 1); }
+inline int iscanonical (double __val) { return ((void) (__typeof (__val)) (__val), 1); }
+inline int iscanonical (long double __val) { return __iscanonicall (__val); }
+
+inline int iscanonical (_Float128 __val) { return ((void) (__typeof (__val)) (__val), 1); }
+
+}
+# 974 "/usr/include/math.h" 2 3 4
+# 985 "/usr/include/math.h" 3 4
+extern "C++" {
+inline int issignaling (float __val) { return __issignalingf (__val); }
+inline int issignaling (double __val) { return __issignaling (__val); }
+inline int
+issignaling (long double __val)
 {
-  _IEEE_ = -1,
-  _SVID_,
-  _XOPEN_,
-  _POSIX_,
-  _ISOC_
-} _LIB_VERSION_TYPE;
 
 
 
+  return __issignalingl (__val);
 
-extern _LIB_VERSION_TYPE _LIB_VERSION;
-# 311 "/usr/include/math.h" 3 4
-struct __exception
-
+}
 
 
+
+inline int issignaling (_Float128 __val) { return __issignalingf128 (__val); }
+
+}
+# 1016 "/usr/include/math.h" 3 4
+extern "C++" {
+# 1047 "/usr/include/math.h" 3 4
+template <class __T> inline bool
+iszero (__T __val)
+{
+  return __val == 0;
+}
+
+}
+# 1498 "/usr/include/math.h" 3 4
+extern "C++" {
+template<typename> struct __iseqsig_type;
+
+template<> struct __iseqsig_type<float>
+{
+  static int __call (float __x, float __y) throw ()
   {
-    int type;
-    char *name;
-    double arg1;
-    double arg2;
-    double retval;
-  };
+    return __iseqsigf (__x, __y);
+  }
+};
+
+template<> struct __iseqsig_type<double>
+{
+  static int __call (double __x, double __y) throw ()
+  {
+    return __iseqsig (__x, __y);
+  }
+};
+
+template<> struct __iseqsig_type<long double>
+{
+  static int __call (long double __x, long double __y) throw ()
+  {
+
+    return __iseqsigl (__x, __y);
 
 
-extern int matherr (struct __exception *__exc) throw ();
-# 475 "/usr/include/math.h" 3 4
+
+  }
+};
+
+
+
+
+template<> struct __iseqsig_type<_Float128>
+{
+  static int __call (_Float128 __x, _Float128 __y) throw ()
+  {
+    return __iseqsigf128 (__x, __y);
+  }
+};
+
+
+template<typename _T1, typename _T2>
+inline int
+iseqsig (_T1 __x, _T2 __y) throw ()
+{
+
+  typedef decltype (((__x) + (__y) + 0.0f)) _T3;
+
+
+
+  return __iseqsig_type<_T3>::__call (__x, __y);
+}
+
+}
+
+
+
+
 }
 # 46 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cmath" 2 3
 # 77 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cmath" 3
@@ -30890,11 +32750,11 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 
-  using ::isinf;
 
 
-
-
+  constexpr bool
+  isinf(double __x)
+  { return __builtin_isinf(__x); }
 
 
   constexpr bool
@@ -30917,11 +32777,11 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 
-  using ::isnan;
 
 
-
-
+  constexpr bool
+  isnan(double __x)
+  { return __builtin_isnan(__x); }
 
 
   constexpr bool
@@ -33528,7 +35388,7 @@ using std::trunc;
 
 
 # 1 "/usr/include/assert.h" 1 3 4
-# 65 "/usr/include/assert.h" 3 4
+# 64 "/usr/include/assert.h" 3 4
 extern "C" {
 
 
@@ -36853,28 +38713,34 @@ struct half::half_traits<half, unsigned long> {
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed/limits.h" 1 3 4
 # 194 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed/limits.h" 3 4
 # 1 "/usr/include/limits.h" 1 3 4
-# 144 "/usr/include/limits.h" 3 4
+# 26 "/usr/include/limits.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 27 "/usr/include/limits.h" 2 3 4
+# 183 "/usr/include/limits.h" 3 4
 # 1 "/usr/include/bits/posix1_lim.h" 1 3 4
-# 160 "/usr/include/bits/posix1_lim.h" 3 4
+# 27 "/usr/include/bits/posix1_lim.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 28 "/usr/include/bits/posix1_lim.h" 2 3 4
+# 161 "/usr/include/bits/posix1_lim.h" 3 4
 # 1 "/usr/include/bits/local_lim.h" 1 3 4
 # 38 "/usr/include/bits/local_lim.h" 3 4
 # 1 "/usr/include/linux/limits.h" 1 3 4
 # 39 "/usr/include/bits/local_lim.h" 2 3 4
-# 161 "/usr/include/bits/posix1_lim.h" 2 3 4
-# 145 "/usr/include/limits.h" 2 3 4
+# 162 "/usr/include/bits/posix1_lim.h" 2 3 4
+# 184 "/usr/include/limits.h" 2 3 4
 
 
 
 # 1 "/usr/include/bits/posix2_lim.h" 1 3 4
-# 149 "/usr/include/limits.h" 2 3 4
+# 188 "/usr/include/limits.h" 2 3 4
 
 
 
 # 1 "/usr/include/bits/xopen_lim.h" 1 3 4
-# 33 "/usr/include/bits/xopen_lim.h" 3 4
-# 1 "/usr/include/bits/stdio_lim.h" 1 3 4
-# 34 "/usr/include/bits/xopen_lim.h" 2 3 4
-# 153 "/usr/include/limits.h" 2 3 4
+# 64 "/usr/include/bits/xopen_lim.h" 3 4
+# 1 "/usr/include/bits/uio_lim.h" 1 3 4
+# 65 "/usr/include/bits/xopen_lim.h" 2 3 4
+# 192 "/usr/include/limits.h" 2 3 4
 # 195 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed/limits.h" 2 3 4
 # 8 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed/syslimits.h" 2 3 4
 # 35 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include-fixed/limits.h" 2 3 4
@@ -37569,9 +39435,9 @@ template <class DataType>
 
 
 # 1 "/usr/include/assert.h" 1 3 4
-# 65 "/usr/include/assert.h" 3 4
+# 64 "/usr/include/assert.h" 3 4
 
-# 65 "/usr/include/assert.h" 3 4
+# 64 "/usr/include/assert.h" 3 4
 extern "C" {
 
 
@@ -37606,23 +39472,18 @@ extern void __assert (const char *__assertion, const char *__file, int __line)
 
 
 # 1 "/usr/include/string.h" 1 3 4
-# 27 "/usr/include/string.h" 3 4
+# 26 "/usr/include/string.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 27 "/usr/include/string.h" 2 3 4
+
 extern "C" {
 
 
 
 
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
-# 33 "/usr/include/string.h" 2 3 4
-
-
-
-
-
-
-
-
-
+# 34 "/usr/include/string.h" 2 3 4
+# 43 "/usr/include/string.h" 3 4
 extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
        size_t __n) throw () __attribute__ ((__nonnull__ (1, 2)));
 
@@ -37634,11 +39495,9 @@ extern void *memmove (void *__dest, const void *__src, size_t __n)
 
 
 
-
 extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
         int __c, size_t __n)
      throw () __attribute__ ((__nonnull__ (1, 2)));
-
 
 
 
@@ -37657,18 +39516,9 @@ extern void *memchr (void *__s, int __c, size_t __n)
       throw () __asm ("memchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern const void *memchr (const void *__s, int __c, size_t __n)
       throw () __asm ("memchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-# 90 "/usr/include/string.h" 3 4
+# 89 "/usr/include/string.h" 3 4
 }
-
-
-
-
-
-
-
-
-
-
+# 99 "/usr/include/string.h" 3 4
 extern "C++" void *rawmemchr (void *__s, int __c)
      throw () __asm ("rawmemchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern "C++" const void *rawmemchr (const void *__s, int __c)
@@ -37684,15 +39534,7 @@ extern "C++" void *memrchr (void *__s, int __c, size_t __n)
       throw () __asm ("memrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern "C++" const void *memrchr (const void *__s, int __c, size_t __n)
       throw () __asm ("memrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-
-
+# 122 "/usr/include/string.h" 3 4
 extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
      throw () __attribute__ ((__nonnull__ (1, 2)));
 
@@ -37722,12 +39564,17 @@ extern size_t strxfrm (char *__restrict __dest,
          const char *__restrict __src, size_t __n)
      throw () __attribute__ ((__nonnull__ (2)));
 
-# 162 "/usr/include/string.h" 3 4
-extern int strcoll_l (const char *__s1, const char *__s2, __locale_t __l)
+
+
+
+
+
+extern int strcoll_l (const char *__s1, const char *__s2, locale_t __l)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
 
+
 extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
-    __locale_t __l) throw () __attribute__ ((__nonnull__ (2, 4)));
+    locale_t __l) throw () __attribute__ ((__nonnull__ (2, 4)));
 
 
 
@@ -37743,17 +39590,14 @@ extern char *strdup (const char *__s)
 
 extern char *strndup (const char *__string, size_t __n)
      throw () __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
-# 207 "/usr/include/string.h" 3 4
-
-
-
+# 204 "/usr/include/string.h" 3 4
 extern "C++"
 {
 extern char *strchr (char *__s, int __c)
      throw () __asm ("strchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern const char *strchr (const char *__s, int __c)
      throw () __asm ("strchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-# 230 "/usr/include/string.h" 3 4
+# 224 "/usr/include/string.h" 3 4
 }
 
 
@@ -37767,31 +39611,14 @@ extern char *strrchr (char *__s, int __c)
      throw () __asm ("strrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern const char *strrchr (const char *__s, int __c)
      throw () __asm ("strrchr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-# 257 "/usr/include/string.h" 3 4
+# 251 "/usr/include/string.h" 3 4
 }
-
-
-
-
-
-
-
-
-
-
+# 261 "/usr/include/string.h" 3 4
 extern "C++" char *strchrnul (char *__s, int __c)
      throw () __asm ("strchrnul") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern "C++" const char *strchrnul (const char *__s, int __c)
      throw () __asm ("strchrnul") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-
-
+# 273 "/usr/include/string.h" 3 4
 extern size_t strcspn (const char *__s, const char *__reject)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
@@ -37806,7 +39633,7 @@ extern char *strpbrk (char *__s, const char *__accept)
      throw () __asm ("strpbrk") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 extern const char *strpbrk (const char *__s, const char *__accept)
      throw () __asm ("strpbrk") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-# 309 "/usr/include/string.h" 3 4
+# 301 "/usr/include/string.h" 3 4
 }
 
 
@@ -37820,7 +39647,7 @@ extern char *strstr (char *__haystack, const char *__needle)
      throw () __asm ("strstr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 extern const char *strstr (const char *__haystack, const char *__needle)
      throw () __asm ("strstr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-# 336 "/usr/include/string.h" 3 4
+# 328 "/usr/include/string.h" 3 4
 }
 
 
@@ -37831,7 +39658,6 @@ extern const char *strstr (const char *__haystack, const char *__needle)
 
 extern char *strtok (char *__restrict __s, const char *__restrict __delim)
      throw () __attribute__ ((__nonnull__ (2)));
-
 
 
 
@@ -37853,7 +39679,7 @@ extern "C++" char *strcasestr (char *__haystack, const char *__needle)
 extern "C++" const char *strcasestr (const char *__haystack,
          const char *__needle)
      throw () __asm ("strcasestr") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-# 378 "/usr/include/string.h" 3 4
+# 369 "/usr/include/string.h" 3 4
 extern void *memmem (const void *__haystack, size_t __haystacklen,
        const void *__needle, size_t __needlelen)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 3)));
@@ -37870,10 +39696,8 @@ extern void *mempcpy (void *__restrict __dest,
 
 
 
-
 extern size_t strlen (const char *__s)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
 
 
 
@@ -37884,10 +39708,8 @@ extern size_t strnlen (const char *__string, size_t __maxlen)
 
 
 
-
 extern char *strerror (int __errnum) throw ();
-
-# 434 "/usr/include/string.h" 3 4
+# 421 "/usr/include/string.h" 3 4
 extern char *strerror_r (int __errnum, char *__buf, size_t __buflen)
      throw () __attribute__ ((__nonnull__ (2))) ;
 
@@ -37895,25 +39717,33 @@ extern char *strerror_r (int __errnum, char *__buf, size_t __buflen)
 
 
 
-extern char *strerror_l (int __errnum, __locale_t __l) throw ();
+extern char *strerror_l (int __errnum, locale_t __l) throw ();
+
+
+
+# 1 "/usr/include/strings.h" 1 3 4
+# 23 "/usr/include/strings.h" 3 4
+# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/include/stddef.h" 1 3 4
+# 24 "/usr/include/strings.h" 2 3 4
 
 
 
 
 
-extern void __bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
 
+extern "C" {
 
-
-extern void bcopy (const void *__src, void *__dest, size_t __n)
-     throw () __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern void bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
 
 
 extern int bcmp (const void *__s1, const void *__s2, size_t __n)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bcopy (const void *__src, void *__dest, size_t __n)
+  throw () __attribute__ ((__nonnull__ (1, 2)));
+
+
+extern void bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
 
 
 
@@ -37923,7 +39753,7 @@ extern char *index (char *__s, int __c)
      throw () __asm ("index") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern const char *index (const char *__s, int __c)
      throw () __asm ("index") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-# 483 "/usr/include/string.h" 3 4
+# 66 "/usr/include/strings.h" 3 4
 }
 
 
@@ -37938,25 +39768,18 @@ extern char *rindex (char *__s, int __c)
      throw () __asm ("rindex") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
 extern const char *rindex (const char *__s, int __c)
      throw () __asm ("rindex") __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-# 511 "/usr/include/string.h" 3 4
+# 94 "/usr/include/strings.h" 3 4
 }
-
-
-
-
-
-
-
+# 104 "/usr/include/strings.h" 3 4
 extern int ffs (int __i) throw () __attribute__ ((__const__));
 
 
 
 
-extern int ffsl (long int __l) throw () __attribute__ ((__const__));
 
+extern int ffsl (long int __l) throw () __attribute__ ((__const__));
 __extension__ extern int ffsll (long long int __ll)
      throw () __attribute__ ((__const__));
-
 
 
 
@@ -37971,15 +39794,23 @@ extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
 
 
 
-extern int strcasecmp_l (const char *__s1, const char *__s2,
-    __locale_t __loc)
+
+extern int strcasecmp_l (const char *__s1, const char *__s2, locale_t __loc)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
 
+
+
 extern int strncasecmp_l (const char *__s1, const char *__s2,
-     size_t __n, __locale_t __loc)
+     size_t __n, locale_t __loc)
      throw () __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 4)));
 
 
+}
+# 433 "/usr/include/string.h" 2 3 4
+
+
+
+extern void explicit_bzero (void *__s, size_t __n) throw () __attribute__ ((__nonnull__ (1)));
 
 
 
@@ -38029,7 +39860,7 @@ extern "C++" char *basename (char *__filename)
      throw () __asm ("basename") __attribute__ ((__nonnull__ (1)));
 extern "C++" const char *basename (const char *__filename)
      throw () __asm ("basename") __attribute__ ((__nonnull__ (1)));
-# 642 "/usr/include/string.h" 3 4
+# 499 "/usr/include/string.h" 3 4
 }
 # 43 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstring" 2 3
 # 71 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/cstring" 3
@@ -45665,15 +47496,15 @@ static inline std::string oct2Bin(char oct) {
   }
   
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  0 && "Invalid character in digit string"
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "0 && \"Invalid character in digit string\""
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 304, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 304, __extension__ __PRETTY_FUNCTION__))
 # 304 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                  ;
   return "";
@@ -45744,15 +47575,15 @@ static inline std::string hex2Bin(char hex) {
   }
   
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  0 && "Invalid character in digit string"
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "0 && \"Invalid character in digit string\""
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 371, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 371, __extension__ __PRETTY_FUNCTION__))
 # 371 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                  ;
   return "";
@@ -45767,15 +47598,15 @@ static inline uint32_t decode_digit(char cdigit, int radix) {
 
     if (!(((cdigit) >= '0' && (cdigit) <= '9') || ((cdigit) >= 'a' && (cdigit) <= 'f') || ((cdigit) >= 'A' && (cdigit) <= 'F'))) 
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                          ((
+                          (static_cast <bool> (
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                           0 && "Invalid hex digit in string"
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                          ) ? static_cast<void> (0) : __assert_fail (
+                          ) ? void (0) : __assert_fail (
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                           "0 && \"Invalid hex digit in string\""
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                          , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 382, __PRETTY_FUNCTION__))
+                          , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 382, __extension__ __PRETTY_FUNCTION__))
 # 382 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                     ;
     if (((cdigit) >= '0' && (cdigit) <= '9'))
@@ -45787,15 +47618,15 @@ static inline uint32_t decode_digit(char cdigit, int radix) {
     else
       
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      0 && "huh? we shouldn't get here"
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "0 && \"huh? we shouldn't get here\""
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 390, __PRETTY_FUNCTION__))
+     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 390, __extension__ __PRETTY_FUNCTION__))
 # 390 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                               ;
   } else if (((cdigit) >= '0' && (cdigit) <= '9')) {
@@ -45803,15 +47634,15 @@ static inline uint32_t decode_digit(char cdigit, int radix) {
   } else {
     
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    0 && "Invalid character in digit string"
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "0 && \"Invalid character in digit string\""
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 394, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 394, __extension__ __PRETTY_FUNCTION__))
 # 394 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                    ;
   }
@@ -45914,15 +47745,15 @@ static inline std::string parseString(const std::string& input, unsigned char& r
 
     
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    startPos <= expPos
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "startPos <= expPos"
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 493, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 493, __extension__ __PRETTY_FUNCTION__))
 # 493 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                              ;
 
@@ -46118,41 +47949,41 @@ static inline void mul(uint64_t dest[], const uint64_t x[], uint32_t xlen,
                        const uint64_t y[], uint32_t ylen, uint32_t destlen) {
   
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  xlen > 0
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "xlen > 0"
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 693, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 693, __extension__ __PRETTY_FUNCTION__))
 # 693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                  ;
   
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  ylen > 0
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "ylen > 0"
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 694, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 694, __extension__ __PRETTY_FUNCTION__))
 # 694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                  ;
   
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  destlen >= xlen + ylen
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "destlen >= xlen + ylen"
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 695, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 695, __extension__ __PRETTY_FUNCTION__))
 # 695 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                ;
   if (xlen < destlen) dest[xlen] = mul_1(dest, x, xlen, y[0]);
@@ -46191,67 +48022,67 @@ static inline void KnuthDiv(uint32_t* u, uint32_t* v, uint32_t* q, uint32_t* r,
                             uint32_t m, uint32_t n) {
   
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  u && "Must provide dividend"
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "u && \"Must provide dividend\""
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 730, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 730, __extension__ __PRETTY_FUNCTION__))
 # 730 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                      ;
   
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  v && "Must provide divisor"
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "v && \"Must provide divisor\""
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 731, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 731, __extension__ __PRETTY_FUNCTION__))
 # 731 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                     ;
   
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  q && "Must provide quotient"
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "q && \"Must provide quotient\""
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 732, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 732, __extension__ __PRETTY_FUNCTION__))
 # 732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                      ;
   
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  u != v && u != q && v != q && "Must us different memory"
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "u != v && u != q && v != q && \"Must us different memory\""
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 733, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 733, __extension__ __PRETTY_FUNCTION__))
 # 733 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
   
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  n > 1 && "n must be > 1"
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "n > 1 && \"n must be > 1\""
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 734, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 734, __extension__ __PRETTY_FUNCTION__))
 # 734 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                  ;
 
@@ -46389,15 +48220,15 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
 
   
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  lhsWords >= rhsWords && "Fractional result"
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "lhsWords >= rhsWords && \"Fractional result\""
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 914, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 914, __extension__ __PRETTY_FUNCTION__))
 # 914 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
   enum { APINT_BITS_PER_WORD = 64 };
@@ -46470,15 +48301,15 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
 
   
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  n != 0 && "Divide by zero?"
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "n != 0 && \"Divide by zero?\""
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 983, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 983, __extension__ __PRETTY_FUNCTION__))
 # 983 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                     ;
   if (n == 1) {
@@ -46525,11 +48356,11 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
     } else {
       
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      !Quotient->isSingleWord() && "Quotient ap_private not large enough"
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "!Quotient->isSingleWord() && \"Quotient ap_private not large enough\""
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -46539,7 +48370,7 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
       ,
                                                    1027
 # 1026 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-      , __PRETTY_FUNCTION__))
+      , __extension__ __PRETTY_FUNCTION__))
                                                     
 # 1027 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                    ;
@@ -46569,11 +48400,11 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
     } else {
       
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      !Remainder->isSingleWord() && "Remainder ap_private not large enough"
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "!Remainder->isSingleWord() && \"Remainder ap_private not large enough\""
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -46583,7 +48414,7 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
       ,
                                                     1053
 # 1052 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-      , __PRETTY_FUNCTION__))
+      , __extension__ __PRETTY_FUNCTION__))
                                                      
 # 1053 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
@@ -46614,15 +48445,15 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
   uint32_t rhsWords = 1;
   
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  lhsWords >= rhsWords && "Fractional result"
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "lhsWords >= rhsWords && \"Fractional result\""
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1079, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1079, __extension__ __PRETTY_FUNCTION__))
 # 1079 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
   enum { APINT_BITS_PER_WORD = 64 };
@@ -46692,15 +48523,15 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
 
   
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  n != 0 && "Divide by zero?"
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "n != 0 && \"Divide by zero?\""
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1145, __PRETTY_FUNCTION__))
+ , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1145, __extension__ __PRETTY_FUNCTION__))
 # 1145 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                     ;
   if (n == 1) {
@@ -46747,11 +48578,11 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
     } else {
       
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      !Quotient->isSingleWord() && "Quotient ap_private not large enough"
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "!Quotient->isSingleWord() && \"Quotient ap_private not large enough\""
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -46761,7 +48592,7 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
       ,
                                                    1189
 # 1188 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-      , __PRETTY_FUNCTION__))
+      , __extension__ __PRETTY_FUNCTION__))
                                                     
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                    ;
@@ -46791,11 +48622,11 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
     } else {
       
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      !Remainder->isSingleWord() && "Remainder ap_private not large enough"
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "!Remainder->isSingleWord() && \"Remainder ap_private not large enough\""
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -46805,7 +48636,7 @@ void divide(const ap_private<_AP_W, _AP_S>& LHS, uint32_t lhsWords,
       ,
                                                     1215
 # 1214 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-      , __PRETTY_FUNCTION__))
+      , __extension__ __PRETTY_FUNCTION__))
                                                      
 # 1215 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
@@ -47030,15 +48861,15 @@ class ap_private<_AP_W, _AP_S, true> {
   inline const uint64_t* get_pVal() const {
     
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    0 && "invalid usage"
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "0 && \"invalid usage\""
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1492, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1492, __extension__ __PRETTY_FUNCTION__))
 # 1492 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                ;
     return 0;
@@ -47048,15 +48879,15 @@ class ap_private<_AP_W, _AP_S, true> {
   inline uint64_t* get_pVal() const volatile {
     
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    0 && "invalid usage"
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "0 && \"invalid usage\""
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1498, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1498, __extension__ __PRETTY_FUNCTION__))
 # 1498 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                ;
     return 0;
@@ -47213,11 +49044,11 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
 
     
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    (radix == 10 || radix == 8 || radix == 16 || radix == 2) && "Radix should be 2, 8, 10, or 16!"
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "(radix == 10 || radix == 8 || radix == 16 || radix == 2) && \"Radix should be 2, 8, 10, or 16!\""
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -47227,21 +49058,21 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
     ,
                                              1629
 # 1628 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-    , __PRETTY_FUNCTION__))
+    , __extension__ __PRETTY_FUNCTION__))
                                               
 # 1629 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
     
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    strStart && "String is null?"
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "strStart && \"String is null?\""
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1630, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1630, __extension__ __PRETTY_FUNCTION__))
 # 1630 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                         ;
 
@@ -47255,11 +49086,11 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
         for (; *strStart; ++strStart) {
           
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ((
+         (static_cast <bool> (
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          (*strStart == '0' || *strStart == '1') && ("Wrong binary number")
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ) ? static_cast<void> (0) : __assert_fail (
+         ) ? void (0) : __assert_fail (
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "(*strStart == '0' || *strStart == '1') && (\"Wrong binary number\")"
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -47269,7 +49100,7 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
           ,
                                         1641
 # 1640 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-          , __PRETTY_FUNCTION__))
+          , __extension__ __PRETTY_FUNCTION__))
                                          
 # 1641 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                         ;
@@ -47313,15 +49144,15 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
       default:
         
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       ((
+       (static_cast <bool> (
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
        true && "Unknown radix"
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       ) ? static_cast<void> (0) : __assert_fail (
+       ) ? void (0) : __assert_fail (
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
        "true && \"Unknown radix\""
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1680, __PRETTY_FUNCTION__))
+       , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1680, __extension__ __PRETTY_FUNCTION__))
 # 1680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                       ;
 
@@ -47335,15 +49166,15 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline ap_private(const std::string& val, uint8_t radix = 2) : VAL(0) {
     
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    !val.empty() && "String empty?"
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "!val.empty() && \"String empty?\""
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1690, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 1690, __extension__ __PRETTY_FUNCTION__))
 # 1690 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                           ;
     set_canary();
@@ -47936,15 +49767,15 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
 
     
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    RHS_.get_VAL() != 0 && "Divide by 0"
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "RHS_.get_VAL() != 0 && \"Divide by 0\""
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2334, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2334, __extension__ __PRETTY_FUNCTION__))
 # 2334 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                ;
     return ap_private(((uint64_t)LHS_.get_VAL()) % ((uint64_t)RHS_.get_VAL()));
@@ -48130,28 +49961,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline void invert(int i) {
     
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2516, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2516, __extension__ __PRETTY_FUNCTION__))
 # 2516 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2517, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2517, __extension__ __PRETTY_FUNCTION__))
 # 2517 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     flip(i);
@@ -48161,28 +49992,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline bool test(int i) const {
     
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2523, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2523, __extension__ __PRETTY_FUNCTION__))
 # 2523 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2524, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2524, __extension__ __PRETTY_FUNCTION__))
 # 2524 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     return operator[](i);
@@ -48193,28 +50024,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline void lrotate(int n) {
     
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n >= 0 && "Attempting to shift negative index"
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n >= 0 && \"Attempting to shift negative index\""
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2531, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2531, __extension__ __PRETTY_FUNCTION__))
 # 2531 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                          ;
     
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n < _AP_W && "Shift value larger than bit width"
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n < _AP_W && \"Shift value larger than bit width\""
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2532, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2532, __extension__ __PRETTY_FUNCTION__))
 # 2532 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     operator=(shl(n) | lshr(_AP_W - n));
@@ -48225,28 +50056,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline void rrotate(int n) {
     
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n >= 0 && "Attempting to shift negative index"
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n >= 0 && \"Attempting to shift negative index\""
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2539, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2539, __extension__ __PRETTY_FUNCTION__))
 # 2539 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                          ;
     
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n < _AP_W && "Shift value larger than bit width"
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n < _AP_W && \"Shift value larger than bit width\""
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2540, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2540, __extension__ __PRETTY_FUNCTION__))
 # 2540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     operator=(lshr(n) | shl(_AP_W - n));
@@ -48257,28 +50088,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
 
     
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to write bit with negative index"
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to write bit with negative index\""
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2547, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2547, __extension__ __PRETTY_FUNCTION__))
 # 2547 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to write bit beyond MSB"
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to write bit beyond MSB\""
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2548, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2548, __extension__ __PRETTY_FUNCTION__))
 # 2548 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                             ;
 
@@ -48290,28 +50121,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
 
     
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to write bit with negative index"
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to write bit with negative index\""
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2556, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2556, __extension__ __PRETTY_FUNCTION__))
 # 2556 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to write bit beyond MSB"
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to write bit beyond MSB\""
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2557, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2557, __extension__ __PRETTY_FUNCTION__))
 # 2557 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                             ;
 
@@ -48323,28 +50154,28 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
 
     
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2565, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2565, __extension__ __PRETTY_FUNCTION__))
 # 2565 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2566, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2566, __extension__ __PRETTY_FUNCTION__))
 # 2566 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
 
@@ -48362,15 +50193,15 @@ inline ap_private& operator=(const half v) { set_canary(); this->VAL = (ValType)
   inline ap_private& flip(uint32_t bitPosition) {
     
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    bitPosition < BitWidth && "Out of the bit-width range!"
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "bitPosition < BitWidth && \"Out of the bit-width range!\""
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2580, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 2580, __extension__ __PRETTY_FUNCTION__))
 # 2580 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     set_bit(bitPosition, !get_bit(bitPosition));
@@ -48660,11 +50491,11 @@ std::string ap_private<_AP_W, _AP_S, true>::toString(uint8_t radix,
                                                      bool wantSigned) const {
   
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  (radix == 10 || radix == 8 || radix == 16 || radix == 2) && "Radix should be 2, 8, 10, or 16!"
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "(radix == 10 || radix == 8 || radix == 16 || radix == 2) && \"Radix should be 2, 8, 10, or 16!\""
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -48674,7 +50505,7 @@ std::string ap_private<_AP_W, _AP_S, true>::toString(uint8_t radix,
   ,
                                            3130
 # 3129 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-  , __PRETTY_FUNCTION__))
+  , __extension__ __PRETTY_FUNCTION__))
                                             
 # 3130 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                            ;
@@ -48703,15 +50534,15 @@ std::string ap_private<_AP_W, _AP_S, true>::toString(uint8_t radix,
         default:
           
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ((
+         (static_cast <bool> (
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "invalid radix" && 0
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ) ? static_cast<void> (0) : __assert_fail (
+         ) ? void (0) : __assert_fail (
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "\"invalid radix\" && 0"
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3154, __PRETTY_FUNCTION__))
+         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3154, __extension__ __PRETTY_FUNCTION__))
 # 3154 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                      ;
       }
@@ -48742,15 +50573,15 @@ std::string ap_private<_AP_W, _AP_S, true>::toString(uint8_t radix,
         default:
           
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ((
+         (static_cast <bool> (
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "invalid radix" && 0
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ) ? static_cast<void> (0) : __assert_fail (
+         ) ? void (0) : __assert_fail (
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "\"invalid radix\" && 0"
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3181, __PRETTY_FUNCTION__))
+         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3181, __extension__ __PRETTY_FUNCTION__))
 # 3181 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                      ;
       }
@@ -48798,15 +50629,15 @@ std::string ap_private<_AP_W, _AP_S, true>::toString(uint8_t radix,
       uint32_t digit = (uint32_t)(APdigit.getZExtValue());
       
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      digit < radix && "divide failed"
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "digit < radix && \"divide failed\""
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3225, __PRETTY_FUNCTION__))
+     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3225, __extension__ __PRETTY_FUNCTION__))
 # 3225 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
       result.insert(insert_at, digits[digit]);
@@ -48835,15 +50666,15 @@ class ap_private<_AP_W, _AP_S, false> {
     set_canary();
     
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    bigVal && "Null pointer detected!"
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "bigVal && \"Null pointer detected!\""
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3259, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3259, __extension__ __PRETTY_FUNCTION__))
 # 3259 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
     {
@@ -48864,15 +50695,15 @@ class ap_private<_AP_W, _AP_S, false> {
     set_canary();
     
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    !val.empty() && "The input string is empty."
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "!val.empty() && \"The input string is empty.\""
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3284, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3284, __extension__ __PRETTY_FUNCTION__))
 # 3284 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                        ;
     const char* c_str = val.c_str();
@@ -49093,28 +50924,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
   inline ap_private(uint64_t* val, uint32_t bits = _AP_W) { 
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                           ((
+                                                           (static_cast <bool> (
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            0
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                           ) ? static_cast<void> (0) : __assert_fail (
+                                                           ) ? void (0) : __assert_fail (
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            "0"
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                           , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3540, __PRETTY_FUNCTION__))
+                                                           , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3540, __extension__ __PRETTY_FUNCTION__))
 # 3540 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                     ; }
   inline ap_private(const uint64_t* const val, uint32_t bits) { 
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                               ((
+                                                               (static_cast <bool> (
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                0
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                               ) ? static_cast<void> (0) : __assert_fail (
+                                                               ) ? void (0) : __assert_fail (
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                "0"
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                                                               , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3541, __PRETTY_FUNCTION__))
+                                                               , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3541, __extension__ __PRETTY_FUNCTION__))
 # 3541 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                         ; }
 # 3564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
@@ -49280,11 +51111,11 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
     
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    (radix == 10 || radix == 8 || radix == 16 || radix == 2) && "Radix should be 2, 8, 10, or 16!"
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "(radix == 10 || radix == 8 || radix == 16 || radix == 2) && \"Radix should be 2, 8, 10, or 16!\""
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -49294,21 +51125,21 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     ,
                                              3693
 # 3692 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-    , __PRETTY_FUNCTION__))
+    , __extension__ __PRETTY_FUNCTION__))
                                               
 # 3693 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
     
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    str && "String is null?"
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "str && \"String is null?\""
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3694, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3694, __extension__ __PRETTY_FUNCTION__))
 # 3694 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                    ;
 
@@ -49319,24 +51150,24 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     }
     
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    (slen <= numbits || radix != 2) && "Insufficient bit width"
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "(slen <= numbits || radix != 2) && \"Insufficient bit width\""
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3701, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3701, __extension__ __PRETTY_FUNCTION__))
 # 3701 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                       ;
     
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    ((slen - 1) * 3 <= numbits || radix != 8) && "Insufficient bit width"
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "((slen - 1) * 3 <= numbits || radix != 8) && \"Insufficient bit width\""
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -49346,17 +51177,17 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     ,
                                    3703
 # 3702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-    , __PRETTY_FUNCTION__))
+    , __extension__ __PRETTY_FUNCTION__))
                                     
 # 3703 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                    ;
     
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    ((slen - 1) * 4 <= numbits || radix != 16) && "Insufficient bit width"
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "((slen - 1) * 4 <= numbits || radix != 16) && \"Insufficient bit width\""
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -49366,17 +51197,17 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     ,
                                    3705
 # 3704 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-    , __PRETTY_FUNCTION__))
+    , __extension__ __PRETTY_FUNCTION__))
                                     
 # 3705 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                    ;
     
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    (((slen - 1) * 64) / 22 <= numbits || radix != 10) && "Insufficient bit width"
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "(((slen - 1) * 64) / 22 <= numbits || radix != 10) && \"Insufficient bit width\""
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -49386,7 +51217,7 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     ,
                                    3707
 # 3706 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-    , __PRETTY_FUNCTION__))
+    , __extension__ __PRETTY_FUNCTION__))
                                     
 # 3707 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                    ;
@@ -49416,15 +51247,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
         if (!(((cdigit) >= '0' && (cdigit) <= '9') || ((cdigit) >= 'a' && (cdigit) <= 'f') || ((cdigit) >= 'A' && (cdigit) <= 'F'))) 
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                              ((
+                              (static_cast <bool> (
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                               0 && "Invalid hex digit in string"
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                              ) ? static_cast<void> (0) : __assert_fail (
+                              ) ? void (0) : __assert_fail (
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                               "0 && \"Invalid hex digit in string\""
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-                              , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3732, __PRETTY_FUNCTION__))
+                              , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3732, __extension__ __PRETTY_FUNCTION__))
 # 3732 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                         ;
         if (((cdigit) >= '0' && (cdigit) <= '9'))
@@ -49436,15 +51267,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
         else
           
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ((
+         (static_cast <bool> (
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          0 && "huh? we shouldn't get here"
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ) ? static_cast<void> (0) : __assert_fail (
+         ) ? void (0) : __assert_fail (
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "0 && \"huh? we shouldn't get here\""
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3740, __PRETTY_FUNCTION__))
+         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3740, __extension__ __PRETTY_FUNCTION__))
 # 3740 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                   ;
       } else if (((cdigit) >= '0' && (cdigit) <= '9')) {
@@ -49452,15 +51283,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
       } else if (cdigit != '\0') {
         
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       ((
+       (static_cast <bool> (
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
        0 && "Invalid character in digit string"
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       ) ? static_cast<void> (0) : __assert_fail (
+       ) ? void (0) : __assert_fail (
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
        "0 && \"Invalid character in digit string\""
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-       , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3744, __PRETTY_FUNCTION__))
+       , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3744, __extension__ __PRETTY_FUNCTION__))
 # 3744 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                        ;
       }
@@ -49552,28 +51383,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline void invert(int i) {
     
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3832, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3832, __extension__ __PRETTY_FUNCTION__))
 # 3832 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3833, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3833, __extension__ __PRETTY_FUNCTION__))
 # 3833 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     flip(i);
@@ -49583,28 +51414,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline bool test(int i) const {
     
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3839, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3839, __extension__ __PRETTY_FUNCTION__))
 # 3839 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3840, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3840, __extension__ __PRETTY_FUNCTION__))
 # 3840 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     return operator[](i);
@@ -49614,28 +51445,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline void set(int i, bool v) {
     
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to write bit with negative index"
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to write bit with negative index\""
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3846, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3846, __extension__ __PRETTY_FUNCTION__))
 # 3846 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to write bit beyond MSB"
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to write bit beyond MSB\""
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3847, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3847, __extension__ __PRETTY_FUNCTION__))
 # 3847 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                             ;
     v ? set(i) : clear(i);
@@ -49645,28 +51476,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline void set_bit(int i, bool v) {
     
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to write bit with negative index"
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to write bit with negative index\""
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3853, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3853, __extension__ __PRETTY_FUNCTION__))
 # 3853 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to write bit beyond MSB"
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to write bit beyond MSB\""
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3854, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3854, __extension__ __PRETTY_FUNCTION__))
 # 3854 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                             ;
     v ? set(i) : clear(i);
@@ -49688,28 +51519,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline bool get(int i) const {
     
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3872, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3872, __extension__ __PRETTY_FUNCTION__))
 # 3872 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3873, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3873, __extension__ __PRETTY_FUNCTION__))
 # 3873 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     return ((maskBit(i) & (pVal[whichWord(i)])) != 0);
@@ -49719,28 +51550,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline bool get_bit(int i) const {
     
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i >= 0 && "Attempting to read bit with negative index"
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i >= 0 && \"Attempting to read bit with negative index\""
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3879, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3879, __extension__ __PRETTY_FUNCTION__))
 # 3879 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                  ;
     
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    i < _AP_W && "Attempting to read bit beyond MSB"
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "i < _AP_W && \"Attempting to read bit beyond MSB\""
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3880, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3880, __extension__ __PRETTY_FUNCTION__))
 # 3880 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     return ((maskBit(i) & (pVal[whichWord(i)])) != 0);
@@ -49751,28 +51582,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline void lrotate(int n) {
     
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n >= 0 && "Attempting to shift negative index"
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n >= 0 && \"Attempting to shift negative index\""
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3887, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3887, __extension__ __PRETTY_FUNCTION__))
 # 3887 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                          ;
     
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n < _AP_W && "Shift value larger than bit width"
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n < _AP_W && \"Shift value larger than bit width\""
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3888, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3888, __extension__ __PRETTY_FUNCTION__))
 # 3888 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     operator=(shl(n) | lshr(_AP_W - n));
@@ -49783,28 +51614,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline void rrotate(int n) {
     
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n >= 0 && "Attempting to shift negative index"
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n >= 0 && \"Attempting to shift negative index\""
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3895, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3895, __extension__ __PRETTY_FUNCTION__))
 # 3895 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                          ;
     
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    n < _AP_W && "Shift value larger than bit width"
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "n < _AP_W && \"Shift value larger than bit width\""
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3896, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3896, __extension__ __PRETTY_FUNCTION__))
 # 3896 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                            ;
     operator=(lshr(n) | shl(_AP_W - n));
@@ -49832,15 +51663,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline ap_private& flip(uint32_t bitPosition) {
     
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    bitPosition < BitWidth && "Out of the bit-width range!"
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "bitPosition < BitWidth && \"Out of the bit-width range!\""
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3920, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 3920, __extension__ __PRETTY_FUNCTION__))
 # 3920 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
     set_bit(bitPosition, !get_bit(bitPosition));
@@ -50449,15 +52280,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     } else
       
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      0 && "Error in ap_private<_AP_W, _AP_S>::sqrt computation"
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "0 && \"Error in ap_private<_AP_W, _AP_S>::sqrt computation\""
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 4813, __PRETTY_FUNCTION__))
+     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 4813, __extension__ __PRETTY_FUNCTION__))
 # 4813 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                        ;
     return x_old + 1;
@@ -50640,15 +52471,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline ap_private ashr(uint32_t shiftAmt) const {
     
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    shiftAmt <= BitWidth && "Invalid shift amount, too big"
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "shiftAmt <= BitWidth && \"Invalid shift amount, too big\""
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5030, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5030, __extension__ __PRETTY_FUNCTION__))
 # 5030 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
 
@@ -50781,15 +52612,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline ap_private shl(uint32_t shiftAmt) const {
     
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    shiftAmt <= BitWidth && "Invalid shift amount, too big"
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "shiftAmt <= BitWidth && \"Invalid shift amount, too big\""
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5159, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5159, __extension__ __PRETTY_FUNCTION__))
 # 5159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                   ;
 
@@ -50876,15 +52707,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     uint32_t rhsWords = !rhsBits ? 0 : (whichWord(rhsBits - 1) + 1);
     
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    rhsWords && "Divided by zero???"
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "rhsWords && \"Divided by zero???\""
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5242, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5242, __extension__ __PRETTY_FUNCTION__))
 # 5242 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                            ;
     uint32_t lhsBits = LHS_.getActiveBits();
@@ -50945,15 +52776,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
     uint32_t rhsWords = !rhsBits ? 0 : (whichWord(rhsBits - 1) + 1);
     
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    rhsWords && "Performing remainder operation by zero ???"
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "rhsWords && \"Performing remainder operation by zero ???\""
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5307, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5307, __extension__ __PRETTY_FUNCTION__))
 # 5307 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                    ;
 
@@ -50991,15 +52822,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
     
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    rhsWords && "Performing remainder operation by zero ???"
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "rhsWords && \"Performing remainder operation by zero ???\""
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5341, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5341, __extension__ __PRETTY_FUNCTION__))
 # 5341 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                    ;
 
@@ -51133,15 +52964,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
       return LHS_.get_pVal(0) < RHS;
     
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    0
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "0"
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5471, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5471, __extension__ __PRETTY_FUNCTION__))
 # 5471 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
             ;
   }
@@ -51237,28 +53068,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
     
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    _AP_W1 < BitWidth && "Invalid ap_private SignExtend request"
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "_AP_W1 < BitWidth && \"Invalid ap_private SignExtend request\""
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5563, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5563, __extension__ __PRETTY_FUNCTION__))
 # 5563 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                        ;
     
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    _AP_W1 <= MAX_INT_BITS && "Too many bits"
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "_AP_W1 <= MAX_INT_BITS && \"Too many bits\""
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5564, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5564, __extension__ __PRETTY_FUNCTION__))
 # 5564 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
 
@@ -51302,28 +53133,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
     
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    _AP_W1 < BitWidth && "Invalid ap_private ZeroExtend request"
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "_AP_W1 < BitWidth && \"Invalid ap_private ZeroExtend request\""
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5604, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5604, __extension__ __PRETTY_FUNCTION__))
 # 5604 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                        ;
     
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    _AP_W1 <= MAX_INT_BITS && "Too many bits"
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "_AP_W1 <= MAX_INT_BITS && \"Too many bits\""
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5605, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5605, __extension__ __PRETTY_FUNCTION__))
 # 5605 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                     ;
 
@@ -51387,15 +53218,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline uint64_t getZExtValue() const {
     
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    getActiveBits() <= 64 && "Too many bits for uint64_t"
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "getActiveBits() <= 64 && \"Too many bits for uint64_t\""
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5665, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5665, __extension__ __PRETTY_FUNCTION__))
 # 5665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                 ;
     return *pVal;
@@ -51409,15 +53240,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
   inline int64_t getSExtValue() const {
     
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    getActiveBits() <= 64 && "Too many bits for int64_t"
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "getActiveBits() <= 64 && \"Too many bits for int64_t\""
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5675, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5675, __extension__ __PRETTY_FUNCTION__))
 # 5675 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                                                ;
     return int64_t(pVal[0]);
@@ -51430,28 +53261,28 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
                                        uint8_t radix) {
     
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    str != 0 && "Invalid value string"
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "str != 0 && \"Invalid value string\""
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5684, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5684, __extension__ __PRETTY_FUNCTION__))
 # 5684 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
     
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    slen > 0 && "Invalid string length"
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "slen > 0 && \"Invalid string length\""
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5685, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5685, __extension__ __PRETTY_FUNCTION__))
 # 5685 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                               ;
 
@@ -51470,15 +53301,15 @@ __attribute__((aligned(1 << logceil<_AP_W>::val)))
 
     
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ((
+   (static_cast <bool> (
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    radix == 10 && "Invalid radix"
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
    "radix == 10 && \"Invalid radix\""
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5700, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 5700, __extension__ __PRETTY_FUNCTION__))
 # 5700 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                          ;
 
@@ -51851,11 +53682,11 @@ inline std::string ap_private<_AP_W, _AP_S, false>::toString(
     uint8_t radix, bool wantSigned) const {
   
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ((
+ (static_cast <bool> (
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  (radix == 10 || radix == 8 || radix == 16 || radix == 2) && "Radix should be 2, 8, 10, or 16!"
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
- ) ? static_cast<void> (0) : __assert_fail (
+ ) ? void (0) : __assert_fail (
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
  "(radix == 10 || radix == 8 || radix == 16 || radix == 2) && \"Radix should be 2, 8, 10, or 16!\""
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
@@ -51865,7 +53696,7 @@ inline std::string ap_private<_AP_W, _AP_S, false>::toString(
   ,
                                            6077
 # 6076 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-  , __PRETTY_FUNCTION__))
+  , __extension__ __PRETTY_FUNCTION__))
                                             
 # 6077 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                            ;
@@ -51909,15 +53740,15 @@ inline std::string ap_private<_AP_W, _AP_S, false>::toString(
         default:
           
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ((
+         (static_cast <bool> (
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "invalid radix" && 0
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         ) ? static_cast<void> (0) : __assert_fail (
+         ) ? void (0) : __assert_fail (
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
          "\"invalid radix\" && 0"
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 6116, __PRETTY_FUNCTION__))
+         , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 6116, __extension__ __PRETTY_FUNCTION__))
 # 6116 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                      ;
       }
@@ -51964,15 +53795,15 @@ inline std::string ap_private<_AP_W, _AP_S, false>::toString(
       uint64_t digit = APdigit.getZExtValue();
       
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ((
+     (static_cast <bool> (
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      digit < radix && "divide failed"
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     ) ? static_cast<void> (0) : __assert_fail (
+     ) ? void (0) : __assert_fail (
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
      "digit < radix && \"divide failed\""
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h" 3 4
-     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 6159, __PRETTY_FUNCTION__))
+     , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h", 6159, __extension__ __PRETTY_FUNCTION__))
 # 6159 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/etc/ap_private.h"
                                              ;
       result.insert(insert_at, digits[digit]);
@@ -53261,15 +55092,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline void clear(int i) {
     
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (i >= 0 && i < _AP_W) && ("position out of range")
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(i >= 0 && i < _AP_W) && (\"position out of range\")"
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 650, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 650, __extension__ __PRETTY_FUNCTION__))
 # 650 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                           ;
     Base::V = _AP_ROOT_op_set_bit(Base::V, i, 0);
@@ -53279,15 +55110,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline void invert(int i) {
     
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (i >= 0 && i < _AP_W) && ("position out of range")
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(i >= 0 && i < _AP_W) && (\"position out of range\")"
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 656, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 656, __extension__ __PRETTY_FUNCTION__))
 # 656 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                           ;
     bool val = (Base::V).get_bit((i));
@@ -53300,15 +55131,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline bool test(int i) const {
     
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (i >= 0 && i < _AP_W) && ("position out of range")
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(i >= 0 && i < _AP_W) && (\"position out of range\")"
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 665, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 665, __extension__ __PRETTY_FUNCTION__))
 # 665 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                           ;
     return (Base::V).get_bit((i));
@@ -53321,15 +55152,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline void set(int i) {
     
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (i >= 0 && i < _AP_W) && ("position out of range")
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(i >= 0 && i < _AP_W) && (\"position out of range\")"
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 674, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 674, __extension__ __PRETTY_FUNCTION__))
 # 674 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                           ;
     Base::V = _AP_ROOT_op_set_bit(Base::V, i, 1);
@@ -53339,15 +55170,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline void set(int i, bool v) {
     
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (i >= 0 && i < _AP_W) && ("position out of range")
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(i >= 0 && i < _AP_W) && (\"position out of range\")"
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 680, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 680, __extension__ __PRETTY_FUNCTION__))
 # 680 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                           ;
     Base::V = _AP_ROOT_op_set_bit(Base::V, i, v);
@@ -53358,15 +55189,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline ap_int_base& lrotate(int n) {
     
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (n >= 0 && n < _AP_W) && ("shift value out of range")
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(n >= 0 && n < _AP_W) && (\"shift value out of range\")"
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 687, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 687, __extension__ __PRETTY_FUNCTION__))
 # 687 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                              ;
 
@@ -53385,15 +55216,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline ap_int_base& rrotate(int n) {
     
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (n >= 0 && n < _AP_W) && ("shift value out of range")
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(n >= 0 && n < _AP_W) && (\"shift value out of range\")"
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 702, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 702, __extension__ __PRETTY_FUNCTION__))
 # 702 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                              ;
 
@@ -53732,28 +55563,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline ap_bit_ref<_AP_W, _AP_S> operator[](int index) {
     
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1173, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1173, __extension__ __PRETTY_FUNCTION__))
 # 1173 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1174, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1174, __extension__ __PRETTY_FUNCTION__))
 # 1174 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> bvh(this, index);
@@ -53765,28 +55596,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
       const ap_int_base<_AP_W2, _AP_S2>& index) {
     
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1182, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1182, __extension__ __PRETTY_FUNCTION__))
 # 1182 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1183, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1183, __extension__ __PRETTY_FUNCTION__))
 # 1183 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> bvh(this, index.to_int());
@@ -53796,28 +55627,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline bool operator[](int index) const {
     
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1189, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1189, __extension__ __PRETTY_FUNCTION__))
 # 1189 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1190, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1190, __extension__ __PRETTY_FUNCTION__))
 # 1190 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> br(this, index);
@@ -53827,15 +55658,15 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline bool operator[](const ap_int_base<_AP_W2, _AP_S2>& index) const {
     
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1196, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1196, __extension__ __PRETTY_FUNCTION__))
 # 1196 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> br(this, index.to_int());
@@ -53845,28 +55676,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline ap_bit_ref<_AP_W, _AP_S> bit(int index) {
     
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1202, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1202, __extension__ __PRETTY_FUNCTION__))
 # 1202 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1203, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1203, __extension__ __PRETTY_FUNCTION__))
 # 1203 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> bvh(this, index);
@@ -53877,28 +55708,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
       const ap_int_base<_AP_W2, _AP_S2>& index) {
     
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1210, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1210, __extension__ __PRETTY_FUNCTION__))
 # 1210 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1211, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1211, __extension__ __PRETTY_FUNCTION__))
 # 1211 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> bvh(this, index.to_int());
@@ -53908,28 +55739,28 @@ struct ap_int_base : public ssdm_int_sim<_AP_W, _AP_S> {
   inline bool bit(int index) const {
     
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index >= 0) && ("Attempting to read bit with negative index")
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index >= 0) && (\"Attempting to read bit with negative index\")"
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1217, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1217, __extension__ __PRETTY_FUNCTION__))
 # 1217 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                       ;
     
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ((
+   (static_cast <bool> (
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    (index < _AP_W) && ("Attempting to read bit beyond MSB")
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   ) ? static_cast<void> (0) : __assert_fail (
+   ) ? void (0) : __assert_fail (
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
    "(index < _AP_W) && (\"Attempting to read bit beyond MSB\")"
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h" 3 4
-   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1218, __PRETTY_FUNCTION__))
+   , "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h", 1218, __extension__ __PRETTY_FUNCTION__))
 # 1218 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int_base.h"
                                                                 ;
     ap_bit_ref<_AP_W, _AP_S> br(this, index);
@@ -55831,7 +57662,10 @@ inline bool operator!=(const ap_int<_AP_W> &__x, const complex<ap_int<_AP_W> > &
 
 
 # 1 "/usr/include/fenv.h" 1 3 4
-# 57 "/usr/include/fenv.h" 3 4
+# 26 "/usr/include/fenv.h" 3 4
+# 1 "/usr/include/bits/libc-header-start.h" 1 3 4
+# 27 "/usr/include/fenv.h" 2 3 4
+# 64 "/usr/include/fenv.h" 3 4
 # 1 "/usr/include/bits/fenv.h" 1 3 4
 # 24 "/usr/include/bits/fenv.h" 3 4
 
@@ -55890,24 +57724,32 @@ typedef unsigned short int fexcept_t;
 typedef struct
   {
     unsigned short int __control_word;
-    unsigned short int __unused1;
+    unsigned short int __glibc_reserved1;
     unsigned short int __status_word;
-    unsigned short int __unused2;
+    unsigned short int __glibc_reserved2;
     unsigned short int __tags;
-    unsigned short int __unused3;
+    unsigned short int __glibc_reserved3;
     unsigned int __eip;
     unsigned short int __cs_selector;
     unsigned int __opcode:11;
-    unsigned int __unused4:5;
+    unsigned int __glibc_reserved4:5;
     unsigned int __data_offset;
     unsigned short int __data_selector;
-    unsigned short int __unused5;
+    unsigned short int __glibc_reserved5;
 
     unsigned int __mxcsr;
 
   }
 fenv_t;
-# 58 "/usr/include/fenv.h" 2 3 4
+# 106 "/usr/include/bits/fenv.h" 3 4
+typedef struct
+  {
+    unsigned short int __control_word;
+    unsigned short int __glibc_reserved;
+    unsigned int __mxcsr;
+  }
+femode_t;
+# 65 "/usr/include/fenv.h" 2 3 4
 
 extern "C" {
 
@@ -55925,6 +57767,12 @@ extern int feraiseexcept (int __excepts) throw ();
 
 
 
+
+extern int fesetexcept (int __excepts) throw ();
+
+
+
+
 extern int fesetexceptflag (const fexcept_t *__flagp, int __excepts) throw ();
 
 
@@ -55934,8 +57782,14 @@ extern int fetestexcept (int __excepts) throw ();
 
 
 
+extern int fetestexceptflag (const fexcept_t *__flagp, int __excepts) throw ();
 
-extern int fegetround (void) throw ();
+
+
+
+
+
+extern int fegetround (void) throw () __attribute__ ((__pure__));
 
 
 extern int fesetround (int __rounding_direction) throw ();
@@ -55960,7 +57814,19 @@ extern int fesetenv (const fenv_t *__envp) throw ();
 
 
 extern int feupdateenv (const fenv_t *__envp) throw ();
-# 122 "/usr/include/fenv.h" 3 4
+
+
+
+
+
+
+
+extern int fegetmode (femode_t *__modep) throw ();
+
+
+
+extern int fesetmode (const femode_t *__modep) throw ();
+# 161 "/usr/include/fenv.h" 3 4
 extern int feenableexcept (int __excepts) throw ();
 
 
@@ -59354,7 +61220,7 @@ inline bool operator!=(
 }
 # 412 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_fixed.h" 2
 # 407 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int.h" 2
-# 5 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
+# 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h" 1
 # 61 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h"
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream_thread_unsafe.h" 1
@@ -72795,7 +74661,7 @@ public:
 
 }
 # 62 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h" 2
-# 6 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
+# 6 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 
 
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/random" 1 3
@@ -81604,7 +83470,7 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 }
 # 52 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/random" 2 3
-# 9 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
+# 9 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/algorithm" 1 3
 # 58 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/algorithm" 3
        
@@ -86524,14 +88390,14 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 }
 # 63 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/include/c++/8.3.0/algorithm" 2 3
-# 10 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp" 1
+# 10 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp" 1
 
 
 
 
 
-# 5 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp"
+# 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp"
 constexpr int NUM_LPS = 64;
 
 
@@ -86549,7 +88415,7 @@ static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
-# 11 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
+# 11 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 
 struct TimeWarpEvent
 {
@@ -86617,9 +88483,9 @@ public:
     TimeWarpEvent dequeue() {
 #pragma HLS INLINE
         if (empty()) return TimeWarpEvent{
-# 77 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+# 77 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
                                          (2147483647)
-# 77 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+# 77 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
                                                   , 0, 0, 0, 0, 0};
 
         TimeWarpEvent top = heap[0];
@@ -86659,194 +88525,216 @@ void run_event_queue_kernel(
 );
 
 int test_event_queue();
-# 2 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
-# 1 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 1
+# 2 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 1
 
 
 
 # 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int.h" 1
-# 5 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
+# 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
 
 
 
-
-struct LPState {
+struct LPState
+{
     ap_int<16> lp_id;
     ap_int<32> lvt;
     ap_uint<32> rng_state;
 };
 
-struct StateEntry {
+struct Node
+{
     LPState state;
-    int next;
+    ap_uint<16> next;
 };
 
-class StateBuffer {
-public:
-    StateEntry buffer[STATE_BUFFER_CAPACITY];
-    int lp_heads[NUM_LPS];
-    int lp_sizes[NUM_LPS];
-    int free_list_head;
+class StateBuffer
+{
+private:
+    Node nodes[STATE_BUFFER_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_sizes[NUM_LPS];
+    ap_uint<16> free_head;
+    ap_uint<16> total_size;
     ap_int<32> current_gvt;
 
 public:
-    StateBuffer() {
+    StateBuffer()
+    {
+        reset();
+    }
 
+    void reset()
+    {
+        free_head = 0;
+        total_size = 0;
+        current_gvt = 0;
 
-
-
-        free_list_head = 0;
-        for (int i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i) {
-            buffer[i].next = i + 1;
+        for (ap_uint<16> i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i)
+        {
+            nodes[i].next = i + 1;
         }
-        buffer[STATE_BUFFER_CAPACITY - 1].next = -1;
+        nodes[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF;
 
-        for (int i = 0; i < NUM_LPS; ++i) {
-            lp_heads[i] = -1;
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        {
+            lp_heads[i] = 0xFFFF;
             lp_sizes[i] = 0;
         }
     }
 
-    bool push(const LPState &state) {
-#pragma HLS INLINE
-        int new_head = free_list_head;
-        if (new_head == -1)
+    bool push(const LPState &state)
+    {
+        if (total_size >= STATE_BUFFER_CAPACITY)
             return false;
 
-        int next_free = buffer[new_head].next;
-        buffer[new_head].state = state;
+        ap_uint<16> new_node = free_head;
+        free_head = nodes[new_node].next;
 
-        int old_head = lp_heads[state.lp_id];
-        lp_heads[state.lp_id] = new_head;
-        buffer[new_head].next = old_head;
+        nodes[new_node].state = state;
+        nodes[new_node].next = lp_heads[state.lp_id];
+        lp_heads[state.lp_id] = new_node;
 
         lp_sizes[state.lp_id]++;
-        free_list_head = next_free;
-
+        total_size++;
         return true;
     }
 
-    bool pop(int lp_id, LPState &result) {
-#pragma HLS INLINE
-        int head = lp_heads[lp_id];
-        if (head == -1)
+    bool pop(ap_int<16> lp_id, LPState &state)
+    {
+        if (lp_sizes[lp_id] == 0)
             return false;
 
-        result = buffer[head].state;
-        lp_heads[lp_id] = buffer[head].next;
+        ap_uint<16> popped = lp_heads[lp_id];
+        state = nodes[popped].state;
+        lp_heads[lp_id] = nodes[popped].next;
 
-        buffer[head].next = free_list_head;
-        free_list_head = head;
+        nodes[popped].next = free_head;
+        free_head = popped;
 
         lp_sizes[lp_id]--;
+        total_size--;
         return true;
     }
 
-    bool rollback(int lp_id, ap_int<32> to_time) {
-#pragma HLS INLINE
-        int current = lp_heads[lp_id];
-        int removed = 0;
+    bool commit(ap_int<32> commit_time)
+    {
+        current_gvt = commit_time;
+        ap_uint<16> removed = 0;
 
-        while (current != -1 && buffer[current].state.lvt > to_time) {
-            int next = buffer[current].next;
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        {
+            ap_uint<16> current = lp_heads[lp_id];
+            ap_uint<16> prev = 0xFFFF;
+            bool keep_next = true;
 
-            buffer[current].next = free_list_head;
-            free_list_head = current;
+            while (current != 0xFFFF)
+            {
+                ap_uint<16> next = nodes[current].next;
 
-            current = next;
-            removed++;
+                if (nodes[current].state.lvt <= commit_time)
+                {
+                    if (keep_next)
+                    {
+
+
+                        keep_next = false;
+                        prev = current;
+                        current = next;
+                    }
+                    else
+                    {
+
+                        if (prev == 0xFFFF)
+                        {
+                            lp_heads[lp_id] = next;
+                        }
+                        else
+                        {
+                            nodes[prev].next = next;
+                        }
+
+                        nodes[current].next = free_head;
+                        free_head = current;
+
+                        removed++;
+                        lp_sizes[lp_id]--;
+                        current = next;
+                    }
+                }
+                else
+                {
+
+                    prev = current;
+                    current = next;
+                }
+            }
         }
 
-        if (removed > 0) {
-            lp_heads[lp_id] = current;
+        total_size -= removed;
+        return true;
+    }
+
+    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
+    {
+        ap_uint<16> current = lp_heads[lp_id];
+        ap_uint<16> prev = 0xFFFF;
+        ap_uint<16> removed = 0;
+
+        while (current != 0xFFFF && nodes[current].state.lvt > to_time)
+        {
+            ap_uint<16> next = nodes[current].next;
+
+
+            if (prev == 0xFFFF)
+            {
+                lp_heads[lp_id] = next;
+            }
+            else
+            {
+                nodes[prev].next = next;
+            }
+
+            nodes[current].next = free_head;
+            free_head = current;
+
+            removed++;
+            current = next;
+        }
+
+        if (removed > 0)
+        {
             lp_sizes[lp_id] -= removed;
+            total_size -= removed;
             return true;
         }
         return false;
     }
 
-    bool commit(ap_int<32> commit_time) {
-#pragma HLS INLINE
-        current_gvt = commit_time;
-
-        for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-#pragma HLS PIPELINE II=1
-            int current = lp_heads[lp_id];
-            int prev = -1;
-            int removed = 0;
-            bool keep_oldest = true;
-
-            while (current != -1) {
-                int next = buffer[current].next;
-
-                if (buffer[current].state.lvt <= commit_time) {
-                    if (keep_oldest) {
-
-                        keep_oldest = false;
-                        prev = current;
-                        current = next;
-                    } else {
-
-                        if (prev == -1) {
-                            lp_heads[lp_id] = next;
-                        } else {
-                            buffer[prev].next = next;
-                        }
-
-                        buffer[current].next = free_list_head;
-                        free_list_head = current;
-
-                        removed++;
-                        current = next;
-                    }
-                } else {
-
-                    break;
-                }
-            }
-
-            lp_sizes[lp_id] -= removed;
-        }
-        return true;
+    ap_uint<16> get_lp_size(ap_int<16> lp_id) const
+    {
+        return lp_sizes[lp_id];
     }
 
-    bool is_full() const {
-#pragma HLS INLINE
-        return free_list_head == -1;
+    ap_uint<16> get_total_size() const
+    {
+        return total_size;
     }
 
-    ap_int<32> get_gvt() const {
-#pragma HLS INLINE
+    ap_int<32> get_gvt() const
+    {
         return current_gvt;
     }
-
-    LPState peek(int lp_id) const {
-#pragma HLS INLINE
-        if (lp_heads[lp_id] == -1)
-            return {-1, -1, 0};
-        return buffer[lp_heads[lp_id]].state;
-    }
-};
-
-struct TestOperation {
-    int type;
-    int lp_id;
-    ap_int<32> time;
 };
 
 
-bool operator==(const LPState &lhs, const LPState &rhs);
-
-
-void state_buffer_kernel(hls::stream<TestOperation>& in_stream, hls::stream<int>& out_stream);
-
+void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &success);
 
 int test_state_buffer();
-# 3 "/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
+# 3 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
 
 int main() {
+    int state_buffer_passed = test_state_buffer();
 
-    int event_queue_passed = test_event_queue();
-
-    return event_queue_passed;
+    return state_buffer_passed;
 }

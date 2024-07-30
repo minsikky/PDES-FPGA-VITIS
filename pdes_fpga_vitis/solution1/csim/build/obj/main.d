@@ -22,4 +22,4 @@ obj/main.o: ../../../../cpp/main.cpp ../../../../cpp/EventQueue.hpp \
  /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_fixed_special.h \
  /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream.h \
  /afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/hls_stream_thread_unsafe.h \
- ../../../../cpp/constants.hpp ../../../../cpp/StateBuffer.hpp
+ ../../../../cpp/constants.hpp ../../../../cpp/LinkedList.hpp

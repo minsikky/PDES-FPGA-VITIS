@@ -1,10 +1,10 @@
 
 
 ================================================================
-== Synthesis Summary Report of 'event_queue_kernel'
+== Synthesis Summary Report of 'state_buffer_kernel'
 ================================================================
 + General Information: 
-    * Date:           Sun Jul 28 03:49:54 2024
+    * Date:           Tue Jul 30 03:10:36 2024
     * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
     * Project:        pdes_fpga_vitis
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -15,29 +15,32 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+-----------+-----+
-    |                     Modules                    | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |    |            |           |     |
-    |                     & Loops                    | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   | DSP|     FF     |    LUT    | URAM|
-    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+-----------+-----+
-    |+ event_queue_kernel                            |     -|  0.03|        -|       -|         -|        -|     -|        no|  6 (~0%)|   -|  1538 (~0%)|  2305 (1%)|    -|
-    | + event_queue_kernel_Pipeline_VITIS_LOOP_49_1  |     -|  0.03|        -|       -|         -|        -|     -|        no|        -|   -|   660 (~0%)|  871 (~0%)|    -|
-    |  o VITIS_LOOP_49_1                             |    II|  3.65|        -|       -|         5|        3|     -|       yes|        -|   -|           -|          -|    -|
-    | + event_queue_kernel_Pipeline_VITIS_LOOP_33_1  |     -|  0.40|        -|       -|         -|        -|     -|        no|        -|   -|   138 (~0%)|  369 (~0%)|    -|
-    |  o VITIS_LOOP_33_1                             |    II|  3.65|        -|       -|         3|        2|     -|       yes|        -|   -|           -|          -|    -|
-    +------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+-----------+-----+
+    +---------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+-----------+------------+-----+
+    |                      Modules                      | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |    |           |            |     |
+    |                      & Loops                      | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   | DSP|     FF    |     LUT    | URAM|
+    +---------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+-----------+------------+-----+
+    |+ state_buffer_kernel                              |     -|  0.15|        -|       -|         -|        -|     -|        no|  6 (~0%)|   -|  593 (~0%)|  1244 (~0%)|    -|
+    | + state_buffer_kernel_Pipeline_VITIS_LOOP_154_1   |     -|  0.40|        -|       -|         -|        -|     -|        no|        -|   -|  173 (~0%)|   203 (~0%)|    -|
+    |  o VITIS_LOOP_154_1                               |    II|  3.65|        -|       -|         3|        2|     -|       yes|        -|   -|          -|           -|    -|
+    | o VITIS_LOOP_95_1                                 |     -|  3.65|        -|       -|         -|        -|     -|        no|        -|   -|          -|           -|    -|
+    |  + state_buffer_kernel_Pipeline_VITIS_LOOP_101_2  |     -|  0.15|        -|       -|         -|        -|     -|        no|        -|   -|   90 (~0%)|   218 (~0%)|    -|
+    |   o VITIS_LOOP_101_2                              |    II|  3.65|        -|       -|         3|        3|     -|       yes|        -|   -|          -|           -|    -|
+    +---------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+---------+----+-----------+------------+-----+
 
 
 ================================================================
 == HW Interfaces
 ================================================================
 * REGISTER
-+--------------+--------+----------+
-| Interface    | Mode   | Bitwidth |
-+--------------+--------+----------+
-| input_r      | ap_vld | 130      |
-| output_event | ap_vld | 129      |
-| success      | ap_vld | 1        |
-+--------------+--------+----------+
++-----------+---------+----------+
+| Interface | Mode    | Bitwidth |
++-----------+---------+----------+
+| op        | ap_none | 2        |
+| result_i  | ap_vld  | 80       |
+| result_o  | ap_vld  | 80       |
+| state     | ap_none | 96       |
+| success   | ap_vld  | 1        |
++-----------+---------+----------+
 
 * TOP LEVEL CONTROL
 +-----------+------------+-----------------------------------+
@@ -53,25 +56,28 @@
 == SW I/O Information
 ================================================================
 * Top Function Arguments
-+--------------+-----------+------------------+
-| Argument     | Direction | Datatype         |
-+--------------+-----------+------------------+
-| input        | in        | EventQueueInput& |
-| output_event | out       | TimeWarpEvent&   |
-| success      | out       | bool&            |
-+--------------+-----------+------------------+
++----------+-----------+------------+
+| Argument | Direction | Datatype   |
++----------+-----------+------------+
+| op       | in        | ap_uint<2> |
+| state    | in        | LPState    |
+| result   | inout     | LPState&   |
+| success  | out       | bool&      |
++----------+-----------+------------+
 
 * SW-to-HW Mapping
-+--------------+---------------------+---------+
-| Argument     | HW Interface        | HW Type |
-+--------------+---------------------+---------+
-| input        | input_r             | port    |
-| input        | input_r_ap_vld      | port    |
-| output_event | output_event        | port    |
-| output_event | output_event_ap_vld | port    |
-| success      | success             | port    |
-| success      | success_ap_vld      | port    |
-+--------------+---------------------+---------+
++----------+-----------------+---------+
+| Argument | HW Interface    | HW Type |
++----------+-----------------+---------+
+| op       | op              | port    |
+| state    | state           | port    |
+| result   | result_i        | port    |
+| result   | result_o        | port    |
+| result   | result_i_ap_vld | port    |
+| result   | result_o_ap_vld | port    |
+| success  | success         | port    |
+| success  | success_ap_vld  | port    |
++----------+-----------------+---------+
 
 
 ================================================================
@@ -84,37 +90,40 @@
 ================================================================
 == Bind Op Report
 ================================================================
-+------------------------------------------------+-----+--------+--------------+-----+--------+---------+
-| Name                                           | DSP | Pragma | Variable     | Op  | Impl   | Latency |
-+------------------------------------------------+-----+--------+--------------+-----+--------+---------+
-| + event_queue_kernel                           | 0   |        |              |     |        |         |
-|   add_ln887_fu_628_p2                          | -   |        | add_ln887    | add | fabric | 0       |
-|   add_ln886_fu_612_p2                          | -   |        | add_ln886    | add | fabric | 0       |
-|  + event_queue_kernel_Pipeline_VITIS_LOOP_49_1 | 0   |        |              |     |        |         |
-|    ret_V_fu_386_p2                             | -   |        | ret_V        | add | fabric | 0       |
-|    child_V_fu_456_p2                           | -   |        | child_V      | add | fabric | 0       |
-|  + event_queue_kernel_Pipeline_VITIS_LOOP_33_1 | 0   |        |              |     |        |         |
-|    i_2_fu_351_p2                               | -   |        | i_2          | add | fabric | 0       |
-|    add_ln1559_fu_289_p2                        | -   |        | add_ln1559   | add | fabric | 0       |
-|    sub_ln1559_fu_303_p2                        | -   |        | sub_ln1559   | sub | fabric | 0       |
-|    sub_ln1559_1_fu_319_p2                      | -   |        | sub_ln1559_1 | sub | fabric | 0       |
-+------------------------------------------------+-----+--------+--------------+-----+--------+---------+
++--------------------------------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                                             | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++--------------------------------------------------+-----+--------+-------------+-----+--------+---------+
+| + state_buffer_kernel                            | 0   |        |             |     |        |         |
+|   add_ln886_2_fu_530_p2                          | -   |        | add_ln886_2 | add | fabric | 0       |
+|   sub_ln887_fu_553_p2                            | -   |        | sub_ln887   | sub | fabric | 0       |
+|   add_ln887_fu_585_p2                            | -   |        | add_ln887   | add | fabric | 0       |
+|   add_ln887_1_fu_592_p2                          | -   |        | add_ln887_1 | add | fabric | 0       |
+|   add_ln886_fu_634_p2                            | -   |        | add_ln886   | add | fabric | 0       |
+|   add_ln886_1_fu_500_p2                          | -   |        | add_ln886_1 | add | fabric | 0       |
+|   sub_ln887_1_fu_682_p2                          | -   |        | sub_ln887_1 | sub | fabric | 0       |
+|   sub_ln887_2_fu_671_p2                          | -   |        | sub_ln887_2 | sub | fabric | 0       |
+|  + state_buffer_kernel_Pipeline_VITIS_LOOP_101_2 | 0   |        |             |     |        |         |
+|    removed_V_fu_212_p2                           | -   |        | removed_V   | add | fabric | 0       |
+|    list_lp_sizes_V_d0                            | -   |        | add_ln887   | add | fabric | 0       |
+|  + state_buffer_kernel_Pipeline_VITIS_LOOP_154_1 | 0   |        |             |     |        |         |
+|    removed_V_2_fu_170_p2                         | -   |        | removed_V_2 | add | fabric | 0       |
++--------------------------------------------------+-----+--------+-------------+-----+--------+---------+
 
 
 ================================================================
 == Bind Storage Report
 ================================================================
-+------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
-| Name                                     | BRAM | URAM | Pragma | Variable                             | Storage | Impl | Latency |
-+------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
-| + event_queue_kernel                     | 6    | 0    |        |                                      |         |      |         |
-|   g_event_queue_heap_send_time_V_U       | 1    | -    |        | g_event_queue_heap_send_time_V       | ram_1p  | auto | 1       |
-|   g_event_queue_heap_recv_time_V_U       | 2    | -    |        | g_event_queue_heap_recv_time_V       | ram_s2p | auto | 1       |
-|   g_event_queue_heap_data_V_U            | 1    | -    |        | g_event_queue_heap_data_V            | ram_1p  | auto | 1       |
-|   g_event_queue_heap_sender_id_V_U       | 1    | -    |        | g_event_queue_heap_sender_id_V       | ram_1p  | auto | 1       |
-|   g_event_queue_heap_receiver_id_V_U     | 1    | -    |        | g_event_queue_heap_receiver_id_V     | ram_1p  | auto | 1       |
-|   g_event_queue_heap_is_anti_message_V_U | -    | -    |        | g_event_queue_heap_is_anti_message_V | ram_1p  | auto | 1       |
-+------------------------------------------+------+------+--------+--------------------------------------+---------+------+---------+
++----------------------------------+------+------+--------+------------------------------+---------+------+---------+
+| Name                             | BRAM | URAM | Pragma | Variable                     | Storage | Impl | Latency |
++----------------------------------+------+------+--------+------------------------------+---------+------+---------+
+| + state_buffer_kernel            | 6    | 0    |        |                              |         |      |         |
+|   list_nodes_next_V_U            | 1    | -    |        | list_nodes_next_V            | ram_1p  | auto | 1       |
+|   list_nodes_state_lp_id_V_U     | 1    | -    |        | list_nodes_state_lp_id_V     | ram_1p  | auto | 1       |
+|   list_nodes_state_lvt_V_U       | 1    | -    |        | list_nodes_state_lvt_V       | ram_1p  | auto | 1       |
+|   list_nodes_state_rng_state_V_U | 1    | -    |        | list_nodes_state_rng_state_V | ram_1p  | auto | 1       |
+|   list_lp_heads_V_U              | 1    | -    |        | list_lp_heads_V              | ram_1p  | auto | 1       |
+|   list_lp_sizes_V_U              | 1    | -    |        | list_lp_sizes_V              | ram_1p  | auto | 1       |
++----------------------------------+------+------+--------+------------------------------+---------+------+---------+
 
 
 ================================================================
@@ -134,17 +143,11 @@
 | inline    |                          | cpp/EventQueue.hpp:89 in peek                             |
 | inline    |                          | cpp/EventQueue.hpp:94 in empty                            |
 | inline    |                          | cpp/EventQueue.hpp:99 in is_full                          |
-| interface | ap_ctrl_hs port=return   | cpp/StateBuffer.cpp:25 in state_buffer_kernel, return     |
-| interface | ap_vld port=input        | cpp/StateBuffer.cpp:26 in state_buffer_kernel, input      |
-| interface | ap_vld port=success      | cpp/StateBuffer.cpp:27 in state_buffer_kernel, success    |
-| inline    |                          | cpp/StateBuffer.hpp:47 in push                            |
-| inline    |                          | cpp/StateBuffer.hpp:66 in pop                             |
-| inline    |                          | cpp/StateBuffer.hpp:82 in rollback                        |
-| inline    |                          | cpp/StateBuffer.hpp:105 in commit                         |
-| pipeline  | II=1                     | cpp/StateBuffer.hpp:109 in commit                         |
-| inline    |                          | cpp/StateBuffer.hpp:150 in is_full                        |
-| inline    |                          | cpp/StateBuffer.hpp:155 in get_gvt                        |
-| inline    |                          | cpp/StateBuffer.hpp:160 in peek                           |
+| interface | ap_ctrl_hs port=return   | cpp/StateBuffer.cpp:7 in state_buffer_kernel, return      |
+| interface | ap_none port=op          | cpp/StateBuffer.cpp:8 in state_buffer_kernel, op          |
+| interface | ap_none port=state       | cpp/StateBuffer.cpp:9 in state_buffer_kernel, state       |
+| interface | ap_vld port=result       | cpp/StateBuffer.cpp:10 in state_buffer_kernel, result     |
+| interface | ap_vld port=success      | cpp/StateBuffer.cpp:11 in state_buffer_kernel, success    |
 +-----------+--------------------------+-----------------------------------------------------------+
 
 

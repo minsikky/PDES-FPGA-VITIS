@@ -1,98 +1,95 @@
 #include "StateBuffer.hpp"
 #include <iostream>
-#include <vector>
-#include <hls_stream.h>
 
-bool operator==(const LPState &lhs, const LPState &rhs) {
-    return lhs.lp_id == rhs.lp_id && lhs.lvt == rhs.lvt && lhs.rng_state == rhs.rng_state;
-}
+static StateBuffer list;
 
-// Define a struct for input operations
-struct StateBufferInput {
-    ap_uint<2> op_type;  // 0: Push, 1: Rollback, 2: Commit
-    ap_int<16> lp_id;
-    ap_int<32> time;
-    ap_uint<32> rng_state;
-};
-
-// Global StateBuffer instance
-StateBuffer g_state_buffer;
-
-void state_buffer_kernel(
-    StateBufferInput& input,
-    bool& success
-) {
+void state_buffer_kernel(ap_uint<2> op, LPState state, LPState& result, bool& success) {
     #pragma HLS INTERFACE ap_ctrl_hs port=return
-    #pragma HLS INTERFACE ap_vld port=input
+    #pragma HLS INTERFACE ap_none port=op
+    #pragma HLS INTERFACE ap_none port=state
+    #pragma HLS INTERFACE ap_vld port=result
     #pragma HLS INTERFACE ap_vld port=success
 
-    switch (input.op_type) {
-        case 0: // Push
-        {
-            LPState state{input.lp_id, input.time, input.rng_state};
-            success = g_state_buffer.push(state);
+    switch(op) {
+        case 0:  // Push operation
+            success = list.push(state);
+            result = state;
             break;
-        }
-        case 1: // Rollback
-            success = g_state_buffer.rollback(input.lp_id, input.time);
+        case 1:  // Pop operation
+            success = list.pop(state.lp_id, result);
             break;
-        case 2: // Commit
-            success = g_state_buffer.commit(input.time);
+        case 2:  // Commit operation
+            success = list.commit(state.lvt);
+            result.lvt = list.get_gvt();
+            break;
+        case 3:  // Rollback operation
+            success = list.rollback(state.lp_id, state.lvt);
+            result.lvt = state.lvt;
             break;
         default:
-            success = false;  // Invalid operation
+            success = false;
     }
 }
 
 int test_state_buffer() {
-    StateBufferInput input;
+    ap_uint<2> op;
+    LPState state, result;
     bool success;
 
-    // Prepare test operations
-    std::vector<StateBufferInput> operations = {
-        {0, 0, 10, 0},  // Push LP 0, time 10
-        {0, 1, 15, 0},  // Push LP 1, time 15
-        {0, 0, 20, 0},  // Push LP 0, time 20
-        {0, 0, 30, 0},  // Push LP 0, time 30
-        {0, 0, 40, 0},  // Push LP 0, time 40
-        {0, 0, 50, 0},  // Push LP 0, time 50
-        {0, 0, 60, 0},  // Push LP 0, time 60
-        {0, 1, 70, 0},  // Push LP 1, time 70
-        {0, 1, 80, 0},  // Push LP 1, time 80
-        {0, 1, 90, 0},  // Push LP 1, time 90
-        {0, 1, 100, 0}, // Push LP 1, time 100
-        {1, 0, 15, 0},  // Rollback LP 0 to time 15
-        {2, 0, 12, 0},  // Commit to time 12
-        {0, 1, 110, 0}, // Push LP 1, time 110
-        {2, 0, 16, 0},  // Commit to time 16
-    };
-
-    // Process operations
-    for (const auto& op : operations) {
-        state_buffer_kernel(const_cast<StateBufferInput&>(op), success);
-        if (!success) {
-            std::cout << "Operation failed: type " << op.op_type << ", LP " << op.lp_id << ", time " << op.time << std::endl;
+    // Test push operations
+    std::cout << "Pushing states:" << std::endl;
+    for (int i = 0; i < 20; ++i) {
+        op = 0;  // Push
+        state.lp_id = i % 4;  // Use 4 different LPs
+        state.lvt = i * 10;
+        state.rng_state = i * 100;
+        state_buffer_kernel(op, state, result, success);
+        if (success) {
+            std::cout << "Pushed: LP " << state.lp_id << ", LVT " << state.lvt << ", RNG " << state.rng_state << std::endl;
+        } else {
+            std::cout << "Push failed for LP " << state.lp_id << std::endl;
         }
     }
 
-    // Output final state
-    int gvt = g_state_buffer.get_gvt();
-    std::vector<std::vector<LPState>> lp_states(NUM_LPS);
-
-    for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-        LPState state;
-        while (g_state_buffer.pop(lp_id, state)) {
-            lp_states[lp_id].push_back(state);
-        }
+    // Test rollback operation
+    std::cout << "\nRolling back LP 2 to LVT 70:" << std::endl;
+    op = 3;  // Rollback
+    state.lp_id = 2;
+    state.lvt = 70;
+    state_buffer_kernel(op, state, result, success);
+    if (success) {
+        std::cout << "Rollback successful for LP 2 to LVT " << result.lvt << std::endl;
+    } else {
+        std::cout << "Rollback failed for LP 2" << std::endl;
     }
 
-    // Print results
-    std::cout << "Final GVT: " << gvt << "\n";
-    for (int lp_id = 0; lp_id < NUM_LPS; ++lp_id) {
-        std::cout << "LP " << lp_id << " states:\n";
-        for (const auto& state : lp_states[lp_id]) {
-            std::cout << " LVT: " << state.lvt << ", RNG state: " << state.rng_state << "\n";
+    // Test commit operation
+    std::cout << "\nCommitting up to LVT 100:" << std::endl;
+    op = 2;  // Commit
+    state.lvt = 100;
+    state_buffer_kernel(op, state, result, success);
+    if (success) {
+        std::cout << "Commit successful, new GVT: " << result.lvt << std::endl;
+    } else {
+        std::cout << "Commit failed" << std::endl;
+    }
+
+    // Test pop operations after rollback and commit
+    std::cout << "\nPopping states after rollback and commit:" << std::endl;
+    for (int lp = 0; lp < 4; ++lp) {
+        std::cout << "LP " << lp << ": ";
+        while (true) {
+            op = 1;  // Pop
+            state.lp_id = lp;
+            state_buffer_kernel(op, state, result, success);
+            if (success) {
+                std::cout << "(" << result.lvt << "," << result.rng_state << ") ";
+            } else {
+                std::cout << "(empty)";
+                break;
+            }
         }
+        std::cout << std::endl;
     }
 
     return 0;
