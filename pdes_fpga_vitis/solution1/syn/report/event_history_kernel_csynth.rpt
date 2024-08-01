@@ -1,0 +1,225 @@
+
+
+================================================================
+== Vitis HLS Report for 'event_history_kernel'
+================================================================
+* Date:           Wed Jul 31 14:13:25 2024
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
+* Project:        pdes_fpga_vitis
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvf1517-3-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.249 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                                          |                                               |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                         Instance                         |                     Module                    |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_rollback_fu_426                                       |rollback                                       |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        |grp_event_history_kernel_Pipeline_VITIS_LOOP_94_2_fu_469  |event_history_kernel_Pipeline_VITIS_LOOP_94_2  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        +----------------------------------------------------------+-----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_89_1  |        ?|        ?|         ?|          -|          -|    16|        no|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|     157|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        5|     -|     447|    1180|    0|
+|Memory           |        8|     -|       1|       1|    0|
+|Multiplexer      |        -|     -|       -|     721|    -|
+|Register         |        -|     -|     297|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       13|     0|     745|    2059|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        2|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------------------+-----------------------------------------------+---------+----+-----+-----+-----+
+    |                         Instance                         |                     Module                    | BRAM_18K| DSP|  FF | LUT | URAM|
+    +----------------------------------------------------------+-----------------------------------------------+---------+----+-----+-----+-----+
+    |grp_event_history_kernel_Pipeline_VITIS_LOOP_94_2_fu_469  |event_history_kernel_Pipeline_VITIS_LOOP_94_2  |        0|   0|   84|  200|    0|
+    |grp_rollback_fu_426                                       |rollback                                       |        5|   0|  363|  980|    0|
+    +----------------------------------------------------------+-----------------------------------------------+---------+----+-----+-----+-----+
+    |Total                                                     |                                               |        5|   0|  447| 1180|    0|
+    +----------------------------------------------------------+-----------------------------------------------+---------+----+-----+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +------------------------------------------+------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |                  Memory                  |                        Module                        | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +------------------------------------------+------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |history_buffer_event_is_anti_message_V_U  |history_buffer_event_is_anti_message_V_RAM_AUTO_1R1W  |        0|  1|   1|    0|    64|    1|     1|           64|
+    |history_buffer_event_send_time_V_U        |history_buffer_event_send_time_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   32|     1|         2048|
+    |history_buffer_event_recv_time_V_U        |history_buffer_event_send_time_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   32|     1|         2048|
+    |history_buffer_event_data_V_U             |history_buffer_event_send_time_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   32|     1|         2048|
+    |history_buffer_event_sender_id_V_U        |history_buffer_event_sender_id_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   16|     1|         1024|
+    |history_buffer_event_receiver_id_V_U      |history_buffer_event_sender_id_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   16|     1|         1024|
+    |history_lp_sizes_V_U                      |history_buffer_event_sender_id_V_RAM_AUTO_1R1W        |        1|  0|   0|    0|    64|   16|     1|         1024|
+    |history_buffer_next_V_U                   |history_buffer_next_V_RAM_AUTO_1R1W                   |        1|  0|   0|    0|    64|   16|     1|         1024|
+    |history_lp_heads_V_U                      |history_lp_heads_V_RAM_AUTO_1R1W                      |        1|  0|   0|    0|    64|   16|     1|         1024|
+    +------------------------------------------+------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total                                     |                                                      |        8|  1|   1|    0|   576|  177|     9|        11328|
+    +------------------------------------------+------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |add_ln886_1_fu_614_p2            |         +|   0|  0|  15|           8|           1|
+    |add_ln886_2_fu_725_p2            |         +|   0|  0|  12|           5|           1|
+    |add_ln886_fu_705_p2              |         +|   0|  0|  23|          16|           1|
+    |add_ln887_1_fu_653_p2            |         +|   0|  0|  23|          16|           2|
+    |add_ln887_fu_646_p2              |         +|   0|  0|  23|          16|           2|
+    |sub_ln887_fu_748_p2              |         -|   0|  0|  23|          16|          16|
+    |ap_block_state2_on_subcall_done  |       and|   0|  0|   2|           1|           1|
+    |ap_block_state8                  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln1065_fu_640_p2            |      icmp|   0|  0|  13|          16|           1|
+    |icmp_ln1073_fu_719_p2            |      icmp|   0|  0|  10|           5|           6|
+    |icmp_ln1077_fu_591_p2            |      icmp|   0|  0|  11|           9|           1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |Total                            |          |   0|  0| 157|         109|          33|
+    +---------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------------------------+----+-----------+-----+-----------+
+    |                       Name                      | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                                        |  65|         12|    1|         12|
+    |history_buffer_event_data_V_address0             |  20|          4|    6|         24|
+    |history_buffer_event_data_V_ce0                  |  14|          3|    1|          3|
+    |history_buffer_event_is_anti_message_V_address0  |  20|          4|    6|         24|
+    |history_buffer_event_is_anti_message_V_ce0       |  14|          3|    1|          3|
+    |history_buffer_event_receiver_id_V_address0      |  20|          4|    6|         24|
+    |history_buffer_event_receiver_id_V_ce0           |  14|          3|    1|          3|
+    |history_buffer_event_recv_time_V_address0        |  26|          5|    6|         30|
+    |history_buffer_event_recv_time_V_ce0             |  20|          4|    1|          4|
+    |history_buffer_event_send_time_V_address0        |  20|          4|    6|         24|
+    |history_buffer_event_send_time_V_ce0             |  14|          3|    1|          3|
+    |history_buffer_event_sender_id_V_address0        |  20|          4|    6|         24|
+    |history_buffer_event_sender_id_V_ce0             |  14|          3|    1|          3|
+    |history_buffer_next_V_address0                   |  31|          6|    6|         36|
+    |history_buffer_next_V_ce0                        |  20|          4|    1|          4|
+    |history_buffer_next_V_d0                         |  26|          5|   16|         80|
+    |history_buffer_next_V_we0                        |  20|          4|    1|          4|
+    |history_free_head_V                              |  20|          4|   16|         64|
+    |history_lp_heads_V_address0                      |  37|          7|    6|         42|
+    |history_lp_heads_V_ce0                           |  20|          4|    1|          4|
+    |history_lp_heads_V_d0                            |  26|          5|   16|         80|
+    |history_lp_heads_V_we0                           |  20|          4|    1|          4|
+    |history_lp_sizes_V_address0                      |  37|          7|    6|         42|
+    |history_lp_sizes_V_ce0                           |  20|          4|    1|          4|
+    |history_lp_sizes_V_d0                            |  26|          5|   16|         80|
+    |history_lp_sizes_V_we0                           |  20|          4|    1|          4|
+    |history_total_size_V                             |  20|          4|   16|         64|
+    |lp_id_V_fu_162                                   |   9|          2|    5|         10|
+    |removed_V_fu_158                                 |   9|          2|   16|         32|
+    |result_i_ap_vld_in_sig                           |   9|          2|    1|          2|
+    |result_i_ap_vld_preg                             |   9|          2|    1|          2|
+    |result_i_in_sig                                  |   9|          2|  129|        258|
+    |result_o                                         |  26|          5|  129|        645|
+    |success                                          |  26|          5|    1|          5|
+    +-------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                            | 721|        143|  429|       1647|
+    +-------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------------------------------------+-----+----+-----+-----------+
+    |                                  Name                                 |  FF | LUT| Bits| Const Bits|
+    +-----------------------------------------------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                                                              |   11|   0|   11|          0|
+    |commit_time_V_reg_795                                                  |   32|   0|   32|          0|
+    |current_V_reg_905                                                      |   16|   0|   16|          0|
+    |event_receiver_id_V_cast_reg_801                                       |    6|   0|    6|          0|
+    |grp_event_history_kernel_Pipeline_VITIS_LOOP_94_2_fu_469_ap_start_reg  |    1|   0|    1|          0|
+    |grp_rollback_fu_426_ap_start_reg                                       |    1|   0|    1|          0|
+    |history_buffer_next_V_addr_reg_820                                     |    6|   0|    6|          0|
+    |history_free_head_V                                                    |   16|   0|   16|          0|
+    |history_lp_heads_V_addr_1_reg_852                                      |    6|   0|    6|          0|
+    |history_lp_sizes_V_addr_1_reg_830                                      |    6|   0|    6|          0|
+    |history_lp_sizes_V_addr_reg_811                                        |    6|   0|    6|          0|
+    |history_total_size_V                                                   |   16|   0|   16|          0|
+    |icmp_ln1077_reg_816                                                    |    1|   0|    1|          0|
+    |lp_id_V_fu_162                                                         |    5|   0|    5|          0|
+    |removed_V_fu_158                                                       |   16|   0|   16|          0|
+    |result_i_ap_vld_preg                                                   |    1|   0|    1|          0|
+    |result_i_preg                                                          |  129|   0|  129|          0|
+    |retval_0_i99_reg_398                                                   |    1|   0|    1|          0|
+    |retval_0_i_reg_412                                                     |    1|   0|    1|          0|
+    |trunc_ln89_reg_895                                                     |    4|   0|    4|          0|
+    |zext_ln587_4_reg_806                                                   |   16|   0|   64|         48|
+    +-----------------------------------------------------------------------+-----+----+-----+-----------+
+    |Total                                                                  |  297|   0|  345|         48|
+    +-----------------------------------------------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------+-----+-----+------------+----------------------+--------------+
+|    RTL Ports    | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++-----------------+-----+-----+------------+----------------------+--------------+
+|ap_clk           |   in|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|ap_rst           |   in|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|ap_start         |   in|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|ap_done          |  out|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|ap_idle          |  out|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|ap_ready         |  out|    1|  ap_ctrl_hs|  event_history_kernel|  return value|
+|op               |   in|    2|     ap_none|                    op|        scalar|
+|event_r          |   in|  160|     ap_none|               event_r|        scalar|
+|result_i         |   in|  129|      ap_vld|                result|       pointer|
+|result_o         |  out|  129|      ap_vld|                result|       pointer|
+|result_i_ap_vld  |   in|    1|      ap_vld|                result|       pointer|
+|result_o_ap_vld  |  out|    1|      ap_vld|                result|       pointer|
+|success          |  out|    1|      ap_vld|               success|       pointer|
+|success_ap_vld   |  out|    1|      ap_vld|               success|       pointer|
++-----------------+-----+-----+------------+----------------------+--------------+
+

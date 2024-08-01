@@ -3,157 +3,119 @@
 
 #include <ap_int.h>
 #include <hls_stream.h>
-#include <iostream>
 #include "constants.hpp"
 
 struct LPState
 {
     ap_int<16> lp_id;
     ap_int<32> lvt;
-    ap_uint<32> rng_state; // State for random number generation
+    ap_uint<32> rng_state;
 };
 
 struct StateEntry
 {
     LPState state;
-    ap_int<32> next; // Index of next state for this LP, or -1 if none
+    ap_uint<16> next;
 };
 
 class StateBuffer
 {
-public:
+private:
     StateEntry buffer[STATE_BUFFER_CAPACITY];
-    ap_int<32> lp_heads[NUM_LPS]; // Index of most recent state for each LP
-    ap_int<32> lp_sizes[NUM_LPS]; // Number of states for each LP
-    ap_int<32> free_list_head;    // Index of first free slot
+    ap_uint<16> lp_heads[NUM_LPS / NUM_LPCORE];
+    ap_uint<16> lp_sizes[NUM_LPS / NUM_LPCORE];
+    ap_uint<16> free_head;
+    ap_uint<16> total_size;
     ap_int<32> current_gvt;
 
 public:
     StateBuffer()
     {
-        free_list_head = 0;
-        for (ap_uint<32> i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i)
+        reset();
+    }
+
+    void reset()
+    {
+        free_head = 0;
+        total_size = 0;
+        current_gvt = 0;
+
+        for (ap_uint<16> i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i)
         {
             buffer[i].next = i + 1;
         }
-        buffer[STATE_BUFFER_CAPACITY - 1].next = -1;
+        buffer[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF; // End of free list
 
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        for (ap_uint<16> i = 0; i < NUM_LPS / NUM_LPCORE; ++i)
         {
-            lp_heads[i] = -1;
+            lp_heads[i] = 0xFFFF; // Invalid index
             lp_sizes[i] = 0;
         }
-
-        current_gvt = 0;
     }
 
-    bool push(const LPState state)
+    bool push(const LPState &state)
     {
-#pragma HLS INLINE
-        ap_int<32> new_head = free_list_head;
-        std::cout << "Push: new_head = " << new_head << std::endl;
-        if (new_head == -1)
-            return false; // Buffer is full
-
-        ap_int<32> next_free = buffer[new_head].next;
-        std::cout << "Push: next_free = " << next_free << std::endl;
-        buffer[new_head].state = state;
-
-        ap_int<32> old_head = lp_heads[state.lp_id];
-        std::cout << "Push: old_head for LP " << state.lp_id << " = " << old_head << std::endl;
-        lp_heads[state.lp_id] = new_head;
-        buffer[new_head].next = old_head;
-
-        lp_sizes[state.lp_id]++;
-        free_list_head = next_free;
-
-        std::cout << "Push: Updated lp_heads[" << state.lp_id << "] = " << lp_heads[state.lp_id] << std::endl;
-        std::cout << "Push: Updated lp_sizes[" << state.lp_id << "] = " << lp_sizes[state.lp_id] << std::endl;
-        std::cout << "Push: Updated free_list_head = " << free_list_head << std::endl;
-
-        return true;
-    }
-
-    bool pop(ap_int<16> lp_id, LPState &result)
-    {
-#pragma HLS INLINE
-        ap_int<32> head = lp_heads[lp_id];
-        std::cout << "Pop: head for LP " << lp_id << " = " << head << std::endl;
-        if (head == -1)
+        if (total_size >= STATE_BUFFER_CAPACITY)
             return false;
 
-        result = buffer[head].state;
-        lp_heads[lp_id] = buffer[head].next;
+        ap_uint<16> new_StateEntry = free_head;
+        free_head = buffer[free_head].next;
 
-        buffer[head].next = free_list_head;
-        free_list_head = head;
+        buffer[new_StateEntry].state = state;
+        buffer[new_StateEntry].next = lp_heads[state.lp_id];
+        lp_heads[state.lp_id] = new_StateEntry;
 
-        lp_sizes[lp_id]--;
-        std::cout << "Pop: Updated lp_heads[" << lp_id << "] = " << lp_heads[lp_id] << std::endl;
-        std::cout << "Pop: Updated lp_sizes[" << lp_id << "] = " << lp_sizes[lp_id] << std::endl;
-        std::cout << "Pop: Updated free_list_head = " << free_list_head << std::endl;
-
+        lp_sizes[state.lp_id]++;
+        total_size++;
         return true;
     }
 
-    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
+    bool pop(ap_int<16> lp_id, LPState &state)
     {
-#pragma HLS INLINE
-        ap_int<32> current = lp_heads[lp_id];
-        ap_int<32> removed = 0;
+        if (lp_sizes[lp_id] == 0)
+            return false;
 
-        while (current != -1 && buffer[current].state.lvt > to_time)
-        {
-            ap_int<32> next = buffer[current].next;
+        ap_uint<16> popped = lp_heads[lp_id];
+        state = buffer[popped].state;
+        lp_heads[lp_id] = buffer[popped].next;
 
-            buffer[current].next = free_list_head;
-            free_list_head = current;
+        buffer[popped].next = free_head;
+        free_head = popped;
 
-            current = next;
-            removed++;
-        }
-
-        if (removed > 0)
-        {
-            lp_heads[lp_id] = current;
-            lp_sizes[lp_id] -= removed;
-            return true;
-        }
-        return false;
+        lp_sizes[lp_id]--;
+        total_size--;
+        return true;
     }
 
     bool commit(ap_int<32> commit_time)
     {
-#pragma HLS INLINE
-        std::cout << "Commit called with time: " << commit_time << std::endl;
         current_gvt = commit_time;
-        std::cout << "current_gvt updated to: " << current_gvt << std::endl;
+        ap_uint<16> removed = 0;
 
-        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
         {
-            ap_int<32> current = lp_heads[lp_id];
-            ap_int<32> prev = -1;
-            ap_int<32> removed = 0;
-            bool keep_oldest = true;
+            ap_uint<16> current = lp_heads[lp_id];
+            ap_uint<16> prev = 0xFFFF;
+            bool keep_next = true;
 
-#pragma HLS PIPELINE II = 2
-            while (current != -1)
+            while (current != 0xFFFF)
             {
-                ap_int<32> next = buffer[current].next;
+                ap_uint<16> next = buffer[current].next;
 
                 if (buffer[current].state.lvt <= commit_time)
                 {
-                    if (keep_oldest)
+                    if (keep_next)
                     {
-                        // Keep the oldest state (first one we encounter)
-                        keep_oldest = false;
+                        // This is the first state we encounter that's older than or equal to commit_time
+                        // We keep this state
+                        keep_next = false;
                         prev = current;
                         current = next;
                     }
                     else
                     {
                         // Remove this state
-                        if (prev == -1)
+                        if (prev == 0xFFFF)
                         {
                             lp_heads[lp_id] = next;
                         }
@@ -162,61 +124,74 @@ public:
                             buffer[prev].next = next;
                         }
 
-                        buffer[current].next = free_list_head;
-                        free_list_head = current;
+                        buffer[current].next = free_head;
+                        free_head = current;
 
                         removed++;
+                        lp_sizes[lp_id]--;
                         current = next;
                     }
                 }
                 else
                 {
-                    // If we've reached a state with LVT > commit_time, we can stop
-                    break;
+                    // This state is younger than commit_time, keep it
+                    prev = current;
+                    current = next;
                 }
             }
-
-            lp_sizes[lp_id] -= removed;
         }
-        return true; // Commit always succeeds
+
+        total_size -= removed;
+        return true;
     }
 
-    bool is_full() const
+    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
     {
-#pragma HLS INLINE
-        return free_list_head == -1;
+        ap_uint<16> current = lp_heads[lp_id];
+        ap_uint<16> removed = 0;
+
+        while (current != 0xFFFF && buffer[current].state.lvt > to_time)
+        {
+            ap_uint<16> next = buffer[current].next;
+
+            // Remove this state
+            lp_heads[lp_id] = next;
+
+            buffer[current].next = free_head;
+            free_head = current;
+
+            removed++;
+            current = next;
+        }
+
+        if (removed > 0)
+        {
+            lp_sizes[lp_id] -= removed;
+            total_size -= removed;
+            return true;
+        }
+        return false;
+    }
+
+    ap_uint<16> get_lp_size(ap_int<16> lp_id) const
+    {
+        return lp_sizes[lp_id];
+    }
+
+    ap_uint<16> get_total_size() const
+    {
+        return total_size;
     }
 
     ap_int<32> get_gvt() const
     {
-#pragma HLS INLINE
-        std::cout << "get_gvt called, returning: " << current_gvt << std::endl;
         return current_gvt;
     }
-
-    LPState peek(ap_int<16> lp_id) const
-    {
-#pragma HLS INLINE
-        if (lp_heads[lp_id] == -1)
-            return {-1, -1, 0}; // Invalid state
-        return buffer[lp_heads[lp_id]].state;
-    }
 };
 
-struct TestOperation
-{
-    ap_uint<2> type; // 0: push, 1: rollback, 2: commit
-    ap_int<16> lp_id;
-    ap_int<32> time;
-};
+// Kernel function declaration
+void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &success);
 
-bool operator==(const LPState &lhs, const LPState &rhs);
-
-// Top-level function for HLS synthesis
-void state_buffer_kernel(hls::stream<TestOperation> &in_stream, hls::stream<ap_int<32>> &out_stream);
-
-// This function is for simulation purposes only
-int simple_test_state_buffer();
 int test_state_buffer();
 
 #endif // STATE_BUFFER_HPP

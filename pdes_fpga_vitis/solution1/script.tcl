@@ -4,12 +4,14 @@
 ## Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ############################################################
 open_project pdes_fpga_vitis
-set_top state_buffer_kernel
-add_files cpp/EventQueue.cpp
-add_files cpp/EventQueue.hpp
-add_files cpp/StateBuffer.cpp
-add_files cpp/StateBuffer.hpp
+set_top event_history_kernel
 add_files cpp/constants.hpp
+add_files cpp/StateBuffer.hpp
+add_files cpp/StateBuffer.cpp
+add_files cpp/EventQueue.hpp
+add_files cpp/EventQueue.cpp
+add_files cpp/EventHistory.hpp
+add_files cpp/EventHistory.cpp
 add_files -tb cpp/main.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
 open_solution "solution1" -flow_target vivado
 set_part {xczu7ev-ffvf1517-3-e}

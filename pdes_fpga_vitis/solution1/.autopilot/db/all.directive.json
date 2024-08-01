@@ -2,32 +2,47 @@
       "name": "",
       "directive": [
         {
-          "functionName": "state_buffer_kernel",
+          "functionName": "event_history_kernel",
           "label": "",
           "functionLabel": "",
           "id": "1",
           "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
-          "sourceLine": "19",
+          "sourceLine": "21",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "state_buffer_kernel"
+                "value": "event_history_kernel"
               }]
           }
         },
         {
-          "functionName": "state_buffer_kernel",
+          "functionName": "event_history_kernel",
           "label": "",
           "functionLabel": "",
           "id": "2",
           "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
-          "sourceLine": "19",
+          "sourceLine": "21",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "state_buffer_kernel"
+                "value": "event_history_kernel"
+              }]
+          }
+        },
+        {
+          "functionName": "event_history_kernel",
+          "label": "",
+          "functionLabel": "",
+          "id": "3",
+          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceLine": "21",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "event_history_kernel"
               }]
           }
         }

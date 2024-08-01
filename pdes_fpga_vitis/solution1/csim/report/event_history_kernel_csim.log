@@ -1,0 +1,47 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../cpp/main.cpp in debug mode
+   Compiling ../../../../cpp/EventHistory.cpp in debug mode
+   Compiling ../../../../cpp/StateBuffer.cpp in debug mode
+   Generating csim.exe
+Pushing events:
+Pushed: LP 0, Send Time 0, Recv Time 0, Data 0
+Pushed: LP 1, Send Time 5, Recv Time 10, Data 100
+Pushed: LP 2, Send Time 10, Recv Time 20, Data 200
+Pushed: LP 3, Send Time 15, Recv Time 30, Data 300
+Pushed: LP 0, Send Time 20, Recv Time 40, Data 400
+Pushed: LP 1, Send Time 25, Recv Time 50, Data 500
+Pushed: LP 2, Send Time 30, Recv Time 60, Data 600
+Pushed: LP 3, Send Time 35, Recv Time 70, Data 700
+Pushed: LP 0, Send Time 40, Recv Time 80, Data 800
+Pushed: LP 1, Send Time 45, Recv Time 90, Data 900
+Pushed: LP 2, Send Time 50, Recv Time 100, Data 1000
+Pushed: LP 3, Send Time 55, Recv Time 110, Data 1100
+Pushed: LP 0, Send Time 60, Recv Time 120, Data 1200
+Pushed: LP 1, Send Time 65, Recv Time 130, Data 1300
+Pushed: LP 2, Send Time 70, Recv Time 140, Data 1400
+Pushed: LP 3, Send Time 75, Recv Time 150, Data 1500
+Pushed: LP 0, Send Time 80, Recv Time 160, Data 1600
+Pushed: LP 1, Send Time 85, Recv Time 170, Data 1700
+Pushed: LP 2, Send Time 90, Recv Time 180, Data 1800
+Pushed: LP 3, Send Time 95, Recv Time 190, Data 1900
+
+Popping events:
+LP 0: (160,1600) (120,1200) (80,800) (40,400) (0,0) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (50,500) (10,100) (empty)
+LP 2: (180,1800) (140,1400) (100,1000) (60,600) (20,200) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (30,300) (empty)
+
+Rolling back LP 2 to receive time 70:
+Rollback successful for LP 2 to receive time 70
+
+Committing up to receive time 100:
+Commit successful, new GVT: 100
+
+Popping events after rollback and commit:
+LP 0: (160,1600) (120,1200) (empty)
+LP 1: (170,1700) (130,1300) (empty)
+LP 2: (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (empty)
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

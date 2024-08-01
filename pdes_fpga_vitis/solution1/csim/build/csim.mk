@@ -17,7 +17,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/LinkedList.cpp ../../../../cpp/EventQueue.cpp
+HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/EventHistory.cpp ../../../../cpp/EventQueue.cpp ../../../../cpp/StateBuffer.cpp
 
 override TARGET := csim.exe
 
@@ -74,14 +74,20 @@ $(ObjDir)/main.o: ../../../../cpp/main.cpp $(ObjDir)/.dir
 
 -include $(ObjDir)/main.d
 
-$(ObjDir)/LinkedList.o: ../../../../cpp/LinkedList.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/LinkedList.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/EventHistory.o: ../../../../cpp/EventHistory.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/EventHistory.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/LinkedList.d
+-include $(ObjDir)/EventHistory.d
 
 $(ObjDir)/EventQueue.o: ../../../../cpp/EventQueue.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../cpp/EventQueue.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
 -include $(ObjDir)/EventQueue.d
+
+$(ObjDir)/StateBuffer.o: ../../../../cpp/StateBuffer.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/StateBuffer.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/StateBuffer.d

@@ -1,0 +1,259 @@
+INFO: [COSIM-47] Using XSIM for RTL simulation.
+INFO: [COSIM-14] Instrumenting C test bench ...
+   Build using "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/tps/lnx64/gcc-8.3.0/bin/g++"
+   Compiling apatb_event_history_kernel.cpp
+   Compiling EventHistory.cpp_pre.cpp.tb.cpp
+   Compiling StateBuffer.cpp_pre.cpp.tb.cpp
+   Compiling main.cpp_pre.cpp.tb.cpp
+   Compiling EventQueue.cpp_pre.cpp.tb.cpp
+   Compiling apatb_event_history_kernel_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM-302] Starting C TB testing ... 
+INFO: [COSIM-333] Generating C post check test bench ...
+INFO: [COSIM-12] Generating RTL test bench ...
+INFO: [COSIM-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM-323] Starting verilog simulation. 
+INFO: [COSIM-15] Starting XSIM ...
+INFO: [COSIM-316] Starting C post checking ...
+Pushing events:
+Pushed: LP 0, Send Time 0, Recv Time 0, Data 0
+Pushed: LP 1, Send Time 5, Recv Time 10, Data 100
+Pushed: LP 2, Send Time 10, Recv Time 20, Data 200
+Pushed: LP 3, Send Time 15, Recv Time 30, Data 300
+Pushed: LP 0, Send Time 20, Recv Time 40, Data 400
+Pushed: LP 1, Send Time 25, Recv Time 50, Data 500
+Pushed: LP 2, Send Time 30, Recv Time 60, Data 600
+Pushed: LP 3, Send Time 35, Recv Time 70, Data 700
+Pushed: LP 0, Send Time 40, Recv Time 80, Data 800
+Pushed: LP 1, Send Time 45, Recv Time 90, Data 900
+Pushed: LP 2, Send Time 50, Recv Time 100, Data 1000
+Pushed: LP 3, Send Time 55, Recv Time 110, Data 1100
+Pushed: LP 0, Send Time 60, Recv Time 120, Data 1200
+Pushed: LP 1, Send Time 65, Recv Time 130, Data 1300
+Pushed: LP 2, Send Time 70, Recv Time 140, Data 1400
+Pushed: LP 3, Send Time 75, Recv Time 150, Data 1500
+Pushed: LP 0, Send Time 80, Recv Time 160, Data 1600
+Pushed: LP 1, Send Time 85, Recv Time 170, Data 1700
+Pushed: LP 2, Send Time 90, Recv Time 180, Data 1800
+Pushed: LP 3, Send Time 95, Recv Time 190, Data 1900
+
+Popping events:
+LP 0: (160,1600) (120,1200) (80,800) (40,400) (0,0) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (50,500) (10,100) (empty)
+LP 2: (180,1800) (140,1400) (100,1000) (60,600) (20,200) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (30,300) (empty)
+
+Rolling back LP 2 to receive time 70:
+Rollback successful for LP 2 to receive time 70
+
+Committing up to receive time 100:
+Commit successful, new GVT: 100
+
+Popping events after rollback and commit:
+LP 0: (160,1600) (120,1200) (empty)
+LP 1: (170,1700) (130,1300) (empty)
+LP 2: (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (empty)
+Vivado Simulator v2022.1
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: /afs/eecs.umich.edu/soft/xilinx/2022.1/Vivado/2022.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_event_history_kernel_top glbl -Oenable_linking_all_libraries -prj event_history_kernel.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_20 -L floating_point_v7_1_14 --lib ieee_proposed=./ieee_proposed -s event_history_kernel 
+Multi-threading is on. Using 10 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_history_buffer_event_send_time_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_history_buffer_event_send_time_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_history_buffer_event_sender_id_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_history_buffer_event_sender_id_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_event_history_kernel_Pipeline_VITIS_LOOP_94_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_event_history_kernel_Pipeline_VITIS_LOOP_94_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_rollback_event_queue_heap_send_time_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_rollback_event_queue_heap_send_time_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_rollback_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_rollback_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_rollback_event_queue_heap_sender_id_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_rollback_event_queue_heap_sender_id_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_rollback_Pipeline_VITIS_LOOP_35_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_rollback_Pipeline_VITIS_LOOP_35_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_event_history_kernel_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_history_lp_heads_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_history_lp_heads_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_history_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_history_buffer_event_is_anti_message_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_rollback.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_rollback
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel_history_buffer_next_V_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module event_history_kernel_history_buffer_next_V_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.event_history_kernel_history_buf...
+Compiling module xil_defaultlib.event_history_kernel_history_buf...
+Compiling module xil_defaultlib.event_history_kernel_history_buf...
+Compiling module xil_defaultlib.event_history_kernel_history_buf...
+Compiling module xil_defaultlib.event_history_kernel_history_lp_...
+Compiling module xil_defaultlib.event_history_kernel_rollback_ev...
+Compiling module xil_defaultlib.event_history_kernel_rollback_ev...
+Compiling module xil_defaultlib.event_history_kernel_rollback_ev...
+Compiling module xil_defaultlib.event_history_kernel_rollback_Pi...
+Compiling module xil_defaultlib.event_history_kernel_rollback
+Compiling module xil_defaultlib.event_history_kernel_flow_contro...
+Compiling module xil_defaultlib.event_history_kernel_event_histo...
+Compiling module xil_defaultlib.event_history_kernel
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.pp_loop_intf(FSM_WIDTH=5)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=11)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=9)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_event_history_kernel_top
+Compiling module work.glbl
+Built simulation snapshot event_history_kernel
+
+****** xsim v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/event_history_kernel/xsim_script.tcl
+# xsim {event_history_kernel} -autoloadwcfg -tclbatch {event_history_kernel.tcl}
+Time resolution is 1 ps
+source event_history_kernel.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 77 [n/a] @ "113000"
+// RTL Simulation : 1 / 77 [n/a] @ "138000"
+// RTL Simulation : 2 / 77 [n/a] @ "158000"
+// RTL Simulation : 3 / 77 [n/a] @ "178000"
+// RTL Simulation : 4 / 77 [n/a] @ "198000"
+// RTL Simulation : 5 / 77 [n/a] @ "218000"
+// RTL Simulation : 6 / 77 [n/a] @ "238000"
+// RTL Simulation : 7 / 77 [n/a] @ "258000"
+// RTL Simulation : 8 / 77 [n/a] @ "278000"
+// RTL Simulation : 9 / 77 [n/a] @ "298000"
+// RTL Simulation : 10 / 77 [n/a] @ "318000"
+// RTL Simulation : 11 / 77 [n/a] @ "338000"
+// RTL Simulation : 12 / 77 [n/a] @ "358000"
+// RTL Simulation : 13 / 77 [n/a] @ "378000"
+// RTL Simulation : 14 / 77 [n/a] @ "398000"
+// RTL Simulation : 15 / 77 [n/a] @ "418000"
+// RTL Simulation : 16 / 77 [n/a] @ "438000"
+// RTL Simulation : 17 / 77 [n/a] @ "458000"
+// RTL Simulation : 18 / 77 [n/a] @ "478000"
+// RTL Simulation : 19 / 77 [n/a] @ "498000"
+// RTL Simulation : 20 / 77 [n/a] @ "518000"
+// RTL Simulation : 21 / 77 [n/a] @ "543000"
+// RTL Simulation : 22 / 77 [n/a] @ "568000"
+// RTL Simulation : 23 / 77 [n/a] @ "593000"
+// RTL Simulation : 24 / 77 [n/a] @ "618000"
+// RTL Simulation : 25 / 77 [n/a] @ "643000"
+// RTL Simulation : 26 / 77 [n/a] @ "658000"
+// RTL Simulation : 27 / 77 [n/a] @ "683000"
+// RTL Simulation : 28 / 77 [n/a] @ "708000"
+// RTL Simulation : 29 / 77 [n/a] @ "733000"
+// RTL Simulation : 30 / 77 [n/a] @ "758000"
+// RTL Simulation : 31 / 77 [n/a] @ "783000"
+// RTL Simulation : 32 / 77 [n/a] @ "798000"
+// RTL Simulation : 33 / 77 [n/a] @ "823000"
+// RTL Simulation : 34 / 77 [n/a] @ "848000"
+// RTL Simulation : 35 / 77 [n/a] @ "873000"
+// RTL Simulation : 36 / 77 [n/a] @ "898000"
+// RTL Simulation : 37 / 77 [n/a] @ "923000"
+// RTL Simulation : 38 / 77 [n/a] @ "938000"
+// RTL Simulation : 39 / 77 [n/a] @ "963000"
+// RTL Simulation : 40 / 77 [n/a] @ "988000"
+// RTL Simulation : 41 / 77 [n/a] @ "1013000"
+// RTL Simulation : 42 / 77 [n/a] @ "1038000"
+// RTL Simulation : 43 / 77 [n/a] @ "1063000"
+// RTL Simulation : 44 / 77 [n/a] @ "1078000"
+// RTL Simulation : 45 / 77 [n/a] @ "1098000"
+// RTL Simulation : 46 / 77 [n/a] @ "1118000"
+// RTL Simulation : 47 / 77 [n/a] @ "1138000"
+// RTL Simulation : 48 / 77 [n/a] @ "1158000"
+// RTL Simulation : 49 / 77 [n/a] @ "1178000"
+// RTL Simulation : 50 / 77 [n/a] @ "1198000"
+// RTL Simulation : 51 / 77 [n/a] @ "1218000"
+// RTL Simulation : 52 / 77 [n/a] @ "1238000"
+// RTL Simulation : 53 / 77 [n/a] @ "1258000"
+// RTL Simulation : 54 / 77 [n/a] @ "1278000"
+// RTL Simulation : 55 / 77 [n/a] @ "1298000"
+// RTL Simulation : 56 / 77 [n/a] @ "1318000"
+// RTL Simulation : 57 / 77 [n/a] @ "1338000"
+// RTL Simulation : 58 / 77 [n/a] @ "1358000"
+// RTL Simulation : 59 / 77 [n/a] @ "1378000"
+// RTL Simulation : 60 / 77 [n/a] @ "1398000"
+// RTL Simulation : 61 / 77 [n/a] @ "1418000"
+// RTL Simulation : 62 / 77 [n/a] @ "1438000"
+// RTL Simulation : 63 / 77 [n/a] @ "1458000"
+// RTL Simulation : 64 / 77 [n/a] @ "1478000"
+// RTL Simulation : 65 / 77 [n/a] @ "1698000"
+// RTL Simulation : 66 / 77 [n/a] @ "2288000"
+// RTL Simulation : 67 / 77 [n/a] @ "2313000"
+// RTL Simulation : 68 / 77 [n/a] @ "2338000"
+// RTL Simulation : 69 / 77 [n/a] @ "2353000"
+// RTL Simulation : 70 / 77 [n/a] @ "2378000"
+// RTL Simulation : 71 / 77 [n/a] @ "2403000"
+// RTL Simulation : 72 / 77 [n/a] @ "2418000"
+// RTL Simulation : 73 / 77 [n/a] @ "2433000"
+// RTL Simulation : 74 / 77 [n/a] @ "2458000"
+// RTL Simulation : 75 / 77 [n/a] @ "2483000"
+// RTL Simulation : 76 / 77 [n/a] @ "2508000"
+// RTL Simulation : 77 / 77 [n/a] @ "2523000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2552500 ps : File "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel.autotb.v" Line 473
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Jul 31 14:15:55 2024...
+Pushing events:
+Pushed: LP 0, Send Time 0, Recv Time 0, Data 0
+Pushed: LP 1, Send Time 5, Recv Time 10, Data 100
+Pushed: LP 2, Send Time 10, Recv Time 20, Data 200
+Pushed: LP 3, Send Time 15, Recv Time 30, Data 300
+Pushed: LP 0, Send Time 20, Recv Time 40, Data 400
+Pushed: LP 1, Send Time 25, Recv Time 50, Data 500
+Pushed: LP 2, Send Time 30, Recv Time 60, Data 600
+Pushed: LP 3, Send Time 35, Recv Time 70, Data 700
+Pushed: LP 0, Send Time 40, Recv Time 80, Data 800
+Pushed: LP 1, Send Time 45, Recv Time 90, Data 900
+Pushed: LP 2, Send Time 50, Recv Time 100, Data 1000
+Pushed: LP 3, Send Time 55, Recv Time 110, Data 1100
+Pushed: LP 0, Send Time 60, Recv Time 120, Data 1200
+Pushed: LP 1, Send Time 65, Recv Time 130, Data 1300
+Pushed: LP 2, Send Time 70, Recv Time 140, Data 1400
+Pushed: LP 3, Send Time 75, Recv Time 150, Data 1500
+Pushed: LP 0, Send Time 80, Recv Time 160, Data 1600
+Pushed: LP 1, Send Time 85, Recv Time 170, Data 1700
+Pushed: LP 2, Send Time 90, Recv Time 180, Data 1800
+Pushed: LP 3, Send Time 95, Recv Time 190, Data 1900
+
+Popping events:
+LP 0: (160,1600) (120,1200) (80,800) (40,400) (0,0) (empty)
+LP 1: (170,1700) (130,1300) (90,900) (50,500) (10,100) (empty)
+LP 2: (180,1800) (140,1400) (100,1000) (60,600) (20,200) (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (70,700) (30,300) (empty)
+
+Rolling back LP 2 to receive time 70:
+Rollback successful for LP 2 to receive time 70
+
+Committing up to receive time 100:
+Commit successful, new GVT: 100
+
+Popping events after rollback and commit:
+LP 0: (160,1600) (120,1200) (empty)
+LP 1: (170,1700) (130,1300) (empty)
+LP 2: (empty)
+LP 3: (190,1900) (150,1500) (110,1100) (empty)
+INFO: [COSIM-1000] *** C/RTL co-simulation finished: PASS ***

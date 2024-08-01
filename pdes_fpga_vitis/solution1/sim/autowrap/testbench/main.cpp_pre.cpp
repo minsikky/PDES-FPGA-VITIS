@@ -88427,7 +88427,8 @@ struct TimeWarpEvent
     ap_uint<1> is_anti_message;
 };
 
-class EventQueue {
+class EventQueue
+{
 private:
     TimeWarpEvent heap[EVENT_QUEUE_CAPACITY];
     ap_uint<16> size;
@@ -88435,44 +88436,59 @@ private:
 public:
     EventQueue() : size(0) {}
 
-    void siftUp(ap_uint<16> index) {
+    void siftUp(ap_uint<16> index)
+    {
 #pragma HLS INLINE
         TimeWarpEvent temp = heap[index];
-        for (int i = 0; i < EVENT_QUEUE_CAPACITY; i++) {
-            if (index == 0) break;
+        for (int i = 0; i < EVENT_QUEUE_CAPACITY; i++)
+        {
+            if (index == 0)
+                break;
             ap_uint<16> parent = (index - 1) / 2;
-            if (temp.recv_time < heap[parent].recv_time) {
+            if (temp.recv_time < heap[parent].recv_time)
+            {
                 heap[index] = heap[parent];
                 index = parent;
-            } else {
+            }
+            else
+            {
                 break;
             }
         }
         heap[index] = temp;
     }
 
-    void siftDown(ap_uint<16> index) {
+    void siftDown(ap_uint<16> index)
+    {
 #pragma HLS INLINE
         TimeWarpEvent temp = heap[index];
-        while (true) {
+        while (true)
+        {
             ap_uint<16> child = 2 * index + 1;
-            if (child >= size) break;
-            if (child + 1 < size && heap[child + 1].recv_time < heap[child].recv_time) {
+            if (child >= size)
+                break;
+            if (child + 1 < size && heap[child + 1].recv_time < heap[child].recv_time)
+            {
                 child++;
             }
-            if (heap[child].recv_time < temp.recv_time) {
+            if (heap[child].recv_time < temp.recv_time)
+            {
                 heap[index] = heap[child];
                 index = child;
-            } else {
+            }
+            else
+            {
                 break;
             }
         }
         heap[index] = temp;
     }
 
-    bool enqueue(const TimeWarpEvent& event) {
+    bool enqueue(const TimeWarpEvent &event)
+    {
 #pragma HLS INLINE
-        if (is_full(event.is_anti_message)) return false;
+        if (is_full(event.is_anti_message))
+            return false;
 
         heap[size] = event;
         siftUp(size);
@@ -88480,49 +88496,54 @@ public:
         return true;
     }
 
-    TimeWarpEvent dequeue() {
+    TimeWarpEvent dequeue()
+    {
 #pragma HLS INLINE
-        if (empty()) return TimeWarpEvent{
-# 77 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
-                                         (2147483647)
-# 77 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
-                                                  , 0, 0, 0, 0, 0};
+        if (empty())
+            return TimeWarpEvent{
+# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                (2147483647)
+# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                         , 0, 0, 0, 0, 0};
 
         TimeWarpEvent top = heap[0];
         size--;
-        if (size > 0) {
+        if (size > 0)
+        {
             heap[0] = heap[size];
             siftDown(0);
         }
         return top;
     }
 
-    TimeWarpEvent peek() const {
+    TimeWarpEvent peek() const
+    {
 #pragma HLS INLINE
         return heap[0];
     }
 
-    bool empty() const {
+    bool empty() const
+    {
 #pragma HLS INLINE
         return size == 0;
     }
 
-    bool is_full(ap_uint<1> is_anti_message) const {
+    bool is_full(ap_uint<1> is_anti_message) const
+    {
 #pragma HLS INLINE
         return size >= (EVENT_QUEUE_CAPACITY - (ANTI_MSG_RESERVE & ~is_anti_message));
     }
 };
 
-void event_queue_kernel(
-    hls::stream<TimeWarpEvent>& input_stream,
-    hls::stream<TimeWarpEvent>& output_stream,
-    ap_uint<16> num_events
-);
+struct EventQueueInput
+{
+    bool is_enqueue;
+    TimeWarpEvent event;
+};
 
-void run_event_queue_kernel(
-    const std::vector<TimeWarpEvent>& input_events,
-    std::vector<TimeWarpEvent>& output_events
-);
+void event_queue_kernel(EventQueueInput &input, TimeWarpEvent &output_event, bool &success);
+
+void run_event_queue_kernel(const TimeWarpEvent input_events[NUM_EVENTS], TimeWarpEvent output_events[NUM_EVENTS], int &output_size);
 
 int test_event_queue();
 # 2 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
@@ -88542,7 +88563,7 @@ struct LPState
     ap_uint<32> rng_state;
 };
 
-struct Node
+struct StateEntry
 {
     LPState state;
     ap_uint<16> next;
@@ -88551,9 +88572,9 @@ struct Node
 class StateBuffer
 {
 private:
-    Node nodes[STATE_BUFFER_CAPACITY];
-    ap_uint<16> lp_heads[NUM_LPS];
-    ap_uint<16> lp_sizes[NUM_LPS];
+    StateEntry buffer[STATE_BUFFER_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS / NUM_LPCORE];
+    ap_uint<16> lp_sizes[NUM_LPS / NUM_LPCORE];
     ap_uint<16> free_head;
     ap_uint<16> total_size;
     ap_int<32> current_gvt;
@@ -88572,11 +88593,11 @@ public:
 
         for (ap_uint<16> i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i)
         {
-            nodes[i].next = i + 1;
+            buffer[i].next = i + 1;
         }
-        nodes[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF;
+        buffer[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF;
 
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        for (ap_uint<16> i = 0; i < NUM_LPS / NUM_LPCORE; ++i)
         {
             lp_heads[i] = 0xFFFF;
             lp_sizes[i] = 0;
@@ -88588,12 +88609,12 @@ public:
         if (total_size >= STATE_BUFFER_CAPACITY)
             return false;
 
-        ap_uint<16> new_node = free_head;
-        free_head = nodes[new_node].next;
+        ap_uint<16> new_StateEntry = free_head;
+        free_head = buffer[free_head].next;
 
-        nodes[new_node].state = state;
-        nodes[new_node].next = lp_heads[state.lp_id];
-        lp_heads[state.lp_id] = new_node;
+        buffer[new_StateEntry].state = state;
+        buffer[new_StateEntry].next = lp_heads[state.lp_id];
+        lp_heads[state.lp_id] = new_StateEntry;
 
         lp_sizes[state.lp_id]++;
         total_size++;
@@ -88606,10 +88627,10 @@ public:
             return false;
 
         ap_uint<16> popped = lp_heads[lp_id];
-        state = nodes[popped].state;
-        lp_heads[lp_id] = nodes[popped].next;
+        state = buffer[popped].state;
+        lp_heads[lp_id] = buffer[popped].next;
 
-        nodes[popped].next = free_head;
+        buffer[popped].next = free_head;
         free_head = popped;
 
         lp_sizes[lp_id]--;
@@ -88622,7 +88643,7 @@ public:
         current_gvt = commit_time;
         ap_uint<16> removed = 0;
 
-        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
         {
             ap_uint<16> current = lp_heads[lp_id];
             ap_uint<16> prev = 0xFFFF;
@@ -88630,9 +88651,9 @@ public:
 
             while (current != 0xFFFF)
             {
-                ap_uint<16> next = nodes[current].next;
+                ap_uint<16> next = buffer[current].next;
 
-                if (nodes[current].state.lvt <= commit_time)
+                if (buffer[current].state.lvt <= commit_time)
                 {
                     if (keep_next)
                     {
@@ -88651,10 +88672,10 @@ public:
                         }
                         else
                         {
-                            nodes[prev].next = next;
+                            buffer[prev].next = next;
                         }
 
-                        nodes[current].next = free_head;
+                        buffer[current].next = free_head;
                         free_head = current;
 
                         removed++;
@@ -88678,24 +88699,16 @@ public:
     bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
     {
         ap_uint<16> current = lp_heads[lp_id];
-        ap_uint<16> prev = 0xFFFF;
         ap_uint<16> removed = 0;
 
-        while (current != 0xFFFF && nodes[current].state.lvt > to_time)
+        while (current != 0xFFFF && buffer[current].state.lvt > to_time)
         {
-            ap_uint<16> next = nodes[current].next;
+            ap_uint<16> next = buffer[current].next;
 
 
-            if (prev == 0xFFFF)
-            {
-                lp_heads[lp_id] = next;
-            }
-            else
-            {
-                nodes[prev].next = next;
-            }
+            lp_heads[lp_id] = next;
 
-            nodes[current].next = free_head;
+            buffer[current].next = free_head;
             free_head = current;
 
             removed++;
@@ -88732,9 +88745,187 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 int test_state_buffer();
 # 3 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
+# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp" 1
+
+
+
+# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int.h" 1
+# 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp" 2
+
+
+
+
+struct HistoryEntry
+{
+    TimeWarpEvent event;
+    ap_uint<16> next;
+};
+
+class EventHistory
+{
+private:
+    HistoryEntry buffer[EVENT_HISTORY_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_sizes[NUM_LPS];
+    ap_uint<16> free_head;
+    ap_uint<16> total_size;
+    ap_int<32> current_gvt;
+
+public:
+    EventHistory()
+    {
+        reset();
+    }
+
+    void reset()
+    {
+        free_head = 0;
+        total_size = 0;
+        current_gvt = 0;
+
+        for (ap_uint<16> i = 0; i < EVENT_HISTORY_CAPACITY - 1; ++i)
+        {
+            buffer[i].next = i + 1;
+        }
+        buffer[EVENT_HISTORY_CAPACITY - 1].next = 0xFFFF;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS / NUM_LPCORE; ++i)
+        {
+            lp_heads[i] = 0xFFFF;
+            lp_sizes[i] = 0;
+        }
+    }
+
+    bool push(const TimeWarpEvent &event)
+    {
+        if (total_size >= STATE_BUFFER_CAPACITY)
+            return false;
+
+        ap_uint<16> new_HistoryEntry = free_head;
+        free_head = buffer[free_head].next;
+
+        buffer[new_HistoryEntry].event = event;
+        buffer[new_HistoryEntry].next = lp_heads[event.receiver_id];
+        lp_heads[event.receiver_id] = new_HistoryEntry;
+
+        lp_sizes[event.receiver_id]++;
+        total_size++;
+        return true;
+    }
+
+    bool pop(ap_int<16> lp_id, TimeWarpEvent &event)
+    {
+        if (lp_sizes[lp_id] == 0)
+            return false;
+
+        ap_uint<16> popped = lp_heads[lp_id];
+        event = buffer[popped].event;
+        lp_heads[lp_id] = buffer[popped].next;
+
+        buffer[popped].next = free_head;
+        free_head = popped;
+
+        lp_sizes[lp_id]--;
+        total_size--;
+        return true;
+    }
+
+    bool commit(ap_int<32> commit_time)
+    {
+        current_gvt = commit_time;
+        ap_uint<16> removed = 0;
+
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
+        {
+            ap_uint<16> current = lp_heads[lp_id];
+            ap_uint<16> prev = 0xFFFF;
+
+            while (current != 0xFFFF)
+            {
+                ap_uint<16> next = buffer[current].next;
+
+                if (buffer[current].event.recv_time <= commit_time)
+                {
+
+                    if (prev == 0xFFFF)
+                    {
+                        lp_heads[lp_id] = next;
+                    }
+                    else
+                    {
+                        buffer[prev].next = next;
+                    }
+
+                    buffer[current].next = free_head;
+                    free_head = current;
+
+                    removed++;
+                    lp_sizes[lp_id]--;
+                    current = next;
+                }
+                else
+                {
+
+                    prev = current;
+                    current = next;
+                }
+            }
+        }
+
+        total_size -= removed;
+        return true;
+    }
+
+    bool rollback(ap_uint<16> lp_id, ap_int<32> to_time, EventQueue &event_queue)
+    {
+        ap_uint<16> current = lp_heads[lp_id];
+
+        while (current != 0xFFFF && buffer[current].event.recv_time > to_time)
+        {
+            if (event_queue.enqueue(buffer[current].event))
+            {
+                ap_uint<16> next = buffer[current].next;
+                lp_heads[lp_id] = next;
+                buffer[current].next = free_head;
+                free_head = current;
+                lp_sizes[lp_id] --;
+                total_size --;
+                current = next;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    ap_uint<16> get_lp_size(ap_int<16> lp_id) const
+    {
+        return lp_sizes[lp_id];
+    }
+
+    ap_uint<16> get_total_size() const
+    {
+        return total_size;
+    }
+
+    ap_int<32> get_gvt() const
+    {
+        return current_gvt;
+    }
+};
+
+
+void event_history_kernel(ap_uint<2> op, TimeWarpEvent event, TimeWarpEvent &result, bool &success);
+
+int test_event_history();
+# 4 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
 
 int main() {
-    int state_buffer_passed = test_state_buffer();
 
-    return state_buffer_passed;
+
+ int event_history_passed = test_event_history();
+    return event_history_passed;
 }

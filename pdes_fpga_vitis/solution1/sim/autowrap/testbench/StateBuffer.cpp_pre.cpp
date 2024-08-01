@@ -74693,7 +74693,7 @@ struct LPState
     ap_uint<32> rng_state;
 };
 
-struct Node
+struct StateEntry
 {
     LPState state;
     ap_uint<16> next;
@@ -74702,9 +74702,9 @@ struct Node
 class StateBuffer
 {
 private:
-    Node nodes[STATE_BUFFER_CAPACITY];
-    ap_uint<16> lp_heads[NUM_LPS];
-    ap_uint<16> lp_sizes[NUM_LPS];
+    StateEntry buffer[STATE_BUFFER_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS / NUM_LPCORE];
+    ap_uint<16> lp_sizes[NUM_LPS / NUM_LPCORE];
     ap_uint<16> free_head;
     ap_uint<16> total_size;
     ap_int<32> current_gvt;
@@ -74723,11 +74723,11 @@ public:
 
         for (ap_uint<16> i = 0; i < STATE_BUFFER_CAPACITY - 1; ++i)
         {
-            nodes[i].next = i + 1;
+            buffer[i].next = i + 1;
         }
-        nodes[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF;
+        buffer[STATE_BUFFER_CAPACITY - 1].next = 0xFFFF;
 
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        for (ap_uint<16> i = 0; i < NUM_LPS / NUM_LPCORE; ++i)
         {
             lp_heads[i] = 0xFFFF;
             lp_sizes[i] = 0;
@@ -74739,12 +74739,12 @@ public:
         if (total_size >= STATE_BUFFER_CAPACITY)
             return false;
 
-        ap_uint<16> new_node = free_head;
-        free_head = nodes[new_node].next;
+        ap_uint<16> new_StateEntry = free_head;
+        free_head = buffer[free_head].next;
 
-        nodes[new_node].state = state;
-        nodes[new_node].next = lp_heads[state.lp_id];
-        lp_heads[state.lp_id] = new_node;
+        buffer[new_StateEntry].state = state;
+        buffer[new_StateEntry].next = lp_heads[state.lp_id];
+        lp_heads[state.lp_id] = new_StateEntry;
 
         lp_sizes[state.lp_id]++;
         total_size++;
@@ -74757,10 +74757,10 @@ public:
             return false;
 
         ap_uint<16> popped = lp_heads[lp_id];
-        state = nodes[popped].state;
-        lp_heads[lp_id] = nodes[popped].next;
+        state = buffer[popped].state;
+        lp_heads[lp_id] = buffer[popped].next;
 
-        nodes[popped].next = free_head;
+        buffer[popped].next = free_head;
         free_head = popped;
 
         lp_sizes[lp_id]--;
@@ -74773,7 +74773,7 @@ public:
         current_gvt = commit_time;
         ap_uint<16> removed = 0;
 
-        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
         {
             ap_uint<16> current = lp_heads[lp_id];
             ap_uint<16> prev = 0xFFFF;
@@ -74781,9 +74781,9 @@ public:
 
             while (current != 0xFFFF)
             {
-                ap_uint<16> next = nodes[current].next;
+                ap_uint<16> next = buffer[current].next;
 
-                if (nodes[current].state.lvt <= commit_time)
+                if (buffer[current].state.lvt <= commit_time)
                 {
                     if (keep_next)
                     {
@@ -74802,10 +74802,10 @@ public:
                         }
                         else
                         {
-                            nodes[prev].next = next;
+                            buffer[prev].next = next;
                         }
 
-                        nodes[current].next = free_head;
+                        buffer[current].next = free_head;
                         free_head = current;
 
                         removed++;
@@ -74829,24 +74829,16 @@ public:
     bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
     {
         ap_uint<16> current = lp_heads[lp_id];
-        ap_uint<16> prev = 0xFFFF;
         ap_uint<16> removed = 0;
 
-        while (current != 0xFFFF && nodes[current].state.lvt > to_time)
+        while (current != 0xFFFF && buffer[current].state.lvt > to_time)
         {
-            ap_uint<16> next = nodes[current].next;
+            ap_uint<16> next = buffer[current].next;
 
 
-            if (prev == 0xFFFF)
-            {
-                lp_heads[lp_id] = next;
-            }
-            else
-            {
-                nodes[prev].next = next;
-            }
+            lp_heads[lp_id] = next;
 
-            nodes[current].next = free_head;
+            buffer[current].next = free_head;
             free_head = current;
 
             removed++;
@@ -74885,7 +74877,7 @@ int test_state_buffer();
 # 2 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp" 2
 
 
-static StateBuffer list;
+static StateBuffer state_buffer;
 
 void state_buffer_kernel(ap_uint<2> op, LPState state, LPState& result, bool& success) {
 #pragma HLS INTERFACE ap_ctrl_hs port=return
@@ -74896,18 +74888,18 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState& result, bool& su
 
     switch(op) {
         case 0:
-            success = list.push(state);
+            success = state_buffer.push(state);
             result = state;
             break;
         case 1:
-            success = list.pop(state.lp_id, result);
+            success = state_buffer.pop(state.lp_id, result);
             break;
         case 2:
-            success = list.commit(state.lvt);
-            result.lvt = list.get_gvt();
+            success = state_buffer.commit(state.lvt);
+            result.lvt = state_buffer.get_gvt();
             break;
         case 3:
-            success = list.rollback(state.lp_id, state.lvt);
+            success = state_buffer.rollback(state.lp_id, state.lvt);
             result.lvt = state.lvt;
             break;
         default:

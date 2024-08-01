@@ -3,11 +3,6 @@
 // Global EventQueue instance
 EventQueue g_event_queue;
 
-struct EventQueueInput {
-    bool is_enqueue;
-    TimeWarpEvent event;
-};
-
 void event_queue_kernel(
     EventQueueInput& input,
     TimeWarpEvent& output_event,

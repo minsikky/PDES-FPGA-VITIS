@@ -1,7 +1,7 @@
 #include "StateBuffer.hpp"
 #include <iostream>
 
-static StateBuffer list;
+static StateBuffer state_buffer;
 
 void state_buffer_kernel(ap_uint<2> op, LPState state, LPState& result, bool& success) {
     #pragma HLS INTERFACE ap_ctrl_hs port=return
@@ -12,18 +12,18 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState& result, bool& su
 
     switch(op) {
         case 0:  // Push operation
-            success = list.push(state);
+            success = state_buffer.push(state);
             result = state;
             break;
         case 1:  // Pop operation
-            success = list.pop(state.lp_id, result);
+            success = state_buffer.pop(state.lp_id, result);
             break;
         case 2:  // Commit operation
-            success = list.commit(state.lvt);
-            result.lvt = list.get_gvt();
+            success = state_buffer.commit(state.lvt);
+            result.lvt = state_buffer.get_gvt();
             break;
         case 3:  // Rollback operation
-            success = list.rollback(state.lp_id, state.lvt);
+            success = state_buffer.rollback(state.lp_id, state.lvt);
             result.lvt = state.lvt;
             break;
         default:

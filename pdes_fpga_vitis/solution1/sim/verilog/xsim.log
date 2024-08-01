@@ -2,18 +2,18 @@
 # xsim v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Tue Jul 30 03:11:07 2024
-# Process ID: 3350490
+# Start of session at: Wed Jul 31 14:14:54 2024
+# Process ID: 3822498
 # Current directory: /net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog
-# Command line: xsim -mode tcl -source {xsim.dir/state_buffer_kernel/xsim_script.tcl}
+# Command line: xsim -mode tcl -source {xsim.dir/event_history_kernel/xsim_script.tcl}
 # Log file: /net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/xsim.log
 # Journal file: /net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/xsim.jou
 # Running On: vlsipool-j12.eecs.umich.edu, OS: Linux, CPU Frequency: 4000.000 MHz, CPU Physical cores: 6, Host memory: 269799 MB
 #-----------------------------------------------------------
-source xsim.dir/state_buffer_kernel/xsim_script.tcl
-# xsim {state_buffer_kernel} -autoloadwcfg -tclbatch {state_buffer_kernel.tcl}
+source xsim.dir/event_history_kernel/xsim_script.tcl
+# xsim {event_history_kernel} -autoloadwcfg -tclbatch {event_history_kernel.tcl}
 Time resolution is 1 ps
-source state_buffer_kernel.tcl
+source event_history_kernel.tcl
 ## run all
 ////////////////////////////////////////////////////////////////////////////////////
 // Inter-Transaction Progress: Completed Transaction / Total Transaction
@@ -21,45 +21,85 @@ source state_buffer_kernel.tcl
 //
 // RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
 ////////////////////////////////////////////////////////////////////////////////////
-// RTL Simulation : 0 / 37 [n/a] @ "113000"
-// RTL Simulation : 1 / 37 [n/a] @ "138000"
-// RTL Simulation : 2 / 37 [n/a] @ "158000"
-// RTL Simulation : 3 / 37 [n/a] @ "178000"
-// RTL Simulation : 4 / 37 [n/a] @ "198000"
-// RTL Simulation : 5 / 37 [n/a] @ "218000"
-// RTL Simulation : 6 / 37 [n/a] @ "238000"
-// RTL Simulation : 7 / 37 [n/a] @ "258000"
-// RTL Simulation : 8 / 37 [n/a] @ "278000"
-// RTL Simulation : 9 / 37 [n/a] @ "298000"
-// RTL Simulation : 10 / 37 [n/a] @ "318000"
-// RTL Simulation : 11 / 37 [n/a] @ "338000"
-// RTL Simulation : 12 / 37 [n/a] @ "358000"
-// RTL Simulation : 13 / 37 [n/a] @ "378000"
-// RTL Simulation : 14 / 37 [n/a] @ "398000"
-// RTL Simulation : 15 / 37 [n/a] @ "418000"
-// RTL Simulation : 16 / 37 [n/a] @ "438000"
-// RTL Simulation : 17 / 37 [n/a] @ "458000"
-// RTL Simulation : 18 / 37 [n/a] @ "478000"
-// RTL Simulation : 19 / 37 [n/a] @ "498000"
-// RTL Simulation : 20 / 37 [n/a] @ "518000"
-// RTL Simulation : 21 / 37 [n/a] @ "583000"
-// RTL Simulation : 22 / 37 [n/a] @ "2133000"
-// RTL Simulation : 23 / 37 [n/a] @ "2163000"
-// RTL Simulation : 24 / 37 [n/a] @ "2193000"
-// RTL Simulation : 25 / 37 [n/a] @ "2223000"
-// RTL Simulation : 26 / 37 [n/a] @ "2243000"
-// RTL Simulation : 27 / 37 [n/a] @ "2273000"
-// RTL Simulation : 28 / 37 [n/a] @ "2303000"
-// RTL Simulation : 29 / 37 [n/a] @ "2333000"
-// RTL Simulation : 30 / 37 [n/a] @ "2353000"
-// RTL Simulation : 31 / 37 [n/a] @ "2383000"
-// RTL Simulation : 32 / 37 [n/a] @ "2403000"
-// RTL Simulation : 33 / 37 [n/a] @ "2433000"
-// RTL Simulation : 34 / 37 [n/a] @ "2463000"
-// RTL Simulation : 35 / 37 [n/a] @ "2493000"
-// RTL Simulation : 36 / 37 [n/a] @ "2523000"
-// RTL Simulation : 37 / 37 [n/a] @ "2543000"
+// RTL Simulation : 0 / 77 [n/a] @ "113000"
+// RTL Simulation : 1 / 77 [n/a] @ "138000"
+// RTL Simulation : 2 / 77 [n/a] @ "158000"
+// RTL Simulation : 3 / 77 [n/a] @ "178000"
+// RTL Simulation : 4 / 77 [n/a] @ "198000"
+// RTL Simulation : 5 / 77 [n/a] @ "218000"
+// RTL Simulation : 6 / 77 [n/a] @ "238000"
+// RTL Simulation : 7 / 77 [n/a] @ "258000"
+// RTL Simulation : 8 / 77 [n/a] @ "278000"
+// RTL Simulation : 9 / 77 [n/a] @ "298000"
+// RTL Simulation : 10 / 77 [n/a] @ "318000"
+// RTL Simulation : 11 / 77 [n/a] @ "338000"
+// RTL Simulation : 12 / 77 [n/a] @ "358000"
+// RTL Simulation : 13 / 77 [n/a] @ "378000"
+// RTL Simulation : 14 / 77 [n/a] @ "398000"
+// RTL Simulation : 15 / 77 [n/a] @ "418000"
+// RTL Simulation : 16 / 77 [n/a] @ "438000"
+// RTL Simulation : 17 / 77 [n/a] @ "458000"
+// RTL Simulation : 18 / 77 [n/a] @ "478000"
+// RTL Simulation : 19 / 77 [n/a] @ "498000"
+// RTL Simulation : 20 / 77 [n/a] @ "518000"
+// RTL Simulation : 21 / 77 [n/a] @ "543000"
+// RTL Simulation : 22 / 77 [n/a] @ "568000"
+// RTL Simulation : 23 / 77 [n/a] @ "593000"
+// RTL Simulation : 24 / 77 [n/a] @ "618000"
+// RTL Simulation : 25 / 77 [n/a] @ "643000"
+// RTL Simulation : 26 / 77 [n/a] @ "658000"
+// RTL Simulation : 27 / 77 [n/a] @ "683000"
+// RTL Simulation : 28 / 77 [n/a] @ "708000"
+// RTL Simulation : 29 / 77 [n/a] @ "733000"
+// RTL Simulation : 30 / 77 [n/a] @ "758000"
+// RTL Simulation : 31 / 77 [n/a] @ "783000"
+// RTL Simulation : 32 / 77 [n/a] @ "798000"
+// RTL Simulation : 33 / 77 [n/a] @ "823000"
+// RTL Simulation : 34 / 77 [n/a] @ "848000"
+// RTL Simulation : 35 / 77 [n/a] @ "873000"
+// RTL Simulation : 36 / 77 [n/a] @ "898000"
+// RTL Simulation : 37 / 77 [n/a] @ "923000"
+// RTL Simulation : 38 / 77 [n/a] @ "938000"
+// RTL Simulation : 39 / 77 [n/a] @ "963000"
+// RTL Simulation : 40 / 77 [n/a] @ "988000"
+// RTL Simulation : 41 / 77 [n/a] @ "1013000"
+// RTL Simulation : 42 / 77 [n/a] @ "1038000"
+// RTL Simulation : 43 / 77 [n/a] @ "1063000"
+// RTL Simulation : 44 / 77 [n/a] @ "1078000"
+// RTL Simulation : 45 / 77 [n/a] @ "1098000"
+// RTL Simulation : 46 / 77 [n/a] @ "1118000"
+// RTL Simulation : 47 / 77 [n/a] @ "1138000"
+// RTL Simulation : 48 / 77 [n/a] @ "1158000"
+// RTL Simulation : 49 / 77 [n/a] @ "1178000"
+// RTL Simulation : 50 / 77 [n/a] @ "1198000"
+// RTL Simulation : 51 / 77 [n/a] @ "1218000"
+// RTL Simulation : 52 / 77 [n/a] @ "1238000"
+// RTL Simulation : 53 / 77 [n/a] @ "1258000"
+// RTL Simulation : 54 / 77 [n/a] @ "1278000"
+// RTL Simulation : 55 / 77 [n/a] @ "1298000"
+// RTL Simulation : 56 / 77 [n/a] @ "1318000"
+// RTL Simulation : 57 / 77 [n/a] @ "1338000"
+// RTL Simulation : 58 / 77 [n/a] @ "1358000"
+// RTL Simulation : 59 / 77 [n/a] @ "1378000"
+// RTL Simulation : 60 / 77 [n/a] @ "1398000"
+// RTL Simulation : 61 / 77 [n/a] @ "1418000"
+// RTL Simulation : 62 / 77 [n/a] @ "1438000"
+// RTL Simulation : 63 / 77 [n/a] @ "1458000"
+// RTL Simulation : 64 / 77 [n/a] @ "1478000"
+// RTL Simulation : 65 / 77 [n/a] @ "1698000"
+// RTL Simulation : 66 / 77 [n/a] @ "2288000"
+// RTL Simulation : 67 / 77 [n/a] @ "2313000"
+// RTL Simulation : 68 / 77 [n/a] @ "2338000"
+// RTL Simulation : 69 / 77 [n/a] @ "2353000"
+// RTL Simulation : 70 / 77 [n/a] @ "2378000"
+// RTL Simulation : 71 / 77 [n/a] @ "2403000"
+// RTL Simulation : 72 / 77 [n/a] @ "2418000"
+// RTL Simulation : 73 / 77 [n/a] @ "2433000"
+// RTL Simulation : 74 / 77 [n/a] @ "2458000"
+// RTL Simulation : 75 / 77 [n/a] @ "2483000"
+// RTL Simulation : 76 / 77 [n/a] @ "2508000"
+// RTL Simulation : 77 / 77 [n/a] @ "2523000"
 ////////////////////////////////////////////////////////////////////////////////////
-$finish called at time : 2572500 ps : File "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/state_buffer_kernel.autotb.v" Line 473
+$finish called at time : 2552500 ps : File "/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/sim/verilog/event_history_kernel.autotb.v" Line 473
 ## quit
-INFO: [Common 17-206] Exiting xsim at Tue Jul 30 03:11:11 2024...
+INFO: [Common 17-206] Exiting xsim at Wed Jul 31 14:15:55 2024...

@@ -7,12 +7,12 @@ const Port_Property HLS_Design_Meta::port_props[]={
 	Port_Property("ap_idle", 1, hls_out, -1, "", "", 1),
 	Port_Property("ap_ready", 1, hls_out, -1, "", "", 1),
 	Port_Property("op", 2, hls_in, 0, "ap_none", "in_data", 1),
-	Port_Property("state", 96, hls_in, 1, "ap_none", "in_data", 1),
-	Port_Property("result_i", 80, hls_in, 2, "ap_vld", "in_data", 1),
-	Port_Property("result_o", 80, hls_out, 2, "ap_vld", "out_data", 1),
+	Port_Property("event_r", 160, hls_in, 1, "ap_none", "in_data", 1),
+	Port_Property("result_i", 129, hls_in, 2, "ap_vld", "in_data", 1),
+	Port_Property("result_o", 129, hls_out, 2, "ap_vld", "out_data", 1),
 	Port_Property("result_i_ap_vld", 1, hls_in, 2, "ap_vld", "in_vld", 1),
 	Port_Property("result_o_ap_vld", 1, hls_out, 2, "ap_vld", "out_vld", 1),
 	Port_Property("success", 1, hls_out, 3, "ap_vld", "out_data", 1),
 	Port_Property("success_ap_vld", 1, hls_out, 3, "ap_vld", "out_vld", 1),
 };
-const char* HLS_Design_Meta::dut_name = "state_buffer_kernel";
+const char* HLS_Design_Meta::dut_name = "event_history_kernel";
