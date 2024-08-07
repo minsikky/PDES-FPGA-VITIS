@@ -87,6 +87,11 @@ public:
         return true;
     }
 
+    LPState peek(ap_int<16> lp_id) const
+    {
+        return buffer[lp_heads[lp_id]].state;
+    }
+
     bool commit(ap_int<32> commit_time)
     {
         current_gvt = commit_time;
@@ -170,7 +175,7 @@ public:
             total_size -= removed;
             return true;
         }
-        return false;
+        return true;
     }
 
     ap_uint<16> get_lp_size(ap_int<16> lp_id) const

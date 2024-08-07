@@ -1,51 +1,28 @@
 #ifndef TIME_WARP_SIMULATION_HPP
 #define TIME_WARP_SIMULATION_HPP
 
-#include <sycl/sycl.hpp>
-#include <sycl/ext/intel/fpga_extensions.hpp>
 #include <vector>
 #include <queue>
 #include "constants.hpp"
 #include "LPCore.hpp"
 #include "EventQueue.hpp"
 
-using namespace sycl;
+// Forward declaration
+class LPCore;
 
 class TimeWarpSimulation {
 private:
-    std::arrayr<LPCore, NUM_LPCORE> lp_cores;
+    std::array<LPCore, NUM_LPCORE> lp_cores;
     int32_t gvt;
     int stall_count;
     static constexpr int MAX_STALL_COUNT = 1000;
 
 public:
-    // ... existing code ...
-
-    void run(queue& q) {
-        stall_count = 0;
-        while (!is_simulation_complete()) {
-            bool any_progress = false;
-            for (auto& core : lp_cores) {
-                bool core_progress = core.process_events(q);
-                any_progress |= core_progress;
-            }
-
-            if (!any_progress) {
-                stall_count++;
-                if (stall_count >= MAX_STALL_COUNT) {
-                    handle_persistent_stall();
-                }
-            } else {
-                stall_count = 0;
-            }
-
-            if (/* time to calculate GVT */) {
-                calculate_gvt();
-                fossil_collection();
-            }
-
-            // ... rest of the simulation loop ...
-        }
+    TimeWarpSimulation();
+    bool route_event(const TimeWarpEvent &event) {
+        int dest_lp_id = event.receiver_id;
+        int dest_core_id = LPMapping::get_core_id(dest_lp_id);
+        return lp_cores[dest_core_id].recv_event(event);
     }
 
 private:

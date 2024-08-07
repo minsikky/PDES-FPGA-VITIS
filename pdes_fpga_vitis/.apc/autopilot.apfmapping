@@ -6,8 +6,6 @@
     <originFiles name="StateBuffer.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.cpp"/>
     <originFiles name="EventQueue.hpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"/>
     <originFiles name="EventQueue.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp"/>
-    <originFiles name="EventHistory.hpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp"/>
-    <originFiles name="EventHistory.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.cpp"/>
   </source>
   <testbench>
     <originFiles name="main.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"/>

@@ -1,13 +1,16 @@
 #ifndef VIRTUAL_LP_HPP
 #define VIRTUAL_LP_HPP
 
-#include <sycl/sycl.hpp>
-#include <sycl/ext/intel/fpga_extensions.hpp>
+#include <ap_int.h>
+#include <hls_stream.h>
 #include <vector>
 #include <queue>
 #include "EventQueue.hpp"
 #include "StateBuffer.hpp"
-#include "OutputBuffer.hpp"
+#include "CancellationUnit.hpp"
+
+// Forward declaration
+class LPCore;
 
 // Simple xorshift random number generator
 uint32_t xorshift32(uint32_t &state)
@@ -23,26 +26,38 @@ uint32_t xorshift32(uint32_t &state)
 class VirtualLP
 {
 public:
+    int lp_id;
+    int lvt;
     LPState state;
-    EventQueue event_queue; // Event queue for this LP
+    LPCore *lpcore;
+
+    VirtualLP() {
+        lp_id = 0;
+        lvt = 0;
+        state = {0, 0, 0};
+        lpcore = nullptr;
+    }
 
     VirtualLP(int lp_id, uint32_t initial_rng_state) {
+        lp_id = lp_id;
+        lvt = 0;
         state = {lp_id, 0, initial_rng_state};
     }
 
-    bool enqueue_event(const TimeWarpEvent &event) {
-        return event_queue.enqueue(event);
+    bool process_event(TimeWarpEvent &event) {
+        lvt = event.recv_time;
     }
 
-    bool process_events() {
-        
+    bool assign_lpcore(LPCore *lpcore) {
+        this->lpcore = lpcore;
+        return true;
     }
 
-    void commit(int32_t gvt, StateBuffer &state_buffer, OutputBuffer &output_buffer, EventHistory &event_history)
+    void commit(int32_t gvt) // Probably bad idea to put commit in VirtualLP. Should put it in LPCore.
     {
-        state_buffer.commit(gvt);
-        output_buffer.commit(gvt);
-        event_history.commit(gvt);
+        lpcore->state_buffer.commit(gvt);
+        lpcore->event_history.commit(gvt);
+        lpcore->cancellation_unit.commit(gvt);
     }
 
     bool save_state(StateBuffer &state_buffer)
@@ -50,11 +65,11 @@ public:
         return state_buffer.push(state);
     }
 
-    bool rollback(int32_t to_time, StateBuffer &state_buffer, OutputBuffer &output_buffer, EventHistory &event_history, EventQueue &event_queue) {
-        state_buffer.rollback(state.lp_id, to_time);
-        state = state_buffer.peek(state.lp_id);
-        output_buffer.rollback(state.lp_id, to_time);
-        event_history.rollback(state.lp_id, to_time, event_queue);
+    bool rollback(int32_t to_time) {
+        lpcore->state_buffer.rollback(state.lp_id, to_time);
+        state = lpcore->state_buffer.peek(state.lp_id);
+        lpcore->event_history.rollback(state.lp_id, to_time, lpcore->event_queue);
+        lpcore->cancellation_unit.rollback(state.lp_id, to_time);
     }
 };
 

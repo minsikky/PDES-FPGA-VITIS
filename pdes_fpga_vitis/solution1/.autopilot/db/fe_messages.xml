@@ -8,93 +8,6 @@
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:33:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="siftUp" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:55:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="siftDown" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:81:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="enqueue" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:93:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="dequeue" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:109:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="peek" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:115:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="empty" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:121:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="is_full" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csynth.tcl:21:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaContext="directive" ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=event_history_kernel" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventHistory.cpp:6:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventHistory.cpp:7:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port=op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventHistory.cpp:8:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port=event" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventHistory.cpp:9:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=result" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventHistory.cpp:10:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_history_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:33:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="siftUp" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:55:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="siftDown" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:81:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="enqueue" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:93:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="dequeue" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:109:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="peek" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:115:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="empty" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:121:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="is_full" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:11:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=input" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:12:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=output_event" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:13:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:7:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
@@ -110,29 +23,74 @@
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:11:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:82:6" msg_body="Inlining function 'EventQueue::is_full(ap_uint&lt;1&gt;) const' into 'EventQueue::enqueue(TimeWarpEvent const&amp;)'">
-        <args Callee="EventQueue::is_full(ap_uint&lt;1&gt;) const" Caller="EventQueue::enqueue(TimeWarpEvent const&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:86:9" msg_body="Inlining function 'EventQueue::siftUp(ap_uint&lt;16&gt;)' into 'EventQueue::enqueue(TimeWarpEvent const&amp;)'">
-        <args Callee="EventQueue::siftUp(ap_uint&lt;16&gt;)" Caller="EventQueue::enqueue(TimeWarpEvent const&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="cpp/EventHistory.hpp:136:29" msg_body="Inlining function 'EventQueue::enqueue(TimeWarpEvent const&amp;)' into 'EventHistory::rollback(ap_uint&lt;16&gt;, ap_int&lt;32&gt;, EventQueue&amp;)'">
-        <args Callee="EventQueue::enqueue(TimeWarpEvent const&amp;)" Caller="EventHistory::rollback(ap_uint&lt;16&gt;, ap_int&lt;32&gt;, EventQueue&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventHistory.cpp:5:0" msg_body="Inlining function 'EventHistory::push(TimeWarpEvent const&amp;)' into 'event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)'">
-        <args Callee="EventHistory::push(TimeWarpEvent const&amp;)" Caller="event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:193:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="enqueue" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventHistory.cpp:5:0" msg_body="Inlining function 'EventHistory::pop(ap_int&lt;16&gt;, TimeWarpEvent&amp;)' into 'event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)'">
-        <args Callee="EventHistory::pop(ap_int&lt;16&gt;, TimeWarpEvent&amp;)" Caller="event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:304:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="commit" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventHistory.cpp:5:0" msg_body="Inlining function 'EventHistory::commit(ap_int&lt;32&gt;)' into 'event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)'">
-        <args Callee="EventHistory::commit(ap_int&lt;32&gt;)" Caller="event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.hpp:332:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="rollback" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable = buffer inter false" ARG_PragmaType="dependence" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventHistory.cpp:5:0" msg_body="Inlining function 'EventHistory::get_gvt() const' into 'event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)'">
-        <args Callee="EventHistory::get_gvt() const" Caller="event_history_kernel(ap_uint&lt;2&gt;, TimeWarpEvent, TimeWarpEvent&amp;, bool&amp;)"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csynth.tcl:19:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=event_queue_kernel" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/EventHistory.cpp:5:0" msg_body="Aggregating scalar variable 'result' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="scalar" Name="result"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_chain port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:26:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:27:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=event" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:28:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=lp_id" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:29:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=time" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:30:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=result_entry" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/EventQueue.cpp:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="event_queue_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port=success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:299:0" msg_body="Unrolling loop 'VITIS_LOOP_302_1' (cpp/EventQueue.hpp:302:27) in function 'EventQueue::commit' completely with a factor of 4">
+        <args Factor="4" LoopLoc="cpp/EventQueue.hpp:302:27" LoopName="VITIS_LOOP_302_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:222:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent()' into 'EventQueue::dequeue()'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent()" Caller="EventQueue::dequeue()"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'EventQueue::enqueue(TimeWarpEvent const&amp;)' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="EventQueue::enqueue(TimeWarpEvent const&amp;)" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent()' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent()" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'EventQueue::dequeue()' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="EventQueue::dequeue()" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'EventQueue::issue(TimeWarpEvent&amp;)' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="EventQueue::issue(TimeWarpEvent&amp;)" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'EventQueue::commit(ap_int&lt;32&gt;)' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="EventQueue::commit(ap_int&lt;32&gt;)" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Inlining function 'EventQueue::rollback(ap_int&lt;16&gt;, ap_int&lt;32&gt;)' into 'event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)'">
+        <args Callee="EventQueue::rollback(ap_int&lt;16&gt;, ap_int&lt;32&gt;)" Caller="event_queue_kernel(ap_uint&lt;3&gt;, TimeWarpEvent, ap_int&lt;16&gt;, ap_int&lt;32&gt;, EventQueueEntry&amp;, bool&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:24:0" msg_body="Aggregating scalar variable 'result_entry' with compact=bit mode in 146-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="146" HwTyName="scalar" Name="result_entry"/>
     </msg>
 </xilinx:hls_fe_msgs>
 

@@ -81,9 +81,11 @@ proc check_tvin_file {} {
 		puts stdout "[debug_prompt arg check_sim.tcl] start...";
 	}
     set rtlfilelist {
-         "c.event_history_kernel.autotvin_op.dat"
-         "c.event_history_kernel.autotvin_event_r.dat"
-         "c.event_history_kernel.autotvin_result.dat"
+         "c.event_queue_kernel.autotvin_op.dat"
+         "c.event_queue_kernel.autotvin_event_r.dat"
+         "c.event_queue_kernel.autotvin_lp_id.dat"
+         "c.event_queue_kernel.autotvin_time_r.dat"
+         "c.event_queue_kernel.autotvin_result_entry.dat"
     }
     foreach rtlfile $rtlfilelist {
         if {[file isfile $rtlfile]} {
@@ -103,8 +105,8 @@ proc check_tvout_file {} {
 		puts stdout "[debug_prompt arg check_sim.tcl] start...";
 	}
     set rtlfilelist {
-         "rtl.event_history_kernel.autotvout_result.dat"
-         "rtl.event_history_kernel.autotvout_success.dat"
+         "rtl.event_queue_kernel.autotvout_result_entry.dat"
+         "rtl.event_queue_kernel.autotvout_success.dat"
     }
     foreach rtlfile $rtlfilelist {
         if {[file isfile $rtlfile]} {

@@ -1,4 +1,9 @@
 #include "LPCore.hpp"
+#include "TimeWarpSimulation.hpp"
+
+bool LPCore::send_event(const TimeWarpEvent &event) {
+    return simulation->route_event(event);
+}
 
 TimeWarpEvent generate_new_event(VirtualLP &current_lp)
 {

@@ -88403,10 +88403,10 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 # 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp"
-constexpr int NUM_LPS = 64;
+constexpr int NUM_LPS = 4;
 
 
-constexpr int NUM_LPCORE = 4;
+constexpr int NUM_LPCORE = 2;
 
 
 static constexpr int EVENT_QUEUE_CAPACITY = 128;
@@ -88420,6 +88420,9 @@ static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
+
+
+static constexpr int CANCELLATION_UNIT_CAPACITY = 64;
 # 11 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 
 struct TimeWarpEvent
@@ -88430,113 +88433,394 @@ struct TimeWarpEvent
     ap_int<16> sender_id;
     ap_int<16> receiver_id;
     ap_uint<1> is_anti_message;
+
+
+    TimeWarpEvent() : send_time(0), recv_time(
+# 22 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                             (2147483647)
+# 22 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                                      ), data(0), sender_id(0), receiver_id(0), is_anti_message(0) {}
+
+
+    TimeWarpEvent(ap_int<32> st, ap_int<32> rt, ap_int<32> d, ap_int<16> sid, ap_int<16> rid, ap_uint<1> iam)
+        : send_time(st), recv_time(rt), data(d), sender_id(sid), receiver_id(rid), is_anti_message(iam) {}
+
+
+    bool operator<(const TimeWarpEvent &other) const
+    {
+
+        if (recv_time != other.recv_time)
+        {
+            return recv_time < other.recv_time;
+        }
+
+
+        if (send_time != other.send_time)
+        {
+            return send_time < other.send_time;
+        }
+
+
+        if (sender_id != other.sender_id)
+        {
+            return sender_id < other.sender_id;
+        }
+
+
+        if (receiver_id != other.receiver_id)
+        {
+            return receiver_id < other.receiver_id;
+        }
+
+
+        if (data != other.data)
+        {
+            return data < other.data;
+        }
+
+
+        return !is_anti_message && other.is_anti_message;
+    }
+
+
+    bool operator==(const TimeWarpEvent &other) const
+    {
+        return (send_time == other.send_time &&
+                recv_time == other.recv_time &&
+                data == other.data &&
+                sender_id == other.sender_id &&
+                receiver_id == other.receiver_id &&
+                is_anti_message == other.is_anti_message);
+    }
+
+
+    bool operator!=(const TimeWarpEvent &other) const
+    {
+        return (send_time != other.send_time ||
+                recv_time != other.recv_time ||
+                data != other.data ||
+                sender_id != other.sender_id ||
+                receiver_id != other.receiver_id ||
+                is_anti_message != other.is_anti_message);
+    }
+
+    bool is_matching_anti_message(const TimeWarpEvent &other) const
+    {
+        return (send_time == other.recv_time &&
+                recv_time == other.send_time &&
+                data == other.data &&
+                sender_id == other.receiver_id &&
+                receiver_id == other.sender_id &&
+                is_anti_message != other.is_anti_message);
+    }
+};
+
+struct EventQueueEntry
+{
+    TimeWarpEvent event;
+    ap_uint<1> is_issued;
+    ap_uint<16> next;
+};
+
+struct DebugInfo
+{
+    ap_uint<16> size;
+    ap_uint<16> unissued_size;
+    ap_int<32> current_gvt;
+    ap_uint<16> free_head;
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_tails[NUM_LPS];
+    ap_uint<16> lp_oldest_unissued[NUM_LPS];
 };
 
 class EventQueue
 {
-private:
-    TimeWarpEvent heap[EVENT_QUEUE_CAPACITY];
+public:
+    EventQueueEntry buffer[EVENT_QUEUE_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_tails[NUM_LPS];
+    ap_uint<16> lp_oldest_unissued[NUM_LPS];
+    ap_uint<16> free_head;
+    ap_uint<16> unissued_size;
     ap_uint<16> size;
+    ap_int<32> current_gvt;
 
 public:
-    EventQueue() : size(0) {}
-
-    void siftUp(ap_uint<16> index)
+    EventQueue() : size(0), unissued_size(0), current_gvt(0), free_head(0)
     {
-#pragma HLS INLINE
-        TimeWarpEvent temp = heap[index];
-        for (int i = 0; i < EVENT_QUEUE_CAPACITY; i++)
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
         {
-            if (index == 0)
-                break;
-            ap_uint<16> parent = (index - 1) / 2;
-            if (temp.recv_time < heap[parent].recv_time)
-            {
-                heap[index] = heap[parent];
-                index = parent;
-            }
-            else
-            {
-                break;
-            }
+            lp_heads[i] = 0xFFFF;
+            lp_tails[i] = 0xFFFF;
+            lp_oldest_unissued[i] = 0xFFFF;
         }
-        heap[index] = temp;
+        reset();
     }
 
-    void siftDown(ap_uint<16> index)
+    void reset()
     {
-#pragma HLS INLINE
-        TimeWarpEvent temp = heap[index];
-        while (true)
+        size = 0;
+        unissued_size = 0;
+        current_gvt = 0;
+        free_head = 0;
+
+        for (ap_uint<16> i = 0; i < EVENT_QUEUE_CAPACITY - 1; ++i)
         {
-            ap_uint<16> child = 2 * index + 1;
-            if (child >= size)
-                break;
-            if (child + 1 < size && heap[child + 1].recv_time < heap[child].recv_time)
-            {
-                child++;
-            }
-            if (heap[child].recv_time < temp.recv_time)
-            {
-                heap[index] = heap[child];
-                index = child;
-            }
-            else
-            {
-                break;
-            }
+            buffer[i].next = i + 1;
         }
-        heap[index] = temp;
+        buffer[EVENT_QUEUE_CAPACITY - 1].next = 0xFFFF;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        {
+            lp_heads[i] = 0xFFFF;
+            lp_tails[i] = 0xFFFF;
+            lp_oldest_unissued[i] = 0xFFFF;
+        }
     }
 
     bool enqueue(const TimeWarpEvent &event)
     {
-#pragma HLS INLINE
-        if (is_full(event.is_anti_message))
+        if (size >= EVENT_QUEUE_CAPACITY)
             return false;
 
-        heap[size] = event;
-        siftUp(size);
+        ap_uint<16> new_entry = free_head;
+        free_head = buffer[free_head].next;
+
+        buffer[new_entry].event = event;
+        buffer[new_entry].is_issued = 0;
+        buffer[new_entry].next = 0xFFFF;
+
+        ap_uint<16> lp_id = event.receiver_id;
+
+        if (lp_oldest_unissued[lp_id] == 0xFFFF ||
+            buffer[new_entry].event.recv_time < buffer[lp_oldest_unissued[lp_id]].event.recv_time)
+        {
+            lp_oldest_unissued[lp_id] = new_entry;
+        }
+
+        if (lp_heads[lp_id] == 0xFFFF)
+        {
+            lp_heads[lp_id] = new_entry;
+            lp_tails[lp_id] = new_entry;
+        }
+        else
+        {
+            ap_uint<16> current = lp_heads[lp_id];
+            ap_uint<16> prev = 0xFFFF;
+
+            while (current != 0xFFFF && buffer[current].event.recv_time <= event.recv_time)
+            {
+#pragma HLS PIPELINE off
+                prev = current;
+                current = buffer[current].next;
+            }
+
+            if (prev == 0xFFFF)
+            {
+                buffer[new_entry].next = lp_heads[lp_id];
+                lp_heads[lp_id] = new_entry;
+            }
+            else
+            {
+                buffer[new_entry].next = buffer[prev].next;
+                buffer[prev].next = new_entry;
+
+                if (prev == lp_tails[lp_id])
+                {
+                    lp_tails[lp_id] = new_entry;
+                }
+            }
+        }
+
+        unissued_size++;
         size++;
+
         return true;
     }
 
-    TimeWarpEvent dequeue()
+    EventQueueEntry dequeue()
     {
-#pragma HLS INLINE
-        if (empty())
-            return TimeWarpEvent{
-# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
-                                (2147483647)
-# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
-                                         , 0, 0, 0, 0, 0};
+        if (size == 0)
+            return EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
 
-        TimeWarpEvent top = heap[0];
-        size--;
-        if (size > 0)
+        ap_uint<16> earliest_lp = 0;
+        ap_int<32> earliest_time = 
+# 227 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                  (2147483647)
+# 227 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                           ;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
         {
-            heap[0] = heap[size];
-            siftDown(0);
+            if (lp_heads[i] != 0xFFFF && buffer[lp_heads[i]].event.recv_time < earliest_time)
+            {
+                earliest_lp = i;
+                earliest_time = buffer[lp_heads[i]].event.recv_time;
+            }
         }
-        return top;
+
+        ap_uint<16> dequeue_entry = lp_heads[earliest_lp];
+        EventQueueEntry result = buffer[dequeue_entry];
+
+        lp_heads[earliest_lp] = buffer[dequeue_entry].next;
+        if (lp_heads[earliest_lp] == 0xFFFF)
+        {
+            lp_tails[earliest_lp] = 0xFFFF;
+        }
+
+        if (!buffer[dequeue_entry].is_issued)
+        {
+            lp_oldest_unissued[earliest_lp] = buffer[dequeue_entry].next;
+            unissued_size--;
+        }
+
+        buffer[dequeue_entry].next = free_head;
+        free_head = dequeue_entry;
+
+        size--;
+
+        return result;
     }
 
-    TimeWarpEvent peek() const
+    bool issue(TimeWarpEvent &event)
     {
-#pragma HLS INLINE
-        return heap[0];
+        if (unissued_size == 0)
+            return false;
+
+        ap_uint<16> earliest_lp = 0;
+        ap_int<32> earliest_time = 
+# 267 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                  (2147483647)
+# 267 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                           ;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        {
+            if (lp_oldest_unissued[i] == 0xFFFF)
+            {
+                continue;
+            }
+            else
+            {
+                if (buffer[lp_oldest_unissued[i]].event.recv_time < earliest_time)
+                {
+                    earliest_lp = i;
+                    earliest_time = buffer[lp_oldest_unissued[i]].event.recv_time;
+                }
+            }
+        }
+
+        ap_uint<16> issue_entry = lp_oldest_unissued[earliest_lp];
+        event = buffer[issue_entry].event;
+        EventQueueEntry &entry = buffer[issue_entry];
+        buffer[issue_entry].is_issued = 1;
+
+
+        lp_oldest_unissued[earliest_lp] = buffer[issue_entry].next;
+
+        unissued_size--;
+
+        return true;
     }
 
-    bool empty() const
+    bool commit(ap_int<32> commit_time)
     {
-#pragma HLS INLINE
-        return size == 0;
+        current_gvt = commit_time;
+
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        {
+#pragma HLS UNROLL
+            while (lp_heads[lp_id] != 0xFFFF &&
+                   buffer[lp_heads[lp_id]].event.recv_time <= commit_time)
+            {
+                ap_uint<16> commit_entry = lp_heads[lp_id];
+                lp_heads[lp_id] = buffer[commit_entry].next;
+
+                buffer[commit_entry].next = free_head;
+                free_head = commit_entry;
+
+                size--;
+
+                if (lp_heads[lp_id] == 0xFFFF)
+                {
+                    lp_tails[lp_id] = 0xFFFF;
+                }
+            }
+        }
+
+        return true;
     }
 
-    bool is_full(ap_uint<1> is_anti_message) const
+    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
     {
-#pragma HLS INLINE
-        return size >= (EVENT_QUEUE_CAPACITY - (ANTI_MSG_RESERVE & ~is_anti_message));
+        ap_uint<16> current = lp_heads[lp_id];
+
+        while (current != 0xFFFF)
+        {
+#pragma HLS DEPENDENCE variable = buffer inter false
+            if (buffer[current].event.recv_time > to_time && buffer[current].is_issued)
+            {
+                buffer[current].is_issued = 0;
+                unissued_size++;
+                if (lp_oldest_unissued[lp_id] == 0xFFFF || buffer[lp_oldest_unissued[lp_id]].event.recv_time > buffer[current].event.recv_time)
+                {
+                    lp_oldest_unissued[lp_id] = current;
+                }
+            }
+            current = buffer[current].next;
+        }
+
+        return true;
+    }
+
+    ap_uint<16> get_size() const
+    {
+        return size;
+    }
+
+    ap_int<32> get_gvt() const
+    {
+        return current_gvt;
+    }
+
+    void print_event_queue() const
+    {
+        std::cout << "Event Queue State:" << std::endl;
+        std::cout << "Total size: " << size << std::endl;
+        std::cout << "Current GVT: " << current_gvt << std::endl;
+
+        for (ap_uint<16> lp = 0; lp < NUM_LPS; ++lp)
+        {
+            std::cout << "\nLP " << lp << " (Head: " << lp_heads[lp]
+                      << ", Tail: " << lp_tails[lp]
+                      << ", Oldest Unissued: " << lp_oldest_unissued[lp] << "):" << std::endl;
+
+            if (lp_heads[lp] == 0xFFFF)
+            {
+                std::cout << "  Empty" << std::endl;
+                continue;
+            }
+
+            ap_uint<16> current = lp_heads[lp];
+            ap_uint<16> count = 0;
+            while (current != 0xFFFF)
+            {
+                const EventQueueEntry &entry = buffer[current];
+                std::cout << "  [" << count << "] Index: " << current << "; ";
+                std::cout << "      Event: "
+                          << "recv_time=" << entry.event.recv_time << ", "
+                          << "receiver_id=" << entry.event.receiver_id << "; ";
+                std::cout << "      is_issued: " << entry.is_issued << "; ";
+                std::cout << "      next: " << entry.next << std::endl;
+
+                current = entry.next;
+                count++;
+            }
+        }
+
+        std::cout << "\nFree list head: " << free_head << std::endl
+                  << std::endl;
+        ;
     }
 };
 
@@ -88546,9 +88830,7 @@ struct EventQueueInput
     TimeWarpEvent event;
 };
 
-void event_queue_kernel(EventQueueInput &input, TimeWarpEvent &output_event, bool &success);
-
-void run_event_queue_kernel(const TimeWarpEvent input_events[NUM_EVENTS], TimeWarpEvent output_events[NUM_EVENTS], int &output_size);
+void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, TimeWarpEvent &result_event, bool &success);
 
 int test_event_queue();
 # 2 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
@@ -88643,6 +88925,11 @@ public:
         return true;
     }
 
+    LPState peek(ap_int<16> lp_id) const
+    {
+        return buffer[lp_heads[lp_id]].state;
+    }
+
     bool commit(ap_int<32> commit_time)
     {
         current_gvt = commit_time;
@@ -88726,7 +89013,7 @@ public:
             total_size -= removed;
             return true;
         }
-        return false;
+        return true;
     }
 
     ap_uint<16> get_lp_size(ap_int<16> lp_id) const
@@ -88750,187 +89037,10 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 int test_state_buffer();
 # 3 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
-# 1 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp" 1
-
-
-
-# 1 "/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/include/ap_int.h" 1
-# 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp" 2
-
-
-
-
-struct HistoryEntry
-{
-    TimeWarpEvent event;
-    ap_uint<16> next;
-};
-
-class EventHistory
-{
-private:
-    HistoryEntry buffer[EVENT_HISTORY_CAPACITY];
-    ap_uint<16> lp_heads[NUM_LPS];
-    ap_uint<16> lp_sizes[NUM_LPS];
-    ap_uint<16> free_head;
-    ap_uint<16> total_size;
-    ap_int<32> current_gvt;
-
-public:
-    EventHistory()
-    {
-        reset();
-    }
-
-    void reset()
-    {
-        free_head = 0;
-        total_size = 0;
-        current_gvt = 0;
-
-        for (ap_uint<16> i = 0; i < EVENT_HISTORY_CAPACITY - 1; ++i)
-        {
-            buffer[i].next = i + 1;
-        }
-        buffer[EVENT_HISTORY_CAPACITY - 1].next = 0xFFFF;
-
-        for (ap_uint<16> i = 0; i < NUM_LPS / NUM_LPCORE; ++i)
-        {
-            lp_heads[i] = 0xFFFF;
-            lp_sizes[i] = 0;
-        }
-    }
-
-    bool push(const TimeWarpEvent &event)
-    {
-        if (total_size >= STATE_BUFFER_CAPACITY)
-            return false;
-
-        ap_uint<16> new_HistoryEntry = free_head;
-        free_head = buffer[free_head].next;
-
-        buffer[new_HistoryEntry].event = event;
-        buffer[new_HistoryEntry].next = lp_heads[event.receiver_id];
-        lp_heads[event.receiver_id] = new_HistoryEntry;
-
-        lp_sizes[event.receiver_id]++;
-        total_size++;
-        return true;
-    }
-
-    bool pop(ap_int<16> lp_id, TimeWarpEvent &event)
-    {
-        if (lp_sizes[lp_id] == 0)
-            return false;
-
-        ap_uint<16> popped = lp_heads[lp_id];
-        event = buffer[popped].event;
-        lp_heads[lp_id] = buffer[popped].next;
-
-        buffer[popped].next = free_head;
-        free_head = popped;
-
-        lp_sizes[lp_id]--;
-        total_size--;
-        return true;
-    }
-
-    bool commit(ap_int<32> commit_time)
-    {
-        current_gvt = commit_time;
-        ap_uint<16> removed = 0;
-
-        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
-        {
-            ap_uint<16> current = lp_heads[lp_id];
-            ap_uint<16> prev = 0xFFFF;
-
-            while (current != 0xFFFF)
-            {
-                ap_uint<16> next = buffer[current].next;
-
-                if (buffer[current].event.recv_time <= commit_time)
-                {
-
-                    if (prev == 0xFFFF)
-                    {
-                        lp_heads[lp_id] = next;
-                    }
-                    else
-                    {
-                        buffer[prev].next = next;
-                    }
-
-                    buffer[current].next = free_head;
-                    free_head = current;
-
-                    removed++;
-                    lp_sizes[lp_id]--;
-                    current = next;
-                }
-                else
-                {
-
-                    prev = current;
-                    current = next;
-                }
-            }
-        }
-
-        total_size -= removed;
-        return true;
-    }
-
-    bool rollback(ap_uint<16> lp_id, ap_int<32> to_time, EventQueue &event_queue)
-    {
-        ap_uint<16> current = lp_heads[lp_id];
-
-        while (current != 0xFFFF && buffer[current].event.recv_time > to_time)
-        {
-            if (event_queue.enqueue(buffer[current].event))
-            {
-                ap_uint<16> next = buffer[current].next;
-                lp_heads[lp_id] = next;
-                buffer[current].next = free_head;
-                free_head = current;
-                lp_sizes[lp_id] --;
-                total_size --;
-                current = next;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    ap_uint<16> get_lp_size(ap_int<16> lp_id) const
-    {
-        return lp_sizes[lp_id];
-    }
-
-    ap_uint<16> get_total_size() const
-    {
-        return total_size;
-    }
-
-    ap_int<32> get_gvt() const
-    {
-        return current_gvt;
-    }
-};
-
-
-void event_history_kernel(ap_uint<2> op, TimeWarpEvent event, TimeWarpEvent &result, bool &success);
-
-int test_event_history();
-# 4 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp" 2
 
 int main() {
 
+    int event_queue_passed = test_event_queue();
 
- int event_history_passed = test_event_history();
-    return event_history_passed;
+    return event_queue_passed;
 }

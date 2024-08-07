@@ -5,8 +5,9 @@
         logic [FSM_WIDTH-1:0] cur_state;
         logic pre_states_valid;
         logic [FSM_WIDTH-1:0] pre_loop_state0;
-        logic post_states_valid;
+        logic [1:0] post_states_valid;
         logic [FSM_WIDTH-1:0] post_loop_state0;
+        logic [FSM_WIDTH-1:0] post_loop_state1;
         logic quit_states_valid;
         logic [FSM_WIDTH-1:0] quit_loop_state0;
         logic [FSM_WIDTH-1:0] loop_quit_state;

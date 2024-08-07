@@ -88398,10 +88398,10 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 # 5 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/constants.hpp"
-constexpr int NUM_LPS = 64;
+constexpr int NUM_LPS = 4;
 
 
-constexpr int NUM_LPCORE = 4;
+constexpr int NUM_LPCORE = 2;
 
 
 static constexpr int EVENT_QUEUE_CAPACITY = 128;
@@ -88415,6 +88415,9 @@ static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
+
+
+static constexpr int CANCELLATION_UNIT_CAPACITY = 64;
 # 11 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 2
 
 struct TimeWarpEvent
@@ -88425,113 +88428,394 @@ struct TimeWarpEvent
     ap_int<16> sender_id;
     ap_int<16> receiver_id;
     ap_uint<1> is_anti_message;
+
+
+    TimeWarpEvent() : send_time(0), recv_time(
+# 22 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                             (2147483647)
+# 22 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                                      ), data(0), sender_id(0), receiver_id(0), is_anti_message(0) {}
+
+
+    TimeWarpEvent(ap_int<32> st, ap_int<32> rt, ap_int<32> d, ap_int<16> sid, ap_int<16> rid, ap_uint<1> iam)
+        : send_time(st), recv_time(rt), data(d), sender_id(sid), receiver_id(rid), is_anti_message(iam) {}
+
+
+    bool operator<(const TimeWarpEvent &other) const
+    {
+
+        if (recv_time != other.recv_time)
+        {
+            return recv_time < other.recv_time;
+        }
+
+
+        if (send_time != other.send_time)
+        {
+            return send_time < other.send_time;
+        }
+
+
+        if (sender_id != other.sender_id)
+        {
+            return sender_id < other.sender_id;
+        }
+
+
+        if (receiver_id != other.receiver_id)
+        {
+            return receiver_id < other.receiver_id;
+        }
+
+
+        if (data != other.data)
+        {
+            return data < other.data;
+        }
+
+
+        return !is_anti_message && other.is_anti_message;
+    }
+
+
+    bool operator==(const TimeWarpEvent &other) const
+    {
+        return (send_time == other.send_time &&
+                recv_time == other.recv_time &&
+                data == other.data &&
+                sender_id == other.sender_id &&
+                receiver_id == other.receiver_id &&
+                is_anti_message == other.is_anti_message);
+    }
+
+
+    bool operator!=(const TimeWarpEvent &other) const
+    {
+        return (send_time != other.send_time ||
+                recv_time != other.recv_time ||
+                data != other.data ||
+                sender_id != other.sender_id ||
+                receiver_id != other.receiver_id ||
+                is_anti_message != other.is_anti_message);
+    }
+
+    bool is_matching_anti_message(const TimeWarpEvent &other) const
+    {
+        return (send_time == other.recv_time &&
+                recv_time == other.send_time &&
+                data == other.data &&
+                sender_id == other.receiver_id &&
+                receiver_id == other.sender_id &&
+                is_anti_message != other.is_anti_message);
+    }
+};
+
+struct EventQueueEntry
+{
+    TimeWarpEvent event;
+    ap_uint<1> is_issued;
+    ap_uint<16> next;
+};
+
+struct DebugInfo
+{
+    ap_uint<16> size;
+    ap_uint<16> unissued_size;
+    ap_int<32> current_gvt;
+    ap_uint<16> free_head;
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_tails[NUM_LPS];
+    ap_uint<16> lp_oldest_unissued[NUM_LPS];
 };
 
 class EventQueue
 {
-private:
-    TimeWarpEvent heap[EVENT_QUEUE_CAPACITY];
+public:
+    EventQueueEntry buffer[EVENT_QUEUE_CAPACITY];
+    ap_uint<16> lp_heads[NUM_LPS];
+    ap_uint<16> lp_tails[NUM_LPS];
+    ap_uint<16> lp_oldest_unissued[NUM_LPS];
+    ap_uint<16> free_head;
+    ap_uint<16> unissued_size;
     ap_uint<16> size;
+    ap_int<32> current_gvt;
 
 public:
-    EventQueue() : size(0) {}
-
-    void siftUp(ap_uint<16> index)
+    EventQueue() : size(0), unissued_size(0), current_gvt(0), free_head(0)
     {
-#pragma HLS INLINE
-        TimeWarpEvent temp = heap[index];
-        for (int i = 0; i < EVENT_QUEUE_CAPACITY; i++)
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
         {
-            if (index == 0)
-                break;
-            ap_uint<16> parent = (index - 1) / 2;
-            if (temp.recv_time < heap[parent].recv_time)
-            {
-                heap[index] = heap[parent];
-                index = parent;
-            }
-            else
-            {
-                break;
-            }
+            lp_heads[i] = 0xFFFF;
+            lp_tails[i] = 0xFFFF;
+            lp_oldest_unissued[i] = 0xFFFF;
         }
-        heap[index] = temp;
+        reset();
     }
 
-    void siftDown(ap_uint<16> index)
+    void reset()
     {
-#pragma HLS INLINE
-        TimeWarpEvent temp = heap[index];
-        while (true)
+        size = 0;
+        unissued_size = 0;
+        current_gvt = 0;
+        free_head = 0;
+
+        for (ap_uint<16> i = 0; i < EVENT_QUEUE_CAPACITY - 1; ++i)
         {
-            ap_uint<16> child = 2 * index + 1;
-            if (child >= size)
-                break;
-            if (child + 1 < size && heap[child + 1].recv_time < heap[child].recv_time)
-            {
-                child++;
-            }
-            if (heap[child].recv_time < temp.recv_time)
-            {
-                heap[index] = heap[child];
-                index = child;
-            }
-            else
-            {
-                break;
-            }
+            buffer[i].next = i + 1;
         }
-        heap[index] = temp;
+        buffer[EVENT_QUEUE_CAPACITY - 1].next = 0xFFFF;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        {
+            lp_heads[i] = 0xFFFF;
+            lp_tails[i] = 0xFFFF;
+            lp_oldest_unissued[i] = 0xFFFF;
+        }
     }
 
     bool enqueue(const TimeWarpEvent &event)
     {
-#pragma HLS INLINE
-        if (is_full(event.is_anti_message))
+        if (size >= EVENT_QUEUE_CAPACITY)
             return false;
 
-        heap[size] = event;
-        siftUp(size);
+        ap_uint<16> new_entry = free_head;
+        free_head = buffer[free_head].next;
+
+        buffer[new_entry].event = event;
+        buffer[new_entry].is_issued = 0;
+        buffer[new_entry].next = 0xFFFF;
+
+        ap_uint<16> lp_id = event.receiver_id;
+
+        if (lp_oldest_unissued[lp_id] == 0xFFFF ||
+            buffer[new_entry].event.recv_time < buffer[lp_oldest_unissued[lp_id]].event.recv_time)
+        {
+            lp_oldest_unissued[lp_id] = new_entry;
+        }
+
+        if (lp_heads[lp_id] == 0xFFFF)
+        {
+            lp_heads[lp_id] = new_entry;
+            lp_tails[lp_id] = new_entry;
+        }
+        else
+        {
+            ap_uint<16> current = lp_heads[lp_id];
+            ap_uint<16> prev = 0xFFFF;
+
+            while (current != 0xFFFF && buffer[current].event.recv_time <= event.recv_time)
+            {
+#pragma HLS PIPELINE off
+                prev = current;
+                current = buffer[current].next;
+            }
+
+            if (prev == 0xFFFF)
+            {
+                buffer[new_entry].next = lp_heads[lp_id];
+                lp_heads[lp_id] = new_entry;
+            }
+            else
+            {
+                buffer[new_entry].next = buffer[prev].next;
+                buffer[prev].next = new_entry;
+
+                if (prev == lp_tails[lp_id])
+                {
+                    lp_tails[lp_id] = new_entry;
+                }
+            }
+        }
+
+        unissued_size++;
         size++;
+
         return true;
     }
 
-    TimeWarpEvent dequeue()
+    EventQueueEntry dequeue()
     {
-#pragma HLS INLINE
-        if (empty())
-            return TimeWarpEvent{
-# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
-                                (2147483647)
-# 95 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
-                                         , 0, 0, 0, 0, 0};
+        if (size == 0)
+            return EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
 
-        TimeWarpEvent top = heap[0];
-        size--;
-        if (size > 0)
+        ap_uint<16> earliest_lp = 0;
+        ap_int<32> earliest_time = 
+# 227 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                  (2147483647)
+# 227 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                           ;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
         {
-            heap[0] = heap[size];
-            siftDown(0);
+            if (lp_heads[i] != 0xFFFF && buffer[lp_heads[i]].event.recv_time < earliest_time)
+            {
+                earliest_lp = i;
+                earliest_time = buffer[lp_heads[i]].event.recv_time;
+            }
         }
-        return top;
+
+        ap_uint<16> dequeue_entry = lp_heads[earliest_lp];
+        EventQueueEntry result = buffer[dequeue_entry];
+
+        lp_heads[earliest_lp] = buffer[dequeue_entry].next;
+        if (lp_heads[earliest_lp] == 0xFFFF)
+        {
+            lp_tails[earliest_lp] = 0xFFFF;
+        }
+
+        if (!buffer[dequeue_entry].is_issued)
+        {
+            lp_oldest_unissued[earliest_lp] = buffer[dequeue_entry].next;
+            unissued_size--;
+        }
+
+        buffer[dequeue_entry].next = free_head;
+        free_head = dequeue_entry;
+
+        size--;
+
+        return result;
     }
 
-    TimeWarpEvent peek() const
+    bool issue(TimeWarpEvent &event)
     {
-#pragma HLS INLINE
-        return heap[0];
+        if (unissued_size == 0)
+            return false;
+
+        ap_uint<16> earliest_lp = 0;
+        ap_int<32> earliest_time = 
+# 267 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp" 3 4
+                                  (2147483647)
+# 267 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"
+                                           ;
+
+        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
+        {
+            if (lp_oldest_unissued[i] == 0xFFFF)
+            {
+                continue;
+            }
+            else
+            {
+                if (buffer[lp_oldest_unissued[i]].event.recv_time < earliest_time)
+                {
+                    earliest_lp = i;
+                    earliest_time = buffer[lp_oldest_unissued[i]].event.recv_time;
+                }
+            }
+        }
+
+        ap_uint<16> issue_entry = lp_oldest_unissued[earliest_lp];
+        event = buffer[issue_entry].event;
+        EventQueueEntry &entry = buffer[issue_entry];
+        buffer[issue_entry].is_issued = 1;
+
+
+        lp_oldest_unissued[earliest_lp] = buffer[issue_entry].next;
+
+        unissued_size--;
+
+        return true;
     }
 
-    bool empty() const
+    bool commit(ap_int<32> commit_time)
     {
-#pragma HLS INLINE
-        return size == 0;
+        current_gvt = commit_time;
+
+        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
+        {
+#pragma HLS UNROLL
+            while (lp_heads[lp_id] != 0xFFFF &&
+                   buffer[lp_heads[lp_id]].event.recv_time <= commit_time)
+            {
+                ap_uint<16> commit_entry = lp_heads[lp_id];
+                lp_heads[lp_id] = buffer[commit_entry].next;
+
+                buffer[commit_entry].next = free_head;
+                free_head = commit_entry;
+
+                size--;
+
+                if (lp_heads[lp_id] == 0xFFFF)
+                {
+                    lp_tails[lp_id] = 0xFFFF;
+                }
+            }
+        }
+
+        return true;
     }
 
-    bool is_full(ap_uint<1> is_anti_message) const
+    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
     {
-#pragma HLS INLINE
-        return size >= (EVENT_QUEUE_CAPACITY - (ANTI_MSG_RESERVE & ~is_anti_message));
+        ap_uint<16> current = lp_heads[lp_id];
+
+        while (current != 0xFFFF)
+        {
+#pragma HLS DEPENDENCE variable = buffer inter false
+            if (buffer[current].event.recv_time > to_time && buffer[current].is_issued)
+            {
+                buffer[current].is_issued = 0;
+                unissued_size++;
+                if (lp_oldest_unissued[lp_id] == 0xFFFF || buffer[lp_oldest_unissued[lp_id]].event.recv_time > buffer[current].event.recv_time)
+                {
+                    lp_oldest_unissued[lp_id] = current;
+                }
+            }
+            current = buffer[current].next;
+        }
+
+        return true;
+    }
+
+    ap_uint<16> get_size() const
+    {
+        return size;
+    }
+
+    ap_int<32> get_gvt() const
+    {
+        return current_gvt;
+    }
+
+    void print_event_queue() const
+    {
+        std::cout << "Event Queue State:" << std::endl;
+        std::cout << "Total size: " << size << std::endl;
+        std::cout << "Current GVT: " << current_gvt << std::endl;
+
+        for (ap_uint<16> lp = 0; lp < NUM_LPS; ++lp)
+        {
+            std::cout << "\nLP " << lp << " (Head: " << lp_heads[lp]
+                      << ", Tail: " << lp_tails[lp]
+                      << ", Oldest Unissued: " << lp_oldest_unissued[lp] << "):" << std::endl;
+
+            if (lp_heads[lp] == 0xFFFF)
+            {
+                std::cout << "  Empty" << std::endl;
+                continue;
+            }
+
+            ap_uint<16> current = lp_heads[lp];
+            ap_uint<16> count = 0;
+            while (current != 0xFFFF)
+            {
+                const EventQueueEntry &entry = buffer[current];
+                std::cout << "  [" << count << "] Index: " << current << "; ";
+                std::cout << "      Event: "
+                          << "recv_time=" << entry.event.recv_time << ", "
+                          << "receiver_id=" << entry.event.receiver_id << "; ";
+                std::cout << "      is_issued: " << entry.is_issued << "; ";
+                std::cout << "      next: " << entry.next << std::endl;
+
+                current = entry.next;
+                count++;
+            }
+        }
+
+        std::cout << "\nFree list head: " << free_head << std::endl
+                  << std::endl;
+        ;
     }
 };
 
@@ -88541,150 +88825,262 @@ struct EventQueueInput
     TimeWarpEvent event;
 };
 
-void event_queue_kernel(EventQueueInput &input, TimeWarpEvent &output_event, bool &success);
-
-void run_event_queue_kernel(const TimeWarpEvent input_events[NUM_EVENTS], TimeWarpEvent output_events[NUM_EVENTS], int &output_size);
+void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, TimeWarpEvent &result_event, bool &success);
 
 int test_event_queue();
 # 2 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp" 2
 
 
-EventQueue g_event_queue;
+
+
+
+static EventQueue g_event_queue;
+
+enum class Operation {
+    ENQUEUE,
+    DEQUEUE,
+    ISSUE,
+    COMMIT,
+    ROLLBACK
+};
 
 void event_queue_kernel(
-    EventQueueInput& input,
-    TimeWarpEvent& output_event,
-    bool& success
+    ap_uint<3> op,
+    TimeWarpEvent event,
+    ap_int<16> lp_id,
+    ap_int<32> time,
+    EventQueueEntry &result_entry,
+    bool &success
 ) {
-#pragma HLS INTERFACE ap_vld port=input
-#pragma HLS INTERFACE ap_vld port=output_event
+#pragma HLS INTERFACE ap_ctrl_chain port=return
+#pragma HLS INTERFACE ap_vld port=op
+#pragma HLS INTERFACE ap_vld port=event
+#pragma HLS INTERFACE ap_vld port=lp_id
+#pragma HLS INTERFACE ap_vld port=time
+#pragma HLS INTERFACE ap_vld port=result_entry
 #pragma HLS INTERFACE ap_vld port=success
 
-    if (input.is_enqueue) {
-        success = g_event_queue.enqueue(input.event);
-    } else {
-        output_event = g_event_queue.dequeue();
-        success = (output_event.recv_time != 
-# 19 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp" 3 4
-                                            (2147483647)
-# 19 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp"
-                                                     );
-    }
-}
+    static EventQueue g_event_queue;
 
-void run_event_queue_kernel(
-    const TimeWarpEvent input_events[NUM_EVENTS],
-    TimeWarpEvent output_events[NUM_EVENTS],
-    int& output_size
-) {
-    EventQueueInput input;
-    TimeWarpEvent output_event;
-    bool success;
-
-
-    input.is_enqueue = true;
-    for (int i = 0; i < NUM_EVENTS; ++i) {
-        input.event = input_events[i];
-        event_queue_kernel(input, output_event, success);
-        if (!success) {
-            std::cout << "Failed to enqueue event" << std::endl;
-        }
-    }
-
-
-    input.is_enqueue = false;
-    output_size = 0;
-    for (int i = 0; i < NUM_EVENTS; ++i) {
-        event_queue_kernel(input, output_event, success);
-        if (success) {
-            output_events[output_size++] = output_event;
-        } else {
-            std::cout << "Failed to dequeue event" << std::endl;
+    switch (op) {
+        case 0:
+            success = g_event_queue.enqueue(event);
+            result_entry = EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
             break;
-        }
+        case 1:
+            result_entry = g_event_queue.dequeue();
+            success = (result_entry.event.recv_time != 
+# 42 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp" 3 4
+                                                      (2147483647)
+# 42 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp"
+                                                               );
+            break;
+        case 2:
+            success = g_event_queue.issue(result_entry.event);
+            break;
+        case 3:
+            success = g_event_queue.commit(time);
+            result_entry = EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
+            break;
+        case 4:
+            success = g_event_queue.rollback(lp_id, time);
+            result_entry = EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
+            break;
+        default:
+            success = false;
+            result_entry = EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF};
     }
 }
 
 int test_event_queue() {
+    ap_uint<3> op;
+    TimeWarpEvent event;
+    EventQueueEntry result_entry;
+    ap_int<16> lp_id;
+    ap_int<32> time;
+    bool success;
 
-    TimeWarpEvent input_events[NUM_EVENTS];
-    TimeWarpEvent output_events[NUM_EVENTS];
-    int output_size;
+    const int NUM_TEST_EVENTS = 16;
+    std::vector<TimeWarpEvent> original_events;
 
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> time_dis(1, 10000);
-    std::uniform_int_distribution<> id_dis(0, 255);
-    std::uniform_int_distribution<> anti_msg_dis(0, 1);
-
-    for (int i = 0; i < NUM_EVENTS; ++i) {
-        input_events[i] = TimeWarpEvent{
-            time_dis(gen),
-            time_dis(gen),
-            i,
-            id_dis(gen),
-            id_dis(gen),
-            (ap_uint<1>)anti_msg_dis(gen)
+    auto generate_event = [](int i) -> TimeWarpEvent {
+        return TimeWarpEvent{
+            static_cast<ap_int<32>>(i),
+            static_cast<ap_int<32>>(rand() % 10000),
+            static_cast<ap_int<32>>(i),
+            static_cast<ap_int<16>>(rand() % 4),
+            static_cast<ap_int<16>>(rand() % 4),
+            static_cast<ap_uint<1>>(0)
         };
+    };
+
+
+    auto enqueue_events = [&]() {
+        int enqueued_count = 0;
+        original_events.clear();
+        for (int i = 0; i < NUM_TEST_EVENTS; ++i) {
+            event = generate_event(i);
+            original_events.push_back(event);
+            op = 0;
+            event_queue_kernel(op, event, lp_id, time, result_entry, success);
+            if (!success) {
+                std::cout << "Failed to enqueue event " << i << std::endl;
+                return false;
+            }
+
+            enqueued_count++;
+        }
+        std::cout << "Enqueued " << enqueued_count << " events." << std::endl;
+
+        std::cout << "Enqueued events:" << std::endl;
+        for (size_t i = 0; i < original_events.size(); ++i) {
+            const auto& entry = original_events[i];
+            std::cout << "Event " << i << ": "
+                      << "send_time=" << entry.send_time
+                      << ", recv_time=" << entry.recv_time
+                      << ", data=" << entry.data
+                      << ", sender_id=" << entry.sender_id
+                      << ", receiver_id=" << entry.receiver_id
+                      << ", is_anti_message=" << entry.is_anti_message
+                      << std::endl;
+        }
+        std::cout << std::endl;
+        return true;
+    };
+
+
+    auto issue_events = [&](int num_to_issue) {
+        std::vector<TimeWarpEvent> issued_events;
+        int issued_count = 0;
+        for (int i = 0; i < num_to_issue; ++i) {
+            op = 2;
+            event_queue_kernel(op, event, lp_id, time, result_entry, success);
+            if (success) {
+
+                issued_events.push_back(result_entry.event);
+                issued_count++;
+            } else {
+                break;
+            }
+        }
+        std::cout << "Issued " << issued_count << " events." << std::endl;
+
+        std::cout << "Issued events:" << std::endl;
+        for (size_t i = 0; i < issued_events.size(); ++i) {
+            const auto& entry = issued_events[i];
+            std::cout << "Event " << i << ": "
+                      << "send_time=" << entry.send_time
+                      << ", recv_time=" << entry.recv_time
+                      << ", data=" << entry.data
+                      << ", sender_id=" << entry.sender_id
+                      << ", receiver_id=" << entry.receiver_id
+                      << ", is_anti_message=" << entry.is_anti_message
+                      << std::endl;
+        }
+        std::cout << std::endl;
+
+        return issued_count;
+    };
+
+
+    auto dequeue_and_check = [&]() {
+        std::vector<EventQueueEntry> dequeued_entries;
+        while (true) {
+            op = 1;
+            event_queue_kernel(op, event, lp_id, time, result_entry, success);
+            if (!success) break;
+            dequeued_entries.push_back(result_entry);
+        }
+        std::cout << "Dequeued " << dequeued_entries.size() << " events." << std::endl;
+
+
+
+        std::cout << "Dequeued entries:" << std::endl;
+        for (size_t i = 0; i < dequeued_entries.size(); ++i) {
+            const auto& entry = dequeued_entries[i];
+            std::cout << "Entry " << i << ": "
+                      << "send_time=" << entry.event.send_time
+                      << ", recv_time=" << entry.event.recv_time
+                      << ", data=" << entry.event.data
+                      << ", sender_id=" << entry.event.sender_id
+                      << ", receiver_id=" << entry.event.receiver_id
+                      << ", is_anti_message=" << entry.event.is_anti_message
+                      << ", is_issued=" << entry.is_issued
+                      << ", next=" << entry.next
+                      << std::endl;
+        }
+        std::cout << std::endl;
+
+        return dequeued_entries;
+    };
+
+
+    if (!enqueue_events()) return 1;
+
+    auto dequeued_entries = dequeue_and_check();
+    if (dequeued_entries.size() != NUM_TEST_EVENTS) {
+        std::cout << "Test 0-0 failed: Unexpected number of events after enqueue." << std::endl;
+        return 1;
     }
 
 
-    run_event_queue_kernel(input_events, output_events, output_size);
+    if (!enqueue_events()) return 1;
+    dequeued_entries = dequeue_and_check();
+    if (dequeued_entries.size() != NUM_TEST_EVENTS) {
+        std::cout << "Test 0-1 failed: Unexpected number of events after enqueue." << std::endl;
+        return 1;
+    }
 
 
-    bool is_sorted = true;
-    for (int i = 1; i < output_size; ++i) {
-        if (output_events[i].recv_time < output_events[i-1].recv_time) {
-            is_sorted = false;
-            std::cout << "Sorting error at index " << i << ":\n";
-            std::cout << "Event[" << i-1 << "]: "
-                      << "{send_time: " << output_events[i-1].send_time
-                      << ", recv_time: " << output_events[i-1].recv_time
-                      << ", data: " << output_events[i-1].data
-                      << ", sender_id: " << output_events[i-1].sender_id
-                      << ", receiver_id: " << output_events[i-1].receiver_id
-                      << ", is_anti_message: " << output_events[i-1].is_anti_message << "}\n";
-            std::cout << "Event[" << i << "]: "
-                      << "{send_time: " << output_events[i].send_time
-                      << ", recv_time: " << output_events[i].recv_time
-                      << ", data: " << output_events[i].data
-                      << ", sender_id: " << output_events[i].sender_id
-                      << ", receiver_id: " << output_events[i].receiver_id
-                      << ", is_anti_message: " << output_events[i].is_anti_message << "}\n";
-            break;
+    if (!enqueue_events()) return 1;
+
+    issue_events(NUM_TEST_EVENTS);
+
+    dequeued_entries = dequeue_and_check();
+    if (dequeued_entries.size() != NUM_TEST_EVENTS) {
+        std::cout << "Test 1 failed: Unexpected number of events after issue all." << std::endl;
+        return 1;
+    }
+
+
+    if (!enqueue_events()) return 1;
+    int issued_count = issue_events(NUM_TEST_EVENTS);
+
+
+    op = 4;
+    lp_id = 0;
+    time = 5000;
+    event_queue_kernel(op, event, lp_id, time, result_entry, success);
+    std::cout << "Rollback of LP " << lp_id << " to time " << time << (success ? " successful" : "failed") << std::endl;
+
+    dequeued_entries = dequeue_and_check();
+    if (dequeued_entries.size() != NUM_TEST_EVENTS) {
+        std::cout << "Test 2 failed: Unexpected number of events after rollback." << std::endl;
+        return 1;
+    }
+
+
+    if (!enqueue_events()) return 1;
+    issued_count = issue_events(NUM_TEST_EVENTS / 2);
+
+
+    op = 3;
+    time = 5000;
+    event_queue_kernel(op, event, lp_id, time, result_entry, success);
+    std::cout << "Commit to time " << time << (success ? " successful" : "failed") << std::endl;
+
+    dequeued_entries = dequeue_and_check();
+    std::cout << "Events remaining after commit: " << dequeued_entries.size() << std::endl;
+
+
+    for (const auto& entry : dequeued_entries) {
+        if (entry.event.recv_time <= 5000) {
+            std::cout << "Test 3 failed: Found event with recv_time <= 5000 after commit." << std::endl;
+            return 1;
         }
     }
 
-    if (is_sorted) {
-        std::cout << "All dequeued events are correctly sorted by receive time!\n";
-    } else {
-        std::cout << "Dequeued events are not correctly sorted.\n";
-    }
-
-
-    std::cout << "\nFirst 10 events after sorting:\n";
-    for (int i = 0; i < std::min(10, NUM_EVENTS); ++i) {
-        std::cout << "Event[" << i << "]: "
-                  << "{send_time: " << output_events[i].send_time
-                  << ", recv_time: " << output_events[i].recv_time
-                  << ", data: " << output_events[i].data
-                  << ", sender_id: " << output_events[i].sender_id
-                  << ", receiver_id: " << output_events[i].receiver_id
-                  << ", is_anti_message: " << output_events[i].is_anti_message << "}\n";
-    }
-
-
-    std::cout << "\nLast 10 events after sorting:\n";
-    for (int i = std::max(0, NUM_EVENTS - 10); i < NUM_EVENTS; ++i) {
-        std::cout << "Event[" << i << "]: "
-                  << "{send_time: " << output_events[i].send_time
-                  << ", recv_time: " << output_events[i].recv_time
-                  << ", data: " << output_events[i].data
-                  << ", sender_id: " << output_events[i].sender_id
-                  << ", receiver_id: " << output_events[i].receiver_id
-                  << ", is_anti_message: " << output_events[i].is_anti_message << "}\n";
-    }
-
+    std::cout << "All tests passed successfully!" << std::endl;
     return 0;
 }

@@ -1,78 +1,244 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
    Compiling ../../../../cpp/main.cpp in debug mode
+   Compiling ../../../../cpp/StateBuffer.cpp in debug mode
+   Compiling ../../../../cpp/EventQueue.cpp in debug mode
    Generating csim.exe
-Final GVT: 16
-LP 0 states:
- LVT: 10, RNG state: 0
-LP 1 states:
- LVT: 110, RNG state: 0
- LVT: 100, RNG state: 0
- LVT: 90, RNG state: 0
- LVT: 80, RNG state: 0
- LVT: 70, RNG state: 0
- LVT: 15, RNG state: 0
-LP 2 states:
-LP 3 states:
-LP 4 states:
-LP 5 states:
-LP 6 states:
-LP 7 states:
-LP 8 states:
-LP 9 states:
-LP 10 states:
-LP 11 states:
-LP 12 states:
-LP 13 states:
-LP 14 states:
-LP 15 states:
-LP 16 states:
-LP 17 states:
-LP 18 states:
-LP 19 states:
-LP 20 states:
-LP 21 states:
-LP 22 states:
-LP 23 states:
-LP 24 states:
-LP 25 states:
-LP 26 states:
-LP 27 states:
-LP 28 states:
-LP 29 states:
-LP 30 states:
-LP 31 states:
-LP 32 states:
-LP 33 states:
-LP 34 states:
-LP 35 states:
-LP 36 states:
-LP 37 states:
-LP 38 states:
-LP 39 states:
-LP 40 states:
-LP 41 states:
-LP 42 states:
-LP 43 states:
-LP 44 states:
-LP 45 states:
-LP 46 states:
-LP 47 states:
-LP 48 states:
-LP 49 states:
-LP 50 states:
-LP 51 states:
-LP 52 states:
-LP 53 states:
-LP 54 states:
-LP 55 states:
-LP 56 states:
-LP 57 states:
-LP 58 states:
-LP 59 states:
-LP 60 states:
-LP 61 states:
-LP 62 states:
-LP 63 states:
+Enqueued 16 events.
+Enqueued events:
+Event 0: send_time=0, recv_time=9383, data=0, sender_id=2, receiver_id=1, is_anti_message=0
+Event 1: send_time=1, recv_time=6915, data=1, sender_id=1, receiver_id=3, is_anti_message=0
+Event 2: send_time=2, recv_time=5386, data=2, sender_id=0, receiver_id=1, is_anti_message=0
+Event 3: send_time=3, recv_time=1421, data=3, sender_id=2, receiver_id=3, is_anti_message=0
+Event 4: send_time=4, recv_time=8690, data=4, sender_id=3, receiver_id=3, is_anti_message=0
+Event 5: send_time=5, recv_time=3926, data=5, sender_id=0, receiver_id=2, is_anti_message=0
+Event 6: send_time=6, recv_time=9172, data=6, sender_id=0, receiver_id=3, is_anti_message=0
+Event 7: send_time=7, recv_time=5368, data=7, sender_id=3, receiver_id=1, is_anti_message=0
+Event 8: send_time=8, recv_time=5782, data=8, sender_id=2, receiver_id=2, is_anti_message=0
+Event 9: send_time=9, recv_time=5123, data=9, sender_id=3, receiver_id=3, is_anti_message=0
+Event 10: send_time=10, recv_time=3929, data=10, sender_id=2, receiver_id=2, is_anti_message=0
+Event 11: send_time=11, recv_time=3058, data=11, sender_id=1, receiver_id=3, is_anti_message=0
+Event 12: send_time=12, recv_time=1393, data=12, sender_id=0, receiver_id=3, is_anti_message=0
+Event 13: send_time=13, recv_time=8042, data=13, sender_id=1, receiver_id=1, is_anti_message=0
+Event 14: send_time=14, recv_time=4421, data=14, sender_id=3, receiver_id=0, is_anti_message=0
+Event 15: send_time=15, recv_time=8537, data=15, sender_id=2, receiver_id=0, is_anti_message=0
+
+Dequeued 16 events.
+Dequeued entries:
+Entry 0: send_time=12, recv_time=1393, data=12, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=0, next=3
+Entry 1: send_time=3, recv_time=1421, data=3, sender_id=2, receiver_id=3, is_anti_message=0, is_issued=0, next=11
+Entry 2: send_time=11, recv_time=3058, data=11, sender_id=1, receiver_id=3, is_anti_message=0, is_issued=0, next=9
+Entry 3: send_time=5, recv_time=3926, data=5, sender_id=0, receiver_id=2, is_anti_message=0, is_issued=0, next=10
+Entry 4: send_time=10, recv_time=3929, data=10, sender_id=2, receiver_id=2, is_anti_message=0, is_issued=0, next=8
+Entry 5: send_time=14, recv_time=4421, data=14, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=0, next=15
+Entry 6: send_time=9, recv_time=5123, data=9, sender_id=3, receiver_id=3, is_anti_message=0, is_issued=0, next=1
+Entry 7: send_time=7, recv_time=5368, data=7, sender_id=3, receiver_id=1, is_anti_message=0, is_issued=0, next=2
+Entry 8: send_time=2, recv_time=5386, data=2, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=0, next=13
+Entry 9: send_time=8, recv_time=5782, data=8, sender_id=2, receiver_id=2, is_anti_message=0, is_issued=0, next=65535
+Entry 10: send_time=1, recv_time=6915, data=1, sender_id=1, receiver_id=3, is_anti_message=0, is_issued=0, next=4
+Entry 11: send_time=13, recv_time=8042, data=13, sender_id=1, receiver_id=1, is_anti_message=0, is_issued=0, next=0
+Entry 12: send_time=15, recv_time=8537, data=15, sender_id=2, receiver_id=0, is_anti_message=0, is_issued=0, next=65535
+Entry 13: send_time=4, recv_time=8690, data=4, sender_id=3, receiver_id=3, is_anti_message=0, is_issued=0, next=6
+Entry 14: send_time=6, recv_time=9172, data=6, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=0, next=65535
+Entry 15: send_time=0, recv_time=9383, data=0, sender_id=2, receiver_id=1, is_anti_message=0, is_issued=0, next=65535
+
+Enqueued 16 events.
+Enqueued events:
+Event 0: send_time=0, recv_time=8315, data=0, sender_id=2, receiver_id=1, is_anti_message=0
+Event 1: send_time=1, recv_time=3526, data=1, sender_id=3, receiver_id=0, is_anti_message=0
+Event 2: send_time=2, recv_time=9956, data=2, sender_id=1, receiver_id=2, is_anti_message=0
+Event 3: send_time=3, recv_time=9170, data=3, sender_id=0, receiver_id=1, is_anti_message=0
+Event 4: send_time=4, recv_time=2305, data=4, sender_id=1, receiver_id=0, is_anti_message=0
+Event 5: send_time=5, recv_time=6327, data=5, sender_id=0, receiver_id=1, is_anti_message=0
+Event 6: send_time=6, recv_time=846, data=6, sender_id=1, receiver_id=1, is_anti_message=0
+Event 7: send_time=7, recv_time=5857, data=7, sender_id=0, receiver_id=3, is_anti_message=0
+Event 8: send_time=8, recv_time=9582, data=8, sender_id=1, receiver_id=2, is_anti_message=0
+Event 9: send_time=9, recv_time=3367, data=9, sender_id=2, receiver_id=0, is_anti_message=0
+Event 10: send_time=10, recv_time=4043, data=10, sender_id=2, receiver_id=3, is_anti_message=0
+Event 11: send_time=11, recv_time=6808, data=11, sender_id=0, receiver_id=2, is_anti_message=0
+Event 12: send_time=12, recv_time=5788, data=12, sender_id=0, receiver_id=3, is_anti_message=0
+Event 13: send_time=13, recv_time=2651, data=13, sender_id=2, receiver_id=3, is_anti_message=0
+Event 14: send_time=14, recv_time=9932, data=14, sender_id=0, receiver_id=0, is_anti_message=0
+Event 15: send_time=15, recv_time=3368, data=15, sender_id=3, receiver_id=0, is_anti_message=0
+
+Dequeued 16 events.
+Dequeued entries:
+Entry 0: send_time=6, recv_time=846, data=6, sender_id=1, receiver_id=1, is_anti_message=0, is_issued=0, next=1
+Entry 1: send_time=4, recv_time=2305, data=4, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=0, next=9
+Entry 2: send_time=13, recv_time=2651, data=13, sender_id=2, receiver_id=3, is_anti_message=0, is_issued=0, next=14
+Entry 3: send_time=9, recv_time=3367, data=9, sender_id=2, receiver_id=0, is_anti_message=0, is_issued=0, next=12
+Entry 4: send_time=15, recv_time=3368, data=15, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=0, next=6
+Entry 5: send_time=1, recv_time=3526, data=1, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=0, next=3
+Entry 6: send_time=10, recv_time=4043, data=10, sender_id=2, receiver_id=3, is_anti_message=0, is_issued=0, next=5
+Entry 7: send_time=12, recv_time=5788, data=12, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=0, next=2
+Entry 8: send_time=7, recv_time=5857, data=7, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=0, next=65535
+Entry 9: send_time=5, recv_time=6327, data=5, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=0, next=0
+Entry 10: send_time=11, recv_time=6808, data=11, sender_id=0, receiver_id=2, is_anti_message=0, is_issued=0, next=7
+Entry 11: send_time=0, recv_time=8315, data=0, sender_id=2, receiver_id=1, is_anti_message=0, is_issued=0, next=15
+Entry 12: send_time=3, recv_time=9170, data=3, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=0, next=65535
+Entry 13: send_time=8, recv_time=9582, data=8, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=0, next=4
+Entry 14: send_time=14, recv_time=9932, data=14, sender_id=0, receiver_id=0, is_anti_message=0, is_issued=0, next=65535
+Entry 15: send_time=2, recv_time=9956, data=2, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=0, next=65535
+
+Enqueued 16 events.
+Enqueued events:
+Event 0: send_time=0, recv_time=6226, data=0, sender_id=2, receiver_id=2, is_anti_message=0
+Event 1: send_time=1, recv_time=7539, data=1, sender_id=3, receiver_id=2, is_anti_message=0
+Event 2: send_time=2, recv_time=1434, data=2, sender_id=2, receiver_id=3, is_anti_message=0
+Event 3: send_time=3, recv_time=6601, data=3, sender_id=1, receiver_id=2, is_anti_message=0
+Event 4: send_time=4, recv_time=3317, data=4, sender_id=0, receiver_id=0, is_anti_message=0
+Event 5: send_time=5, recv_time=756, data=5, sender_id=1, receiver_id=0, is_anti_message=0
+Event 6: send_time=6, recv_time=4286, data=6, sender_id=1, receiver_id=1, is_anti_message=0
+Event 7: send_time=7, recv_time=9689, data=7, sender_id=0, receiver_id=3, is_anti_message=0
+Event 8: send_time=8, recv_time=8440, data=8, sender_id=1, receiver_id=3, is_anti_message=0
+Event 9: send_time=9, recv_time=8117, data=9, sender_id=1, receiver_id=3, is_anti_message=0
+Event 10: send_time=10, recv_time=4481, data=10, sender_id=3, receiver_id=1, is_anti_message=0
+Event 11: send_time=11, recv_time=8927, data=11, sender_id=3, receiver_id=0, is_anti_message=0
+Event 12: send_time=12, recv_time=9497, data=12, sender_id=1, receiver_id=2, is_anti_message=0
+Event 13: send_time=13, recv_time=6965, data=13, sender_id=2, receiver_id=3, is_anti_message=0
+Event 14: send_time=14, recv_time=6219, data=14, sender_id=0, receiver_id=0, is_anti_message=0
+Event 15: send_time=15, recv_time=2871, data=15, sender_id=0, receiver_id=1, is_anti_message=0
+
+Issued 16 events.
+Issued events:
+Event 0: send_time=5, recv_time=756, data=5, sender_id=1, receiver_id=0, is_anti_message=0
+Event 1: send_time=2, recv_time=1434, data=2, sender_id=2, receiver_id=3, is_anti_message=0
+Event 2: send_time=15, recv_time=2871, data=15, sender_id=0, receiver_id=1, is_anti_message=0
+Event 3: send_time=4, recv_time=3317, data=4, sender_id=0, receiver_id=0, is_anti_message=0
+Event 4: send_time=6, recv_time=4286, data=6, sender_id=1, receiver_id=1, is_anti_message=0
+Event 5: send_time=10, recv_time=4481, data=10, sender_id=3, receiver_id=1, is_anti_message=0
+Event 6: send_time=14, recv_time=6219, data=14, sender_id=0, receiver_id=0, is_anti_message=0
+Event 7: send_time=0, recv_time=6226, data=0, sender_id=2, receiver_id=2, is_anti_message=0
+Event 8: send_time=3, recv_time=6601, data=3, sender_id=1, receiver_id=2, is_anti_message=0
+Event 9: send_time=13, recv_time=6965, data=13, sender_id=2, receiver_id=3, is_anti_message=0
+Event 10: send_time=1, recv_time=7539, data=1, sender_id=3, receiver_id=2, is_anti_message=0
+Event 11: send_time=9, recv_time=8117, data=9, sender_id=1, receiver_id=3, is_anti_message=0
+Event 12: send_time=8, recv_time=8440, data=8, sender_id=1, receiver_id=3, is_anti_message=0
+Event 13: send_time=11, recv_time=8927, data=11, sender_id=3, receiver_id=0, is_anti_message=0
+Event 14: send_time=12, recv_time=9497, data=12, sender_id=1, receiver_id=2, is_anti_message=0
+Event 15: send_time=7, recv_time=9689, data=7, sender_id=0, receiver_id=3, is_anti_message=0
+
+Dequeued 16 events.
+Dequeued entries:
+Entry 0: send_time=5, recv_time=756, data=5, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=1, next=0
+Entry 1: send_time=2, recv_time=1434, data=2, sender_id=2, receiver_id=3, is_anti_message=0, is_issued=1, next=11
+Entry 2: send_time=15, recv_time=2871, data=15, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=1, next=1
+Entry 3: send_time=4, recv_time=3317, data=4, sender_id=0, receiver_id=0, is_anti_message=0, is_issued=1, next=13
+Entry 4: send_time=6, recv_time=4286, data=6, sender_id=1, receiver_id=1, is_anti_message=0, is_issued=1, next=6
+Entry 5: send_time=10, recv_time=4481, data=10, sender_id=3, receiver_id=1, is_anti_message=0, is_issued=1, next=65535
+Entry 6: send_time=14, recv_time=6219, data=14, sender_id=0, receiver_id=0, is_anti_message=0, is_issued=1, next=12
+Entry 7: send_time=0, recv_time=6226, data=0, sender_id=2, receiver_id=2, is_anti_message=0, is_issued=1, next=15
+Entry 8: send_time=3, recv_time=6601, data=3, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=1, next=3
+Entry 9: send_time=13, recv_time=6965, data=13, sender_id=2, receiver_id=3, is_anti_message=0, is_issued=1, next=14
+Entry 10: send_time=1, recv_time=7539, data=1, sender_id=3, receiver_id=2, is_anti_message=0, is_issued=1, next=9
+Entry 11: send_time=9, recv_time=8117, data=9, sender_id=1, receiver_id=3, is_anti_message=0, is_issued=1, next=5
+Entry 12: send_time=8, recv_time=8440, data=8, sender_id=1, receiver_id=3, is_anti_message=0, is_issued=1, next=2
+Entry 13: send_time=11, recv_time=8927, data=11, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=1, next=65535
+Entry 14: send_time=12, recv_time=9497, data=12, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=1, next=65535
+Entry 15: send_time=7, recv_time=9689, data=7, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=1, next=65535
+
+Enqueued 16 events.
+Enqueued events:
+Event 0: send_time=0, recv_time=9503, data=0, sender_id=3, receiver_id=2, is_anti_message=0
+Event 1: send_time=1, recv_time=3368, data=1, sender_id=0, receiver_id=3, is_anti_message=0
+Event 2: send_time=2, recv_time=6340, data=2, sender_id=1, receiver_id=0, is_anti_message=0
+Event 3: send_time=3, recv_time=723, data=3, sender_id=2, receiver_id=1, is_anti_message=0
+Event 4: send_time=4, recv_time=2846, data=4, sender_id=3, receiver_id=1, is_anti_message=0
+Event 5: send_time=5, recv_time=3555, data=5, sender_id=3, receiver_id=0, is_anti_message=0
+Event 6: send_time=6, recv_time=7764, data=6, sender_id=0, receiver_id=1, is_anti_message=0
+Event 7: send_time=7, recv_time=2350, data=7, sender_id=1, receiver_id=0, is_anti_message=0
+Event 8: send_time=8, recv_time=7034, data=8, sender_id=0, receiver_id=0, is_anti_message=0
+Event 9: send_time=9, recv_time=4914, data=9, sender_id=3, receiver_id=0, is_anti_message=0
+Event 10: send_time=10, recv_time=3743, data=10, sender_id=3, receiver_id=3, is_anti_message=0
+Event 11: send_time=11, recv_time=8365, data=11, sender_id=3, receiver_id=0, is_anti_message=0
+Event 12: send_time=12, recv_time=1432, data=12, sender_id=3, receiver_id=1, is_anti_message=0
+Event 13: send_time=13, recv_time=9228, data=13, sender_id=3, receiver_id=3, is_anti_message=0
+Event 14: send_time=14, recv_time=1474, data=14, sender_id=1, receiver_id=2, is_anti_message=0
+Event 15: send_time=15, recv_time=4395, data=15, sender_id=1, receiver_id=1, is_anti_message=0
+
+Issued 16 events.
+Issued events:
+Event 0: send_time=3, recv_time=723, data=3, sender_id=2, receiver_id=1, is_anti_message=0
+Event 1: send_time=12, recv_time=1432, data=12, sender_id=3, receiver_id=1, is_anti_message=0
+Event 2: send_time=14, recv_time=1474, data=14, sender_id=1, receiver_id=2, is_anti_message=0
+Event 3: send_time=7, recv_time=2350, data=7, sender_id=1, receiver_id=0, is_anti_message=0
+Event 4: send_time=4, recv_time=2846, data=4, sender_id=3, receiver_id=1, is_anti_message=0
+Event 5: send_time=1, recv_time=3368, data=1, sender_id=0, receiver_id=3, is_anti_message=0
+Event 6: send_time=5, recv_time=3555, data=5, sender_id=3, receiver_id=0, is_anti_message=0
+Event 7: send_time=10, recv_time=3743, data=10, sender_id=3, receiver_id=3, is_anti_message=0
+Event 8: send_time=15, recv_time=4395, data=15, sender_id=1, receiver_id=1, is_anti_message=0
+Event 9: send_time=9, recv_time=4914, data=9, sender_id=3, receiver_id=0, is_anti_message=0
+Event 10: send_time=2, recv_time=6340, data=2, sender_id=1, receiver_id=0, is_anti_message=0
+Event 11: send_time=8, recv_time=7034, data=8, sender_id=0, receiver_id=0, is_anti_message=0
+Event 12: send_time=6, recv_time=7764, data=6, sender_id=0, receiver_id=1, is_anti_message=0
+Event 13: send_time=11, recv_time=8365, data=11, sender_id=3, receiver_id=0, is_anti_message=0
+Event 14: send_time=13, recv_time=9228, data=13, sender_id=3, receiver_id=3, is_anti_message=0
+Event 15: send_time=0, recv_time=9503, data=0, sender_id=3, receiver_id=2, is_anti_message=0
+
+Rollback of LP 0 to time 5000 successful
+Dequeued 16 events.
+Dequeued entries:
+Entry 0: send_time=3, recv_time=723, data=3, sender_id=2, receiver_id=1, is_anti_message=0, is_issued=1, next=0
+Entry 1: send_time=12, recv_time=1432, data=12, sender_id=3, receiver_id=1, is_anti_message=0, is_issued=1, next=14
+Entry 2: send_time=14, recv_time=1474, data=14, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=1, next=2
+Entry 3: send_time=7, recv_time=2350, data=7, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=1, next=3
+Entry 4: send_time=4, recv_time=2846, data=4, sender_id=3, receiver_id=1, is_anti_message=0, is_issued=1, next=10
+Entry 5: send_time=1, recv_time=3368, data=1, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=1, next=6
+Entry 6: send_time=5, recv_time=3555, data=5, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=1, next=13
+Entry 7: send_time=10, recv_time=3743, data=10, sender_id=3, receiver_id=3, is_anti_message=0, is_issued=1, next=8
+Entry 8: send_time=15, recv_time=4395, data=15, sender_id=1, receiver_id=1, is_anti_message=0, is_issued=1, next=11
+Entry 9: send_time=9, recv_time=4914, data=9, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=1, next=12
+Entry 10: send_time=2, recv_time=6340, data=2, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=0, next=4
+Entry 11: send_time=8, recv_time=7034, data=8, sender_id=0, receiver_id=0, is_anti_message=0, is_issued=0, next=1
+Entry 12: send_time=6, recv_time=7764, data=6, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=1, next=65535
+Entry 13: send_time=11, recv_time=8365, data=11, sender_id=3, receiver_id=0, is_anti_message=0, is_issued=0, next=65535
+Entry 14: send_time=13, recv_time=9228, data=13, sender_id=3, receiver_id=3, is_anti_message=0, is_issued=1, next=65535
+Entry 15: send_time=0, recv_time=9503, data=0, sender_id=3, receiver_id=2, is_anti_message=0, is_issued=1, next=65535
+
+Enqueued 16 events.
+Enqueued events:
+Event 0: send_time=0, recv_time=8235, data=0, sender_id=1, receiver_id=2, is_anti_message=0
+Event 1: send_time=1, recv_time=4428, data=1, sender_id=3, receiver_id=3, is_anti_message=0
+Event 2: send_time=2, recv_time=5928, data=2, sender_id=1, receiver_id=0, is_anti_message=0
+Event 3: send_time=3, recv_time=2404, data=3, sender_id=3, receiver_id=3, is_anti_message=0
+Event 4: send_time=4, recv_time=4613, data=4, sender_id=2, receiver_id=2, is_anti_message=0
+Event 5: send_time=5, recv_time=6840, data=5, sender_id=0, receiver_id=2, is_anti_message=0
+Event 6: send_time=6, recv_time=5128, data=6, sender_id=0, receiver_id=1, is_anti_message=0
+Event 7: send_time=7, recv_time=7917, data=7, sender_id=1, receiver_id=0, is_anti_message=0
+Event 8: send_time=8, recv_time=3324, data=8, sender_id=3, receiver_id=2, is_anti_message=0
+Event 9: send_time=9, recv_time=2183, data=9, sender_id=2, receiver_id=3, is_anti_message=0
+Event 10: send_time=10, recv_time=9772, data=10, sender_id=1, receiver_id=0, is_anti_message=0
+Event 11: send_time=11, recv_time=5590, data=11, sender_id=1, receiver_id=3, is_anti_message=0
+Event 12: send_time=12, recv_time=2954, data=12, sender_id=2, receiver_id=1, is_anti_message=0
+Event 13: send_time=13, recv_time=8082, data=13, sender_id=2, receiver_id=0, is_anti_message=0
+Event 14: send_time=14, recv_time=197, data=14, sender_id=3, receiver_id=3, is_anti_message=0
+Event 15: send_time=15, recv_time=8804, data=15, sender_id=0, receiver_id=3, is_anti_message=0
+
+Issued 8 events.
+Issued events:
+Event 0: send_time=14, recv_time=197, data=14, sender_id=3, receiver_id=3, is_anti_message=0
+Event 1: send_time=9, recv_time=2183, data=9, sender_id=2, receiver_id=3, is_anti_message=0
+Event 2: send_time=3, recv_time=2404, data=3, sender_id=3, receiver_id=3, is_anti_message=0
+Event 3: send_time=12, recv_time=2954, data=12, sender_id=2, receiver_id=1, is_anti_message=0
+Event 4: send_time=8, recv_time=3324, data=8, sender_id=3, receiver_id=2, is_anti_message=0
+Event 5: send_time=1, recv_time=4428, data=1, sender_id=3, receiver_id=3, is_anti_message=0
+Event 6: send_time=4, recv_time=4613, data=4, sender_id=2, receiver_id=2, is_anti_message=0
+Event 7: send_time=6, recv_time=5128, data=6, sender_id=0, receiver_id=1, is_anti_message=0
+
+Commit to time 5000 successful
+Dequeued 9 events.
+Dequeued entries:
+Entry 0: send_time=6, recv_time=5128, data=6, sender_id=0, receiver_id=1, is_anti_message=0, is_issued=1, next=65535
+Entry 1: send_time=11, recv_time=5590, data=11, sender_id=1, receiver_id=3, is_anti_message=0, is_issued=0, next=5
+Entry 2: send_time=2, recv_time=5928, data=2, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=0, next=10
+Entry 3: send_time=5, recv_time=6840, data=5, sender_id=0, receiver_id=2, is_anti_message=0, is_issued=0, next=2
+Entry 4: send_time=7, recv_time=7917, data=7, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=0, next=7
+Entry 5: send_time=13, recv_time=8082, data=13, sender_id=2, receiver_id=0, is_anti_message=0, is_issued=0, next=9
+Entry 6: send_time=0, recv_time=8235, data=0, sender_id=1, receiver_id=2, is_anti_message=0, is_issued=0, next=65535
+Entry 7: send_time=15, recv_time=8804, data=15, sender_id=0, receiver_id=3, is_anti_message=0, is_issued=0, next=65535
+Entry 8: send_time=10, recv_time=9772, data=10, sender_id=1, receiver_id=0, is_anti_message=0, is_issued=0, next=65535
+
+Events remaining after commit: 9
+All tests passed successfully!
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

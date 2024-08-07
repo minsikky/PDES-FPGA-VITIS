@@ -5,6 +5,9 @@
 // ==============================================================
 
 extern "C" void AESL_WRAP_event_queue_kernel (
-volatile void* input_r,
-volatile void* output_event,
+char op,
+__cosim_s20__ event_r,
+short lp_id,
+int time_r,
+volatile void* result_entry,
 volatile void* success);

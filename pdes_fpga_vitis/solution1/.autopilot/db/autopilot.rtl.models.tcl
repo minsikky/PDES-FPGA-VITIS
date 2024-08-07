@@ -1,24 +1,24 @@
 set SynModuleInfo {
-  {SRCNAME rollback_Pipeline_VITIS_LOOP_35_1 MODELNAME rollback_Pipeline_VITIS_LOOP_35_1 RTLNAME event_history_kernel_rollback_Pipeline_VITIS_LOOP_35_1}
-  {SRCNAME rollback MODELNAME rollback RTLNAME event_history_kernel_rollback
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_330_1 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_330_1 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_330_1
     SUBMODULES {
-      {MODELNAME event_history_kernel_rollback_event_queue_heap_send_time_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_rollback_event_queue_heap_send_time_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_rollback_event_queue_heap_sender_id_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_rollback_event_queue_heap_sender_id_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_rollback_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_rollback_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_mux_42_16_1_1 RTLNAME event_queue_kernel_mux_42_16_1_1 BINDTYPE op TYPE mux IMPL auto LATENCY 0 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_flow_control_loop_pipe_sequential_init RTLNAME event_queue_kernel_flow_control_loop_pipe_sequential_init BINDTYPE interface TYPE internal_upc_flow_control INSTNAME event_queue_kernel_flow_control_loop_pipe_sequential_init_U}
     }
   }
-  {SRCNAME event_history_kernel_Pipeline_VITIS_LOOP_94_2 MODELNAME event_history_kernel_Pipeline_VITIS_LOOP_94_2 RTLNAME event_history_kernel_event_history_kernel_Pipeline_VITIS_LOOP_94_2
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_2 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_2 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_2}
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_21 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_21 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_21}
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_22 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_22 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_22}
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_23 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_305_23 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_23}
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_269_1 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_269_1 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_269_1}
+  {SRCNAME event_queue_kernel_Pipeline_VITIS_LOOP_229_1 MODELNAME event_queue_kernel_Pipeline_VITIS_LOOP_229_1 RTLNAME event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_229_1}
+  {SRCNAME event_queue_kernel MODELNAME event_queue_kernel RTLNAME event_queue_kernel IS_TOP 1
     SUBMODULES {
-      {MODELNAME event_history_kernel_flow_control_loop_pipe_sequential_init RTLNAME event_history_kernel_flow_control_loop_pipe_sequential_init BINDTYPE interface TYPE internal_upc_flow_control INSTNAME event_history_kernel_flow_control_loop_pipe_sequential_init_U}
-    }
-  }
-  {SRCNAME event_history_kernel MODELNAME event_history_kernel RTLNAME event_history_kernel IS_TOP 1
-    SUBMODULES {
-      {MODELNAME event_history_kernel_history_buffer_next_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_history_buffer_next_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_history_buffer_event_send_time_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_history_buffer_event_send_time_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_history_buffer_event_sender_id_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_history_buffer_event_sender_id_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_history_buffer_event_is_anti_message_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_history_buffer_event_is_anti_message_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME event_history_kernel_history_lp_heads_V_RAM_AUTO_1R1W RTLNAME event_history_kernel_history_lp_heads_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+      {MODELNAME event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W RTLNAME event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
     }
   }
 }

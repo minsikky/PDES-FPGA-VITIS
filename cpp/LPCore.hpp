@@ -1,26 +1,29 @@
 #ifndef LPCORE_HPP
 #define LPCORE_HPP
 
-#include <sycl/sycl.hpp>
-#include <sycl/ext/intel/fpga_extensions.hpp>
 #include <vector>
 #include <queue>
 #include "VirtualLP.hpp"
 #include "EventQueue.hpp"
 #include "EventHistory.hpp"
 #include "StateBuffer.hpp"
-#include "OutputBuffer.hpp"
+#include "CancellationUnit.hpp"
+#include "EventProcessor.hpp"
+#include "LPMapping.hpp"
 
-using namespace sycl;
+// Forward declaration
+class TimeWarpSimulation;
 
 class LPCore
 {
-private:
+public:
+    TimeWarpSimulation *simulation;
     int lpcore_id;
-    std::array<VirtualLP, (int)(NUM_LPS / NUM_LPCORE)> virtual_lps;   // Virtual LPs managed by this core
-    StateBuffer state_buffer;                                         // State buffer for this core
-    OutputBuffer output_buffer;                                       // Output buffer for this core
-    EventHistory event_history;                                       // Event history for this core
+    std::array<VirtualLP, (int)(NUM_LPS / NUM_LPCORE)> virtual_lps; // Virtual LPs managed by this core
+    EventQueue event_queue;                                         // Event queue for this core
+    StateBuffer state_buffer;                                       // State buffer for this core
+    CancellationUnit cancellation_unit;                             // Cancellation unit for this core
+    EventProcessor event_processor;                                 // Event processor for this core
     int current_lp_index;
     int total_lps;
     bool is_stalled;
@@ -38,19 +41,52 @@ public:
         }
     }
 
-    void trigger_rollback(VirtualLP &lp, int32_t rollback_time);
+    bool recv_event(const TimeWarpEvent &event) {
+        // Check if event is an anti-message
+        if (event.is_anti_message) {
+            return process_anti_message(event);
+        } else {
+            // Check causality violation
+            if (event.recv_time < virtual_lps[event.receiver_id % NUM_LPCORE].lvt) {
+                // Trigger rollback
+                trigger_rollback(virtual_lps[event.receiver_id % NUM_LPCORE], event.recv_time);
+            }
+            return event_queue.enqueue(event);
+        }
+    }
 
-    bool is_matching_event(const TimeWarpEvent &e1, const TimeWarpEvent &e2);
+    void trigger_rollback(VirtualLP &lp, int32_t rollback_time) {
+        // Rollback state buffer
+        state_buffer.rollback(lp.lp_id, rollback_time);
+        // Rollback event queue
+        event_queue.rollback(lp.lp_id, rollback_time);
+        // Rollback cancellation unit
+        cancellation_unit.rollback(lp.lp_id, rollback_time);
+        // Rollback virtual LP
+        lp.lvt = rollback_time;
+    };
 
-    void process_anti_message(const TimeWarpEvent &anti_msg);
+    bool process_anti_message(const TimeWarpEvent &anti_msg) {
+        // Find matches in event queue, and eliminate it.
+        if (event_queue.remove_matching_event(anti_msg)) {
+            // If match is found, then the event has not been processed yet. Must trigger rollback.
+            trigger_rollback(virtual_lps[anti_msg.receiver_id % NUM_LPCORE], anti_msg.recv_time);
+        }
+        return true;
+    }
 
     bool enqueue_event(const TimeWarpEvent &event)
     {
-        int index = (event.receiver_id - lpcore_id) / NUM_LPCORE;
-        return virtual_lps[index].enqueue_event(event);
+        return event_queue.enqueue(event);
     }
 
-    bool process_events(queue &q);
+    bool process_events() {
+        TimeWarpEvent event;
+        if ((event = event_queue.dequeue()) != TimeWarpEvent{INT32_MAX, 0, 0, 0, 0, 0}) {
+            LPState state = state_buffer.peek(event.receiver_id);
+            event_processor.process_event(event, state);
+        }
+    }
 
     bool is_core_stalled() const { return is_stalled; }
 };

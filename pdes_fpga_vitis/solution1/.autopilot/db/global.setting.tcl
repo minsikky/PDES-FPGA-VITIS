@@ -1,5 +1,5 @@
 
-set TopModule "event_history_kernel"
+set TopModule "event_queue_kernel"
 set ClockPeriod 5
 set ClockList ap_clk
 set HasVivadoClockPeriod 1
@@ -23,7 +23,7 @@ set ResetRegisterNum 0
 set FsmEncStyle onehot
 set MaxFanout 0
 set RtlPrefix {}
-set RtlSubPrefix event_history_kernel_
+set RtlSubPrefix event_queue_kernel_
 set ExtraCCFlags {}
 set ExtraCLdFlags {}
 set SynCheckOptions {}
@@ -42,8 +42,8 @@ set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
 set TargetInfo xczu7ev:-ffvf1517:-3-e
-set SourceFiles {sc {} c {../../cpp/EventHistory.cpp ../../cpp/EventQueue.cpp ../../cpp/StateBuffer.cpp}}
-set SourceFlags {sc {} c {{} {} {}}}
+set SourceFiles {sc {} c {../../cpp/StateBuffer.cpp ../../cpp/EventQueue.cpp}}
+set SourceFlags {sc {} c {{} {}}}
 set DirectiveFile /net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive
 set TBFiles {verilog ../../cpp/main.cpp bc ../../cpp/main.cpp vhdl ../../cpp/main.cpp sc ../../cpp/main.cpp cas ../../cpp/main.cpp c {}}
 set SpecLanguage C

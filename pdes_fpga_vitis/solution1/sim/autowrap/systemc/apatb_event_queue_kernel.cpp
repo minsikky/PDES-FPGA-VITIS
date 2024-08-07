@@ -18,18 +18,27 @@ using namespace sc_core;
 using namespace sc_dt;
 
 // wrapc file define:
-#define AUTOTB_TVIN_input_r "../tv/cdatafile/c.event_queue_kernel.autotvin_input_r.dat"
-#define AUTOTB_TVOUT_input_r "../tv/cdatafile/c.event_queue_kernel.autotvout_input_r.dat"
-#define AUTOTB_TVIN_output_event "../tv/cdatafile/c.event_queue_kernel.autotvin_output_event.dat"
-#define AUTOTB_TVOUT_output_event "../tv/cdatafile/c.event_queue_kernel.autotvout_output_event.dat"
+#define AUTOTB_TVIN_op "../tv/cdatafile/c.event_queue_kernel.autotvin_op.dat"
+#define AUTOTB_TVOUT_op "../tv/cdatafile/c.event_queue_kernel.autotvout_op.dat"
+#define AUTOTB_TVIN_event_r "../tv/cdatafile/c.event_queue_kernel.autotvin_event_r.dat"
+#define AUTOTB_TVOUT_event_r "../tv/cdatafile/c.event_queue_kernel.autotvout_event_r.dat"
+#define AUTOTB_TVIN_lp_id "../tv/cdatafile/c.event_queue_kernel.autotvin_lp_id.dat"
+#define AUTOTB_TVOUT_lp_id "../tv/cdatafile/c.event_queue_kernel.autotvout_lp_id.dat"
+#define AUTOTB_TVIN_time_r "../tv/cdatafile/c.event_queue_kernel.autotvin_time_r.dat"
+#define AUTOTB_TVOUT_time_r "../tv/cdatafile/c.event_queue_kernel.autotvout_time_r.dat"
+#define AUTOTB_TVIN_result_entry "../tv/cdatafile/c.event_queue_kernel.autotvin_result_entry.dat"
+#define AUTOTB_TVOUT_result_entry "../tv/cdatafile/c.event_queue_kernel.autotvout_result_entry.dat"
 #define AUTOTB_TVIN_success "../tv/cdatafile/c.event_queue_kernel.autotvin_success.dat"
 #define AUTOTB_TVOUT_success "../tv/cdatafile/c.event_queue_kernel.autotvout_success.dat"
 
 #define INTER_TCL "../tv/cdatafile/ref.tcl"
 
 // tvout file define:
-#define AUTOTB_TVOUT_PC_input_r "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_input_r.dat"
-#define AUTOTB_TVOUT_PC_output_event "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_output_event.dat"
+#define AUTOTB_TVOUT_PC_op "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_op.dat"
+#define AUTOTB_TVOUT_PC_event_r "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_event_r.dat"
+#define AUTOTB_TVOUT_PC_lp_id "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_lp_id.dat"
+#define AUTOTB_TVOUT_PC_time_r "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_time_r.dat"
+#define AUTOTB_TVOUT_PC_result_entry "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_result_entry.dat"
 #define AUTOTB_TVOUT_PC_success "../tv/rtldatafile/rtl.event_queue_kernel.autotvout_success.dat"
 
 
@@ -260,8 +269,11 @@ class INTER_TCL_FILE {
   public:
 INTER_TCL_FILE(const char* name) {
   mName = name; 
-  input_r_depth = 0;
-  output_event_depth = 0;
+  op_depth = 0;
+  event_r_depth = 0;
+  lp_id_depth = 0;
+  time_r_depth = 0;
+  result_entry_depth = 0;
   success_depth = 0;
   trans_num =0;
 }
@@ -280,8 +292,11 @@ INTER_TCL_FILE(const char* name) {
 }
 string get_depth_list () {
   stringstream total_list;
-  total_list << "{input_r " << input_r_depth << "}\n";
-  total_list << "{output_event " << output_event_depth << "}\n";
+  total_list << "{op " << op_depth << "}\n";
+  total_list << "{event_r " << event_r_depth << "}\n";
+  total_list << "{lp_id " << lp_id_depth << "}\n";
+  total_list << "{time_r " << time_r_depth << "}\n";
+  total_list << "{result_entry " << result_entry_depth << "}\n";
   total_list << "{success " << success_depth << "}\n";
   return total_list.str();
 }
@@ -292,8 +307,11 @@ void set_string(std::string list, std::string* class_list) {
   (*class_list) = list;
 }
   public:
-    int input_r_depth;
-    int output_event_depth;
+    int op_depth;
+    int event_r_depth;
+    int lp_id_depth;
+    int time_r_depth;
+    int result_entry_depth;
     int success_depth;
     int trans_num;
   private:
@@ -302,10 +320,14 @@ void set_string(std::string list, std::string* class_list) {
 };
 
 
-struct __cosim_s17__ { char data[32]; };
-extern "C" void event_queue_kernel_hw_stub_wrapper(volatile void *, volatile void *, volatile void *);
+struct __cosim_s1__ { char data[1]; };
+struct __cosim_s20__ { char data[20]; };
+struct __cosim_s2__ { char data[2]; };
+struct __cosim_s4__ { char data[4]; };
+struct __cosim_s19__ { char data[32]; };
+extern "C" void event_queue_kernel_hw_stub_wrapper(__cosim_s1__*, __cosim_s20__*, __cosim_s2__*, __cosim_s4__*, volatile void *, volatile void *);
 
-extern "C" void apatb_event_queue_kernel_hw(volatile void * __xlx_apatb_param_input_r, volatile void * __xlx_apatb_param_output_event, volatile void * __xlx_apatb_param_success) {
+extern "C" void apatb_event_queue_kernel_hw(__cosim_s1__* __xlx_apatb_param_op, __cosim_s20__* __xlx_apatb_param_event_r, __cosim_s2__* __xlx_apatb_param_lp_id, __cosim_s4__* __xlx_apatb_param_time_r, volatile void * __xlx_apatb_param_result_entry, volatile void * __xlx_apatb_param_success) {
   refine_signal_handler();
   fstream wrapc_switch_file_token;
   wrapc_switch_file_token.open(".hls_cosim_wrapc_switch.log");
@@ -321,7 +343,7 @@ static AESL_FILE_HANDLER aesl_fh;
 {
       static ifstream rtl_tv_out_file;
       if (!rtl_tv_out_file.is_open()) {
-        rtl_tv_out_file.open(AUTOTB_TVOUT_PC_output_event);
+        rtl_tv_out_file.open(AUTOTB_TVOUT_PC_result_entry);
         if (rtl_tv_out_file.good()) {
           rtl_tv_out_file >> AESL_token;
           if (AESL_token != "[[[runtime]]]")
@@ -337,7 +359,7 @@ static AESL_FILE_HANDLER aesl_fh;
           exit(1);
         }
         if (atoi(AESL_num.c_str()) == AESL_transaction_pc) {
-          std::vector<sc_bv<129> > output_event_pc_buffer(1);
+          std::vector<sc_bv<146> > result_entry_pc_buffer(1);
           int i = 0;
           bool has_unknown_value = false;
           rtl_tv_out_file >> AESL_token; //data
@@ -347,7 +369,7 @@ static AESL_FILE_HANDLER aesl_fh;
   
             // push token into output port buffer
             if (AESL_token != "") {
-              output_event_pc_buffer[i] = AESL_token.c_str();;
+              result_entry_pc_buffer[i] = AESL_token.c_str();;
               i++;
             }
   
@@ -357,13 +379,13 @@ static AESL_FILE_HANDLER aesl_fh;
           }
           if (has_unknown_value) {
             cerr << "WARNING: [SIM 212-201] RTL produces unknown value 'x' or 'X' on port " 
-                 << "output_event" << ", possible cause: There are uninitialized variables in the C design."
+                 << "result_entry" << ", possible cause: There are uninitialized variables in the C design."
                  << endl; 
           }
   
-          if (i > 0) {((long long*)__xlx_apatb_param_output_event)[0*2+0] = output_event_pc_buffer[0].range(63,0).to_int64();
-((long long*)__xlx_apatb_param_output_event)[0*2+1] = output_event_pc_buffer[0].range(127,64).to_int64();
-((long long*)__xlx_apatb_param_output_event)[0*2+2] = output_event_pc_buffer[0].range(128,128).to_int64();
+          if (i > 0) {((long long*)__xlx_apatb_param_result_entry)[0*2+0] = result_entry_pc_buffer[0].range(63,0).to_int64();
+((long long*)__xlx_apatb_param_result_entry)[0*2+1] = result_entry_pc_buffer[0].range(127,64).to_int64();
+((long long*)__xlx_apatb_param_result_entry)[0*2+2] = result_entry_pc_buffer[0].range(145,128).to_int64();
 }
         } // end transaction
       } // end file is good
@@ -425,26 +447,59 @@ static INTER_TCL_FILE tcl_file(INTER_TCL);
 std::vector<char> __xlx_sprintf_buffer(1024);
 CodeState = ENTER_WRAPC;
 CodeState = DUMP_INPUTS;
-// print input_r Transactions
+// print op Transactions
 {
-aesl_fh.write(AUTOTB_TVIN_input_r, begin_str(AESL_transaction));
+aesl_fh.write(AUTOTB_TVIN_op, begin_str(AESL_transaction));
 {
-auto *pos = (unsigned char*)__xlx_apatb_param_input_r;
-aesl_fh.write(AUTOTB_TVIN_input_r, formatData(pos, 130));
+auto *pos = (unsigned char*)__xlx_apatb_param_op;
+aesl_fh.write(AUTOTB_TVIN_op, formatData(pos, 3));
 }
-  tcl_file.set_num(1, &tcl_file.input_r_depth);
-aesl_fh.write(AUTOTB_TVIN_input_r, end_str());
+  tcl_file.set_num(1, &tcl_file.op_depth);
+aesl_fh.write(AUTOTB_TVIN_op, end_str());
 }
 
-// print output_event Transactions
+// print event_r Transactions
 {
-aesl_fh.write(AUTOTB_TVIN_output_event, begin_str(AESL_transaction));
+aesl_fh.write(AUTOTB_TVIN_event_r, begin_str(AESL_transaction));
 {
-auto *pos = (unsigned char*)__xlx_apatb_param_output_event;
-aesl_fh.write(AUTOTB_TVIN_output_event, formatData(pos, 129));
+auto *pos = (unsigned char*)__xlx_apatb_param_event_r;
+aesl_fh.write(AUTOTB_TVIN_event_r, formatData(pos, 160));
 }
-  tcl_file.set_num(1, &tcl_file.output_event_depth);
-aesl_fh.write(AUTOTB_TVIN_output_event, end_str());
+  tcl_file.set_num(1, &tcl_file.event_r_depth);
+aesl_fh.write(AUTOTB_TVIN_event_r, end_str());
+}
+
+// print lp_id Transactions
+{
+aesl_fh.write(AUTOTB_TVIN_lp_id, begin_str(AESL_transaction));
+{
+auto *pos = (unsigned char*)__xlx_apatb_param_lp_id;
+aesl_fh.write(AUTOTB_TVIN_lp_id, formatData(pos, 16));
+}
+  tcl_file.set_num(1, &tcl_file.lp_id_depth);
+aesl_fh.write(AUTOTB_TVIN_lp_id, end_str());
+}
+
+// print time_r Transactions
+{
+aesl_fh.write(AUTOTB_TVIN_time_r, begin_str(AESL_transaction));
+{
+auto *pos = (unsigned char*)__xlx_apatb_param_time_r;
+aesl_fh.write(AUTOTB_TVIN_time_r, formatData(pos, 32));
+}
+  tcl_file.set_num(1, &tcl_file.time_r_depth);
+aesl_fh.write(AUTOTB_TVIN_time_r, end_str());
+}
+
+// print result_entry Transactions
+{
+aesl_fh.write(AUTOTB_TVIN_result_entry, begin_str(AESL_transaction));
+{
+auto *pos = (unsigned char*)__xlx_apatb_param_result_entry;
+aesl_fh.write(AUTOTB_TVIN_result_entry, formatData(pos, 146));
+}
+  tcl_file.set_num(1, &tcl_file.result_entry_depth);
+aesl_fh.write(AUTOTB_TVIN_result_entry, end_str());
 }
 
 // print success Transactions
@@ -459,17 +514,17 @@ aesl_fh.write(AUTOTB_TVIN_success, end_str());
 }
 
 CodeState = CALL_C_DUT;
-event_queue_kernel_hw_stub_wrapper(__xlx_apatb_param_input_r, __xlx_apatb_param_output_event, __xlx_apatb_param_success);
+event_queue_kernel_hw_stub_wrapper(__xlx_apatb_param_op, __xlx_apatb_param_event_r, __xlx_apatb_param_lp_id, __xlx_apatb_param_time_r, __xlx_apatb_param_result_entry, __xlx_apatb_param_success);
 CodeState = DUMP_OUTPUTS;
-// print output_event Transactions
+// print result_entry Transactions
 {
-aesl_fh.write(AUTOTB_TVOUT_output_event, begin_str(AESL_transaction));
+aesl_fh.write(AUTOTB_TVOUT_result_entry, begin_str(AESL_transaction));
 {
-auto *pos = (unsigned char*)__xlx_apatb_param_output_event;
-aesl_fh.write(AUTOTB_TVOUT_output_event, formatData(pos, 129));
+auto *pos = (unsigned char*)__xlx_apatb_param_result_entry;
+aesl_fh.write(AUTOTB_TVOUT_result_entry, formatData(pos, 146));
 }
-  tcl_file.set_num(1, &tcl_file.output_event_depth);
-aesl_fh.write(AUTOTB_TVOUT_output_event, end_str());
+  tcl_file.set_num(1, &tcl_file.result_entry_depth);
+aesl_fh.write(AUTOTB_TVOUT_result_entry, end_str());
 }
 
 // print success Transactions

@@ -74672,10 +74672,10 @@ public:
 
 
 
-constexpr int NUM_LPS = 64;
+constexpr int NUM_LPS = 4;
 
 
-constexpr int NUM_LPCORE = 4;
+constexpr int NUM_LPCORE = 2;
 
 
 static constexpr int EVENT_QUEUE_CAPACITY = 128;
@@ -74689,6 +74689,9 @@ static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
+
+
+static constexpr int CANCELLATION_UNIT_CAPACITY = 64;
 # 7 "/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/StateBuffer.hpp" 2
 
 struct LPState
@@ -74771,6 +74774,11 @@ public:
         lp_sizes[lp_id]--;
         total_size--;
         return true;
+    }
+
+    LPState peek(ap_int<16> lp_id) const
+    {
+        return buffer[lp_heads[lp_id]].state;
     }
 
     bool commit(ap_int<32> commit_time)
@@ -74856,7 +74864,7 @@ public:
             total_size -= removed;
             return true;
         }
-        return false;
+        return true;
     }
 
     ap_uint<16> get_lp_size(ap_int<16> lp_id) const

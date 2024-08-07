@@ -2,46 +2,326 @@ INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
    Compiling ../../../../cpp/main.cpp in debug mode
    Compiling ../../../../cpp/EventHistory.cpp in debug mode
-   Compiling ../../../../cpp/StateBuffer.cpp in debug mode
+   Compiling ../../../../cpp/EventQueue.cpp in debug mode
    Generating csim.exe
-Pushing events:
-Pushed: LP 0, Send Time 0, Recv Time 0, Data 0
-Pushed: LP 1, Send Time 5, Recv Time 10, Data 100
-Pushed: LP 2, Send Time 10, Recv Time 20, Data 200
-Pushed: LP 3, Send Time 15, Recv Time 30, Data 300
-Pushed: LP 0, Send Time 20, Recv Time 40, Data 400
-Pushed: LP 1, Send Time 25, Recv Time 50, Data 500
-Pushed: LP 2, Send Time 30, Recv Time 60, Data 600
-Pushed: LP 3, Send Time 35, Recv Time 70, Data 700
-Pushed: LP 0, Send Time 40, Recv Time 80, Data 800
-Pushed: LP 1, Send Time 45, Recv Time 90, Data 900
-Pushed: LP 2, Send Time 50, Recv Time 100, Data 1000
-Pushed: LP 3, Send Time 55, Recv Time 110, Data 1100
-Pushed: LP 0, Send Time 60, Recv Time 120, Data 1200
-Pushed: LP 1, Send Time 65, Recv Time 130, Data 1300
-Pushed: LP 2, Send Time 70, Recv Time 140, Data 1400
-Pushed: LP 3, Send Time 75, Recv Time 150, Data 1500
-Pushed: LP 0, Send Time 80, Recv Time 160, Data 1600
-Pushed: LP 1, Send Time 85, Recv Time 170, Data 1700
-Pushed: LP 2, Send Time 90, Recv Time 180, Data 1800
-Pushed: LP 3, Send Time 95, Recv Time 190, Data 1900
+Testing enqueue...
+Enqueue test passed. 100 events enqueued.
 
-Popping events:
-LP 0: (160,1600) (120,1200) (80,800) (40,400) (0,0) (empty)
-LP 1: (170,1700) (130,1300) (90,900) (50,500) (10,100) (empty)
-LP 2: (180,1800) (140,1400) (100,1000) (60,600) (20,200) (empty)
-LP 3: (190,1900) (150,1500) (110,1100) (70,700) (30,300) (empty)
+Testing issue...
+Issued event 1: recv_time = 4, send_time = 7697, data = 692, sender_id = 6, receiver_id = 31
+Issued event 2: recv_time = 38, send_time = 2074, data = 384, sender_id = 45, receiver_id = 42
+Issued event 3: recv_time = 90, send_time = 8786, data = 735, sender_id = 2, receiver_id = 33
+Issued event 4: recv_time = 108, send_time = 5259, data = 517, sender_id = 39, receiver_id = 42
+Issued event 5: recv_time = 110, send_time = 991, data = 531, sender_id = 24, receiver_id = 27
+Issued event 6: recv_time = 302, send_time = 8708, data = 351, sender_id = 16, receiver_id = 48
+Issued event 7: recv_time = 331, send_time = 584, data = 455, sender_id = 25, receiver_id = 10
+Issued event 8: recv_time = 349, send_time = 3043, data = 838, sender_id = 33, receiver_id = 5
+Issued event 9: recv_time = 369, send_time = 8767, data = 314, sender_id = 44, receiver_id = 55
+Issued event 10: recv_time = 401, send_time = 362, data = 381, sender_id = 26, receiver_id = 4
+Issued event 11: recv_time = 422, send_time = 8933, data = 689, sender_id = 5, receiver_id = 32
+Issued event 12: recv_time = 515, send_time = 5340, data = 238, sender_id = 4, receiver_id = 34
+Issued event 13: recv_time = 553, send_time = 4971, data = 222, sender_id = 27, receiver_id = 52
+Issued event 14: recv_time = 675, send_time = 4338, data = 741, sender_id = 17, receiver_id = 42
+Issued event 15: recv_time = 736, send_time = 8574, data = 180, sender_id = 41, receiver_id = 41
+Issued event 16: recv_time = 752, send_time = 3669, data = 763, sender_id = 54, receiver_id = 62
+Issued event 17: recv_time = 763, send_time = 5176, data = 648, sender_id = 57, receiver_id = 52
+Issued event 18: recv_time = 1024, send_time = 8565, data = 882, sender_id = 56, receiver_id = 53
+Issued event 19: recv_time = 1084, send_time = 8191, data = 767, sender_id = 49, receiver_id = 8
+Issued event 20: recv_time = 1166, send_time = 409, data = 750, sender_id = 3, receiver_id = 33
+Issued event 21: recv_time = 1358, send_time = 7293, data = 472, sender_id = 48, receiver_id = 26
+Issued event 22: recv_time = 1373, send_time = 3010, data = 312, sender_id = 39, receiver_id = 39
+Issued event 23: recv_time = 1700, send_time = 479, data = 653, sender_id = 55, receiver_id = 9
+Issued event 24: recv_time = 1708, send_time = 6157, data = 248, sender_id = 60, receiver_id = 23
+Issued event 25: recv_time = 1713, send_time = 4900, data = 236, sender_id = 23, receiver_id = 41
+Issued event 26: recv_time = 1734, send_time = 7174, data = 423, sender_id = 45, receiver_id = 17
+Issued event 27: recv_time = 1926, send_time = 3089, data = 439, sender_id = 23, receiver_id = 50
+Issued event 28: recv_time = 1937, send_time = 9250, data = 881, sender_id = 15, receiver_id = 43
+Issued event 29: recv_time = 1943, send_time = 7618, data = 719, sender_id = 18, receiver_id = 31
+Issued event 30: recv_time = 1984, send_time = 1003, data = 530, sender_id = 1, receiver_id = 30
+Issued event 31: recv_time = 2055, send_time = 6223, data = 810, sender_id = 41, receiver_id = 14
+Issued event 32: recv_time = 2197, send_time = 7887, data = 766, sender_id = 21, receiver_id = 9
+Issued event 33: recv_time = 2355, send_time = 1429, data = 331, sender_id = 17, receiver_id = 9
+Issued event 34: recv_time = 2474, send_time = 2382, data = 941, sender_id = 47, receiver_id = 51
+Issued event 35: recv_time = 2939, send_time = 4125, data = 784, sender_id = 16, receiver_id = 33
+Issued event 36: recv_time = 3054, send_time = 9181, data = 804, sender_id = 10, receiver_id = 52
+Issued event 37: recv_time = 3146, send_time = 3548, data = 360, sender_id = 17, receiver_id = 12
+Issued event 38: recv_time = 3204, send_time = 1663, data = 593, sender_id = 56, receiver_id = 18
+Issued event 39: recv_time = 3214, send_time = 9491, data = 486, sender_id = 53, receiver_id = 3
+Issued event 40: recv_time = 3226, send_time = 7566, data = 493, sender_id = 47, receiver_id = 8
+Issued event 41: recv_time = 3393, send_time = 1731, data = 944, sender_id = 36, receiver_id = 37
+Issued event 42: recv_time = 3550, send_time = 7796, data = 303, sender_id = 47, receiver_id = 13
+Issued event 43: recv_time = 3833, send_time = 1807, data = 533, sender_id = 34, receiver_id = 50
+Issued event 44: recv_time = 3907, send_time = 889, data = 818, sender_id = 63, receiver_id = 53
+Issued event 45: recv_time = 3962, send_time = 2918, data = 953, sender_id = 20, receiver_id = 61
+Issued event 46: recv_time = 3977, send_time = 1046, data = 605, sender_id = 3, receiver_id = 42
+Issued event 47: recv_time = 4194, send_time = 4527, data = 66, sender_id = 29, receiver_id = 34
+Issued event 48: recv_time = 4378, send_time = 1957, data = 319, sender_id = 29, receiver_id = 24
+Issued event 49: recv_time = 4381, send_time = 9456, data = 303, sender_id = 30, receiver_id = 63
+Issued event 50: recv_time = 4510, send_time = 3482, data = 707, sender_id = 55, receiver_id = 37
+Issued event 51: recv_time = 4604, send_time = 8611, data = 798, sender_id = 20, receiver_id = 2
+Issued event 52: recv_time = 4700, send_time = 7486, data = 14, sender_id = 63, receiver_id = 23
+Issued event 53: recv_time = 4724, send_time = 4633, data = 523, sender_id = 52, receiver_id = 40
+Issued event 54: recv_time = 4941, send_time = 7628, data = 169, sender_id = 26, receiver_id = 38
+Issued event 55: recv_time = 5130, send_time = 4976, data = 58, sender_id = 48, receiver_id = 39
+Issued event 56: recv_time = 5274, send_time = 1160, data = 402, sender_id = 18, receiver_id = 25
+Issued event 57: recv_time = 5312, send_time = 218, data = 877, sender_id = 8, receiver_id = 52
+Issued event 58: recv_time = 5426, send_time = 4741, data = 678, sender_id = 43, receiver_id = 4
+Issued event 59: recv_time = 5457, send_time = 5727, data = 499, sender_id = 45, receiver_id = 12
+Issued event 60: recv_time = 5460, send_time = 1624, data = 926, sender_id = 57, receiver_id = 44
+Issued event 61: recv_time = 5465, send_time = 2860, data = 270, sender_id = 23, receiver_id = 46
+Issued event 62: recv_time = 5505, send_time = 7151, data = 228, sender_id = 44, receiver_id = 50
+Issued event 63: recv_time = 5964, send_time = 2986, data = 151, sender_id = 50, receiver_id = 34
+Issued event 64: recv_time = 6011, send_time = 5812, data = 433, sender_id = 56, receiver_id = 2
+Issued event 65: recv_time = 6097, send_time = 1168, data = 855, sender_id = 49, receiver_id = 0
+Issued event 66: recv_time = 6368, send_time = 6937, data = 608, sender_id = 40, receiver_id = 54
+Issued event 67: recv_time = 6407, send_time = 5031, data = 263, sender_id = 13, receiver_id = 0
+Issued event 68: recv_time = 6435, send_time = 6062, data = 574, sender_id = 19, receiver_id = 8
+Issued event 69: recv_time = 6467, send_time = 1419, data = 70, sender_id = 15, receiver_id = 43
+Issued event 70: recv_time = 6498, send_time = 2834, data = 706, sender_id = 8, receiver_id = 17
+Issued event 71: recv_time = 6744, send_time = 3340, data = 557, sender_id = 6, receiver_id = 42
+Issued event 72: recv_time = 6752, send_time = 4118, data = 893, sender_id = 13, receiver_id = 55
+Issued event 73: recv_time = 6787, send_time = 7752, data = 655, sender_id = 11, receiver_id = 50
+Issued event 74: recv_time = 6923, send_time = 2478, data = 887, sender_id = 26, receiver_id = 28
+Issued event 75: recv_time = 7288, send_time = 2876, data = 658, sender_id = 39, receiver_id = 51
+Issued event 76: recv_time = 7435, send_time = 1079, data = 625, sender_id = 10, receiver_id = 1
+Issued event 77: recv_time = 7559, send_time = 363, data = 495, sender_id = 55, receiver_id = 41
+Issued event 78: recv_time = 7579, send_time = 4901, data = 378, sender_id = 60, receiver_id = 62
+Issued event 79: recv_time = 7717, send_time = 7841, data = 563, sender_id = 25, receiver_id = 49
+Issued event 80: recv_time = 7876, send_time = 1908, data = 892, sender_id = 56, receiver_id = 3
+Issued event 81: recv_time = 7914, send_time = 8760, data = 538, sender_id = 25, receiver_id = 22
+Issued event 82: recv_time = 7940, send_time = 6420, data = 926, sender_id = 50, receiver_id = 24
+Issued event 83: recv_time = 8159, send_time = 1318, data = 829, sender_id = 9, receiver_id = 31
+Issued event 84: recv_time = 8220, send_time = 914, data = 945, sender_id = 51, receiver_id = 20
+Issued event 85: recv_time = 8246, send_time = 8236, data = 919, sender_id = 55, receiver_id = 57
+Issued event 86: recv_time = 8296, send_time = 4048, data = 943, sender_id = 59, receiver_id = 42
+Issued event 87: recv_time = 8400, send_time = 3414, data = 328, sender_id = 6, receiver_id = 61
+Issued event 88: recv_time = 8430, send_time = 5920, data = 922, sender_id = 7, receiver_id = 5
+Issued event 89: recv_time = 8565, send_time = 4840, data = 702, sender_id = 42, receiver_id = 27
+Issued event 90: recv_time = 8786, send_time = 8197, data = 917, sender_id = 6, receiver_id = 19
+Issued event 91: recv_time = 8795, send_time = 7315, data = 782, sender_id = 58, receiver_id = 23
+Issued event 92: recv_time = 9233, send_time = 997, data = 613, sender_id = 6, receiver_id = 15
+Issued event 93: recv_time = 9235, send_time = 2048, data = 348, sender_id = 56, receiver_id = 38
+Issued event 94: recv_time = 9257, send_time = 1568, data = 170, sender_id = 51, receiver_id = 25
+Issued event 95: recv_time = 9407, send_time = 3861, data = 569, sender_id = 22, receiver_id = 48
+Issued event 96: recv_time = 9500, send_time = 5484, data = 729, sender_id = 16, receiver_id = 11
+Issued event 97: recv_time = 9529, send_time = 3924, data = 952, sender_id = 53, receiver_id = 49
+Issued event 98: recv_time = 9643, send_time = 5657, data = 171, sender_id = 24, receiver_id = 32
+Issued event 99: recv_time = 9860, send_time = 9485, data = 490, sender_id = 41, receiver_id = 30
+Issued event 100: recv_time = 9927, send_time = 4544, data = 442, sender_id = 39, receiver_id = 38
+Issued 100 events.
 
-Rolling back LP 2 to receive time 70:
-Rollback successful for LP 2 to receive time 70
+Queue status after issuing events:
+Queue size: 100, Head: 0
+Event 0: recv_time = 4, send_time = 7697, data = 692, sender_id = 6, receiver_id = 31, is_issued = 1, next = 65535
+Event 1: recv_time = 38, send_time = 2074, data = 384, sender_id = 45, receiver_id = 42, is_issued = 1, next = 40
+Event 2: recv_time = 90, send_time = 8786, data = 735, sender_id = 2, receiver_id = 33, is_issued = 1, next = 15
+Event 3: recv_time = 108, send_time = 5259, data = 517, sender_id = 39, receiver_id = 42, is_issued = 1, next = 23
+Event 4: recv_time = 110, send_time = 991, data = 531, sender_id = 24, receiver_id = 27, is_issued = 1, next = 65535
+Event 5: recv_time = 302, send_time = 8708, data = 351, sender_id = 16, receiver_id = 48, is_issued = 1, next = 6
+Event 6: recv_time = 331, send_time = 584, data = 455, sender_id = 25, receiver_id = 10, is_issued = 1, next = 65535
+Event 7: recv_time = 349, send_time = 3043, data = 838, sender_id = 33, receiver_id = 5, is_issued = 1, next = 65535
+Event 8: recv_time = 369, send_time = 8767, data = 314, sender_id = 44, receiver_id = 55, is_issued = 1, next = 49
+Event 9: recv_time = 401, send_time = 362, data = 381, sender_id = 26, receiver_id = 4, is_issued = 1, next = 65535
+Event 10: recv_time = 422, send_time = 8933, data = 689, sender_id = 5, receiver_id = 32, is_issued = 1, next = 76
+Event 11: recv_time = 515, send_time = 5340, data = 238, sender_id = 4, receiver_id = 34, is_issued = 1, next = 65535
+Event 12: recv_time = 553, send_time = 4971, data = 222, sender_id = 27, receiver_id = 52, is_issued = 1, next = 30
+Event 13: recv_time = 675, send_time = 4338, data = 741, sender_id = 17, receiver_id = 42, is_issued = 1, next = 59
+Event 14: recv_time = 736, send_time = 8574, data = 180, sender_id = 41, receiver_id = 41, is_issued = 1, next = 34
+Event 15: recv_time = 752, send_time = 3669, data = 763, sender_id = 54, receiver_id = 62, is_issued = 1, next = 18
+Event 16: recv_time = 763, send_time = 5176, data = 648, sender_id = 57, receiver_id = 52, is_issued = 1, next = 65535
+Event 17: recv_time = 1024, send_time = 8565, data = 882, sender_id = 56, receiver_id = 53, is_issued = 1, next = 65535
+Event 18: recv_time = 1084, send_time = 8191, data = 767, sender_id = 49, receiver_id = 8, is_issued = 1, next = 20
+Event 19: recv_time = 1166, send_time = 409, data = 750, sender_id = 3, receiver_id = 33, is_issued = 1, next = 6
+Event 20: recv_time = 1358, send_time = 7293, data = 472, sender_id = 48, receiver_id = 26, is_issued = 1, next = 65535
+Event 21: recv_time = 1373, send_time = 3010, data = 312, sender_id = 39, receiver_id = 39, is_issued = 1, next = 26
+Event 22: recv_time = 1700, send_time = 479, data = 653, sender_id = 55, receiver_id = 9, is_issued = 1, next = 24
+Event 23: recv_time = 1708, send_time = 6157, data = 248, sender_id = 60, receiver_id = 23, is_issued = 1, next = 22
+Event 24: recv_time = 1713, send_time = 4900, data = 236, sender_id = 23, receiver_id = 41, is_issued = 1, next = 65535
+Event 25: recv_time = 1734, send_time = 7174, data = 423, sender_id = 45, receiver_id = 17, is_issued = 1, next = 27
+Event 26: recv_time = 1926, send_time = 3089, data = 439, sender_id = 23, receiver_id = 50, is_issued = 1, next = 65535
+Event 27: recv_time = 1937, send_time = 9250, data = 881, sender_id = 15, receiver_id = 43, is_issued = 1, next = 65535
+Event 28: recv_time = 1943, send_time = 7618, data = 719, sender_id = 18, receiver_id = 31, is_issued = 1, next = 12
+Event 29: recv_time = 1984, send_time = 1003, data = 530, sender_id = 1, receiver_id = 30, is_issued = 1, next = 65535
+Event 30: recv_time = 2055, send_time = 6223, data = 810, sender_id = 41, receiver_id = 14, is_issued = 1, next = 65535
+Event 31: recv_time = 2197, send_time = 7887, data = 766, sender_id = 21, receiver_id = 9, is_issued = 1, next = 65535
+Event 32: recv_time = 2355, send_time = 1429, data = 331, sender_id = 17, receiver_id = 9, is_issued = 1, next = 23
+Event 33: recv_time = 2474, send_time = 2382, data = 941, sender_id = 47, receiver_id = 51, is_issued = 1, next = 45
+Event 34: recv_time = 2939, send_time = 4125, data = 784, sender_id = 16, receiver_id = 33, is_issued = 1, next = 65535
+Event 35: recv_time = 3054, send_time = 9181, data = 804, sender_id = 10, receiver_id = 52, is_issued = 1, next = 27
+Event 36: recv_time = 3146, send_time = 3548, data = 360, sender_id = 17, receiver_id = 12, is_issued = 1, next = 30
+Event 37: recv_time = 3204, send_time = 1663, data = 593, sender_id = 56, receiver_id = 18, is_issued = 1, next = 65535
+Event 38: recv_time = 3214, send_time = 9491, data = 486, sender_id = 53, receiver_id = 3, is_issued = 1, next = 60
+Event 39: recv_time = 3226, send_time = 7566, data = 493, sender_id = 47, receiver_id = 8, is_issued = 1, next = 16
+Event 40: recv_time = 3393, send_time = 1731, data = 944, sender_id = 36, receiver_id = 37, is_issued = 1, next = 35
+Event 41: recv_time = 3550, send_time = 7796, data = 303, sender_id = 47, receiver_id = 13, is_issued = 1, next = 65535
+Event 42: recv_time = 3833, send_time = 1807, data = 533, sender_id = 34, receiver_id = 50, is_issued = 1, next = 29
+Event 43: recv_time = 3907, send_time = 889, data = 818, sender_id = 63, receiver_id = 53, is_issued = 1, next = 12
+Event 44: recv_time = 3962, send_time = 2918, data = 953, sender_id = 20, receiver_id = 61, is_issued = 1, next = 65535
+Event 45: recv_time = 3977, send_time = 1046, data = 605, sender_id = 3, receiver_id = 42, is_issued = 1, next = 65535
+Event 46: recv_time = 4194, send_time = 4527, data = 66, sender_id = 29, receiver_id = 34, is_issued = 1, next = 44
+Event 47: recv_time = 4378, send_time = 1957, data = 319, sender_id = 29, receiver_id = 24, is_issued = 1, next = 34
+Event 48: recv_time = 4381, send_time = 9456, data = 303, sender_id = 30, receiver_id = 63, is_issued = 1, next = 65535
+Event 49: recv_time = 4510, send_time = 3482, data = 707, sender_id = 55, receiver_id = 37, is_issued = 1, next = 65535
+Event 50: recv_time = 4604, send_time = 8611, data = 798, sender_id = 20, receiver_id = 2, is_issued = 1, next = 14
+Event 51: recv_time = 4700, send_time = 7486, data = 14, sender_id = 63, receiver_id = 23, is_issued = 1, next = 65535
+Event 52: recv_time = 4724, send_time = 4633, data = 523, sender_id = 52, receiver_id = 40, is_issued = 1, next = 65535
+Event 53: recv_time = 4941, send_time = 7628, data = 169, sender_id = 26, receiver_id = 38, is_issued = 1, next = 66
+Event 54: recv_time = 5130, send_time = 4976, data = 58, sender_id = 48, receiver_id = 39, is_issued = 1, next = 65535
+Event 55: recv_time = 5274, send_time = 1160, data = 402, sender_id = 18, receiver_id = 25, is_issued = 1, next = 39
+Event 56: recv_time = 5312, send_time = 218, data = 877, sender_id = 8, receiver_id = 52, is_issued = 1, next = 43
+Event 57: recv_time = 5426, send_time = 4741, data = 678, sender_id = 43, receiver_id = 4, is_issued = 1, next = 11
+Event 58: recv_time = 5457, send_time = 5727, data = 499, sender_id = 45, receiver_id = 12, is_issued = 1, next = 65535
+Event 59: recv_time = 5460, send_time = 1624, data = 926, sender_id = 57, receiver_id = 44, is_issued = 1, next = 65535
+Event 60: recv_time = 5465, send_time = 2860, data = 270, sender_id = 23, receiver_id = 46, is_issued = 1, next = 65535
+Event 61: recv_time = 5505, send_time = 7151, data = 228, sender_id = 44, receiver_id = 50, is_issued = 1, next = 61
+Event 62: recv_time = 5964, send_time = 2986, data = 151, sender_id = 50, receiver_id = 34, is_issued = 1, next = 42
+Event 63: recv_time = 6011, send_time = 5812, data = 433, sender_id = 56, receiver_id = 2, is_issued = 1, next = 65535
+Event 64: recv_time = 6097, send_time = 1168, data = 855, sender_id = 49, receiver_id = 0, is_issued = 1, next = 14
+Event 65: recv_time = 6368, send_time = 6937, data = 608, sender_id = 40, receiver_id = 54, is_issued = 1, next = 65535
+Event 66: recv_time = 6407, send_time = 5031, data = 263, sender_id = 13, receiver_id = 0, is_issued = 1, next = 65535
+Event 67: recv_time = 6435, send_time = 6062, data = 574, sender_id = 19, receiver_id = 8, is_issued = 1, next = 65535
+Event 68: recv_time = 6467, send_time = 1419, data = 70, sender_id = 15, receiver_id = 43, is_issued = 1, next = 63
+Event 69: recv_time = 6498, send_time = 2834, data = 706, sender_id = 8, receiver_id = 17, is_issued = 1, next = 65535
+Event 70: recv_time = 6744, send_time = 3340, data = 557, sender_id = 6, receiver_id = 42, is_issued = 1, next = 31
+Event 71: recv_time = 6752, send_time = 4118, data = 893, sender_id = 13, receiver_id = 55, is_issued = 1, next = 65535
+Event 72: recv_time = 6787, send_time = 7752, data = 655, sender_id = 11, receiver_id = 50, is_issued = 1, next = 66
+Event 73: recv_time = 6923, send_time = 2478, data = 887, sender_id = 26, receiver_id = 28, is_issued = 1, next = 65535
+Event 74: recv_time = 7288, send_time = 2876, data = 658, sender_id = 39, receiver_id = 51, is_issued = 1, next = 65535
+Event 75: recv_time = 7435, send_time = 1079, data = 625, sender_id = 10, receiver_id = 1, is_issued = 1, next = 65535
+Event 76: recv_time = 7559, send_time = 363, data = 495, sender_id = 55, receiver_id = 41, is_issued = 1, next = 57
+Event 77: recv_time = 7579, send_time = 4901, data = 378, sender_id = 60, receiver_id = 62, is_issued = 1, next = 65535
+Event 78: recv_time = 7717, send_time = 7841, data = 563, sender_id = 25, receiver_id = 49, is_issued = 1, next = 49
+Event 79: recv_time = 7876, send_time = 1908, data = 892, sender_id = 56, receiver_id = 3, is_issued = 1, next = 65535
+Event 80: recv_time = 7914, send_time = 8760, data = 538, sender_id = 25, receiver_id = 22, is_issued = 1, next = 65535
+Event 81: recv_time = 7940, send_time = 6420, data = 926, sender_id = 50, receiver_id = 24, is_issued = 1, next = 65535
+Event 82: recv_time = 8159, send_time = 1318, data = 829, sender_id = 9, receiver_id = 31, is_issued = 1, next = 38
+Event 83: recv_time = 8220, send_time = 914, data = 945, sender_id = 51, receiver_id = 20, is_issued = 1, next = 65535
+Event 84: recv_time = 8246, send_time = 8236, data = 919, sender_id = 55, receiver_id = 57, is_issued = 1, next = 65535
+Event 85: recv_time = 8296, send_time = 4048, data = 943, sender_id = 59, receiver_id = 42, is_issued = 1, next = 30
+Event 86: recv_time = 8400, send_time = 3414, data = 328, sender_id = 6, receiver_id = 61, is_issued = 1, next = 52
+Event 87: recv_time = 8430, send_time = 5920, data = 922, sender_id = 7, receiver_id = 5, is_issued = 1, next = 27
+Event 88: recv_time = 8565, send_time = 4840, data = 702, sender_id = 42, receiver_id = 27, is_issued = 1, next = 41
+Event 89: recv_time = 8786, send_time = 8197, data = 917, sender_id = 6, receiver_id = 19, is_issued = 1, next = 65535
+Event 90: recv_time = 8795, send_time = 7315, data = 782, sender_id = 58, receiver_id = 23, is_issued = 1, next = 20
+Event 91: recv_time = 9233, send_time = 997, data = 613, sender_id = 6, receiver_id = 15, is_issued = 1, next = 65535
+Event 92: recv_time = 9235, send_time = 2048, data = 348, sender_id = 56, receiver_id = 38, is_issued = 1, next = 96
+Event 93: recv_time = 9257, send_time = 1568, data = 170, sender_id = 51, receiver_id = 25, is_issued = 1, next = 65535
+Event 94: recv_time = 9407, send_time = 3861, data = 569, sender_id = 22, receiver_id = 48, is_issued = 1, next = 65535
+Event 95: recv_time = 9500, send_time = 5484, data = 729, sender_id = 16, receiver_id = 11, is_issued = 1, next = 65535
+Event 96: recv_time = 9529, send_time = 3924, data = 952, sender_id = 53, receiver_id = 49, is_issued = 1, next = 65535
+Event 97: recv_time = 9643, send_time = 5657, data = 171, sender_id = 24, receiver_id = 32, is_issued = 1, next = 65535
+Event 98: recv_time = 9860, send_time = 9485, data = 490, sender_id = 41, receiver_id = 30, is_issued = 1, next = 24
+Event 99: recv_time = 9927, send_time = 4544, data = 442, sender_id = 39, receiver_id = 38, is_issued = 1, next = 65535
 
-Committing up to receive time 100:
-Commit successful, new GVT: 100
+Testing commit...
+Commit operation successful
 
-Popping events after rollback and commit:
-LP 0: (160,1600) (120,1200) (empty)
-LP 1: (170,1700) (130,1300) (empty)
-LP 2: (empty)
-LP 3: (190,1900) (150,1500) (110,1100) (empty)
+Queue status after commit:
+Queue size: 46, Head: 54
+Event 0: recv_time = 5130, send_time = 4976, data = 58, sender_id = 48, receiver_id = 39, is_issued = 1, next = 65535
+Event 1: recv_time = 5274, send_time = 1160, data = 402, sender_id = 18, receiver_id = 25, is_issued = 1, next = 39
+Event 2: recv_time = 5312, send_time = 218, data = 877, sender_id = 8, receiver_id = 52, is_issued = 1, next = 43
+Event 3: recv_time = 5426, send_time = 4741, data = 678, sender_id = 43, receiver_id = 4, is_issued = 1, next = 11
+Event 4: recv_time = 5457, send_time = 5727, data = 499, sender_id = 45, receiver_id = 12, is_issued = 1, next = 65535
+Event 5: recv_time = 5460, send_time = 1624, data = 926, sender_id = 57, receiver_id = 44, is_issued = 1, next = 65535
+Event 6: recv_time = 5465, send_time = 2860, data = 270, sender_id = 23, receiver_id = 46, is_issued = 1, next = 65535
+Event 7: recv_time = 5505, send_time = 7151, data = 228, sender_id = 44, receiver_id = 50, is_issued = 1, next = 61
+Event 8: recv_time = 5964, send_time = 2986, data = 151, sender_id = 50, receiver_id = 34, is_issued = 1, next = 42
+Event 9: recv_time = 6011, send_time = 5812, data = 433, sender_id = 56, receiver_id = 2, is_issued = 1, next = 65535
+Event 10: recv_time = 6097, send_time = 1168, data = 855, sender_id = 49, receiver_id = 0, is_issued = 1, next = 14
+Event 11: recv_time = 6368, send_time = 6937, data = 608, sender_id = 40, receiver_id = 54, is_issued = 1, next = 65535
+Event 12: recv_time = 6407, send_time = 5031, data = 263, sender_id = 13, receiver_id = 0, is_issued = 1, next = 65535
+Event 13: recv_time = 6435, send_time = 6062, data = 574, sender_id = 19, receiver_id = 8, is_issued = 1, next = 65535
+Event 14: recv_time = 6467, send_time = 1419, data = 70, sender_id = 15, receiver_id = 43, is_issued = 1, next = 63
+Event 15: recv_time = 6498, send_time = 2834, data = 706, sender_id = 8, receiver_id = 17, is_issued = 1, next = 65535
+Event 16: recv_time = 6744, send_time = 3340, data = 557, sender_id = 6, receiver_id = 42, is_issued = 1, next = 31
+Event 17: recv_time = 6752, send_time = 4118, data = 893, sender_id = 13, receiver_id = 55, is_issued = 1, next = 65535
+Event 18: recv_time = 6787, send_time = 7752, data = 655, sender_id = 11, receiver_id = 50, is_issued = 1, next = 66
+Event 19: recv_time = 6923, send_time = 2478, data = 887, sender_id = 26, receiver_id = 28, is_issued = 1, next = 65535
+Event 20: recv_time = 7288, send_time = 2876, data = 658, sender_id = 39, receiver_id = 51, is_issued = 1, next = 65535
+Event 21: recv_time = 7435, send_time = 1079, data = 625, sender_id = 10, receiver_id = 1, is_issued = 1, next = 65535
+Event 22: recv_time = 7559, send_time = 363, data = 495, sender_id = 55, receiver_id = 41, is_issued = 1, next = 57
+Event 23: recv_time = 7579, send_time = 4901, data = 378, sender_id = 60, receiver_id = 62, is_issued = 1, next = 65535
+Event 24: recv_time = 7717, send_time = 7841, data = 563, sender_id = 25, receiver_id = 49, is_issued = 1, next = 49
+Event 25: recv_time = 7876, send_time = 1908, data = 892, sender_id = 56, receiver_id = 3, is_issued = 1, next = 65535
+Event 26: recv_time = 7914, send_time = 8760, data = 538, sender_id = 25, receiver_id = 22, is_issued = 1, next = 65535
+Event 27: recv_time = 7940, send_time = 6420, data = 926, sender_id = 50, receiver_id = 24, is_issued = 1, next = 65535
+Event 28: recv_time = 8159, send_time = 1318, data = 829, sender_id = 9, receiver_id = 31, is_issued = 1, next = 38
+Event 29: recv_time = 8220, send_time = 914, data = 945, sender_id = 51, receiver_id = 20, is_issued = 1, next = 65535
+Event 30: recv_time = 8246, send_time = 8236, data = 919, sender_id = 55, receiver_id = 57, is_issued = 1, next = 65535
+Event 31: recv_time = 8296, send_time = 4048, data = 943, sender_id = 59, receiver_id = 42, is_issued = 1, next = 30
+Event 32: recv_time = 8400, send_time = 3414, data = 328, sender_id = 6, receiver_id = 61, is_issued = 1, next = 52
+Event 33: recv_time = 8430, send_time = 5920, data = 922, sender_id = 7, receiver_id = 5, is_issued = 1, next = 27
+Event 34: recv_time = 8565, send_time = 4840, data = 702, sender_id = 42, receiver_id = 27, is_issued = 1, next = 41
+Event 35: recv_time = 8786, send_time = 8197, data = 917, sender_id = 6, receiver_id = 19, is_issued = 1, next = 65535
+Event 36: recv_time = 8795, send_time = 7315, data = 782, sender_id = 58, receiver_id = 23, is_issued = 1, next = 20
+Event 37: recv_time = 9233, send_time = 997, data = 613, sender_id = 6, receiver_id = 15, is_issued = 1, next = 65535
+Event 38: recv_time = 9235, send_time = 2048, data = 348, sender_id = 56, receiver_id = 38, is_issued = 1, next = 96
+Event 39: recv_time = 9257, send_time = 1568, data = 170, sender_id = 51, receiver_id = 25, is_issued = 1, next = 65535
+Event 40: recv_time = 9407, send_time = 3861, data = 569, sender_id = 22, receiver_id = 48, is_issued = 1, next = 65535
+Event 41: recv_time = 9500, send_time = 5484, data = 729, sender_id = 16, receiver_id = 11, is_issued = 1, next = 65535
+Event 42: recv_time = 9529, send_time = 3924, data = 952, sender_id = 53, receiver_id = 49, is_issued = 1, next = 65535
+Event 43: recv_time = 9643, send_time = 5657, data = 171, sender_id = 24, receiver_id = 32, is_issued = 1, next = 65535
+Event 44: recv_time = 9860, send_time = 9485, data = 490, sender_id = 41, receiver_id = 30, is_issued = 1, next = 24
+Event 45: recv_time = 9927, send_time = 4544, data = 442, sender_id = 39, receiver_id = 38, is_issued = 1, next = 65535
+
+Testing rollback...
+Rollback operation for LP 0 to time 7500 successful
+
+Queue status after rollback:
+Queue size: 46, Head: 54
+Event 0: recv_time = 5130, send_time = 4976, data = 58, sender_id = 48, receiver_id = 39, is_issued = 1, next = 65535
+Event 1: recv_time = 5274, send_time = 1160, data = 402, sender_id = 18, receiver_id = 25, is_issued = 1, next = 39
+Event 2: recv_time = 5312, send_time = 218, data = 877, sender_id = 8, receiver_id = 52, is_issued = 1, next = 43
+Event 3: recv_time = 5426, send_time = 4741, data = 678, sender_id = 43, receiver_id = 4, is_issued = 1, next = 11
+Event 4: recv_time = 5457, send_time = 5727, data = 499, sender_id = 45, receiver_id = 12, is_issued = 1, next = 65535
+Event 5: recv_time = 5460, send_time = 1624, data = 926, sender_id = 57, receiver_id = 44, is_issued = 1, next = 65535
+Event 6: recv_time = 5465, send_time = 2860, data = 270, sender_id = 23, receiver_id = 46, is_issued = 1, next = 65535
+Event 7: recv_time = 5505, send_time = 7151, data = 228, sender_id = 44, receiver_id = 50, is_issued = 1, next = 61
+Event 8: recv_time = 5964, send_time = 2986, data = 151, sender_id = 50, receiver_id = 34, is_issued = 1, next = 42
+Event 9: recv_time = 6011, send_time = 5812, data = 433, sender_id = 56, receiver_id = 2, is_issued = 1, next = 65535
+Event 10: recv_time = 6097, send_time = 1168, data = 855, sender_id = 49, receiver_id = 0, is_issued = 1, next = 14
+Event 11: recv_time = 6368, send_time = 6937, data = 608, sender_id = 40, receiver_id = 54, is_issued = 1, next = 65535
+Event 12: recv_time = 6407, send_time = 5031, data = 263, sender_id = 13, receiver_id = 0, is_issued = 1, next = 65535
+Event 13: recv_time = 6435, send_time = 6062, data = 574, sender_id = 19, receiver_id = 8, is_issued = 1, next = 65535
+Event 14: recv_time = 6467, send_time = 1419, data = 70, sender_id = 15, receiver_id = 43, is_issued = 1, next = 63
+Event 15: recv_time = 6498, send_time = 2834, data = 706, sender_id = 8, receiver_id = 17, is_issued = 1, next = 65535
+Event 16: recv_time = 6744, send_time = 3340, data = 557, sender_id = 6, receiver_id = 42, is_issued = 1, next = 31
+Event 17: recv_time = 6752, send_time = 4118, data = 893, sender_id = 13, receiver_id = 55, is_issued = 1, next = 65535
+Event 18: recv_time = 6787, send_time = 7752, data = 655, sender_id = 11, receiver_id = 50, is_issued = 1, next = 66
+Event 19: recv_time = 6923, send_time = 2478, data = 887, sender_id = 26, receiver_id = 28, is_issued = 1, next = 65535
+Event 20: recv_time = 7288, send_time = 2876, data = 658, sender_id = 39, receiver_id = 51, is_issued = 1, next = 65535
+Event 21: recv_time = 7435, send_time = 1079, data = 625, sender_id = 10, receiver_id = 1, is_issued = 1, next = 65535
+Event 22: recv_time = 7559, send_time = 363, data = 495, sender_id = 55, receiver_id = 41, is_issued = 1, next = 57
+Event 23: recv_time = 7579, send_time = 4901, data = 378, sender_id = 60, receiver_id = 62, is_issued = 1, next = 65535
+Event 24: recv_time = 7717, send_time = 7841, data = 563, sender_id = 25, receiver_id = 49, is_issued = 1, next = 49
+Event 25: recv_time = 7876, send_time = 1908, data = 892, sender_id = 56, receiver_id = 3, is_issued = 1, next = 65535
+Event 26: recv_time = 7914, send_time = 8760, data = 538, sender_id = 25, receiver_id = 22, is_issued = 1, next = 65535
+Event 27: recv_time = 7940, send_time = 6420, data = 926, sender_id = 50, receiver_id = 24, is_issued = 1, next = 65535
+Event 28: recv_time = 8159, send_time = 1318, data = 829, sender_id = 9, receiver_id = 31, is_issued = 1, next = 38
+Event 29: recv_time = 8220, send_time = 914, data = 945, sender_id = 51, receiver_id = 20, is_issued = 1, next = 65535
+Event 30: recv_time = 8246, send_time = 8236, data = 919, sender_id = 55, receiver_id = 57, is_issued = 1, next = 65535
+Event 31: recv_time = 8296, send_time = 4048, data = 943, sender_id = 59, receiver_id = 42, is_issued = 1, next = 30
+Event 32: recv_time = 8400, send_time = 3414, data = 328, sender_id = 6, receiver_id = 61, is_issued = 1, next = 52
+Event 33: recv_time = 8430, send_time = 5920, data = 922, sender_id = 7, receiver_id = 5, is_issued = 1, next = 27
+Event 34: recv_time = 8565, send_time = 4840, data = 702, sender_id = 42, receiver_id = 27, is_issued = 1, next = 41
+Event 35: recv_time = 8786, send_time = 8197, data = 917, sender_id = 6, receiver_id = 19, is_issued = 1, next = 65535
+Event 36: recv_time = 8795, send_time = 7315, data = 782, sender_id = 58, receiver_id = 23, is_issued = 1, next = 20
+Event 37: recv_time = 9233, send_time = 997, data = 613, sender_id = 6, receiver_id = 15, is_issued = 1, next = 65535
+Event 38: recv_time = 9235, send_time = 2048, data = 348, sender_id = 56, receiver_id = 38, is_issued = 1, next = 96
+Event 39: recv_time = 9257, send_time = 1568, data = 170, sender_id = 51, receiver_id = 25, is_issued = 1, next = 65535
+Event 40: recv_time = 9407, send_time = 3861, data = 569, sender_id = 22, receiver_id = 48, is_issued = 1, next = 65535
+Event 41: recv_time = 9500, send_time = 5484, data = 729, sender_id = 16, receiver_id = 11, is_issued = 1, next = 65535
+Event 42: recv_time = 9529, send_time = 3924, data = 952, sender_id = 53, receiver_id = 49, is_issued = 1, next = 65535
+Event 43: recv_time = 9643, send_time = 5657, data = 171, sender_id = 24, receiver_id = 32, is_issued = 1, next = 65535
+Event 44: recv_time = 9860, send_time = 9485, data = 490, sender_id = 41, receiver_id = 30, is_issued = 1, next = 24
+Event 45: recv_time = 9927, send_time = 4544, data = 442, sender_id = 39, receiver_id = 38, is_issued = 1, next = 65535
+
+Testing dequeue...
+Dequeued 46 events.
+Events are correctly sorted.
+
+Final queue status:
+Queue size: 0, Head: 100
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

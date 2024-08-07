@@ -1,22 +1,32 @@
 <root versionMajor = "1" versionMinor = "5">
-  <kernel src_name="event_history_kernel" language="c" hwCtrl="ap_ctrl_hs" mem_layout="fpga64-xilinx-none">
+  <kernel src_name="event_queue_kernel" language="c" hwCtrl="ap_ctrl_chain" mem_layout="fpga64-xilinx-none">
     <args>
-      <arg id="0" access_type="r" src_name="op" src_type="ap_uint&lt;2&gt;" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="op" hw_bitwidth="2" hw_size_or_depth="1" hw_kernel_support="false">
-          <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
+      <arg id="0" access_type="r" src_name="op" src_type="ap_uint&lt;3&gt;" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="op" hw_bitwidth="3" hw_size_or_depth="1" hw_kernel_support="false">
+          <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>
       </arg>
       <arg id="1" access_type="r" src_name="event" src_type="TimeWarpEvent" src_isptr="1" src_bitwidth="160" src_size_or_depth="1">
         <hw hw_usage="data" hw_interface="Register" hw_name="event_r" hw_bitwidth="160" hw_size_or_depth="1" hw_kernel_support="false">
-          <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
-        </hw>
-      </arg>
-      <arg id="2" access_type="rw" src_name="result" src_type="TimeWarpEvent&amp;" src_isptr="1" src_bitwidth="160" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="result" hw_bitwidth="129" hw_size_or_depth="1" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>
       </arg>
-      <arg id="3" access_type="w" src_name="success" src_type="bool&amp;" src_isptr="1" src_bitwidth="1" src_size_or_depth="1">
+      <arg id="2" access_type="r" src_name="lp_id" src_type="ap_int&lt;16&gt;" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="lp_id" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
+          <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="3" access_type="r" src_name="time" src_type="ap_int&lt;32&gt;" src_isptr="1" src_bitwidth="32" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="time_r" hw_bitwidth="32" hw_size_or_depth="1" hw_kernel_support="false">
+          <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="4" access_type="rw" src_name="result_entry" src_type="EventQueueEntry&amp;" src_isptr="1" src_bitwidth="192" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="result_entry" hw_bitwidth="146" hw_size_or_depth="1" hw_kernel_support="false">
+          <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
+        </hw>
+      </arg>
+      <arg id="5" access_type="w" src_name="success" src_type="bool&amp;" src_isptr="1" src_bitwidth="1" src_size_or_depth="1">
         <hw hw_usage="data" hw_interface="Register" hw_name="success" hw_bitwidth="1" hw_size_or_depth="1" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>

@@ -5847,10 +5847,10 @@ class stream : public stream<__STREAM_T__, 0> {
 
 
 
-constexpr int NUM_LPS = 64;
+constexpr int NUM_LPS = 4;
 
 
-constexpr int NUM_LPCORE = 4;
+constexpr int NUM_LPCORE = 2;
 
 
 static constexpr int EVENT_QUEUE_CAPACITY = 128;
@@ -5864,6 +5864,9 @@ static constexpr int STATE_BUFFER_CAPACITY = 128;
 
 
 static constexpr int EVENT_HISTORY_CAPACITY = 64;
+
+
+static constexpr int CANCELLATION_UNIT_CAPACITY = 64;
 # 7 "cpp/StateBuffer.hpp" 2
 
 struct LPState
@@ -5948,18 +5951,23 @@ public:
         return true;
     }
 
+    LPState peek(ap_int<16> lp_id) const
+    {
+        return buffer[lp_heads[lp_id]].state;
+    }
+
     bool commit(ap_int<32> commit_time)
     {
         current_gvt = commit_time;
         ap_uint<16> removed = 0;
 
-        VITIS_LOOP_95_1: for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
+        VITIS_LOOP_100_1: for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS / NUM_LPCORE; ++lp_id)
         {
             ap_uint<16> current = lp_heads[lp_id];
             ap_uint<16> prev = 0xFFFF;
             bool keep_next = true;
 
-            VITIS_LOOP_101_2: while (current != 0xFFFF)
+            VITIS_LOOP_106_2: while (current != 0xFFFF)
             {
                 ap_uint<16> next = buffer[current].next;
 
@@ -6011,7 +6019,7 @@ public:
         ap_uint<16> current = lp_heads[lp_id];
         ap_uint<16> removed = 0;
 
-        VITIS_LOOP_153_1: while (current != 0xFFFF && buffer[current].state.lvt > to_time)
+        VITIS_LOOP_158_1: while (current != 0xFFFF && buffer[current].state.lvt > to_time)
         {
             ap_uint<16> next = buffer[current].next;
 
@@ -6031,7 +6039,7 @@ public:
             total_size -= removed;
             return true;
         }
-        return false;
+        return true;
     }
 
     ap_uint<16> get_lp_size(ap_int<16> lp_id) const

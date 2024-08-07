@@ -42,16 +42,6 @@
 			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/.tcls</location>
 		</link>
 		<link>
-			<name>source/EventHistory.cpp</name>
-			<type>1</type>
-			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.cpp</location>
-		</link>
-		<link>
-			<name>source/EventHistory.hpp</name>
-			<type>1</type>
-			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventHistory.hpp</location>
-		</link>
-		<link>
 			<name>source/EventQueue.cpp</name>
 			<type>1</type>
 			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp</location>

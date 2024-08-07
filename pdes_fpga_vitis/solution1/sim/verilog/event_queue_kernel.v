@@ -7,426 +7,891 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="event_queue_kernel_event_queue_kernel,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvf1517-3-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.623000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=6,HLS_SYN_DSP=0,HLS_SYN_FF=1538,HLS_SYN_LUT=2305,HLS_VERSION=2022_1}" *)
+(* CORE_GENERATION_INFO="event_queue_kernel_event_queue_kernel,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvf1517-3-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.249000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=7,HLS_SYN_DSP=0,HLS_SYN_FF=2164,HLS_SYN_LUT=3202,HLS_VERSION=2022_1}" *)
 
 module event_queue_kernel (
         ap_clk,
         ap_rst,
         ap_start,
         ap_done,
+        ap_continue,
         ap_idle,
         ap_ready,
-        input_r,
-        input_r_ap_vld,
-        output_event,
-        output_event_ap_vld,
+        op,
+        op_ap_vld,
+        event_r,
+        event_r_ap_vld,
+        lp_id,
+        lp_id_ap_vld,
+        time_r,
+        time_r_ap_vld,
+        result_entry_i,
+        result_entry_o,
+        result_entry_i_ap_vld,
+        result_entry_o_ap_vld,
         success,
         success_ap_vld
 );
 
-parameter    ap_ST_fsm_state1 = 9'd1;
-parameter    ap_ST_fsm_state2 = 9'd2;
-parameter    ap_ST_fsm_state3 = 9'd4;
-parameter    ap_ST_fsm_state4 = 9'd8;
-parameter    ap_ST_fsm_state5 = 9'd16;
-parameter    ap_ST_fsm_state6 = 9'd32;
-parameter    ap_ST_fsm_state7 = 9'd64;
-parameter    ap_ST_fsm_state8 = 9'd128;
-parameter    ap_ST_fsm_state9 = 9'd256;
+parameter    ap_ST_fsm_state1 = 24'd1;
+parameter    ap_ST_fsm_state2 = 24'd2;
+parameter    ap_ST_fsm_state3 = 24'd4;
+parameter    ap_ST_fsm_state4 = 24'd8;
+parameter    ap_ST_fsm_state5 = 24'd16;
+parameter    ap_ST_fsm_state6 = 24'd32;
+parameter    ap_ST_fsm_state7 = 24'd64;
+parameter    ap_ST_fsm_state8 = 24'd128;
+parameter    ap_ST_fsm_state9 = 24'd256;
+parameter    ap_ST_fsm_state10 = 24'd512;
+parameter    ap_ST_fsm_state11 = 24'd1024;
+parameter    ap_ST_fsm_state12 = 24'd2048;
+parameter    ap_ST_fsm_state13 = 24'd4096;
+parameter    ap_ST_fsm_state14 = 24'd8192;
+parameter    ap_ST_fsm_state15 = 24'd16384;
+parameter    ap_ST_fsm_state16 = 24'd32768;
+parameter    ap_ST_fsm_state17 = 24'd65536;
+parameter    ap_ST_fsm_state18 = 24'd131072;
+parameter    ap_ST_fsm_state19 = 24'd262144;
+parameter    ap_ST_fsm_state20 = 24'd524288;
+parameter    ap_ST_fsm_state21 = 24'd1048576;
+parameter    ap_ST_fsm_state22 = 24'd2097152;
+parameter    ap_ST_fsm_state23 = 24'd4194304;
+parameter    ap_ST_fsm_state24 = 24'd8388608;
 
 input   ap_clk;
 input   ap_rst;
 input   ap_start;
 output   ap_done;
+input   ap_continue;
 output   ap_idle;
 output   ap_ready;
-input  [129:0] input_r;
-input   input_r_ap_vld;
-output  [128:0] output_event;
-output   output_event_ap_vld;
+input  [2:0] op;
+input   op_ap_vld;
+input  [159:0] event_r;
+input   event_r_ap_vld;
+input  [15:0] lp_id;
+input   lp_id_ap_vld;
+input  [31:0] time_r;
+input   time_r_ap_vld;
+input  [145:0] result_entry_i;
+output  [145:0] result_entry_o;
+input   result_entry_i_ap_vld;
+output   result_entry_o_ap_vld;
 output   success;
 output   success_ap_vld;
 
 reg ap_done;
 reg ap_idle;
 reg ap_ready;
-reg output_event_ap_vld;
+reg[145:0] result_entry_o;
+reg result_entry_o_ap_vld;
+reg success;
 reg success_ap_vld;
 
-(* fsm_encoding = "none" *) reg   [8:0] ap_CS_fsm;
+reg    ap_done_reg;
+(* fsm_encoding = "none" *) reg   [23:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-reg   [129:0] input_r_preg;
-reg   [129:0] input_r_in_sig;
-reg    input_r_ap_vld_preg;
-reg    input_r_ap_vld_in_sig;
+reg   [2:0] op_preg;
+reg   [2:0] op_in_sig;
+reg    op_ap_vld_preg;
+reg    op_ap_vld_in_sig;
+reg   [159:0] event_r_preg;
+reg   [159:0] event_r_in_sig;
+reg    event_r_ap_vld_preg;
+reg    event_r_ap_vld_in_sig;
+reg   [15:0] lp_id_preg;
+reg   [15:0] lp_id_in_sig;
+reg    lp_id_ap_vld_preg;
+reg    lp_id_ap_vld_in_sig;
+reg   [31:0] time_r_preg;
+reg   [31:0] time_r_in_sig;
+reg    time_r_ap_vld_preg;
+reg    time_r_ap_vld_in_sig;
+reg   [145:0] result_entry_i_preg;
+reg   [145:0] result_entry_i_in_sig;
+reg    result_entry_i_ap_vld_preg;
+reg    result_entry_i_ap_vld_in_sig;
+reg   [15:0] g_event_queue_lp_heads_V_0;
+reg   [6:0] g_event_queue_buffer_next_V_address0;
+reg    g_event_queue_buffer_next_V_ce0;
+reg    g_event_queue_buffer_next_V_we0;
+reg   [15:0] g_event_queue_buffer_next_V_d0;
+wire   [15:0] g_event_queue_buffer_next_V_q0;
+reg   [15:0] g_event_queue_free_head_V;
 reg   [15:0] g_event_queue_size_V;
-reg   [6:0] g_event_queue_heap_send_time_V_address0;
-reg    g_event_queue_heap_send_time_V_ce0;
-reg    g_event_queue_heap_send_time_V_we0;
-reg   [31:0] g_event_queue_heap_send_time_V_d0;
-wire   [31:0] g_event_queue_heap_send_time_V_q0;
-reg   [6:0] g_event_queue_heap_recv_time_V_address0;
-reg    g_event_queue_heap_recv_time_V_ce0;
-reg    g_event_queue_heap_recv_time_V_we0;
-reg   [31:0] g_event_queue_heap_recv_time_V_d0;
-wire   [31:0] g_event_queue_heap_recv_time_V_q0;
-reg    g_event_queue_heap_recv_time_V_ce1;
-wire   [31:0] g_event_queue_heap_recv_time_V_q1;
-reg   [6:0] g_event_queue_heap_data_V_address0;
-reg    g_event_queue_heap_data_V_ce0;
-reg    g_event_queue_heap_data_V_we0;
-reg   [31:0] g_event_queue_heap_data_V_d0;
-wire   [31:0] g_event_queue_heap_data_V_q0;
-reg   [6:0] g_event_queue_heap_sender_id_V_address0;
-reg    g_event_queue_heap_sender_id_V_ce0;
-reg    g_event_queue_heap_sender_id_V_we0;
-reg   [15:0] g_event_queue_heap_sender_id_V_d0;
-wire   [15:0] g_event_queue_heap_sender_id_V_q0;
-reg   [6:0] g_event_queue_heap_receiver_id_V_address0;
-reg    g_event_queue_heap_receiver_id_V_ce0;
-reg    g_event_queue_heap_receiver_id_V_we0;
-reg   [15:0] g_event_queue_heap_receiver_id_V_d0;
-wire   [15:0] g_event_queue_heap_receiver_id_V_q0;
-reg   [6:0] g_event_queue_heap_is_anti_message_V_address0;
-reg    g_event_queue_heap_is_anti_message_V_ce0;
-reg    g_event_queue_heap_is_anti_message_V_we0;
-reg   [0:0] g_event_queue_heap_is_anti_message_V_d0;
-wire   [0:0] g_event_queue_heap_is_anti_message_V_q0;
-reg    input_r_blk_n;
-wire   [0:0] trunc_ln20_fu_500_p1;
-reg   [0:0] trunc_ln20_reg_733;
-reg   [15:0] index_V_reg_737;
-wire   [6:0] trunc_ln20_1_fu_508_p1;
-reg   [6:0] trunc_ln20_1_reg_742;
-wire   [0:0] icmp_ln1065_fu_516_p2;
-reg   [0:0] icmp_ln1065_reg_747;
-reg   [31:0] temp_send_time_V_reg_754;
-wire   [0:0] icmp_ln1077_fu_532_p2;
-reg   [31:0] temp_recv_time_V_reg_759;
-reg   [31:0] temp_data_V_reg_765;
-reg   [15:0] temp_sender_id_V_reg_770;
-reg   [15:0] temp_receiver_id_V_reg_775;
-reg   [0:0] temp_is_anti_message_V_reg_780;
-reg   [31:0] g_event_queue_heap_send_time_V_load_reg_785;
-wire    ap_CS_fsm_state2;
-reg   [31:0] g_event_queue_heap_recv_time_V_load_reg_790;
-reg   [31:0] g_event_queue_heap_data_V_load_reg_795;
-reg   [15:0] g_event_queue_heap_sender_id_V_load_reg_800;
-reg   [15:0] g_event_queue_heap_receiver_id_V_load_reg_805;
-reg   [0:0] g_event_queue_heap_is_anti_message_V_load_reg_810;
-wire   [15:0] add_ln887_fu_628_p2;
-reg   [15:0] add_ln887_reg_815;
-wire   [0:0] icmp_ln1081_fu_639_p2;
-reg   [0:0] icmp_ln1081_reg_821;
-reg   [31:0] temp_send_time_V_1_reg_855;
-wire    ap_CS_fsm_state3;
-reg   [31:0] temp_recv_time_V_1_reg_860;
-reg   [31:0] temp_data_V_1_reg_866;
-reg   [15:0] temp_sender_id_V_1_reg_871;
-reg   [15:0] temp_receiver_id_V_1_reg_876;
-reg   [0:0] temp_is_anti_message_V_1_reg_881;
-wire   [0:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_return;
-reg   [0:0] targetBlock_reg_886;
-wire    ap_CS_fsm_state8;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_done;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_idle;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_ready;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out_ap_vld;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_we0;
-wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_we0;
-wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_we0;
-wire   [0:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce1;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_done;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_idle;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_ready;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out_ap_vld;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out_ap_vld;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_we0;
-wire   [31:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_we0;
-wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_we0;
-wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_d0;
-wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_address0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_ce0;
-wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_we0;
-wire   [0:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_d0;
-reg   [31:0] ap_phi_mux_ref_tmp_0_0_phi_fu_382_p4;
-reg   [31:0] ref_tmp_0_0_reg_378;
-wire    ap_CS_fsm_state6;
+reg   [6:0] g_event_queue_buffer_event_recv_time_V_address0;
+reg    g_event_queue_buffer_event_recv_time_V_ce0;
+reg    g_event_queue_buffer_event_recv_time_V_we0;
+wire   [31:0] g_event_queue_buffer_event_recv_time_V_d0;
+wire   [31:0] g_event_queue_buffer_event_recv_time_V_q0;
+reg    g_event_queue_buffer_event_recv_time_V_ce1;
+wire   [31:0] g_event_queue_buffer_event_recv_time_V_q1;
+reg   [15:0] g_event_queue_lp_tails_V_0;
+reg   [15:0] g_event_queue_lp_heads_V_1;
+reg   [15:0] g_event_queue_lp_tails_V_1;
+reg   [15:0] g_event_queue_lp_heads_V_2;
+reg   [15:0] g_event_queue_lp_tails_V_2;
+reg   [15:0] g_event_queue_lp_heads_V_3;
+reg   [15:0] g_event_queue_lp_tails_V_3;
+reg   [6:0] g_event_queue_buffer_event_send_time_V_address0;
+reg    g_event_queue_buffer_event_send_time_V_ce0;
+reg    g_event_queue_buffer_event_send_time_V_we0;
+wire   [31:0] g_event_queue_buffer_event_send_time_V_d0;
+wire   [31:0] g_event_queue_buffer_event_send_time_V_q0;
+reg   [6:0] g_event_queue_buffer_event_data_V_address0;
+reg    g_event_queue_buffer_event_data_V_ce0;
+reg    g_event_queue_buffer_event_data_V_we0;
+wire   [31:0] g_event_queue_buffer_event_data_V_d0;
+wire   [31:0] g_event_queue_buffer_event_data_V_q0;
+reg   [6:0] g_event_queue_buffer_event_sender_id_V_address0;
+reg    g_event_queue_buffer_event_sender_id_V_ce0;
+reg    g_event_queue_buffer_event_sender_id_V_we0;
+wire   [15:0] g_event_queue_buffer_event_sender_id_V_d0;
+wire   [15:0] g_event_queue_buffer_event_sender_id_V_q0;
+reg   [6:0] g_event_queue_buffer_event_receiver_id_V_address0;
+reg    g_event_queue_buffer_event_receiver_id_V_ce0;
+reg    g_event_queue_buffer_event_receiver_id_V_we0;
+wire   [15:0] g_event_queue_buffer_event_receiver_id_V_d0;
+wire   [15:0] g_event_queue_buffer_event_receiver_id_V_q0;
+reg   [6:0] g_event_queue_buffer_event_is_anti_message_V_address0;
+reg    g_event_queue_buffer_event_is_anti_message_V_ce0;
+reg    g_event_queue_buffer_event_is_anti_message_V_we0;
+wire   [0:0] g_event_queue_buffer_event_is_anti_message_V_d0;
+wire   [0:0] g_event_queue_buffer_event_is_anti_message_V_q0;
+reg   [6:0] g_event_queue_buffer_is_issued_V_address0;
+reg    g_event_queue_buffer_is_issued_V_ce0;
+reg    g_event_queue_buffer_is_issued_V_we0;
+reg   [0:0] g_event_queue_buffer_is_issued_V_d0;
+wire   [0:0] g_event_queue_buffer_is_issued_V_q0;
+reg    g_event_queue_buffer_is_issued_V_ce1;
+wire   [0:0] g_event_queue_buffer_is_issued_V_q1;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_0;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_1;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_2;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_3;
+reg   [15:0] g_event_queue_unissued_size_V;
+reg    op_blk_n;
+reg    event_r_blk_n;
+reg    lp_id_blk_n;
+reg    time_r_blk_n;
+wire   [2:0] op_read_read_fu_228_p2;
+reg   [31:0] event_recv_time_V_reg_1482;
+wire   [1:0] trunc_ln328_fu_867_p1;
+reg   [1:0] trunc_ln328_reg_1488;
+wire   [15:0] current_V_fu_872_p6;
+reg   [15:0] current_V_reg_1493;
+reg   [15:0] g_event_queue_unissued_size_V_load_reg_1498;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_0_load_1_reg_1506;
+wire   [0:0] icmp_ln1065_1_fu_887_p2;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_1_load_1_reg_1512;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_2_load_1_reg_1518;
+reg   [15:0] g_event_queue_lp_oldest_unissued_V_3_load_1_reg_1524;
+reg   [15:0] g_event_queue_size_V_load_1_reg_1530;
+reg   [15:0] g_event_queue_lp_heads_V_0_load_1_reg_1538;
+wire   [0:0] icmp_ln1065_fu_893_p2;
+reg   [15:0] g_event_queue_lp_heads_V_1_load_1_reg_1544;
+reg   [15:0] g_event_queue_lp_heads_V_2_load_1_reg_1550;
+reg   [15:0] g_event_queue_lp_heads_V_3_load_1_reg_1556;
+wire   [7:0] trunc_ln1077_fu_899_p1;
+reg   [7:0] trunc_ln1077_reg_1562;
+reg   [15:0] new_entry_V_reg_1570;
+wire   [0:0] icmp_ln1077_fu_913_p2;
+reg   [6:0] g_event_queue_buffer_next_V_addr_reg_1595;
+reg   [1:0] trunc_ln_reg_1600;
+reg   [1:0] earliest_lp_V_1_loc_load_reg_1607;
+wire    ap_CS_fsm_state11;
+reg   [1:0] earliest_lp_V_loc_load_reg_1646;
+wire    ap_CS_fsm_state15;
+wire   [15:0] dequeue_entry_V_fu_1033_p6;
+reg   [15:0] dequeue_entry_V_reg_1650;
+reg   [6:0] g_event_queue_buffer_next_V_addr_1_reg_1690;
+wire    ap_CS_fsm_state16;
+wire   [0:0] icmp_ln1065_2_fu_1208_p2;
+reg   [0:0] icmp_ln1065_2_reg_1738;
+wire    ap_CS_fsm_state18;
+wire   [15:0] current_V_2_fu_1244_p6;
+reg   [15:0] current_V_2_reg_1750;
+wire    ap_CS_fsm_state19;
+wire   [0:0] icmp_ln1065_3_fu_1257_p2;
+reg   [0:0] icmp_ln1065_3_reg_1755;
+wire   [0:0] icmp_ln1069_fu_1316_p2;
+reg   [0:0] icmp_ln1069_reg_1776;
+wire    ap_CS_fsm_state20;
+wire   [63:0] zext_ln587_5_fu_1322_p1;
+reg   [63:0] zext_ln587_5_reg_1780;
+wire    ap_CS_fsm_state21;
+wire   [0:0] icmp_ln1085_fu_1327_p2;
+wire   [0:0] icmp_ln1065_5_fu_1339_p2;
+reg   [0:0] icmp_ln1065_5_reg_1798;
+reg   [6:0] g_event_queue_buffer_next_V_addr_4_reg_1802;
+wire   [0:0] icmp_ln1065_6_fu_1379_p2;
+reg   [0:0] icmp_ln1065_6_reg_1807;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_ready;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_ce0;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce0;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address1;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce1;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_we0;
+wire   [0:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_d0;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address1;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce1;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o_ap_vld;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_ready;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_we0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_d0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_ce0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0_ap_vld;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_ready;
+wire   [1:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_ready;
+wire   [1:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_ready;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_we0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_d0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_ce0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1_ap_vld;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_ready;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_we0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_d0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_ce0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2_ap_vld;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_done;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_idle;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_ready;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_ce0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_we0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_d0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o_ap_vld;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o_ap_vld;
+wire   [6:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_address0;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_ce0;
+wire   [15:0] grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3;
+wire    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3_ap_vld;
+reg   [0:0] retval_0_i_reg_525;
 reg    ap_block_state1;
-reg   [31:0] ap_phi_mux_ref_tmp_1_0_phi_fu_393_p4;
-reg   [31:0] ref_tmp_1_0_reg_389;
-reg   [31:0] ap_phi_mux_ref_tmp_2_0_phi_fu_404_p4;
-reg   [31:0] ref_tmp_2_0_reg_400;
-reg   [15:0] ap_phi_mux_ref_tmp_3_0_phi_fu_415_p4;
-reg   [15:0] ref_tmp_3_0_reg_411;
-reg   [15:0] ap_phi_mux_ref_tmp_4_0_phi_fu_426_p4;
-reg   [15:0] ref_tmp_4_0_reg_422;
-reg   [0:0] ap_phi_mux_ref_tmp_5_0_phi_fu_437_p4;
-reg   [0:0] ref_tmp_5_0_reg_433;
-wire   [0:0] icmp_ln1069_fu_685_p2;
-reg   [0:0] ap_phi_mux_storemerge_phi_fu_449_p6;
-reg   [0:0] storemerge_reg_444;
-wire    ap_CS_fsm_state9;
-reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg;
+wire    ap_CS_fsm_state24;
+reg   [0:0] retval_0_i592_reg_539;
+wire    ap_CS_fsm_state12;
+reg   [31:0] ref_tmp8_0_0_0_reg_553;
+reg   [31:0] ref_tmp8_0_1_0_reg_564;
+reg   [31:0] ref_tmp8_0_2_0_reg_575;
+reg   [15:0] ref_tmp8_0_3_0_reg_586;
+reg   [15:0] ref_tmp8_0_4_0_reg_597;
+reg   [0:0] ref_tmp8_0_5_0_reg_608;
+reg   [0:0] ref_tmp8_1_0_reg_619;
+reg   [15:0] ref_tmp8_2_0_reg_630;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg;
+reg    ap_block_state1_ignore_call6;
+wire    ap_CS_fsm_state2;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg;
+reg    ap_block_state1_ignore_call0;
+wire    ap_CS_fsm_state3;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg;
+reg    ap_block_state1_ignore_call4;
+wire    ap_CS_fsm_state10;
+reg   [1:0] earliest_lp_V_1_loc_fu_194;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg;
+wire    ap_CS_fsm_state14;
+reg   [1:0] earliest_lp_V_loc_fu_198;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg;
 wire    ap_CS_fsm_state4;
 wire    ap_CS_fsm_state5;
-reg   [6:0] index_V_2_loc_fu_112;
-reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg;
+wire    ap_CS_fsm_state6;
 wire    ap_CS_fsm_state7;
-reg   [6:0] index_V_1_loc_fu_120;
-reg   [6:0] index_V_4_loc_fu_116;
-wire   [63:0] zext_ln587_fu_538_p1;
-wire   [63:0] zext_ln587_1_fu_645_p1;
-wire   [63:0] zext_ln587_5_fu_658_p1;
-wire   [63:0] zext_ln587_4_fu_705_p1;
-wire   [15:0] zext_ln886_fu_618_p1;
-wire   [8:0] tmp_fu_522_p4;
-wire   [7:0] trunc_ln20_2_fu_512_p1;
-wire   [7:0] add_ln886_fu_612_p2;
-wire   [6:0] index_V_6_fu_698_p3;
-reg   [8:0] ap_NS_fsm;
+reg    grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg;
+wire    ap_CS_fsm_state8;
+wire    ap_CS_fsm_state9;
+wire   [63:0] zext_ln587_fu_919_p1;
+wire   [63:0] zext_ln587_4_fu_954_p1;
+wire   [63:0] zext_ln587_3_fu_1043_p1;
+wire   [63:0] zext_ln587_2_fu_1214_p1;
+wire   [63:0] zext_ln587_6_fu_1345_p1;
+wire   [15:0] zext_ln886_fu_1447_p1;
+wire   [15:0] add_ln887_2_fu_1150_p2;
+wire   [0:0] icmp_ln1065_4_fu_1079_p2;
+wire   [0:0] icmp_ln1073_fu_1219_p2;
+wire   [15:0] add_ln886_fu_1430_p2;
+wire   [15:0] add_ln887_1_fu_1133_p2;
+wire   [15:0] add_ln887_fu_1019_p2;
+reg   [15:0] prev_V_fu_202;
+reg   [15:0] prev_V_1_fu_206;
+wire    ap_CS_fsm_state22;
+reg    success_preg;
+reg    ap_block_state9_on_subcall_done;
+wire    ap_CS_fsm_state13;
+wire   [0:0] icmp_ln1069_1_fu_1182_p2;
+wire    ap_CS_fsm_state17;
+reg   [145:0] result_entry_o_preg;
+wire   [145:0] or_ln286_5_fu_976_p8;
+wire   [145:0] or_ln41_6_fu_1161_p9;
+wire    ap_CS_fsm_state23;
+wire   [1:0] current_V_fu_872_p5;
+wire   [8:0] tmp_3_fu_903_p4;
+wire   [15:0] issue_entry_V_fu_944_p6;
+wire   [16:0] tmp_1_fu_966_p4;
+wire   [15:0] tmp_fu_1195_p6;
+wire   [15:0] tmp_8_fu_1366_p6;
+wire   [7:0] add_ln886_1_fu_1442_p2;
+reg   [23:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
-wire    ap_ST_fsm_state2_blk;
-wire    ap_ST_fsm_state3_blk;
+reg    ap_ST_fsm_state2_blk;
+reg    ap_ST_fsm_state3_blk;
 wire    ap_ST_fsm_state4_blk;
 reg    ap_ST_fsm_state5_blk;
 wire    ap_ST_fsm_state6_blk;
-wire    ap_ST_fsm_state7_blk;
-reg    ap_ST_fsm_state8_blk;
-wire    ap_ST_fsm_state9_blk;
+reg    ap_ST_fsm_state7_blk;
+wire    ap_ST_fsm_state8_blk;
+reg    ap_ST_fsm_state9_blk;
+reg    ap_ST_fsm_state10_blk;
+wire    ap_ST_fsm_state11_blk;
+reg    ap_ST_fsm_state12_blk;
+wire    ap_ST_fsm_state13_blk;
+reg    ap_ST_fsm_state14_blk;
+wire    ap_ST_fsm_state15_blk;
+wire    ap_ST_fsm_state16_blk;
+wire    ap_ST_fsm_state17_blk;
+wire    ap_ST_fsm_state18_blk;
+wire    ap_ST_fsm_state19_blk;
+wire    ap_ST_fsm_state20_blk;
+wire    ap_ST_fsm_state21_blk;
+wire    ap_ST_fsm_state22_blk;
+wire    ap_ST_fsm_state23_blk;
+wire    ap_ST_fsm_state24_blk;
 wire    ap_ce_reg;
 
 // power-on initialization
 initial begin
-#0 ap_CS_fsm = 9'd1;
-#0 input_r_preg = 130'd0;
-#0 input_r_ap_vld_preg = 1'b0;
+#0 ap_done_reg = 1'b0;
+#0 ap_CS_fsm = 24'd1;
+#0 op_preg = 3'd0;
+#0 op_ap_vld_preg = 1'b0;
+#0 event_r_preg = 160'd0;
+#0 event_r_ap_vld_preg = 1'b0;
+#0 lp_id_preg = 16'd0;
+#0 lp_id_ap_vld_preg = 1'b0;
+#0 time_r_preg = 32'd0;
+#0 time_r_ap_vld_preg = 1'b0;
+#0 result_entry_i_preg = 146'd0;
+#0 result_entry_i_ap_vld_preg = 1'b0;
+#0 g_event_queue_lp_heads_V_0 = 16'd65535;
+#0 g_event_queue_free_head_V = 16'd0;
 #0 g_event_queue_size_V = 16'd0;
-#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg = 1'b0;
-#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg = 1'b0;
+#0 g_event_queue_lp_tails_V_0 = 16'd65535;
+#0 g_event_queue_lp_heads_V_1 = 16'd65535;
+#0 g_event_queue_lp_tails_V_1 = 16'd65535;
+#0 g_event_queue_lp_heads_V_2 = 16'd65535;
+#0 g_event_queue_lp_tails_V_2 = 16'd65535;
+#0 g_event_queue_lp_heads_V_3 = 16'd65535;
+#0 g_event_queue_lp_tails_V_3 = 16'd65535;
+#0 g_event_queue_lp_oldest_unissued_V_0 = 16'd65535;
+#0 g_event_queue_lp_oldest_unissued_V_1 = 16'd65535;
+#0 g_event_queue_lp_oldest_unissued_V_2 = 16'd65535;
+#0 g_event_queue_lp_oldest_unissued_V_3 = 16'd65535;
+#0 g_event_queue_unissued_size_V = 16'd0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg = 1'b0;
+#0 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg = 1'b0;
+#0 success_preg = 1'b0;
+#0 result_entry_o_preg = 146'd0;
 end
 
-event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W #(
-    .DataWidth( 32 ),
-    .AddressRange( 128 ),
-    .AddressWidth( 7 ))
-g_event_queue_heap_send_time_V_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .address0(g_event_queue_heap_send_time_V_address0),
-    .ce0(g_event_queue_heap_send_time_V_ce0),
-    .we0(g_event_queue_heap_send_time_V_we0),
-    .d0(g_event_queue_heap_send_time_V_d0),
-    .q0(g_event_queue_heap_send_time_V_q0)
-);
-
-event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W #(
-    .DataWidth( 32 ),
-    .AddressRange( 128 ),
-    .AddressWidth( 7 ))
-g_event_queue_heap_recv_time_V_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .address0(g_event_queue_heap_recv_time_V_address0),
-    .ce0(g_event_queue_heap_recv_time_V_ce0),
-    .we0(g_event_queue_heap_recv_time_V_we0),
-    .d0(g_event_queue_heap_recv_time_V_d0),
-    .q0(g_event_queue_heap_recv_time_V_q0),
-    .address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1),
-    .ce1(g_event_queue_heap_recv_time_V_ce1),
-    .q1(g_event_queue_heap_recv_time_V_q1)
-);
-
-event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W #(
-    .DataWidth( 32 ),
-    .AddressRange( 128 ),
-    .AddressWidth( 7 ))
-g_event_queue_heap_data_V_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .address0(g_event_queue_heap_data_V_address0),
-    .ce0(g_event_queue_heap_data_V_ce0),
-    .we0(g_event_queue_heap_data_V_we0),
-    .d0(g_event_queue_heap_data_V_d0),
-    .q0(g_event_queue_heap_data_V_q0)
-);
-
-event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W #(
+event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W #(
     .DataWidth( 16 ),
     .AddressRange( 128 ),
     .AddressWidth( 7 ))
-g_event_queue_heap_sender_id_V_U(
+g_event_queue_buffer_next_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .address0(g_event_queue_heap_sender_id_V_address0),
-    .ce0(g_event_queue_heap_sender_id_V_ce0),
-    .we0(g_event_queue_heap_sender_id_V_we0),
-    .d0(g_event_queue_heap_sender_id_V_d0),
-    .q0(g_event_queue_heap_sender_id_V_q0)
+    .address0(g_event_queue_buffer_next_V_address0),
+    .ce0(g_event_queue_buffer_next_V_ce0),
+    .we0(g_event_queue_buffer_next_V_we0),
+    .d0(g_event_queue_buffer_next_V_d0),
+    .q0(g_event_queue_buffer_next_V_q0)
 );
 
-event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W #(
+event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W #(
+    .DataWidth( 32 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+g_event_queue_buffer_event_recv_time_V_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .address0(g_event_queue_buffer_event_recv_time_V_address0),
+    .ce0(g_event_queue_buffer_event_recv_time_V_ce0),
+    .we0(g_event_queue_buffer_event_recv_time_V_we0),
+    .d0(g_event_queue_buffer_event_recv_time_V_d0),
+    .q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address1),
+    .ce1(g_event_queue_buffer_event_recv_time_V_ce1),
+    .q1(g_event_queue_buffer_event_recv_time_V_q1)
+);
+
+event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W #(
+    .DataWidth( 32 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+g_event_queue_buffer_event_send_time_V_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .address0(g_event_queue_buffer_event_send_time_V_address0),
+    .ce0(g_event_queue_buffer_event_send_time_V_ce0),
+    .we0(g_event_queue_buffer_event_send_time_V_we0),
+    .d0(g_event_queue_buffer_event_send_time_V_d0),
+    .q0(g_event_queue_buffer_event_send_time_V_q0)
+);
+
+event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W #(
+    .DataWidth( 32 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+g_event_queue_buffer_event_data_V_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .address0(g_event_queue_buffer_event_data_V_address0),
+    .ce0(g_event_queue_buffer_event_data_V_ce0),
+    .we0(g_event_queue_buffer_event_data_V_we0),
+    .d0(g_event_queue_buffer_event_data_V_d0),
+    .q0(g_event_queue_buffer_event_data_V_q0)
+);
+
+event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W #(
     .DataWidth( 16 ),
     .AddressRange( 128 ),
     .AddressWidth( 7 ))
-g_event_queue_heap_receiver_id_V_U(
+g_event_queue_buffer_event_sender_id_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .address0(g_event_queue_heap_receiver_id_V_address0),
-    .ce0(g_event_queue_heap_receiver_id_V_ce0),
-    .we0(g_event_queue_heap_receiver_id_V_we0),
-    .d0(g_event_queue_heap_receiver_id_V_d0),
-    .q0(g_event_queue_heap_receiver_id_V_q0)
+    .address0(g_event_queue_buffer_event_sender_id_V_address0),
+    .ce0(g_event_queue_buffer_event_sender_id_V_ce0),
+    .we0(g_event_queue_buffer_event_sender_id_V_we0),
+    .d0(g_event_queue_buffer_event_sender_id_V_d0),
+    .q0(g_event_queue_buffer_event_sender_id_V_q0)
 );
 
-event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W #(
+event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W #(
+    .DataWidth( 16 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+g_event_queue_buffer_event_receiver_id_V_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .address0(g_event_queue_buffer_event_receiver_id_V_address0),
+    .ce0(g_event_queue_buffer_event_receiver_id_V_ce0),
+    .we0(g_event_queue_buffer_event_receiver_id_V_we0),
+    .d0(g_event_queue_buffer_event_receiver_id_V_d0),
+    .q0(g_event_queue_buffer_event_receiver_id_V_q0)
+);
+
+event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W #(
     .DataWidth( 1 ),
     .AddressRange( 128 ),
     .AddressWidth( 7 ))
-g_event_queue_heap_is_anti_message_V_U(
+g_event_queue_buffer_event_is_anti_message_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .address0(g_event_queue_heap_is_anti_message_V_address0),
-    .ce0(g_event_queue_heap_is_anti_message_V_ce0),
-    .we0(g_event_queue_heap_is_anti_message_V_we0),
-    .d0(g_event_queue_heap_is_anti_message_V_d0),
-    .q0(g_event_queue_heap_is_anti_message_V_q0)
+    .address0(g_event_queue_buffer_event_is_anti_message_V_address0),
+    .ce0(g_event_queue_buffer_event_is_anti_message_V_ce0),
+    .we0(g_event_queue_buffer_event_is_anti_message_V_we0),
+    .d0(g_event_queue_buffer_event_is_anti_message_V_d0),
+    .q0(g_event_queue_buffer_event_is_anti_message_V_q0)
 );
 
-event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start),
-    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_done),
-    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_idle),
-    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_ready),
-    .add_ln887(add_ln887_reg_815),
-    .zext_ln49(add_ln887_reg_815),
-    .temp_recv_time_V_1(temp_recv_time_V_1_reg_860),
-    .index_V_2_out(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out),
-    .index_V_2_out_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out_ap_vld),
-    .g_event_queue_heap_send_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_address0),
-    .g_event_queue_heap_send_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_ce0),
-    .g_event_queue_heap_send_time_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_we0),
-    .g_event_queue_heap_send_time_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_d0),
-    .g_event_queue_heap_send_time_V_q0(g_event_queue_heap_send_time_V_q0),
-    .g_event_queue_heap_data_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_address0),
-    .g_event_queue_heap_data_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_ce0),
-    .g_event_queue_heap_data_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_we0),
-    .g_event_queue_heap_data_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_d0),
-    .g_event_queue_heap_data_V_q0(g_event_queue_heap_data_V_q0),
-    .g_event_queue_heap_sender_id_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_address0),
-    .g_event_queue_heap_sender_id_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_ce0),
-    .g_event_queue_heap_sender_id_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_we0),
-    .g_event_queue_heap_sender_id_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_d0),
-    .g_event_queue_heap_sender_id_V_q0(g_event_queue_heap_sender_id_V_q0),
-    .g_event_queue_heap_receiver_id_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_address0),
-    .g_event_queue_heap_receiver_id_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_ce0),
-    .g_event_queue_heap_receiver_id_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_we0),
-    .g_event_queue_heap_receiver_id_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_d0),
-    .g_event_queue_heap_receiver_id_V_q0(g_event_queue_heap_receiver_id_V_q0),
-    .g_event_queue_heap_is_anti_message_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_address0),
-    .g_event_queue_heap_is_anti_message_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_ce0),
-    .g_event_queue_heap_is_anti_message_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_we0),
-    .g_event_queue_heap_is_anti_message_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_d0),
-    .g_event_queue_heap_is_anti_message_V_q0(g_event_queue_heap_is_anti_message_V_q0),
-    .g_event_queue_heap_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address0),
-    .g_event_queue_heap_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce0),
-    .g_event_queue_heap_recv_time_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0),
-    .g_event_queue_heap_recv_time_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0),
-    .g_event_queue_heap_recv_time_V_q0(g_event_queue_heap_recv_time_V_q0),
-    .g_event_queue_heap_recv_time_V_address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address1),
-    .g_event_queue_heap_recv_time_V_ce1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce1),
-    .g_event_queue_heap_recv_time_V_q1(g_event_queue_heap_recv_time_V_q1)
+event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W #(
+    .DataWidth( 1 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+g_event_queue_buffer_is_issued_V_U(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .address0(g_event_queue_buffer_is_issued_V_address0),
+    .ce0(g_event_queue_buffer_is_issued_V_ce0),
+    .we0(g_event_queue_buffer_is_issued_V_we0),
+    .d0(g_event_queue_buffer_is_issued_V_d0),
+    .q0(g_event_queue_buffer_is_issued_V_q0),
+    .address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address1),
+    .ce1(g_event_queue_buffer_is_issued_V_ce1),
+    .q1(g_event_queue_buffer_is_issued_V_q1)
 );
 
-event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480(
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_330_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start),
-    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_done),
-    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_idle),
-    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_ready),
-    .index_V(trunc_ln20_1_reg_742),
-    .temp_recv_time_V(temp_recv_time_V_reg_759),
-    .index_V_1_out(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out),
-    .index_V_1_out_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out_ap_vld),
-    .index_V_4_out(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out),
-    .index_V_4_out_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out_ap_vld),
-    .g_event_queue_heap_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_address0),
-    .g_event_queue_heap_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_ce0),
-    .g_event_queue_heap_recv_time_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_we0),
-    .g_event_queue_heap_recv_time_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_d0),
-    .g_event_queue_heap_recv_time_V_q0(g_event_queue_heap_recv_time_V_q0),
-    .g_event_queue_heap_send_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_address0),
-    .g_event_queue_heap_send_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_ce0),
-    .g_event_queue_heap_send_time_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_we0),
-    .g_event_queue_heap_send_time_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_d0),
-    .g_event_queue_heap_send_time_V_q0(g_event_queue_heap_send_time_V_q0),
-    .g_event_queue_heap_data_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_address0),
-    .g_event_queue_heap_data_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_ce0),
-    .g_event_queue_heap_data_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_we0),
-    .g_event_queue_heap_data_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_d0),
-    .g_event_queue_heap_data_V_q0(g_event_queue_heap_data_V_q0),
-    .g_event_queue_heap_sender_id_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_address0),
-    .g_event_queue_heap_sender_id_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_ce0),
-    .g_event_queue_heap_sender_id_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_we0),
-    .g_event_queue_heap_sender_id_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_d0),
-    .g_event_queue_heap_sender_id_V_q0(g_event_queue_heap_sender_id_V_q0),
-    .g_event_queue_heap_receiver_id_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_address0),
-    .g_event_queue_heap_receiver_id_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_ce0),
-    .g_event_queue_heap_receiver_id_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_we0),
-    .g_event_queue_heap_receiver_id_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_d0),
-    .g_event_queue_heap_receiver_id_V_q0(g_event_queue_heap_receiver_id_V_q0),
-    .g_event_queue_heap_is_anti_message_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_address0),
-    .g_event_queue_heap_is_anti_message_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_ce0),
-    .g_event_queue_heap_is_anti_message_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_we0),
-    .g_event_queue_heap_is_anti_message_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_d0),
-    .g_event_queue_heap_is_anti_message_V_q0(g_event_queue_heap_is_anti_message_V_q0),
-    .ap_return(grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_return)
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_ready),
+    .current_V(current_V_reg_1493),
+    .time_r(time_r_in_sig),
+    .trunc_ln2(trunc_ln328_reg_1488),
+    .g_event_queue_buffer_next_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_address0),
+    .g_event_queue_buffer_next_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_ce0),
+    .g_event_queue_buffer_next_V_q0(g_event_queue_buffer_next_V_q0),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .g_event_queue_buffer_event_recv_time_V_address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address1),
+    .g_event_queue_buffer_event_recv_time_V_ce1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce1),
+    .g_event_queue_buffer_event_recv_time_V_q1(g_event_queue_buffer_event_recv_time_V_q1),
+    .g_event_queue_buffer_is_issued_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address0),
+    .g_event_queue_buffer_is_issued_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce0),
+    .g_event_queue_buffer_is_issued_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_we0),
+    .g_event_queue_buffer_is_issued_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_d0),
+    .g_event_queue_buffer_is_issued_V_address1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address1),
+    .g_event_queue_buffer_is_issued_V_ce1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce1),
+    .g_event_queue_buffer_is_issued_V_q1(g_event_queue_buffer_is_issued_V_q1),
+    .g_event_queue_unissued_size_V_i(g_event_queue_unissued_size_V),
+    .g_event_queue_unissued_size_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o),
+    .g_event_queue_unissued_size_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o_ap_vld),
+    .g_event_queue_lp_oldest_unissued_V_0_i(g_event_queue_lp_oldest_unissued_V_0),
+    .g_event_queue_lp_oldest_unissued_V_0_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o),
+    .g_event_queue_lp_oldest_unissued_V_0_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o_ap_vld),
+    .g_event_queue_lp_oldest_unissued_V_1_i(g_event_queue_lp_oldest_unissued_V_1),
+    .g_event_queue_lp_oldest_unissued_V_1_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o),
+    .g_event_queue_lp_oldest_unissued_V_1_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o_ap_vld),
+    .g_event_queue_lp_oldest_unissued_V_2_i(g_event_queue_lp_oldest_unissued_V_2),
+    .g_event_queue_lp_oldest_unissued_V_2_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o),
+    .g_event_queue_lp_oldest_unissued_V_2_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o_ap_vld),
+    .g_event_queue_lp_oldest_unissued_V_3_i(g_event_queue_lp_oldest_unissued_V_3),
+    .g_event_queue_lp_oldest_unissued_V_3_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o),
+    .g_event_queue_lp_oldest_unissued_V_3_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o_ap_vld)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_2 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_ready),
+    .time_r(time_r_in_sig),
+    .g_event_queue_lp_heads_V_0_i(g_event_queue_lp_heads_V_0),
+    .g_event_queue_lp_heads_V_0_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o),
+    .g_event_queue_lp_heads_V_0_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o_ap_vld),
+    .g_event_queue_buffer_next_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_address0),
+    .g_event_queue_buffer_next_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_ce0),
+    .g_event_queue_buffer_next_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_we0),
+    .g_event_queue_buffer_next_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_d0),
+    .g_event_queue_buffer_next_V_q0(g_event_queue_buffer_next_V_q0),
+    .g_event_queue_free_head_V_i(g_event_queue_free_head_V),
+    .g_event_queue_free_head_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o),
+    .g_event_queue_free_head_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o_ap_vld),
+    .g_event_queue_size_V_i(g_event_queue_size_V),
+    .g_event_queue_size_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o),
+    .g_event_queue_size_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .g_event_queue_lp_tails_V_0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0),
+    .g_event_queue_lp_tails_V_0_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0_ap_vld)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_269_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_ready),
+    .g_event_queue_lp_oldest_unissued_V_0_load_1(g_event_queue_lp_oldest_unissued_V_0_load_1_reg_1506),
+    .g_event_queue_lp_oldest_unissued_V_1_load_1(g_event_queue_lp_oldest_unissued_V_1_load_1_reg_1512),
+    .g_event_queue_lp_oldest_unissued_V_2_load_1(g_event_queue_lp_oldest_unissued_V_2_load_1_reg_1518),
+    .g_event_queue_lp_oldest_unissued_V_3_load_1(g_event_queue_lp_oldest_unissued_V_3_load_1_reg_1524),
+    .earliest_lp_V_1_out(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out),
+    .earliest_lp_V_1_out_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_229_1 grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_ready),
+    .g_event_queue_lp_heads_V_0_load_1(g_event_queue_lp_heads_V_0_load_1_reg_1538),
+    .g_event_queue_lp_heads_V_1_load_1(g_event_queue_lp_heads_V_1_load_1_reg_1544),
+    .g_event_queue_lp_heads_V_2_load_1(g_event_queue_lp_heads_V_2_load_1_reg_1550),
+    .g_event_queue_lp_heads_V_3_load_1(g_event_queue_lp_heads_V_3_load_1_reg_1556),
+    .earliest_lp_V_out(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out),
+    .earliest_lp_V_out_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_21 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_ready),
+    .time_r(time_r_in_sig),
+    .g_event_queue_lp_heads_V_1_i(g_event_queue_lp_heads_V_1),
+    .g_event_queue_lp_heads_V_1_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o),
+    .g_event_queue_lp_heads_V_1_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o_ap_vld),
+    .g_event_queue_buffer_next_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_address0),
+    .g_event_queue_buffer_next_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_ce0),
+    .g_event_queue_buffer_next_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_we0),
+    .g_event_queue_buffer_next_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_d0),
+    .g_event_queue_buffer_next_V_q0(g_event_queue_buffer_next_V_q0),
+    .g_event_queue_free_head_V_i(g_event_queue_free_head_V),
+    .g_event_queue_free_head_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o),
+    .g_event_queue_free_head_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o_ap_vld),
+    .g_event_queue_size_V_i(g_event_queue_size_V),
+    .g_event_queue_size_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o),
+    .g_event_queue_size_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .g_event_queue_lp_tails_V_1(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1),
+    .g_event_queue_lp_tails_V_1_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1_ap_vld)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_22 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_ready),
+    .time_r(time_r_in_sig),
+    .g_event_queue_lp_heads_V_2_i(g_event_queue_lp_heads_V_2),
+    .g_event_queue_lp_heads_V_2_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o),
+    .g_event_queue_lp_heads_V_2_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o_ap_vld),
+    .g_event_queue_buffer_next_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_address0),
+    .g_event_queue_buffer_next_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_ce0),
+    .g_event_queue_buffer_next_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_we0),
+    .g_event_queue_buffer_next_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_d0),
+    .g_event_queue_buffer_next_V_q0(g_event_queue_buffer_next_V_q0),
+    .g_event_queue_free_head_V_i(g_event_queue_free_head_V),
+    .g_event_queue_free_head_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o),
+    .g_event_queue_free_head_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o_ap_vld),
+    .g_event_queue_size_V_i(g_event_queue_size_V),
+    .g_event_queue_size_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o),
+    .g_event_queue_size_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .g_event_queue_lp_tails_V_2(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2),
+    .g_event_queue_lp_tails_V_2_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2_ap_vld)
+);
+
+event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_23 grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start),
+    .ap_done(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_done),
+    .ap_idle(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_idle),
+    .ap_ready(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_ready),
+    .time_r(time_r_in_sig),
+    .g_event_queue_lp_heads_V_3_i(g_event_queue_lp_heads_V_3),
+    .g_event_queue_lp_heads_V_3_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o),
+    .g_event_queue_lp_heads_V_3_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o_ap_vld),
+    .g_event_queue_buffer_next_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_address0),
+    .g_event_queue_buffer_next_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_ce0),
+    .g_event_queue_buffer_next_V_we0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_we0),
+    .g_event_queue_buffer_next_V_d0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_d0),
+    .g_event_queue_buffer_next_V_q0(g_event_queue_buffer_next_V_q0),
+    .g_event_queue_free_head_V_i(g_event_queue_free_head_V),
+    .g_event_queue_free_head_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o),
+    .g_event_queue_free_head_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o_ap_vld),
+    .g_event_queue_size_V_i(g_event_queue_size_V),
+    .g_event_queue_size_V_o(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o),
+    .g_event_queue_size_V_o_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o_ap_vld),
+    .g_event_queue_buffer_event_recv_time_V_address0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_address0),
+    .g_event_queue_buffer_event_recv_time_V_ce0(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_ce0),
+    .g_event_queue_buffer_event_recv_time_V_q0(g_event_queue_buffer_event_recv_time_V_q0),
+    .g_event_queue_lp_tails_V_3(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3),
+    .g_event_queue_lp_tails_V_3_ap_vld(grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3_ap_vld)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U56(
+    .din0(g_event_queue_lp_heads_V_0),
+    .din1(g_event_queue_lp_heads_V_1),
+    .din2(g_event_queue_lp_heads_V_2),
+    .din3(g_event_queue_lp_heads_V_3),
+    .din4(current_V_fu_872_p5),
+    .dout(current_V_fu_872_p6)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U57(
+    .din0(g_event_queue_lp_oldest_unissued_V_0_load_1_reg_1506),
+    .din1(g_event_queue_lp_oldest_unissued_V_1_load_1_reg_1512),
+    .din2(g_event_queue_lp_oldest_unissued_V_2_load_1_reg_1518),
+    .din3(g_event_queue_lp_oldest_unissued_V_3_load_1_reg_1524),
+    .din4(earliest_lp_V_1_loc_fu_194),
+    .dout(issue_entry_V_fu_944_p6)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U58(
+    .din0(g_event_queue_lp_heads_V_0_load_1_reg_1538),
+    .din1(g_event_queue_lp_heads_V_1_load_1_reg_1544),
+    .din2(g_event_queue_lp_heads_V_2_load_1_reg_1550),
+    .din3(g_event_queue_lp_heads_V_3_load_1_reg_1556),
+    .din4(earliest_lp_V_loc_fu_198),
+    .dout(dequeue_entry_V_fu_1033_p6)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U59(
+    .din0(g_event_queue_lp_oldest_unissued_V_0),
+    .din1(g_event_queue_lp_oldest_unissued_V_1),
+    .din2(g_event_queue_lp_oldest_unissued_V_2),
+    .din3(g_event_queue_lp_oldest_unissued_V_3),
+    .din4(trunc_ln_reg_1600),
+    .dout(tmp_fu_1195_p6)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U60(
+    .din0(g_event_queue_lp_heads_V_0),
+    .din1(g_event_queue_lp_heads_V_1),
+    .din2(g_event_queue_lp_heads_V_2),
+    .din3(g_event_queue_lp_heads_V_3),
+    .din4(trunc_ln_reg_1600),
+    .dout(current_V_2_fu_1244_p6)
+);
+
+event_queue_kernel_mux_42_16_1_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 1 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 16 ),
+    .din2_WIDTH( 16 ),
+    .din3_WIDTH( 16 ),
+    .din4_WIDTH( 2 ),
+    .dout_WIDTH( 16 ))
+mux_42_16_1_1_U61(
+    .din0(g_event_queue_lp_tails_V_0),
+    .din1(g_event_queue_lp_tails_V_1),
+    .din2(g_event_queue_lp_tails_V_2),
+    .din3(g_event_queue_lp_tails_V_3),
+    .din4(trunc_ln_reg_1600),
+    .dout(tmp_8_fu_1366_p6)
 );
 
 always @ (posedge ap_clk) begin
@@ -439,205 +904,699 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg <= 1'b0;
+        ap_done_reg <= 1'b0;
     end else begin
-        if ((1'b1 == ap_CS_fsm_state7)) begin
-            grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg <= 1'b1;
-        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_ready == 1'b1)) begin
-            grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg <= 1'b0;
+        if ((ap_continue == 1'b1)) begin
+            ap_done_reg <= 1'b0;
+        end else if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            ap_done_reg <= 1'b1;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg <= 1'b0;
+        event_r_ap_vld_preg <= 1'b0;
+    end else begin
+        if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            event_r_ap_vld_preg <= 1'b0;
+        end else if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (event_r_ap_vld == 1'b1))) begin
+            event_r_ap_vld_preg <= event_r_ap_vld;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        event_r_preg <= 160'd0;
+    end else begin
+        if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (event_r_ap_vld == 1'b1))) begin
+            event_r_preg <= event_r;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg <= 1'b0;
+    end else begin
+        if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg <= 1'b0;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg <= 1'b0;
+    end else begin
+        if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_1_fu_887_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg <= 1'b0;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg <= 1'b0;
     end else begin
         if ((1'b1 == ap_CS_fsm_state4)) begin
-            grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg <= 1'b1;
-        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_ready == 1'b1)) begin
-            grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg <= 1'b0;
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        input_r_ap_vld_preg <= 1'b0;
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg <= 1'b0;
     end else begin
         if ((1'b1 == ap_CS_fsm_state6)) begin
-            input_r_ap_vld_preg <= 1'b0;
-        end else if ((~((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b0)) & (input_r_ap_vld == 1'b1))) begin
-            input_r_ap_vld_preg <= input_r_ap_vld;
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        input_r_preg <= 130'd0;
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg <= 1'b0;
     end else begin
-        if ((~((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b0)) & (input_r_ap_vld == 1'b1))) begin
-            input_r_preg <= input_r;
+        if ((1'b1 == ap_CS_fsm_state8)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_size_V <= zext_ln886_fu_618_p1;
-    end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_size_V <= add_ln887_fu_628_p2;
+    if (ap_rst == 1'b1) begin
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg <= 1'b0;
+    end else begin
+        if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state1))) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg <= 1'b0;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_0_0_reg_378 <= 32'd2147483647;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_0_0_reg_378 <= g_event_queue_heap_send_time_V_load_reg_785;
+    if (ap_rst == 1'b1) begin
+        grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg <= 1'b0;
+    end else begin
+        if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (op_read_read_fu_228_p2 == 3'd4) & (1'b1 == ap_CS_fsm_state1))) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg <= 1'b1;
+        end else if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_ready == 1'b1)) begin
+            grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg <= 1'b0;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_1_0_reg_389 <= 32'd0;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_1_0_reg_389 <= g_event_queue_heap_recv_time_V_load_reg_790;
+    if (ap_rst == 1'b1) begin
+        lp_id_ap_vld_preg <= 1'b0;
+    end else begin
+        if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            lp_id_ap_vld_preg <= 1'b0;
+        end else if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (lp_id_ap_vld == 1'b1))) begin
+            lp_id_ap_vld_preg <= lp_id_ap_vld;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_2_0_reg_400 <= 32'd0;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_2_0_reg_400 <= g_event_queue_heap_data_V_load_reg_795;
+    if (ap_rst == 1'b1) begin
+        lp_id_preg <= 16'd0;
+    end else begin
+        if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (lp_id_ap_vld == 1'b1))) begin
+            lp_id_preg <= lp_id;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_3_0_reg_411 <= 16'd0;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_3_0_reg_411 <= g_event_queue_heap_sender_id_V_load_reg_800;
+    if (ap_rst == 1'b1) begin
+        op_ap_vld_preg <= 1'b0;
+    end else begin
+        if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            op_ap_vld_preg <= 1'b0;
+        end else if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (op_ap_vld == 1'b1))) begin
+            op_ap_vld_preg <= op_ap_vld;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_4_0_reg_422 <= 16'd0;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_4_0_reg_422 <= g_event_queue_heap_receiver_id_V_load_reg_805;
+    if (ap_rst == 1'b1) begin
+        op_preg <= 3'd0;
+    end else begin
+        if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (op_ap_vld == 1'b1))) begin
+            op_preg <= op;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        ref_tmp_5_0_reg_433 <= 1'd0;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ref_tmp_5_0_reg_433 <= g_event_queue_heap_is_anti_message_V_load_reg_810;
+    if (ap_rst == 1'b1) begin
+        result_entry_i_ap_vld_preg <= 1'b0;
+    end else begin
+        if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            result_entry_i_ap_vld_preg <= 1'b0;
+        end else if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (result_entry_i_ap_vld == 1'b1))) begin
+            result_entry_i_ap_vld_preg <= result_entry_i_ap_vld;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        storemerge_reg_444 <= 1'd0;
-    end else if ((1'b1 == ap_CS_fsm_state9)) begin
-        storemerge_reg_444 <= 1'd1;
-    end else if (((1'b1 == ap_CS_fsm_state6) & (trunc_ln20_reg_733 == 1'd0))) begin
-        storemerge_reg_444 <= icmp_ln1069_fu_685_p2;
+    if (ap_rst == 1'b1) begin
+        result_entry_i_preg <= 146'd0;
+    end else begin
+        if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (result_entry_i_ap_vld == 1'b1))) begin
+            result_entry_i_preg <= result_entry_i;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
-        add_ln887_reg_815 <= add_ln887_fu_628_p2;
-        g_event_queue_heap_data_V_load_reg_795 <= g_event_queue_heap_data_V_q0;
-        g_event_queue_heap_is_anti_message_V_load_reg_810 <= g_event_queue_heap_is_anti_message_V_q0;
-        g_event_queue_heap_receiver_id_V_load_reg_805 <= g_event_queue_heap_receiver_id_V_q0;
-        g_event_queue_heap_recv_time_V_load_reg_790 <= g_event_queue_heap_recv_time_V_q0;
-        g_event_queue_heap_send_time_V_load_reg_785 <= g_event_queue_heap_send_time_V_q0;
-        g_event_queue_heap_sender_id_V_load_reg_800 <= g_event_queue_heap_sender_id_V_q0;
-        icmp_ln1081_reg_821 <= icmp_ln1081_fu_639_p2;
+    if (ap_rst == 1'b1) begin
+        result_entry_o_preg <= 146'd0;
+    end else begin
+        if ((1'b1 == ap_CS_fsm_state17)) begin
+            result_entry_o_preg <= or_ln41_6_fu_1161_p9;
+        end else if (((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+            result_entry_o_preg <= or_ln286_5_fu_976_p8;
+        end else if ((((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7)))))) begin
+            result_entry_o_preg <= 146'd89201619664654808812289028815535751510884352;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
-        icmp_ln1065_reg_747 <= icmp_ln1065_fu_516_p2;
+    if (ap_rst == 1'b1) begin
+        success_preg <= 1'b0;
+    end else begin
+        if ((1'b1 == ap_CS_fsm_state17)) begin
+            success_preg <= icmp_ln1069_1_fu_1182_p2;
+        end else if ((1'b1 == ap_CS_fsm_state13)) begin
+            success_preg <= retval_0_i592_reg_539;
+        end else if (((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9))) begin
+            success_preg <= retval_0_i_reg_525;
+        end else if ((((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)))) begin
+            success_preg <= 1'd1;
+        end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7))))) begin
+            success_preg <= 1'd0;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state8))) begin
-        index_V_1_loc_fu_120 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_1_out;
+    if (ap_rst == 1'b1) begin
+        time_r_ap_vld_preg <= 1'b0;
+    end else begin
+        if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+            time_r_ap_vld_preg <= 1'b0;
+        end else if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (time_r_ap_vld == 1'b1))) begin
+            time_r_ap_vld_preg <= time_r_ap_vld;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state5) & (grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out_ap_vld == 1'b1))) begin
-        index_V_2_loc_fu_112 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_index_V_2_out;
+    if (ap_rst == 1'b1) begin
+        time_r_preg <= 32'd0;
+    end else begin
+        if ((~((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) & (time_r_ap_vld == 1'b1))) begin
+            time_r_preg <= time_r;
+        end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state8))) begin
-        index_V_4_loc_fu_116 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_index_V_4_out;
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        g_event_queue_free_head_V <= dequeue_entry_V_reg_1650;
+    end else if ((1'b1 == ap_CS_fsm_state18)) begin
+        g_event_queue_free_head_V <= g_event_queue_buffer_next_V_q0;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o_ap_vld == 1'b1) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_free_head_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_free_head_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
+        g_event_queue_free_head_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_free_head_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        g_event_queue_free_head_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_free_head_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        g_event_queue_free_head_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_free_head_V_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((earliest_lp_V_loc_load_reg_1646 == 2'd0) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_heads_V_0 <= g_event_queue_buffer_next_V_q0;
+    end else if ((((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd0) & (1'b1 == ap_CS_fsm_state19)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1) & (trunc_ln_reg_1600 == 2'd0)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd0)))))) begin
+        g_event_queue_lp_heads_V_0 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        g_event_queue_lp_heads_V_0 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_heads_V_0_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((earliest_lp_V_loc_load_reg_1646 == 2'd1) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_heads_V_1 <= g_event_queue_buffer_next_V_q0;
+    end else if ((((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd1) & (1'b1 == ap_CS_fsm_state19)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1) & (trunc_ln_reg_1600 == 2'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd1)))))) begin
+        g_event_queue_lp_heads_V_1 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        g_event_queue_lp_heads_V_1 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_heads_V_1_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((earliest_lp_V_loc_load_reg_1646 == 2'd2) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_heads_V_2 <= g_event_queue_buffer_next_V_q0;
+    end else if ((((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd2) & (1'b1 == ap_CS_fsm_state19)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1) & (trunc_ln_reg_1600 == 2'd2)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd2)))))) begin
+        g_event_queue_lp_heads_V_2 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
+        g_event_queue_lp_heads_V_2 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_heads_V_2_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((earliest_lp_V_loc_load_reg_1646 == 2'd3) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_heads_V_3 <= g_event_queue_buffer_next_V_q0;
+    end else if ((((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd3) & (1'b1 == ap_CS_fsm_state19)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1) & (trunc_ln_reg_1600 == 2'd3)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd3)))))) begin
+        g_event_queue_lp_heads_V_3 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o_ap_vld == 1'b1) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_lp_heads_V_3 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_heads_V_3_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((((earliest_lp_V_loc_load_reg_1646 == 2'd0) & (1'b1 == ap_CS_fsm_state16) & (g_event_queue_buffer_is_issued_V_q0 == 1'd0)) | ((result_entry_i_ap_vld_in_sig == 1'b1) & (earliest_lp_V_1_loc_load_reg_1607 == 2'd0) & (1'b1 == ap_CS_fsm_state12)))) begin
+        g_event_queue_lp_oldest_unissued_V_0 <= g_event_queue_buffer_next_V_q0;
+    end else if (((1'b1 == ap_CS_fsm_state19) & (((icmp_ln1065_2_reg_1738 == 1'd1) & (trunc_ln_reg_1600 == 2'd0)) | ((icmp_ln1073_fu_1219_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd0))))) begin
+        g_event_queue_lp_oldest_unissued_V_0 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        g_event_queue_lp_oldest_unissued_V_0 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_0_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((((earliest_lp_V_loc_load_reg_1646 == 2'd1) & (1'b1 == ap_CS_fsm_state16) & (g_event_queue_buffer_is_issued_V_q0 == 1'd0)) | ((result_entry_i_ap_vld_in_sig == 1'b1) & (earliest_lp_V_1_loc_load_reg_1607 == 2'd1) & (1'b1 == ap_CS_fsm_state12)))) begin
+        g_event_queue_lp_oldest_unissued_V_1 <= g_event_queue_buffer_next_V_q0;
+    end else if (((1'b1 == ap_CS_fsm_state19) & (((icmp_ln1065_2_reg_1738 == 1'd1) & (trunc_ln_reg_1600 == 2'd1)) | ((icmp_ln1073_fu_1219_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd1))))) begin
+        g_event_queue_lp_oldest_unissued_V_1 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        g_event_queue_lp_oldest_unissued_V_1 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_1_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((((earliest_lp_V_loc_load_reg_1646 == 2'd2) & (1'b1 == ap_CS_fsm_state16) & (g_event_queue_buffer_is_issued_V_q0 == 1'd0)) | ((result_entry_i_ap_vld_in_sig == 1'b1) & (earliest_lp_V_1_loc_load_reg_1607 == 2'd2) & (1'b1 == ap_CS_fsm_state12)))) begin
+        g_event_queue_lp_oldest_unissued_V_2 <= g_event_queue_buffer_next_V_q0;
+    end else if (((1'b1 == ap_CS_fsm_state19) & (((icmp_ln1065_2_reg_1738 == 1'd1) & (trunc_ln_reg_1600 == 2'd2)) | ((icmp_ln1073_fu_1219_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd2))))) begin
+        g_event_queue_lp_oldest_unissued_V_2 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        g_event_queue_lp_oldest_unissued_V_2 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_2_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((((earliest_lp_V_loc_load_reg_1646 == 2'd3) & (1'b1 == ap_CS_fsm_state16) & (g_event_queue_buffer_is_issued_V_q0 == 1'd0)) | ((result_entry_i_ap_vld_in_sig == 1'b1) & (earliest_lp_V_1_loc_load_reg_1607 == 2'd3) & (1'b1 == ap_CS_fsm_state12)))) begin
+        g_event_queue_lp_oldest_unissued_V_3 <= g_event_queue_buffer_next_V_q0;
+    end else if (((1'b1 == ap_CS_fsm_state19) & (((icmp_ln1065_2_reg_1738 == 1'd1) & (trunc_ln_reg_1600 == 2'd3)) | ((icmp_ln1073_fu_1219_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd3))))) begin
+        g_event_queue_lp_oldest_unissued_V_3 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        g_event_queue_lp_oldest_unissued_V_3 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_lp_oldest_unissued_V_3_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_4_fu_1079_p2 == 1'd1) & (earliest_lp_V_loc_load_reg_1646 == 2'd0) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_tails_V_0 <= 16'd65535;
+    end else if ((((icmp_ln1065_6_reg_1807 == 1'd1) & (icmp_ln1065_5_reg_1798 == 1'd0) & (icmp_ln1065_3_reg_1755 == 1'd0) & (trunc_ln_reg_1600 == 2'd0) & (1'b1 == ap_CS_fsm_state24)) | ((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd0) & (1'b1 == ap_CS_fsm_state19)))) begin
+        g_event_queue_lp_tails_V_0 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        g_event_queue_lp_tails_V_0 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_lp_tails_V_0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_4_fu_1079_p2 == 1'd1) & (earliest_lp_V_loc_load_reg_1646 == 2'd1) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_tails_V_1 <= 16'd65535;
+    end else if ((((icmp_ln1065_6_reg_1807 == 1'd1) & (icmp_ln1065_5_reg_1798 == 1'd0) & (icmp_ln1065_3_reg_1755 == 1'd0) & (trunc_ln_reg_1600 == 2'd1) & (1'b1 == ap_CS_fsm_state24)) | ((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd1) & (1'b1 == ap_CS_fsm_state19)))) begin
+        g_event_queue_lp_tails_V_1 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        g_event_queue_lp_tails_V_1 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_lp_tails_V_1;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_4_fu_1079_p2 == 1'd1) & (earliest_lp_V_loc_load_reg_1646 == 2'd2) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_tails_V_2 <= 16'd65535;
+    end else if ((((icmp_ln1065_6_reg_1807 == 1'd1) & (icmp_ln1065_5_reg_1798 == 1'd0) & (icmp_ln1065_3_reg_1755 == 1'd0) & (trunc_ln_reg_1600 == 2'd2) & (1'b1 == ap_CS_fsm_state24)) | ((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd2) & (1'b1 == ap_CS_fsm_state19)))) begin
+        g_event_queue_lp_tails_V_2 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
+        g_event_queue_lp_tails_V_2 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_lp_tails_V_2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_4_fu_1079_p2 == 1'd1) & (earliest_lp_V_loc_load_reg_1646 == 2'd3) & (1'b1 == ap_CS_fsm_state16))) begin
+        g_event_queue_lp_tails_V_3 <= 16'd65535;
+    end else if ((((icmp_ln1065_6_reg_1807 == 1'd1) & (icmp_ln1065_5_reg_1798 == 1'd0) & (icmp_ln1065_3_reg_1755 == 1'd0) & (trunc_ln_reg_1600 == 2'd3) & (1'b1 == ap_CS_fsm_state24)) | ((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (trunc_ln_reg_1600 == 2'd3) & (1'b1 == ap_CS_fsm_state19)))) begin
+        g_event_queue_lp_tails_V_3 <= new_entry_V_reg_1570;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3_ap_vld == 1'b1) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_lp_tails_V_3 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_lp_tails_V_3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        g_event_queue_size_V <= add_ln887_2_fu_1150_p2;
+    end else if ((1'b1 == ap_CS_fsm_state24)) begin
+        g_event_queue_size_V <= zext_ln886_fu_1447_p1;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o_ap_vld == 1'b1) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_size_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_size_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
+        g_event_queue_size_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_size_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        g_event_queue_size_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_size_V_o;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+        g_event_queue_size_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_size_V_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+        g_event_queue_unissued_size_V <= add_ln887_fu_1019_p2;
+    end else if (((1'b1 == ap_CS_fsm_state16) & (g_event_queue_buffer_is_issued_V_q0 == 1'd0))) begin
+        g_event_queue_unissued_size_V <= add_ln887_1_fu_1133_p2;
+    end else if ((1'b1 == ap_CS_fsm_state24)) begin
+        g_event_queue_unissued_size_V <= add_ln886_fu_1430_p2;
+    end else if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        g_event_queue_unissued_size_V <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_unissued_size_V_o;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_3_fu_1257_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state19))) begin
+        prev_V_1_fu_206 <= current_V_2_fu_1244_p6;
+    end else if ((1'b1 == ap_CS_fsm_state22)) begin
+        prev_V_1_fu_206 <= g_event_queue_buffer_next_V_q0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_3_fu_1257_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state19))) begin
+        prev_V_fu_202 <= 16'd65535;
+    end else if (((icmp_ln1085_fu_1327_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd0) & (1'b1 == ap_CS_fsm_state21))) begin
+        prev_V_fu_202 <= prev_V_1_fu_206;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_0_0_reg_553 <= g_event_queue_buffer_event_send_time_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_0_0_reg_553 <= 32'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_1_0_reg_564 <= g_event_queue_buffer_event_recv_time_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_1_0_reg_564 <= 32'd2147483647;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_2_0_reg_575 <= g_event_queue_buffer_event_data_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_2_0_reg_575 <= 32'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_3_0_reg_586 <= g_event_queue_buffer_event_sender_id_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_3_0_reg_586 <= 16'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_4_0_reg_597 <= g_event_queue_buffer_event_receiver_id_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_4_0_reg_597 <= 16'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_0_5_0_reg_608 <= g_event_queue_buffer_event_is_anti_message_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_0_5_0_reg_608 <= 1'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_1_0_reg_619 <= g_event_queue_buffer_is_issued_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_1_0_reg_619 <= 1'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        ref_tmp8_2_0_reg_630 <= g_event_queue_buffer_next_V_q0;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        ref_tmp8_2_0_reg_630 <= 16'd65535;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+        retval_0_i592_reg_539 <= 1'd1;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_1_fu_887_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+        retval_0_i592_reg_539 <= 1'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state24)) begin
+        retval_0_i_reg_525 <= 1'd1;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        retval_0_i_reg_525 <= 1'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state19)) begin
+        current_V_2_reg_1750 <= current_V_2_fu_1244_p6;
+        icmp_ln1065_3_reg_1755 <= icmp_ln1065_3_fu_1257_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((op_read_read_fu_228_p2 == 3'd4) & (1'b1 == ap_CS_fsm_state1))) begin
+        current_V_reg_1493 <= current_V_fu_872_p6;
+        trunc_ln328_reg_1488 <= trunc_ln328_fu_867_p1;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        dequeue_entry_V_reg_1650 <= dequeue_entry_V_fu_1033_p6;
+        earliest_lp_V_loc_load_reg_1646 <= earliest_lp_V_loc_fu_198;
+        g_event_queue_buffer_next_V_addr_1_reg_1690 <= zext_ln587_3_fu_1043_p1;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state10))) begin
+        earliest_lp_V_1_loc_fu_194 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_earliest_lp_V_1_out;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state11)) begin
+        earliest_lp_V_1_loc_load_reg_1607 <= earliest_lp_V_1_loc_fu_194;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state14))) begin
+        earliest_lp_V_loc_fu_198 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_earliest_lp_V_out;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        index_V_reg_737 <= g_event_queue_size_V;
-        trunc_ln20_1_reg_742 <= trunc_ln20_1_fu_508_p1;
-        trunc_ln20_reg_733 <= trunc_ln20_fu_500_p1;
+        event_recv_time_V_reg_1482 <= {{event_r_in_sig[63:32]}};
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state8)) begin
-        targetBlock_reg_886 <= grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_return;
+    if (((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1085_fu_1327_p2 == 1'd1))))) begin
+        g_event_queue_buffer_next_V_addr_4_reg_1802 <= zext_ln587_6_fu_1345_p1;
+        icmp_ln1065_6_reg_1807 <= icmp_ln1065_6_fu_1379_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state3)) begin
-        temp_data_V_1_reg_866 <= g_event_queue_heap_data_V_q0;
-        temp_is_anti_message_V_1_reg_881 <= g_event_queue_heap_is_anti_message_V_q0;
-        temp_receiver_id_V_1_reg_876 <= g_event_queue_heap_receiver_id_V_q0;
-        temp_recv_time_V_1_reg_860 <= g_event_queue_heap_recv_time_V_q0;
-        temp_send_time_V_1_reg_855 <= g_event_queue_heap_send_time_V_q0;
-        temp_sender_id_V_1_reg_871 <= g_event_queue_heap_sender_id_V_q0;
+    if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_next_V_addr_reg_1595 <= zext_ln587_fu_919_p1;
+        new_entry_V_reg_1570 <= g_event_queue_free_head_V;
+        trunc_ln_reg_1600 <= {{event_r_in_sig[113:112]}};
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        temp_data_V_reg_765 <= {{input_r_in_sig[96:65]}};
-        temp_is_anti_message_V_reg_780 <= input_r_in_sig[32'd129];
-        temp_receiver_id_V_reg_775 <= {{input_r_in_sig[128:113]}};
-        temp_recv_time_V_reg_759 <= {{input_r_in_sig[64:33]}};
-        temp_send_time_V_reg_754 <= {{input_r_in_sig[32:1]}};
-        temp_sender_id_V_reg_770 <= {{input_r_in_sig[112:97]}};
+    if (((icmp_ln1065_fu_893_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_lp_heads_V_0_load_1_reg_1538 <= g_event_queue_lp_heads_V_0;
+        g_event_queue_lp_heads_V_1_load_1_reg_1544 <= g_event_queue_lp_heads_V_1;
+        g_event_queue_lp_heads_V_2_load_1_reg_1550 <= g_event_queue_lp_heads_V_2;
+        g_event_queue_lp_heads_V_3_load_1_reg_1556 <= g_event_queue_lp_heads_V_3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1065_1_fu_887_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_lp_oldest_unissued_V_0_load_1_reg_1506 <= g_event_queue_lp_oldest_unissued_V_0;
+        g_event_queue_lp_oldest_unissued_V_1_load_1_reg_1512 <= g_event_queue_lp_oldest_unissued_V_1;
+        g_event_queue_lp_oldest_unissued_V_2_load_1_reg_1518 <= g_event_queue_lp_oldest_unissued_V_2;
+        g_event_queue_lp_oldest_unissued_V_3_load_1_reg_1524 <= g_event_queue_lp_oldest_unissued_V_3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_size_V_load_1_reg_1530 <= g_event_queue_size_V;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_unissued_size_V_load_reg_1498 <= g_event_queue_unissued_size_V;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state18)) begin
+        icmp_ln1065_2_reg_1738 <= icmp_ln1065_2_fu_1208_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state21) & ((icmp_ln1085_fu_1327_p2 == 1'd1) | (icmp_ln1069_reg_1776 == 1'd1)))) begin
+        icmp_ln1065_5_reg_1798 <= icmp_ln1065_5_fu_1339_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state20)) begin
+        icmp_ln1069_reg_1776 <= icmp_ln1069_fu_1316_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        trunc_ln1077_reg_1562 <= trunc_ln1077_fu_899_p1;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1069_fu_1316_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
+        zext_ln587_5_reg_1780[15 : 0] <= zext_ln587_5_fu_1322_p1[15 : 0];
     end
 end
 
 always @ (*) begin
-    if (((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0))) begin
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_done == 1'b0)) begin
+        ap_ST_fsm_state10_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state10_blk = 1'b0;
+    end
+end
+
+assign ap_ST_fsm_state11_blk = 1'b0;
+
+always @ (*) begin
+    if ((result_entry_i_ap_vld_in_sig == 1'b0)) begin
+        ap_ST_fsm_state12_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state12_blk = 1'b0;
+    end
+end
+
+assign ap_ST_fsm_state13_blk = 1'b0;
+
+always @ (*) begin
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_done == 1'b0)) begin
+        ap_ST_fsm_state14_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state14_blk = 1'b0;
+    end
+end
+
+assign ap_ST_fsm_state15_blk = 1'b0;
+
+assign ap_ST_fsm_state16_blk = 1'b0;
+
+assign ap_ST_fsm_state17_blk = 1'b0;
+
+assign ap_ST_fsm_state18_blk = 1'b0;
+
+assign ap_ST_fsm_state19_blk = 1'b0;
+
+always @ (*) begin
+    if (((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0))) begin
         ap_ST_fsm_state1_blk = 1'b1;
     end else begin
         ap_ST_fsm_state1_blk = 1'b0;
     end
 end
 
-assign ap_ST_fsm_state2_blk = 1'b0;
+assign ap_ST_fsm_state20_blk = 1'b0;
 
-assign ap_ST_fsm_state3_blk = 1'b0;
+assign ap_ST_fsm_state21_blk = 1'b0;
+
+assign ap_ST_fsm_state22_blk = 1'b0;
+
+assign ap_ST_fsm_state23_blk = 1'b0;
+
+assign ap_ST_fsm_state24_blk = 1'b0;
+
+always @ (*) begin
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b0)) begin
+        ap_ST_fsm_state2_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state2_blk = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_done == 1'b0)) begin
+        ap_ST_fsm_state3_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state3_blk = 1'b0;
+    end
+end
 
 assign ap_ST_fsm_state4_blk = 1'b0;
 
 always @ (*) begin
-    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_done == 1'b0)) begin
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_done == 1'b0)) begin
         ap_ST_fsm_state5_blk = 1'b1;
     end else begin
         ap_ST_fsm_state5_blk = 1'b0;
@@ -646,28 +1605,34 @@ end
 
 assign ap_ST_fsm_state6_blk = 1'b0;
 
-assign ap_ST_fsm_state7_blk = 1'b0;
-
 always @ (*) begin
-    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_done == 1'b0)) begin
-        ap_ST_fsm_state8_blk = 1'b1;
+    if ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_done == 1'b0)) begin
+        ap_ST_fsm_state7_blk = 1'b1;
     end else begin
-        ap_ST_fsm_state8_blk = 1'b0;
+        ap_ST_fsm_state7_blk = 1'b0;
     end
 end
 
-assign ap_ST_fsm_state9_blk = 1'b0;
+assign ap_ST_fsm_state8_blk = 1'b0;
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state6)) begin
+    if ((1'b1 == ap_block_state9_on_subcall_done)) begin
+        ap_ST_fsm_state9_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state9_blk = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
         ap_done = 1'b1;
     end else begin
-        ap_done = 1'b0;
+        ap_done = ap_done_reg;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b0))) begin
+    if (((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1))) begin
         ap_idle = 1'b1;
     end else begin
         ap_idle = 1'b0;
@@ -675,63 +1640,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_0_0_phi_fu_382_p4 = g_event_queue_heap_send_time_V_load_reg_785;
-    end else begin
-        ap_phi_mux_ref_tmp_0_0_phi_fu_382_p4 = ref_tmp_0_0_reg_378;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_1_0_phi_fu_393_p4 = g_event_queue_heap_recv_time_V_load_reg_790;
-    end else begin
-        ap_phi_mux_ref_tmp_1_0_phi_fu_393_p4 = ref_tmp_1_0_reg_389;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_2_0_phi_fu_404_p4 = g_event_queue_heap_data_V_load_reg_795;
-    end else begin
-        ap_phi_mux_ref_tmp_2_0_phi_fu_404_p4 = ref_tmp_2_0_reg_400;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_3_0_phi_fu_415_p4 = g_event_queue_heap_sender_id_V_load_reg_800;
-    end else begin
-        ap_phi_mux_ref_tmp_3_0_phi_fu_415_p4 = ref_tmp_3_0_reg_411;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_4_0_phi_fu_426_p4 = g_event_queue_heap_receiver_id_V_load_reg_805;
-    end else begin
-        ap_phi_mux_ref_tmp_4_0_phi_fu_426_p4 = ref_tmp_4_0_reg_422;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_ref_tmp_5_0_phi_fu_437_p4 = g_event_queue_heap_is_anti_message_V_load_reg_810;
-    end else begin
-        ap_phi_mux_ref_tmp_5_0_phi_fu_437_p4 = ref_tmp_5_0_reg_433;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (trunc_ln20_reg_733 == 1'd0))) begin
-        ap_phi_mux_storemerge_phi_fu_449_p6 = icmp_ln1069_fu_685_p2;
-    end else begin
-        ap_phi_mux_storemerge_phi_fu_449_p6 = storemerge_reg_444;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state6)) begin
+    if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -739,419 +1648,483 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_data_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_data_V_address0 = zext_ln587_5_fu_658_p1;
-    end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_data_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_data_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_data_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_data_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_data_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_address0;
+    if ((event_r_ap_vld == 1'b1)) begin
+        event_r_ap_vld_in_sig = event_r_ap_vld;
     end else begin
-        g_event_queue_heap_data_V_address0 = 'bx;
+        event_r_ap_vld_in_sig = event_r_ap_vld_preg;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_data_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_data_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_ce0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_data_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_ce0;
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1))) begin
+        event_r_blk_n = event_r_ap_vld;
     end else begin
-        g_event_queue_heap_data_V_ce0 = 1'b0;
+        event_r_blk_n = 1'b1;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_data_V_d0 = temp_data_V_reg_765;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_data_V_d0 = temp_data_V_1_reg_866;
+    if ((event_r_ap_vld == 1'b1)) begin
+        event_r_in_sig = event_r;
+    end else begin
+        event_r_in_sig = event_r_preg;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_data_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_data_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if ((1'b1 == ap_CS_fsm_state1)) begin
+        g_event_queue_buffer_event_data_V_address0 = zext_ln587_fu_919_p1;
+    end else begin
+        g_event_queue_buffer_event_data_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_data_V_ce0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_data_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_data_V_we0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_data_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if ((1'b1 == ap_CS_fsm_state1)) begin
+        g_event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_fu_919_p1;
+    end else begin
+        g_event_queue_buffer_event_is_anti_message_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_is_anti_message_V_ce0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_is_anti_message_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_is_anti_message_V_we0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_is_anti_message_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if ((1'b1 == ap_CS_fsm_state1)) begin
+        g_event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_fu_919_p1;
+    end else begin
+        g_event_queue_buffer_event_receiver_id_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_receiver_id_V_ce0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_receiver_id_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_receiver_id_V_we0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_receiver_id_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state20)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = zext_ln587_5_fu_1322_p1;
+    end else if ((1'b1 == ap_CS_fsm_state18)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = zext_ln587_2_fu_1214_p1;
+    end else if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = zext_ln587_fu_919_p1;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state14)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state10)) begin
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_address0;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_data_V_d0 = g_event_queue_heap_data_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_data_V_d0 = {{input_r_in_sig[96:65]}};
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_data_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_d0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_data_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_d0;
-    end else begin
-        g_event_queue_heap_data_V_d0 = 'bx;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_data_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_data_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_data_V_we0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_data_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_data_V_we0;
-    end else begin
-        g_event_queue_heap_data_V_we0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_is_anti_message_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_is_anti_message_V_address0 = zext_ln587_5_fu_658_p1;
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_address0;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_is_anti_message_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_is_anti_message_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_is_anti_message_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_is_anti_message_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_is_anti_message_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_address0;
+        g_event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_address0;
     end else begin
-        g_event_queue_heap_is_anti_message_V_address0 = 'bx;
+        g_event_queue_buffer_event_recv_time_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_is_anti_message_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_is_anti_message_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_ce0;
+    if (((1'b1 == ap_CS_fsm_state20) | (1'b1 == ap_CS_fsm_state18) | (1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_recv_time_V_ce0 = 1'b1;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_event_recv_time_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_event_recv_time_V_ce0;
     end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_is_anti_message_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_ce0;
-    end else begin
-        g_event_queue_heap_is_anti_message_V_ce0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_is_anti_message_V_d0 = temp_is_anti_message_V_reg_780;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_is_anti_message_V_d0 = temp_is_anti_message_V_1_reg_881;
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_event_recv_time_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state14)) begin
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_g_event_queue_buffer_event_recv_time_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state10)) begin
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_g_event_queue_buffer_event_recv_time_V_ce0;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_is_anti_message_V_d0 = g_event_queue_heap_is_anti_message_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_is_anti_message_V_d0 = input_r_in_sig[32'd129];
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_is_anti_message_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_d0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_is_anti_message_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_d0;
-    end else begin
-        g_event_queue_heap_is_anti_message_V_d0 = 'bx;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_is_anti_message_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_is_anti_message_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_is_anti_message_V_we0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_is_anti_message_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_is_anti_message_V_we0;
-    end else begin
-        g_event_queue_heap_is_anti_message_V_we0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_receiver_id_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_receiver_id_V_address0 = zext_ln587_5_fu_658_p1;
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_event_recv_time_V_ce0;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_receiver_id_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_receiver_id_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_receiver_id_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_receiver_id_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_receiver_id_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_address0;
+        g_event_queue_buffer_event_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce0;
     end else begin
-        g_event_queue_heap_receiver_id_V_address0 = 'bx;
+        g_event_queue_buffer_event_recv_time_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_receiver_id_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_receiver_id_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_ce0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_receiver_id_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_ce0;
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        g_event_queue_buffer_event_recv_time_V_ce1 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_event_recv_time_V_ce1;
     end else begin
-        g_event_queue_heap_receiver_id_V_ce0 = 1'b0;
+        g_event_queue_buffer_event_recv_time_V_ce1 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_receiver_id_V_d0 = temp_receiver_id_V_reg_775;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_receiver_id_V_d0 = temp_receiver_id_V_1_reg_876;
-    end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_receiver_id_V_d0 = g_event_queue_heap_receiver_id_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_receiver_id_V_d0 = {{input_r_in_sig[128:113]}};
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_receiver_id_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_d0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_receiver_id_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_d0;
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_recv_time_V_we0 = 1'b1;
     end else begin
-        g_event_queue_heap_receiver_id_V_d0 = 'bx;
+        g_event_queue_buffer_event_recv_time_V_we0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_receiver_id_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_receiver_id_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_receiver_id_V_we0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_receiver_id_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_receiver_id_V_we0;
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_send_time_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_send_time_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if ((1'b1 == ap_CS_fsm_state1)) begin
+        g_event_queue_buffer_event_send_time_V_address0 = zext_ln587_fu_919_p1;
     end else begin
-        g_event_queue_heap_receiver_id_V_we0 = 1'b0;
+        g_event_queue_buffer_event_send_time_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_recv_time_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_recv_time_V_address0 = zext_ln587_5_fu_658_p1;
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_send_time_V_ce0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_send_time_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_send_time_V_we0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_send_time_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_event_sender_id_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_event_sender_id_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if ((1'b1 == ap_CS_fsm_state1)) begin
+        g_event_queue_buffer_event_sender_id_V_address0 = zext_ln587_fu_919_p1;
+    end else begin
+        g_event_queue_buffer_event_sender_id_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_event_sender_id_V_ce0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_sender_id_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_event_sender_id_V_we0 = 1'b1;
+    end else begin
+        g_event_queue_buffer_event_sender_id_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_is_issued_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_is_issued_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_is_issued_V_address0 = zext_ln587_fu_919_p1;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_recv_time_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_recv_time_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_recv_time_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_address0;
+        g_event_queue_buffer_is_issued_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_address0;
     end else begin
-        g_event_queue_heap_recv_time_V_address0 = 'bx;
+        g_event_queue_buffer_is_issued_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_recv_time_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_ce0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce0;
-    end else begin
-        g_event_queue_heap_recv_time_V_ce0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_ce1 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_ce1;
-    end else begin
-        g_event_queue_heap_recv_time_V_ce1 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_recv_time_V_d0 = temp_recv_time_V_reg_759;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_recv_time_V_d0 = temp_recv_time_V_1_reg_860;
-    end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_recv_time_V_d0 = g_event_queue_heap_recv_time_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_recv_time_V_d0 = {{input_r_in_sig[64:33]}};
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_recv_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_d0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_d0;
-    end else begin
-        g_event_queue_heap_recv_time_V_d0 = 'bx;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_recv_time_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_recv_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_recv_time_V_we0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_recv_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_recv_time_V_we0;
-    end else begin
-        g_event_queue_heap_recv_time_V_we0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_send_time_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_send_time_V_address0 = zext_ln587_5_fu_658_p1;
+    if (((1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_is_issued_V_ce0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_send_time_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_send_time_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_send_time_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_send_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_send_time_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_address0;
+        g_event_queue_buffer_is_issued_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce0;
     end else begin
-        g_event_queue_heap_send_time_V_address0 = 'bx;
+        g_event_queue_buffer_is_issued_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_send_time_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_send_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_ce0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_send_time_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_ce0;
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        g_event_queue_buffer_is_issued_V_ce1 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_ce1;
     end else begin
-        g_event_queue_heap_send_time_V_ce0 = 1'b0;
+        g_event_queue_buffer_is_issued_V_ce1 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_send_time_V_d0 = temp_send_time_V_reg_754;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_send_time_V_d0 = temp_send_time_V_1_reg_855;
-    end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_send_time_V_d0 = g_event_queue_heap_send_time_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_send_time_V_d0 = {{input_r_in_sig[32:1]}};
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_send_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_d0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_send_time_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_d0;
-    end else begin
-        g_event_queue_heap_send_time_V_d0 = 'bx;
-    end
-end
-
-always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_send_time_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_send_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_send_time_V_we0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_send_time_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_send_time_V_we0;
-    end else begin
-        g_event_queue_heap_send_time_V_we0 = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_sender_id_V_address0 = zext_ln587_4_fu_705_p1;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_sender_id_V_address0 = zext_ln587_5_fu_658_p1;
+    if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_is_issued_V_d0 = 1'd1;
+    end else if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_is_issued_V_d0 = 1'd0;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        g_event_queue_heap_sender_id_V_address0 = zext_ln587_1_fu_645_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_sender_id_V_address0 = zext_ln587_fu_538_p1;
-    end else if (((1'b1 == ap_CS_fsm_state3) | ((1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)))) begin
-        g_event_queue_heap_sender_id_V_address0 = 7'd0;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_sender_id_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_address0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_sender_id_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_address0;
+        g_event_queue_buffer_is_issued_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_d0;
     end else begin
-        g_event_queue_heap_sender_id_V_address0 = 'bx;
+        g_event_queue_buffer_is_issued_V_d0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3) | (1'b1 == ap_CS_fsm_state2) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0)) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)))) begin
-        g_event_queue_heap_sender_id_V_ce0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_sender_id_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_ce0;
-    end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_sender_id_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_ce0;
+    if (((1'b1 == ap_CS_fsm_state11) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+        g_event_queue_buffer_is_issued_V_we0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state2)) begin
+        g_event_queue_buffer_is_issued_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_is_issued_V_we0;
     end else begin
-        g_event_queue_heap_sender_id_V_ce0 = 1'b0;
+        g_event_queue_buffer_is_issued_V_we0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state9)) begin
-        g_event_queue_heap_sender_id_V_d0 = temp_sender_id_V_reg_770;
-    end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        g_event_queue_heap_sender_id_V_d0 = temp_sender_id_V_1_reg_871;
+    if ((1'b1 == ap_CS_fsm_state24)) begin
+        g_event_queue_buffer_next_V_address0 = g_event_queue_buffer_next_V_addr_4_reg_1802;
+    end else if (((1'b1 == ap_CS_fsm_state23) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1)))))) begin
+        g_event_queue_buffer_next_V_address0 = g_event_queue_buffer_next_V_addr_reg_1595;
+    end else if (((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1085_fu_1327_p2 == 1'd1))))) begin
+        g_event_queue_buffer_next_V_address0 = zext_ln587_6_fu_1345_p1;
+    end else if (((icmp_ln1085_fu_1327_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd0) & (1'b1 == ap_CS_fsm_state21))) begin
+        g_event_queue_buffer_next_V_address0 = zext_ln587_5_reg_1780;
+    end else if ((1'b1 == ap_CS_fsm_state16)) begin
+        g_event_queue_buffer_next_V_address0 = g_event_queue_buffer_next_V_addr_1_reg_1690;
+    end else if ((1'b1 == ap_CS_fsm_state15)) begin
+        g_event_queue_buffer_next_V_address0 = zext_ln587_3_fu_1043_p1;
+    end else if ((1'b1 == ap_CS_fsm_state11)) begin
+        g_event_queue_buffer_next_V_address0 = zext_ln587_4_fu_954_p1;
+    end else if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_next_V_address0 = zext_ln587_fu_919_p1;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_next_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_next_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        g_event_queue_buffer_next_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_address0;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        g_event_queue_heap_sender_id_V_d0 = g_event_queue_heap_sender_id_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-        g_event_queue_heap_sender_id_V_d0 = {{input_r_in_sig[112:97]}};
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_sender_id_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_d0;
+        g_event_queue_buffer_next_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state2)) begin
+        g_event_queue_buffer_next_V_address0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_address0;
+    end else begin
+        g_event_queue_buffer_next_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state24) | (1'b1 == ap_CS_fsm_state16) | (1'b1 == ap_CS_fsm_state15) | (1'b1 == ap_CS_fsm_state11) | (1'b1 == ap_CS_fsm_state23) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1)) | ((icmp_ln1085_fu_1327_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd0) & (1'b1 == ap_CS_fsm_state21)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1)))) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1085_fu_1327_p2 == 1'd1)))))) begin
+        g_event_queue_buffer_next_V_ce0 = 1'b1;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_next_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_next_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_ce0;
     end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_sender_id_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_d0;
+        g_event_queue_buffer_next_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state3)) begin
+        g_event_queue_buffer_next_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state2)) begin
+        g_event_queue_buffer_next_V_ce0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_g_event_queue_buffer_next_V_ce0;
     end else begin
-        g_event_queue_heap_sender_id_V_d0 = 'bx;
+        g_event_queue_buffer_next_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state9) | (1'b1 == ap_CS_fsm_state3) | (~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((1'b1 == ap_CS_fsm_state6) & (icmp_ln1081_reg_821 == 1'd0) & (icmp_ln1065_reg_747 == 1'd0) & (trunc_ln20_reg_733 == 1'd0)))) begin
-        g_event_queue_heap_sender_id_V_we0 = 1'b1;
-    end else if ((1'b1 == ap_CS_fsm_state8)) begin
-        g_event_queue_heap_sender_id_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_g_event_queue_heap_sender_id_V_we0;
+    if ((1'b1 == ap_CS_fsm_state24)) begin
+        g_event_queue_buffer_next_V_d0 = new_entry_V_reg_1570;
+    end else if ((1'b1 == ap_CS_fsm_state23)) begin
+        g_event_queue_buffer_next_V_d0 = g_event_queue_buffer_next_V_q0;
+    end else if (((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1))))) begin
+        g_event_queue_buffer_next_V_d0 = current_V_2_reg_1750;
+    end else if ((1'b1 == ap_CS_fsm_state16)) begin
+        g_event_queue_buffer_next_V_d0 = g_event_queue_free_head_V;
+    end else if (((icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        g_event_queue_buffer_next_V_d0 = 16'd65535;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_next_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_next_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_d0;
     end else if ((1'b1 == ap_CS_fsm_state5)) begin
-        g_event_queue_heap_sender_id_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_g_event_queue_heap_sender_id_V_we0;
+        g_event_queue_buffer_next_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state3)) begin
+        g_event_queue_buffer_next_V_d0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_d0;
     end else begin
-        g_event_queue_heap_sender_id_V_we0 = 1'b0;
+        g_event_queue_buffer_next_V_d0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((input_r_ap_vld == 1'b1)) begin
-        input_r_ap_vld_in_sig = input_r_ap_vld;
+    if (((1'b1 == ap_CS_fsm_state16) | (1'b1 == ap_CS_fsm_state23) | ((icmp_ln1065_5_reg_1798 == 1'd0) & (icmp_ln1065_3_reg_1755 == 1'd0) & (1'b1 == ap_CS_fsm_state24)) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1)) | ((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1)))))) begin
+        g_event_queue_buffer_next_V_we0 = 1'b1;
+    end else if (((op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9))) begin
+        g_event_queue_buffer_next_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_g_event_queue_buffer_next_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        g_event_queue_buffer_next_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_g_event_queue_buffer_next_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        g_event_queue_buffer_next_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_g_event_queue_buffer_next_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state3)) begin
+        g_event_queue_buffer_next_V_we0 = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_g_event_queue_buffer_next_V_we0;
     end else begin
-        input_r_ap_vld_in_sig = input_r_ap_vld_preg;
+        g_event_queue_buffer_next_V_we0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (ap_start == 1'b1))) begin
-        input_r_blk_n = input_r_ap_vld;
+    if ((lp_id_ap_vld == 1'b1)) begin
+        lp_id_ap_vld_in_sig = lp_id_ap_vld;
     end else begin
-        input_r_blk_n = 1'b1;
+        lp_id_ap_vld_in_sig = lp_id_ap_vld_preg;
     end
 end
 
 always @ (*) begin
-    if ((input_r_ap_vld == 1'b1)) begin
-        input_r_in_sig = input_r;
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1))) begin
+        lp_id_blk_n = lp_id_ap_vld;
     end else begin
-        input_r_in_sig = input_r_preg;
+        lp_id_blk_n = 1'b1;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state6) & (trunc_ln20_reg_733 == 1'd0))) begin
-        output_event_ap_vld = 1'b1;
+    if ((lp_id_ap_vld == 1'b1)) begin
+        lp_id_in_sig = lp_id;
     end else begin
-        output_event_ap_vld = 1'b0;
+        lp_id_in_sig = lp_id_preg;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state6)) begin
+    if ((op_ap_vld == 1'b1)) begin
+        op_ap_vld_in_sig = op_ap_vld;
+    end else begin
+        op_ap_vld_in_sig = op_ap_vld_preg;
+    end
+end
+
+always @ (*) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1))) begin
+        op_blk_n = op_ap_vld;
+    end else begin
+        op_blk_n = 1'b1;
+    end
+end
+
+always @ (*) begin
+    if ((op_ap_vld == 1'b1)) begin
+        op_in_sig = op;
+    end else begin
+        op_in_sig = op_preg;
+    end
+end
+
+always @ (*) begin
+    if ((result_entry_i_ap_vld == 1'b1)) begin
+        result_entry_i_ap_vld_in_sig = result_entry_i_ap_vld;
+    end else begin
+        result_entry_i_ap_vld_in_sig = result_entry_i_ap_vld_preg;
+    end
+end
+
+always @ (*) begin
+    if ((result_entry_i_ap_vld == 1'b1)) begin
+        result_entry_i_in_sig = result_entry_i;
+    end else begin
+        result_entry_i_in_sig = result_entry_i_preg;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state17)) begin
+        result_entry_o = or_ln41_6_fu_1161_p9;
+    end else if (((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+        result_entry_o = or_ln286_5_fu_976_p8;
+    end else if ((((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7)))))) begin
+        result_entry_o = 146'd89201619664654808812289028815535751510884352;
+    end else begin
+        result_entry_o = result_entry_o_preg;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state17) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)) | ((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12)) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7)))))) begin
+        result_entry_o_ap_vld = 1'b1;
+    end else begin
+        result_entry_o_ap_vld = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state17)) begin
+        success = icmp_ln1069_1_fu_1182_p2;
+    end else if ((1'b1 == ap_CS_fsm_state13)) begin
+        success = retval_0_i592_reg_539;
+    end else if (((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9))) begin
+        success = retval_0_i_reg_525;
+    end else if ((((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)))) begin
+        success = 1'd1;
+    end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7))))) begin
+        success = 1'd0;
+    end else begin
+        success = success_preg;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state17) | (1'b1 == ap_CS_fsm_state13) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state9)) | ((1'b0 == ap_block_state9_on_subcall_done) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state9)) | ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2)) | (~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & ((op_read_read_fu_228_p2 == 3'd5) | ((op_read_read_fu_228_p2 == 3'd6) | (op_read_read_fu_228_p2 == 3'd7)))))) begin
         success_ap_vld = 1'b1;
     end else begin
         success_ap_vld = 1'b0;
@@ -1159,53 +2132,162 @@ always @ (*) begin
 end
 
 always @ (*) begin
+    if ((time_r_ap_vld == 1'b1)) begin
+        time_r_ap_vld_in_sig = time_r_ap_vld;
+    end else begin
+        time_r_ap_vld_in_sig = time_r_ap_vld_preg;
+    end
+end
+
+always @ (*) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1))) begin
+        time_r_blk_n = time_r_ap_vld;
+    end else begin
+        time_r_blk_n = 1'b1;
+    end
+end
+
+always @ (*) begin
+    if ((time_r_ap_vld == 1'b1)) begin
+        time_r_in_sig = time_r;
+    end else begin
+        time_r_in_sig = time_r_preg;
+    end
+end
+
+always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_532_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd1))) begin
-                ap_NS_fsm = ap_ST_fsm_state7;
-            end else if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (((icmp_ln1077_fu_532_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd1)) | ((icmp_ln1065_fu_516_p2 == 1'd1) & (trunc_ln20_fu_500_p1 == 1'd0))))) begin
-                ap_NS_fsm = ap_ST_fsm_state6;
-            end else if ((~((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1065_fu_516_p2 == 1'd0) & (trunc_ln20_fu_500_p1 == 1'd0))) begin
+            if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1077_fu_913_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state18;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (((icmp_ln1077_fu_913_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd0)) | (~(op_in_sig == 3'd3) & ~(op_read_read_fu_228_p2 == 3'd0) & ~(op_read_read_fu_228_p2 == 3'd1) & ~(op_read_read_fu_228_p2 == 3'd2) & ~(op_read_read_fu_228_p2 == 3'd4))))) begin
+                ap_NS_fsm = ap_ST_fsm_state9;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state17;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_fu_893_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd1) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state14;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_1_fu_887_p2 == 1'd1) & (op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state13;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (icmp_ln1065_1_fu_887_p2 == 1'd0) & (op_read_read_fu_228_p2 == 3'd2) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state10;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (op_in_sig == 3'd3) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state3;
+            end else if ((~((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (op_read_read_fu_228_p2 == 3'd4) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1081_fu_639_p2 == 1'd1))) begin
-                ap_NS_fsm = ap_ST_fsm_state6;
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+                ap_NS_fsm = ap_ST_fsm_state9;
             end else begin
-                ap_NS_fsm = ap_ST_fsm_state3;
+                ap_NS_fsm = ap_ST_fsm_state2;
             end
         end
         ap_ST_fsm_state3 : begin
-            ap_NS_fsm = ap_ST_fsm_state4;
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
+                ap_NS_fsm = ap_ST_fsm_state4;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state3;
+            end
         end
         ap_ST_fsm_state4 : begin
             ap_NS_fsm = ap_ST_fsm_state5;
         end
         ap_ST_fsm_state5 : begin
-            if (((1'b1 == ap_CS_fsm_state5) & (grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_done == 1'b1))) begin
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
                 ap_NS_fsm = ap_ST_fsm_state6;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state5;
             end
         end
         ap_ST_fsm_state6 : begin
-            ap_NS_fsm = ap_ST_fsm_state1;
+            ap_NS_fsm = ap_ST_fsm_state7;
         end
         ap_ST_fsm_state7 : begin
-            ap_NS_fsm = ap_ST_fsm_state8;
-        end
-        ap_ST_fsm_state8 : begin
-            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state8))) begin
-                ap_NS_fsm = ap_ST_fsm_state9;
-            end else begin
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state7))) begin
                 ap_NS_fsm = ap_ST_fsm_state8;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state7;
             end
         end
+        ap_ST_fsm_state8 : begin
+            ap_NS_fsm = ap_ST_fsm_state9;
+        end
         ap_ST_fsm_state9 : begin
-            ap_NS_fsm = ap_ST_fsm_state6;
+            if (((1'b0 == ap_block_state9_on_subcall_done) & (1'b1 == ap_CS_fsm_state9))) begin
+                ap_NS_fsm = ap_ST_fsm_state1;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state9;
+            end
+        end
+        ap_ST_fsm_state10 : begin
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state10))) begin
+                ap_NS_fsm = ap_ST_fsm_state11;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state10;
+            end
+        end
+        ap_ST_fsm_state11 : begin
+            ap_NS_fsm = ap_ST_fsm_state12;
+        end
+        ap_ST_fsm_state12 : begin
+            if (((result_entry_i_ap_vld_in_sig == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+                ap_NS_fsm = ap_ST_fsm_state13;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state12;
+            end
+        end
+        ap_ST_fsm_state13 : begin
+            ap_NS_fsm = ap_ST_fsm_state9;
+        end
+        ap_ST_fsm_state14 : begin
+            if (((grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state14))) begin
+                ap_NS_fsm = ap_ST_fsm_state15;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state14;
+            end
+        end
+        ap_ST_fsm_state15 : begin
+            ap_NS_fsm = ap_ST_fsm_state16;
+        end
+        ap_ST_fsm_state16 : begin
+            ap_NS_fsm = ap_ST_fsm_state17;
+        end
+        ap_ST_fsm_state17 : begin
+            ap_NS_fsm = ap_ST_fsm_state9;
+        end
+        ap_ST_fsm_state18 : begin
+            ap_NS_fsm = ap_ST_fsm_state19;
+        end
+        ap_ST_fsm_state19 : begin
+            if (((icmp_ln1065_3_fu_1257_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state19))) begin
+                ap_NS_fsm = ap_ST_fsm_state24;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state20;
+            end
+        end
+        ap_ST_fsm_state20 : begin
+            ap_NS_fsm = ap_ST_fsm_state21;
+        end
+        ap_ST_fsm_state21 : begin
+            if (((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd1) & (icmp_ln1085_fu_1327_p2 == 1'd1))))) begin
+                ap_NS_fsm = ap_ST_fsm_state24;
+            end else if (((1'b1 == ap_CS_fsm_state21) & (((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1069_reg_1776 == 1'd1)) | ((icmp_ln1065_5_fu_1339_p2 == 1'd0) & (icmp_ln1085_fu_1327_p2 == 1'd1))))) begin
+                ap_NS_fsm = ap_ST_fsm_state23;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state22;
+            end
+        end
+        ap_ST_fsm_state22 : begin
+            ap_NS_fsm = ap_ST_fsm_state20;
+        end
+        ap_ST_fsm_state23 : begin
+            ap_NS_fsm = ap_ST_fsm_state24;
+        end
+        ap_ST_fsm_state24 : begin
+            ap_NS_fsm = ap_ST_fsm_state9;
         end
         default : begin
             ap_NS_fsm = 'bx;
@@ -1213,13 +2295,49 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln886_fu_612_p2 = (trunc_ln20_2_fu_512_p1 + 8'd1);
+assign add_ln886_1_fu_1442_p2 = (trunc_ln1077_reg_1562 + 8'd1);
 
-assign add_ln887_fu_628_p2 = ($signed(index_V_reg_737) + $signed(16'd65535));
+assign add_ln886_fu_1430_p2 = (g_event_queue_unissued_size_V + 16'd1);
+
+assign add_ln887_1_fu_1133_p2 = (g_event_queue_unissued_size_V + 16'd65535);
+
+assign add_ln887_2_fu_1150_p2 = (g_event_queue_size_V_load_1_reg_1530 + 16'd65535);
+
+assign add_ln887_fu_1019_p2 = (g_event_queue_unissued_size_V_load_reg_1498 + 16'd65535);
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
+assign ap_CS_fsm_state10 = ap_CS_fsm[32'd9];
+
+assign ap_CS_fsm_state11 = ap_CS_fsm[32'd10];
+
+assign ap_CS_fsm_state12 = ap_CS_fsm[32'd11];
+
+assign ap_CS_fsm_state13 = ap_CS_fsm[32'd12];
+
+assign ap_CS_fsm_state14 = ap_CS_fsm[32'd13];
+
+assign ap_CS_fsm_state15 = ap_CS_fsm[32'd14];
+
+assign ap_CS_fsm_state16 = ap_CS_fsm[32'd15];
+
+assign ap_CS_fsm_state17 = ap_CS_fsm[32'd16];
+
+assign ap_CS_fsm_state18 = ap_CS_fsm[32'd17];
+
+assign ap_CS_fsm_state19 = ap_CS_fsm[32'd18];
+
 assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
+
+assign ap_CS_fsm_state20 = ap_CS_fsm[32'd19];
+
+assign ap_CS_fsm_state21 = ap_CS_fsm[32'd20];
+
+assign ap_CS_fsm_state22 = ap_CS_fsm[32'd21];
+
+assign ap_CS_fsm_state23 = ap_CS_fsm[32'd22];
+
+assign ap_CS_fsm_state24 = ap_CS_fsm[32'd23];
 
 assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
 
@@ -1236,43 +2354,107 @@ assign ap_CS_fsm_state8 = ap_CS_fsm[32'd7];
 assign ap_CS_fsm_state9 = ap_CS_fsm[32'd8];
 
 always @ (*) begin
-    ap_block_state1 = ((input_r_ap_vld_in_sig == 1'b0) | (ap_start == 1'b0));
+    ap_block_state1 = ((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0));
 end
 
-assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480_ap_start_reg;
+always @ (*) begin
+    ap_block_state1_ignore_call0 = ((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0));
+end
 
-assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460_ap_start_reg;
+always @ (*) begin
+    ap_block_state1_ignore_call4 = ((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0));
+end
 
-assign icmp_ln1065_fu_516_p2 = ((g_event_queue_size_V == 16'd0) ? 1'b1 : 1'b0);
+always @ (*) begin
+    ap_block_state1_ignore_call6 = ((time_r_ap_vld_in_sig == 1'b0) | (lp_id_ap_vld_in_sig == 1'b0) | (event_r_ap_vld_in_sig == 1'b0) | (op_ap_vld_in_sig == 1'b0) | (ap_done_reg == 1'b1) | (ap_start == 1'b0));
+end
 
-assign icmp_ln1069_fu_685_p2 = ((ap_phi_mux_ref_tmp_1_0_phi_fu_393_p4 != 32'd2147483647) ? 1'b1 : 1'b0);
+always @ (*) begin
+    ap_block_state9_on_subcall_done = ((grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_done == 1'b0) & (op_in_sig == 3'd3));
+end
 
-assign icmp_ln1077_fu_532_p2 = ((tmp_fu_522_p4 == 9'd0) ? 1'b1 : 1'b0);
+assign current_V_fu_872_p5 = lp_id_in_sig[1:0];
 
-assign icmp_ln1081_fu_639_p2 = ((add_ln887_fu_628_p2 == 16'd0) ? 1'b1 : 1'b0);
+assign g_event_queue_buffer_event_data_V_d0 = {{event_r_in_sig[95:64]}};
 
-assign index_V_6_fu_698_p3 = ((targetBlock_reg_886[0:0] == 1'b1) ? index_V_1_loc_fu_120 : index_V_4_loc_fu_116);
+assign g_event_queue_buffer_event_is_anti_message_V_d0 = event_r_in_sig[160'd128];
 
-assign output_event = {{{{{{ap_phi_mux_ref_tmp_5_0_phi_fu_437_p4}, {ap_phi_mux_ref_tmp_4_0_phi_fu_426_p4}}, {ap_phi_mux_ref_tmp_3_0_phi_fu_415_p4}}, {ap_phi_mux_ref_tmp_2_0_phi_fu_404_p4}}, {ap_phi_mux_ref_tmp_1_0_phi_fu_393_p4}}, {ap_phi_mux_ref_tmp_0_0_phi_fu_382_p4}};
+assign g_event_queue_buffer_event_receiver_id_V_d0 = {{event_r_in_sig[127:112]}};
 
-assign success = ap_phi_mux_storemerge_phi_fu_449_p6;
+assign g_event_queue_buffer_event_recv_time_V_d0 = {{event_r_in_sig[63:32]}};
 
-assign tmp_fu_522_p4 = {{g_event_queue_size_V[15:7]}};
+assign g_event_queue_buffer_event_send_time_V_d0 = event_r_in_sig[31:0];
 
-assign trunc_ln20_1_fu_508_p1 = g_event_queue_size_V[6:0];
+assign g_event_queue_buffer_event_sender_id_V_d0 = {{event_r_in_sig[111:96]}};
 
-assign trunc_ln20_2_fu_512_p1 = g_event_queue_size_V[7:0];
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694_ap_start_reg;
 
-assign trunc_ln20_fu_500_p1 = input_r_in_sig[0:0];
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683_ap_start_reg;
 
-assign zext_ln587_1_fu_645_p1 = add_ln887_fu_628_p2;
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705_ap_start_reg;
 
-assign zext_ln587_4_fu_705_p1 = index_V_6_fu_698_p3;
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722_ap_start_reg;
 
-assign zext_ln587_5_fu_658_p1 = index_V_2_loc_fu_112;
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739_ap_start_reg;
 
-assign zext_ln587_fu_538_p1 = g_event_queue_size_V;
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665_ap_start_reg;
 
-assign zext_ln886_fu_618_p1 = add_ln886_fu_612_p2;
+assign grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start = grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641_ap_start_reg;
+
+assign icmp_ln1065_1_fu_887_p2 = ((g_event_queue_unissued_size_V == 16'd0) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_2_fu_1208_p2 = ((tmp_fu_1195_p6 == 16'd65535) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_3_fu_1257_p2 = ((current_V_2_fu_1244_p6 == 16'd65535) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_4_fu_1079_p2 = ((g_event_queue_buffer_next_V_q0 == 16'd65535) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_5_fu_1339_p2 = ((prev_V_fu_202 == 16'd65535) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_6_fu_1379_p2 = ((prev_V_fu_202 == tmp_8_fu_1366_p6) ? 1'b1 : 1'b0);
+
+assign icmp_ln1065_fu_893_p2 = ((g_event_queue_size_V == 16'd0) ? 1'b1 : 1'b0);
+
+assign icmp_ln1069_1_fu_1182_p2 = ((ref_tmp8_0_1_0_reg_564 != 32'd2147483647) ? 1'b1 : 1'b0);
+
+assign icmp_ln1069_fu_1316_p2 = ((prev_V_1_fu_206 == 16'd65535) ? 1'b1 : 1'b0);
+
+assign icmp_ln1073_fu_1219_p2 = (($signed(event_recv_time_V_reg_1482) < $signed(g_event_queue_buffer_event_recv_time_V_q0)) ? 1'b1 : 1'b0);
+
+assign icmp_ln1077_fu_913_p2 = ((tmp_3_fu_903_p4 == 9'd0) ? 1'b1 : 1'b0);
+
+assign icmp_ln1085_fu_1327_p2 = (($signed(g_event_queue_buffer_event_recv_time_V_q0) > $signed(event_recv_time_V_reg_1482)) ? 1'b1 : 1'b0);
+
+assign op_read_read_fu_228_p2 = op_in_sig;
+
+assign or_ln286_5_fu_976_p8 = {{{{{{{tmp_1_fu_966_p4}, {g_event_queue_buffer_event_is_anti_message_V_q0}}, {g_event_queue_buffer_event_receiver_id_V_q0}}, {g_event_queue_buffer_event_sender_id_V_q0}}, {g_event_queue_buffer_event_data_V_q0}}, {g_event_queue_buffer_event_recv_time_V_q0}}, {g_event_queue_buffer_event_send_time_V_q0}};
+
+assign or_ln41_6_fu_1161_p9 = {{{{{{{{ref_tmp8_2_0_reg_630}, {ref_tmp8_1_0_reg_619}}, {ref_tmp8_0_5_0_reg_608}}, {ref_tmp8_0_4_0_reg_597}}, {ref_tmp8_0_3_0_reg_586}}, {ref_tmp8_0_2_0_reg_575}}, {ref_tmp8_0_1_0_reg_564}}, {ref_tmp8_0_0_0_reg_553}};
+
+assign tmp_1_fu_966_p4 = {{result_entry_i_in_sig[145:129]}};
+
+assign tmp_3_fu_903_p4 = {{g_event_queue_size_V[15:7]}};
+
+assign trunc_ln1077_fu_899_p1 = g_event_queue_size_V[7:0];
+
+assign trunc_ln328_fu_867_p1 = lp_id_in_sig[1:0];
+
+assign zext_ln587_2_fu_1214_p1 = tmp_fu_1195_p6;
+
+assign zext_ln587_3_fu_1043_p1 = dequeue_entry_V_fu_1033_p6;
+
+assign zext_ln587_4_fu_954_p1 = issue_entry_V_fu_944_p6;
+
+assign zext_ln587_5_fu_1322_p1 = prev_V_1_fu_206;
+
+assign zext_ln587_6_fu_1345_p1 = prev_V_fu_202;
+
+assign zext_ln587_fu_919_p1 = g_event_queue_free_head_V;
+
+assign zext_ln886_fu_1447_p1 = add_ln886_1_fu_1442_p2;
+
+always @ (posedge ap_clk) begin
+    zext_ln587_5_reg_1780[63:16] <= 48'b000000000000000000000000000000000000000000000000;
+end
 
 endmodule //event_queue_kernel
