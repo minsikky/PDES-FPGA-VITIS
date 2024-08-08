@@ -102,16 +102,17 @@ struct EventQueueEntry
     ap_uint<16> next; // Pointer to the next event for the same LP
 };
 
-struct DebugInfo
-{
-    ap_uint<16> size;
-    ap_uint<16> unissued_size;
-    ap_int<32> current_gvt;
-    ap_uint<16> free_head;
-    ap_uint<16> lp_heads[NUM_LPS];
-    ap_uint<16> lp_tails[NUM_LPS];
-    ap_uint<16> lp_oldest_unissued[NUM_LPS];
-};
+// struct DebugInfo
+// {
+//     ap_uint<16> size;
+//     ap_uint<16> unissued_size;
+//     ap_int<32> current_gvt;
+//     ap_uint<16> free_head;
+//     ap_uint<16> lp_heads[NUM_LPS];
+//     ap_uint<16> lp_tails[NUM_LPS];
+//     ap_uint<16> lp_oldest_unissued[NUM_LPS];
+//     ap_uint<16> lp_youngest_issued[NUM_LPS];
+// };
 
 class EventQueue
 {
@@ -120,6 +121,7 @@ public:
     ap_uint<16> lp_heads[NUM_LPS];
     ap_uint<16> lp_tails[NUM_LPS];
     ap_uint<16> lp_oldest_unissued[NUM_LPS];
+    ap_uint<16> lp_youngest_issued[NUM_LPS];
     ap_uint<16> free_head;
     ap_uint<16> unissued_size;
     ap_uint<16> size;
@@ -133,6 +135,7 @@ public:
             lp_heads[i] = 0xFFFF;
             lp_tails[i] = 0xFFFF;
             lp_oldest_unissued[i] = 0xFFFF;
+            lp_youngest_issued[i] = 0xFFFF;
         }
         reset();
     }
@@ -155,6 +158,7 @@ public:
             lp_heads[i] = 0xFFFF;
             lp_tails[i] = 0xFFFF;
             lp_oldest_unissued[i] = 0xFFFF;
+            lp_youngest_issued[i] = 0xFFFF;
         }
     }
 
@@ -250,6 +254,11 @@ public:
             unissued_size--;
         }
 
+        if (dequeue_entry == lp_youngest_issued[earliest_lp])
+        {
+            lp_youngest_issued[earliest_lp] = 0xFFFF;
+        }
+
         buffer[dequeue_entry].next = free_head;
         free_head = dequeue_entry;
 
@@ -286,9 +295,12 @@ public:
         event = buffer[issue_entry].event;
         EventQueueEntry &entry = buffer[issue_entry];
         buffer[issue_entry].is_issued = 1;
-
+        
         // Update oldest_unissued
         lp_oldest_unissued[earliest_lp] = buffer[issue_entry].next;
+
+        // Update youngest_issued
+        lp_youngest_issued[earliest_lp] = issue_entry;
 
         unissued_size--;
 
@@ -305,18 +317,28 @@ public:
             while (lp_heads[lp_id] != 0xFFFF &&
                    buffer[lp_heads[lp_id]].event.recv_time <= commit_time)
             {
+                // Update lp_heads
                 ap_uint<16> commit_entry = lp_heads[lp_id];
                 lp_heads[lp_id] = buffer[commit_entry].next;
 
+                // Removed_entry should point to the previous free_head. New free_head should be the removed entry.
                 buffer[commit_entry].next = free_head;
                 free_head = commit_entry;
 
-                size--;
+                // IMPORTANT: all commit entries should be already issued. Current testbench doesn't enforce this.
+                // Update lp_youngest_issued
+                if (commit_entry == lp_youngest_issued[lp_id])
+                {
+                    lp_youngest_issued[lp_id] = 0xFFFF;
+                }
 
+                // Update lp_tails
                 if (lp_heads[lp_id] == 0xFFFF)
                 {
                     lp_tails[lp_id] = 0xFFFF;
                 }
+
+                size--;
             }
         }
 
@@ -343,6 +365,42 @@ public:
         }
 
         return true;
+    }
+
+    bool remove_matching_event(const TimeWarpEvent &anti_msg)
+    {
+        ap_uint<16> lp_id = anti_msg.receiver_id;
+        ap_uint<16> current = lp_oldest_unissued[lp_id];
+        ap_uint<16> prev = lp_youngest_issued[lp_id];
+        while (current != 0xFFFF)
+        {
+#pragma HLS PIPELINE off
+            if (buffer[current].event.is_matching_anti_message(anti_msg))
+            {
+                // Found the matching event. Remove this event
+                if (prev != 0xFFFF) {
+                    buffer[prev].next = buffer[current].next;
+                } else {
+                    lp_heads[lp_id] = buffer[current].next;
+                }
+                if (current == lp_tails[lp_id]) {
+                    lp_tails[lp_id] = prev;
+                }
+                buffer[current].next = free_head;
+                free_head = current;
+                // Update lp_oldest_unissued
+                if (lp_oldest_unissued[lp_id] == current)
+                {
+                    lp_oldest_unissued[lp_id] = buffer[current].next;
+                }
+                // Update size
+                unissued_size--;
+                size--;
+                return true;
+            }
+            current = buffer[current].next;
+        }
+        return false;
     }
 
     ap_uint<16> get_size() const

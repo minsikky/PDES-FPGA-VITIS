@@ -32,6 +32,8 @@ public:
     LPCore(int lpcore_id)
         : lpcore_id(lpcore_id), current_lp_index(-1), is_stalled(false)
     {
+        event_processor = EventProcessor(simulation, this);
+
         constexpr int LPS_PER_CORE = NUM_LPS / NUM_LPCORE;
 
         for (int i = 0; i < LPS_PER_CORE; ++i)
@@ -41,13 +43,18 @@ public:
         }
     }
 
-    bool recv_event(const TimeWarpEvent &event) {
+    bool recv_event(const TimeWarpEvent &event)
+    {
         // Check if event is an anti-message
-        if (event.is_anti_message) {
+        if (event.is_anti_message)
+        {
             return process_anti_message(event);
-        } else {
+        }
+        else
+        {
             // Check causality violation
-            if (event.recv_time < virtual_lps[event.receiver_id % NUM_LPCORE].lvt) {
+            if (event.recv_time < virtual_lps[event.receiver_id % NUM_LPCORE].lvt)
+            {
                 // Trigger rollback
                 trigger_rollback(virtual_lps[event.receiver_id % NUM_LPCORE], event.recv_time);
             }
@@ -55,7 +62,8 @@ public:
         }
     }
 
-    void trigger_rollback(VirtualLP &lp, int32_t rollback_time) {
+    void trigger_rollback(VirtualLP &lp, int32_t rollback_time)
+    { // Guaranteed to succeed
         // Rollback state buffer
         state_buffer.rollback(lp.lp_id, rollback_time);
         // Rollback event queue
@@ -66,29 +74,43 @@ public:
         lp.lvt = rollback_time;
     };
 
-    bool process_anti_message(const TimeWarpEvent &anti_msg) {
+    bool process_anti_message(const TimeWarpEvent &anti_msg)
+    {
         // Find matches in event queue, and eliminate it.
-        if (event_queue.remove_matching_event(anti_msg)) {
-            // If match is found, then the event has not been processed yet. Must trigger rollback.
+        if (!event_queue.remove_matching_event(anti_msg))
+        {
+            // If match is not found, then the event has already been processed. Must trigger rollback.
             trigger_rollback(virtual_lps[anti_msg.receiver_id % NUM_LPCORE], anti_msg.recv_time);
         }
         return true;
     }
 
-    bool enqueue_event(const TimeWarpEvent &event)
+    bool enqueue_event(const TimeWarpEvent &event) // May cause stall
     {
         return event_queue.enqueue(event);
     }
 
-    bool process_events() {
+    bool process_events()
+    {
         TimeWarpEvent event;
-        if ((event = event_queue.dequeue()) != TimeWarpEvent{INT32_MAX, 0, 0, 0, 0, 0}) {
+        if (event_queue.issue(event))
+        {
             LPState state = state_buffer.peek(event.receiver_id);
             event_processor.process_event(event, state);
         }
     }
 
+    void run()
+    {
+        // Only source of stall: enqueue_event. When enqueue_event fails, we should call process_events() and then re-invoke enqueue_event().
+    }
+
     bool is_core_stalled() const { return is_stalled; }
+
+    bool is_assigned_lp(ap_uint<16> lp_id) const
+    {
+        return lp_id % NUM_LPCORE == lpcore_id;
+    }
 };
 
 #endif // LPCORE_HPP
