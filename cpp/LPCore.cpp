@@ -1,205 +1,139 @@
 #include "LPCore.hpp"
 #include "TimeWarpSimulation.hpp"
 
-bool LPCore::send_event(const TimeWarpEvent &event) {
-    return simulation->route_event(event);
-}
-
-TimeWarpEvent generate_new_event(VirtualLP &current_lp)
+LPCore::LPCore(ap_uint<8> lpcore_id) : lpcore_id(lpcore_id), event_processor(EventProcessor(lpcore_id))
 {
-    // Wait for a random number of cycles
-    uint32_t wait_cycles = xorshift32(current_lp.rng_state) % 100 + 1; // 1 to 100 cycles
-    for (uint32_t i = 0; i < wait_cycles; ++i)
+    current_lp_index = -1;
+    event_queue = EventQueue();
+    state_buffer = StateBuffer();
+    cancellation_unit = CancellationUnit();
+    event_processor = EventProcessor(lpcore_id);
+    // event_router = EventRouter(simulation);
+
+    constexpr int LPS_PER_CORE = NUM_LPS / NUM_LPCORE;
+
+    for (int i = 0; i < LPS_PER_CORE; ++i)
     {
-        // In hardware, this would be implemented as a wait state
-        sycl::ext::intel::fpga_reg(i);
+        int global_lp_id = lpcore_id + NUM_LPCORE * i;
+        virtual_lps[i] = VirtualLP(global_lp_id, global_lp_id + 1);
     }
 
-    // Generate a new event
-    TimeWarpEvent new_event;
-    new_event.time = current_lp.lvt + wait_cycles;
-    new_event.data = xorshift32(current_lp.rng_state); // Random data
-    new_event.sender_id = current_lp.id;
-    new_event.receiver_id = xorshift32(current_lp.rng_state) % total_lps;
-    new_event.is_anti_message = false;
-
-    return new_event;
+    // stall_signal.write(false);
 }
 
-bool LPCore::process_events(queue &q)
+// void LPCore::init()
+// {
+//     current_lp_index = -1;
+//     event_queue = EventQueue();
+//     state_buffer = StateBuffer();
+//     cancellation_unit = CancellationUnit(anti_message_stream[lpcore_id]);
+//     event_processor = EventProcessor(lpcore_id);
+//     // event_router = EventRouter(simulation);
+
+//     constexpr int LPS_PER_CORE = NUM_LPS / NUM_LPCORE;
+
+//     for (int i = 0; i < LPS_PER_CORE; ++i)
+//     {
+//         int global_lp_id = lpcore_id + NUM_LPCORE * i;
+//         virtual_lps[i] = VirtualLP(global_lp_id, global_lp_id + 1);
+//     }
+
+//     stall_signal.write(false);
+// }
+
+bool LPCore::recv_event(const TimeWarpEvent &event)
 {
-    bool made_progress = false;
-    q.submit([&](handler &h)
-             { h.single_task<class ProcessEventsKernel>([=, &made_progress]()
-                                                        {
-                if (is_stalled) {
-                    // Check if we can unstall
-                    if (!lp_event_queues[current_lp_index].is_full() && 
-                        !virtual_lps[current_lp_index].is_state_buffer_full()) {
-                        is_stalled = false;
-                    } else {
-                        return;  // Still stalled, can't make progress
-                    }
-                }
-
-                if (lp_event_queues[current_lp_index].empty()) {
-                    // Move to next LP if current one has no events
-                    current_lp_index = (current_lp_index + 1) % virtual_lps.size();
-                    return;
-                }
-
-                TimeWarpEvent event = lp_event_queues[current_lp_index].dequeue();
-                VirtualLP& current_lp = virtual_lps[current_lp_index];
-
-                // Check if we can process this event
-                if (current_lp.is_state_buffer_full()) {
-                    // Can't save state, so we can't process the event
-                    lp_event_queues[current_lp_index].enqueue(event);  // Put the event back
-                    is_stalled = true;
-                    return;
-                }
-
-                if (event.is_anti_message) {
-                    process_anti_message(event);
-                } else {
-                    if (event.recv_time < current_lp.lvt) {
-                        // Straggler event, initiate rollback
-                        current_lp.rollback(event.recv_time);
-                    }
-                }
-
-                // Process the event (existing logic)
-                LPState new_state;
-                new_state.id = current_lp.id;
-                new_state.lvt = event.recv_time;
-                
-                // Wait for a random number of cycles
-                uint32_t wait_cycles = xorshift32(current_lp.rng_state) % 100 + 1;  // 1 to 100 cycles
-                for (uint32_t i = 0; i < wait_cycles; ++i) {
-                    // In hardware, this would be implemented as a wait state
-                    sycl::ext::intel::fpga_reg(i);
-                }
-
-                // Generate new event
-                TimeWarpEvent new_event = generate_new_event(current_lp);
-
-                // Try to enqueue the new event to the receiver's queue
-                if (!enqueue_event(new_event)) {
-                    // Receiver's queue is full, we need to stall
-                    is_stalled = true;
-                    // Rollback the current LP to undo the event processing
-                    current_lp.rollback(current_lp.lvt);
-                    // Put the original event back in the queue
-                    lp_event_queues[current_lp_index].enqueue(event);
-                    return;
-                }
-
-                // Save the new state
-                current_lp.save_state();
-
-                // Move to next LP
-                current_lp_index = (current_lp_index + 1) % virtual_lps.size();
-
-                made_progress = true; }); });
-    q.wait();
-    return made_progress;
-}
-
-bool LPCore::is_matching_event(const TimeWarpEvent& e1, const TimeWarpEvent& e2) {
-    return e1.time == e2.time && 
-           e1.data == e2.data && 
-           e1.sender_id == e2.sender_id && 
-           e1.receiver_id == e2.receiver_id && 
-           e1.is_anti_message != e2.is_anti_message;
-}
-
-void LPCore::trigger_rollback(VirtualLP& lp, int32_t rollback_time) {
-    // Store the current LVT before rollback
-    int32_t old_lvt = lp.lvt;
-
-    // Perform the rollback on the VirtualLP
-    lp.rollback(rollback_time);
-
-    // Generate and process anti-messages for events sent after the rollback point
-    for (auto it = lp.output_queue.rbegin(); it != lp.output_queue.rend(); ++it) {
-        if (it->time > rollback_time && it->time <= old_lvt) {
-            TimeWarpEvent anti_msg = *it;
-            anti_msg.is_anti_message = true;
-            
-            // Enqueue the anti-message to the appropriate LP's queue
-            int receiver_lp_index = anti_msg.receiver_id % virtual_lps.size();
-            if (!lp_event_queues[receiver_lp_index].enqueue(anti_msg)) {
-                // Handle queue full scenario
-                // For now, we'll just print an error message
-                // In a real implementation, you might want to implement a more robust strategy
-                std::cerr << "Error: Unable to enqueue anti-message due to full queue" << std::endl;
-            }
-        } else if (it->time <= rollback_time) {
-            // We've reached events that don't need to be rolled back
-            break;
-        }
+    if (event.is_anti_message)
+    {
+        return process_anti_message(event);
     }
-
-    // Clear the output queue of events after the rollback point
-    lp.output_queue.erase(
-        std::remove_if(lp.output_queue.begin(), lp.output_queue.end(),
-            [rollback_time](const TimeWarpEvent& e) { return e.time > rollback_time; }),
-        lp.output_queue.end()
-    );
-
-    // Reprocess events in the input queue that are after the rollback time
-    std::vector<TimeWarpEvent> events_to_reprocess;
-    while (!lp_event_queues[lp.id % virtual_lps.size()].empty()) {
-        TimeWarpEvent event = lp_event_queues[lp.id % virtual_lps.size()].dequeue();
-        if (event.time >= rollback_time) {
-            events_to_reprocess.push_back(event);
+    else
+    {
+        if (event.recv_time < virtual_lps[event.receiver_id % NUM_LPCORE].lvt)
+        {
+            RollbackInfo rollback_info = {event.receiver_id, event.recv_time};
+            trigger_rollback(rollback_info);
         }
-    }
 
-    // Re-enqueue events to be reprocessed
-    for (const auto& event : events_to_reprocess) {
-        lp_event_queues[lp.id % virtual_lps.size()].enqueue(event);
+        if (!event_queue.enqueue(event, causality_violation_stream))
+        {
+            // stall_signal.write(true);
+            return false;
+        }
+        return true;
     }
 }
 
-void LPCore::process_anti_message(const TimeWarpEvent& anti_msg) {
-    int lp_index = anti_msg.receiver_id % virtual_lps.size();
-    VirtualLP& target_lp = virtual_lps[lp_index];
-    FPGAPriorityQueue& target_queue = lp_event_queues[lp_index];
-
-    // Search for the matching event in the heap
-    int match_index = -1;
-    for (int i = 0; i < target_queue.size; ++i) {
-        if (is_matching_event(target_queue.heap[i], anti_msg)) {
-            match_index = i;
-            break;
-        }
-    }
-
-    if (match_index != -1) {
-        // Found a matching event, remove it and maintain heap property
-        target_queue.size--;
-        if (match_index < target_queue.size) {
-            // Replace the removed event with the last event in the heap
-            target_queue.heap[match_index] = target_queue.heap[target_queue.size];
-            // Sift down to maintain heap property
-            target_queue.siftDown(match_index);
-        }
-    } else {
-        // If the message wasn't found, it means it was already processed
-        // We need to trigger a rollback
-        trigger_rollback(target_lp, anti_msg.time);
-    }
-}
-
-void LPCore::optimize_event_queue()
+void LPCore::trigger_rollback(RollbackInfo &rollback_info)
 {
-    // Implement logic to optimize the event queue
-    // This could involve reordering, pruning, or other FPGA-specific optimizations
+    state_buffer.rollback(rollback_info);
+    event_queue.rollback(rollback_info);
+    cancellation_unit.rollback(rollback_info, cancellation_unit_output_stream);
+    int idx = LPMapping::get_core_id(rollback_info.lp_id);
+    virtual_lps[idx].lvt = rollback_info.to_time;
 }
 
-void LPCore::configure_fpga_optimizations()
+bool LPCore::process_anti_message(const TimeWarpEvent &anti_msg)
 {
-    // Set up FPGA-specific optimizations
-    // This could involve pipelining, parallelization, or custom hardware structures
+    if (!event_queue.process_anti_message(anti_msg))
+    {
+        RollbackInfo rollback_info = {anti_msg.receiver_id, anti_msg.recv_time};
+        trigger_rollback(rollback_info);
+    }
+    return true;
+}
+
+bool LPCore::enqueue_event(const TimeWarpEvent &event)
+{
+    return event_queue.enqueue(event, causality_violation_stream);
+}
+
+void LPCore::run(
+    hls::stream<TimeWarpEvent> &init_event_stream,
+    hls::stream<ap_int<32>> &commit_time_stream)
+{
+    const int i = lpcore_id;
+    hls::task event_queue_task(event_queue_top<0>, init_event_stream, event_queue_full_stream, event_queue_rollback_info_stream, anti_message_stream[lpcore_id], enqueue_event_stream[lpcore_id], commit_time_stream, issued_event_stream, causality_violation_stream);
+    hls::task state_buffer_task(state_buffer_top<0>, state_buffer_rollback_info_stream, state_buffer_input_stream, issued_event_stream, event_processor_input_stream);
+    hls::task event_processor_task(event_processor_top<0>, event_processor_input_stream, state_buffer_input_stream, output_event_stream, cancellation_unit_input_stream);
+    hls::task cancellation_unit_task(cancellation_unit_top<0>, cancellation_unit_rollback_info_stream, cancellation_unit_input_stream, cancellation_unit_output_stream);
+    // hls::task event_router_0_task(event_router_top, output_event_stream, enqueue_event_stream);
+    // hls::task event_router_1_task(event_router_top, cancellation_unit_output_stream, anti_message_stream);
+    hls::task rollback_control_task(rollback_control_top, causality_violation_stream, event_queue_rollback_info_stream, state_buffer_rollback_info_stream, cancellation_unit_rollback_info_stream);
+    // hls::task commit_control_task(commit_control_dummy_top, event_queue_full_stream, commit_time_stream);
+}
+
+bool LPCore::is_assigned_lp(ap_uint<16> lp_id) const
+{
+    return lp_id % NUM_LPCORE == lpcore_id;
+}
+
+void lpcore_top(
+    // INITIALIZATION
+    hls::stream<TimeWarpEvent> &init_event_stream,
+    // TO SIGNAL EVENT QUEUE FULL
+    hls::stream<bool> &event_queue_full_stream,
+    // INPUTS TO EVENT QUEUE
+    hls::stream<TimeWarpEvent> &anti_message_stream,
+    hls::stream<TimeWarpEvent> &enqueue_event_stream,
+    // OUTPUT FROM THE LPCORE
+    hls::stream<TimeWarpEvent> &output_event_stream,
+    hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
+    // COMMIT TIME
+    hls::stream<ap_int<32>> &commit_time_stream)
+{
+    lpcore_kernel<0>(
+        init_event_stream,
+        event_queue_full_stream,
+        anti_message_stream,
+        enqueue_event_stream,
+        output_event_stream,
+        cancellation_unit_output_stream,
+        commit_time_stream);
+}
+
+void test_lpcore()
+{
+    hls::stream<bool> success_stream;
+    // lpcore_kernel(0, success_stream);
 }

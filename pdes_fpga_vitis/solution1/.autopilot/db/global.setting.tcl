@@ -1,5 +1,5 @@
 
-set TopModule "event_queue_kernel"
+set TopModule "lpcore_top"
 set ClockPeriod 5
 set ClockList ap_clk
 set HasVivadoClockPeriod 1
@@ -10,8 +10,8 @@ set TrivialPipelineFlag 0
 set noPortSwitchingFlag 0
 set FloatingPointFlag 0
 set FftOrFirFlag 0
-set NbRWValue 0
-set intNbAccess 0
+set NbRWValue 3
+set intNbAccess 1
 set NewDSPMapping 1
 set HasDSPModule 0
 set ResetLevelFlag 1
@@ -23,7 +23,7 @@ set ResetRegisterNum 0
 set FsmEncStyle onehot
 set MaxFanout 0
 set RtlPrefix {}
-set RtlSubPrefix event_queue_kernel_
+set RtlSubPrefix lpcore_top_
 set ExtraCCFlags {}
 set ExtraCLdFlags {}
 set SynCheckOptions {}
@@ -41,9 +41,9 @@ set ExportMCPathFlag 0
 set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
-set TargetInfo xczu7ev:-ffvf1517:-3-e
-set SourceFiles {sc {} c {../../cpp/StateBuffer.cpp ../../cpp/EventQueue.cpp}}
-set SourceFlags {sc {} c {{} {}}}
+set TargetInfo xczu7ev:-ffvc1156:-2-e
+set SourceFiles {sc {} c {../../cpp/VirtualLP.cpp ../../cpp/StateBuffer.cpp ../../cpp/RollbackControl.cpp ../../cpp/LPMapping.cpp ../../cpp/LPCore.cpp ../../cpp/LFSR_PRNG.cpp ../../cpp/EventRouter.cpp ../../cpp/EventQueue.cpp ../../cpp/EventProcessor.cpp ../../cpp/CommitControlDummy.cpp ../../cpp/CancellationUnit.cpp}}
+set SourceFlags {sc {} c {{} {} {} {} {} {} {} {} {} {} {}}}
 set DirectiveFile /net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive
 set TBFiles {verilog ../../cpp/main.cpp bc ../../cpp/main.cpp vhdl ../../cpp/main.cpp sc ../../cpp/main.cpp cas ../../cpp/main.cpp c {}}
 set SpecLanguage C
@@ -60,6 +60,6 @@ set AvePath ../..
 set DefaultPlatform DefaultPlatform
 set multiClockList {}
 set SCPortClockMap {}
-set intNbAccess 0
+set intNbAccess 1
 set PlatformFiles {{DefaultPlatform {xilinx/zynquplus/zynquplus}}}
 set HPFPO 0

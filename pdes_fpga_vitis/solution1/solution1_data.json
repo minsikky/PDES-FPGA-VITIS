@@ -1,165 +1,110 @@
 {
-  "Top": "event_queue_kernel",
-  "RtlTop": "event_queue_kernel",
+  "Top": "lpcore_top",
+  "RtlTop": "lpcore_top",
   "RtlPrefix": "",
-  "RtlSubPrefix": "event_queue_kernel_",
+  "RtlSubPrefix": "lpcore_top_",
   "SourceLanguage": "cpp",
   "HostMachineBits": "64",
-  "FunctionProtocol": "ap_ctrl_chain",
+  "FunctionProtocol": "ap_ctrl_hs",
   "ResetStyle": "control",
   "Target": {
     "Family": "zynquplus",
     "Device": "xczu7ev",
-    "Package": "-ffvf1517",
-    "Speed": "-3-e",
+    "Package": "-ffvc1156",
+    "Speed": "-2-e",
     "Triple": "fpga64-xilinx-none"
   },
   "Args": {
-    "op": {
+    "init_event_stream": {
       "index": "0",
       "direction": "in",
-      "srcType": "ap_uint<3>",
-      "srcSize": "8",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "op",
-          "name": "op",
-          "usage": "data",
-          "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "op_ap_vld",
-          "name": "op_ap_vld",
-          "usage": "control",
-          "direction": "in"
-        }
-      ]
-    },
-    "event": {
-      "index": "1",
-      "direction": "in",
-      "srcType": "TimeWarpEvent",
+      "srcType": "stream<TimeWarpEvent, 0>&",
       "srcSize": "160",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "event_r",
-          "name": "event_r",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "init_event_stream",
+          "name": "",
           "usage": "data",
           "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "event_r_ap_vld",
-          "name": "event_r_ap_vld",
-          "usage": "control",
-          "direction": "in"
-        }
-      ]
+        }]
     },
-    "lp_id": {
+    "event_queue_full_stream": {
+      "index": "1",
+      "direction": "out",
+      "srcType": "stream<bool, 0>&",
+      "srcSize": "8",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "event_queue_full_stream",
+          "name": "",
+          "usage": "data",
+          "direction": "out"
+        }]
+    },
+    "anti_message_stream": {
       "index": "2",
       "direction": "in",
-      "srcType": "ap_int<16>",
-      "srcSize": "16",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "lp_id",
-          "name": "lp_id",
+      "srcType": "stream<TimeWarpEvent, 0>&",
+      "srcSize": "160",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "anti_message_stream",
+          "name": "",
           "usage": "data",
           "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "lp_id_ap_vld",
-          "name": "lp_id_ap_vld",
-          "usage": "control",
-          "direction": "in"
-        }
-      ]
+        }]
     },
-    "time": {
+    "enqueue_event_stream": {
       "index": "3",
       "direction": "in",
-      "srcType": "ap_int<32>",
-      "srcSize": "32",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "time_r",
-          "name": "time_r",
+      "srcType": "stream<TimeWarpEvent, 0>&",
+      "srcSize": "160",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "enqueue_event_stream",
+          "name": "",
           "usage": "data",
           "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "time_r_ap_vld",
-          "name": "time_r_ap_vld",
-          "usage": "control",
-          "direction": "in"
-        }
-      ]
+        }]
     },
-    "result_entry": {
+    "output_event_stream": {
       "index": "4",
-      "direction": "inout",
-      "srcType": "EventQueueEntry&",
-      "srcSize": "192",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "result_entry_i",
-          "name": "result_entry_i",
-          "usage": "data",
-          "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "result_entry_o",
-          "name": "result_entry_o",
+      "direction": "out",
+      "srcType": "stream<TimeWarpEvent, 0>&",
+      "srcSize": "160",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "output_event_stream",
+          "name": "",
           "usage": "data",
           "direction": "out"
-        },
-        {
-          "type": "port",
-          "interface": "result_entry_i_ap_vld",
-          "name": "result_entry_i_ap_vld",
-          "usage": "control",
-          "direction": "in"
-        },
-        {
-          "type": "port",
-          "interface": "result_entry_o_ap_vld",
-          "name": "result_entry_o_ap_vld",
-          "usage": "control",
-          "direction": "out"
-        }
-      ]
+        }]
     },
-    "success": {
+    "cancellation_unit_output_stream": {
       "index": "5",
       "direction": "out",
-      "srcType": "bool&",
-      "srcSize": "1",
-      "hwRefs": [
-        {
-          "type": "port",
-          "interface": "success",
-          "name": "success",
+      "srcType": "stream<TimeWarpEvent, 0>&",
+      "srcSize": "160",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "cancellation_unit_output_stream",
+          "name": "",
           "usage": "data",
           "direction": "out"
-        },
-        {
-          "type": "port",
-          "interface": "success_ap_vld",
-          "name": "success_ap_vld",
-          "usage": "control",
-          "direction": "out"
-        }
-      ]
+        }]
+    },
+    "commit_time_stream": {
+      "index": "6",
+      "direction": "in",
+      "srcType": "stream<ap_int<32>, 0>&",
+      "srcSize": "32",
+      "hwRefs": [{
+          "type": "interface",
+          "interface": "commit_time_stream",
+          "name": "",
+          "usage": "data",
+          "direction": "in"
+        }]
     }
   },
   "HlsSolution": {
@@ -170,12 +115,21 @@
       "config_export -vivado_clock=200MHz"
     ],
     "DirectiveTcl": [
-      "set_directive_top event_queue_kernel -name event_queue_kernel",
-      "set_directive_top event_queue_kernel -name event_queue_kernel"
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top",
+      "set_directive_top lpcore_top -name lpcore_top"
     ],
     "ProfileOption": "0",
     "ProfileType": "none",
-    "KernelName": "event_queue_kernel"
+    "KernelName": "lpcore_top"
   },
   "ClockInfo": {
     "ClockName": "ap_clk",
@@ -189,61 +143,123 @@
   "Ipx": {
     "Vendor": "xilinx.com",
     "Library": "hls",
-    "Name": "event_queue_kernel",
+    "Name": "lpcore_top",
     "Version": "1.0",
-    "DisplayName": "Event_queue_kernel",
-    "Revision": "2113679979",
+    "DisplayName": "Lpcore_top",
+    "Revision": "2113689955",
     "Description": "An IP generated by Vitis HLS",
     "Taxonomy": "\/VITIS_HLS_IP",
     "AutoFamilySupport": "",
-    "ZipFile": "xilinx_com_hls_event_queue_kernel_1_0.zip"
+    "ZipFile": "xilinx_com_hls_lpcore_top_1_0.zip"
   },
   "Files": {
     "CSource": [
+      "..\/..\/cpp\/VirtualLP.cpp",
       "..\/..\/cpp\/StateBuffer.cpp",
-      "..\/..\/cpp\/EventQueue.cpp"
+      "..\/..\/cpp\/RollbackControl.cpp",
+      "..\/..\/cpp\/LPMapping.cpp",
+      "..\/..\/cpp\/LPCore.cpp",
+      "..\/..\/cpp\/LFSR_PRNG.cpp",
+      "..\/..\/cpp\/EventRouter.cpp",
+      "..\/..\/cpp\/EventQueue.cpp",
+      "..\/..\/cpp\/EventProcessor.cpp",
+      "..\/..\/cpp\/CommitControlDummy.cpp",
+      "..\/..\/cpp\/CancellationUnit.cpp"
     ],
     "Vhdl": [
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_229_1.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_269_1.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_2.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_21.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_22.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_23.vhd",
-      "impl\/vhdl\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_330_1.vhd",
-      "impl\/vhdl\/event_queue_kernel_flow_control_loop_pipe_sequential_init.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W.vhd",
-      "impl\/vhdl\/event_queue_kernel_mux_42_16_1_1.vhd",
-      "impl\/vhdl\/event_queue_kernel.vhd"
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1.vhd",
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_s.vhd",
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_RAM_AUTObkb.vhd",
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_RAM_AUTOcud.vhd",
+      "impl\/vhdl\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_commit.vhd",
+      "impl\/vhdl\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_2.vhd",
+      "impl\/vhdl\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_21.vhd",
+      "impl\/vhdl\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_22.vhd",
+      "impl\/vhdl\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_23.vhd",
+      "impl\/vhdl\/lpcore_top_enqueue.vhd",
+      "impl\/vhdl\/lpcore_top_event_processor_top_0_s.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_Pipeline_VITIS_LOOP_205_1.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_Pipeline_VITIS_LOOP_271_1.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_data_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_receiver_id_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_buffer_next_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_lp_heads_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_lp_oldest_unissued_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_event_queue_top_0_s_event_queue_lvt_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_fifo_w48_d2_S.vhd",
+      "impl\/vhdl\/lpcore_top_fifo_w80_d2_S.vhd",
+      "impl\/vhdl\/lpcore_top_fifo_w129_d2_S.vhd",
+      "impl\/vhdl\/lpcore_top_fifo_w209_d2_S.vhd",
+      "impl\/vhdl\/lpcore_top_flow_control_loop_pipe_sequential_init.vhd",
+      "impl\/vhdl\/lpcore_top_lpcore_kernel_0_s.vhd",
+      "impl\/vhdl\/lpcore_top_process_event.vhd",
+      "impl\/vhdl\/lpcore_top_process_event_event_processor_prng_ROM_AUTO_1R.vhd",
+      "impl\/vhdl\/lpcore_top_process_event_g_multi_prng_generators_state_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top_rollback_control_top.vhd",
+      "impl\/vhdl\/lpcore_top_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1.vhd",
+      "impl\/vhdl\/lpcore_top_state_buffer_top_0_s.vhd",
+      "impl\/vhdl\/lpcore_top_state_buffer_top_0_s_state_buffer_lp_sizes_V_RAM_AUTO_1R1W.vhd",
+      "impl\/vhdl\/lpcore_top.vhd"
     ],
     "Verilog": [
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_229_1.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_269_1.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_2.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_21.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_22.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_305_23.v",
-      "impl\/verilog\/event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_330_1.v",
-      "impl\/verilog\/event_queue_kernel_flow_control_loop_pipe_sequential_init.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_send_time_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_event_sender_id_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_is_issued_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W.dat",
-      "impl\/verilog\/event_queue_kernel_g_event_queue_buffer_next_V_RAM_AUTO_1R1W.v",
-      "impl\/verilog\/event_queue_kernel_mux_42_16_1_1.v",
-      "impl\/verilog\/event_queue_kernel.v"
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1.v",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s.v",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_RAM_AUTObkb.dat",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_RAM_AUTObkb.v",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_RAM_AUTOcud.dat",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_RAM_AUTOcud.v",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_commit.v",
+      "impl\/verilog\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_2.v",
+      "impl\/verilog\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_21.v",
+      "impl\/verilog\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_22.v",
+      "impl\/verilog\/lpcore_top_commit_Pipeline_VITIS_LOOP_237_23.v",
+      "impl\/verilog\/lpcore_top_enqueue.v",
+      "impl\/verilog\/lpcore_top_event_processor_top_0_s.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_Pipeline_VITIS_LOOP_205_1.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_Pipeline_VITIS_LOOP_271_1.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_data_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_data_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_receiver_id_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_receiver_id_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_next_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_buffer_next_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lp_heads_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lp_heads_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lp_oldest_unissued_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lp_oldest_unissued_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lvt_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_event_queue_top_0_s_event_queue_lvt_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_fifo_w48_d2_S.v",
+      "impl\/verilog\/lpcore_top_fifo_w80_d2_S.v",
+      "impl\/verilog\/lpcore_top_fifo_w129_d2_S.v",
+      "impl\/verilog\/lpcore_top_fifo_w209_d2_S.v",
+      "impl\/verilog\/lpcore_top_flow_control_loop_pipe_sequential_init.v",
+      "impl\/verilog\/lpcore_top_lpcore_kernel_0_s.v",
+      "impl\/verilog\/lpcore_top_process_event.v",
+      "impl\/verilog\/lpcore_top_process_event_event_processor_prng_ROM_AUTO_1R.dat",
+      "impl\/verilog\/lpcore_top_process_event_event_processor_prng_ROM_AUTO_1R.v",
+      "impl\/verilog\/lpcore_top_process_event_g_multi_prng_generators_state_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_process_event_g_multi_prng_generators_state_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top_rollback_control_top.v",
+      "impl\/verilog\/lpcore_top_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1.v",
+      "impl\/verilog\/lpcore_top_state_buffer_top_0_s.v",
+      "impl\/verilog\/lpcore_top_state_buffer_top_0_s_state_buffer_lp_sizes_V_RAM_AUTO_1R1W.dat",
+      "impl\/verilog\/lpcore_top_state_buffer_top_0_s_state_buffer_lp_sizes_V_RAM_AUTO_1R1W.v",
+      "impl\/verilog\/lpcore_top.v"
     ],
     "IpMisc": ["impl\/misc\/logo.png"],
     "CsynthXml": "syn\/report\/csynth.xml",
@@ -252,11 +268,16 @@
     "Xo": "",
     "XoHlsDir": "",
     "ProtoInst": [
+      ".debug\/event_queue_top_test.protoinst",
+      ".debug\/lpcore_top.protoinst",
+      ".debug\/lpcore_kernel.protoinst",
       ".debug\/event_queue_kernel.protoinst",
+      ".debug\/state_buffer_top_test.protoinst",
       ".debug\/multi_linked_list_kernel.protoinst",
       ".debug\/state_buffer_kernel.protoinst",
       ".debug\/test_state_buffer.protoinst",
       ".debug\/event_history_kernel.protoinst",
+      ".debug\/cancellation_unit_kernel.protoinst",
       ".debug\/linked_list_kernel.protoinst"
     ]
   },
@@ -289,121 +310,175 @@
       "portMap": {
         "ap_start": "start",
         "ap_done": "done",
-        "ap_continue": "continue",
         "ap_idle": "idle",
         "ap_ready": "ready"
       },
       "ports": [
-        "ap_continue",
         "ap_done",
         "ap_idle",
         "ap_ready",
         "ap_start"
       ]
     },
-    "op": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
-      "mode": "slave",
-      "dataWidth": "3",
-      "portMap": {"op": "DATA"},
-      "ports": ["op"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_vld",
-          "register_option": "0",
-          "argName": "op"
-        }]
-    },
-    "event_r": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
-      "mode": "slave",
-      "dataWidth": "160",
-      "portMap": {"event_r": "DATA"},
-      "ports": ["event_r"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_vld",
-          "register_option": "0",
-          "argName": "event"
-        }]
-    },
-    "lp_id": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
-      "mode": "slave",
-      "dataWidth": "16",
-      "portMap": {"lp_id": "DATA"},
-      "ports": ["lp_id"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_vld",
-          "register_option": "0",
-          "argName": "lp_id"
-        }]
-    },
-    "time_r": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
-      "mode": "slave",
-      "dataWidth": "32",
-      "portMap": {"time_r": "DATA"},
-      "ports": ["time_r"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_vld",
-          "register_option": "0",
-          "argName": "time"
-        }]
-    },
-    "result_entry_i": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
-      "mode": "slave",
-      "dataWidth": "146",
-      "portMap": {"result_entry_i": "DATA"},
-      "ports": ["result_entry_i"],
-      "constraints": [{
-          "constraint_type": "pragma interface",
-          "mode": "ap_vld",
-          "register_option": "0",
-          "argName": "result_entry"
-        }]
-    },
-    "result_entry_o": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
+    "init_event_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_read",
       "mode": "master",
-      "dataWidth": "146",
-      "portMap": {"result_entry_o": "DATA"},
-      "ports": ["result_entry_o"],
+      "dataWidth": "129",
+      "portPrefix": "init_event_stream_",
+      "portMap": {
+        "init_event_stream_dout": "RD_DATA",
+        "init_event_stream_empty_n": "EMPTY_N",
+        "init_event_stream_read": "RD_EN"
+      },
+      "ports": [
+        "init_event_stream_dout",
+        "init_event_stream_empty_n",
+        "init_event_stream_read"
+      ],
       "constraints": [{
           "constraint_type": "pragma interface",
-          "mode": "ap_vld",
+          "mode": "ap_fifo",
           "register_option": "0",
-          "argName": "result_entry"
+          "argName": "init_event_stream"
         }]
     },
-    "success": {
-      "type": "data",
-      "busTypeName": "data",
-      "protocol": "ap_vld",
+    "event_queue_full_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_write",
       "mode": "master",
       "dataWidth": "1",
-      "portMap": {"success": "DATA"},
-      "ports": ["success"],
+      "portPrefix": "event_queue_full_stream_",
+      "portMap": {
+        "event_queue_full_stream_din": "WR_DATA",
+        "event_queue_full_stream_full_n": "FULL_N",
+        "event_queue_full_stream_write": "WR_EN"
+      },
+      "ports": [
+        "event_queue_full_stream_din",
+        "event_queue_full_stream_full_n",
+        "event_queue_full_stream_write"
+      ],
       "constraints": [{
           "constraint_type": "pragma interface",
-          "mode": "ap_vld",
+          "mode": "ap_fifo",
           "register_option": "0",
-          "argName": "success"
+          "argName": "event_queue_full_stream"
+        }]
+    },
+    "anti_message_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_read",
+      "mode": "master",
+      "dataWidth": "129",
+      "portPrefix": "anti_message_stream_",
+      "portMap": {
+        "anti_message_stream_dout": "RD_DATA",
+        "anti_message_stream_empty_n": "EMPTY_N",
+        "anti_message_stream_read": "RD_EN"
+      },
+      "ports": [
+        "anti_message_stream_dout",
+        "anti_message_stream_empty_n",
+        "anti_message_stream_read"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_fifo",
+          "register_option": "0",
+          "argName": "anti_message_stream"
+        }]
+    },
+    "enqueue_event_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_read",
+      "mode": "master",
+      "dataWidth": "129",
+      "portPrefix": "enqueue_event_stream_",
+      "portMap": {
+        "enqueue_event_stream_dout": "RD_DATA",
+        "enqueue_event_stream_empty_n": "EMPTY_N",
+        "enqueue_event_stream_read": "RD_EN"
+      },
+      "ports": [
+        "enqueue_event_stream_dout",
+        "enqueue_event_stream_empty_n",
+        "enqueue_event_stream_read"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_fifo",
+          "register_option": "0",
+          "argName": "enqueue_event_stream"
+        }]
+    },
+    "output_event_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_write",
+      "mode": "master",
+      "dataWidth": "129",
+      "portPrefix": "output_event_stream_",
+      "portMap": {
+        "output_event_stream_din": "WR_DATA",
+        "output_event_stream_full_n": "FULL_N",
+        "output_event_stream_write": "WR_EN"
+      },
+      "ports": [
+        "output_event_stream_din",
+        "output_event_stream_full_n",
+        "output_event_stream_write"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_fifo",
+          "register_option": "0",
+          "argName": "output_event_stream"
+        }]
+    },
+    "cancellation_unit_output_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_write",
+      "mode": "master",
+      "dataWidth": "129",
+      "portPrefix": "cancellation_unit_output_stream_",
+      "portMap": {
+        "cancellation_unit_output_stream_din": "WR_DATA",
+        "cancellation_unit_output_stream_full_n": "FULL_N",
+        "cancellation_unit_output_stream_write": "WR_EN"
+      },
+      "ports": [
+        "cancellation_unit_output_stream_din",
+        "cancellation_unit_output_stream_full_n",
+        "cancellation_unit_output_stream_write"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_fifo",
+          "register_option": "0",
+          "argName": "cancellation_unit_output_stream"
+        }]
+    },
+    "commit_time_stream": {
+      "type": "ap_fifo",
+      "busTypeName": "acc_fifo_read",
+      "mode": "master",
+      "dataWidth": "32",
+      "portPrefix": "commit_time_stream_",
+      "portMap": {
+        "commit_time_stream_dout": "RD_DATA",
+        "commit_time_stream_empty_n": "EMPTY_N",
+        "commit_time_stream_read": "RD_EN"
+      },
+      "ports": [
+        "commit_time_stream_dout",
+        "commit_time_stream_empty_n",
+        "commit_time_stream_read"
+      ],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_fifo",
+          "register_option": "0",
+          "argName": "commit_time_stream"
         }]
     }
   },
@@ -424,10 +499,6 @@
       "dir": "out",
       "width": "1"
     },
-    "ap_continue": {
-      "dir": "in",
-      "width": "1"
-    },
     "ap_idle": {
       "dir": "out",
       "width": "1"
@@ -436,149 +507,291 @@
       "dir": "out",
       "width": "1"
     },
-    "op": {
+    "init_event_stream_dout": {
       "dir": "in",
-      "width": "3"
+      "width": "129"
     },
-    "op_ap_vld": {
-      "dir": "in",
-      "width": "1"
-    },
-    "event_r": {
-      "dir": "in",
-      "width": "160"
-    },
-    "event_r_ap_vld": {
+    "init_event_stream_empty_n": {
       "dir": "in",
       "width": "1"
     },
-    "lp_id": {
-      "dir": "in",
-      "width": "16"
+    "init_event_stream_read": {
+      "dir": "out",
+      "width": "1"
     },
-    "lp_id_ap_vld": {
+    "event_queue_full_stream_din": {
+      "dir": "out",
+      "width": "1"
+    },
+    "event_queue_full_stream_full_n": {
       "dir": "in",
       "width": "1"
     },
-    "time_r": {
+    "event_queue_full_stream_write": {
+      "dir": "out",
+      "width": "1"
+    },
+    "anti_message_stream_dout": {
+      "dir": "in",
+      "width": "129"
+    },
+    "anti_message_stream_empty_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "anti_message_stream_read": {
+      "dir": "out",
+      "width": "1"
+    },
+    "enqueue_event_stream_dout": {
+      "dir": "in",
+      "width": "129"
+    },
+    "enqueue_event_stream_empty_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "enqueue_event_stream_read": {
+      "dir": "out",
+      "width": "1"
+    },
+    "output_event_stream_din": {
+      "dir": "out",
+      "width": "129"
+    },
+    "output_event_stream_full_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "output_event_stream_write": {
+      "dir": "out",
+      "width": "1"
+    },
+    "cancellation_unit_output_stream_din": {
+      "dir": "out",
+      "width": "129"
+    },
+    "cancellation_unit_output_stream_full_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "cancellation_unit_output_stream_write": {
+      "dir": "out",
+      "width": "1"
+    },
+    "commit_time_stream_dout": {
       "dir": "in",
       "width": "32"
     },
-    "time_r_ap_vld": {
+    "commit_time_stream_empty_n": {
       "dir": "in",
       "width": "1"
     },
-    "result_entry_i": {
-      "dir": "in",
-      "width": "146"
-    },
-    "result_entry_o": {
-      "dir": "out",
-      "width": "146"
-    },
-    "result_entry_i_ap_vld": {
-      "dir": "in",
-      "width": "1"
-    },
-    "result_entry_o_ap_vld": {
-      "dir": "out",
-      "width": "1"
-    },
-    "success": {
-      "dir": "out",
-      "width": "1"
-    },
-    "success_ap_vld": {
+    "commit_time_stream_read": {
       "dir": "out",
       "width": "1"
     }
   },
   "ModuleInfo": {
     "Hierarchy": {
-      "ModuleName": "event_queue_kernel",
-      "Instances": [
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_330_1",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_305_2",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_269_1",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_229_1",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_305_21",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_305_22",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722"
-        },
-        {
-          "ModuleName": "event_queue_kernel_Pipeline_VITIS_LOOP_305_23",
-          "InstanceName": "grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739"
-        }
-      ]
+      "ModuleName": "lpcore_top",
+      "Instances": [{
+          "ModuleName": "lpcore_kernel_0_s",
+          "InstanceName": "grp_lpcore_kernel_0_s_fu_104",
+          "Instances": [
+            {
+              "ModuleName": "event_queue_top_0_s",
+              "InstanceName": "event_queue_top_0_U0",
+              "Instances": [
+                {
+                  "ModuleName": "event_queue_top_0_Pipeline_VITIS_LOOP_205_1",
+                  "InstanceName": "grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513"
+                },
+                {
+                  "ModuleName": "enqueue",
+                  "InstanceName": "grp_enqueue_fu_522"
+                },
+                {
+                  "ModuleName": "commit",
+                  "InstanceName": "grp_commit_fu_564",
+                  "Instances": [
+                    {
+                      "ModuleName": "commit_Pipeline_VITIS_LOOP_237_2",
+                      "InstanceName": "grp_commit_Pipeline_VITIS_LOOP_237_2_fu_32"
+                    },
+                    {
+                      "ModuleName": "commit_Pipeline_VITIS_LOOP_237_21",
+                      "InstanceName": "grp_commit_Pipeline_VITIS_LOOP_237_21_fu_52"
+                    },
+                    {
+                      "ModuleName": "commit_Pipeline_VITIS_LOOP_237_22",
+                      "InstanceName": "grp_commit_Pipeline_VITIS_LOOP_237_22_fu_71"
+                    },
+                    {
+                      "ModuleName": "commit_Pipeline_VITIS_LOOP_237_23",
+                      "InstanceName": "grp_commit_Pipeline_VITIS_LOOP_237_23_fu_90"
+                    }
+                  ]
+                },
+                {
+                  "ModuleName": "event_queue_top_0_Pipeline_VITIS_LOOP_271_1",
+                  "InstanceName": "grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584"
+                }
+              ]
+            },
+            {
+              "ModuleName": "state_buffer_top_0_s",
+              "InstanceName": "state_buffer_top_0_U0",
+              "Instances": [{
+                  "ModuleName": "state_buffer_top_0_Pipeline_VITIS_LOOP_131_1",
+                  "InstanceName": "grp_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1_fu_272"
+                }]
+            },
+            {
+              "ModuleName": "event_processor_top_0_s",
+              "InstanceName": "event_processor_top_0_U0",
+              "Instances": [{
+                  "ModuleName": "process_event",
+                  "InstanceName": "grp_process_event_fu_70"
+                }]
+            },
+            {
+              "ModuleName": "cancellation_unit_top_0_s",
+              "InstanceName": "cancellation_unit_top_0_U0",
+              "Instances": [{
+                  "ModuleName": "cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1",
+                  "InstanceName": "grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231"
+                }]
+            },
+            {
+              "ModuleName": "rollback_control_top",
+              "InstanceName": "rollback_control_top_U0"
+            }
+          ]
+        }]
     },
     "Info": {
-      "event_queue_kernel_Pipeline_VITIS_LOOP_330_1": {
+      "commit_Pipeline_VITIS_LOOP_237_2": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_2": {
+      "commit_Pipeline_VITIS_LOOP_237_21": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_21": {
+      "commit_Pipeline_VITIS_LOOP_237_22": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_22": {
+      "commit_Pipeline_VITIS_LOOP_237_23": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_23": {
+      "commit": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "event_queue_top_0_Pipeline_VITIS_LOOP_205_1": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_269_1": {
+      "enqueue": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "event_queue_top_0_Pipeline_VITIS_LOOP_271_1": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_229_1": {
+      "event_queue_top_0_s": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "state_buffer_top_0_Pipeline_VITIS_LOOP_131_1": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "event_queue_kernel": {
-        "FunctionProtocol": "ap_ctrl_chain",
+      "state_buffer_top_0_s": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "process_event": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "event_processor_top_0_s": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "1",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "cancellation_unit_top_0_s": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "rollback_control_top": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "0",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "1"
+      },
+      "lpcore_kernel_0_s": {
+        "FunctionProtocol": "ap_ctrl_none",
+        "isTaskLevelControl": "0",
+        "isPipelined": "1",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "lpcore_top": {
+        "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "0",
         "isPipelined": "0",
         "isCombinational": "0",
@@ -586,7 +799,7 @@
       }
     },
     "Metrics": {
-      "event_queue_kernel_Pipeline_VITIS_LOOP_330_1": {
+      "commit_Pipeline_VITIS_LOOP_237_2": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -598,20 +811,20 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "2.150"
+          "Estimate": "3.465"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_330_1",
+            "Name": "VITIS_LOOP_237_2",
             "TripCount": "",
             "Latency": "",
-            "PipelineII": "1",
+            "PipelineII": "3",
             "PipelineDepth": "4"
           }],
         "Area": {
-          "FF": "194",
+          "FF": "216",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "273",
+          "LUT": "289",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -625,7 +838,7 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_2": {
+      "commit_Pipeline_VITIS_LOOP_237_21": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -637,20 +850,20 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "3.249"
+          "Estimate": "3.465"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_305_2",
+            "Name": "VITIS_LOOP_237_2",
             "TripCount": "",
             "Latency": "",
-            "PipelineII": "2",
-            "PipelineDepth": "3"
+            "PipelineII": "3",
+            "PipelineDepth": "4"
           }],
         "Area": {
-          "FF": "135",
+          "FF": "215",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "211",
+          "LUT": "289",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -664,7 +877,7 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_21": {
+      "commit_Pipeline_VITIS_LOOP_237_22": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -676,20 +889,20 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "3.249"
+          "Estimate": "3.465"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_305_2",
+            "Name": "VITIS_LOOP_237_2",
             "TripCount": "",
             "Latency": "",
-            "PipelineII": "2",
-            "PipelineDepth": "3"
+            "PipelineII": "3",
+            "PipelineDepth": "4"
           }],
         "Area": {
-          "FF": "135",
+          "FF": "215",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "211",
+          "LUT": "289",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -703,7 +916,7 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_22": {
+      "commit_Pipeline_VITIS_LOOP_237_23": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -715,20 +928,20 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "3.249"
+          "Estimate": "3.465"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_305_2",
+            "Name": "VITIS_LOOP_237_2",
             "TripCount": "",
             "Latency": "",
-            "PipelineII": "2",
-            "PipelineDepth": "3"
+            "PipelineII": "3",
+            "PipelineDepth": "4"
           }],
         "Area": {
-          "FF": "135",
+          "FF": "214",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "211",
+          "LUT": "289",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -742,7 +955,7 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_305_23": {
+      "commit": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -754,20 +967,13 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "3.249"
+          "Estimate": "3.465"
         },
-        "Loops": [{
-            "Name": "VITIS_LOOP_305_2",
-            "TripCount": "",
-            "Latency": "",
-            "PipelineII": "2",
-            "PipelineDepth": "3"
-          }],
         "Area": {
-          "FF": "135",
+          "FF": "872",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "211",
+          "LUT": "1829",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -781,32 +987,32 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_269_1": {
+      "event_queue_top_0_Pipeline_VITIS_LOOP_205_1": {
         "Latency": {
-          "LatencyBest": "7",
-          "LatencyAvg": "7",
-          "LatencyWorst": "7",
-          "PipelineII": "7",
+          "LatencyBest": "8",
+          "LatencyAvg": "8",
+          "LatencyWorst": "8",
+          "PipelineII": "8",
           "PipelineDepth": "",
           "PipelineType": "no"
         },
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "2.964"
+          "Estimate": "3.104"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_269_1",
+            "Name": "VITIS_LOOP_205_1",
             "TripCount": "4",
-            "Latency": "5",
+            "Latency": "6",
             "PipelineII": "1",
-            "PipelineDepth": "2"
+            "PipelineDepth": "3"
           }],
         "Area": {
-          "FF": "74",
+          "FF": "81",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "224",
+          "LUT": "204",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "~0",
           "BRAM_18K": "0",
@@ -820,46 +1026,7 @@
           "UTIL_URAM": "0"
         }
       },
-      "event_queue_kernel_Pipeline_VITIS_LOOP_229_1": {
-        "Latency": {
-          "LatencyBest": "7",
-          "LatencyAvg": "7",
-          "LatencyWorst": "7",
-          "PipelineII": "7",
-          "PipelineDepth": "",
-          "PipelineType": "no"
-        },
-        "Timing": {
-          "Target": "5.00",
-          "Uncertainty": "1.35",
-          "Estimate": "2.964"
-        },
-        "Loops": [{
-            "Name": "VITIS_LOOP_229_1",
-            "TripCount": "4",
-            "Latency": "5",
-            "PipelineII": "1",
-            "PipelineDepth": "2"
-          }],
-        "Area": {
-          "FF": "74",
-          "AVAIL_FF": "460800",
-          "UTIL_FF": "~0",
-          "LUT": "224",
-          "AVAIL_LUT": "230400",
-          "UTIL_LUT": "~0",
-          "BRAM_18K": "0",
-          "AVAIL_BRAM": "624",
-          "UTIL_BRAM": "0",
-          "DSP": "0",
-          "AVAIL_DSP": "1728",
-          "UTIL_DSP": "0",
-          "URAM": "0",
-          "AVAIL_URAM": "96",
-          "UTIL_URAM": "0"
-        }
-      },
-      "event_queue_kernel": {
+      "enqueue": {
         "Latency": {
           "LatencyBest": "",
           "LatencyAvg": "",
@@ -871,25 +1038,411 @@
         "Timing": {
           "Target": "5.00",
           "Uncertainty": "1.35",
-          "Estimate": "3.249"
+          "Estimate": "3.493"
         },
         "Loops": [{
-            "Name": "VITIS_LOOP_191_1",
+            "Name": "VITIS_LOOP_122_1",
             "TripCount": "",
             "Latency": "",
             "PipelineII": "",
             "PipelineDepth": "3"
           }],
         "Area": {
+          "FF": "156",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "394",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0"
+        }
+      },
+      "event_queue_top_0_Pipeline_VITIS_LOOP_271_1": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "2.905"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_271_1",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "3",
+            "PipelineDepth": "5"
+          }],
+        "Area": {
+          "FF": "117",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "214",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0"
+        }
+      },
+      "event_queue_top_0_s": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.493"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_294_1",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "",
+            "PipelineDepthMin": "4",
+            "PipelineDepthMax": "7",
+            "PipelineDepth": "4 ~ 7"
+          }],
+        "Area": {
           "BRAM_18K": "7",
           "AVAIL_BRAM": "624",
           "UTIL_BRAM": "1",
-          "FF": "2164",
+          "FF": "2039",
           "AVAIL_FF": "460800",
           "UTIL_FF": "~0",
-          "LUT": "3202",
+          "LUT": "4163",
           "AVAIL_LUT": "230400",
           "UTIL_LUT": "1",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "state_buffer_top_0_Pipeline_VITIS_LOOP_131_1": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.465"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_131_1",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "2",
+            "PipelineDepth": "3"
+          }],
+        "Area": {
+          "FF": "169",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "203",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0"
+        }
+      },
+      "state_buffer_top_0_s": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.465"
+        },
+        "Area": {
+          "BRAM_18K": "4",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "~0",
+          "FF": "483",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "700",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "process_event": {
+        "Latency": {
+          "LatencyBest": "1",
+          "LatencyAvg": "2",
+          "LatencyWorst": "3",
+          "PipelineIIMin": "1",
+          "PipelineIIMax": "3",
+          "PipelineII": "1 ~ 3",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "2.841"
+        },
+        "Area": {
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "FF": "29",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "123",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "event_processor_top_0_s": {
+        "Latency": {
+          "LatencyBest": "1",
+          "LatencyAvg": "2",
+          "LatencyWorst": "4",
+          "PipelineIIMin": "1",
+          "PipelineIIMax": "4",
+          "PipelineII": "1 ~ 4",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "2.841"
+        },
+        "Area": {
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "FF": "117",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "188",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.465"
+        },
+        "Loops": [{
+            "Name": "VITIS_LOOP_58_1",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "2",
+            "PipelineDepth": "3"
+          }],
+        "Area": {
+          "FF": "270",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "314",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0"
+        }
+      },
+      "cancellation_unit_top_0_s": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.465"
+        },
+        "Area": {
+          "BRAM_18K": "6",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "~0",
+          "FF": "402",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "785",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "rollback_control_top": {
+        "Latency": {
+          "LatencyBest": "0",
+          "LatencyAvg": "0",
+          "LatencyWorst": "0",
+          "PipelineII": "0",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.650"
+        },
+        "Area": {
+          "FF": "2",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "47",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "~0",
+          "BRAM_18K": "0",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0"
+        }
+      },
+      "lpcore_kernel_0_s": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "dataflow"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.650"
+        },
+        "Area": {
+          "BRAM_18K": "17",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "2",
+          "FF": "3839",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "6433",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "2",
+          "URAM": "0",
+          "AVAIL_URAM": "96",
+          "UTIL_URAM": "0",
+          "DSP": "0",
+          "AVAIL_DSP": "1728",
+          "UTIL_DSP": "0"
+        }
+      },
+      "lpcore_top": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "no"
+        },
+        "Timing": {
+          "Target": "5.00",
+          "Uncertainty": "1.35",
+          "Estimate": "3.650"
+        },
+        "Area": {
+          "BRAM_18K": "17",
+          "AVAIL_BRAM": "624",
+          "UTIL_BRAM": "2",
+          "FF": "3844",
+          "AVAIL_FF": "460800",
+          "UTIL_FF": "~0",
+          "LUT": "6514",
+          "AVAIL_LUT": "230400",
+          "UTIL_LUT": "2",
           "URAM": "0",
           "AVAIL_URAM": "96",
           "UTIL_URAM": "0",
@@ -903,7 +1456,7 @@
   "GenerateBdFiles": "0",
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2024-08-07 18:39:01 EDT",
+    "Time": "2024-08-14 16:55:48 EDT",
     "ToolName": "vitis_hls",
     "ToolVersion": "2022.1"
   }

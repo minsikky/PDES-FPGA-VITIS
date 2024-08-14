@@ -1,0 +1,167 @@
+
+
+================================================================
+== Vitis HLS Report for 'event_processor_top_0_s'
+================================================================
+* Date:           Wed Aug 14 16:55:44 2024
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
+* Project:        pdes_fpga_vitis
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  2.841 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max    | min | max |   Type  |
+    +---------+---------+----------+-----------+-----+-----+---------+
+    |        1|        4|  5.000 ns|  20.000 ns|    1|    4|       no|
+    +---------+---------+----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------+---------------+---------+---------+----------+-----------+-----+-----+---------+
+        |                         |               |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
+        |         Instance        |     Module    |   min   |   max   |    min   |    max    | min | max |   Type  |
+        +-------------------------+---------------+---------+---------+----------+-----------+-----+-----+---------+
+        |grp_process_event_fu_70  |process_event  |        1|        3|  5.000 ns|  15.000 ns|    1|    3|       no|
+        +-------------------------+---------------+---------+---------+----------+-----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|       6|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        0|     -|      29|     123|    0|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      59|    -|
+|Register         |        -|     -|      88|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     117|     188|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------+---------------+---------+----+----+-----+-----+
+    |         Instance        |     Module    | BRAM_18K| DSP| FF | LUT | URAM|
+    +-------------------------+---------------+---------+----+----+-----+-----+
+    |grp_process_event_fu_70  |process_event  |        0|   0|  29|  123|    0|
+    +-------------------------+---------------+---------+----+----+-----+-----+
+    |Total                    |               |        0|   0|  29|  123|    0|
+    +-------------------------+---------------+---------+----+----+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |ap_block_state2_on_subcall_done  |       and|   0|  0|   2|           1|           1|
+    |tmp_nbreadreq_fu_56_p3           |       and|   0|  0|   2|           1|           0|
+    |ap_block_state1                  |        or|   0|  0|   2|           1|           1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |Total                            |          |   0|  0|   6|           3|           2|
+    +---------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                             |  14|          3|    1|          3|
+    |ap_done                               |   9|          2|    1|          2|
+    |cancellation_unit_input_stream_write  |   9|          2|    1|          2|
+    |event_processor_input_stream_blk_n    |   9|          2|    1|          2|
+    |output_event_stream_write             |   9|          2|    1|          2|
+    |state_buffer_input_stream_write       |   9|          2|    1|          2|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 |  59|         13|    6|         13|
+    +--------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------+----+----+-----+-----------+
+    |                 Name                 | FF | LUT| Bits| Const Bits|
+    +--------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                             |   2|   0|    2|          0|
+    |ap_done_reg                           |   1|   0|    1|          0|
+    |event_is_anti_message_V_reg_146       |   1|   0|    1|          0|
+    |event_recv_time_V_reg_161             |  32|   0|   32|          0|
+    |grp_process_event_fu_70_ap_start_reg  |   1|   0|    1|          0|
+    |state_lp_id_V_reg_151                 |  16|   0|   16|          0|
+    |state_rng_state_V_reg_156             |  32|   0|   32|          0|
+    |tmp_reg_142                           |   1|   0|    1|          0|
+    |trunc_ln145_s_reg_166                 |   2|   0|    2|          0|
+    +--------------------------------------+----+----+-----+-----------+
+    |Total                                 |  88|   0|   88|          0|
+    +--------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------------------------+-----+-----+------------+--------------------------------+--------------+
+|                   RTL Ports                   | Dir | Bits|  Protocol  |          Source Object         |    C Type    |
++-----------------------------------------------+-----+-----+------------+--------------------------------+--------------+
+|ap_clk                                         |   in|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_rst                                         |   in|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_start                                       |   in|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_done                                        |  out|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_continue                                    |   in|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_idle                                        |  out|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|ap_ready                                       |  out|    1|  ap_ctrl_hs|          event_processor_top<0>|  return value|
+|event_processor_input_stream_dout              |   in|  209|     ap_fifo|    event_processor_input_stream|       pointer|
+|event_processor_input_stream_num_data_valid    |   in|    2|     ap_fifo|    event_processor_input_stream|       pointer|
+|event_processor_input_stream_fifo_cap          |   in|    2|     ap_fifo|    event_processor_input_stream|       pointer|
+|event_processor_input_stream_empty_n           |   in|    1|     ap_fifo|    event_processor_input_stream|       pointer|
+|event_processor_input_stream_read              |  out|    1|     ap_fifo|    event_processor_input_stream|       pointer|
+|state_buffer_input_stream_din                  |  out|   80|     ap_fifo|       state_buffer_input_stream|       pointer|
+|state_buffer_input_stream_num_data_valid       |   in|    2|     ap_fifo|       state_buffer_input_stream|       pointer|
+|state_buffer_input_stream_fifo_cap             |   in|    2|     ap_fifo|       state_buffer_input_stream|       pointer|
+|state_buffer_input_stream_full_n               |   in|    1|     ap_fifo|       state_buffer_input_stream|       pointer|
+|state_buffer_input_stream_write                |  out|    1|     ap_fifo|       state_buffer_input_stream|       pointer|
+|output_event_stream_din                        |  out|  129|     ap_fifo|             output_event_stream|       pointer|
+|output_event_stream_full_n                     |   in|    1|     ap_fifo|             output_event_stream|       pointer|
+|output_event_stream_write                      |  out|    1|     ap_fifo|             output_event_stream|       pointer|
+|cancellation_unit_input_stream_din             |  out|  129|     ap_fifo|  cancellation_unit_input_stream|       pointer|
+|cancellation_unit_input_stream_num_data_valid  |   in|    2|     ap_fifo|  cancellation_unit_input_stream|       pointer|
+|cancellation_unit_input_stream_fifo_cap        |   in|    2|     ap_fifo|  cancellation_unit_input_stream|       pointer|
+|cancellation_unit_input_stream_full_n          |   in|    1|     ap_fifo|  cancellation_unit_input_stream|       pointer|
+|cancellation_unit_input_stream_write           |  out|    1|     ap_fifo|  cancellation_unit_input_stream|       pointer|
++-----------------------------------------------+-----+-----+------------+--------------------------------+--------------+
+

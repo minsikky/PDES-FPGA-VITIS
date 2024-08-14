@@ -5,8 +5,8 @@
     <UserAssignments>
         <unit>ns</unit>
         <ProductFamily>zynquplus</ProductFamily>
-        <Part>xczu7ev-ffvf1517-3-e</Part>
-        <TopModelName>event_queue_kernel</TopModelName>
+        <Part>xczu7ev-ffvc1156-2-e</Part>
+        <TopModelName>lpcore_top</TopModelName>
         <TargetClockPeriod>5.00</TargetClockPeriod>
         <ClockUncertainty>1.35</ClockUncertainty>
         <FlowTarget>vivado</FlowTarget>
@@ -15,7 +15,7 @@
         <PipelineType>no</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+            <EstimatedClockPeriod>3.650</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
@@ -28,21 +28,12 @@
             <Interval-min>undef</Interval-min>
             <Interval-max>undef</Interval-max>
         </SummaryOfOverallLatency>
-        <SummaryOfLoopLatency>
-            <VITIS_LOOP_191_1>
-                <TripCount>undef</TripCount>
-                <Latency>undef</Latency>
-                <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                <IterationLatency>3</IterationLatency>
-                <InstanceList/>
-            </VITIS_LOOP_191_1>
-        </SummaryOfLoopLatency>
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
-            <BRAM_18K>7</BRAM_18K>
-            <FF>2164</FF>
-            <LUT>3202</LUT>
+            <BRAM_18K>17</BRAM_18K>
+            <FF>3844</FF>
+            <LUT>6514</LUT>
             <URAM>0</URAM>
             <DSP>0</DSP>
         </Resources>
@@ -57,10 +48,10 @@
     <InterfaceSummary>
         <RtlPorts>
             <name>ap_clk</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -68,10 +59,10 @@
         </RtlPorts>
         <RtlPorts>
             <name>ap_rst</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -79,10 +70,10 @@
         </RtlPorts>
         <RtlPorts>
             <name>ap_start</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -90,32 +81,21 @@
         </RtlPorts>
         <RtlPorts>
             <name>ap_done</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>out</Dir>
             <Bits>1</Bits>
             <Attribute>control</Attribute>
         </RtlPorts>
         <RtlPorts>
-            <name>ap_continue</name>
-            <Object>event_queue_kernel</Object>
-            <Type>return value</Type>
-            <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
-            <IOConfig/>
-            <Dir>in</Dir>
-            <Bits>1</Bits>
-            <Attribute>control</Attribute>
-        </RtlPorts>
-        <RtlPorts>
             <name>ap_idle</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>out</Dir>
             <Bits>1</Bits>
@@ -123,33 +103,33 @@
         </RtlPorts>
         <RtlPorts>
             <name>ap_ready</name>
-            <Object>event_queue_kernel</Object>
+            <Object>lpcore_top</Object>
             <Type>return value</Type>
             <Scope/>
-            <IOProtocol>ap_ctrl_chain</IOProtocol>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
             <IOConfig/>
             <Dir>out</Dir>
             <Bits>1</Bits>
             <Attribute>control</Attribute>
         </RtlPorts>
         <RtlPorts>
-            <name>op</name>
-            <Object>op</Object>
-            <Type>scalar</Type>
+            <name>init_event_stream_dout</name>
+            <Object>init_event_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
-            <Bits>3</Bits>
-            <Attribute>data</Attribute>
+            <Bits>129</Bits>
+            <Attribute>control</Attribute>
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>op_ap_vld</name>
-            <Object>op</Object>
-            <Type>scalar</Type>
+            <name>init_event_stream_empty_n</name>
+            <Object>init_event_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -157,23 +137,35 @@
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>event_r</name>
-            <Object>event_r</Object>
-            <Type>scalar</Type>
+            <name>init_event_stream_read</name>
+            <Object>init_event_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
-            <Dir>in</Dir>
-            <Bits>160</Bits>
-            <Attribute>data</Attribute>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>event_r_ap_vld</name>
-            <Object>event_r</Object>
-            <Type>scalar</Type>
+            <name>event_queue_full_stream_din</name>
+            <Object>event_queue_full_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>event_queue_full_stream_full_n</name>
+            <Object>event_queue_full_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -181,23 +173,35 @@
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>lp_id</name>
-            <Object>lp_id</Object>
-            <Type>scalar</Type>
+            <name>event_queue_full_stream_write</name>
+            <Object>event_queue_full_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
-            <Dir>in</Dir>
-            <Bits>16</Bits>
-            <Attribute>data</Attribute>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>lp_id_ap_vld</name>
-            <Object>lp_id</Object>
-            <Type>scalar</Type>
+            <name>anti_message_stream_dout</name>
+            <Object>anti_message_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>129</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>anti_message_stream_empty_n</name>
+            <Object>anti_message_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -205,23 +209,143 @@
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>time_r</name>
-            <Object>time_r</Object>
-            <Type>scalar</Type>
+            <name>anti_message_stream_read</name>
+            <Object>anti_message_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>enqueue_event_stream_dout</name>
+            <Object>enqueue_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>129</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>enqueue_event_stream_empty_n</name>
+            <Object>enqueue_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>enqueue_event_stream_read</name>
+            <Object>enqueue_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>output_event_stream_din</name>
+            <Object>output_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>129</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>output_event_stream_full_n</name>
+            <Object>output_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>output_event_stream_write</name>
+            <Object>output_event_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>cancellation_unit_output_stream_din</name>
+            <Object>cancellation_unit_output_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>129</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>cancellation_unit_output_stream_full_n</name>
+            <Object>cancellation_unit_output_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>cancellation_unit_output_stream_write</name>
+            <Object>cancellation_unit_output_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>commit_time_stream_dout</name>
+            <Object>commit_time_stream</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>32</Bits>
-            <Attribute>data</Attribute>
+            <Attribute>control</Attribute>
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>time_r_ap_vld</name>
-            <Object>time_r</Object>
-            <Type>scalar</Type>
+            <name>commit_time_stream_empty_n</name>
+            <Object>commit_time_stream</Object>
+            <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>in</Dir>
             <Bits>1</Bits>
@@ -229,146 +353,164 @@
             <CType>int</CType>
         </RtlPorts>
         <RtlPorts>
-            <name>result_entry_i</name>
-            <Object>result_entry</Object>
+            <name>commit_time_stream_read</name>
+            <Object>commit_time_stream</Object>
             <Type>pointer</Type>
             <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
-            <IOConfig/>
-            <Dir>in</Dir>
-            <Bits>146</Bits>
-            <Attribute>data</Attribute>
-            <CType>int</CType>
-        </RtlPorts>
-        <RtlPorts>
-            <name>result_entry_o</name>
-            <Object>result_entry</Object>
-            <Type>pointer</Type>
-            <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
-            <IOConfig/>
-            <Dir>out</Dir>
-            <Bits>146</Bits>
-            <Attribute>data</Attribute>
-            <CType>int</CType>
-        </RtlPorts>
-        <RtlPorts>
-            <name>result_entry_i_ap_vld</name>
-            <Object>result_entry</Object>
-            <Type>pointer</Type>
-            <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
-            <IOConfig/>
-            <Dir>in</Dir>
-            <Bits>1</Bits>
-            <Attribute>control</Attribute>
-            <CType>int</CType>
-        </RtlPorts>
-        <RtlPorts>
-            <name>result_entry_o_ap_vld</name>
-            <Object>result_entry</Object>
-            <Type>pointer</Type>
-            <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
+            <IOProtocol>ap_fifo</IOProtocol>
             <IOConfig/>
             <Dir>out</Dir>
             <Bits>1</Bits>
             <Attribute>control</Attribute>
             <CType>int</CType>
-        </RtlPorts>
-        <RtlPorts>
-            <name>success</name>
-            <Object>success</Object>
-            <Type>pointer</Type>
-            <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
-            <IOConfig/>
-            <Dir>out</Dir>
-            <Bits>1</Bits>
-            <Attribute>data</Attribute>
-            <CType>bool</CType>
-        </RtlPorts>
-        <RtlPorts>
-            <name>success_ap_vld</name>
-            <Object>success</Object>
-            <Type>pointer</Type>
-            <Scope/>
-            <IOProtocol>ap_vld</IOProtocol>
-            <IOConfig/>
-            <Dir>out</Dir>
-            <Bits>1</Bits>
-            <Attribute>control</Attribute>
-            <CType>bool</CType>
         </RtlPorts>
     </InterfaceSummary>
     <RTLDesignHierarchy>
-        <TopModule MAX_DEPTH="3">
-            <ModuleName>event_queue_kernel</ModuleName>
+        <TopModule MAX_DEPTH="6">
+            <ModuleName>lpcore_top</ModuleName>
             <InstancesList>
                 <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_330_1_fu_641</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_330_1</ModuleName>
+                    <InstName>grp_lpcore_kernel_0_s_fu_104</InstName>
+                    <ModuleName>lpcore_kernel_0_s</ModuleName>
                     <IsCompInst>true</IsCompInst>
-                    <ID>641</ID>
-                    <BindInstances>add_ln886_fu_170_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_2_fu_665</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_305_2</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>665</ID>
-                    <BindInstances>add_ln887_fu_142_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_269_1_fu_683</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_269_1</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>683</ID>
-                    <BindInstances>add_ln886_fu_130_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_229_1_fu_694</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_229_1</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>694</ID>
-                    <BindInstances>add_ln886_fu_130_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_21_fu_705</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_305_21</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>705</ID>
-                    <BindInstances>add_ln887_fu_142_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_22_fu_722</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_305_22</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>722</ID>
-                    <BindInstances>add_ln887_fu_142_p2</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_event_queue_kernel_Pipeline_VITIS_LOOP_305_23_fu_739</InstName>
-                    <ModuleName>event_queue_kernel_Pipeline_VITIS_LOOP_305_23</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>739</ID>
-                    <BindInstances>add_ln887_fu_142_p2</BindInstances>
+                    <ID>104</ID>
+                    <InstancesList>
+                        <Instance>
+                            <InstName>event_queue_top_0_U0</InstName>
+                            <ModuleName>event_queue_top_0_s</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>168</ID>
+                            <InstancesList>
+                                <Instance>
+                                    <InstName>grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513</InstName>
+                                    <ModuleName>event_queue_top_0_Pipeline_VITIS_LOOP_205_1</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>513</ID>
+                                    <BindInstances>add_ln886_fu_109_p2</BindInstances>
+                                </Instance>
+                                <Instance>
+                                    <InstName>grp_enqueue_fu_522</InstName>
+                                    <ModuleName>enqueue</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>522</ID>
+                                    <BindInstances>add_ln886_fu_479_p2 add_ln886_2_fu_491_p2</BindInstances>
+                                </Instance>
+                                <Instance>
+                                    <InstName>grp_commit_fu_564</InstName>
+                                    <ModuleName>commit</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>564</ID>
+                                    <InstancesList>
+                                        <Instance>
+                                            <InstName>grp_commit_Pipeline_VITIS_LOOP_237_2_fu_32</InstName>
+                                            <ModuleName>commit_Pipeline_VITIS_LOOP_237_2</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>32</ID>
+                                            <BindInstances>add_ln887_fu_230_p2</BindInstances>
+                                        </Instance>
+                                        <Instance>
+                                            <InstName>grp_commit_Pipeline_VITIS_LOOP_237_21_fu_52</InstName>
+                                            <ModuleName>commit_Pipeline_VITIS_LOOP_237_21</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>52</ID>
+                                            <BindInstances>add_ln887_fu_232_p2</BindInstances>
+                                        </Instance>
+                                        <Instance>
+                                            <InstName>grp_commit_Pipeline_VITIS_LOOP_237_22_fu_71</InstName>
+                                            <ModuleName>commit_Pipeline_VITIS_LOOP_237_22</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>71</ID>
+                                            <BindInstances>add_ln887_fu_232_p2</BindInstances>
+                                        </Instance>
+                                        <Instance>
+                                            <InstName>grp_commit_Pipeline_VITIS_LOOP_237_23_fu_90</InstName>
+                                            <ModuleName>commit_Pipeline_VITIS_LOOP_237_23</ModuleName>
+                                            <IsCompInst>true</IsCompInst>
+                                            <ID>90</ID>
+                                            <BindInstances>add_ln887_fu_232_p2</BindInstances>
+                                        </Instance>
+                                    </InstancesList>
+                                </Instance>
+                                <Instance>
+                                    <InstName>grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584</InstName>
+                                    <ModuleName>event_queue_top_0_Pipeline_VITIS_LOOP_271_1</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>584</ID>
+                                    <BindInstances>add_ln886_fu_169_p2</BindInstances>
+                                </Instance>
+                            </InstancesList>
+                            <BindInstances>grp_fu_610_p2 grp_fu_610_p2 add_ln887_2_fu_972_p2 event_queue_buffer_event_data_V_U event_queue_buffer_event_is_anti_message_V_U event_queue_buffer_event_receiver_id_V_U event_queue_buffer_event_recv_time_V_U event_queue_buffer_event_send_time_V_U event_queue_buffer_event_sender_id_V_U event_queue_buffer_is_issued_V_U event_queue_buffer_next_V_U event_queue_lp_heads_V_U event_queue_lp_oldest_unissued_V_U event_queue_lp_tails_V_U event_queue_lvt_V_U event_queue_lp_youngest_issued_V_U</BindInstances>
+                        </Instance>
+                        <Instance>
+                            <InstName>state_buffer_top_0_U0</InstName>
+                            <ModuleName>state_buffer_top_0_s</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>217</ID>
+                            <InstancesList>
+                                <Instance>
+                                    <InstName>grp_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1_fu_272</InstName>
+                                    <ModuleName>state_buffer_top_0_Pipeline_VITIS_LOOP_131_1</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>272</ID>
+                                    <BindInstances>removed_V_2_fu_170_p2</BindInstances>
+                                </Instance>
+                            </InstancesList>
+                            <BindInstances>add_ln886_fu_443_p2 add_ln886_1_fu_422_p2 sub_ln887_fu_470_p2 sub_ln887_1_fu_459_p2 state_buffer_lp_heads_V_U state_buffer_buffer_next_V_U state_buffer_buffer_state_lvt_V_U state_buffer_lp_sizes_V_U state_buffer_buffer_state_lp_id_V_U state_buffer_buffer_state_rng_state_V_U</BindInstances>
+                        </Instance>
+                        <Instance>
+                            <InstName>event_processor_top_0_U0</InstName>
+                            <ModuleName>event_processor_top_0_s</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>241</ID>
+                            <InstancesList>
+                                <Instance>
+                                    <InstName>grp_process_event_fu_70</InstName>
+                                    <ModuleName>process_event</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>70</ID>
+                                    <BindInstances>new_event_recv_time_V_fu_278_p2 event_processor_prng_U g_multi_prng_generators_state_V_U</BindInstances>
+                                </Instance>
+                            </InstancesList>
+                        </Instance>
+                        <Instance>
+                            <InstName>cancellation_unit_top_0_U0</InstName>
+                            <ModuleName>cancellation_unit_top_0_s</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>254</ID>
+                            <InstancesList>
+                                <Instance>
+                                    <InstName>grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231</InstName>
+                                    <ModuleName>cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1</ModuleName>
+                                    <IsCompInst>true</IsCompInst>
+                                    <ID>231</ID>
+                                    <BindInstances>cancellation_unit_lp_sizes_V_d0 add_ln887_3_fu_310_p2</BindInstances>
+                                </Instance>
+                            </InstancesList>
+                            <BindInstances>add_ln886_fu_395_p2 add_ln886_3_fu_354_p2 cancellation_unit_lp_heads_V_U cancellation_unit_buffer_event_recv_time_V_U cancellation_unit_buffer_event_data_V_U cancellation_unit_buffer_event_sender_id_V_U cancellation_unit_buffer_event_receiver_id_V_U cancellation_unit_buffer_next_V_U cancellation_unit_lp_sizes_V_U cancellation_unit_buffer_event_send_time_V_U</BindInstances>
+                        </Instance>
+                        <Instance>
+                            <InstName>rollback_control_top_U0</InstName>
+                            <ModuleName>rollback_control_top</ModuleName>
+                            <IsCompInst>true</IsCompInst>
+                            <ID>282</ID>
+                        </Instance>
+                    </InstancesList>
+                    <BindInstances>causality_violation_stream_U event_queue_rollback_info_stream_U state_buffer_rollback_info_stream_U cancellation_unit_rollback_info_stream_U issued_event_stream_U state_buffer_input_stream_U event_processor_input_stream_U cancellation_unit_input_stream_U</BindInstances>
                 </Instance>
             </InstancesList>
-            <BindInstances>add_ln887_fu_1019_p2 add_ln887_1_fu_1133_p2 add_ln887_2_fu_1150_p2 add_ln886_fu_1430_p2 add_ln886_1_fu_1442_p2 g_event_queue_buffer_next_V_U g_event_queue_buffer_event_recv_time_V_U g_event_queue_buffer_event_send_time_V_U g_event_queue_buffer_event_data_V_U g_event_queue_buffer_event_sender_id_V_U g_event_queue_buffer_event_receiver_id_V_U g_event_queue_buffer_event_is_anti_message_V_U g_event_queue_buffer_is_issued_V_U</BindInstances>
         </TopModule>
     </RTLDesignHierarchy>
     <ModuleInformation>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_330_1</Name>
+            <Name>commit_Pipeline_VITIS_LOOP_237_2</Name>
             <Loops>
-                <VITIS_LOOP_330_1/>
+                <VITIS_LOOP_237_2/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.150</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -381,24 +523,24 @@
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_330_1>
-                        <Name>VITIS_LOOP_330_1</Name>
+                    <VITIS_LOOP_237_2>
+                        <Name>VITIS_LOOP_237_2</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
+                        <PipelineII>3</PipelineII>
                         <PipelineDepth>4</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_330_1>
+                    </VITIS_LOOP_237_2>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>194</FF>
+                    <FF>216</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>273</LUT>
+                    <LUT>289</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -413,19 +555,19 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_330_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_170_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_237_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_230_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
             </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_305_2</Name>
+            <Name>commit_Pipeline_VITIS_LOOP_237_21</Name>
             <Loops>
-                <VITIS_LOOP_305_2/>
+                <VITIS_LOOP_237_2/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -438,24 +580,24 @@
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_305_2>
-                        <Name>VITIS_LOOP_305_2</Name>
+                    <VITIS_LOOP_237_2>
+                        <Name>VITIS_LOOP_237_2</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>2</PipelineII>
-                        <PipelineDepth>3</PipelineDepth>
+                        <PipelineII>3</PipelineII>
+                        <PipelineDepth>4</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_305_2>
+                    </VITIS_LOOP_237_2>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>135</FF>
+                    <FF>215</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>211</LUT>
+                    <LUT>289</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -470,19 +612,19 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_305_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_142_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_237_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_232_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
             </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_305_21</Name>
+            <Name>commit_Pipeline_VITIS_LOOP_237_22</Name>
             <Loops>
-                <VITIS_LOOP_305_2/>
+                <VITIS_LOOP_237_2/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -495,24 +637,24 @@
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_305_2>
-                        <Name>VITIS_LOOP_305_2</Name>
+                    <VITIS_LOOP_237_2>
+                        <Name>VITIS_LOOP_237_2</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>2</PipelineII>
-                        <PipelineDepth>3</PipelineDepth>
+                        <PipelineII>3</PipelineII>
+                        <PipelineDepth>4</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_305_2>
+                    </VITIS_LOOP_237_2>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>135</FF>
+                    <FF>215</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>211</LUT>
+                    <LUT>289</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -527,19 +669,19 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_305_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_142_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_237_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_232_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
             </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_305_22</Name>
+            <Name>commit_Pipeline_VITIS_LOOP_237_23</Name>
             <Loops>
-                <VITIS_LOOP_305_2/>
+                <VITIS_LOOP_237_2/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -552,24 +694,24 @@
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_305_2>
-                        <Name>VITIS_LOOP_305_2</Name>
+                    <VITIS_LOOP_237_2>
+                        <Name>VITIS_LOOP_237_2</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>2</PipelineII>
-                        <PipelineDepth>3</PipelineDepth>
+                        <PipelineII>3</PipelineII>
+                        <PipelineDepth>4</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_305_2>
+                    </VITIS_LOOP_237_2>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>135</FF>
+                    <FF>214</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>211</LUT>
+                    <LUT>289</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -584,19 +726,16 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_305_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_142_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_237_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_232_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
             </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_305_23</Name>
-            <Loops>
-                <VITIS_LOOP_305_2/>
-            </Loops>
+            <Name>commit</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -608,25 +747,13 @@
                     <PipelineInitiationInterval>undef</PipelineInitiationInterval>
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
-                <SummaryOfLoopLatency>
-                    <VITIS_LOOP_305_2>
-                        <Name>VITIS_LOOP_305_2</Name>
-                        <TripCount>undef</TripCount>
-                        <Latency>undef</Latency>
-                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
-                        <PipelineII>2</PipelineII>
-                        <PipelineDepth>3</PipelineDepth>
-                        <PipelineType>yes</PipelineType>
-                        <InstanceList/>
-                    </VITIS_LOOP_305_2>
-                </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>135</FF>
+                    <FF>872</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>211</LUT>
+                    <LUT>1829</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -640,50 +767,47 @@
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
-            <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_305_2" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_142_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
-            </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_269_1</Name>
+            <Name>event_queue_top_0_Pipeline_VITIS_LOOP_205_1</Name>
             <Loops>
-                <VITIS_LOOP_269_1/>
+                <VITIS_LOOP_205_1/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.964</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.104</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>7</Best-caseLatency>
-                    <Average-caseLatency>7</Average-caseLatency>
-                    <Worst-caseLatency>7</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>35.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>35.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>35.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>7</PipelineInitiationInterval>
+                    <Best-caseLatency>8</Best-caseLatency>
+                    <Average-caseLatency>8</Average-caseLatency>
+                    <Worst-caseLatency>8</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>40.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>40.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>40.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>8</PipelineInitiationInterval>
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_269_1>
-                        <Name>VITIS_LOOP_269_1</Name>
+                    <VITIS_LOOP_205_1>
+                        <Name>VITIS_LOOP_205_1</Name>
                         <TripCount>4</TripCount>
-                        <Latency>5</Latency>
-                        <AbsoluteTimeLatency>25.000 ns</AbsoluteTimeLatency>
+                        <Latency>6</Latency>
+                        <AbsoluteTimeLatency>30.000 ns</AbsoluteTimeLatency>
                         <PipelineII>1</PipelineII>
-                        <PipelineDepth>2</PipelineDepth>
+                        <PipelineDepth>3</PipelineDepth>
                         <PipelineType>yes</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_269_1>
+                    </VITIS_LOOP_205_1>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <FF>74</FF>
+                    <FF>81</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>224</LUT>
+                    <LUT>204</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -698,76 +822,19 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_269_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_130_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_205_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_109_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
             </BindNodes>
         </Module>
         <Module>
-            <Name>event_queue_kernel_Pipeline_VITIS_LOOP_229_1</Name>
+            <Name>enqueue</Name>
             <Loops>
-                <VITIS_LOOP_229_1/>
+                <VITIS_LOOP_122_1/>
             </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>5.00</TargetClockPeriod>
                     <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>2.964</EstimatedClockPeriod>
-                </SummaryOfTimingAnalysis>
-                <SummaryOfOverallLatency>
-                    <Best-caseLatency>7</Best-caseLatency>
-                    <Average-caseLatency>7</Average-caseLatency>
-                    <Worst-caseLatency>7</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>35.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>35.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>35.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>7</PipelineInitiationInterval>
-                    <PipelineType>no</PipelineType>
-                </SummaryOfOverallLatency>
-                <SummaryOfLoopLatency>
-                    <VITIS_LOOP_229_1>
-                        <Name>VITIS_LOOP_229_1</Name>
-                        <TripCount>4</TripCount>
-                        <Latency>5</Latency>
-                        <AbsoluteTimeLatency>25.000 ns</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
-                        <PipelineDepth>2</PipelineDepth>
-                        <PipelineType>yes</PipelineType>
-                        <InstanceList/>
-                    </VITIS_LOOP_229_1>
-                </SummaryOfLoopLatency>
-            </PerformanceEstimates>
-            <AreaEstimates>
-                <Resources>
-                    <FF>74</FF>
-                    <AVAIL_FF>460800</AVAIL_FF>
-                    <UTIL_FF>~0</UTIL_FF>
-                    <LUT>224</LUT>
-                    <AVAIL_LUT>230400</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>624</AVAIL_BRAM>
-                    <UTIL_BRAM>0</UTIL_BRAM>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>1728</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
-                    <URAM>0</URAM>
-                    <AVAIL_URAM>96</AVAIL_URAM>
-                    <UTIL_URAM>0</UTIL_URAM>
-                </Resources>
-            </AreaEstimates>
-            <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_229_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_130_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
-            </BindNodes>
-        </Module>
-        <Module>
-            <Name>event_queue_kernel</Name>
-            <Loops>
-                <VITIS_LOOP_191_1/>
-            </Loops>
-            <PerformanceEstimates>
-                <SummaryOfTimingAnalysis>
-                    <TargetClockPeriod>5.00</TargetClockPeriod>
-                    <ClockUncertainty>1.35</ClockUncertainty>
-                    <EstimatedClockPeriod>3.249</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>3.493</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
                     <Best-caseLatency>undef</Best-caseLatency>
@@ -780,8 +847,8 @@
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
                 <SummaryOfLoopLatency>
-                    <VITIS_LOOP_191_1>
-                        <Name>VITIS_LOOP_191_1</Name>
+                    <VITIS_LOOP_122_1>
+                        <Name>VITIS_LOOP_122_1</Name>
                         <TripCount>undef</TripCount>
                         <Latency>undef</Latency>
                         <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
@@ -789,7 +856,127 @@
                         <PipelineDepth>3</PipelineDepth>
                         <PipelineType>no</PipelineType>
                         <InstanceList/>
-                    </VITIS_LOOP_191_1>
+                    </VITIS_LOOP_122_1>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>156</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>394</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_479_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_2_fu_491_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886_2"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>event_queue_top_0_Pipeline_VITIS_LOOP_271_1</Name>
+            <Loops>
+                <VITIS_LOOP_271_1/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>2.905</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_271_1>
+                        <Name>VITIS_LOOP_271_1</Name>
+                        <TripCount>undef</TripCount>
+                        <Latency>undef</Latency>
+                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                        <PipelineII>3</PipelineII>
+                        <PipelineDepth>5</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                        <InstanceList/>
+                    </VITIS_LOOP_271_1>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>117</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>214</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_271_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_169_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>event_queue_top_0_s</Name>
+            <Loops>
+                <VITIS_LOOP_294_1/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.493</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_294_1>
+                        <Name>VITIS_LOOP_294_1</Name>
+                        <TripCount>undef</TripCount>
+                        <Latency>undef</Latency>
+                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                        <IterationLatency>
+                            <range>
+                                <min>4</min>
+                                <max>7</max>
+                            </range>
+                        </IterationLatency>
+                        <PipelineDepth>4 ~ 7</PipelineDepth>
+                        <PipelineType>no</PipelineType>
+                        <InstanceList/>
+                    </VITIS_LOOP_294_1>
                 </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
@@ -797,10 +984,10 @@
                     <BRAM_18K>7</BRAM_18K>
                     <AVAIL_BRAM>624</AVAIL_BRAM>
                     <UTIL_BRAM>1</UTIL_BRAM>
-                    <FF>2164</FF>
+                    <FF>2039</FF>
                     <AVAIL_FF>460800</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>3202</LUT>
+                    <LUT>4163</LUT>
                     <AVAIL_LUT>230400</AVAIL_LUT>
                     <UTIL_LUT>1</UTIL_LUT>
                     <URAM>0</URAM>
@@ -812,23 +999,575 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_fu_1019_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_1_fu_1133_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887_1"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_2_fu_1150_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887_2"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_1430_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_1_fu_1442_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886_1"/>
-                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_next_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_next_V"/>
-                <BindNode BINDTYPE="storage" BRAM="2" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_recv_time_V"/>
-                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_send_time_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_send_time_V"/>
-                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_data_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_data_V"/>
-                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_sender_id_V"/>
-                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_receiver_id_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_event_queue_buffer_event_is_anti_message_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_event_is_anti_message_V"/>
-                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="g_event_queue_buffer_is_issued_V_U" SOURCE="" URAM="0" VARIABLE="g_event_queue_buffer_is_issued_V"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="grp_fu_610_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="grp_fu_610_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_2_fu_972_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887_2"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_event_data_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_data_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_event_is_anti_message_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_is_anti_message_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_event_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_receiver_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="2" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="event_queue_buffer_event_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_recv_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_event_send_time_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_send_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_event_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_event_sender_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_is_issued_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_is_issued_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_buffer_next_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_buffer_next_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_s2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_s2p" PRAGMA="" RTLNAME="event_queue_lp_heads_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_lp_heads_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_lp_oldest_unissued_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_lp_oldest_unissued_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_lp_tails_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_lp_tails_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_lvt_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_lvt_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="event_queue_lp_youngest_issued_V_U" SOURCE="" URAM="0" VARIABLE="event_queue_lp_youngest_issued_V"/>
             </BindNodes>
         </Module>
+        <Module>
+            <Name>state_buffer_top_0_Pipeline_VITIS_LOOP_131_1</Name>
+            <Loops>
+                <VITIS_LOOP_131_1/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_131_1>
+                        <Name>VITIS_LOOP_131_1</Name>
+                        <TripCount>undef</TripCount>
+                        <Latency>undef</Latency>
+                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                        <PipelineII>2</PipelineII>
+                        <PipelineDepth>3</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                        <InstanceList/>
+                    </VITIS_LOOP_131_1>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>169</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>203</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_131_1" OPTYPE="add" PRAGMA="" RTLNAME="removed_V_2_fu_170_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="removed_V_2"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>state_buffer_top_0_s</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>4</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>~0</UTIL_BRAM>
+                    <FF>483</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>700</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_443_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_1_fu_422_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="sub" PRAGMA="" RTLNAME="sub_ln887_fu_470_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="sub_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="sub" PRAGMA="" RTLNAME="sub_ln887_1_fu_459_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="sub_ln887_1"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_lp_heads_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_lp_heads_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_buffer_next_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_buffer_next_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_buffer_state_lvt_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_buffer_state_lvt_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_lp_sizes_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_lp_sizes_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_buffer_state_lp_id_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_buffer_state_lp_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="state_buffer_buffer_state_rng_state_V_U" SOURCE="" URAM="0" VARIABLE="state_buffer_buffer_state_rng_state_V"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>process_event</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>2.841</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>1</Best-caseLatency>
+                    <Average-caseLatency>2</Average-caseLatency>
+                    <Worst-caseLatency>3</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>5.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>10.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>15.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1 ~ 3</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <FF>29</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>123</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="new_event_recv_time_V_fu_278_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int.h:75" URAM="0" VARIABLE="new_event_recv_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage rom_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="rom_1p" PRAGMA="" RTLNAME="event_processor_prng_U" SOURCE="" URAM="0" VARIABLE="event_processor_prng"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="g_multi_prng_generators_state_V_U" SOURCE="" URAM="0" VARIABLE="g_multi_prng_generators_state_V"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>event_processor_top_0_s</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>2.841</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>1</Best-caseLatency>
+                    <Average-caseLatency>2</Average-caseLatency>
+                    <Worst-caseLatency>4</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>5.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>10.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>20.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1 ~ 4</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <FF>117</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>188</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+        </Module>
+        <Module>
+            <Name>cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1</Name>
+            <Loops>
+                <VITIS_LOOP_58_1/>
+            </Loops>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_58_1>
+                        <Name>VITIS_LOOP_58_1</Name>
+                        <TripCount>undef</TripCount>
+                        <Latency>undef</Latency>
+                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                        <PipelineII>2</PipelineII>
+                        <PipelineDepth>3</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                        <InstanceList/>
+                    </VITIS_LOOP_58_1>
+                </SummaryOfLoopLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>270</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>314</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_58_1" OPTYPE="add" PRAGMA="" RTLNAME="cancellation_unit_lp_sizes_V_d0" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_58_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln887_3_fu_310_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:887" URAM="0" VARIABLE="add_ln887_3"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>cancellation_unit_top_0_s</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.465</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>6</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>~0</UTIL_BRAM>
+                    <FF>402</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>785</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_fu_395_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln886_3_fu_354_p2" SOURCE="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_base.h:886" URAM="0" VARIABLE="add_ln886_3"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_lp_heads_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_lp_heads_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_event_recv_time_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_event_recv_time_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_event_data_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_event_data_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_event_sender_id_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_event_sender_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_event_receiver_id_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_event_receiver_id_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_next_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_next_V"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_lp_sizes_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_lp_sizes_V"/>
+                <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage ram_1p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="ram_1p" PRAGMA="" RTLNAME="cancellation_unit_buffer_event_send_time_V_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_buffer_event_send_time_V"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>rollback_control_top</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.650</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>0</Best-caseLatency>
+                    <Average-caseLatency>0</Average-caseLatency>
+                    <Worst-caseLatency>0</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>0 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>0 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>0 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>0</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <FF>2</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>47</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>~0</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+        </Module>
+        <Module>
+            <Name>lpcore_kernel_0_s</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.650</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <DataflowPipelineThroughput>undef</DataflowPipelineThroughput>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>dataflow</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>17</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>2</UTIL_BRAM>
+                    <FF>3839</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>6433</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>2</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="causality_violation_stream_U" SOURCE="" URAM="0" VARIABLE="causality_violation_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="event_queue_rollback_info_stream_U" SOURCE="" URAM="0" VARIABLE="event_queue_rollback_info_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="state_buffer_rollback_info_stream_U" SOURCE="" URAM="0" VARIABLE="state_buffer_rollback_info_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="cancellation_unit_rollback_info_stream_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_rollback_info_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="issued_event_stream_U" SOURCE="" URAM="0" VARIABLE="issued_event_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="state_buffer_input_stream_U" SOURCE="" URAM="0" VARIABLE="state_buffer_input_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="event_processor_input_stream_U" SOURCE="" URAM="0" VARIABLE="event_processor_input_stream"/>
+                <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="cancellation_unit_input_stream_U" SOURCE="" URAM="0" VARIABLE="cancellation_unit_input_stream"/>
+            </BindNodes>
+        </Module>
+        <Module>
+            <Name>lpcore_top</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>5.00</TargetClockPeriod>
+                    <ClockUncertainty>1.35</ClockUncertainty>
+                    <EstimatedClockPeriod>3.650</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
+                    <PipelineType>no</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <BRAM_18K>17</BRAM_18K>
+                    <AVAIL_BRAM>624</AVAIL_BRAM>
+                    <UTIL_BRAM>2</UTIL_BRAM>
+                    <FF>3844</FF>
+                    <AVAIL_FF>460800</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>6514</LUT>
+                    <AVAIL_LUT>230400</AVAIL_LUT>
+                    <UTIL_LUT>2</UTIL_LUT>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>96</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                    <DSP>0</DSP>
+                    <AVAIL_DSP>1728</AVAIL_DSP>
+                    <UTIL_DSP>0</UTIL_DSP>
+                </Resources>
+            </AreaEstimates>
+        </Module>
     </ModuleInformation>
-    <FIFOInformation/>
+    <FIFOInformation>
+        <FIFOInst>
+            <Name>event_queue_rollback_info_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>issued_event_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>causality_violation_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>state_buffer_rollback_info_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>state_buffer_input_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>event_processor_input_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>cancellation_unit_input_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+        <FIFOInst>
+            <Name>cancellation_unit_rollback_info_stream_U</Name>
+            <ParentInst>grp_lpcore_kernel_0_s_fu_104</ParentInst>
+            <StaticDepth>2</StaticDepth>
+            <RuntimeDepth>mOutPtr</RuntimeDepth>
+            <InterfaceList>
+                <Interface>clk</Interface>
+                <Interface>reset</Interface>
+                <Interface>if_write</Interface>
+                <Interface>if_din</Interface>
+                <Interface>if_full_n</Interface>
+                <Interface>if_read</Interface>
+                <Interface>if_empty_n</Interface>
+            </InterfaceList>
+        </FIFOInst>
+    </FIFOInformation>
     <UserConfigCommands>
         <config_op>
             <ENTRY impl="all mul" latency="-1 mul" op="mul" precision="mul standard"/>
@@ -867,42 +1606,39 @@
         <config_export vivado_clock="200MHz"/>
     </UserConfigCommands>
     <Args>
-        <Arg ArgName="op" index="0" direction="in" srcType="ap_uint&lt;3&gt;" srcSize="8">
+        <Arg ArgName="init_event_stream" index="0" direction="in" srcType="stream&lt;TimeWarpEvent, 0&gt;&amp;" srcSize="160">
             <hwRefs>
-                <hwRef type="port" interface="op" name="op" usage="data" direction="in"/>
-                <hwRef type="port" interface="op_ap_vld" name="op_ap_vld" usage="control" direction="in"/>
+                <hwRef type="interface" interface="init_event_stream" name="" usage="data" direction="in"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="event" index="1" direction="in" srcType="TimeWarpEvent" srcSize="160">
+        <Arg ArgName="event_queue_full_stream" index="1" direction="out" srcType="stream&lt;bool, 0&gt;&amp;" srcSize="8">
             <hwRefs>
-                <hwRef type="port" interface="event_r" name="event_r" usage="data" direction="in"/>
-                <hwRef type="port" interface="event_r_ap_vld" name="event_r_ap_vld" usage="control" direction="in"/>
+                <hwRef type="interface" interface="event_queue_full_stream" name="" usage="data" direction="out"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="lp_id" index="2" direction="in" srcType="ap_int&lt;16&gt;" srcSize="16">
+        <Arg ArgName="anti_message_stream" index="2" direction="in" srcType="stream&lt;TimeWarpEvent, 0&gt;&amp;" srcSize="160">
             <hwRefs>
-                <hwRef type="port" interface="lp_id" name="lp_id" usage="data" direction="in"/>
-                <hwRef type="port" interface="lp_id_ap_vld" name="lp_id_ap_vld" usage="control" direction="in"/>
+                <hwRef type="interface" interface="anti_message_stream" name="" usage="data" direction="in"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="time" index="3" direction="in" srcType="ap_int&lt;32&gt;" srcSize="32">
+        <Arg ArgName="enqueue_event_stream" index="3" direction="in" srcType="stream&lt;TimeWarpEvent, 0&gt;&amp;" srcSize="160">
             <hwRefs>
-                <hwRef type="port" interface="time_r" name="time_r" usage="data" direction="in"/>
-                <hwRef type="port" interface="time_r_ap_vld" name="time_r_ap_vld" usage="control" direction="in"/>
+                <hwRef type="interface" interface="enqueue_event_stream" name="" usage="data" direction="in"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="result_entry" index="4" direction="inout" srcType="EventQueueEntry&amp;" srcSize="192">
+        <Arg ArgName="output_event_stream" index="4" direction="out" srcType="stream&lt;TimeWarpEvent, 0&gt;&amp;" srcSize="160">
             <hwRefs>
-                <hwRef type="port" interface="result_entry_i" name="result_entry_i" usage="data" direction="in"/>
-                <hwRef type="port" interface="result_entry_o" name="result_entry_o" usage="data" direction="out"/>
-                <hwRef type="port" interface="result_entry_i_ap_vld" name="result_entry_i_ap_vld" usage="control" direction="in"/>
-                <hwRef type="port" interface="result_entry_o_ap_vld" name="result_entry_o_ap_vld" usage="control" direction="out"/>
+                <hwRef type="interface" interface="output_event_stream" name="" usage="data" direction="out"/>
             </hwRefs>
         </Arg>
-        <Arg ArgName="success" index="5" direction="out" srcType="bool&amp;" srcSize="1">
+        <Arg ArgName="cancellation_unit_output_stream" index="5" direction="out" srcType="stream&lt;TimeWarpEvent, 0&gt;&amp;" srcSize="160">
             <hwRefs>
-                <hwRef type="port" interface="success" name="success" usage="data" direction="out"/>
-                <hwRef type="port" interface="success_ap_vld" name="success_ap_vld" usage="control" direction="out"/>
+                <hwRef type="interface" interface="cancellation_unit_output_stream" name="" usage="data" direction="out"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="commit_time_stream" index="6" direction="in" srcType="stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;" srcSize="32">
+            <hwRefs>
+                <hwRef type="interface" interface="commit_time_stream" name="" usage="data" direction="in"/>
             </hwRefs>
         </Arg>
     </Args>
@@ -933,108 +1669,134 @@
             <portMaps>
                 <portMap portMapName="ap_start">start</portMap>
                 <portMap portMapName="ap_done">done</portMap>
-                <portMap portMapName="ap_continue">continue</portMap>
                 <portMap portMapName="ap_idle">idle</portMap>
                 <portMap portMapName="ap_ready">ready</portMap>
             </portMaps>
             <ports>
-                <port>ap_continue</port>
                 <port>ap_done</port>
                 <port>ap_idle</port>
                 <port>ap_ready</port>
                 <port>ap_start</port>
             </ports>
         </Interface>
-        <Interface InterfaceName="op" type="data" busTypeName="data" protocol="ap_vld" mode="slave" dataWidth="3">
+        <Interface InterfaceName="init_event_stream" type="ap_fifo" busTypeName="acc_fifo_read" mode="master" dataWidth="129" portPrefix="init_event_stream_">
             <portMaps>
-                <portMap portMapName="op">DATA</portMap>
+                <portMap portMapName="init_event_stream_dout">RD_DATA</portMap>
+                <portMap portMapName="init_event_stream_empty_n">EMPTY_N</portMap>
+                <portMap portMapName="init_event_stream_read">RD_EN</portMap>
             </portMaps>
             <ports>
-                <port>op</port>
+                <port>init_event_stream_dout</port>
+                <port>init_event_stream_empty_n</port>
+                <port>init_event_stream_read</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="op"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="init_event_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="event_r" type="data" busTypeName="data" protocol="ap_vld" mode="slave" dataWidth="160">
+        <Interface InterfaceName="event_queue_full_stream" type="ap_fifo" busTypeName="acc_fifo_write" mode="master" dataWidth="1" portPrefix="event_queue_full_stream_">
             <portMaps>
-                <portMap portMapName="event_r">DATA</portMap>
+                <portMap portMapName="event_queue_full_stream_din">WR_DATA</portMap>
+                <portMap portMapName="event_queue_full_stream_full_n">FULL_N</portMap>
+                <portMap portMapName="event_queue_full_stream_write">WR_EN</portMap>
             </portMaps>
             <ports>
-                <port>event_r</port>
+                <port>event_queue_full_stream_din</port>
+                <port>event_queue_full_stream_full_n</port>
+                <port>event_queue_full_stream_write</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="event"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="event_queue_full_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="lp_id" type="data" busTypeName="data" protocol="ap_vld" mode="slave" dataWidth="16">
+        <Interface InterfaceName="anti_message_stream" type="ap_fifo" busTypeName="acc_fifo_read" mode="master" dataWidth="129" portPrefix="anti_message_stream_">
             <portMaps>
-                <portMap portMapName="lp_id">DATA</portMap>
+                <portMap portMapName="anti_message_stream_dout">RD_DATA</portMap>
+                <portMap portMapName="anti_message_stream_empty_n">EMPTY_N</portMap>
+                <portMap portMapName="anti_message_stream_read">RD_EN</portMap>
             </portMaps>
             <ports>
-                <port>lp_id</port>
+                <port>anti_message_stream_dout</port>
+                <port>anti_message_stream_empty_n</port>
+                <port>anti_message_stream_read</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="lp_id"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="anti_message_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="time_r" type="data" busTypeName="data" protocol="ap_vld" mode="slave" dataWidth="32">
+        <Interface InterfaceName="enqueue_event_stream" type="ap_fifo" busTypeName="acc_fifo_read" mode="master" dataWidth="129" portPrefix="enqueue_event_stream_">
             <portMaps>
-                <portMap portMapName="time_r">DATA</portMap>
+                <portMap portMapName="enqueue_event_stream_dout">RD_DATA</portMap>
+                <portMap portMapName="enqueue_event_stream_empty_n">EMPTY_N</portMap>
+                <portMap portMapName="enqueue_event_stream_read">RD_EN</portMap>
             </portMaps>
             <ports>
-                <port>time_r</port>
+                <port>enqueue_event_stream_dout</port>
+                <port>enqueue_event_stream_empty_n</port>
+                <port>enqueue_event_stream_read</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="time"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="enqueue_event_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="result_entry_i" type="data" busTypeName="data" protocol="ap_vld" mode="slave" dataWidth="146">
+        <Interface InterfaceName="output_event_stream" type="ap_fifo" busTypeName="acc_fifo_write" mode="master" dataWidth="129" portPrefix="output_event_stream_">
             <portMaps>
-                <portMap portMapName="result_entry_i">DATA</portMap>
+                <portMap portMapName="output_event_stream_din">WR_DATA</portMap>
+                <portMap portMapName="output_event_stream_full_n">FULL_N</portMap>
+                <portMap portMapName="output_event_stream_write">WR_EN</portMap>
             </portMaps>
             <ports>
-                <port>result_entry_i</port>
+                <port>output_event_stream_din</port>
+                <port>output_event_stream_full_n</port>
+                <port>output_event_stream_write</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="result_entry"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="output_event_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="result_entry_o" type="data" busTypeName="data" protocol="ap_vld" mode="master" dataWidth="146">
+        <Interface InterfaceName="cancellation_unit_output_stream" type="ap_fifo" busTypeName="acc_fifo_write" mode="master" dataWidth="129" portPrefix="cancellation_unit_output_stream_">
             <portMaps>
-                <portMap portMapName="result_entry_o">DATA</portMap>
+                <portMap portMapName="cancellation_unit_output_stream_din">WR_DATA</portMap>
+                <portMap portMapName="cancellation_unit_output_stream_full_n">FULL_N</portMap>
+                <portMap portMapName="cancellation_unit_output_stream_write">WR_EN</portMap>
             </portMaps>
             <ports>
-                <port>result_entry_o</port>
+                <port>cancellation_unit_output_stream_din</port>
+                <port>cancellation_unit_output_stream_full_n</port>
+                <port>cancellation_unit_output_stream_write</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="result_entry"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="cancellation_unit_output_stream"/>
             </constraints>
         </Interface>
-        <Interface InterfaceName="success" type="data" busTypeName="data" protocol="ap_vld" mode="master" dataWidth="1">
+        <Interface InterfaceName="commit_time_stream" type="ap_fifo" busTypeName="acc_fifo_read" mode="master" dataWidth="32" portPrefix="commit_time_stream_">
             <portMaps>
-                <portMap portMapName="success">DATA</portMap>
+                <portMap portMapName="commit_time_stream_dout">RD_DATA</portMap>
+                <portMap portMapName="commit_time_stream_empty_n">EMPTY_N</portMap>
+                <portMap portMapName="commit_time_stream_read">RD_EN</portMap>
             </portMaps>
             <ports>
-                <port>success</port>
+                <port>commit_time_stream_dout</port>
+                <port>commit_time_stream_empty_n</port>
+                <port>commit_time_stream_read</port>
             </ports>
             <constraints>
-                <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0" argName="success"/>
+                <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0" argName="commit_time_stream"/>
             </constraints>
         </Interface>
     </Interfaces>
     <ReportHWInterface>
         <section name="HW Interfaces" level="0">
-            <item name="REGISTER">
+            <item name="AP_FIFO">
                 <table isCollapsed="0">
-                    <keys size="3">Interface, Mode, Bitwidth</keys>
-                    <column name="event_r">ap_vld, 160, , </column>
-                    <column name="lp_id">ap_vld, 16, , </column>
-                    <column name="op">ap_vld, 3, , </column>
-                    <column name="result_entry_i">ap_vld, 146, , </column>
-                    <column name="result_entry_o">ap_vld, 146, , </column>
-                    <column name="success">ap_vld, 1, , </column>
-                    <column name="time_r">ap_vld, 32, , </column>
+                    <keys size="2">Interface, Data Width</keys>
+                    <column name="anti_message_stream">129, </column>
+                    <column name="cancellation_unit_output_stream">129, </column>
+                    <column name="commit_time_stream">32, </column>
+                    <column name="enqueue_event_stream">129, </column>
+                    <column name="event_queue_full_stream">1, </column>
+                    <column name="init_event_stream">129, </column>
+                    <column name="output_event_stream">129, </column>
                 </table>
             </item>
             <item name="TOP LEVEL CONTROL">
@@ -1042,7 +1804,7 @@
                     <keys size="3">Interface, Type, Ports</keys>
                     <column name="ap_clk">clock, ap_clk, </column>
                     <column name="ap_rst">reset, ap_rst, </column>
-                    <column name="ap_ctrl">ap_ctrl_chain, ap_continue ap_done ap_idle ap_ready ap_start, </column>
+                    <column name="ap_ctrl">ap_ctrl_hs, ap_done ap_idle ap_ready ap_start, </column>
                 </table>
             </item>
         </section>
@@ -1052,31 +1814,25 @@
             <item name="Top Function Arguments">
                 <table isCollapsed="1">
                     <keys size="3">Argument, Direction, Datatype</keys>
-                    <column name="op">in, ap_uint&lt;3&gt;</column>
-                    <column name="event">in, TimeWarpEvent</column>
-                    <column name="lp_id">in, ap_int&lt;16&gt;</column>
-                    <column name="time">in, ap_int&lt;32&gt;</column>
-                    <column name="result_entry">inout, EventQueueEntry&amp;</column>
-                    <column name="success">out, bool&amp;</column>
+                    <column name="init_event_stream">in, stream&lt;TimeWarpEvent 0&gt;&amp;</column>
+                    <column name="event_queue_full_stream">out, stream&lt;bool 0&gt;&amp;</column>
+                    <column name="anti_message_stream">in, stream&lt;TimeWarpEvent 0&gt;&amp;</column>
+                    <column name="enqueue_event_stream">in, stream&lt;TimeWarpEvent 0&gt;&amp;</column>
+                    <column name="output_event_stream">out, stream&lt;TimeWarpEvent 0&gt;&amp;</column>
+                    <column name="cancellation_unit_output_stream">out, stream&lt;TimeWarpEvent 0&gt;&amp;</column>
+                    <column name="commit_time_stream">in, stream&lt;ap_int&lt;32&gt; 0&gt;&amp;</column>
                 </table>
             </item>
             <item name="SW-to-HW Mapping">
                 <table isCollapsed="1">
                     <keys size="3">Argument, HW Interface, HW Type</keys>
-                    <column name="op">op, port, , </column>
-                    <column name="op">op_ap_vld, port, , </column>
-                    <column name="event">event_r, port, , </column>
-                    <column name="event">event_r_ap_vld, port, , </column>
-                    <column name="lp_id">lp_id, port, , </column>
-                    <column name="lp_id">lp_id_ap_vld, port, , </column>
-                    <column name="time">time_r, port, , </column>
-                    <column name="time">time_r_ap_vld, port, , </column>
-                    <column name="result_entry">result_entry_i, port, , </column>
-                    <column name="result_entry">result_entry_o, port, , </column>
-                    <column name="result_entry">result_entry_i_ap_vld, port, , </column>
-                    <column name="result_entry">result_entry_o_ap_vld, port, , </column>
-                    <column name="success">success, port, , </column>
-                    <column name="success">success_ap_vld, port, , </column>
+                    <column name="init_event_stream">init_event_stream, interface, , </column>
+                    <column name="event_queue_full_stream">event_queue_full_stream, interface, , </column>
+                    <column name="anti_message_stream">anti_message_stream, interface, , </column>
+                    <column name="enqueue_event_stream">enqueue_event_stream, interface, , </column>
+                    <column name="output_event_stream">output_event_stream, interface, , </column>
+                    <column name="cancellation_unit_output_stream">cancellation_unit_output_stream, interface, , </column>
+                    <column name="commit_time_stream">commit_time_stream, interface, , </column>
                 </table>
             </item>
         </section>
@@ -1085,21 +1841,27 @@
         <section name="M_AXI Burst Information" level="0" HEADER_NOTE="Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings."/>
     </ReportBurst>
     <PragmaReport>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:25" status="valid" parentFunction="event_queue_kernel" variable="return" isDirective="0" options="ap_ctrl_chain port=return"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:26" status="valid" parentFunction="event_queue_kernel" variable="op" isDirective="0" options="ap_vld port=op"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:27" status="valid" parentFunction="event_queue_kernel" variable="event" isDirective="0" options="ap_vld port=event"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:28" status="valid" parentFunction="event_queue_kernel" variable="lp_id" isDirective="0" options="ap_vld port=lp_id"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:29" status="valid" parentFunction="event_queue_kernel" variable="time" isDirective="0" options="ap_vld port=time"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:30" status="valid" parentFunction="event_queue_kernel" variable="result_entry" isDirective="0" options="ap_vld port=result_entry"/>
-        <Pragma type="interface" location="cpp/EventQueue.cpp:31" status="valid" parentFunction="event_queue_kernel" variable="success" isDirective="0" options="ap_vld port=success"/>
-        <Pragma type="pipeline" location="cpp/EventQueue.hpp:193" status="valid" parentFunction="enqueue" variable="" isDirective="0" options="off"/>
-        <Pragma type="unroll" location="cpp/EventQueue.hpp:304" status="valid" parentFunction="commit" variable="" isDirective="0" options=""/>
-        <Pragma type="dependence" location="cpp/EventQueue.hpp:332" status="valid" parentFunction="rollback" variable="" isDirective="0" options="variable = buffer inter false"/>
-        <Pragma type="interface" location="cpp/StateBuffer.cpp:7" status="valid" parentFunction="state_buffer_kernel" variable="return" isDirective="0" options="ap_ctrl_hs port=return"/>
-        <Pragma type="interface" location="cpp/StateBuffer.cpp:8" status="valid" parentFunction="state_buffer_kernel" variable="op" isDirective="0" options="ap_none port=op"/>
-        <Pragma type="interface" location="cpp/StateBuffer.cpp:9" status="valid" parentFunction="state_buffer_kernel" variable="state" isDirective="0" options="ap_none port=state"/>
-        <Pragma type="interface" location="cpp/StateBuffer.cpp:10" status="valid" parentFunction="state_buffer_kernel" variable="result" isDirective="0" options="ap_vld port=result"/>
-        <Pragma type="interface" location="cpp/StateBuffer.cpp:11" status="valid" parentFunction="state_buffer_kernel" variable="success" isDirective="0" options="ap_vld port=success"/>
+        <Pragma type="interface" location="cpp/CancellationUnit.cpp:148" status="valid" parentFunction="cancellation_unit_kernel" variable="" isDirective="0" options="ap_ctrl_hs port = return"/>
+        <Pragma type="interface" location="cpp/CancellationUnit.cpp:149" status="valid" parentFunction="cancellation_unit_kernel" variable="" isDirective="0" options="ap_none port = op"/>
+        <Pragma type="interface" location="cpp/CancellationUnit.cpp:150" status="valid" parentFunction="cancellation_unit_kernel" variable="" isDirective="0" options="ap_none port = event"/>
+        <Pragma type="interface" location="cpp/CancellationUnit.cpp:151" status="valid" parentFunction="cancellation_unit_kernel" variable="" isDirective="0" options="ap_vld port = result"/>
+        <Pragma type="interface" location="cpp/CancellationUnit.cpp:152" status="valid" parentFunction="cancellation_unit_kernel" variable="" isDirective="0" options="ap_vld port = success"/>
+        <Pragma type="pipeline" location="cpp/EventQueue.cpp:124" status="valid" parentFunction="enqueue" variable="" isDirective="0" options="off"/>
+        <Pragma type="unroll" location="cpp/EventQueue.cpp:236" status="valid" parentFunction="commit" variable="" isDirective="0" options=""/>
+        <Pragma type="dependence" location="cpp/EventQueue.cpp:273" status="valid" parentFunction="rollback" variable="" isDirective="0" options="variable = buffer inter false"/>
+        <Pragma type="pipeline" location="cpp/EventQueue.cpp:296" status="valid" parentFunction="process_anti_message" variable="" isDirective="0" options="off"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:391" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_ctrl_chain port = return"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:392" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = op"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:393" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = event"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:394" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = lp_id"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:395" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = time"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:396" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = result_entry"/>
+        <Pragma type="interface" location="cpp/EventQueue.cpp:397" status="valid" parentFunction="event_queue_kernel" variable="" isDirective="0" options="ap_vld port = success"/>
+        <Pragma type="interface" location="cpp/StateBuffer.cpp:175" status="valid" parentFunction="state_buffer_kernel" variable="" isDirective="0" options="ap_ctrl_hs port = return"/>
+        <Pragma type="interface" location="cpp/StateBuffer.cpp:176" status="valid" parentFunction="state_buffer_kernel" variable="" isDirective="0" options="ap_none port = op"/>
+        <Pragma type="interface" location="cpp/StateBuffer.cpp:177" status="valid" parentFunction="state_buffer_kernel" variable="" isDirective="0" options="ap_none port = state"/>
+        <Pragma type="interface" location="cpp/StateBuffer.cpp:178" status="valid" parentFunction="state_buffer_kernel" variable="" isDirective="0" options="ap_vld port = result"/>
+        <Pragma type="interface" location="cpp/StateBuffer.cpp:179" status="valid" parentFunction="state_buffer_kernel" variable="" isDirective="0" options="ap_vld port = success"/>
     </PragmaReport>
 </profile>
 

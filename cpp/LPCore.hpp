@@ -1,116 +1,113 @@
 #ifndef LPCORE_HPP
 #define LPCORE_HPP
 
-#include <vector>
-#include <queue>
+#include <hls_task.h>
+#include <ap_int.h>
+#include <array>
+#include "sys_defs.hpp"
 #include "VirtualLP.hpp"
 #include "EventQueue.hpp"
-#include "EventHistory.hpp"
 #include "StateBuffer.hpp"
 #include "CancellationUnit.hpp"
 #include "EventProcessor.hpp"
+#include "EventRouter.hpp"
 #include "LPMapping.hpp"
+#include "RollbackControl.hpp"
+#include "CommitControlDummy.hpp"
 
 // Forward declaration
-class TimeWarpSimulation;
+// class TimeWarpSimulation;
 
 class LPCore
 {
 public:
-    TimeWarpSimulation *simulation;
-    int lpcore_id;
-    std::array<VirtualLP, (int)(NUM_LPS / NUM_LPCORE)> virtual_lps; // Virtual LPs managed by this core
-    EventQueue event_queue;                                         // Event queue for this core
-    StateBuffer state_buffer;                                       // State buffer for this core
-    CancellationUnit cancellation_unit;                             // Cancellation unit for this core
-    EventProcessor event_processor;                                 // Event processor for this core
+    // TimeWarpSimulation &simulation;
+    ap_uint<8> lpcore_id;
+    VirtualLP virtual_lps[NUM_LPS / NUM_LPCORE];
+    // std::array<VirtualLP, (int)(NUM_LPS / NUM_LPCORE)> virtual_lps;
+    EventQueue event_queue;
+    StateBuffer state_buffer;
+    CancellationUnit cancellation_unit;
+    EventProcessor event_processor;
+    // EventRouter event_router;
     int current_lp_index;
     int total_lps;
-    bool is_stalled;
+    // hls::stream<bool> fossil_signal;
+    // hls::stream<bool> stall_signal;
+
+    hls::stream<bool> event_queue_full_stream;
+    hls::stream<TimeWarpEvent> anti_message_stream[NUM_LPCORE];
+    hls::stream<TimeWarpEvent> enqueue_event_stream[NUM_LPCORE];
+    // hls::stream<ap_int<32>> commit_time_stream;
+    hls::stream<TimeWarpEvent> issued_event_stream;
+    hls::stream<LPState> state_buffer_input_stream;
+    hls::stream<EventProcessorInput> event_processor_input_stream;
+    hls::stream<RollbackInfo> causality_violation_stream;
+    hls::stream<TimeWarpEvent> output_event_stream;
+    hls::stream<TimeWarpEvent> cancellation_unit_input_stream;
+    hls::stream<TimeWarpEvent> cancellation_unit_output_stream;
+
+    hls::stream<RollbackInfo> event_queue_rollback_info_stream;
+    hls::stream<RollbackInfo> state_buffer_rollback_info_stream;
+    hls::stream<RollbackInfo> cancellation_unit_rollback_info_stream;
 
 public:
-    LPCore(int lpcore_id)
-        : lpcore_id(lpcore_id), current_lp_index(-1), is_stalled(false)
-    {
-        event_processor = EventProcessor(simulation, this);
-
-        constexpr int LPS_PER_CORE = NUM_LPS / NUM_LPCORE;
-
-        for (int i = 0; i < LPS_PER_CORE; ++i)
-        {
-            int global_lp_id = lpcore_id + NUM_LPCORE * i;
-            virtual_lps[i] = VirtualLP(global_lp_id, global_lp_id + 1); // Initialize with global LP ID and RNG seed
-        }
-    }
-
-    bool recv_event(const TimeWarpEvent &event)
-    {
-        // Check if event is an anti-message
-        if (event.is_anti_message)
-        {
-            return process_anti_message(event);
-        }
-        else
-        {
-            // Check causality violation
-            if (event.recv_time < virtual_lps[event.receiver_id % NUM_LPCORE].lvt)
-            {
-                // Trigger rollback
-                trigger_rollback(virtual_lps[event.receiver_id % NUM_LPCORE], event.recv_time);
-            }
-            return event_queue.enqueue(event);
-        }
-    }
-
-    void trigger_rollback(VirtualLP &lp, int32_t rollback_time)
-    { // Guaranteed to succeed
-        // Rollback state buffer
-        state_buffer.rollback(lp.lp_id, rollback_time);
-        // Rollback event queue
-        event_queue.rollback(lp.lp_id, rollback_time);
-        // Rollback cancellation unit
-        cancellation_unit.rollback(lp.lp_id, rollback_time);
-        // Rollback virtual LP
-        lp.lvt = rollback_time;
-    };
-
-    bool process_anti_message(const TimeWarpEvent &anti_msg)
-    {
-        // Find matches in event queue, and eliminate it.
-        if (!event_queue.remove_matching_event(anti_msg))
-        {
-            // If match is not found, then the event has already been processed. Must trigger rollback.
-            trigger_rollback(virtual_lps[anti_msg.receiver_id % NUM_LPCORE], anti_msg.recv_time);
-        }
-        return true;
-    }
-
-    bool enqueue_event(const TimeWarpEvent &event) // May cause stall
-    {
-        return event_queue.enqueue(event);
-    }
-
-    bool process_events()
-    {
-        TimeWarpEvent event;
-        if (event_queue.issue(event))
-        {
-            LPState state = state_buffer.peek(event.receiver_id);
-            event_processor.process_event(event, state);
-        }
-    }
-
-    void run()
-    {
-        // Only source of stall: enqueue_event. When enqueue_event fails, we should call process_events() and then re-invoke enqueue_event().
-    }
-
-    bool is_core_stalled() const { return is_stalled; }
-
-    bool is_assigned_lp(ap_uint<16> lp_id) const
-    {
-        return lp_id % NUM_LPCORE == lpcore_id;
-    }
+    // LPCore(TimeWarpSimulation &simulation, ap_uint<8> lpcore_id);
+    // LPCore();
+    LPCore(ap_uint<8> lpcore_id);
+    // void init();
+    bool recv_event(const TimeWarpEvent &event);
+    void trigger_rollback(RollbackInfo &rollback_info);
+    bool process_anti_message(const TimeWarpEvent &anti_msg);
+    bool enqueue_event(const TimeWarpEvent &event);
+    void run(hls::stream<TimeWarpEvent> &init_event_stream, hls::stream<ap_int<32>> &commit_time_stream);
+    bool is_assigned_lp(ap_uint<16> lp_id) const;
 };
+
+template <int ID>
+void lpcore_kernel(
+    // INITIALIZATION
+    hls::stream<TimeWarpEvent> &init_event_stream,
+    // TO SIGNAL EVENT QUEUE FULL
+    hls::stream<bool> &event_queue_full_stream,
+    // INPUTS TO EVENT QUEUE
+    hls::stream<TimeWarpEvent> &anti_message_stream,
+    hls::stream<TimeWarpEvent> &enqueue_event_stream,
+    // OUTPUT FROM THE LPCORE
+    hls::stream<TimeWarpEvent> &output_event_stream,
+    hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
+    // COMMIT TIME
+    hls::stream<ap_int<32>> &commit_time_stream)
+{
+    hls::stream<RollbackInfo> causality_violation_stream;
+    hls::stream<RollbackInfo> event_queue_rollback_info_stream;
+    hls::stream<RollbackInfo> state_buffer_rollback_info_stream;
+    hls::stream<RollbackInfo> cancellation_unit_rollback_info_stream;
+    hls::stream<TimeWarpEvent> issued_event_stream;
+    hls::stream<LPState> state_buffer_input_stream;
+    hls::stream<EventProcessorInput> event_processor_input_stream;
+    hls::stream<TimeWarpEvent> cancellation_unit_input_stream;
+    hls::task event_queue_task(event_queue_top<ID>, init_event_stream, event_queue_full_stream, event_queue_rollback_info_stream, anti_message_stream, enqueue_event_stream, commit_time_stream, issued_event_stream, causality_violation_stream);
+    hls::task state_buffer_task(state_buffer_top<ID>, state_buffer_rollback_info_stream, state_buffer_input_stream, issued_event_stream, event_processor_input_stream);
+    hls::task event_processor_task(event_processor_top<ID>, event_processor_input_stream, state_buffer_input_stream, output_event_stream, cancellation_unit_input_stream);
+    hls::task cancellation_unit_task(cancellation_unit_top<ID>, cancellation_unit_rollback_info_stream, cancellation_unit_input_stream, cancellation_unit_output_stream);
+    hls::task rollback_control_task(rollback_control_top, causality_violation_stream, event_queue_rollback_info_stream, state_buffer_rollback_info_stream, cancellation_unit_rollback_info_stream);
+}
+
+void lpcore_top(
+    // INITIALIZATION
+    hls::stream<TimeWarpEvent> &init_event_stream,
+    // TO SIGNAL EVENT QUEUE FULL
+    hls::stream<bool> &event_queue_full_stream,
+    // INPUTS TO EVENT QUEUE
+    hls::stream<TimeWarpEvent> &anti_message_stream,
+    hls::stream<TimeWarpEvent> &enqueue_event_stream,
+    // OUTPUT FROM THE LPCORE
+    hls::stream<TimeWarpEvent> &output_event_stream,
+    hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
+    // COMMIT TIME
+    hls::stream<ap_int<32>> &commit_time_stream);
+
+void test_lpcore();
 
 #endif // LPCORE_HPP

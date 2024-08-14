@@ -1,13 +1,58 @@
 <AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
     <sourceFile name="">
-        <directive functionName="event_queue_kernel" label="" functionLabel="">
+        <directive functionName="lpcore_top" label="" functionLabel="">
             <pragma name="TOP">
-                <option name="name" value="event_queue_kernel"/>
+                <option name="name" value="lpcore_top"/>
             </pragma>
         </directive>
-        <directive functionName="event_queue_kernel" label="" functionLabel="">
+        <directive functionName="lpcore_top" label="" functionLabel="">
             <pragma name="TOP">
-                <option name="name" value="event_queue_kernel"/>
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
             </pragma>
         </directive>
     </sourceFile>

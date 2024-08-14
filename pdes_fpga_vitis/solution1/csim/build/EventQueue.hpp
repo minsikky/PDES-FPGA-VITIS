@@ -2,116 +2,9 @@
 #define EVENT_QUEUE_HPP
 
 #include <ap_int.h>
-#include <hls_stream.h>
-#include <iostream>
-#include <vector>
-#include <random>
-#include <algorithm>
+#include <hls_task.h>
+#include "sys_defs.hpp"
 #include "constants.hpp"
-
-struct TimeWarpEvent
-{
-    ap_int<32> send_time;
-    ap_int<32> recv_time;
-    ap_int<32> data;
-    ap_int<16> sender_id;
-    ap_int<16> receiver_id;
-    ap_uint<1> is_anti_message;
-
-    // Default constructor
-    TimeWarpEvent() : send_time(0), recv_time(INT32_MAX), data(0), sender_id(0), receiver_id(0), is_anti_message(0) {}
-
-    // Constructor with parameters (optional, but can be useful)
-    TimeWarpEvent(ap_int<32> st, ap_int<32> rt, ap_int<32> d, ap_int<16> sid, ap_int<16> rid, ap_uint<1> iam)
-        : send_time(st), recv_time(rt), data(d), sender_id(sid), receiver_id(rid), is_anti_message(iam) {}
-
-    // Overload the < operator
-    bool operator<(const TimeWarpEvent &other) const
-    {
-        // First, compare by receive time
-        if (recv_time != other.recv_time)
-        {
-            return recv_time < other.recv_time;
-        }
-
-        // If receive times are equal, compare by send time
-        if (send_time != other.send_time)
-        {
-            return send_time < other.send_time;
-        }
-
-        // If send times are also equal, compare by sender ID
-        if (sender_id != other.sender_id)
-        {
-            return sender_id < other.sender_id;
-        }
-
-        // If sender IDs are equal, compare by receiver ID
-        if (receiver_id != other.receiver_id)
-        {
-            return receiver_id < other.receiver_id;
-        }
-
-        // If all above are equal, compare by data
-        if (data != other.data)
-        {
-            return data < other.data;
-        }
-
-        // If everything else is equal, anti-messages come last
-        return !is_anti_message && other.is_anti_message;
-    }
-
-    // Overload the == operator
-    bool operator==(const TimeWarpEvent &other) const
-    {
-        return (send_time == other.send_time &&
-                recv_time == other.recv_time &&
-                data == other.data &&
-                sender_id == other.sender_id &&
-                receiver_id == other.receiver_id &&
-                is_anti_message == other.is_anti_message);
-    }
-
-    // Overload the != operator
-    bool operator!=(const TimeWarpEvent &other) const
-    {
-        return (send_time != other.send_time ||
-                recv_time != other.recv_time ||
-                data != other.data ||
-                sender_id != other.sender_id ||
-                receiver_id != other.receiver_id ||
-                is_anti_message != other.is_anti_message);
-    }
-
-    bool is_matching_anti_message(const TimeWarpEvent &other) const
-    {
-        return (send_time == other.recv_time &&
-                recv_time == other.send_time &&
-                data == other.data &&
-                sender_id == other.receiver_id &&
-                receiver_id == other.sender_id &&
-                is_anti_message != other.is_anti_message);
-    }
-};
-
-struct EventQueueEntry
-{
-    TimeWarpEvent event;
-    ap_uint<1> is_issued;
-    ap_uint<16> next; // Pointer to the next event for the same LP
-};
-
-struct DebugInfo
-{
-    ap_uint<16> size;
-    ap_uint<16> unissued_size;
-    ap_int<32> current_gvt;
-    ap_uint<16> free_head;
-    ap_uint<16> lp_heads[NUM_LPS];
-    ap_uint<16> lp_tails[NUM_LPS];
-    ap_uint<16> lp_oldest_unissued[NUM_LPS];
-};
 
 class EventQueue
 {
@@ -120,324 +13,88 @@ public:
     ap_uint<16> lp_heads[NUM_LPS];
     ap_uint<16> lp_tails[NUM_LPS];
     ap_uint<16> lp_oldest_unissued[NUM_LPS];
+    ap_uint<16> lp_youngest_issued[NUM_LPS];
+    ap_int<32> lvt[NUM_LPS];
     ap_uint<16> free_head;
     ap_uint<16> unissued_size;
     ap_uint<16> size;
     ap_int<32> current_gvt;
-    /*
-    DebugInfo debug_info;
 
-    void update_debug_info()
-    {
-        debug_info.size = size;
-        debug_info.unissued_size = unissued_size;
-        debug_info.current_gvt = current_gvt;
-        debug_info.free_head = free_head;
-        for (int i = 0; i < NUM_LPS; ++i)
-        {
-            debug_info.lp_heads[i] = lp_heads[i];
-            debug_info.lp_tails[i] = lp_tails[i];
-            debug_info.lp_oldest_unissued[i] = lp_oldest_unissued[i];
-        }
-    }
-    */
-
-public:
-    EventQueue() : size(0), unissued_size(0), current_gvt(0), free_head(0)
-    {
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
-        {
-            lp_heads[i] = 0xFFFF;
-            lp_tails[i] = 0xFFFF;
-            lp_oldest_unissued[i] = 0xFFFF;
-        }
-        reset();
-    }
-
-    void reset()
-    {
-        size = 0;
-        unissued_size = 0;
-        current_gvt = 0;
-        free_head = 0;
-
-        for (ap_uint<16> i = 0; i < EVENT_QUEUE_CAPACITY - 1; ++i)
-        {
-            buffer[i].next = i + 1;
-        }
-        buffer[EVENT_QUEUE_CAPACITY - 1].next = 0xFFFF;
-
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
-        {
-            lp_heads[i] = 0xFFFF;
-            lp_tails[i] = 0xFFFF;
-            lp_oldest_unissued[i] = 0xFFFF;
-        }
-    }
-
-    bool enqueue(const TimeWarpEvent &event)
-    {
-        if (size >= EVENT_QUEUE_CAPACITY)
-            return false;
-
-        ap_uint<16> new_entry = free_head;
-        free_head = buffer[free_head].next;
-
-        buffer[new_entry].event = event;
-        buffer[new_entry].is_issued = 0;
-        buffer[new_entry].next = 0xFFFF;
-
-        ap_uint<16> lp_id = event.receiver_id;
-
-        if (lp_oldest_unissued[lp_id] == 0xFFFF ||
-            buffer[new_entry].event.recv_time < buffer[lp_oldest_unissued[lp_id]].event.recv_time)
-        {
-            lp_oldest_unissued[lp_id] = new_entry;
-        }
-
-        if (lp_heads[lp_id] == 0xFFFF)
-        {
-            lp_heads[lp_id] = new_entry;
-            lp_tails[lp_id] = new_entry;
-        }
-        else
-        {
-            ap_uint<16> current = lp_heads[lp_id];
-            ap_uint<16> prev = 0xFFFF;
-
-            while (current != 0xFFFF && buffer[current].event.recv_time <= event.recv_time)
-            {
-#pragma HLS PIPELINE off
-                prev = current;
-                current = buffer[current].next;
-            }
-
-            if (prev == 0xFFFF)
-            {
-                buffer[new_entry].next = lp_heads[lp_id];
-                lp_heads[lp_id] = new_entry;
-            }
-            else
-            {
-                buffer[new_entry].next = buffer[prev].next;
-                buffer[prev].next = new_entry;
-
-                if (prev == lp_tails[lp_id])
-                {
-                    lp_tails[lp_id] = new_entry;
-                }
-            }
-        }
-
-        unissued_size++;
-        size++;
-
-        // update_debug_info();
-        return true;
-    }
-
-    EventQueueEntry dequeue()
-    {
-        if (size == 0)
-            return EventQueueEntry{TimeWarpEvent(), 0, 0xFFFF}; // Sentinel
-
-        ap_uint<16> earliest_lp = 0;
-        ap_int<32> earliest_time = INT32_MAX;
-
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
-        {
-            if (lp_heads[i] != 0xFFFF && buffer[lp_heads[i]].event.recv_time < earliest_time)
-            {
-                earliest_lp = i;
-                earliest_time = buffer[lp_heads[i]].event.recv_time;
-            }
-        }
-
-        ap_uint<16> dequeue_entry = lp_heads[earliest_lp];
-        EventQueueEntry result = buffer[dequeue_entry];
-
-        lp_heads[earliest_lp] = buffer[dequeue_entry].next;
-        if (lp_heads[earliest_lp] == 0xFFFF)
-        {
-            lp_tails[earliest_lp] = 0xFFFF;
-        }
-
-        if (!buffer[dequeue_entry].is_issued)
-        {
-            lp_oldest_unissued[earliest_lp] = buffer[dequeue_entry].next;
-            unissued_size--;
-        }
-
-        buffer[dequeue_entry].next = free_head;
-        free_head = dequeue_entry;
-
-        size--;
-
-        // update_debug_info();
-        return result;
-    }
-
-    bool issue(TimeWarpEvent &event)
-    {
-        if (unissued_size == 0)
-            return false;
-
-        ap_uint<16> earliest_lp = 0;
-        ap_int<32> earliest_time = INT32_MAX;
-
-        for (ap_uint<16> i = 0; i < NUM_LPS; ++i)
-        {
-            if (lp_oldest_unissued[i] == 0xFFFF)
-            {
-                continue;
-            }
-            else
-            {
-                if (buffer[lp_oldest_unissued[i]].event.recv_time < earliest_time)
-                {
-                    earliest_lp = i;
-                    earliest_time = buffer[lp_oldest_unissued[i]].event.recv_time;
-                }
-            }
-        }
-        /*
-        if (earliest_time == INT32_MAX) // Can't happen
-            return false;
-        */
-        // std::cout << "Earliest LP: " << earliest_lp << std::endl;
-        ap_uint<16> issue_entry = lp_oldest_unissued[earliest_lp];
-        event = buffer[issue_entry].event;
-        EventQueueEntry &entry = buffer[issue_entry];
-        buffer[issue_entry].is_issued = 1;
-        // std::cout << "Entry: " << issue_entry
-        //           << ", recv_time=" << entry.event.recv_time
-        //           << ", receiver_id=" << entry.event.receiver_id
-        //           << ", is_issued=" << entry.is_issued
-        //           << ", next=" << entry.next
-        //           << std::endl;
-
-        // Update oldest_unissued
-        lp_oldest_unissued[earliest_lp] = buffer[issue_entry].next;
-        // while (lp_oldest_unissued[earliest_lp] != 0xFFFF &&
-        //        buffer[lp_oldest_unissued[earliest_lp]].is_issued)
-        // {
-        //     lp_oldest_unissued[earliest_lp] = buffer[lp_oldest_unissued[earliest_lp]].next;
-        // }
-
-        unissued_size--;
-
-        // update_debug_info();
-        return true;
-    }
-
-    bool commit(ap_int<32> commit_time)
-    {
-        current_gvt = commit_time;
-
-        for (ap_uint<16> lp_id = 0; lp_id < NUM_LPS; ++lp_id)
-        {
-#pragma HLS UNROLL
-            while (lp_heads[lp_id] != 0xFFFF &&
-                   buffer[lp_heads[lp_id]].event.recv_time <= commit_time)
-            {
-                ap_uint<16> commit_entry = lp_heads[lp_id];
-                lp_heads[lp_id] = buffer[commit_entry].next;
-
-                buffer[commit_entry].next = free_head;
-                free_head = commit_entry;
-
-                size--;
-
-                if (lp_heads[lp_id] == 0xFFFF)
-                {
-                    lp_tails[lp_id] = 0xFFFF;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    bool rollback(ap_int<16> lp_id, ap_int<32> to_time)
-    {
-        ap_uint<16> current = lp_heads[lp_id];
-
-        while (current != 0xFFFF)
-        {
-#pragma HLS DEPENDENCE variable = buffer inter false
-            if (buffer[current].event.recv_time > to_time && buffer[current].is_issued)
-            {
-                buffer[current].is_issued = 0;
-                unissued_size++;
-                if (lp_oldest_unissued[lp_id] == 0xFFFF || buffer[lp_oldest_unissued[lp_id]].event.recv_time > buffer[current].event.recv_time)
-                {
-                    lp_oldest_unissued[lp_id] = current;
-                }
-            }
-            current = buffer[current].next;
-        }
-
-        return true;
-    }
-
-    ap_uint<16> get_size() const
-    {
-        return size;
-    }
-
-    ap_int<32> get_gvt() const
-    {
-        return current_gvt;
-    }
-
-    void print_event_queue() const
-    {
-        std::cout << "Event Queue State:" << std::endl;
-        std::cout << "Total size: " << size << std::endl;
-        std::cout << "Current GVT: " << current_gvt << std::endl;
-
-        for (ap_uint<16> lp = 0; lp < NUM_LPS; ++lp)
-        {
-            std::cout << "\nLP " << lp << " (Head: " << lp_heads[lp]
-                      << ", Tail: " << lp_tails[lp]
-                      << ", Oldest Unissued: " << lp_oldest_unissued[lp] << "):" << std::endl;
-
-            if (lp_heads[lp] == 0xFFFF)
-            {
-                std::cout << "  Empty" << std::endl;
-                continue;
-            }
-
-            ap_uint<16> current = lp_heads[lp];
-            ap_uint<16> count = 0;
-            while (current != 0xFFFF)
-            {
-                const EventQueueEntry &entry = buffer[current];
-                std::cout << "  [" << count << "] Index: " << current << "; ";
-                std::cout << "      Event: "
-                          << "recv_time=" << entry.event.recv_time << ", "
-                          << "receiver_id=" << entry.event.receiver_id << "; ";
-                std::cout << "      is_issued: " << entry.is_issued << "; ";
-                std::cout << "      next: " << entry.next << std::endl;
-
-                current = entry.next;
-                count++;
-            }
-        }
-
-        std::cout << "\nFree list head: " << free_head << std::endl
-                  << std::endl;
-        ;
-    }
+    EventQueue();
+    void reset();
+    bool enqueue(const TimeWarpEvent &event, hls::stream<RollbackInfo> &causality_violation_stream);
+    EventQueueEntry dequeue();
+    bool issue(TimeWarpEvent &event);
+    bool commit(ap_int<32> commit_time);
+    bool rollback(RollbackInfo &rollback_info);
+    bool process_anti_message(const TimeWarpEvent &anti_msg);
+    bool is_full();
+    ap_uint<16> get_size() const;
+    ap_int<32> get_gvt() const;
+    void print_event_queue() const;
 };
 
-struct EventQueueInput
+void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, EventQueueEntry &result_entry, bool &success);
+
+// void event_queue_top(
+//     EventQueue &event_queue,
+//     hls::stream<bool> &event_queue_full_stream,
+//     hls::stream<RollbackInfo> &rollback_info_stream,
+//     hls::stream<TimeWarpEvent> &anti_message_stream,
+//     hls::stream<TimeWarpEvent> &enqueue_event_stream,
+//     hls::stream<ap_int<32>> &commit_time_stream,
+//     hls::stream<TimeWarpEvent> &issued_event_stream,
+//     hls::stream<RollbackInfo> &causality_violation_stream);
+
+template<int ID>
+void event_queue_top(
+    hls::stream<bool> &event_queue_full_stream,
+    hls::stream<RollbackInfo> &rollback_info_stream,
+    hls::stream<TimeWarpEvent> &anti_message_stream,
+    hls::stream<TimeWarpEvent> &enqueue_event_stream,
+    hls::stream<ap_int<32>> &commit_time_stream,
+    hls::stream<TimeWarpEvent> &issued_event_stream,
+    hls::stream<RollbackInfo> &causality_violation_stream)
 {
-    bool is_enqueue;
-    TimeWarpEvent event;
-};
-
-void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, TimeWarpEvent &result_event, bool &success);
+    static EventQueue event_queue;
+    // Priority: rollback > anti_message > enqueue > issue > commit
+    if (!rollback_info_stream.empty()) // Rollback
+    {
+        RollbackInfo rollback_info = rollback_info_stream.read();
+        event_queue.rollback(rollback_info);
+    }
+    else if (!anti_message_stream.empty()) // Anti-message
+    {
+        TimeWarpEvent anti_message = anti_message_stream.read();
+        event_queue.process_anti_message(anti_message);
+    }
+    else if (!enqueue_event_stream.empty() && !event_queue.is_full()) // Enqueue
+    {
+        TimeWarpEvent event = enqueue_event_stream.read();
+        event_queue.enqueue(event, causality_violation_stream);
+        if (event_queue.is_full())
+        {
+            event_queue_full_stream.write(true);
+        }
+    }
+    else if (!issued_event_stream.full()) // Issue
+    {
+        TimeWarpEvent issued_event;
+        if (event_queue.issue(issued_event))
+        {
+            issued_event_stream.write(issued_event);
+        }
+    }
+    else if (!commit_time_stream.empty()) // Can't enqueue or issue, so try to commit
+    {
+        ap_int<32> commit_time = commit_time_stream.read();
+        event_queue.commit(commit_time);
+        if (!event_queue.is_full())
+        {
+            event_queue_full_stream.write(false);
+        }
+    }
+}
 
 int test_event_queue();
 
