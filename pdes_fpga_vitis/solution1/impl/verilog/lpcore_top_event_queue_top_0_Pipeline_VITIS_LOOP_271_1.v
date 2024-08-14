@@ -109,13 +109,13 @@ wire    ap_block_pp0_stage2_subdone;
 wire    ap_block_state1_pp0_stage0_iter0;
 wire    ap_block_state4_pp0_stage0_iter1;
 wire    ap_block_pp0_stage0_11001;
-reg   [15:0] current_V_5_reg_209;
-reg   [15:0] current_V_5_reg_209_pp0_iter1_reg;
+reg   [15:0] current_V_7_reg_209;
+reg   [15:0] current_V_7_reg_209_pp0_iter1_reg;
 reg   [1:0] event_queue_lp_oldest_unissued_V_addr_reg_214;
 reg   [1:0] event_queue_lp_oldest_unissued_V_addr_reg_214_pp0_iter1_reg;
 wire   [0:0] icmp_ln1069_fu_143_p2;
-wire   [63:0] zext_ln587_3_fu_149_p1;
-reg   [63:0] zext_ln587_3_reg_223;
+wire   [63:0] zext_ln587_fu_149_p1;
+reg   [63:0] zext_ln587_reg_223;
 reg   [31:0] event_queue_buffer_event_recv_time_V_load_reg_238;
 wire    ap_block_pp0_stage1_11001;
 wire   [0:0] icmp_ln1081_fu_155_p2;
@@ -129,12 +129,12 @@ reg    ap_enable_reg_pp0_iter0_reg;
 wire   [63:0] zext_ln145_cast_fu_130_p1;
 wire    ap_block_pp0_stage0;
 wire    ap_block_pp0_stage1;
-wire   [63:0] zext_ln587_fu_187_p1;
+wire   [63:0] zext_ln587_5_fu_187_p1;
 wire   [15:0] add_ln886_fu_169_p2;
 wire    ap_block_pp0_stage2;
-reg   [15:0] current_V_3_fu_44;
+reg   [15:0] current_V_6_fu_44;
 wire    ap_loop_init;
-reg   [15:0] ap_sig_allocacmp_current_V_5;
+reg   [15:0] ap_sig_allocacmp_current_V_7;
 wire   [0:0] icmp_ln1081_1_fu_192_p2;
 reg    ap_done_reg;
 wire    ap_continue_int;
@@ -224,16 +224,16 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0) & (ap_loop_init == 1'b1))) begin
-        current_V_3_fu_44 <= current_V;
+        current_V_6_fu_44 <= current_V;
     end else if (((icmp_ln1069_reg_219 == 1'd0) & (1'b0 == ap_block_pp0_stage1_11001) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage1))) begin
-        current_V_3_fu_44 <= event_queue_buffer_next_V_q0;
+        current_V_6_fu_44 <= event_queue_buffer_next_V_q0;
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        current_V_5_reg_209 <= ap_sig_allocacmp_current_V_5;
-        current_V_5_reg_209_pp0_iter1_reg <= current_V_5_reg_209;
+        current_V_7_reg_209 <= ap_sig_allocacmp_current_V_7;
+        current_V_7_reg_209_pp0_iter1_reg <= current_V_7_reg_209;
         event_queue_lp_oldest_unissued_V_addr_reg_214 <= zext_ln145_cast_fu_130_p1;
         event_queue_lp_oldest_unissued_V_addr_reg_214_pp0_iter1_reg <= event_queue_lp_oldest_unissued_V_addr_reg_214;
         icmp_ln1069_reg_219 <= icmp_ln1069_fu_143_p2;
@@ -248,7 +248,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((icmp_ln1069_reg_219 == 1'd0) & (1'b0 == ap_block_pp0_stage1_11001) & (1'b1 == ap_CS_fsm_pp0_stage1) & (icmp_ln1081_fu_155_p2 == 1'd1))) begin
-        event_queue_buffer_is_issued_V_addr_reg_247 <= zext_ln587_3_reg_223;
+        event_queue_buffer_is_issued_V_addr_reg_247 <= zext_ln587_reg_223;
     end
 end
 
@@ -272,7 +272,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0) & (icmp_ln1069_fu_143_p2 == 1'd0))) begin
-        zext_ln587_3_reg_223[15 : 0] <= zext_ln587_3_fu_149_p1[15 : 0];
+        zext_ln587_reg_223[15 : 0] <= zext_ln587_fu_149_p1[15 : 0];
     end
 end
 
@@ -334,9 +334,9 @@ end
 
 always @ (*) begin
     if (((1'b0 == ap_block_pp0_stage0) & (1'b1 == ap_CS_fsm_pp0_stage0) & (ap_loop_init == 1'b1))) begin
-        ap_sig_allocacmp_current_V_5 = current_V;
+        ap_sig_allocacmp_current_V_7 = current_V;
     end else begin
-        ap_sig_allocacmp_current_V_5 = current_V_3_fu_44;
+        ap_sig_allocacmp_current_V_7 = current_V_6_fu_44;
     end
 end
 
@@ -361,7 +361,7 @@ always @ (*) begin
         if (((1'b0 == ap_block_pp0_stage2) & (1'b1 == ap_CS_fsm_pp0_stage2))) begin
             event_queue_buffer_is_issued_V_address0 = event_queue_buffer_is_issued_V_addr_reg_247;
         end else if (((1'b0 == ap_block_pp0_stage1) & (1'b1 == ap_CS_fsm_pp0_stage1))) begin
-            event_queue_buffer_is_issued_V_address0 = zext_ln587_3_reg_223;
+            event_queue_buffer_is_issued_V_address0 = zext_ln587_reg_223;
         end else begin
             event_queue_buffer_is_issued_V_address0 = 'bx;
         end
@@ -543,19 +543,19 @@ always @ (*) begin
     ap_predicate_op36_store_state3 = ((event_queue_buffer_is_issued_V_q0 == 1'd1) & (icmp_ln1069_reg_219 == 1'd0) & (icmp_ln1081_reg_243 == 1'd1));
 end
 
-assign event_queue_buffer_event_recv_time_V_address0 = zext_ln587_fu_187_p1;
+assign event_queue_buffer_event_recv_time_V_address0 = zext_ln587_5_fu_187_p1;
 
-assign event_queue_buffer_event_recv_time_V_address1 = zext_ln587_3_fu_149_p1;
+assign event_queue_buffer_event_recv_time_V_address1 = zext_ln587_fu_149_p1;
 
 assign event_queue_buffer_is_issued_V_d0 = 1'd0;
 
-assign event_queue_buffer_next_V_address0 = zext_ln587_3_fu_149_p1;
+assign event_queue_buffer_next_V_address0 = zext_ln587_fu_149_p1;
 
-assign event_queue_lp_oldest_unissued_V_d0 = current_V_5_reg_209_pp0_iter1_reg;
+assign event_queue_lp_oldest_unissued_V_d0 = current_V_7_reg_209_pp0_iter1_reg;
 
 assign icmp_ln1065_fu_181_p2 = ((event_queue_lp_oldest_unissued_V_q0 == 16'd65535) ? 1'b1 : 1'b0);
 
-assign icmp_ln1069_fu_143_p2 = ((ap_sig_allocacmp_current_V_5 == 16'd65535) ? 1'b1 : 1'b0);
+assign icmp_ln1069_fu_143_p2 = ((ap_sig_allocacmp_current_V_7 == 16'd65535) ? 1'b1 : 1'b0);
 
 assign icmp_ln1081_1_fu_192_p2 = (($signed(event_queue_buffer_event_recv_time_V_q0) > $signed(event_queue_buffer_event_recv_time_V_load_reg_238)) ? 1'b1 : 1'b0);
 
@@ -563,12 +563,12 @@ assign icmp_ln1081_fu_155_p2 = (($signed(event_queue_buffer_event_recv_time_V_q1
 
 assign zext_ln145_cast_fu_130_p1 = zext_ln145;
 
-assign zext_ln587_3_fu_149_p1 = ap_sig_allocacmp_current_V_5;
+assign zext_ln587_5_fu_187_p1 = event_queue_lp_oldest_unissued_V_q0;
 
-assign zext_ln587_fu_187_p1 = event_queue_lp_oldest_unissued_V_q0;
+assign zext_ln587_fu_149_p1 = ap_sig_allocacmp_current_V_7;
 
 always @ (posedge ap_clk) begin
-    zext_ln587_3_reg_223[63:16] <= 48'b000000000000000000000000000000000000000000000000;
+    zext_ln587_reg_223[63:16] <= 48'b000000000000000000000000000000000000000000000000;
 end
 
 endmodule //lpcore_top_event_queue_top_0_Pipeline_VITIS_LOOP_271_1

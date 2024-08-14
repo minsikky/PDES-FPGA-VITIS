@@ -45,6 +45,7 @@ void cancellation_unit_kernel(ap_uint<2> op, TimeWarpEvent event, TimeWarpEvent 
 template <int ID>
 void cancellation_unit_top( // TODO: revise. This is just a placeholder
     hls::stream<RollbackInfo> &cancellation_unit_rollback_info_stream,
+    hls::stream<ap_int<32>> &cancellation_unit_commit_time_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_input_stream,
     hls::stream<TimeWarpEvent> &anti_message_stream)
 {
@@ -58,6 +59,10 @@ void cancellation_unit_top( // TODO: revise. This is just a placeholder
     else if (!cancellation_unit_input_stream.empty())
     {
         cancellation_unit.push(cancellation_unit_input_stream.read());
+    }
+    else if (!cancellation_unit_commit_time_stream.empty()) {
+        ap_int<32> commit_time = cancellation_unit_commit_time_stream.read();
+        cancellation_unit.commit(commit_time);
     }
 }
 

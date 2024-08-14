@@ -24,8 +24,8 @@ const Port_Property HLS_Design_Meta::port_props[]={
 	Port_Property("cancellation_unit_output_stream_din", 129, hls_out, 5, "ap_fifo", "fifo_port_we", 1),
 	Port_Property("cancellation_unit_output_stream_full_n", 1, hls_in, 5, "ap_fifo", "fifo_status", 1),
 	Port_Property("cancellation_unit_output_stream_write", 1, hls_out, 5, "ap_fifo", "fifo_data", 1),
-	Port_Property("commit_time_stream_dout", 32, hls_in, 6, "ap_fifo", "fifo_port_we", 1),
-	Port_Property("commit_time_stream_empty_n", 1, hls_in, 6, "ap_fifo", "fifo_status", 1),
-	Port_Property("commit_time_stream_read", 1, hls_out, 6, "ap_fifo", "fifo_data", 1),
+	Port_Property("lpcore_commit_time_stream_dout", 32, hls_in, 6, "ap_fifo", "fifo_port_we", 1),
+	Port_Property("lpcore_commit_time_stream_empty_n", 1, hls_in, 6, "ap_fifo", "fifo_status", 1),
+	Port_Property("lpcore_commit_time_stream_read", 1, hls_out, 6, "ap_fifo", "fifo_data", 1),
 };
 const char* HLS_Design_Meta::dut_name = "lpcore_top";

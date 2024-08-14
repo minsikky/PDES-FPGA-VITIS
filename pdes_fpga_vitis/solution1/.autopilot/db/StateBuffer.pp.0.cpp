@@ -29483,8 +29483,8 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 template <int ID>
 void state_buffer_top(
-
     hls::stream<RollbackInfo> &state_buffer_rollback_info_stream,
+    hls::stream<ap_int<32>> &state_buffer_commit_time_stream,
     hls::stream<LPState> &state_buffer_input_stream,
     hls::stream<TimeWarpEvent> &issued_event_stream,
     hls::stream<EventProcessorInput> &event_processor_input_stream)
@@ -29507,11 +29507,11 @@ void state_buffer_top(
         EventProcessorInput input = {event, state};
         event_processor_input_stream.write(input);
     }
-
-
-
-
-
+    else if (!state_buffer_commit_time_stream.empty())
+    {
+        ap_int<32> commit_time = state_buffer_commit_time_stream.read();
+        state_buffer.commit(commit_time);
+    }
 }
 
 void state_buffer_top_test(
@@ -42402,12 +42402,14 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 void state_buffer_top_test(
     hls::stream<RollbackInfo> &state_buffer_rollback_info_stream,
+    hls::stream<ap_int<32>> &state_buffer_commit_time_stream,
     hls::stream<LPState> &state_buffer_input_stream,
     hls::stream<TimeWarpEvent> &issued_event_stream,
     hls::stream<EventProcessorInput> &event_processor_input_stream)
 {
     state_buffer_top<0>(
         state_buffer_rollback_info_stream,
+        state_buffer_commit_time_stream,
         state_buffer_input_stream,
         issued_event_stream,
         event_processor_input_stream);
@@ -42421,7 +42423,7 @@ int test_state_buffer()
 
 
     std::cout << "Pushing states:" << std::endl;
-    VITIS_LOOP_223_1: for (int i = 0; i < 20; ++i)
+    VITIS_LOOP_225_1: for (int i = 0; i < 20; ++i)
     {
         op = 0;
         state.lp_id = i % 4;
@@ -42469,10 +42471,10 @@ int test_state_buffer()
 
 
     std::cout << "\nPopping states after rollback and commit:" << std::endl;
-    VITIS_LOOP_271_2: for (int lp = 0; lp < 4; ++lp)
+    VITIS_LOOP_273_2: for (int lp = 0; lp < 4; ++lp)
     {
         std::cout << "LP " << lp << ": ";
-        VITIS_LOOP_274_3: while (true)
+        VITIS_LOOP_276_3: while (true)
         {
             op = 1;
             state.lp_id = lp;

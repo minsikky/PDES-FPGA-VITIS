@@ -15,7 +15,7 @@ module lpcore_top_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1 (
         ap_idle,
         ap_ready,
         current_V,
-        zext_ln587_3,
+        zext_ln587_5,
         tmp_to_time_V,
         removed_V_out,
         removed_V_out_ap_vld,
@@ -46,7 +46,7 @@ output   ap_done;
 output   ap_idle;
 output   ap_ready;
 input  [15:0] current_V;
-input  [1:0] zext_ln587_3;
+input  [1:0] zext_ln587_5;
 input  [31:0] tmp_to_time_V;
 output  [15:0] removed_V_out;
 output   removed_V_out_ap_vld;
@@ -103,7 +103,7 @@ wire   [0:0] addr_cmp_fu_187_p2;
 reg   [0:0] addr_cmp_reg_300;
 reg    ap_enable_reg_pp0_iter0_reg;
 wire    ap_block_pp0_stage0_subdone;
-wire   [63:0] zext_ln587_3_cast_fu_127_p1;
+wire   [63:0] zext_ln587_5_cast_fu_127_p1;
 wire    ap_block_pp0_stage0;
 wire    ap_block_pp0_stage1;
 reg   [63:0] reuse_addr_reg_fu_48;
@@ -234,7 +234,7 @@ always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         current_V_3_reg_261 <= ap_sig_allocacmp_current_V_3;
         icmp_ln1069_reg_271 <= icmp_ln1069_fu_155_p2;
-        state_buffer_lp_heads_V_addr_reg_266 <= zext_ln587_3_cast_fu_127_p1;
+        state_buffer_lp_heads_V_addr_reg_266 <= zext_ln587_5_cast_fu_127_p1;
     end
 end
 
@@ -450,7 +450,7 @@ assign state_buffer_lp_heads_V_address0 = state_buffer_lp_heads_V_addr_reg_266;
 
 assign state_buffer_lp_heads_V_d0 = ((addr_cmp_reg_300[0:0] == 1'b1) ? reuse_reg_load_reg_295 : state_buffer_buffer_next_V_q0);
 
-assign zext_ln587_3_cast_fu_127_p1 = zext_ln587_3;
+assign zext_ln587_5_cast_fu_127_p1 = zext_ln587_5;
 
 assign zext_ln587_fu_161_p1 = ap_sig_allocacmp_current_V_3;
 

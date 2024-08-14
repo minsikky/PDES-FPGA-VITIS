@@ -159,8 +159,8 @@ attribute shreg_extract : string;
     signal icmp_ln1069_reg_626 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_CS_fsm_state6 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
-    signal zext_ln587_10_fu_442_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_10_reg_630 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_12_fu_442_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_12_reg_630 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_CS_fsm_state7 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state7 : signal is "none";
     signal grp_fu_338_p2 : STD_LOGIC_VECTOR (0 downto 0);
@@ -174,9 +174,9 @@ attribute shreg_extract : string;
     signal icmp_ln1065_13_reg_667 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_CS_fsm_state9 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state9 : signal is "none";
-    signal zext_ln587_8_fu_388_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_9_fu_412_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_11_fu_460_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_10_fu_388_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_11_fu_412_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_13_fu_460_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln886_fu_496_p1 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state10 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state10 : signal is "none";
@@ -187,7 +187,7 @@ attribute shreg_extract : string;
     attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
     signal ap_block_state2 : BOOLEAN;
     signal tmp_fu_351_p4 : STD_LOGIC_VECTOR (8 downto 0);
-    signal add_ln886_2_fu_491_p2 : STD_LOGIC_VECTOR (7 downto 0);
+    signal add_ln886_3_fu_491_p2 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (9 downto 0);
     signal ap_ST_fsm_state1_blk : STD_LOGIC;
     signal ap_ST_fsm_state2_blk : STD_LOGIC;
@@ -253,7 +253,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_logic_1 = ap_CS_fsm_state7) and (((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_0) and (icmp_ln1069_reg_626 = ap_const_lv1_1)) or ((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_0) and (grp_fu_338_p2 = ap_const_lv1_1))))) then
-                event_queue_buffer_next_V_addr_5_reg_657 <= zext_ln587_11_fu_460_p1(7 - 1 downto 0);
+                event_queue_buffer_next_V_addr_5_reg_657 <= zext_ln587_13_fu_460_p1(7 - 1 downto 0);
                 event_queue_lp_tails_V_addr_1_reg_662 <= zext_ln587_reg_549(2 - 1 downto 0);
             end if;
         end if;
@@ -262,7 +262,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state2)) then
-                event_queue_buffer_next_V_addr_reg_573 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+                event_queue_buffer_next_V_addr_reg_573 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
                 event_queue_lp_oldest_unissued_V_addr_reg_578 <= zext_ln587_reg_549(2 - 1 downto 0);
                 new_entry_V_reg_565 <= event_queue_free_head_V_i;
             end if;
@@ -322,7 +322,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((icmp_ln1069_fu_436_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
-                    zext_ln587_10_reg_630(15 downto 0) <= zext_ln587_10_fu_442_p1(15 downto 0);
+                    zext_ln587_12_reg_630(15 downto 0) <= zext_ln587_12_fu_442_p1(15 downto 0);
             end if;
         end if;
     end process;
@@ -335,7 +335,7 @@ begin
         end if;
     end process;
     zext_ln587_reg_549(63 downto 16) <= "000000000000000000000000000000000000000000000000";
-    zext_ln587_10_reg_630(63 downto 16) <= "000000000000000000000000000000000000000000000000";
+    zext_ln587_12_reg_630(63 downto 16) <= "000000000000000000000000000000000000000000000000";
 
     ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, ap_CS_fsm_state1, causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2, icmp_ln1077_fu_361_p2, ap_CS_fsm_state5, icmp_ln1065_11_fu_417_p2, icmp_ln1069_reg_626, ap_CS_fsm_state7, grp_fu_338_p2, icmp_ln1065_12_fu_454_p2)
     begin
@@ -384,7 +384,7 @@ begin
                 ap_NS_fsm <= "XXXXXXXXXX";
         end case;
     end process;
-    add_ln886_2_fu_491_p2 <= std_logic_vector(unsigned(trunc_ln1077_reg_540) + unsigned(ap_const_lv8_1));
+    add_ln886_3_fu_491_p2 <= std_logic_vector(unsigned(trunc_ln1077_reg_540) + unsigned(ap_const_lv8_1));
     add_ln886_fu_479_p2 <= std_logic_vector(unsigned(event_queue_unissued_size_V_i) + unsigned(ap_const_lv16_1));
     ap_CS_fsm_state1 <= ap_CS_fsm(0);
     ap_CS_fsm_state10 <= ap_CS_fsm(9);
@@ -481,7 +481,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_event_data_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_event_data_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_event_data_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -503,7 +503,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_event_is_anti_message_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_event_is_anti_message_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_event_is_anti_message_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -525,7 +525,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_event_receiver_id_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_event_receiver_id_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_event_receiver_id_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -548,14 +548,14 @@ begin
     end process;
 
 
-    event_queue_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state6, zext_ln587_10_fu_442_p1, zext_ln587_8_fu_388_p1, zext_ln587_9_fu_412_p1)
+    event_queue_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state6, zext_ln587_12_fu_442_p1, zext_ln587_10_fu_388_p1, zext_ln587_11_fu_412_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_10_fu_442_p1(7 - 1 downto 0);
+            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_12_fu_442_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_9_fu_412_p1(7 - 1 downto 0);
+            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_11_fu_412_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
         else 
             event_queue_buffer_event_recv_time_V_address0 <= "XXXXXXX";
         end if; 
@@ -582,7 +582,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_event_send_time_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_event_send_time_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_event_send_time_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -604,7 +604,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_event_sender_id_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_event_sender_id_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_event_sender_id_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -626,7 +626,7 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_is_issued_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+    event_queue_buffer_is_issued_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
 
     event_queue_buffer_is_issued_V_ce0_assign_proc : process(causality_violation_stream_full_n, ap_CS_fsm_state2, icmp_ln1073_fu_372_p2)
     begin
@@ -649,18 +649,18 @@ begin
     end process;
 
 
-    event_queue_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state2, event_queue_buffer_next_V_addr_reg_573, icmp_ln1069_reg_626, zext_ln587_10_reg_630, ap_CS_fsm_state7, grp_fu_338_p2, icmp_ln1065_12_fu_454_p2, event_queue_buffer_next_V_addr_5_reg_657, ap_CS_fsm_state9, zext_ln587_8_fu_388_p1, zext_ln587_11_fu_460_p1, ap_CS_fsm_state10)
+    event_queue_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state2, event_queue_buffer_next_V_addr_reg_573, icmp_ln1069_reg_626, zext_ln587_12_reg_630, ap_CS_fsm_state7, grp_fu_338_p2, icmp_ln1065_12_fu_454_p2, event_queue_buffer_next_V_addr_5_reg_657, ap_CS_fsm_state9, zext_ln587_10_fu_388_p1, zext_ln587_13_fu_460_p1, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
             event_queue_buffer_next_V_address0 <= event_queue_buffer_next_V_addr_5_reg_657;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state9) or ((ap_const_logic_1 = ap_CS_fsm_state7) and (((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_1) and (icmp_ln1069_reg_626 = ap_const_lv1_1)) or ((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_1) and (grp_fu_338_p2 = ap_const_lv1_1)))))) then 
             event_queue_buffer_next_V_address0 <= event_queue_buffer_next_V_addr_reg_573;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state7) and (((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_0) and (icmp_ln1069_reg_626 = ap_const_lv1_1)) or ((icmp_ln1065_12_fu_454_p2 = ap_const_lv1_0) and (grp_fu_338_p2 = ap_const_lv1_1))))) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_11_fu_460_p1(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_13_fu_460_p1(7 - 1 downto 0);
         elsif (((grp_fu_338_p2 = ap_const_lv1_0) and (icmp_ln1069_reg_626 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state7))) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_10_reg_630(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_12_reg_630(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_8_fu_388_p1(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_10_fu_388_p1(7 - 1 downto 0);
         else 
             event_queue_buffer_next_V_address0 <= "XXXXXXX";
         end if; 
@@ -885,10 +885,10 @@ begin
     icmp_ln1077_fu_361_p2 <= "1" when (tmp_fu_351_p4 = ap_const_lv9_0) else "0";
     tmp_fu_351_p4 <= event_queue_size_V_i(15 downto 7);
     trunc_ln1077_fu_347_p1 <= event_queue_size_V_i(8 - 1 downto 0);
-    zext_ln587_10_fu_442_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_1_fu_92),64));
-    zext_ln587_11_fu_460_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_fu_88),64));
-    zext_ln587_8_fu_388_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_free_head_V_i),64));
-    zext_ln587_9_fu_412_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_lp_oldest_unissued_V_q0),64));
+    zext_ln587_10_fu_388_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_free_head_V_i),64));
+    zext_ln587_11_fu_412_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_lp_oldest_unissued_V_q0),64));
+    zext_ln587_12_fu_442_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_1_fu_92),64));
+    zext_ln587_13_fu_460_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_fu_88),64));
     zext_ln587_fu_367_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(p_read4),64));
-    zext_ln886_fu_496_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(add_ln886_2_fu_491_p2),16));
+    zext_ln886_fu_496_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(add_ln886_3_fu_491_p2),16));
 end behav;

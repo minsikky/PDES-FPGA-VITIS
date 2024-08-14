@@ -35,9 +35,11 @@ port (
     enqueue_event_stream_dout : IN STD_LOGIC_VECTOR (128 downto 0);
     enqueue_event_stream_empty_n : IN STD_LOGIC;
     enqueue_event_stream_read : OUT STD_LOGIC;
-    commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-    commit_time_stream_empty_n : IN STD_LOGIC;
-    commit_time_stream_read : OUT STD_LOGIC;
+    event_queue_commit_time_stream15_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+    event_queue_commit_time_stream15_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    event_queue_commit_time_stream15_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+    event_queue_commit_time_stream15_empty_n : IN STD_LOGIC;
+    event_queue_commit_time_stream15_read : OUT STD_LOGIC;
     issued_event_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
     issued_event_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
     issued_event_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -199,29 +201,29 @@ attribute shreg_extract : string;
     signal grp_fu_616_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_CS_fsm_state4 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state4 : signal is "none";
-    signal tmp_4_reg_1010 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_3_reg_1010 : STD_LOGIC_VECTOR (0 downto 0);
     signal event_queue_rollback_info_stream_blk_n : STD_LOGIC;
     signal tmp_s_nbreadreq_fu_152_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal anti_message_stream_blk_n : STD_LOGIC;
-    signal tmp_1_nbreadreq_fu_160_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_6_nbreadreq_fu_160_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal enqueue_event_stream_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state9 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state9 : signal is "none";
-    signal commit_time_stream_blk_n : STD_LOGIC;
+    signal event_queue_commit_time_stream15_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal issued_event_stream_blk_n : STD_LOGIC;
     signal ap_CS_fsm_state8 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
     signal and_ln77_reg_1002 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_3_reg_1006 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_1_reg_1006 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln1065_3_reg_1014 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_reg_990 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_s_reg_994 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_1_reg_998 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_6_reg_998 : STD_LOGIC_VECTOR (0 downto 0);
     signal and_ln77_fu_628_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_3_nbwritereq_fu_176_p3 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_4_nbreadreq_fu_184_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_1_nbwritereq_fu_176_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_3_nbreadreq_fu_184_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln1065_3_fu_634_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_send_time_V_fu_646_p1 : STD_LOGIC_VECTOR (31 downto 0);
     signal tmp_send_time_V_reg_1026 : STD_LOGIC_VECTOR (31 downto 0);
@@ -244,9 +246,9 @@ attribute shreg_extract : string;
     signal init_event_recv_time_V_reg_1102 : STD_LOGIC_VECTOR (31 downto 0);
     signal init_event_data_V_reg_1107 : STD_LOGIC_VECTOR (31 downto 0);
     signal init_event_sender_id_V_reg_1112 : STD_LOGIC_VECTOR (15 downto 0);
-    signal commit_time_stream_read_reg_1117 : STD_LOGIC_VECTOR (31 downto 0);
-    signal zext_ln587_5_fu_786_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_5_reg_1125 : STD_LOGIC_VECTOR (63 downto 0);
+    signal tmp_17_reg_1117 : STD_LOGIC_VECTOR (31 downto 0);
+    signal zext_ln587_7_fu_786_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_7_reg_1125 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_CS_fsm_state6 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
     signal event_queue_lp_oldest_unissued_V_addr_1_reg_1131 : STD_LOGIC_VECTOR (1 downto 0);
@@ -259,17 +261,17 @@ attribute shreg_extract : string;
     signal event_recv_time_V_reg_1186 : STD_LOGIC_VECTOR (31 downto 0);
     signal event_data_V_reg_1191 : STD_LOGIC_VECTOR (31 downto 0);
     signal event_sender_id_V_reg_1196 : STD_LOGIC_VECTOR (15 downto 0);
-    signal current_V_8_reg_1204 : STD_LOGIC_VECTOR (15 downto 0);
+    signal current_V_9_reg_1204 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state12 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state12 : signal is "none";
     signal prev_V_reg_1209 : STD_LOGIC_VECTOR (15 downto 0);
-    signal current_V_9_reg_1216 : STD_LOGIC_VECTOR (15 downto 0);
+    signal current_V_11_reg_1216 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state13 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state13 : signal is "none";
     signal icmp_ln1069_fu_886_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln1069_reg_1223 : STD_LOGIC_VECTOR (0 downto 0);
-    signal zext_ln587_4_fu_892_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_4_reg_1227 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_6_fu_892_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_6_reg_1227 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_CS_fsm_state14 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state14 : signal is "none";
     signal this_data_V_reg_1248 : STD_LOGIC_VECTOR (6 downto 0);
@@ -445,16 +447,16 @@ attribute shreg_extract : string;
     signal ap_CS_fsm_state22 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state22 : signal is "none";
     signal zext_ln145_fu_719_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_6_fu_791_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_7_fu_942_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_8_fu_791_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_9_fu_942_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal icmp_ln1069_1_fu_937_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal add_ln887_2_fu_972_p2 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state20 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state20 : signal is "none";
     signal grp_fu_610_p2 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_block_state1 : BOOLEAN;
-    signal current_V_5_fu_140 : STD_LOGIC_VECTOR (15 downto 0);
-    signal tmp_2_nbreadreq_fu_168_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal current_V_8_fu_140 : STD_LOGIC_VECTOR (15 downto 0);
+    signal tmp_7_nbreadreq_fu_168_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_predicate_op89_write_state4 : BOOLEAN;
     signal ap_block_state4 : BOOLEAN;
     signal ap_block_state11 : BOOLEAN;
@@ -1099,7 +1101,7 @@ begin
         ap_done => grp_commit_fu_564_ap_done,
         ap_idle => grp_commit_fu_564_ap_idle,
         ap_ready => grp_commit_fu_564_ap_ready,
-        commit_time => commit_time_stream_read_reg_1117,
+        commit_time => tmp_17_reg_1117,
         event_queue_buffer_event_recv_time_V_address0 => grp_commit_fu_564_event_queue_buffer_event_recv_time_V_address0,
         event_queue_buffer_event_recv_time_V_ce0 => grp_commit_fu_564_event_queue_buffer_event_recv_time_V_ce0,
         event_queue_buffer_event_recv_time_V_q0 => event_queue_buffer_event_recv_time_V_q0,
@@ -1203,7 +1205,7 @@ begin
             if (ap_rst = '1') then
                 grp_commit_fu_564_ap_start_reg <= ap_const_logic_0;
             else
-                if (((commit_time_stream_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+                if (((event_queue_commit_time_stream15_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
                     grp_commit_fu_564_ap_start_reg <= ap_const_logic_1;
                 elsif ((grp_commit_fu_564_ap_ready = ap_const_logic_1)) then 
                     grp_commit_fu_564_ap_start_reg <= ap_const_logic_0;
@@ -1235,7 +1237,7 @@ begin
             if (ap_rst = '1') then
                 grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= ap_const_logic_0;
             else
-                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
                     grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= ap_const_logic_1;
                 elsif ((grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_ready = ap_const_logic_1)) then 
                     grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= ap_const_logic_0;
@@ -1261,13 +1263,13 @@ begin
     end process;
 
 
-    current_V_5_fu_140_assign_proc : process (ap_clk)
+    current_V_8_fu_140_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state12)) then 
-                current_V_5_fu_140 <= event_queue_lp_oldest_unissued_V_q0;
+                current_V_8_fu_140 <= event_queue_lp_oldest_unissued_V_q0;
             elsif ((((xor_ln1069_fu_927_p2 = ap_const_lv1_0) and (icmp_ln1065_8_reg_1284 = ap_const_lv1_1) and (icmp_ln1065_7_reg_1280 = ap_const_lv1_1) and (icmp_ln1065_6_reg_1276 = ap_const_lv1_1) and (icmp_ln1065_4_reg_1272 = ap_const_lv1_1) and (icmp_ln1065_2_reg_1268 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state19)) or ((ap_const_logic_1 = ap_CS_fsm_state19) and ((icmp_ln1065_2_reg_1268 = ap_const_lv1_0) or ((icmp_ln1065_4_reg_1272 = ap_const_lv1_0) or ((icmp_ln1065_6_reg_1276 = ap_const_lv1_0) or ((icmp_ln1065_8_reg_1284 = ap_const_lv1_0) or (icmp_ln1065_7_reg_1280 = ap_const_lv1_0)))))))) then 
-                current_V_5_fu_140 <= event_queue_buffer_next_V_q0;
+                current_V_8_fu_140 <= event_queue_buffer_next_V_q0;
             end if; 
         end if;
     end process;
@@ -1275,8 +1277,8 @@ begin
     event_queue_free_head_V_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
-                event_queue_free_head_V <= current_V_9_reg_1216;
+            if (((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
+                event_queue_free_head_V <= current_V_11_reg_1216;
             elsif (((grp_commit_fu_564_event_queue_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
                 event_queue_free_head_V <= grp_commit_fu_564_event_queue_free_head_V_o;
             elsif ((((grp_enqueue_fu_522_event_queue_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state10)) or ((grp_enqueue_fu_522_event_queue_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state23)))) then 
@@ -1288,7 +1290,7 @@ begin
     event_queue_size_V_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
+            if (((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
                 event_queue_size_V <= add_ln887_2_fu_972_p2;
             elsif (((grp_commit_fu_564_event_queue_size_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
                 event_queue_size_V <= grp_commit_fu_564_event_queue_size_V_o;
@@ -1301,7 +1303,7 @@ begin
     event_queue_unissued_size_V_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
+            if ((((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
                 event_queue_unissued_size_V <= grp_fu_610_p2;
             elsif (((grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_unissued_size_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state22))) then 
                 event_queue_unissued_size_V <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_unissued_size_V_o;
@@ -1313,7 +1315,7 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+            if (((tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                 and_ln77_reg_1002 <= and_ln77_fu_628_p2;
             end if;
         end if;
@@ -1321,8 +1323,9 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((ap_const_logic_1 = ap_CS_fsm_state2)) then
-                commit_time_stream_read_reg_1117 <= commit_time_stream_dout;
+            if ((ap_const_logic_1 = ap_CS_fsm_state13)) then
+                current_V_11_reg_1216 <= current_V_8_fu_140;
+                icmp_ln1069_reg_1223 <= icmp_ln1069_fu_886_p2;
             end if;
         end if;
     end process;
@@ -1330,17 +1333,8 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state12)) then
-                current_V_8_reg_1204 <= event_queue_lp_oldest_unissued_V_q0;
+                current_V_9_reg_1204 <= event_queue_lp_oldest_unissued_V_q0;
                 prev_V_reg_1209 <= event_queue_lp_youngest_issued_V_q0;
-            end if;
-        end if;
-    end process;
-    process (ap_clk)
-    begin
-        if (ap_clk'event and ap_clk = '1') then
-            if ((ap_const_logic_1 = ap_CS_fsm_state13)) then
-                current_V_9_reg_1216 <= current_V_5_fu_140;
-                icmp_ln1069_reg_1223 <= icmp_ln1069_fu_886_p2;
             end if;
         end if;
     end process;
@@ -1377,7 +1371,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((icmp_ln1065_8_fu_917_p2 = ap_const_lv1_1) and (icmp_ln1065_7_reg_1280 = ap_const_lv1_1) and (icmp_ln1065_6_reg_1276 = ap_const_lv1_1) and (icmp_ln1065_4_reg_1272 = ap_const_lv1_1) and (icmp_ln1065_2_reg_1268 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state18))) then
-                event_queue_buffer_next_V_addr_2_reg_1293 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
+                event_queue_buffer_next_V_addr_2_reg_1293 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
             end if;
         end if;
     end process;
@@ -1385,15 +1379,15 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state6)) then
-                event_queue_lp_oldest_unissued_V_addr_1_reg_1131 <= zext_ln587_5_fu_786_p1(2 - 1 downto 0);
-                    zext_ln587_5_reg_1125(1 downto 0) <= zext_ln587_5_fu_786_p1(1 downto 0);
+                event_queue_lp_oldest_unissued_V_addr_1_reg_1131 <= zext_ln587_7_fu_786_p1(2 - 1 downto 0);
+                    zext_ln587_7_reg_1125(1 downto 0) <= zext_ln587_7_fu_786_p1(1 downto 0);
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+            if (((tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                 event_queue_lp_oldest_unissued_V_addr_reg_1062 <= zext_ln587_fu_698_p1(2 - 1 downto 0);
                 tmp_data_V_reg_1046 <= anti_message_stream_dout(95 downto 64);
                 tmp_is_anti_message_V_reg_1036 <= anti_message_stream_dout(128 downto 128);
@@ -1418,17 +1412,17 @@ begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state14)) then
                 icmp_ln1065_2_reg_1268 <= icmp_ln1065_2_fu_897_p2;
-                this_data_V_reg_1248 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
-                this_is_anti_message_V_reg_1263 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
-                this_receiver_id_V_reg_1258 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
-                this_sender_id_V_reg_1253 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
+                this_data_V_reg_1248 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
+                this_is_anti_message_V_reg_1263 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
+                this_receiver_id_V_reg_1258 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
+                this_sender_id_V_reg_1253 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+            if (((tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                 icmp_ln1065_3_reg_1014 <= icmp_ln1065_3_fu_634_p2;
             end if;
         end if;
@@ -1481,24 +1475,32 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
+            if ((ap_const_logic_1 = ap_CS_fsm_state2)) then
+                tmp_17_reg_1117 <= event_queue_commit_time_stream15_dout;
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                tmp_1_reg_1006 <= (0=>issued_event_stream_full_n, others=>'-');
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                tmp_3_reg_1010 <= tmp_3_nbreadreq_fu_184_p3;
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
             if (((tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                tmp_1_reg_998 <= tmp_1_nbreadreq_fu_160_p3;
-            end if;
-        end if;
-    end process;
-    process (ap_clk)
-    begin
-        if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                tmp_3_reg_1006 <= (0=>issued_event_stream_full_n, others=>'-');
-            end if;
-        end if;
-    end process;
-    process (ap_clk)
-    begin
-        if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                tmp_4_reg_1010 <= tmp_4_nbreadreq_fu_184_p3;
+                tmp_6_reg_998 <= tmp_6_nbreadreq_fu_160_p3;
             end if;
         end if;
     end process;
@@ -1531,29 +1533,29 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((icmp_ln1069_fu_886_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state13))) then
-                    zext_ln587_4_reg_1227(15 downto 0) <= zext_ln587_4_fu_892_p1(15 downto 0);
+                    zext_ln587_6_reg_1227(15 downto 0) <= zext_ln587_6_fu_892_p1(15 downto 0);
             end if;
         end if;
     end process;
     zext_ln587_reg_1056(63 downto 16) <= "000000000000000000000000000000000000000000000000";
-    zext_ln587_5_reg_1125(63 downto 2) <= "00000000000000000000000000000000000000000000000000000000000000";
-    zext_ln587_4_reg_1227(63 downto 16) <= "000000000000000000000000000000000000000000000000";
+    zext_ln587_7_reg_1125(63 downto 2) <= "00000000000000000000000000000000000000000000000000000000000000";
+    zext_ln587_6_reg_1227(63 downto 16) <= "000000000000000000000000000000000000000000000000";
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_full_stream_full_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, enqueue_event_stream_empty_n, commit_time_stream_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, ap_CS_fsm_state11, grp_fu_616_p2, ap_CS_fsm_state4, tmp_s_nbreadreq_fu_152_p3, tmp_1_nbreadreq_fu_160_p3, ap_CS_fsm_state9, ap_CS_fsm_state2, ap_CS_fsm_state8, and_ln77_fu_628_p2, tmp_3_nbwritereq_fu_176_p3, tmp_4_nbreadreq_fu_184_p3, icmp_ln1065_3_fu_634_p2, ap_CS_fsm_state13, icmp_ln1069_fu_886_p2, ap_CS_fsm_state14, icmp_ln1065_2_fu_897_p2, icmp_ln1065_2_reg_1268, icmp_ln1065_4_fu_902_p2, icmp_ln1065_4_reg_1272, ap_CS_fsm_state15, icmp_ln1065_6_fu_907_p2, icmp_ln1065_6_reg_1276, ap_CS_fsm_state16, icmp_ln1065_7_reg_1280, icmp_ln1065_8_reg_1284, ap_CS_fsm_state19, xor_ln1069_fu_927_p2, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_done, grp_enqueue_fu_522_ap_done, grp_commit_fu_564_ap_done, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_ap_done, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, ap_predicate_op89_write_state4, ap_predicate_op129_write_state8)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_full_stream_full_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, enqueue_event_stream_empty_n, event_queue_commit_time_stream15_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, ap_CS_fsm_state11, grp_fu_616_p2, ap_CS_fsm_state4, tmp_s_nbreadreq_fu_152_p3, tmp_6_nbreadreq_fu_160_p3, ap_CS_fsm_state9, ap_CS_fsm_state2, ap_CS_fsm_state8, and_ln77_fu_628_p2, tmp_1_nbwritereq_fu_176_p3, tmp_3_nbreadreq_fu_184_p3, icmp_ln1065_3_fu_634_p2, ap_CS_fsm_state13, icmp_ln1069_fu_886_p2, ap_CS_fsm_state14, icmp_ln1065_2_fu_897_p2, icmp_ln1065_2_reg_1268, icmp_ln1065_4_fu_902_p2, icmp_ln1065_4_reg_1272, ap_CS_fsm_state15, icmp_ln1065_6_fu_907_p2, icmp_ln1065_6_reg_1276, ap_CS_fsm_state16, icmp_ln1065_7_reg_1280, icmp_ln1065_8_reg_1284, ap_CS_fsm_state19, xor_ln1069_fu_927_p2, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_done, grp_enqueue_fu_522_ap_done, grp_commit_fu_564_ap_done, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_ap_done, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, ap_predicate_op89_write_state4, ap_predicate_op129_write_state8)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
-                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_1) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_1) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state8;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (icmp_ln1065_3_fu_634_p2 = ap_const_lv1_0) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_1) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state5;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_4_nbreadreq_fu_184_p3 = ap_const_lv1_0) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_3_nbreadreq_fu_184_p3 = ap_const_lv1_0) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state4;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_4_nbreadreq_fu_184_p3 = ap_const_lv1_1) and (tmp_3_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_3_nbreadreq_fu_184_p3 = ap_const_lv1_1) and (tmp_1_nbwritereq_fu_176_p3 = ap_const_lv1_0) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_0 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_1 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_0) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (ap_const_lv1_1 = and_ln77_fu_628_p2) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state9;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state12;
                 elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state21;
@@ -1563,7 +1565,7 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if (((commit_time_stream_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                if (((event_queue_commit_time_stream15_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state2;
@@ -1671,11 +1673,11 @@ begin
         end case;
     end process;
     add_ln887_2_fu_972_p2 <= std_logic_vector(unsigned(event_queue_size_V) + unsigned(ap_const_lv16_FFFF));
-    and_ln77_fu_628_p2 <= (tmp_2_nbreadreq_fu_168_p3 and icmp_ln1065_fu_622_p2);
+    and_ln77_fu_628_p2 <= (tmp_7_nbreadreq_fu_168_p3 and icmp_ln1065_fu_622_p2);
 
-    anti_message_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, anti_message_stream_empty_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_1_nbreadreq_fu_160_p3)
+    anti_message_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, anti_message_stream_empty_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_6_nbreadreq_fu_160_p3)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             anti_message_stream_blk_n <= anti_message_stream_empty_n;
         else 
             anti_message_stream_blk_n <= ap_const_logic_1;
@@ -1776,9 +1778,9 @@ begin
     end process;
 
 
-    ap_ST_fsm_state2_blk_assign_proc : process(commit_time_stream_empty_n)
+    ap_ST_fsm_state2_blk_assign_proc : process(event_queue_commit_time_stream15_empty_n)
     begin
-        if ((commit_time_stream_empty_n = ap_const_logic_0)) then 
+        if ((event_queue_commit_time_stream15_empty_n = ap_const_logic_0)) then 
             ap_ST_fsm_state2_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state2_blk <= ap_const_logic_0;
@@ -1894,15 +1896,15 @@ begin
     end process;
 
 
-    ap_predicate_op129_write_state8_assign_proc : process(and_ln77_reg_1002, tmp_3_reg_1006, icmp_ln1065_3_reg_1014)
+    ap_predicate_op129_write_state8_assign_proc : process(and_ln77_reg_1002, tmp_1_reg_1006, icmp_ln1065_3_reg_1014)
     begin
-                ap_predicate_op129_write_state8 <= ((icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_3_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002));
+                ap_predicate_op129_write_state8 <= ((icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_1_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002));
     end process;
 
 
-    ap_predicate_op55_read_state1_assign_proc : process(tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_1_nbreadreq_fu_160_p3)
+    ap_predicate_op55_read_state1_assign_proc : process(tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_6_nbreadreq_fu_160_p3)
     begin
-                ap_predicate_op55_read_state1 <= ((tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0));
+                ap_predicate_op55_read_state1 <= ((tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0));
     end process;
 
 
@@ -1912,9 +1914,9 @@ begin
     end process;
 
 
-    ap_predicate_op89_write_state4_assign_proc : process(grp_fu_616_p2, tmp_4_reg_1010)
+    ap_predicate_op89_write_state4_assign_proc : process(grp_fu_616_p2, tmp_3_reg_1010)
     begin
-                ap_predicate_op89_write_state4 <= ((tmp_4_reg_1010 = ap_const_lv1_1) and (grp_fu_616_p2 = ap_const_lv1_0));
+                ap_predicate_op89_write_state4 <= ((tmp_3_reg_1010 = ap_const_lv1_1) and (grp_fu_616_p2 = ap_const_lv1_0));
     end process;
 
 
@@ -1939,26 +1941,6 @@ begin
     end process;
 
 
-    commit_time_stream_blk_n_assign_proc : process(commit_time_stream_empty_n, ap_CS_fsm_state2)
-    begin
-        if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            commit_time_stream_blk_n <= commit_time_stream_empty_n;
-        else 
-            commit_time_stream_blk_n <= ap_const_logic_1;
-        end if; 
-    end process;
-
-
-    commit_time_stream_read_assign_proc : process(commit_time_stream_empty_n, ap_CS_fsm_state2)
-    begin
-        if (((commit_time_stream_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
-            commit_time_stream_read <= ap_const_logic_1;
-        else 
-            commit_time_stream_read <= ap_const_logic_0;
-        end if; 
-    end process;
-
-
     enqueue_event_stream_blk_n_assign_proc : process(enqueue_event_stream_empty_n, ap_CS_fsm_state9)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state9)) then 
@@ -1979,12 +1961,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_data_V_address0_assign_proc : process(ap_CS_fsm_state7, this_data_V_reg_1248, ap_CS_fsm_state15, grp_enqueue_fu_522_event_queue_buffer_event_data_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_data_V_address0_assign_proc : process(ap_CS_fsm_state7, this_data_V_reg_1248, ap_CS_fsm_state15, grp_enqueue_fu_522_event_queue_buffer_event_data_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state15)) then 
             event_queue_buffer_event_data_V_address0 <= this_data_V_reg_1248;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_data_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_data_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
             event_queue_buffer_event_data_V_address0 <= grp_enqueue_fu_522_event_queue_buffer_event_data_V_address0;
         else 
@@ -2015,12 +1997,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_is_anti_message_V_address0_assign_proc : process(ap_CS_fsm_state7, this_is_anti_message_V_reg_1263, ap_CS_fsm_state18, grp_enqueue_fu_522_event_queue_buffer_event_is_anti_message_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_is_anti_message_V_address0_assign_proc : process(ap_CS_fsm_state7, this_is_anti_message_V_reg_1263, ap_CS_fsm_state18, grp_enqueue_fu_522_event_queue_buffer_event_is_anti_message_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state18)) then 
             event_queue_buffer_event_is_anti_message_V_address0 <= this_is_anti_message_V_reg_1263;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_is_anti_message_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_is_anti_message_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
             event_queue_buffer_event_is_anti_message_V_address0 <= grp_enqueue_fu_522_event_queue_buffer_event_is_anti_message_V_address0;
         else 
@@ -2051,12 +2033,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_receiver_id_V_address0_assign_proc : process(ap_CS_fsm_state7, this_receiver_id_V_reg_1258, ap_CS_fsm_state17, grp_enqueue_fu_522_event_queue_buffer_event_receiver_id_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_receiver_id_V_address0_assign_proc : process(ap_CS_fsm_state7, this_receiver_id_V_reg_1258, ap_CS_fsm_state17, grp_enqueue_fu_522_event_queue_buffer_event_receiver_id_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state17)) then 
             event_queue_buffer_event_receiver_id_V_address0 <= this_receiver_id_V_reg_1258;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_receiver_id_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_receiver_id_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
             event_queue_buffer_event_receiver_id_V_address0 <= grp_enqueue_fu_522_event_queue_buffer_event_receiver_id_V_address0;
         else 
@@ -2087,12 +2069,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state7, zext_ln587_4_reg_1227, ap_CS_fsm_state14, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_buffer_event_recv_time_V_address0, grp_enqueue_fu_522_event_queue_buffer_event_recv_time_V_address0, grp_commit_fu_564_event_queue_buffer_event_recv_time_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_event_recv_time_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state7, zext_ln587_6_reg_1227, ap_CS_fsm_state14, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_buffer_event_recv_time_V_address0, grp_enqueue_fu_522_event_queue_buffer_event_recv_time_V_address0, grp_commit_fu_564_event_queue_buffer_event_recv_time_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_event_recv_time_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state14)) then 
-            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
+            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_recv_time_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_buffer_event_recv_time_V_address0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_event_recv_time_V_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
@@ -2145,12 +2127,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_send_time_V_address0_assign_proc : process(ap_CS_fsm_state7, ap_CS_fsm_state13, zext_ln587_4_fu_892_p1, grp_enqueue_fu_522_event_queue_buffer_event_send_time_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_send_time_V_address0_assign_proc : process(ap_CS_fsm_state7, ap_CS_fsm_state13, zext_ln587_6_fu_892_p1, grp_enqueue_fu_522_event_queue_buffer_event_send_time_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state13)) then 
-            event_queue_buffer_event_send_time_V_address0 <= zext_ln587_4_fu_892_p1(7 - 1 downto 0);
+            event_queue_buffer_event_send_time_V_address0 <= zext_ln587_6_fu_892_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_send_time_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_send_time_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
             event_queue_buffer_event_send_time_V_address0 <= grp_enqueue_fu_522_event_queue_buffer_event_send_time_V_address0;
         else 
@@ -2181,12 +2163,12 @@ begin
     end process;
 
 
-    event_queue_buffer_event_sender_id_V_address0_assign_proc : process(ap_CS_fsm_state7, this_sender_id_V_reg_1253, ap_CS_fsm_state16, grp_enqueue_fu_522_event_queue_buffer_event_sender_id_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_event_sender_id_V_address0_assign_proc : process(ap_CS_fsm_state7, this_sender_id_V_reg_1253, ap_CS_fsm_state16, grp_enqueue_fu_522_event_queue_buffer_event_sender_id_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state16)) then 
             event_queue_buffer_event_sender_id_V_address0 <= this_sender_id_V_reg_1253;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_event_sender_id_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_event_sender_id_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
             event_queue_buffer_event_sender_id_V_address0 <= grp_enqueue_fu_522_event_queue_buffer_event_sender_id_V_address0;
         else 
@@ -2217,10 +2199,10 @@ begin
     end process;
 
 
-    event_queue_buffer_is_issued_V_address0_assign_proc : process(ap_CS_fsm_state7, grp_enqueue_fu_522_event_queue_buffer_is_issued_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_is_issued_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, zext_ln587_6_fu_791_p1)
+    event_queue_buffer_is_issued_V_address0_assign_proc : process(ap_CS_fsm_state7, grp_enqueue_fu_522_event_queue_buffer_is_issued_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_is_issued_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, zext_ln587_8_fu_791_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_is_issued_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_is_issued_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_buffer_is_issued_V_address0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_is_issued_V_address0;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
@@ -2272,20 +2254,20 @@ begin
         end if; 
     end process;
 
-    event_queue_buffer_next_V_addr_2_gep_fu_474_p3 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
+    event_queue_buffer_next_V_addr_2_gep_fu_474_p3 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
 
-    event_queue_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state7, zext_ln587_4_reg_1227, icmp_ln1065_2_reg_1268, icmp_ln1065_4_reg_1272, icmp_ln1065_6_reg_1276, icmp_ln1065_7_reg_1280, icmp_ln1065_8_fu_917_p2, ap_CS_fsm_state18, event_queue_buffer_next_V_addr_2_gep_fu_474_p3, event_queue_buffer_next_V_addr_2_reg_1293, ap_CS_fsm_state19, grp_enqueue_fu_522_event_queue_buffer_next_V_address0, grp_commit_fu_564_event_queue_buffer_next_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_next_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, zext_ln587_6_fu_791_p1, zext_ln587_7_fu_942_p1, ap_CS_fsm_state20)
+    event_queue_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state7, zext_ln587_6_reg_1227, icmp_ln1065_2_reg_1268, icmp_ln1065_4_reg_1272, icmp_ln1065_6_reg_1276, icmp_ln1065_7_reg_1280, icmp_ln1065_8_fu_917_p2, ap_CS_fsm_state18, event_queue_buffer_next_V_addr_2_gep_fu_474_p3, event_queue_buffer_next_V_addr_2_reg_1293, ap_CS_fsm_state19, grp_enqueue_fu_522_event_queue_buffer_next_V_address0, grp_commit_fu_564_event_queue_buffer_next_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_next_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state22, zext_ln587_8_fu_791_p1, zext_ln587_9_fu_942_p1, ap_CS_fsm_state20)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state20)) then 
             event_queue_buffer_next_V_address0 <= event_queue_buffer_next_V_addr_2_reg_1293;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state19)) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_7_fu_942_p1(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_9_fu_942_p1(7 - 1 downto 0);
         elsif (((icmp_ln1065_8_fu_917_p2 = ap_const_lv1_1) and (icmp_ln1065_7_reg_1280 = ap_const_lv1_1) and (icmp_ln1065_6_reg_1276 = ap_const_lv1_1) and (icmp_ln1065_4_reg_1272 = ap_const_lv1_1) and (icmp_ln1065_2_reg_1268 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state18))) then 
             event_queue_buffer_next_V_address0 <= event_queue_buffer_next_V_addr_2_gep_fu_474_p3;
         elsif (((ap_const_logic_1 = ap_CS_fsm_state18) and ((icmp_ln1065_2_reg_1268 = ap_const_lv1_0) or ((icmp_ln1065_4_reg_1272 = ap_const_lv1_0) or ((icmp_ln1065_6_reg_1276 = ap_const_lv1_0) or ((icmp_ln1065_8_fu_917_p2 = ap_const_lv1_0) or (icmp_ln1065_7_reg_1280 = ap_const_lv1_0))))))) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_4_reg_1227(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_6_reg_1227(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_buffer_next_V_address0 <= zext_ln587_6_fu_791_p1(7 - 1 downto 0);
+            event_queue_buffer_next_V_address0 <= zext_ln587_8_fu_791_p1(7 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_buffer_next_V_address0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_next_V_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
@@ -2330,9 +2312,9 @@ begin
     end process;
 
 
-    event_queue_buffer_next_V_we0_assign_proc : process(tmp_reg_990, tmp_s_reg_994, tmp_1_reg_998, icmp_ln1069_reg_1223, icmp_ln1065_2_reg_1268, icmp_ln1065_4_reg_1272, icmp_ln1065_6_reg_1276, icmp_ln1065_7_reg_1280, icmp_ln1065_8_reg_1284, ap_CS_fsm_state19, xor_ln1069_fu_927_p2, grp_enqueue_fu_522_event_queue_buffer_next_V_we0, grp_commit_fu_564_event_queue_buffer_next_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, icmp_ln1069_1_fu_937_p2, ap_CS_fsm_state20)
+    event_queue_buffer_next_V_we0_assign_proc : process(tmp_reg_990, tmp_s_reg_994, tmp_6_reg_998, icmp_ln1069_reg_1223, icmp_ln1065_2_reg_1268, icmp_ln1065_4_reg_1272, icmp_ln1065_6_reg_1276, icmp_ln1065_7_reg_1280, icmp_ln1065_8_reg_1284, ap_CS_fsm_state19, xor_ln1069_fu_927_p2, grp_enqueue_fu_522_event_queue_buffer_next_V_we0, grp_commit_fu_564_event_queue_buffer_next_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, icmp_ln1069_1_fu_937_p2, ap_CS_fsm_state20)
     begin
-        if ((((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or ((icmp_ln1069_1_fu_937_p2 = ap_const_lv1_0) and (xor_ln1069_fu_927_p2 = ap_const_lv1_1) and (icmp_ln1065_8_reg_1284 = ap_const_lv1_1) and (icmp_ln1065_7_reg_1280 = ap_const_lv1_1) and (icmp_ln1065_6_reg_1276 = ap_const_lv1_1) and (icmp_ln1065_4_reg_1272 = ap_const_lv1_1) and (icmp_ln1065_2_reg_1268 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state19)))) then 
+        if ((((icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or ((icmp_ln1069_1_fu_937_p2 = ap_const_lv1_0) and (xor_ln1069_fu_927_p2 = ap_const_lv1_1) and (icmp_ln1065_8_reg_1284 = ap_const_lv1_1) and (icmp_ln1065_7_reg_1280 = ap_const_lv1_1) and (icmp_ln1065_6_reg_1276 = ap_const_lv1_1) and (icmp_ln1065_4_reg_1272 = ap_const_lv1_1) and (icmp_ln1065_2_reg_1268 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state19)))) then 
             event_queue_buffer_next_V_we0 <= ap_const_logic_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
             event_queue_buffer_next_V_we0 <= grp_commit_fu_564_event_queue_buffer_next_V_we0;
@@ -2344,9 +2326,29 @@ begin
     end process;
 
 
-    event_queue_full_stream_blk_n_assign_proc : process(event_queue_full_stream_full_n, ap_CS_fsm_state11, grp_fu_616_p2, ap_CS_fsm_state4, tmp_4_reg_1010)
+    event_queue_commit_time_stream15_blk_n_assign_proc : process(event_queue_commit_time_stream15_empty_n, ap_CS_fsm_state2)
     begin
-        if ((((tmp_4_reg_1010 = ap_const_lv1_1) and (grp_fu_616_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state4)) or ((grp_fu_616_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state11)))) then 
+        if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
+            event_queue_commit_time_stream15_blk_n <= event_queue_commit_time_stream15_empty_n;
+        else 
+            event_queue_commit_time_stream15_blk_n <= ap_const_logic_1;
+        end if; 
+    end process;
+
+
+    event_queue_commit_time_stream15_read_assign_proc : process(event_queue_commit_time_stream15_empty_n, ap_CS_fsm_state2)
+    begin
+        if (((event_queue_commit_time_stream15_empty_n = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+            event_queue_commit_time_stream15_read <= ap_const_logic_1;
+        else 
+            event_queue_commit_time_stream15_read <= ap_const_logic_0;
+        end if; 
+    end process;
+
+
+    event_queue_full_stream_blk_n_assign_proc : process(event_queue_full_stream_full_n, ap_CS_fsm_state11, grp_fu_616_p2, ap_CS_fsm_state4, tmp_3_reg_1010)
+    begin
+        if ((((tmp_3_reg_1010 = ap_const_lv1_1) and (grp_fu_616_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state4)) or ((grp_fu_616_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state11)))) then 
             event_queue_full_stream_blk_n <= event_queue_full_stream_full_n;
         else 
             event_queue_full_stream_blk_n <= ap_const_logic_1;
@@ -2444,15 +2446,15 @@ begin
     end process;
 
 
-    event_queue_lp_oldest_unissued_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_1_nbreadreq_fu_160_p3, ap_CS_fsm_state8, zext_ln587_fu_698_p1, event_queue_lp_oldest_unissued_V_addr_reg_1062, zext_ln587_5_fu_786_p1, ap_CS_fsm_state6, event_queue_lp_oldest_unissued_V_addr_1_reg_1131, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_lp_oldest_unissued_V_address0, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20)
+    event_queue_lp_oldest_unissued_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_6_nbreadreq_fu_160_p3, ap_CS_fsm_state8, zext_ln587_fu_698_p1, event_queue_lp_oldest_unissued_V_addr_reg_1062, zext_ln587_7_fu_786_p1, ap_CS_fsm_state6, event_queue_lp_oldest_unissued_V_addr_1_reg_1131, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_lp_oldest_unissued_V_address0, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_address0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state20)) then 
             event_queue_lp_oldest_unissued_V_address0 <= event_queue_lp_oldest_unissued_V_addr_reg_1062;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
             event_queue_lp_oldest_unissued_V_address0 <= event_queue_lp_oldest_unissued_V_addr_1_reg_1131;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            event_queue_lp_oldest_unissued_V_address0 <= zext_ln587_5_fu_786_p1(2 - 1 downto 0);
-        elsif (((tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+            event_queue_lp_oldest_unissued_V_address0 <= zext_ln587_7_fu_786_p1(2 - 1 downto 0);
+        elsif (((tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             event_queue_lp_oldest_unissued_V_address0 <= zext_ln587_fu_698_p1(2 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_lp_oldest_unissued_V_address0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_address0;
@@ -2466,9 +2468,9 @@ begin
     end process;
 
 
-    event_queue_lp_oldest_unissued_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_1_nbreadreq_fu_160_p3, ap_CS_fsm_state8, ap_CS_fsm_state6, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_lp_oldest_unissued_V_ce0, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_ce0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_ce0, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20, ap_predicate_op129_write_state8)
+    event_queue_lp_oldest_unissued_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, tmp_6_nbreadreq_fu_160_p3, ap_CS_fsm_state8, ap_CS_fsm_state6, grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_event_queue_lp_oldest_unissued_V_ce0, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_ce0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_ce0, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_CS_fsm_state5, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20, ap_predicate_op129_write_state8)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state20) or (ap_const_logic_1 = ap_CS_fsm_state6) or (not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state8)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_1_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state20) or (ap_const_logic_1 = ap_CS_fsm_state6) or (not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state8)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_6_nbreadreq_fu_160_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
             event_queue_lp_oldest_unissued_V_ce0 <= ap_const_logic_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_lp_oldest_unissued_V_ce0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_ce0;
@@ -2498,9 +2500,9 @@ begin
     end process;
 
 
-    event_queue_lp_oldest_unissued_V_we0_assign_proc : process(issued_event_stream_full_n, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_3_reg_1006, icmp_ln1065_3_reg_1014, tmp_reg_990, tmp_s_reg_994, tmp_1_reg_998, icmp_ln1069_reg_1223, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_we0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20, ap_predicate_op129_write_state8, icmp_ln1065_10_fu_962_p2)
+    event_queue_lp_oldest_unissued_V_we0_assign_proc : process(issued_event_stream_full_n, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_1_reg_1006, icmp_ln1065_3_reg_1014, tmp_reg_990, tmp_s_reg_994, tmp_6_reg_998, icmp_ln1069_reg_1223, grp_enqueue_fu_522_event_queue_lp_oldest_unissued_V_we0, grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state22, ap_CS_fsm_state20, ap_predicate_op129_write_state8, icmp_ln1065_10_fu_962_p2)
     begin
-        if ((((icmp_ln1065_10_fu_962_p2 = ap_const_lv1_1) and (icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or (not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_3_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8)))) then 
+        if ((((icmp_ln1065_10_fu_962_p2 = ap_const_lv1_1) and (icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20)) or (not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_1_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8)))) then 
             event_queue_lp_oldest_unissued_V_we0 <= ap_const_logic_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state22)) then 
             event_queue_lp_oldest_unissued_V_we0 <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_we0;
@@ -2556,9 +2558,9 @@ begin
     end process;
 
 
-    event_queue_lp_tails_V_we0_assign_proc : process(tmp_reg_990, tmp_s_reg_994, tmp_1_reg_998, icmp_ln1069_reg_1223, grp_enqueue_fu_522_event_queue_lp_tails_V_we0, grp_commit_fu_564_event_queue_lp_tails_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state20, icmp_ln1065_9_fu_946_p2)
+    event_queue_lp_tails_V_we0_assign_proc : process(tmp_reg_990, tmp_s_reg_994, tmp_6_reg_998, icmp_ln1069_reg_1223, grp_enqueue_fu_522_event_queue_lp_tails_V_we0, grp_commit_fu_564_event_queue_lp_tails_V_we0, ap_CS_fsm_state23, ap_CS_fsm_state10, ap_CS_fsm_state3, ap_CS_fsm_state20, icmp_ln1065_9_fu_946_p2)
     begin
-        if (((icmp_ln1065_9_fu_946_p2 = ap_const_lv1_1) and (icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_1_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
+        if (((icmp_ln1065_9_fu_946_p2 = ap_const_lv1_1) and (icmp_ln1069_reg_1223 = ap_const_lv1_0) and (tmp_6_reg_998 = ap_const_lv1_1) and (tmp_s_reg_994 = ap_const_lv1_0) and (tmp_reg_990 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state20))) then 
             event_queue_lp_tails_V_we0 <= ap_const_logic_1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
             event_queue_lp_tails_V_we0 <= grp_commit_fu_564_event_queue_lp_tails_V_we0;
@@ -2570,10 +2572,10 @@ begin
     end process;
 
 
-    event_queue_lp_youngest_issued_V_address0_assign_proc : process(ap_CS_fsm_state1, zext_ln587_fu_698_p1, zext_ln587_5_reg_1125, ap_CS_fsm_state7, grp_commit_fu_564_event_queue_lp_youngest_issued_V_address0, ap_CS_fsm_state3)
+    event_queue_lp_youngest_issued_V_address0_assign_proc : process(ap_CS_fsm_state1, zext_ln587_fu_698_p1, zext_ln587_7_reg_1125, ap_CS_fsm_state7, grp_commit_fu_564_event_queue_lp_youngest_issued_V_address0, ap_CS_fsm_state3)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-            event_queue_lp_youngest_issued_V_address0 <= zext_ln587_5_reg_1125(2 - 1 downto 0);
+            event_queue_lp_youngest_issued_V_address0 <= zext_ln587_7_reg_1125(2 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
             event_queue_lp_youngest_issued_V_address0 <= zext_ln587_fu_698_p1(2 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
@@ -2620,10 +2622,10 @@ begin
     end process;
 
 
-    event_queue_lvt_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, ap_CS_fsm_state8, zext_ln587_5_reg_1125, grp_enqueue_fu_522_event_queue_lvt_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln145_fu_719_p1)
+    event_queue_lvt_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, ap_CS_fsm_state8, zext_ln587_7_reg_1125, grp_enqueue_fu_522_event_queue_lvt_V_address0, ap_CS_fsm_state23, ap_CS_fsm_state10, zext_ln145_fu_719_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            event_queue_lvt_V_address0 <= zext_ln587_5_reg_1125(2 - 1 downto 0);
+            event_queue_lvt_V_address0 <= zext_ln587_7_reg_1125(2 - 1 downto 0);
         elsif (((tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             event_queue_lvt_V_address0 <= zext_ln145_fu_719_p1(2 - 1 downto 0);
         elsif (((ap_const_logic_1 = ap_CS_fsm_state10) or (ap_const_logic_1 = ap_CS_fsm_state23))) then 
@@ -2658,9 +2660,9 @@ begin
     end process;
 
 
-    event_queue_lvt_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_3_reg_1006, icmp_ln1065_3_reg_1014, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_predicate_op129_write_state8)
+    event_queue_lvt_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, init_event_stream_empty_n, event_queue_rollback_info_stream_empty_n, anti_message_stream_empty_n, issued_event_stream_full_n, tmp_nbreadreq_fu_144_p3, tmp_s_nbreadreq_fu_152_p3, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_1_reg_1006, icmp_ln1065_3_reg_1014, ap_predicate_op55_read_state1, ap_predicate_op67_read_state1, ap_predicate_op129_write_state8)
     begin
-        if (((not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_3_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
+        if (((not(((ap_predicate_op129_write_state8 = ap_const_boolean_1) and (issued_event_stream_full_n = ap_const_logic_0))) and (icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_1_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((init_event_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_1)) or ((ap_predicate_op67_read_state1 = ap_const_boolean_1) and (event_queue_rollback_info_stream_empty_n = ap_const_logic_0)) or ((ap_predicate_op55_read_state1 = ap_const_boolean_1) and (ap_const_logic_0 = anti_message_stream_empty_n)))) and (tmp_s_nbreadreq_fu_152_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_144_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
             event_queue_lvt_V_we0 <= ap_const_logic_1;
         else 
             event_queue_lvt_V_we0 <= ap_const_logic_0;
@@ -2766,17 +2768,17 @@ begin
     grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_ap_start <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_ap_start_reg;
     grp_fu_610_p2 <= std_logic_vector(unsigned(event_queue_unissued_size_V) + unsigned(ap_const_lv16_FFFF));
     grp_fu_616_p2 <= "1" when (event_queue_size_V = ap_const_lv16_80) else "0";
-    icmp_ln1065_10_fu_962_p2 <= "1" when (current_V_8_reg_1204 = current_V_9_reg_1216) else "0";
+    icmp_ln1065_10_fu_962_p2 <= "1" when (current_V_9_reg_1204 = current_V_11_reg_1216) else "0";
     icmp_ln1065_2_fu_897_p2 <= "1" when (event_queue_buffer_event_send_time_V_q0 = tmp_recv_time_V_reg_1041) else "0";
     icmp_ln1065_3_fu_634_p2 <= "1" when (event_queue_unissued_size_V = ap_const_lv16_0) else "0";
     icmp_ln1065_4_fu_902_p2 <= "1" when (event_queue_buffer_event_recv_time_V_q0 = tmp_send_time_V_reg_1026) else "0";
     icmp_ln1065_6_fu_907_p2 <= "1" when (event_queue_buffer_event_data_V_q0 = tmp_data_V_reg_1046) else "0";
     icmp_ln1065_7_fu_912_p2 <= "1" when (event_queue_buffer_event_sender_id_V_q0 = tmp_receiver_id_V_reg_1031) else "0";
     icmp_ln1065_8_fu_917_p2 <= "1" when (event_queue_buffer_event_receiver_id_V_q0 = tmp_sender_id_V_reg_1051) else "0";
-    icmp_ln1065_9_fu_946_p2 <= "1" when (current_V_9_reg_1216 = event_queue_lp_tails_V_q0) else "0";
+    icmp_ln1065_9_fu_946_p2 <= "1" when (current_V_11_reg_1216 = event_queue_lp_tails_V_q0) else "0";
     icmp_ln1065_fu_622_p2 <= "0" when (event_queue_size_V = ap_const_lv16_80) else "1";
     icmp_ln1069_1_fu_937_p2 <= "1" when (prev_V_reg_1209 = ap_const_lv16_FFFF) else "0";
-    icmp_ln1069_fu_886_p2 <= "1" when (current_V_5_fu_140 = ap_const_lv16_FFFF) else "0";
+    icmp_ln1069_fu_886_p2 <= "1" when (current_V_8_fu_140 = ap_const_lv16_FFFF) else "0";
     init_event_send_time_V_fu_725_p1 <= init_event_stream_dout(32 - 1 downto 0);
 
     init_event_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, init_event_stream_empty_n, tmp_nbreadreq_fu_144_p3)
@@ -2799,9 +2801,9 @@ begin
     end process;
 
 
-    issued_event_stream_blk_n_assign_proc : process(issued_event_stream_full_n, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_3_reg_1006, icmp_ln1065_3_reg_1014)
+    issued_event_stream_blk_n_assign_proc : process(issued_event_stream_full_n, ap_CS_fsm_state8, and_ln77_reg_1002, tmp_1_reg_1006, icmp_ln1065_3_reg_1014)
     begin
-        if (((icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_3_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8))) then 
+        if (((icmp_ln1065_3_reg_1014 = ap_const_lv1_0) and (tmp_1_reg_1006 = ap_const_lv1_1) and (ap_const_lv1_0 = and_ln77_reg_1002) and (ap_const_logic_1 = ap_CS_fsm_state8))) then 
             issued_event_stream_blk_n <= issued_event_stream_full_n;
         else 
             issued_event_stream_blk_n <= ap_const_logic_1;
@@ -2819,10 +2821,10 @@ begin
         end if; 
     end process;
 
-    tmp_1_nbreadreq_fu_160_p3 <= (0=>(anti_message_stream_empty_n), others=>'-');
-    tmp_2_nbreadreq_fu_168_p3 <= (0=>(enqueue_event_stream_empty_n), others=>'-');
-    tmp_3_nbwritereq_fu_176_p3 <= (0=>issued_event_stream_full_n, others=>'-');
-    tmp_4_nbreadreq_fu_184_p3 <= (0=>(commit_time_stream_empty_n), others=>'-');
+    tmp_1_nbwritereq_fu_176_p3 <= (0=>issued_event_stream_full_n, others=>'-');
+    tmp_3_nbreadreq_fu_184_p3 <= (0=>(event_queue_commit_time_stream15_empty_n), others=>'-');
+    tmp_6_nbreadreq_fu_160_p3 <= (0=>(anti_message_stream_empty_n), others=>'-');
+    tmp_7_nbreadreq_fu_168_p3 <= (0=>(enqueue_event_stream_empty_n), others=>'-');
     tmp_lp_id_V_fu_704_p1 <= event_queue_rollback_info_stream_dout(2 - 1 downto 0);
     tmp_nbreadreq_fu_144_p3 <= (0=>(init_event_stream_empty_n), others=>'-');
     tmp_receiver_id_V_fu_650_p4 <= anti_message_stream_dout(127 downto 112);
@@ -2830,9 +2832,9 @@ begin
     tmp_send_time_V_fu_646_p1 <= anti_message_stream_dout(32 - 1 downto 0);
     xor_ln1069_fu_927_p2 <= (tmp_is_anti_message_V_reg_1036 xor event_queue_buffer_event_is_anti_message_V_q0);
     zext_ln145_fu_719_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_lp_id_V_fu_704_p1),64));
-    zext_ln587_4_fu_892_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(current_V_5_fu_140),64));
-    zext_ln587_5_fu_786_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(earliest_lp_V_loc_fu_136),64));
-    zext_ln587_6_fu_791_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_lp_oldest_unissued_V_q0),64));
-    zext_ln587_7_fu_942_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_reg_1209),64));
+    zext_ln587_6_fu_892_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(current_V_8_fu_140),64));
+    zext_ln587_7_fu_786_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(earliest_lp_V_loc_fu_136),64));
+    zext_ln587_8_fu_791_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_lp_oldest_unissued_V_q0),64));
+    zext_ln587_9_fu_942_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(prev_V_reg_1209),64));
     zext_ln587_fu_698_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_receiver_id_V_fu_650_p4),64));
 end behav;

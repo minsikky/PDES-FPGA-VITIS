@@ -31,8 +31,8 @@
           <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0"/>
         </hw>
       </arg>
-      <arg id="6" access_type="r" src_name="commit_time_stream" src_type="stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;" src_isptr="1" src_bitwidth="32" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="FIFO" hw_name="commit_time_stream" hw_bitwidth="32" hw_size_or_depth="0" hw_kernel_support="false">
+      <arg id="6" access_type="r" src_name="lpcore_commit_time_stream" src_type="stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;" src_isptr="1" src_bitwidth="32" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="FIFO" hw_name="lpcore_commit_time_stream" hw_bitwidth="32" hw_size_or_depth="0" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_fifo" register_option="0"/>
         </hw>
       </arg>

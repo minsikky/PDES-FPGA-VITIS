@@ -244,8 +244,8 @@ reg   [0:0] icmp_ln1065_11_reg_605;
 wire   [0:0] icmp_ln1069_fu_436_p2;
 reg   [0:0] icmp_ln1069_reg_626;
 wire    ap_CS_fsm_state6;
-wire   [63:0] zext_ln587_10_fu_442_p1;
-reg   [63:0] zext_ln587_10_reg_630;
+wire   [63:0] zext_ln587_12_fu_442_p1;
+reg   [63:0] zext_ln587_12_reg_630;
 wire    ap_CS_fsm_state7;
 wire   [0:0] grp_fu_338_p2;
 reg   [15:0] prev_V_load_reg_648;
@@ -257,9 +257,9 @@ reg   [1:0] event_queue_lp_tails_V_addr_1_reg_662;
 wire   [0:0] icmp_ln1065_13_fu_470_p2;
 reg   [0:0] icmp_ln1065_13_reg_667;
 wire    ap_CS_fsm_state9;
-wire   [63:0] zext_ln587_8_fu_388_p1;
-wire   [63:0] zext_ln587_9_fu_412_p1;
-wire   [63:0] zext_ln587_11_fu_460_p1;
+wire   [63:0] zext_ln587_10_fu_388_p1;
+wire   [63:0] zext_ln587_11_fu_412_p1;
+wire   [63:0] zext_ln587_13_fu_460_p1;
 wire   [15:0] zext_ln886_fu_496_p1;
 wire    ap_CS_fsm_state10;
 wire   [15:0] add_ln886_fu_479_p2;
@@ -268,7 +268,7 @@ reg   [15:0] prev_V_1_fu_92;
 wire    ap_CS_fsm_state8;
 reg    ap_block_state2;
 wire   [8:0] tmp_fu_351_p4;
-wire   [7:0] add_ln886_2_fu_491_p2;
+wire   [7:0] add_ln886_3_fu_491_p2;
 reg   [9:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 reg    ap_ST_fsm_state2_blk;
@@ -320,14 +320,14 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_state7) & (((icmp_ln1065_12_fu_454_p2 == 1'd0) & (icmp_ln1069_reg_626 == 1'd1)) | ((icmp_ln1065_12_fu_454_p2 == 1'd0) & (grp_fu_338_p2 == 1'd1))))) begin
-        event_queue_buffer_next_V_addr_5_reg_657 <= zext_ln587_11_fu_460_p1;
+        event_queue_buffer_next_V_addr_5_reg_657 <= zext_ln587_13_fu_460_p1;
         event_queue_lp_tails_V_addr_1_reg_662 <= zext_ln587_reg_549;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        event_queue_buffer_next_V_addr_reg_573 <= zext_ln587_8_fu_388_p1;
+        event_queue_buffer_next_V_addr_reg_573 <= zext_ln587_10_fu_388_p1;
         event_queue_lp_oldest_unissued_V_addr_reg_578 <= zext_ln587_reg_549;
         new_entry_V_reg_565 <= event_queue_free_head_V_i;
     end
@@ -373,7 +373,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((icmp_ln1069_fu_436_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state6))) begin
-        zext_ln587_10_reg_630[15 : 0] <= zext_ln587_10_fu_442_p1[15 : 0];
+        zext_ln587_12_reg_630[15 : 0] <= zext_ln587_12_fu_442_p1[15 : 0];
     end
 end
 
@@ -505,11 +505,11 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state6)) begin
-        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_10_fu_442_p1;
+        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_12_fu_442_p1;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
-        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_9_fu_412_p1;
+        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_11_fu_412_p1;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_8_fu_388_p1;
+        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_10_fu_388_p1;
     end else begin
         event_queue_buffer_event_recv_time_V_address0 = 'bx;
     end
@@ -585,11 +585,11 @@ always @ (*) begin
     end else if (((1'b1 == ap_CS_fsm_state9) | ((1'b1 == ap_CS_fsm_state7) & (((icmp_ln1065_12_fu_454_p2 == 1'd1) & (icmp_ln1069_reg_626 == 1'd1)) | ((icmp_ln1065_12_fu_454_p2 == 1'd1) & (grp_fu_338_p2 == 1'd1)))))) begin
         event_queue_buffer_next_V_address0 = event_queue_buffer_next_V_addr_reg_573;
     end else if (((1'b1 == ap_CS_fsm_state7) & (((icmp_ln1065_12_fu_454_p2 == 1'd0) & (icmp_ln1069_reg_626 == 1'd1)) | ((icmp_ln1065_12_fu_454_p2 == 1'd0) & (grp_fu_338_p2 == 1'd1))))) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_11_fu_460_p1;
+        event_queue_buffer_next_V_address0 = zext_ln587_13_fu_460_p1;
     end else if (((grp_fu_338_p2 == 1'd0) & (icmp_ln1069_reg_626 == 1'd0) & (1'b1 == ap_CS_fsm_state7))) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_10_reg_630;
+        event_queue_buffer_next_V_address0 = zext_ln587_12_reg_630;
     end else if ((1'b1 == ap_CS_fsm_state2)) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_8_fu_388_p1;
+        event_queue_buffer_next_V_address0 = zext_ln587_10_fu_388_p1;
     end else begin
         event_queue_buffer_next_V_address0 = 'bx;
     end
@@ -819,7 +819,7 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln886_2_fu_491_p2 = (trunc_ln1077_reg_540 + 8'd1);
+assign add_ln886_3_fu_491_p2 = (trunc_ln1077_reg_540 + 8'd1);
 
 assign add_ln886_fu_479_p2 = (event_queue_unissued_size_V_i + 16'd1);
 
@@ -849,29 +849,29 @@ end
 
 assign causality_violation_stream_din = {{p_read1}, {p_read4}};
 
-assign event_queue_buffer_event_data_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_event_data_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_event_data_V_d0 = p_read2;
 
-assign event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_event_is_anti_message_V_d0 = p_read5;
 
-assign event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_event_receiver_id_V_d0 = p_read4;
 
 assign event_queue_buffer_event_recv_time_V_d0 = p_read1;
 
-assign event_queue_buffer_event_send_time_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_event_send_time_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_event_send_time_V_d0 = p_read;
 
-assign event_queue_buffer_event_sender_id_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_event_sender_id_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_event_sender_id_V_d0 = p_read3;
 
-assign event_queue_buffer_is_issued_V_address0 = zext_ln587_8_fu_388_p1;
+assign event_queue_buffer_is_issued_V_address0 = zext_ln587_10_fu_388_p1;
 
 assign event_queue_buffer_is_issued_V_d0 = 1'd0;
 
@@ -905,21 +905,21 @@ assign tmp_fu_351_p4 = {{event_queue_size_V_i[15:7]}};
 
 assign trunc_ln1077_fu_347_p1 = event_queue_size_V_i[7:0];
 
-assign zext_ln587_10_fu_442_p1 = prev_V_1_fu_92;
+assign zext_ln587_10_fu_388_p1 = event_queue_free_head_V_i;
 
-assign zext_ln587_11_fu_460_p1 = prev_V_fu_88;
+assign zext_ln587_11_fu_412_p1 = event_queue_lp_oldest_unissued_V_q0;
 
-assign zext_ln587_8_fu_388_p1 = event_queue_free_head_V_i;
+assign zext_ln587_12_fu_442_p1 = prev_V_1_fu_92;
 
-assign zext_ln587_9_fu_412_p1 = event_queue_lp_oldest_unissued_V_q0;
+assign zext_ln587_13_fu_460_p1 = prev_V_fu_88;
 
 assign zext_ln587_fu_367_p1 = p_read4;
 
-assign zext_ln886_fu_496_p1 = add_ln886_2_fu_491_p2;
+assign zext_ln886_fu_496_p1 = add_ln886_3_fu_491_p2;
 
 always @ (posedge ap_clk) begin
     zext_ln587_reg_549[63:16] <= 48'b000000000000000000000000000000000000000000000000;
-    zext_ln587_10_reg_630[63:16] <= 48'b000000000000000000000000000000000000000000000000;
+    zext_ln587_12_reg_630[63:16] <= 48'b000000000000000000000000000000000000000000000000;
 end
 
 endmodule //lpcore_top_enqueue

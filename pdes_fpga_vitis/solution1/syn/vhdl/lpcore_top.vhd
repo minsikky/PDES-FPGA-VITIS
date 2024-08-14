@@ -35,16 +35,16 @@ port (
     cancellation_unit_output_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
     cancellation_unit_output_stream_full_n : IN STD_LOGIC;
     cancellation_unit_output_stream_write : OUT STD_LOGIC;
-    commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-    commit_time_stream_empty_n : IN STD_LOGIC;
-    commit_time_stream_read : OUT STD_LOGIC );
+    lpcore_commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+    lpcore_commit_time_stream_empty_n : IN STD_LOGIC;
+    lpcore_commit_time_stream_read : OUT STD_LOGIC );
 end;
 
 
 architecture behav of lpcore_top is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "lpcore_top_lpcore_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=17,HLS_SYN_DSP=0,HLS_SYN_FF=3844,HLS_SYN_LUT=6514,HLS_VERSION=2022_1}";
+    "lpcore_top_lpcore_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=17,HLS_SYN_DSP=0,HLS_SYN_FF=4408,HLS_SYN_LUT=7576,HLS_VERSION=2022_1}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (1 downto 0) := "01";
@@ -68,7 +68,7 @@ architecture behav of lpcore_top is
     signal grp_lpcore_kernel_0_s_fu_104_output_event_stream_write : STD_LOGIC;
     signal grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_din : STD_LOGIC_VECTOR (128 downto 0);
     signal grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_write : STD_LOGIC;
-    signal grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read : STD_LOGIC;
+    signal grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read : STD_LOGIC;
     signal grp_lpcore_kernel_0_s_fu_104_ap_start : STD_LOGIC;
     signal grp_lpcore_kernel_0_s_fu_104_ap_done : STD_LOGIC;
     signal grp_lpcore_kernel_0_s_fu_104_ap_ready : STD_LOGIC;
@@ -107,9 +107,9 @@ architecture behav of lpcore_top is
         cancellation_unit_output_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
         cancellation_unit_output_stream_full_n : IN STD_LOGIC;
         cancellation_unit_output_stream_write : OUT STD_LOGIC;
-        commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-        commit_time_stream_empty_n : IN STD_LOGIC;
-        commit_time_stream_read : OUT STD_LOGIC;
+        lpcore_commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        lpcore_commit_time_stream_empty_n : IN STD_LOGIC;
+        lpcore_commit_time_stream_read : OUT STD_LOGIC;
         ap_clk : IN STD_LOGIC;
         ap_rst : IN STD_LOGIC;
         ap_start : IN STD_LOGIC;
@@ -142,9 +142,9 @@ begin
         cancellation_unit_output_stream_din => grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_din,
         cancellation_unit_output_stream_full_n => cancellation_unit_output_stream_full_n,
         cancellation_unit_output_stream_write => grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_write,
-        commit_time_stream_dout => commit_time_stream_dout,
-        commit_time_stream_empty_n => commit_time_stream_empty_n,
-        commit_time_stream_read => grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read,
+        lpcore_commit_time_stream_dout => lpcore_commit_time_stream_dout,
+        lpcore_commit_time_stream_empty_n => lpcore_commit_time_stream_empty_n,
+        lpcore_commit_time_stream_read => grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read,
         ap_clk => ap_clk,
         ap_rst => ap_rst,
         ap_start => grp_lpcore_kernel_0_s_fu_104_ap_start,
@@ -318,16 +318,6 @@ begin
     end process;
 
 
-    commit_time_stream_read_assign_proc : process(grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read, ap_CS_fsm_state2)
-    begin
-        if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            commit_time_stream_read <= grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read;
-        else 
-            commit_time_stream_read <= ap_const_logic_0;
-        end if; 
-    end process;
-
-
     enqueue_event_stream_read_assign_proc : process(grp_lpcore_kernel_0_s_fu_104_enqueue_event_stream_read, ap_CS_fsm_state2)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
@@ -366,6 +356,16 @@ begin
             init_event_stream_read <= grp_lpcore_kernel_0_s_fu_104_init_event_stream_read;
         else 
             init_event_stream_read <= ap_const_logic_0;
+        end if; 
+    end process;
+
+
+    lpcore_commit_time_stream_read_assign_proc : process(grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read, ap_CS_fsm_state2)
+    begin
+        if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
+            lpcore_commit_time_stream_read <= grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read;
+        else 
+            lpcore_commit_time_stream_read <= ap_const_logic_0;
         end if; 
     end process;
 

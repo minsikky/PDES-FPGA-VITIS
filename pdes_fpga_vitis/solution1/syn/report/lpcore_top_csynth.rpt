@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'lpcore_top'
 ================================================================
-* Date:           Wed Aug 14 16:55:45 2024
+* Date:           Wed Aug 14 17:50:18 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -56,16 +56,16 @@
 |DSP              |        -|     -|       -|       -|    -|
 |Expression       |        -|     -|       0|       4|    -|
 |FIFO             |        -|     -|       -|       -|    -|
-|Instance         |       17|     -|    3839|    6433|    0|
+|Instance         |       17|     -|    4403|    7495|    0|
 |Memory           |        -|     -|       -|       -|    -|
 |Multiplexer      |        -|     -|       -|      77|    -|
 |Register         |        -|     -|       5|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |       17|     0|    3844|    6514|    0|
+|Total            |       17|     0|    4408|    7576|    0|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
-|Utilization (%)  |        2|     0|      ~0|       2|    0|
+|Utilization (%)  |        2|     0|      ~0|       3|    0|
 +-----------------+---------+------+--------+--------+-----+
 
 + Detail: 
@@ -73,9 +73,9 @@
     +------------------------------+-------------------+---------+----+------+------+-----+
     |           Instance           |       Module      | BRAM_18K| DSP|  FF  |  LUT | URAM|
     +------------------------------+-------------------+---------+----+------+------+-----+
-    |grp_lpcore_kernel_0_s_fu_104  |lpcore_kernel_0_s  |       17|   0|  3839|  6433|    0|
+    |grp_lpcore_kernel_0_s_fu_104  |lpcore_kernel_0_s  |       17|   0|  4403|  7495|    0|
     +------------------------------+-------------------+---------+----+------+------+-----+
-    |Total                         |                   |       17|   0|  3839|  6433|    0|
+    |Total                         |                   |       17|   0|  4403|  7495|    0|
     +------------------------------+-------------------+---------+----+------+------+-----+
 
     * DSP: 
@@ -104,10 +104,10 @@
     |anti_message_stream_read               |   9|          2|    1|          2|
     |ap_NS_fsm                              |  14|          3|    1|          3|
     |cancellation_unit_output_stream_write  |   9|          2|    1|          2|
-    |commit_time_stream_read                |   9|          2|    1|          2|
     |enqueue_event_stream_read              |   9|          2|    1|          2|
     |event_queue_full_stream_write          |   9|          2|    1|          2|
     |init_event_stream_read                 |   9|          2|    1|          2|
+    |lpcore_commit_time_stream_read         |   9|          2|    1|          2|
     |output_event_stream_write              |   9|          2|    1|          2|
     +---------------------------------------+----+-----------+-----+-----------+
     |Total                                  |  77|         17|    8|         17|
@@ -158,8 +158,8 @@
 |cancellation_unit_output_stream_din     |  out|  129|     ap_fifo|  cancellation_unit_output_stream|       pointer|
 |cancellation_unit_output_stream_full_n  |   in|    1|     ap_fifo|  cancellation_unit_output_stream|       pointer|
 |cancellation_unit_output_stream_write   |  out|    1|     ap_fifo|  cancellation_unit_output_stream|       pointer|
-|commit_time_stream_dout                 |   in|   32|     ap_fifo|               commit_time_stream|       pointer|
-|commit_time_stream_empty_n              |   in|    1|     ap_fifo|               commit_time_stream|       pointer|
-|commit_time_stream_read                 |  out|    1|     ap_fifo|               commit_time_stream|       pointer|
+|lpcore_commit_time_stream_dout          |   in|   32|     ap_fifo|        lpcore_commit_time_stream|       pointer|
+|lpcore_commit_time_stream_empty_n       |   in|    1|     ap_fifo|        lpcore_commit_time_stream|       pointer|
+|lpcore_commit_time_stream_read          |  out|    1|     ap_fifo|        lpcore_commit_time_stream|       pointer|
 +----------------------------------------+-----+-----+------------+---------------------------------+--------------+
 

@@ -32,9 +32,11 @@ module lpcore_top_event_queue_top_0_s (
         enqueue_event_stream_dout,
         enqueue_event_stream_empty_n,
         enqueue_event_stream_read,
-        commit_time_stream_dout,
-        commit_time_stream_empty_n,
-        commit_time_stream_read,
+        event_queue_commit_time_stream15_dout,
+        event_queue_commit_time_stream15_num_data_valid,
+        event_queue_commit_time_stream15_fifo_cap,
+        event_queue_commit_time_stream15_empty_n,
+        event_queue_commit_time_stream15_read,
         issued_event_stream_din,
         issued_event_stream_num_data_valid,
         issued_event_stream_fifo_cap,
@@ -95,9 +97,11 @@ output   anti_message_stream_read;
 input  [128:0] enqueue_event_stream_dout;
 input   enqueue_event_stream_empty_n;
 output   enqueue_event_stream_read;
-input  [31:0] commit_time_stream_dout;
-input   commit_time_stream_empty_n;
-output   commit_time_stream_read;
+input  [31:0] event_queue_commit_time_stream15_dout;
+input  [1:0] event_queue_commit_time_stream15_num_data_valid;
+input  [1:0] event_queue_commit_time_stream15_fifo_cap;
+input   event_queue_commit_time_stream15_empty_n;
+output   event_queue_commit_time_stream15_read;
 output  [128:0] issued_event_stream_din;
 input  [1:0] issued_event_stream_num_data_valid;
 input  [1:0] issued_event_stream_fifo_cap;
@@ -118,7 +122,7 @@ reg event_queue_full_stream_write;
 reg event_queue_rollback_info_stream_read;
 reg anti_message_stream_read;
 reg enqueue_event_stream_read;
-reg commit_time_stream_read;
+reg event_queue_commit_time_stream15_read;
 reg issued_event_stream_write;
 reg causality_violation_stream_write;
 
@@ -197,26 +201,26 @@ reg    event_queue_full_stream_blk_n;
 wire    ap_CS_fsm_state11;
 wire   [0:0] grp_fu_616_p2;
 wire    ap_CS_fsm_state4;
-reg   [0:0] tmp_4_reg_1010;
+reg   [0:0] tmp_3_reg_1010;
 reg    event_queue_rollback_info_stream_blk_n;
 wire   [0:0] tmp_s_nbreadreq_fu_152_p3;
 reg    anti_message_stream_blk_n;
-wire   [0:0] tmp_1_nbreadreq_fu_160_p3;
+wire   [0:0] tmp_6_nbreadreq_fu_160_p3;
 reg    enqueue_event_stream_blk_n;
 wire    ap_CS_fsm_state9;
-reg    commit_time_stream_blk_n;
+reg    event_queue_commit_time_stream15_blk_n;
 wire    ap_CS_fsm_state2;
 reg    issued_event_stream_blk_n;
 wire    ap_CS_fsm_state8;
 reg   [0:0] and_ln77_reg_1002;
-reg   [0:0] tmp_3_reg_1006;
+reg   [0:0] tmp_1_reg_1006;
 reg   [0:0] icmp_ln1065_3_reg_1014;
 reg   [0:0] tmp_reg_990;
 reg   [0:0] tmp_s_reg_994;
-reg   [0:0] tmp_1_reg_998;
+reg   [0:0] tmp_6_reg_998;
 wire   [0:0] and_ln77_fu_628_p2;
-wire   [0:0] tmp_3_nbwritereq_fu_176_p3;
-wire   [0:0] tmp_4_nbreadreq_fu_184_p3;
+wire   [0:0] tmp_1_nbwritereq_fu_176_p3;
+wire   [0:0] tmp_3_nbreadreq_fu_184_p3;
 wire   [0:0] icmp_ln1065_3_fu_634_p2;
 wire   [31:0] tmp_send_time_V_fu_646_p1;
 reg   [31:0] tmp_send_time_V_reg_1026;
@@ -239,9 +243,9 @@ reg   [0:0] init_event_is_anti_message_V_reg_1097;
 reg   [31:0] init_event_recv_time_V_reg_1102;
 reg   [31:0] init_event_data_V_reg_1107;
 reg   [15:0] init_event_sender_id_V_reg_1112;
-reg   [31:0] commit_time_stream_read_reg_1117;
-wire   [63:0] zext_ln587_5_fu_786_p1;
-reg   [63:0] zext_ln587_5_reg_1125;
+reg   [31:0] tmp_17_reg_1117;
+wire   [63:0] zext_ln587_7_fu_786_p1;
+reg   [63:0] zext_ln587_7_reg_1125;
 wire    ap_CS_fsm_state6;
 reg   [1:0] event_queue_lp_oldest_unissued_V_addr_1_reg_1131;
 wire    ap_CS_fsm_state7;
@@ -252,15 +256,15 @@ reg   [0:0] event_is_anti_message_V_reg_1181;
 reg   [31:0] event_recv_time_V_reg_1186;
 reg   [31:0] event_data_V_reg_1191;
 reg   [15:0] event_sender_id_V_reg_1196;
-reg   [15:0] current_V_8_reg_1204;
+reg   [15:0] current_V_9_reg_1204;
 wire    ap_CS_fsm_state12;
 reg   [15:0] prev_V_reg_1209;
-reg   [15:0] current_V_9_reg_1216;
+reg   [15:0] current_V_11_reg_1216;
 wire    ap_CS_fsm_state13;
 wire   [0:0] icmp_ln1069_fu_886_p2;
 reg   [0:0] icmp_ln1069_reg_1223;
-wire   [63:0] zext_ln587_4_fu_892_p1;
-reg   [63:0] zext_ln587_4_reg_1227;
+wire   [63:0] zext_ln587_6_fu_892_p1;
+reg   [63:0] zext_ln587_6_reg_1227;
 wire    ap_CS_fsm_state14;
 reg   [6:0] this_data_V_reg_1248;
 reg   [6:0] this_sender_id_V_reg_1253;
@@ -424,15 +428,15 @@ wire    ap_CS_fsm_state3;
 reg    grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_ap_start_reg;
 wire    ap_CS_fsm_state22;
 wire   [63:0] zext_ln145_fu_719_p1;
-wire   [63:0] zext_ln587_6_fu_791_p1;
-wire   [63:0] zext_ln587_7_fu_942_p1;
+wire   [63:0] zext_ln587_8_fu_791_p1;
+wire   [63:0] zext_ln587_9_fu_942_p1;
 wire   [0:0] icmp_ln1069_1_fu_937_p2;
 wire   [15:0] add_ln887_2_fu_972_p2;
 wire    ap_CS_fsm_state20;
 wire   [15:0] grp_fu_610_p2;
 reg    ap_block_state1;
-reg   [15:0] current_V_5_fu_140;
-wire   [0:0] tmp_2_nbreadreq_fu_168_p3;
+reg   [15:0] current_V_8_fu_140;
+wire   [0:0] tmp_7_nbreadreq_fu_168_p3;
 reg    ap_predicate_op89_write_state4;
 reg    ap_block_state4;
 reg    ap_block_state11;
@@ -773,7 +777,7 @@ lpcore_top_commit grp_commit_fu_564(
     .ap_done(grp_commit_fu_564_ap_done),
     .ap_idle(grp_commit_fu_564_ap_idle),
     .ap_ready(grp_commit_fu_564_ap_ready),
-    .commit_time(commit_time_stream_read_reg_1117),
+    .commit_time(tmp_17_reg_1117),
     .event_queue_buffer_event_recv_time_V_address0(grp_commit_fu_564_event_queue_buffer_event_recv_time_V_address0),
     .event_queue_buffer_event_recv_time_V_ce0(grp_commit_fu_564_event_queue_buffer_event_recv_time_V_ce0),
     .event_queue_buffer_event_recv_time_V_q0(event_queue_buffer_event_recv_time_V_q0),
@@ -864,7 +868,7 @@ always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
         grp_commit_fu_564_ap_start_reg <= 1'b0;
     end else begin
-        if (((commit_time_stream_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        if (((event_queue_commit_time_stream15_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
             grp_commit_fu_564_ap_start_reg <= 1'b1;
         end else if ((grp_commit_fu_564_ap_ready == 1'b1)) begin
             grp_commit_fu_564_ap_start_reg <= 1'b0;
@@ -888,7 +892,7 @@ always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
         grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= 1'b0;
     end else begin
-        if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_3_nbwritereq_fu_176_p3 == 1'd1) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_1_nbwritereq_fu_176_p3 == 1'd1) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
             grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= 1'b1;
         end else if ((grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_ready == 1'b1)) begin
             grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_513_ap_start_reg <= 1'b0;
@@ -910,15 +914,15 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state12)) begin
-        current_V_5_fu_140 <= event_queue_lp_oldest_unissued_V_q0;
+        current_V_8_fu_140 <= event_queue_lp_oldest_unissued_V_q0;
     end else if ((((xor_ln1069_fu_927_p2 == 1'd0) & (icmp_ln1065_8_reg_1284 == 1'd1) & (icmp_ln1065_7_reg_1280 == 1'd1) & (icmp_ln1065_6_reg_1276 == 1'd1) & (icmp_ln1065_4_reg_1272 == 1'd1) & (icmp_ln1065_2_reg_1268 == 1'd1) & (1'b1 == ap_CS_fsm_state19)) | ((1'b1 == ap_CS_fsm_state19) & ((icmp_ln1065_2_reg_1268 == 1'd0) | ((icmp_ln1065_4_reg_1272 == 1'd0) | ((icmp_ln1065_6_reg_1276 == 1'd0) | ((icmp_ln1065_8_reg_1284 == 1'd0) | (icmp_ln1065_7_reg_1280 == 1'd0)))))))) begin
-        current_V_5_fu_140 <= event_queue_buffer_next_V_q0;
+        current_V_8_fu_140 <= event_queue_buffer_next_V_q0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
-        event_queue_free_head_V <= current_V_9_reg_1216;
+    if (((icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
+        event_queue_free_head_V <= current_V_11_reg_1216;
     end else if (((grp_commit_fu_564_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
         event_queue_free_head_V <= grp_commit_fu_564_event_queue_free_head_V_o;
     end else if ((((grp_enqueue_fu_522_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state10)) | ((grp_enqueue_fu_522_event_queue_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state23)))) begin
@@ -927,7 +931,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
+    if (((icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
         event_queue_size_V <= add_ln887_2_fu_972_p2;
     end else if (((grp_commit_fu_564_event_queue_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state3))) begin
         event_queue_size_V <= grp_commit_fu_564_event_queue_size_V_o;
@@ -937,7 +941,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((((icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_3_nbwritereq_fu_176_p3 == 1'd1) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if ((((icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_1_nbwritereq_fu_176_p3 == 1'd1) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
         event_queue_unissued_size_V <= grp_fu_610_p2;
     end else if (((grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_unissued_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state22))) begin
         event_queue_unissued_size_V <= grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_unissued_size_V_o;
@@ -947,28 +951,22 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+    if (((tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         and_ln77_reg_1002 <= and_ln77_fu_628_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
-        commit_time_stream_read_reg_1117 <= commit_time_stream_dout;
+    if ((1'b1 == ap_CS_fsm_state13)) begin
+        current_V_11_reg_1216 <= current_V_8_fu_140;
+        icmp_ln1069_reg_1223 <= icmp_ln1069_fu_886_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state12)) begin
-        current_V_8_reg_1204 <= event_queue_lp_oldest_unissued_V_q0;
+        current_V_9_reg_1204 <= event_queue_lp_oldest_unissued_V_q0;
         prev_V_reg_1209 <= event_queue_lp_youngest_issued_V_q0;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state13)) begin
-        current_V_9_reg_1216 <= current_V_5_fu_140;
-        icmp_ln1069_reg_1223 <= icmp_ln1069_fu_886_p2;
     end
 end
 
@@ -997,19 +995,19 @@ end
 
 always @ (posedge ap_clk) begin
     if (((icmp_ln1065_8_fu_917_p2 == 1'd1) & (icmp_ln1065_7_reg_1280 == 1'd1) & (icmp_ln1065_6_reg_1276 == 1'd1) & (icmp_ln1065_4_reg_1272 == 1'd1) & (icmp_ln1065_2_reg_1268 == 1'd1) & (1'b1 == ap_CS_fsm_state18))) begin
-        event_queue_buffer_next_V_addr_2_reg_1293 <= zext_ln587_4_reg_1227;
+        event_queue_buffer_next_V_addr_2_reg_1293 <= zext_ln587_6_reg_1227;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state6)) begin
-        event_queue_lp_oldest_unissued_V_addr_1_reg_1131 <= zext_ln587_5_fu_786_p1;
-        zext_ln587_5_reg_1125[1 : 0] <= zext_ln587_5_fu_786_p1[1 : 0];
+        event_queue_lp_oldest_unissued_V_addr_1_reg_1131 <= zext_ln587_7_fu_786_p1;
+        zext_ln587_7_reg_1125[1 : 0] <= zext_ln587_7_fu_786_p1[1 : 0];
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+    if (((tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         event_queue_lp_oldest_unissued_V_addr_reg_1062 <= zext_ln587_fu_698_p1;
         tmp_data_V_reg_1046 <= {{anti_message_stream_dout[95:64]}};
         tmp_is_anti_message_V_reg_1036 <= anti_message_stream_dout[32'd128];
@@ -1030,15 +1028,15 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state14)) begin
         icmp_ln1065_2_reg_1268 <= icmp_ln1065_2_fu_897_p2;
-        this_data_V_reg_1248 <= zext_ln587_4_reg_1227;
-        this_is_anti_message_V_reg_1263 <= zext_ln587_4_reg_1227;
-        this_receiver_id_V_reg_1258 <= zext_ln587_4_reg_1227;
-        this_sender_id_V_reg_1253 <= zext_ln587_4_reg_1227;
+        this_data_V_reg_1248 <= zext_ln587_6_reg_1227;
+        this_is_anti_message_V_reg_1263 <= zext_ln587_6_reg_1227;
+        this_receiver_id_V_reg_1258 <= zext_ln587_6_reg_1227;
+        this_sender_id_V_reg_1253 <= zext_ln587_6_reg_1227;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((tmp_3_nbwritereq_fu_176_p3 == 1'd1) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+    if (((tmp_1_nbwritereq_fu_176_p3 == 1'd1) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         icmp_ln1065_3_reg_1014 <= icmp_ln1065_3_fu_634_p2;
     end
 end
@@ -1079,20 +1077,26 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        tmp_17_reg_1117 <= event_queue_commit_time_stream15_dout;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        tmp_1_reg_1006 <= issued_event_stream_full_n;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((tmp_1_nbwritereq_fu_176_p3 == 1'd0) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        tmp_3_reg_1010 <= tmp_3_nbreadreq_fu_184_p3;
+    end
+end
+
+always @ (posedge ap_clk) begin
     if (((tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-        tmp_1_reg_998 <= tmp_1_nbreadreq_fu_160_p3;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (((tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-        tmp_3_reg_1006 <= issued_event_stream_full_n;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (((tmp_3_nbwritereq_fu_176_p3 == 1'd0) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-        tmp_4_reg_1010 <= tmp_4_nbreadreq_fu_184_p3;
+        tmp_6_reg_998 <= tmp_6_nbreadreq_fu_160_p3;
     end
 end
 
@@ -1117,12 +1121,12 @@ end
 
 always @ (posedge ap_clk) begin
     if (((icmp_ln1069_fu_886_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state13))) begin
-        zext_ln587_4_reg_1227[15 : 0] <= zext_ln587_4_fu_892_p1[15 : 0];
+        zext_ln587_6_reg_1227[15 : 0] <= zext_ln587_6_fu_892_p1[15 : 0];
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         anti_message_stream_blk_n = anti_message_stream_empty_n;
     end else begin
         anti_message_stream_blk_n = 1'b1;
@@ -1198,7 +1202,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((commit_time_stream_empty_n == 1'b0)) begin
+    if ((event_queue_commit_time_stream15_empty_n == 1'b0)) begin
         ap_ST_fsm_state2_blk = 1'b1;
     end else begin
         ap_ST_fsm_state2_blk = 1'b0;
@@ -1282,22 +1286,6 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
-        commit_time_stream_blk_n = commit_time_stream_empty_n;
-    end else begin
-        commit_time_stream_blk_n = 1'b1;
-    end
-end
-
-always @ (*) begin
-    if (((commit_time_stream_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
-        commit_time_stream_read = 1'b1;
-    end else begin
-        commit_time_stream_read = 1'b0;
-    end
-end
-
-always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state9)) begin
         enqueue_event_stream_blk_n = enqueue_event_stream_empty_n;
     end else begin
@@ -1317,7 +1305,7 @@ always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state15)) begin
         event_queue_buffer_event_data_V_address0 = this_data_V_reg_1248;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_data_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_data_V_address0 = zext_ln587_8_fu_791_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
         event_queue_buffer_event_data_V_address0 = grp_enqueue_fu_522_event_queue_buffer_event_data_V_address0;
     end else begin
@@ -1347,7 +1335,7 @@ always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state18)) begin
         event_queue_buffer_event_is_anti_message_V_address0 = this_is_anti_message_V_reg_1263;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_is_anti_message_V_address0 = zext_ln587_8_fu_791_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
         event_queue_buffer_event_is_anti_message_V_address0 = grp_enqueue_fu_522_event_queue_buffer_event_is_anti_message_V_address0;
     end else begin
@@ -1377,7 +1365,7 @@ always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state17)) begin
         event_queue_buffer_event_receiver_id_V_address0 = this_receiver_id_V_reg_1258;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_receiver_id_V_address0 = zext_ln587_8_fu_791_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
         event_queue_buffer_event_receiver_id_V_address0 = grp_enqueue_fu_522_event_queue_buffer_event_receiver_id_V_address0;
     end else begin
@@ -1405,9 +1393,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state14)) begin
-        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_4_reg_1227;
+        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_6_reg_1227;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_recv_time_V_address0 = zext_ln587_8_fu_791_p1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_buffer_event_recv_time_V_address0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_event_recv_time_V_address0;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
@@ -1455,9 +1443,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state13)) begin
-        event_queue_buffer_event_send_time_V_address0 = zext_ln587_4_fu_892_p1;
+        event_queue_buffer_event_send_time_V_address0 = zext_ln587_6_fu_892_p1;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_send_time_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_send_time_V_address0 = zext_ln587_8_fu_791_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
         event_queue_buffer_event_send_time_V_address0 = grp_enqueue_fu_522_event_queue_buffer_event_send_time_V_address0;
     end else begin
@@ -1487,7 +1475,7 @@ always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state16)) begin
         event_queue_buffer_event_sender_id_V_address0 = this_sender_id_V_reg_1253;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_event_sender_id_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_event_sender_id_V_address0 = zext_ln587_8_fu_791_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
         event_queue_buffer_event_sender_id_V_address0 = grp_enqueue_fu_522_event_queue_buffer_event_sender_id_V_address0;
     end else begin
@@ -1515,7 +1503,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_is_issued_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_is_issued_V_address0 = zext_ln587_8_fu_791_p1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_buffer_is_issued_V_address0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_is_issued_V_address0;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
@@ -1565,13 +1553,13 @@ always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state20)) begin
         event_queue_buffer_next_V_address0 = event_queue_buffer_next_V_addr_2_reg_1293;
     end else if ((1'b1 == ap_CS_fsm_state19)) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_7_fu_942_p1;
+        event_queue_buffer_next_V_address0 = zext_ln587_9_fu_942_p1;
     end else if (((icmp_ln1065_8_fu_917_p2 == 1'd1) & (icmp_ln1065_7_reg_1280 == 1'd1) & (icmp_ln1065_6_reg_1276 == 1'd1) & (icmp_ln1065_4_reg_1272 == 1'd1) & (icmp_ln1065_2_reg_1268 == 1'd1) & (1'b1 == ap_CS_fsm_state18))) begin
         event_queue_buffer_next_V_address0 = event_queue_buffer_next_V_addr_2_gep_fu_474_p3;
     end else if (((1'b1 == ap_CS_fsm_state18) & ((icmp_ln1065_2_reg_1268 == 1'd0) | ((icmp_ln1065_4_reg_1272 == 1'd0) | ((icmp_ln1065_6_reg_1276 == 1'd0) | ((icmp_ln1065_8_fu_917_p2 == 1'd0) | (icmp_ln1065_7_reg_1280 == 1'd0))))))) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_4_reg_1227;
+        event_queue_buffer_next_V_address0 = zext_ln587_6_reg_1227;
     end else if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_buffer_next_V_address0 = zext_ln587_6_fu_791_p1;
+        event_queue_buffer_next_V_address0 = zext_ln587_8_fu_791_p1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_buffer_next_V_address0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_buffer_next_V_address0;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
@@ -1612,7 +1600,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | ((icmp_ln1069_1_fu_937_p2 == 1'd0) & (xor_ln1069_fu_927_p2 == 1'd1) & (icmp_ln1065_8_reg_1284 == 1'd1) & (icmp_ln1065_7_reg_1280 == 1'd1) & (icmp_ln1065_6_reg_1276 == 1'd1) & (icmp_ln1065_4_reg_1272 == 1'd1) & (icmp_ln1065_2_reg_1268 == 1'd1) & (1'b1 == ap_CS_fsm_state19)))) begin
+    if ((((icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | ((icmp_ln1069_1_fu_937_p2 == 1'd0) & (xor_ln1069_fu_927_p2 == 1'd1) & (icmp_ln1065_8_reg_1284 == 1'd1) & (icmp_ln1065_7_reg_1280 == 1'd1) & (icmp_ln1065_6_reg_1276 == 1'd1) & (icmp_ln1065_4_reg_1272 == 1'd1) & (icmp_ln1065_2_reg_1268 == 1'd1) & (1'b1 == ap_CS_fsm_state19)))) begin
         event_queue_buffer_next_V_we0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
         event_queue_buffer_next_V_we0 = grp_commit_fu_564_event_queue_buffer_next_V_we0;
@@ -1624,7 +1612,23 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((tmp_4_reg_1010 == 1'd1) & (grp_fu_616_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4)) | ((grp_fu_616_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state11)))) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        event_queue_commit_time_stream15_blk_n = event_queue_commit_time_stream15_empty_n;
+    end else begin
+        event_queue_commit_time_stream15_blk_n = 1'b1;
+    end
+end
+
+always @ (*) begin
+    if (((event_queue_commit_time_stream15_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+        event_queue_commit_time_stream15_read = 1'b1;
+    end else begin
+        event_queue_commit_time_stream15_read = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((((tmp_3_reg_1010 == 1'd1) & (grp_fu_616_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4)) | ((grp_fu_616_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state11)))) begin
         event_queue_full_stream_blk_n = event_queue_full_stream_full_n;
     end else begin
         event_queue_full_stream_blk_n = 1'b1;
@@ -1713,8 +1717,8 @@ always @ (*) begin
     end else if ((1'b1 == ap_CS_fsm_state8)) begin
         event_queue_lp_oldest_unissued_V_address0 = event_queue_lp_oldest_unissued_V_addr_1_reg_1131;
     end else if ((1'b1 == ap_CS_fsm_state6)) begin
-        event_queue_lp_oldest_unissued_V_address0 = zext_ln587_5_fu_786_p1;
-    end else if (((tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+        event_queue_lp_oldest_unissued_V_address0 = zext_ln587_7_fu_786_p1;
+    end else if (((tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         event_queue_lp_oldest_unissued_V_address0 = zext_ln587_fu_698_p1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_lp_oldest_unissued_V_address0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_address0;
@@ -1728,7 +1732,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state20) | (1'b1 == ap_CS_fsm_state6) | (~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (1'b1 == ap_CS_fsm_state8)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if (((1'b1 == ap_CS_fsm_state20) | (1'b1 == ap_CS_fsm_state6) | (~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (1'b1 == ap_CS_fsm_state8)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
         event_queue_lp_oldest_unissued_V_ce0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_lp_oldest_unissued_V_ce0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_ce0;
@@ -1756,7 +1760,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((icmp_ln1065_10_fu_962_p2 == 1'd1) & (icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | (~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_3_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8)))) begin
+    if ((((icmp_ln1065_10_fu_962_p2 == 1'd1) & (icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20)) | (~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_1_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8)))) begin
         event_queue_lp_oldest_unissued_V_we0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state22)) begin
         event_queue_lp_oldest_unissued_V_we0 = grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_584_event_queue_lp_oldest_unissued_V_we0;
@@ -1806,7 +1810,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln1065_9_fu_946_p2 == 1'd1) & (icmp_ln1069_reg_1223 == 1'd0) & (tmp_1_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
+    if (((icmp_ln1065_9_fu_946_p2 == 1'd1) & (icmp_ln1069_reg_1223 == 1'd0) & (tmp_6_reg_998 == 1'd1) & (tmp_s_reg_994 == 1'd0) & (tmp_reg_990 == 1'd0) & (1'b1 == ap_CS_fsm_state20))) begin
         event_queue_lp_tails_V_we0 = 1'b1;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
         event_queue_lp_tails_V_we0 = grp_commit_fu_564_event_queue_lp_tails_V_we0;
@@ -1819,7 +1823,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state7)) begin
-        event_queue_lp_youngest_issued_V_address0 = zext_ln587_5_reg_1125;
+        event_queue_lp_youngest_issued_V_address0 = zext_ln587_7_reg_1125;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
         event_queue_lp_youngest_issued_V_address0 = zext_ln587_fu_698_p1;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
@@ -1861,7 +1865,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state8)) begin
-        event_queue_lvt_V_address0 = zext_ln587_5_reg_1125;
+        event_queue_lvt_V_address0 = zext_ln587_7_reg_1125;
     end else if (((tmp_s_nbreadreq_fu_152_p3 == 1'd1) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
         event_queue_lvt_V_address0 = zext_ln145_fu_719_p1;
     end else if (((1'b1 == ap_CS_fsm_state10) | (1'b1 == ap_CS_fsm_state23))) begin
@@ -1892,7 +1896,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_3_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_s_nbreadreq_fu_152_p3 == 1'd1) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if (((~((ap_predicate_op129_write_state8 == 1'b1) & (issued_event_stream_full_n == 1'b0)) & (icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_1_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_s_nbreadreq_fu_152_p3 == 1'd1) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1)))) begin
         event_queue_lvt_V_we0 = 1'b1;
     end else begin
         event_queue_lvt_V_we0 = 1'b0;
@@ -1992,7 +1996,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_3_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8))) begin
+    if (((icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_1_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002) & (1'b1 == ap_CS_fsm_state8))) begin
         issued_event_stream_blk_n = issued_event_stream_full_n;
     end else begin
         issued_event_stream_blk_n = 1'b1;
@@ -2010,17 +2014,17 @@ end
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd1) & (tmp_3_nbwritereq_fu_176_p3 == 1'd1) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd1) & (tmp_1_nbwritereq_fu_176_p3 == 1'd1) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state8;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_3_nbwritereq_fu_176_p3 == 1'd1) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (icmp_ln1065_3_fu_634_p2 == 1'd0) & (tmp_1_nbwritereq_fu_176_p3 == 1'd1) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state5;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_4_nbreadreq_fu_184_p3 == 1'd0) & (tmp_3_nbwritereq_fu_176_p3 == 1'd0) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_3_nbreadreq_fu_184_p3 == 1'd0) & (tmp_1_nbwritereq_fu_176_p3 == 1'd0) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state4;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_4_nbreadreq_fu_184_p3 == 1'd1) & (tmp_3_nbwritereq_fu_176_p3 == 1'd0) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_3_nbreadreq_fu_184_p3 == 1'd1) & (tmp_1_nbwritereq_fu_176_p3 == 1'd0) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd0 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_1_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd1 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_6_nbreadreq_fu_160_p3 == 1'd0) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (1'd1 == and_ln77_fu_628_p2) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state9;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state12;
             end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((init_event_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_144_p3 == 1'd1)) | ((ap_predicate_op67_read_state1 == 1'b1) & (event_queue_rollback_info_stream_empty_n == 1'b0)) | ((ap_predicate_op55_read_state1 == 1'b1) & (1'b0 == anti_message_stream_empty_n))) & (tmp_s_nbreadreq_fu_152_p3 == 1'd1) & (tmp_nbreadreq_fu_144_p3 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state21;
@@ -2031,7 +2035,7 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((commit_time_stream_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
+            if (((event_queue_commit_time_stream15_empty_n == 1'b1) & (1'b1 == ap_CS_fsm_state2))) begin
                 ap_NS_fsm = ap_ST_fsm_state3;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state2;
@@ -2164,7 +2168,7 @@ end
 
 assign add_ln887_2_fu_972_p2 = ($signed(event_queue_size_V) + $signed(16'd65535));
 
-assign and_ln77_fu_628_p2 = (tmp_2_nbreadreq_fu_168_p3 & icmp_ln1065_fu_622_p2);
+assign and_ln77_fu_628_p2 = (tmp_7_nbreadreq_fu_168_p3 & icmp_ln1065_fu_622_p2);
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
@@ -2237,11 +2241,11 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_predicate_op129_write_state8 = ((icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_3_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002));
+    ap_predicate_op129_write_state8 = ((icmp_ln1065_3_reg_1014 == 1'd0) & (tmp_1_reg_1006 == 1'd1) & (1'd0 == and_ln77_reg_1002));
 end
 
 always @ (*) begin
-    ap_predicate_op55_read_state1 = ((tmp_1_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0));
+    ap_predicate_op55_read_state1 = ((tmp_6_nbreadreq_fu_160_p3 == 1'd1) & (tmp_s_nbreadreq_fu_152_p3 == 1'd0) & (tmp_nbreadreq_fu_144_p3 == 1'd0));
 end
 
 always @ (*) begin
@@ -2249,12 +2253,12 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_predicate_op89_write_state4 = ((tmp_4_reg_1010 == 1'd1) & (grp_fu_616_p2 == 1'd0));
+    ap_predicate_op89_write_state4 = ((tmp_3_reg_1010 == 1'd1) & (grp_fu_616_p2 == 1'd0));
 end
 
 assign causality_violation_stream_din = grp_enqueue_fu_522_causality_violation_stream_din;
 
-assign event_queue_buffer_next_V_addr_2_gep_fu_474_p3 = zext_ln587_4_reg_1227;
+assign event_queue_buffer_next_V_addr_2_gep_fu_474_p3 = zext_ln587_6_reg_1227;
 
 assign event_send_time_V_fu_820_p1 = enqueue_event_stream_dout[31:0];
 
@@ -2270,7 +2274,7 @@ assign grp_fu_610_p2 = ($signed(event_queue_unissued_size_V) + $signed(16'd65535
 
 assign grp_fu_616_p2 = ((event_queue_size_V == 16'd128) ? 1'b1 : 1'b0);
 
-assign icmp_ln1065_10_fu_962_p2 = ((current_V_8_reg_1204 == current_V_9_reg_1216) ? 1'b1 : 1'b0);
+assign icmp_ln1065_10_fu_962_p2 = ((current_V_9_reg_1204 == current_V_11_reg_1216) ? 1'b1 : 1'b0);
 
 assign icmp_ln1065_2_fu_897_p2 = ((event_queue_buffer_event_send_time_V_q0 == tmp_recv_time_V_reg_1041) ? 1'b1 : 1'b0);
 
@@ -2284,25 +2288,25 @@ assign icmp_ln1065_7_fu_912_p2 = ((event_queue_buffer_event_sender_id_V_q0 == tm
 
 assign icmp_ln1065_8_fu_917_p2 = ((event_queue_buffer_event_receiver_id_V_q0 == tmp_sender_id_V_reg_1051) ? 1'b1 : 1'b0);
 
-assign icmp_ln1065_9_fu_946_p2 = ((current_V_9_reg_1216 == event_queue_lp_tails_V_q0) ? 1'b1 : 1'b0);
+assign icmp_ln1065_9_fu_946_p2 = ((current_V_11_reg_1216 == event_queue_lp_tails_V_q0) ? 1'b1 : 1'b0);
 
 assign icmp_ln1065_fu_622_p2 = ((event_queue_size_V != 16'd128) ? 1'b1 : 1'b0);
 
 assign icmp_ln1069_1_fu_937_p2 = ((prev_V_reg_1209 == 16'd65535) ? 1'b1 : 1'b0);
 
-assign icmp_ln1069_fu_886_p2 = ((current_V_5_fu_140 == 16'd65535) ? 1'b1 : 1'b0);
+assign icmp_ln1069_fu_886_p2 = ((current_V_8_fu_140 == 16'd65535) ? 1'b1 : 1'b0);
 
 assign init_event_send_time_V_fu_725_p1 = init_event_stream_dout[31:0];
 
 assign issued_event_stream_din = {{{{{{event_queue_buffer_event_is_anti_message_V_q0}, {event_queue_buffer_event_receiver_id_V_q0}}, {event_queue_buffer_event_sender_id_V_q0}}, {event_queue_buffer_event_data_V_q0}}, {event_queue_buffer_event_recv_time_V_q0}}, {event_queue_buffer_event_send_time_V_q0}};
 
-assign tmp_1_nbreadreq_fu_160_p3 = anti_message_stream_empty_n;
+assign tmp_1_nbwritereq_fu_176_p3 = issued_event_stream_full_n;
 
-assign tmp_2_nbreadreq_fu_168_p3 = enqueue_event_stream_empty_n;
+assign tmp_3_nbreadreq_fu_184_p3 = event_queue_commit_time_stream15_empty_n;
 
-assign tmp_3_nbwritereq_fu_176_p3 = issued_event_stream_full_n;
+assign tmp_6_nbreadreq_fu_160_p3 = anti_message_stream_empty_n;
 
-assign tmp_4_nbreadreq_fu_184_p3 = commit_time_stream_empty_n;
+assign tmp_7_nbreadreq_fu_168_p3 = enqueue_event_stream_empty_n;
 
 assign tmp_lp_id_V_fu_704_p1 = event_queue_rollback_info_stream_dout[1:0];
 
@@ -2318,20 +2322,20 @@ assign xor_ln1069_fu_927_p2 = (tmp_is_anti_message_V_reg_1036 ^ event_queue_buff
 
 assign zext_ln145_fu_719_p1 = tmp_lp_id_V_fu_704_p1;
 
-assign zext_ln587_4_fu_892_p1 = current_V_5_fu_140;
+assign zext_ln587_6_fu_892_p1 = current_V_8_fu_140;
 
-assign zext_ln587_5_fu_786_p1 = earliest_lp_V_loc_fu_136;
+assign zext_ln587_7_fu_786_p1 = earliest_lp_V_loc_fu_136;
 
-assign zext_ln587_6_fu_791_p1 = event_queue_lp_oldest_unissued_V_q0;
+assign zext_ln587_8_fu_791_p1 = event_queue_lp_oldest_unissued_V_q0;
 
-assign zext_ln587_7_fu_942_p1 = prev_V_reg_1209;
+assign zext_ln587_9_fu_942_p1 = prev_V_reg_1209;
 
 assign zext_ln587_fu_698_p1 = tmp_receiver_id_V_fu_650_p4;
 
 always @ (posedge ap_clk) begin
     zext_ln587_reg_1056[63:16] <= 48'b000000000000000000000000000000000000000000000000;
-    zext_ln587_5_reg_1125[63:2] <= 62'b00000000000000000000000000000000000000000000000000000000000000;
-    zext_ln587_4_reg_1227[63:16] <= 48'b000000000000000000000000000000000000000000000000;
+    zext_ln587_7_reg_1125[63:2] <= 62'b00000000000000000000000000000000000000000000000000000000000000;
+    zext_ln587_6_reg_1227[63:16] <= 48'b000000000000000000000000000000000000000000000000;
 end
 
 endmodule //lpcore_top_event_queue_top_0_s

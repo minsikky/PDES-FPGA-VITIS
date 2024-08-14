@@ -19,6 +19,8 @@ add_files cpp/LFSR_PRNG.cpp
 add_files cpp/LFSR_PRNG.hpp
 add_files cpp/LPCore.cpp
 add_files cpp/LPCore.hpp
+add_files cpp/LPCoreControl.cpp
+add_files cpp/LPCoreControl.hpp
 add_files cpp/LPMapping.cpp
 add_files cpp/LPMapping.hpp
 add_files cpp/RollbackControl.cpp

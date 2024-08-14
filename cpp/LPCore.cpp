@@ -88,21 +88,6 @@ bool LPCore::enqueue_event(const TimeWarpEvent &event)
     return event_queue.enqueue(event, causality_violation_stream);
 }
 
-void LPCore::run(
-    hls::stream<TimeWarpEvent> &init_event_stream,
-    hls::stream<ap_int<32>> &commit_time_stream)
-{
-    const int i = lpcore_id;
-    hls::task event_queue_task(event_queue_top<0>, init_event_stream, event_queue_full_stream, event_queue_rollback_info_stream, anti_message_stream[lpcore_id], enqueue_event_stream[lpcore_id], commit_time_stream, issued_event_stream, causality_violation_stream);
-    hls::task state_buffer_task(state_buffer_top<0>, state_buffer_rollback_info_stream, state_buffer_input_stream, issued_event_stream, event_processor_input_stream);
-    hls::task event_processor_task(event_processor_top<0>, event_processor_input_stream, state_buffer_input_stream, output_event_stream, cancellation_unit_input_stream);
-    hls::task cancellation_unit_task(cancellation_unit_top<0>, cancellation_unit_rollback_info_stream, cancellation_unit_input_stream, cancellation_unit_output_stream);
-    // hls::task event_router_0_task(event_router_top, output_event_stream, enqueue_event_stream);
-    // hls::task event_router_1_task(event_router_top, cancellation_unit_output_stream, anti_message_stream);
-    hls::task rollback_control_task(rollback_control_top, causality_violation_stream, event_queue_rollback_info_stream, state_buffer_rollback_info_stream, cancellation_unit_rollback_info_stream);
-    // hls::task commit_control_task(commit_control_dummy_top, event_queue_full_stream, commit_time_stream);
-}
-
 bool LPCore::is_assigned_lp(ap_uint<16> lp_id) const
 {
     return lp_id % NUM_LPCORE == lpcore_id;
@@ -116,11 +101,11 @@ void lpcore_top(
     // INPUTS TO EVENT QUEUE
     hls::stream<TimeWarpEvent> &anti_message_stream,
     hls::stream<TimeWarpEvent> &enqueue_event_stream,
-    // OUTPUT FROM THE LPCORE
+    // OUTPUT OF THE LPCORE
     hls::stream<TimeWarpEvent> &output_event_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
-    // COMMIT TIME
-    hls::stream<ap_int<32>> &commit_time_stream)
+    // COMMIT SIGNAL FROM GLOBAL CONTROLLER
+    hls::stream<ap_int<32>> &lpcore_commit_time_stream)
 {
     lpcore_kernel<0>(
         init_event_stream,
@@ -129,7 +114,7 @@ void lpcore_top(
         enqueue_event_stream,
         output_event_stream,
         cancellation_unit_output_stream,
-        commit_time_stream);
+        lpcore_commit_time_stream);
 }
 
 void test_lpcore()

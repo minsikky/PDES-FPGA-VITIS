@@ -18,7 +18,7 @@ port (
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
     current_V : IN STD_LOGIC_VECTOR (15 downto 0);
-    zext_ln587_3 : IN STD_LOGIC_VECTOR (1 downto 0);
+    zext_ln587_5 : IN STD_LOGIC_VECTOR (1 downto 0);
     tmp_to_time_V : IN STD_LOGIC_VECTOR (31 downto 0);
     removed_V_out : OUT STD_LOGIC_VECTOR (15 downto 0);
     removed_V_out_ap_vld : OUT STD_LOGIC;
@@ -88,7 +88,7 @@ attribute shreg_extract : string;
     signal addr_cmp_reg_300 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_enable_reg_pp0_iter0_reg : STD_LOGIC := '0';
     signal ap_block_pp0_stage0_subdone : BOOLEAN;
-    signal zext_ln587_3_cast_fu_127_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_5_cast_fu_127_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_block_pp0_stage0 : BOOLEAN;
     signal ap_block_pp0_stage1 : BOOLEAN;
     signal reuse_addr_reg_fu_48 : STD_LOGIC_VECTOR (63 downto 0);
@@ -265,7 +265,7 @@ begin
             if (((ap_const_boolean_0 = ap_block_pp0_stage0_11001) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then
                 current_V_3_reg_261 <= ap_sig_allocacmp_current_V_3;
                 icmp_ln1069_reg_271 <= icmp_ln1069_fu_155_p2;
-                state_buffer_lp_heads_V_addr_reg_266 <= zext_ln587_3_cast_fu_127_p1(2 - 1 downto 0);
+                state_buffer_lp_heads_V_addr_reg_266 <= zext_ln587_5_cast_fu_127_p1(2 - 1 downto 0);
             end if;
         end if;
     end process;
@@ -493,6 +493,6 @@ begin
         end if; 
     end process;
 
-    zext_ln587_3_cast_fu_127_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(zext_ln587_3),64));
+    zext_ln587_5_cast_fu_127_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(zext_ln587_5),64));
     zext_ln587_fu_161_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ap_sig_allocacmp_current_V_3),64));
 end behav;

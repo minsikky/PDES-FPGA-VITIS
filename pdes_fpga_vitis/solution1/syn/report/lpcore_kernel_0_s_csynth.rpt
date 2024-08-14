@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'lpcore_kernel_0_s'
 ================================================================
-* Date:           Wed Aug 14 16:55:45 2024
+* Date:           Wed Aug 14 17:50:17 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -34,16 +34,16 @@
 
     + Detail: 
         * Instance: 
-        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+---------+
-        |                            |                           |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
-        |          Instance          |           Module          |   min   |   max   |    min   |    max    | min | max |   Type  |
-        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+---------+
-        |event_queue_top_0_U0        |event_queue_top_0_s        |        ?|        ?|         ?|          ?|    ?|    ?|       no|
-        |state_buffer_top_0_U0       |state_buffer_top_0_s       |        ?|        ?|         ?|          ?|    ?|    ?|       no|
-        |event_processor_top_0_U0    |event_processor_top_0_s    |        1|        4|  5.000 ns|  20.000 ns|    1|    4|       no|
-        |cancellation_unit_top_0_U0  |cancellation_unit_top_0_s  |        ?|        ?|         ?|          ?|    ?|    ?|       no|
-        |rollback_control_top_U0     |rollback_control_top       |        0|        0|      0 ns|       0 ns|    0|    0|       no|
-        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+---------+
+        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+----------+
+        |                            |                           |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline |
+        |          Instance          |           Module          |   min   |   max   |    min   |    max    | min | max |   Type   |
+        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+----------+
+        |lpcore_control_top_U0       |lpcore_control_top         |        0|        0|      0 ns|       0 ns|    1|    1|  dataflow|
+        |event_queue_top_0_U0        |event_queue_top_0_s        |        ?|        ?|         ?|          ?|    ?|    ?|        no|
+        |state_buffer_top_0_U0       |state_buffer_top_0_s       |        ?|        ?|         ?|          ?|    ?|    ?|        no|
+        |event_processor_top_0_U0    |event_processor_top_0_s    |        1|        4|  5.000 ns|  20.000 ns|    1|    4|        no|
+        |cancellation_unit_top_0_U0  |cancellation_unit_top_0_s  |        ?|        ?|         ?|          ?|    ?|    ?|        no|
+        +----------------------------+---------------------------+---------+---------+----------+-----------+-----+-----+----------+
 
         * Loop: 
         N/A
@@ -58,18 +58,18 @@
 |       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
 +-----------------+---------+------+--------+--------+-----+
 |DSP              |        -|     -|       -|       -|    -|
-|Expression       |        -|     -|       0|      14|    -|
-|FIFO             |        -|     -|     792|     536|    -|
-|Instance         |       17|     -|    3043|    5883|    0|
+|Expression       |        -|     -|       0|      10|    -|
+|FIFO             |        -|     -|    1089|     737|    -|
+|Instance         |       17|     -|    3310|    6748|    0|
 |Memory           |        -|     -|       -|       -|    -|
 |Multiplexer      |        -|     -|       -|       -|    -|
 |Register         |        -|     -|       4|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |       17|     0|    3839|    6433|    0|
+|Total            |       17|     0|    4403|    7495|    0|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
-|Utilization (%)  |        2|     0|      ~0|       2|    0|
+|Utilization (%)  |        2|     0|      ~0|       3|    0|
 +-----------------+---------+------+--------+--------+-----+
 
 + Detail: 
@@ -77,13 +77,13 @@
     +----------------------------+---------------------------+---------+----+------+------+-----+
     |          Instance          |           Module          | BRAM_18K| DSP|  FF  |  LUT | URAM|
     +----------------------------+---------------------------+---------+----+------+------+-----+
-    |cancellation_unit_top_0_U0  |cancellation_unit_top_0_s  |        6|   0|   402|   785|    0|
+    |cancellation_unit_top_0_U0  |cancellation_unit_top_0_s  |        6|   0|   540|  1175|    0|
     |event_processor_top_0_U0    |event_processor_top_0_s    |        0|   0|   117|   188|    0|
     |event_queue_top_0_U0        |event_queue_top_0_s        |        7|   0|  2039|  4163|    0|
-    |rollback_control_top_U0     |rollback_control_top       |        0|   0|     2|    47|    0|
-    |state_buffer_top_0_U0       |state_buffer_top_0_s       |        4|   0|   483|   700|    0|
+    |lpcore_control_top_U0       |lpcore_control_top         |        0|   0|     4|    94|    0|
+    |state_buffer_top_0_U0       |state_buffer_top_0_s       |        4|   0|   610|  1128|    0|
     +----------------------------+---------------------------+---------+----+------+------+-----+
-    |Total                       |                           |       17|   0|  3043|  5883|    0|
+    |Total                       |                           |       17|   0|  3310|  6748|    0|
     +----------------------------+---------------------------+---------+----+------+------+-----+
 
     * DSP: 
@@ -96,16 +96,19 @@
     +------------------------------------------+---------+----+----+-----+------+-----+---------+
     |                   Name                   | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
     +------------------------------------------+---------+----+----+-----+------+-----+---------+
+    |cancellation_unit_commit_time_stream_U    |        0|  99|   0|    -|     2|   32|       64|
     |cancellation_unit_input_stream_U          |        0|  99|   0|    -|     2|  129|      258|
     |cancellation_unit_rollback_info_stream_U  |        0|  99|   0|    -|     2|   48|       96|
     |causality_violation_stream_U              |        0|  99|   0|    -|     2|   48|       96|
     |event_processor_input_stream_U            |        0|  99|   0|    -|     2|  209|      418|
+    |event_queue_commit_time_stream_U          |        0|  99|   0|    -|     2|   32|       64|
     |event_queue_rollback_info_stream_U        |        0|  99|   0|    -|     2|   48|       96|
     |issued_event_stream_U                     |        0|  99|   0|    -|     2|  129|      258|
+    |state_buffer_commit_time_stream_U         |        0|  99|   0|    -|     2|   32|       64|
     |state_buffer_input_stream_U               |        0|  99|   0|    -|     2|   80|      160|
     |state_buffer_rollback_info_stream_U       |        0|  99|   0|    -|     2|   48|       96|
     +------------------------------------------+---------+----+----+-----+------+-----+---------+
-    |Total                                     |        0| 792|   0|    0|    16|  739|     1478|
+    |Total                                     |        0|1089|   0|    0|    22|  835|     1670|
     +------------------------------------------+---------+----+----+-----+------+-----+---------+
 
     * Expression: 
@@ -113,14 +116,12 @@
     |            Variable Name            | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +-------------------------------------+----------+----+---+----+------------+------------+
     |ap_idle                              |       and|   0|  0|   2|           1|           1|
-    |ap_sync_continue                     |       and|   0|  0|   2|           1|           1|
-    |ap_sync_done                         |       and|   0|  0|   2|           1|           1|
     |cancellation_unit_top_0_U0_ap_start  |        or|   0|  0|   2|           1|           1|
     |event_processor_top_0_U0_ap_start    |        or|   0|  0|   2|           1|           1|
-    |rollback_control_top_U0_ap_start     |        or|   0|  0|   2|           1|           1|
+    |event_queue_top_0_U0_ap_start        |        or|   0|  0|   2|           1|           1|
     |state_buffer_top_0_U0_ap_start       |        or|   0|  0|   2|           1|           1|
     +-------------------------------------+----------+----+---+----+------------+------------+
-    |Total                                |          |   0|  0|  14|           7|           7|
+    |Total                                |          |   0|  0|  10|           5|           5|
     +-------------------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
@@ -132,7 +133,7 @@
     +-------------------------------------------------+---+----+-----+-----------+
     |ap_sync_reg_cancellation_unit_top_0_U0_ap_start  |  1|   0|    1|          0|
     |ap_sync_reg_event_processor_top_0_U0_ap_start    |  1|   0|    1|          0|
-    |ap_sync_reg_rollback_control_top_U0_ap_start     |  1|   0|    1|          0|
+    |ap_sync_reg_event_queue_top_0_U0_ap_start        |  1|   0|    1|          0|
     |ap_sync_reg_state_buffer_top_0_U0_ap_start       |  1|   0|    1|          0|
     +-------------------------------------------------+---+----+-----+-----------+
     |Total                                            |  4|   0|    4|          0|
@@ -165,9 +166,9 @@
 |cancellation_unit_output_stream_din     |  out|  129|       ap_fifo|  cancellation_unit_output_stream|       pointer|
 |cancellation_unit_output_stream_full_n  |   in|    1|       ap_fifo|  cancellation_unit_output_stream|       pointer|
 |cancellation_unit_output_stream_write   |  out|    1|       ap_fifo|  cancellation_unit_output_stream|       pointer|
-|commit_time_stream_dout                 |   in|   32|       ap_fifo|               commit_time_stream|       pointer|
-|commit_time_stream_empty_n              |   in|    1|       ap_fifo|               commit_time_stream|       pointer|
-|commit_time_stream_read                 |  out|    1|       ap_fifo|               commit_time_stream|       pointer|
+|lpcore_commit_time_stream_dout          |   in|   32|       ap_fifo|        lpcore_commit_time_stream|       pointer|
+|lpcore_commit_time_stream_empty_n       |   in|    1|       ap_fifo|        lpcore_commit_time_stream|       pointer|
+|lpcore_commit_time_stream_read          |  out|    1|       ap_fifo|        lpcore_commit_time_stream|       pointer|
 |ap_clk                                  |   in|    1|  ap_ctrl_none|                 lpcore_kernel<0>|  return value|
 |ap_rst                                  |   in|    1|  ap_ctrl_none|                 lpcore_kernel<0>|  return value|
 |ap_start                                |   in|    1|  ap_ctrl_none|                 lpcore_kernel<0>|  return value|

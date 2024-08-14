@@ -148,7 +148,7 @@ wire   [15:0] reuse_select_fu_242_p3;
 reg   [63:0] reuse_addr_reg_fu_48;
 reg   [15:0] reuse_reg_fu_52;
 wire   [0:0] icmp_ln1065_fu_254_p2;
-wire   [0:0] icmp_ln1065_15_fu_259_p2;
+wire   [0:0] icmp_ln1065_16_fu_259_p2;
 wire   [0:0] addr_cmp5_fu_161_p2;
 reg    ap_done_reg;
 wire    ap_continue_int;
@@ -408,7 +408,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter1 == 1'b1) & (icmp_ln1065_15_fu_259_p2 == 1'd1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter1 == 1'b1) & (icmp_ln1065_16_fu_259_p2 == 1'd1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         event_queue_lp_tails_V_we0 = 1'b1;
     end else begin
         event_queue_lp_tails_V_we0 = 1'b0;
@@ -550,7 +550,7 @@ assign event_queue_lp_youngest_issued_V_addr_reg_331 = 64'd0;
 
 assign event_queue_lp_youngest_issued_V_d0 = 16'd65535;
 
-assign icmp_ln1065_15_fu_259_p2 = ((reuse_select_fu_242_p3 == 16'd65535) ? 1'b1 : 1'b0);
+assign icmp_ln1065_16_fu_259_p2 = ((reuse_select_fu_242_p3 == 16'd65535) ? 1'b1 : 1'b0);
 
 assign icmp_ln1065_fu_254_p2 = ((commit_entry_V_reg_304 == event_queue_lp_youngest_issued_V_q0) ? 1'b1 : 1'b0);
 

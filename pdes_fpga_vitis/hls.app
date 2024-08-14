@@ -17,6 +17,8 @@
         <file name="cpp/RollbackControl.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="cpp/LPMapping.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="cpp/LPMapping.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="cpp/LPCoreControl.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
+        <file name="cpp/LPCoreControl.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="cpp/LPCore.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="cpp/LPCore.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="cpp/LFSR_PRNG.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>

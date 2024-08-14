@@ -112,6 +112,16 @@
 			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCore.hpp</location>
 		</link>
 		<link>
+			<name>source/LPCoreControl.cpp</name>
+			<type>1</type>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCoreControl.cpp</location>
+		</link>
+		<link>
+			<name>source/LPCoreControl.hpp</name>
+			<type>1</type>
+			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCoreControl.hpp</location>
+		</link>
+		<link>
 			<name>source/LPMapping.cpp</name>
 			<type>1</type>
 			<location>/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPMapping.cpp</location>

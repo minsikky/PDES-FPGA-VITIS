@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="lpcore_top_lpcore_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=17,HLS_SYN_DSP=0,HLS_SYN_FF=3844,HLS_SYN_LUT=6514,HLS_VERSION=2022_1}" *)
+(* CORE_GENERATION_INFO="lpcore_top_lpcore_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=3.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=17,HLS_SYN_DSP=0,HLS_SYN_FF=4408,HLS_SYN_LUT=7576,HLS_VERSION=2022_1}" *)
 
 module lpcore_top (
         ap_clk,
@@ -34,9 +34,9 @@ module lpcore_top (
         cancellation_unit_output_stream_din,
         cancellation_unit_output_stream_full_n,
         cancellation_unit_output_stream_write,
-        commit_time_stream_dout,
-        commit_time_stream_empty_n,
-        commit_time_stream_read
+        lpcore_commit_time_stream_dout,
+        lpcore_commit_time_stream_empty_n,
+        lpcore_commit_time_stream_read
 );
 
 parameter    ap_ST_fsm_state1 = 2'd1;
@@ -66,9 +66,9 @@ output   output_event_stream_write;
 output  [128:0] cancellation_unit_output_stream_din;
 input   cancellation_unit_output_stream_full_n;
 output   cancellation_unit_output_stream_write;
-input  [31:0] commit_time_stream_dout;
-input   commit_time_stream_empty_n;
-output   commit_time_stream_read;
+input  [31:0] lpcore_commit_time_stream_dout;
+input   lpcore_commit_time_stream_empty_n;
+output   lpcore_commit_time_stream_read;
 
 reg ap_done;
 reg ap_idle;
@@ -79,7 +79,7 @@ reg anti_message_stream_read;
 reg enqueue_event_stream_read;
 reg output_event_stream_write;
 reg cancellation_unit_output_stream_write;
-reg commit_time_stream_read;
+reg lpcore_commit_time_stream_read;
 
 (* fsm_encoding = "none" *) reg   [1:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
@@ -92,7 +92,7 @@ wire   [128:0] grp_lpcore_kernel_0_s_fu_104_output_event_stream_din;
 wire    grp_lpcore_kernel_0_s_fu_104_output_event_stream_write;
 wire   [128:0] grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_din;
 wire    grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_write;
-wire    grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read;
+wire    grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read;
 wire    grp_lpcore_kernel_0_s_fu_104_ap_start;
 wire    grp_lpcore_kernel_0_s_fu_104_ap_done;
 wire    grp_lpcore_kernel_0_s_fu_104_ap_ready;
@@ -137,9 +137,9 @@ lpcore_top_lpcore_kernel_0_s grp_lpcore_kernel_0_s_fu_104(
     .cancellation_unit_output_stream_din(grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_din),
     .cancellation_unit_output_stream_full_n(cancellation_unit_output_stream_full_n),
     .cancellation_unit_output_stream_write(grp_lpcore_kernel_0_s_fu_104_cancellation_unit_output_stream_write),
-    .commit_time_stream_dout(commit_time_stream_dout),
-    .commit_time_stream_empty_n(commit_time_stream_empty_n),
-    .commit_time_stream_read(grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read),
+    .lpcore_commit_time_stream_dout(lpcore_commit_time_stream_dout),
+    .lpcore_commit_time_stream_empty_n(lpcore_commit_time_stream_empty_n),
+    .lpcore_commit_time_stream_read(grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read),
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
     .ap_start(grp_lpcore_kernel_0_s_fu_104_ap_start),
@@ -251,14 +251,6 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        commit_time_stream_read = grp_lpcore_kernel_0_s_fu_104_commit_time_stream_read;
-    end else begin
-        commit_time_stream_read = 1'b0;
-    end
-end
-
-always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
         enqueue_event_stream_read = grp_lpcore_kernel_0_s_fu_104_enqueue_event_stream_read;
     end else begin
         enqueue_event_stream_read = 1'b0;
@@ -286,6 +278,14 @@ always @ (*) begin
         init_event_stream_read = grp_lpcore_kernel_0_s_fu_104_init_event_stream_read;
     end else begin
         init_event_stream_read = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        lpcore_commit_time_stream_read = grp_lpcore_kernel_0_s_fu_104_lpcore_commit_time_stream_read;
+    end else begin
+        lpcore_commit_time_stream_read = 1'b0;
     end
 end
 

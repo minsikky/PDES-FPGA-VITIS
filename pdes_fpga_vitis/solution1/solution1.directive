@@ -55,6 +55,11 @@
                 <option name="name" value="lpcore_top"/>
             </pragma>
         </directive>
+        <directive functionName="lpcore_top" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="lpcore_top"/>
+            </pragma>
+        </directive>
     </sourceFile>
 </AutoPilot:ProjectResources>
 

@@ -25,6 +25,8 @@
     <originFiles name="CommitControlDummy.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/CommitControlDummy.cpp"/>
     <originFiles name="CommitControlDummy.hpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/CommitControlDummy.hpp"/>
     <originFiles name="sys_defs.hpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/sys_defs.hpp"/>
+    <originFiles name="LPCoreControl.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCoreControl.cpp"/>
+    <originFiles name="LPCoreControl.hpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCoreControl.hpp"/>
   </source>
   <testbench>
     <originFiles name="main.cpp" path="/net/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"/>

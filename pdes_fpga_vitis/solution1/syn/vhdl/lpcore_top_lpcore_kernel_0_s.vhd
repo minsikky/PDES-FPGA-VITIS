@@ -29,9 +29,9 @@ port (
     cancellation_unit_output_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
     cancellation_unit_output_stream_full_n : IN STD_LOGIC;
     cancellation_unit_output_stream_write : OUT STD_LOGIC;
-    commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-    commit_time_stream_empty_n : IN STD_LOGIC;
-    commit_time_stream_read : OUT STD_LOGIC;
+    lpcore_commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+    lpcore_commit_time_stream_empty_n : IN STD_LOGIC;
+    lpcore_commit_time_stream_read : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -48,6 +48,21 @@ architecture behav of lpcore_top_lpcore_kernel_0_s is
     constant ap_const_boolean_1 : BOOLEAN := true;
 
 attribute shreg_extract : string;
+    signal lpcore_control_top_U0_causality_violation_stream_read : STD_LOGIC;
+    signal lpcore_control_top_U0_event_queue_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
+    signal lpcore_control_top_U0_event_queue_rollback_info_stream_write : STD_LOGIC;
+    signal lpcore_control_top_U0_state_buffer_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
+    signal lpcore_control_top_U0_state_buffer_rollback_info_stream_write : STD_LOGIC;
+    signal lpcore_control_top_U0_cancellation_unit_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
+    signal lpcore_control_top_U0_cancellation_unit_rollback_info_stream_write : STD_LOGIC;
+    signal lpcore_control_top_U0_lpcore_commit_time_stream_read : STD_LOGIC;
+    signal lpcore_control_top_U0_event_queue_commit_time_stream15_din : STD_LOGIC_VECTOR (31 downto 0);
+    signal lpcore_control_top_U0_event_queue_commit_time_stream15_write : STD_LOGIC;
+    signal lpcore_control_top_U0_state_buffer_commit_time_stream16_din : STD_LOGIC_VECTOR (31 downto 0);
+    signal lpcore_control_top_U0_state_buffer_commit_time_stream16_write : STD_LOGIC;
+    signal lpcore_control_top_U0_cancellation_unit_commit_time_stream17_din : STD_LOGIC_VECTOR (31 downto 0);
+    signal lpcore_control_top_U0_cancellation_unit_commit_time_stream17_write : STD_LOGIC;
+    signal lpcore_control_top_U0_ap_ready : STD_LOGIC;
     signal event_queue_top_0_U0_ap_start : STD_LOGIC;
     signal event_queue_top_0_U0_ap_done : STD_LOGIC;
     signal event_queue_top_0_U0_ap_continue : STD_LOGIC;
@@ -59,17 +74,19 @@ attribute shreg_extract : string;
     signal event_queue_top_0_U0_event_queue_rollback_info_stream_read : STD_LOGIC;
     signal event_queue_top_0_U0_anti_message_stream_read : STD_LOGIC;
     signal event_queue_top_0_U0_enqueue_event_stream_read : STD_LOGIC;
-    signal event_queue_top_0_U0_commit_time_stream_read : STD_LOGIC;
+    signal event_queue_top_0_U0_event_queue_commit_time_stream15_read : STD_LOGIC;
     signal event_queue_top_0_U0_issued_event_stream_din : STD_LOGIC_VECTOR (128 downto 0);
     signal event_queue_top_0_U0_issued_event_stream_write : STD_LOGIC;
     signal event_queue_top_0_U0_causality_violation_stream_din : STD_LOGIC_VECTOR (47 downto 0);
     signal event_queue_top_0_U0_causality_violation_stream_write : STD_LOGIC;
+    signal ap_sync_reg_event_queue_top_0_U0_ap_start : STD_LOGIC := '0';
     signal state_buffer_top_0_U0_ap_start : STD_LOGIC;
     signal state_buffer_top_0_U0_ap_done : STD_LOGIC;
     signal state_buffer_top_0_U0_ap_continue : STD_LOGIC;
     signal state_buffer_top_0_U0_ap_idle : STD_LOGIC;
     signal state_buffer_top_0_U0_ap_ready : STD_LOGIC;
     signal state_buffer_top_0_U0_state_buffer_rollback_info_stream_read : STD_LOGIC;
+    signal state_buffer_top_0_U0_state_buffer_commit_time_stream16_read : STD_LOGIC;
     signal state_buffer_top_0_U0_state_buffer_input_stream_read : STD_LOGIC;
     signal state_buffer_top_0_U0_issued_event_stream_read : STD_LOGIC;
     signal state_buffer_top_0_U0_event_processor_input_stream_din : STD_LOGIC_VECTOR (208 downto 0);
@@ -94,44 +111,51 @@ attribute shreg_extract : string;
     signal cancellation_unit_top_0_U0_ap_idle : STD_LOGIC;
     signal cancellation_unit_top_0_U0_ap_ready : STD_LOGIC;
     signal cancellation_unit_top_0_U0_cancellation_unit_rollback_info_stream_read : STD_LOGIC;
+    signal cancellation_unit_top_0_U0_cancellation_unit_commit_time_stream17_read : STD_LOGIC;
     signal cancellation_unit_top_0_U0_cancellation_unit_input_stream_read : STD_LOGIC;
     signal cancellation_unit_top_0_U0_cancellation_unit_output_stream_din : STD_LOGIC_VECTOR (128 downto 0);
     signal cancellation_unit_top_0_U0_cancellation_unit_output_stream_write : STD_LOGIC;
     signal ap_sync_reg_cancellation_unit_top_0_U0_ap_start : STD_LOGIC := '0';
-    signal ap_sync_continue : STD_LOGIC;
-    signal rollback_control_top_U0_ap_start : STD_LOGIC;
-    signal rollback_control_top_U0_ap_done : STD_LOGIC;
-    signal rollback_control_top_U0_ap_continue : STD_LOGIC;
-    signal rollback_control_top_U0_ap_idle : STD_LOGIC;
-    signal rollback_control_top_U0_ap_ready : STD_LOGIC;
-    signal rollback_control_top_U0_causality_violation_stream_read : STD_LOGIC;
-    signal rollback_control_top_U0_event_queue_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
-    signal rollback_control_top_U0_event_queue_rollback_info_stream_write : STD_LOGIC;
-    signal rollback_control_top_U0_state_buffer_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
-    signal rollback_control_top_U0_state_buffer_rollback_info_stream_write : STD_LOGIC;
-    signal rollback_control_top_U0_cancellation_unit_rollback_info_stream_din : STD_LOGIC_VECTOR (47 downto 0);
-    signal rollback_control_top_U0_cancellation_unit_rollback_info_stream_write : STD_LOGIC;
-    signal ap_sync_reg_rollback_control_top_U0_ap_start : STD_LOGIC := '0';
-    signal event_queue_rollback_info_stream_full_n : STD_LOGIC;
-    signal event_queue_rollback_info_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
-    signal event_queue_rollback_info_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
-    signal event_queue_rollback_info_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
-    signal event_queue_rollback_info_stream_empty_n : STD_LOGIC;
-    signal issued_event_stream_full_n : STD_LOGIC;
-    signal issued_event_stream_dout : STD_LOGIC_VECTOR (128 downto 0);
-    signal issued_event_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
-    signal issued_event_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
-    signal issued_event_stream_empty_n : STD_LOGIC;
     signal causality_violation_stream_full_n : STD_LOGIC;
     signal causality_violation_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
     signal causality_violation_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
     signal causality_violation_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
     signal causality_violation_stream_empty_n : STD_LOGIC;
+    signal event_queue_rollback_info_stream_full_n : STD_LOGIC;
+    signal event_queue_rollback_info_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
+    signal event_queue_rollback_info_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal event_queue_rollback_info_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal event_queue_rollback_info_stream_empty_n : STD_LOGIC;
     signal state_buffer_rollback_info_stream_full_n : STD_LOGIC;
     signal state_buffer_rollback_info_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
     signal state_buffer_rollback_info_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
     signal state_buffer_rollback_info_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
     signal state_buffer_rollback_info_stream_empty_n : STD_LOGIC;
+    signal cancellation_unit_rollback_info_stream_full_n : STD_LOGIC;
+    signal cancellation_unit_rollback_info_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
+    signal cancellation_unit_rollback_info_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal cancellation_unit_rollback_info_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal cancellation_unit_rollback_info_stream_empty_n : STD_LOGIC;
+    signal event_queue_commit_time_stream_full_n : STD_LOGIC;
+    signal event_queue_commit_time_stream_dout : STD_LOGIC_VECTOR (31 downto 0);
+    signal event_queue_commit_time_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal event_queue_commit_time_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal event_queue_commit_time_stream_empty_n : STD_LOGIC;
+    signal state_buffer_commit_time_stream_full_n : STD_LOGIC;
+    signal state_buffer_commit_time_stream_dout : STD_LOGIC_VECTOR (31 downto 0);
+    signal state_buffer_commit_time_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal state_buffer_commit_time_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal state_buffer_commit_time_stream_empty_n : STD_LOGIC;
+    signal cancellation_unit_commit_time_stream_full_n : STD_LOGIC;
+    signal cancellation_unit_commit_time_stream_dout : STD_LOGIC_VECTOR (31 downto 0);
+    signal cancellation_unit_commit_time_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal cancellation_unit_commit_time_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal cancellation_unit_commit_time_stream_empty_n : STD_LOGIC;
+    signal issued_event_stream_full_n : STD_LOGIC;
+    signal issued_event_stream_dout : STD_LOGIC_VECTOR (128 downto 0);
+    signal issued_event_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
+    signal issued_event_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
+    signal issued_event_stream_empty_n : STD_LOGIC;
     signal state_buffer_input_stream_full_n : STD_LOGIC;
     signal state_buffer_input_stream_dout : STD_LOGIC_VECTOR (79 downto 0);
     signal state_buffer_input_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
@@ -147,13 +171,39 @@ attribute shreg_extract : string;
     signal cancellation_unit_input_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
     signal cancellation_unit_input_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
     signal cancellation_unit_input_stream_empty_n : STD_LOGIC;
-    signal cancellation_unit_rollback_info_stream_full_n : STD_LOGIC;
-    signal cancellation_unit_rollback_info_stream_dout : STD_LOGIC_VECTOR (47 downto 0);
-    signal cancellation_unit_rollback_info_stream_num_data_valid : STD_LOGIC_VECTOR (1 downto 0);
-    signal cancellation_unit_rollback_info_stream_fifo_cap : STD_LOGIC_VECTOR (1 downto 0);
-    signal cancellation_unit_rollback_info_stream_empty_n : STD_LOGIC;
-    signal ap_sync_done : STD_LOGIC;
     signal ap_ce_reg : STD_LOGIC;
+
+    component lpcore_top_lpcore_control_top IS
+    port (
+        causality_violation_stream_dout : IN STD_LOGIC_VECTOR (47 downto 0);
+        causality_violation_stream_empty_n : IN STD_LOGIC;
+        causality_violation_stream_read : OUT STD_LOGIC;
+        event_queue_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
+        event_queue_rollback_info_stream_full_n : IN STD_LOGIC;
+        event_queue_rollback_info_stream_write : OUT STD_LOGIC;
+        state_buffer_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
+        state_buffer_rollback_info_stream_full_n : IN STD_LOGIC;
+        state_buffer_rollback_info_stream_write : OUT STD_LOGIC;
+        cancellation_unit_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
+        cancellation_unit_rollback_info_stream_full_n : IN STD_LOGIC;
+        cancellation_unit_rollback_info_stream_write : OUT STD_LOGIC;
+        lpcore_commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        lpcore_commit_time_stream_empty_n : IN STD_LOGIC;
+        lpcore_commit_time_stream_read : OUT STD_LOGIC;
+        event_queue_commit_time_stream15_din : OUT STD_LOGIC_VECTOR (31 downto 0);
+        event_queue_commit_time_stream15_full_n : IN STD_LOGIC;
+        event_queue_commit_time_stream15_write : OUT STD_LOGIC;
+        state_buffer_commit_time_stream16_din : OUT STD_LOGIC_VECTOR (31 downto 0);
+        state_buffer_commit_time_stream16_full_n : IN STD_LOGIC;
+        state_buffer_commit_time_stream16_write : OUT STD_LOGIC;
+        cancellation_unit_commit_time_stream17_din : OUT STD_LOGIC_VECTOR (31 downto 0);
+        cancellation_unit_commit_time_stream17_full_n : IN STD_LOGIC;
+        cancellation_unit_commit_time_stream17_write : OUT STD_LOGIC;
+        ap_clk : IN STD_LOGIC;
+        ap_rst : IN STD_LOGIC;
+        ap_ready : OUT STD_LOGIC );
+    end component;
+
 
     component lpcore_top_event_queue_top_0_s IS
     port (
@@ -181,9 +231,11 @@ attribute shreg_extract : string;
         enqueue_event_stream_dout : IN STD_LOGIC_VECTOR (128 downto 0);
         enqueue_event_stream_empty_n : IN STD_LOGIC;
         enqueue_event_stream_read : OUT STD_LOGIC;
-        commit_time_stream_dout : IN STD_LOGIC_VECTOR (31 downto 0);
-        commit_time_stream_empty_n : IN STD_LOGIC;
-        commit_time_stream_read : OUT STD_LOGIC;
+        event_queue_commit_time_stream15_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        event_queue_commit_time_stream15_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        event_queue_commit_time_stream15_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+        event_queue_commit_time_stream15_empty_n : IN STD_LOGIC;
+        event_queue_commit_time_stream15_read : OUT STD_LOGIC;
         issued_event_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
         issued_event_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
         issued_event_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -211,6 +263,11 @@ attribute shreg_extract : string;
         state_buffer_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         state_buffer_rollback_info_stream_empty_n : IN STD_LOGIC;
         state_buffer_rollback_info_stream_read : OUT STD_LOGIC;
+        state_buffer_commit_time_stream16_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        state_buffer_commit_time_stream16_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        state_buffer_commit_time_stream16_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+        state_buffer_commit_time_stream16_empty_n : IN STD_LOGIC;
+        state_buffer_commit_time_stream16_read : OUT STD_LOGIC;
         state_buffer_input_stream_dout : IN STD_LOGIC_VECTOR (79 downto 0);
         state_buffer_input_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
         state_buffer_input_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -273,6 +330,11 @@ attribute shreg_extract : string;
         cancellation_unit_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         cancellation_unit_rollback_info_stream_empty_n : IN STD_LOGIC;
         cancellation_unit_rollback_info_stream_read : OUT STD_LOGIC;
+        cancellation_unit_commit_time_stream17_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        cancellation_unit_commit_time_stream17_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        cancellation_unit_commit_time_stream17_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+        cancellation_unit_commit_time_stream17_empty_n : IN STD_LOGIC;
+        cancellation_unit_commit_time_stream17_read : OUT STD_LOGIC;
         cancellation_unit_input_stream_dout : IN STD_LOGIC_VECTOR (128 downto 0);
         cancellation_unit_input_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
         cancellation_unit_input_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -281,38 +343,6 @@ attribute shreg_extract : string;
         cancellation_unit_output_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
         cancellation_unit_output_stream_full_n : IN STD_LOGIC;
         cancellation_unit_output_stream_write : OUT STD_LOGIC );
-    end component;
-
-
-    component lpcore_top_rollback_control_top IS
-    port (
-        ap_clk : IN STD_LOGIC;
-        ap_rst : IN STD_LOGIC;
-        ap_start : IN STD_LOGIC;
-        ap_done : OUT STD_LOGIC;
-        ap_continue : IN STD_LOGIC;
-        ap_idle : OUT STD_LOGIC;
-        ap_ready : OUT STD_LOGIC;
-        causality_violation_stream_dout : IN STD_LOGIC_VECTOR (47 downto 0);
-        causality_violation_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
-        causality_violation_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
-        causality_violation_stream_empty_n : IN STD_LOGIC;
-        causality_violation_stream_read : OUT STD_LOGIC;
-        event_queue_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
-        event_queue_rollback_info_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
-        event_queue_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
-        event_queue_rollback_info_stream_full_n : IN STD_LOGIC;
-        event_queue_rollback_info_stream_write : OUT STD_LOGIC;
-        state_buffer_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
-        state_buffer_rollback_info_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
-        state_buffer_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
-        state_buffer_rollback_info_stream_full_n : IN STD_LOGIC;
-        state_buffer_rollback_info_stream_write : OUT STD_LOGIC;
-        cancellation_unit_rollback_info_stream_din : OUT STD_LOGIC_VECTOR (47 downto 0);
-        cancellation_unit_rollback_info_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
-        cancellation_unit_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
-        cancellation_unit_rollback_info_stream_full_n : IN STD_LOGIC;
-        cancellation_unit_rollback_info_stream_write : OUT STD_LOGIC );
     end component;
 
 
@@ -326,6 +356,23 @@ attribute shreg_extract : string;
         if_full_n : OUT STD_LOGIC;
         if_write : IN STD_LOGIC;
         if_dout : OUT STD_LOGIC_VECTOR (47 downto 0);
+        if_num_data_valid : OUT STD_LOGIC_VECTOR (1 downto 0);
+        if_fifo_cap : OUT STD_LOGIC_VECTOR (1 downto 0);
+        if_empty_n : OUT STD_LOGIC;
+        if_read : IN STD_LOGIC );
+    end component;
+
+
+    component lpcore_top_fifo_w32_d2_S IS
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        if_read_ce : IN STD_LOGIC;
+        if_write_ce : IN STD_LOGIC;
+        if_din : IN STD_LOGIC_VECTOR (31 downto 0);
+        if_full_n : OUT STD_LOGIC;
+        if_write : IN STD_LOGIC;
+        if_dout : OUT STD_LOGIC_VECTOR (31 downto 0);
         if_num_data_valid : OUT STD_LOGIC_VECTOR (1 downto 0);
         if_fifo_cap : OUT STD_LOGIC_VECTOR (1 downto 0);
         if_empty_n : OUT STD_LOGIC;
@@ -386,6 +433,36 @@ attribute shreg_extract : string;
 
 
 begin
+    lpcore_control_top_U0 : component lpcore_top_lpcore_control_top
+    port map (
+        causality_violation_stream_dout => causality_violation_stream_dout,
+        causality_violation_stream_empty_n => causality_violation_stream_empty_n,
+        causality_violation_stream_read => lpcore_control_top_U0_causality_violation_stream_read,
+        event_queue_rollback_info_stream_din => lpcore_control_top_U0_event_queue_rollback_info_stream_din,
+        event_queue_rollback_info_stream_full_n => event_queue_rollback_info_stream_full_n,
+        event_queue_rollback_info_stream_write => lpcore_control_top_U0_event_queue_rollback_info_stream_write,
+        state_buffer_rollback_info_stream_din => lpcore_control_top_U0_state_buffer_rollback_info_stream_din,
+        state_buffer_rollback_info_stream_full_n => state_buffer_rollback_info_stream_full_n,
+        state_buffer_rollback_info_stream_write => lpcore_control_top_U0_state_buffer_rollback_info_stream_write,
+        cancellation_unit_rollback_info_stream_din => lpcore_control_top_U0_cancellation_unit_rollback_info_stream_din,
+        cancellation_unit_rollback_info_stream_full_n => cancellation_unit_rollback_info_stream_full_n,
+        cancellation_unit_rollback_info_stream_write => lpcore_control_top_U0_cancellation_unit_rollback_info_stream_write,
+        lpcore_commit_time_stream_dout => lpcore_commit_time_stream_dout,
+        lpcore_commit_time_stream_empty_n => lpcore_commit_time_stream_empty_n,
+        lpcore_commit_time_stream_read => lpcore_control_top_U0_lpcore_commit_time_stream_read,
+        event_queue_commit_time_stream15_din => lpcore_control_top_U0_event_queue_commit_time_stream15_din,
+        event_queue_commit_time_stream15_full_n => event_queue_commit_time_stream_full_n,
+        event_queue_commit_time_stream15_write => lpcore_control_top_U0_event_queue_commit_time_stream15_write,
+        state_buffer_commit_time_stream16_din => lpcore_control_top_U0_state_buffer_commit_time_stream16_din,
+        state_buffer_commit_time_stream16_full_n => state_buffer_commit_time_stream_full_n,
+        state_buffer_commit_time_stream16_write => lpcore_control_top_U0_state_buffer_commit_time_stream16_write,
+        cancellation_unit_commit_time_stream17_din => lpcore_control_top_U0_cancellation_unit_commit_time_stream17_din,
+        cancellation_unit_commit_time_stream17_full_n => cancellation_unit_commit_time_stream_full_n,
+        cancellation_unit_commit_time_stream17_write => lpcore_control_top_U0_cancellation_unit_commit_time_stream17_write,
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        ap_ready => lpcore_control_top_U0_ap_ready);
+
     event_queue_top_0_U0 : component lpcore_top_event_queue_top_0_s
     port map (
         ap_clk => ap_clk,
@@ -412,9 +489,11 @@ begin
         enqueue_event_stream_dout => enqueue_event_stream_dout,
         enqueue_event_stream_empty_n => enqueue_event_stream_empty_n,
         enqueue_event_stream_read => event_queue_top_0_U0_enqueue_event_stream_read,
-        commit_time_stream_dout => commit_time_stream_dout,
-        commit_time_stream_empty_n => commit_time_stream_empty_n,
-        commit_time_stream_read => event_queue_top_0_U0_commit_time_stream_read,
+        event_queue_commit_time_stream15_dout => event_queue_commit_time_stream_dout,
+        event_queue_commit_time_stream15_num_data_valid => event_queue_commit_time_stream_num_data_valid,
+        event_queue_commit_time_stream15_fifo_cap => event_queue_commit_time_stream_fifo_cap,
+        event_queue_commit_time_stream15_empty_n => event_queue_commit_time_stream_empty_n,
+        event_queue_commit_time_stream15_read => event_queue_top_0_U0_event_queue_commit_time_stream15_read,
         issued_event_stream_din => event_queue_top_0_U0_issued_event_stream_din,
         issued_event_stream_num_data_valid => issued_event_stream_num_data_valid,
         issued_event_stream_fifo_cap => issued_event_stream_fifo_cap,
@@ -440,6 +519,11 @@ begin
         state_buffer_rollback_info_stream_fifo_cap => state_buffer_rollback_info_stream_fifo_cap,
         state_buffer_rollback_info_stream_empty_n => state_buffer_rollback_info_stream_empty_n,
         state_buffer_rollback_info_stream_read => state_buffer_top_0_U0_state_buffer_rollback_info_stream_read,
+        state_buffer_commit_time_stream16_dout => state_buffer_commit_time_stream_dout,
+        state_buffer_commit_time_stream16_num_data_valid => state_buffer_commit_time_stream_num_data_valid,
+        state_buffer_commit_time_stream16_fifo_cap => state_buffer_commit_time_stream_fifo_cap,
+        state_buffer_commit_time_stream16_empty_n => state_buffer_commit_time_stream_empty_n,
+        state_buffer_commit_time_stream16_read => state_buffer_top_0_U0_state_buffer_commit_time_stream16_read,
         state_buffer_input_stream_dout => state_buffer_input_stream_dout,
         state_buffer_input_stream_num_data_valid => state_buffer_input_stream_num_data_valid,
         state_buffer_input_stream_fifo_cap => state_buffer_input_stream_fifo_cap,
@@ -498,6 +582,11 @@ begin
         cancellation_unit_rollback_info_stream_fifo_cap => cancellation_unit_rollback_info_stream_fifo_cap,
         cancellation_unit_rollback_info_stream_empty_n => cancellation_unit_rollback_info_stream_empty_n,
         cancellation_unit_rollback_info_stream_read => cancellation_unit_top_0_U0_cancellation_unit_rollback_info_stream_read,
+        cancellation_unit_commit_time_stream17_dout => cancellation_unit_commit_time_stream_dout,
+        cancellation_unit_commit_time_stream17_num_data_valid => cancellation_unit_commit_time_stream_num_data_valid,
+        cancellation_unit_commit_time_stream17_fifo_cap => cancellation_unit_commit_time_stream_fifo_cap,
+        cancellation_unit_commit_time_stream17_empty_n => cancellation_unit_commit_time_stream_empty_n,
+        cancellation_unit_commit_time_stream17_read => cancellation_unit_top_0_U0_cancellation_unit_commit_time_stream17_read,
         cancellation_unit_input_stream_dout => cancellation_unit_input_stream_dout,
         cancellation_unit_input_stream_num_data_valid => cancellation_unit_input_stream_num_data_valid,
         cancellation_unit_input_stream_fifo_cap => cancellation_unit_input_stream_fifo_cap,
@@ -507,35 +596,20 @@ begin
         cancellation_unit_output_stream_full_n => cancellation_unit_output_stream_full_n,
         cancellation_unit_output_stream_write => cancellation_unit_top_0_U0_cancellation_unit_output_stream_write);
 
-    rollback_control_top_U0 : component lpcore_top_rollback_control_top
+    causality_violation_stream_U : component lpcore_top_fifo_w48_d2_S
     port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst,
-        ap_start => rollback_control_top_U0_ap_start,
-        ap_done => rollback_control_top_U0_ap_done,
-        ap_continue => rollback_control_top_U0_ap_continue,
-        ap_idle => rollback_control_top_U0_ap_idle,
-        ap_ready => rollback_control_top_U0_ap_ready,
-        causality_violation_stream_dout => causality_violation_stream_dout,
-        causality_violation_stream_num_data_valid => causality_violation_stream_num_data_valid,
-        causality_violation_stream_fifo_cap => causality_violation_stream_fifo_cap,
-        causality_violation_stream_empty_n => causality_violation_stream_empty_n,
-        causality_violation_stream_read => rollback_control_top_U0_causality_violation_stream_read,
-        event_queue_rollback_info_stream_din => rollback_control_top_U0_event_queue_rollback_info_stream_din,
-        event_queue_rollback_info_stream_num_data_valid => event_queue_rollback_info_stream_num_data_valid,
-        event_queue_rollback_info_stream_fifo_cap => event_queue_rollback_info_stream_fifo_cap,
-        event_queue_rollback_info_stream_full_n => event_queue_rollback_info_stream_full_n,
-        event_queue_rollback_info_stream_write => rollback_control_top_U0_event_queue_rollback_info_stream_write,
-        state_buffer_rollback_info_stream_din => rollback_control_top_U0_state_buffer_rollback_info_stream_din,
-        state_buffer_rollback_info_stream_num_data_valid => state_buffer_rollback_info_stream_num_data_valid,
-        state_buffer_rollback_info_stream_fifo_cap => state_buffer_rollback_info_stream_fifo_cap,
-        state_buffer_rollback_info_stream_full_n => state_buffer_rollback_info_stream_full_n,
-        state_buffer_rollback_info_stream_write => rollback_control_top_U0_state_buffer_rollback_info_stream_write,
-        cancellation_unit_rollback_info_stream_din => rollback_control_top_U0_cancellation_unit_rollback_info_stream_din,
-        cancellation_unit_rollback_info_stream_num_data_valid => cancellation_unit_rollback_info_stream_num_data_valid,
-        cancellation_unit_rollback_info_stream_fifo_cap => cancellation_unit_rollback_info_stream_fifo_cap,
-        cancellation_unit_rollback_info_stream_full_n => cancellation_unit_rollback_info_stream_full_n,
-        cancellation_unit_rollback_info_stream_write => rollback_control_top_U0_cancellation_unit_rollback_info_stream_write);
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => event_queue_top_0_U0_causality_violation_stream_din,
+        if_full_n => causality_violation_stream_full_n,
+        if_write => event_queue_top_0_U0_causality_violation_stream_write,
+        if_dout => causality_violation_stream_dout,
+        if_num_data_valid => causality_violation_stream_num_data_valid,
+        if_fifo_cap => causality_violation_stream_fifo_cap,
+        if_empty_n => causality_violation_stream_empty_n,
+        if_read => lpcore_control_top_U0_causality_violation_stream_read);
 
     event_queue_rollback_info_stream_U : component lpcore_top_fifo_w48_d2_S
     port map (
@@ -543,14 +617,89 @@ begin
         reset => ap_rst,
         if_read_ce => ap_const_logic_1,
         if_write_ce => ap_const_logic_1,
-        if_din => rollback_control_top_U0_event_queue_rollback_info_stream_din,
+        if_din => lpcore_control_top_U0_event_queue_rollback_info_stream_din,
         if_full_n => event_queue_rollback_info_stream_full_n,
-        if_write => rollback_control_top_U0_event_queue_rollback_info_stream_write,
+        if_write => lpcore_control_top_U0_event_queue_rollback_info_stream_write,
         if_dout => event_queue_rollback_info_stream_dout,
         if_num_data_valid => event_queue_rollback_info_stream_num_data_valid,
         if_fifo_cap => event_queue_rollback_info_stream_fifo_cap,
         if_empty_n => event_queue_rollback_info_stream_empty_n,
         if_read => event_queue_top_0_U0_event_queue_rollback_info_stream_read);
+
+    state_buffer_rollback_info_stream_U : component lpcore_top_fifo_w48_d2_S
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => lpcore_control_top_U0_state_buffer_rollback_info_stream_din,
+        if_full_n => state_buffer_rollback_info_stream_full_n,
+        if_write => lpcore_control_top_U0_state_buffer_rollback_info_stream_write,
+        if_dout => state_buffer_rollback_info_stream_dout,
+        if_num_data_valid => state_buffer_rollback_info_stream_num_data_valid,
+        if_fifo_cap => state_buffer_rollback_info_stream_fifo_cap,
+        if_empty_n => state_buffer_rollback_info_stream_empty_n,
+        if_read => state_buffer_top_0_U0_state_buffer_rollback_info_stream_read);
+
+    cancellation_unit_rollback_info_stream_U : component lpcore_top_fifo_w48_d2_S
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => lpcore_control_top_U0_cancellation_unit_rollback_info_stream_din,
+        if_full_n => cancellation_unit_rollback_info_stream_full_n,
+        if_write => lpcore_control_top_U0_cancellation_unit_rollback_info_stream_write,
+        if_dout => cancellation_unit_rollback_info_stream_dout,
+        if_num_data_valid => cancellation_unit_rollback_info_stream_num_data_valid,
+        if_fifo_cap => cancellation_unit_rollback_info_stream_fifo_cap,
+        if_empty_n => cancellation_unit_rollback_info_stream_empty_n,
+        if_read => cancellation_unit_top_0_U0_cancellation_unit_rollback_info_stream_read);
+
+    event_queue_commit_time_stream_U : component lpcore_top_fifo_w32_d2_S
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => lpcore_control_top_U0_event_queue_commit_time_stream15_din,
+        if_full_n => event_queue_commit_time_stream_full_n,
+        if_write => lpcore_control_top_U0_event_queue_commit_time_stream15_write,
+        if_dout => event_queue_commit_time_stream_dout,
+        if_num_data_valid => event_queue_commit_time_stream_num_data_valid,
+        if_fifo_cap => event_queue_commit_time_stream_fifo_cap,
+        if_empty_n => event_queue_commit_time_stream_empty_n,
+        if_read => event_queue_top_0_U0_event_queue_commit_time_stream15_read);
+
+    state_buffer_commit_time_stream_U : component lpcore_top_fifo_w32_d2_S
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => lpcore_control_top_U0_state_buffer_commit_time_stream16_din,
+        if_full_n => state_buffer_commit_time_stream_full_n,
+        if_write => lpcore_control_top_U0_state_buffer_commit_time_stream16_write,
+        if_dout => state_buffer_commit_time_stream_dout,
+        if_num_data_valid => state_buffer_commit_time_stream_num_data_valid,
+        if_fifo_cap => state_buffer_commit_time_stream_fifo_cap,
+        if_empty_n => state_buffer_commit_time_stream_empty_n,
+        if_read => state_buffer_top_0_U0_state_buffer_commit_time_stream16_read);
+
+    cancellation_unit_commit_time_stream_U : component lpcore_top_fifo_w32_d2_S
+    port map (
+        clk => ap_clk,
+        reset => ap_rst,
+        if_read_ce => ap_const_logic_1,
+        if_write_ce => ap_const_logic_1,
+        if_din => lpcore_control_top_U0_cancellation_unit_commit_time_stream17_din,
+        if_full_n => cancellation_unit_commit_time_stream_full_n,
+        if_write => lpcore_control_top_U0_cancellation_unit_commit_time_stream17_write,
+        if_dout => cancellation_unit_commit_time_stream_dout,
+        if_num_data_valid => cancellation_unit_commit_time_stream_num_data_valid,
+        if_fifo_cap => cancellation_unit_commit_time_stream_fifo_cap,
+        if_empty_n => cancellation_unit_commit_time_stream_empty_n,
+        if_read => cancellation_unit_top_0_U0_cancellation_unit_commit_time_stream17_read);
 
     issued_event_stream_U : component lpcore_top_fifo_w129_d2_S
     port map (
@@ -566,36 +715,6 @@ begin
         if_fifo_cap => issued_event_stream_fifo_cap,
         if_empty_n => issued_event_stream_empty_n,
         if_read => state_buffer_top_0_U0_issued_event_stream_read);
-
-    causality_violation_stream_U : component lpcore_top_fifo_w48_d2_S
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        if_read_ce => ap_const_logic_1,
-        if_write_ce => ap_const_logic_1,
-        if_din => event_queue_top_0_U0_causality_violation_stream_din,
-        if_full_n => causality_violation_stream_full_n,
-        if_write => event_queue_top_0_U0_causality_violation_stream_write,
-        if_dout => causality_violation_stream_dout,
-        if_num_data_valid => causality_violation_stream_num_data_valid,
-        if_fifo_cap => causality_violation_stream_fifo_cap,
-        if_empty_n => causality_violation_stream_empty_n,
-        if_read => rollback_control_top_U0_causality_violation_stream_read);
-
-    state_buffer_rollback_info_stream_U : component lpcore_top_fifo_w48_d2_S
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        if_read_ce => ap_const_logic_1,
-        if_write_ce => ap_const_logic_1,
-        if_din => rollback_control_top_U0_state_buffer_rollback_info_stream_din,
-        if_full_n => state_buffer_rollback_info_stream_full_n,
-        if_write => rollback_control_top_U0_state_buffer_rollback_info_stream_write,
-        if_dout => state_buffer_rollback_info_stream_dout,
-        if_num_data_valid => state_buffer_rollback_info_stream_num_data_valid,
-        if_fifo_cap => state_buffer_rollback_info_stream_fifo_cap,
-        if_empty_n => state_buffer_rollback_info_stream_empty_n,
-        if_read => state_buffer_top_0_U0_state_buffer_rollback_info_stream_read);
 
     state_buffer_input_stream_U : component lpcore_top_fifo_w80_d2_S
     port map (
@@ -642,21 +761,6 @@ begin
         if_empty_n => cancellation_unit_input_stream_empty_n,
         if_read => cancellation_unit_top_0_U0_cancellation_unit_input_stream_read);
 
-    cancellation_unit_rollback_info_stream_U : component lpcore_top_fifo_w48_d2_S
-    port map (
-        clk => ap_clk,
-        reset => ap_rst,
-        if_read_ce => ap_const_logic_1,
-        if_write_ce => ap_const_logic_1,
-        if_din => rollback_control_top_U0_cancellation_unit_rollback_info_stream_din,
-        if_full_n => cancellation_unit_rollback_info_stream_full_n,
-        if_write => rollback_control_top_U0_cancellation_unit_rollback_info_stream_write,
-        if_dout => cancellation_unit_rollback_info_stream_dout,
-        if_num_data_valid => cancellation_unit_rollback_info_stream_num_data_valid,
-        if_fifo_cap => cancellation_unit_rollback_info_stream_fifo_cap,
-        if_empty_n => cancellation_unit_rollback_info_stream_empty_n,
-        if_read => cancellation_unit_top_0_U0_cancellation_unit_rollback_info_stream_read);
-
 
 
 
@@ -689,14 +793,14 @@ begin
     end process;
 
 
-    ap_sync_reg_rollback_control_top_U0_ap_start_assign_proc : process(ap_clk)
+    ap_sync_reg_event_queue_top_0_U0_ap_start_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
-                ap_sync_reg_rollback_control_top_U0_ap_start <= ap_const_logic_0;
+                ap_sync_reg_event_queue_top_0_U0_ap_start <= ap_const_logic_0;
             else
                 if ((ap_start = ap_const_logic_1)) then 
-                    ap_sync_reg_rollback_control_top_U0_ap_start <= ap_const_logic_1;
+                    ap_sync_reg_event_queue_top_0_U0_ap_start <= ap_const_logic_1;
                 end if; 
             end if;
         end if;
@@ -717,28 +821,24 @@ begin
     end process;
 
     anti_message_stream_read <= event_queue_top_0_U0_anti_message_stream_read;
-    ap_done <= ap_sync_done;
-    ap_idle <= (state_buffer_top_0_U0_ap_idle and rollback_control_top_U0_ap_idle and event_queue_top_0_U0_ap_idle and event_processor_top_0_U0_ap_idle and cancellation_unit_top_0_U0_ap_idle);
-    ap_ready <= event_queue_top_0_U0_ap_ready;
-    ap_sync_continue <= (ap_sync_done and ap_continue);
-    ap_sync_done <= (rollback_control_top_U0_ap_done and cancellation_unit_top_0_U0_ap_done);
+    ap_done <= cancellation_unit_top_0_U0_ap_done;
+    ap_idle <= (state_buffer_top_0_U0_ap_idle and event_queue_top_0_U0_ap_idle and event_processor_top_0_U0_ap_idle and cancellation_unit_top_0_U0_ap_idle);
+    ap_ready <= cancellation_unit_top_0_U0_ap_done;
     cancellation_unit_output_stream_din <= cancellation_unit_top_0_U0_cancellation_unit_output_stream_din;
     cancellation_unit_output_stream_write <= cancellation_unit_top_0_U0_cancellation_unit_output_stream_write;
-    cancellation_unit_top_0_U0_ap_continue <= ap_sync_continue;
+    cancellation_unit_top_0_U0_ap_continue <= ap_continue;
     cancellation_unit_top_0_U0_ap_start <= (ap_sync_reg_cancellation_unit_top_0_U0_ap_start or ap_start);
-    commit_time_stream_read <= event_queue_top_0_U0_commit_time_stream_read;
     enqueue_event_stream_read <= event_queue_top_0_U0_enqueue_event_stream_read;
     event_processor_top_0_U0_ap_continue <= ap_const_logic_1;
     event_processor_top_0_U0_ap_start <= (ap_sync_reg_event_processor_top_0_U0_ap_start or ap_start);
     event_queue_full_stream_din <= event_queue_top_0_U0_event_queue_full_stream_din;
     event_queue_full_stream_write <= event_queue_top_0_U0_event_queue_full_stream_write;
     event_queue_top_0_U0_ap_continue <= ap_const_logic_1;
-    event_queue_top_0_U0_ap_start <= ap_start;
+    event_queue_top_0_U0_ap_start <= (ap_sync_reg_event_queue_top_0_U0_ap_start or ap_start);
     init_event_stream_read <= event_queue_top_0_U0_init_event_stream_read;
+    lpcore_commit_time_stream_read <= lpcore_control_top_U0_lpcore_commit_time_stream_read;
     output_event_stream_din <= event_processor_top_0_U0_output_event_stream_din;
     output_event_stream_write <= event_processor_top_0_U0_output_event_stream_write;
-    rollback_control_top_U0_ap_continue <= ap_sync_continue;
-    rollback_control_top_U0_ap_start <= (ap_sync_reg_rollback_control_top_U0_ap_start or ap_start);
     state_buffer_top_0_U0_ap_continue <= ap_const_logic_1;
     state_buffer_top_0_U0_ap_start <= (ap_sync_reg_state_buffer_top_0_U0_ap_start or ap_start);
 end behav;

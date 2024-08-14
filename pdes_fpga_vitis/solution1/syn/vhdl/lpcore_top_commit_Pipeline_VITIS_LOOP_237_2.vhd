@@ -117,7 +117,7 @@ attribute shreg_extract : string;
     signal reuse_addr_reg_fu_48 : STD_LOGIC_VECTOR (63 downto 0);
     signal reuse_reg_fu_52 : STD_LOGIC_VECTOR (15 downto 0);
     signal icmp_ln1065_fu_254_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln1065_15_fu_259_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln1065_16_fu_259_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal addr_cmp5_fu_161_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_done_reg : STD_LOGIC := '0';
     signal ap_continue_int : STD_LOGIC;
@@ -516,9 +516,9 @@ begin
 
     event_queue_lp_tails_V_d0 <= ap_const_lv16_FFFF;
 
-    event_queue_lp_tails_V_we0_assign_proc : process(ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, ap_block_pp0_stage0_11001, icmp_ln1065_15_fu_259_p2)
+    event_queue_lp_tails_V_we0_assign_proc : process(ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, ap_block_pp0_stage0_11001, icmp_ln1065_16_fu_259_p2)
     begin
-        if (((ap_const_boolean_0 = ap_block_pp0_stage0_11001) and (ap_enable_reg_pp0_iter1 = ap_const_logic_1) and (icmp_ln1065_15_fu_259_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then 
+        if (((ap_const_boolean_0 = ap_block_pp0_stage0_11001) and (ap_enable_reg_pp0_iter1 = ap_const_logic_1) and (icmp_ln1065_16_fu_259_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then 
             event_queue_lp_tails_V_we0 <= ap_const_logic_1;
         else 
             event_queue_lp_tails_V_we0 <= ap_const_logic_0;
@@ -579,7 +579,7 @@ begin
         end if; 
     end process;
 
-    icmp_ln1065_15_fu_259_p2 <= "1" when (reuse_select_fu_242_p3 = ap_const_lv16_FFFF) else "0";
+    icmp_ln1065_16_fu_259_p2 <= "1" when (reuse_select_fu_242_p3 = ap_const_lv16_FFFF) else "0";
     icmp_ln1065_fu_254_p2 <= "1" when (commit_entry_V_reg_304 = event_queue_lp_youngest_issued_V_q0) else "0";
     icmp_ln1069_fu_175_p2 <= "1" when (commit_entry_V_fu_167_p3 = ap_const_lv16_FFFF) else "0";
     icmp_ln1085_fu_186_p2 <= "1" when (signed(event_queue_buffer_event_recv_time_V_q0) > signed(commit_time)) else "0";

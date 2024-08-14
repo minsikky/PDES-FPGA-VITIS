@@ -100,13 +100,13 @@ wire   [63:0] zext_ln25_fu_152_p1;
 reg    ap_block_state4;
 wire   [128:0] zext_ln174_1_fu_307_p1;
 wire   [0:0] tmp_fu_157_p3;
-wire   [0:0] tmp_4_fu_173_p3;
-wire   [0:0] tmp_2_fu_165_p3;
-wire   [0:0] tmp_5_fu_181_p3;
+wire   [0:0] tmp_9_fu_173_p3;
+wire   [0:0] tmp_7_fu_165_p3;
+wire   [0:0] tmp_10_fu_181_p3;
 wire   [0:0] xor_ln232_1_fu_195_p2;
 wire   [0:0] xor_ln232_fu_189_p2;
-wire   [0:0] tmp_6_fu_211_p3;
-wire   [0:0] tmp_7_fu_219_p3;
+wire   [0:0] tmp_11_fu_211_p3;
+wire   [0:0] tmp_12_fu_219_p3;
 wire   [0:0] xor_ln8_1_fu_233_p2;
 wire   [0:0] xor_ln8_fu_227_p2;
 wire   [5:0] trunc_ln1544_1_fu_245_p1;
@@ -115,7 +115,7 @@ wire   [31:0] zext_ln75_fu_274_p1;
 wire   [31:0] new_event_recv_time_V_fu_278_p2;
 wire   [81:0] tmp_1_fu_283_p6;
 wire   [87:0] zext_ln174_fu_294_p1;
-wire   [120:0] tmp_3_fu_298_p4;
+wire   [120:0] tmp_8_fu_298_p4;
 reg   [3:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 wire    ap_ST_fsm_state2_blk;
@@ -364,19 +364,19 @@ assign rhs_fu_201_p2 = (xor_ln232_fu_189_p2 ^ xor_ln232_1_fu_195_p2);
 
 assign state_buffer_input_stream_din = {{{p_read5}, {p_read}}, {p_read3}};
 
+assign tmp_10_fu_181_p3 = g_multi_prng_generators_state_V_q0[32'd3];
+
+assign tmp_11_fu_211_p3 = g_multi_prng_generators_state_V_q0[32'd6];
+
+assign tmp_12_fu_219_p3 = g_multi_prng_generators_state_V_q0[32'd2];
+
 assign tmp_1_fu_283_p6 = {{{{{rhs_reg_345}, {rhs_1_reg_356}}, {p_read3}}, {32'd0}}, {new_event_recv_time_V_fu_278_p2}};
 
-assign tmp_2_fu_165_p3 = g_multi_prng_generators_state_V_q0[32'd5];
+assign tmp_7_fu_165_p3 = g_multi_prng_generators_state_V_q0[32'd5];
 
-assign tmp_3_fu_298_p4 = {{{{1'd0}, {zext_ln174_fu_294_p1}}}, {p_read}};
+assign tmp_8_fu_298_p4 = {{{{1'd0}, {zext_ln174_fu_294_p1}}}, {p_read}};
 
-assign tmp_4_fu_173_p3 = g_multi_prng_generators_state_V_q0[32'd4];
-
-assign tmp_5_fu_181_p3 = g_multi_prng_generators_state_V_q0[32'd3];
-
-assign tmp_6_fu_211_p3 = g_multi_prng_generators_state_V_q0[32'd6];
-
-assign tmp_7_fu_219_p3 = g_multi_prng_generators_state_V_q0[32'd2];
+assign tmp_9_fu_173_p3 = g_multi_prng_generators_state_V_q0[32'd4];
 
 assign tmp_fu_157_p3 = g_multi_prng_generators_state_V_q0[32'd7];
 
@@ -384,15 +384,15 @@ assign trunc_ln1544_1_fu_245_p1 = g_multi_prng_generators_state_V_q0[5:0];
 
 assign trunc_ln1544_fu_207_p1 = g_multi_prng_generators_state_V_q0[6:0];
 
-assign xor_ln232_1_fu_195_p2 = (tmp_5_fu_181_p3 ^ tmp_2_fu_165_p3);
+assign xor_ln232_1_fu_195_p2 = (tmp_7_fu_165_p3 ^ tmp_10_fu_181_p3);
 
-assign xor_ln232_fu_189_p2 = (tmp_fu_157_p3 ^ tmp_4_fu_173_p3);
+assign xor_ln232_fu_189_p2 = (tmp_fu_157_p3 ^ tmp_9_fu_173_p3);
 
-assign xor_ln8_1_fu_233_p2 = (tmp_5_fu_181_p3 ^ tmp_4_fu_173_p3);
+assign xor_ln8_1_fu_233_p2 = (tmp_9_fu_173_p3 ^ tmp_10_fu_181_p3);
 
-assign xor_ln8_fu_227_p2 = (tmp_7_fu_219_p3 ^ tmp_6_fu_211_p3);
+assign xor_ln8_fu_227_p2 = (tmp_12_fu_219_p3 ^ tmp_11_fu_211_p3);
 
-assign zext_ln174_1_fu_307_p1 = tmp_3_fu_298_p4;
+assign zext_ln174_1_fu_307_p1 = tmp_8_fu_298_p4;
 
 assign zext_ln174_fu_294_p1 = tmp_1_fu_283_p6;
 

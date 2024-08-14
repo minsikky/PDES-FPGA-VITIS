@@ -20,6 +20,11 @@ module lpcore_top_cancellation_unit_top_0_s (
         cancellation_unit_rollback_info_stream_fifo_cap,
         cancellation_unit_rollback_info_stream_empty_n,
         cancellation_unit_rollback_info_stream_read,
+        cancellation_unit_commit_time_stream17_dout,
+        cancellation_unit_commit_time_stream17_num_data_valid,
+        cancellation_unit_commit_time_stream17_fifo_cap,
+        cancellation_unit_commit_time_stream17_empty_n,
+        cancellation_unit_commit_time_stream17_read,
         cancellation_unit_input_stream_dout,
         cancellation_unit_input_stream_num_data_valid,
         cancellation_unit_input_stream_fifo_cap,
@@ -30,11 +35,14 @@ module lpcore_top_cancellation_unit_top_0_s (
         cancellation_unit_output_stream_write
 );
 
-parameter    ap_ST_fsm_state1 = 5'd1;
-parameter    ap_ST_fsm_state2 = 5'd2;
-parameter    ap_ST_fsm_state3 = 5'd4;
-parameter    ap_ST_fsm_state4 = 5'd8;
-parameter    ap_ST_fsm_state5 = 5'd16;
+parameter    ap_ST_fsm_state1 = 8'd1;
+parameter    ap_ST_fsm_state2 = 8'd2;
+parameter    ap_ST_fsm_state3 = 8'd4;
+parameter    ap_ST_fsm_state4 = 8'd8;
+parameter    ap_ST_fsm_state5 = 8'd16;
+parameter    ap_ST_fsm_state6 = 8'd32;
+parameter    ap_ST_fsm_state7 = 8'd64;
+parameter    ap_ST_fsm_state8 = 8'd128;
 
 input   ap_clk;
 input   ap_rst;
@@ -48,6 +56,11 @@ input  [1:0] cancellation_unit_rollback_info_stream_num_data_valid;
 input  [1:0] cancellation_unit_rollback_info_stream_fifo_cap;
 input   cancellation_unit_rollback_info_stream_empty_n;
 output   cancellation_unit_rollback_info_stream_read;
+input  [31:0] cancellation_unit_commit_time_stream17_dout;
+input  [1:0] cancellation_unit_commit_time_stream17_num_data_valid;
+input  [1:0] cancellation_unit_commit_time_stream17_fifo_cap;
+input   cancellation_unit_commit_time_stream17_empty_n;
+output   cancellation_unit_commit_time_stream17_read;
 input  [128:0] cancellation_unit_input_stream_dout;
 input  [1:0] cancellation_unit_input_stream_num_data_valid;
 input  [1:0] cancellation_unit_input_stream_fifo_cap;
@@ -61,11 +74,12 @@ reg ap_done;
 reg ap_idle;
 reg ap_ready;
 reg cancellation_unit_rollback_info_stream_read;
+reg cancellation_unit_commit_time_stream17_read;
 reg cancellation_unit_input_stream_read;
 reg cancellation_unit_output_stream_write;
 
 reg    ap_done_reg;
-(* fsm_encoding = "none" *) reg   [4:0] ap_CS_fsm;
+(* fsm_encoding = "none" *) reg   [7:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg   [1:0] cancellation_unit_lp_heads_V_address0;
 reg    cancellation_unit_lp_heads_V_ce0;
@@ -110,83 +124,126 @@ reg    cancellation_unit_buffer_event_send_time_V_we0;
 wire   [31:0] cancellation_unit_buffer_event_send_time_V_d0;
 wire   [31:0] cancellation_unit_buffer_event_send_time_V_q0;
 reg    cancellation_unit_rollback_info_stream_blk_n;
-wire   [0:0] tmp_nbreadreq_fu_90_p3;
+wire   [0:0] tmp_nbreadreq_fu_122_p3;
+reg    cancellation_unit_commit_time_stream17_blk_n;
+wire   [0:0] tmp_s_nbreadreq_fu_130_p3;
+wire   [0:0] tmp_5_nbreadreq_fu_138_p3;
 reg    cancellation_unit_input_stream_blk_n;
-wire   [0:0] tmp_s_nbreadreq_fu_98_p3;
-reg   [0:0] tmp_reg_402;
-reg   [0:0] tmp_s_reg_406;
-wire   [0:0] icmp_ln1077_fu_327_p2;
-reg   [0:0] icmp_ln1077_reg_410;
-reg   [5:0] cancellation_unit_buffer_next_V_addr_reg_414;
-reg   [1:0] cancellation_unit_lp_sizes_V_addr_reg_424;
-wire   [1:0] tmp_lp_id_V_fu_370_p1;
-reg   [1:0] tmp_lp_id_V_reg_429;
-reg   [31:0] tmp_to_time_V_reg_434;
-reg   [15:0] current_V_reg_444;
+reg   [15:0] reg_336;
 wire    ap_CS_fsm_state3;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_idle;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready;
-wire   [128:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0;
-wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0;
-wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0;
-wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0;
-wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld;
-wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0;
-wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0;
-wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld;
-wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0;
-wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0;
-reg    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg;
+wire    ap_CS_fsm_state6;
+reg   [0:0] tmp_reg_534;
+reg   [0:0] tmp_s_reg_538;
+reg   [0:0] tmp_5_reg_542;
+reg   [31:0] tmp_21_reg_560;
+wire   [0:0] icmp_ln1077_fu_415_p2;
+reg   [0:0] icmp_ln1077_reg_565;
+reg   [5:0] cancellation_unit_buffer_next_V_addr_reg_569;
+reg   [1:0] cancellation_unit_lp_sizes_V_addr_reg_579;
+wire   [1:0] tmp_lp_id_V_fu_458_p1;
+reg   [1:0] tmp_lp_id_V_reg_584;
+reg   [31:0] tmp_to_time_V_reg_589;
+wire   [1:0] trunc_ln88_fu_497_p1;
+reg   [1:0] trunc_ln88_reg_602;
+wire    ap_CS_fsm_state2;
+wire   [0:0] icmp_ln1073_fu_480_p2;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_idle;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld;
+wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0;
+wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_idle;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready;
+wire   [128:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0;
+wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld;
+wire   [1:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0;
+wire   [15:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld;
+wire   [5:0] grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0;
+wire    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0;
+reg    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg;
 wire    ap_CS_fsm_state4;
 wire    ap_CS_fsm_state5;
-wire   [63:0] zext_ln587_10_fu_338_p1;
-wire   [63:0] zext_ln587_11_fu_348_p1;
-wire   [63:0] zext_ln145_fu_384_p1;
-wire    ap_CS_fsm_state2;
-wire   [15:0] zext_ln886_fu_360_p1;
-reg    ap_predicate_op13_read_state1;
+reg   [15:0] removed_V_fu_114;
+reg    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg;
+wire    ap_CS_fsm_state7;
+wire    ap_CS_fsm_state8;
+wire   [63:0] zext_ln587_12_fu_426_p1;
+wire   [63:0] zext_ln587_fu_436_p1;
+wire   [63:0] zext_ln145_fu_472_p1;
+wire   [63:0] zext_ln1073_fu_492_p1;
+wire   [15:0] sub_ln887_fu_509_p2;
+wire   [15:0] zext_ln886_fu_448_p1;
+reg    ap_predicate_op21_read_state1;
+reg    ap_predicate_op25_read_state1;
 reg    ap_block_state1;
-wire   [15:0] tmp_sender_id_V_fu_298_p4;
-wire   [15:0] add_ln886_fu_395_p2;
-wire   [9:0] tmp_12_fu_317_p4;
-wire   [6:0] trunc_ln1077_fu_313_p1;
-wire   [6:0] add_ln886_3_fu_354_p2;
-reg    ap_block_state5_on_subcall_done;
-reg   [4:0] ap_NS_fsm;
+reg   [2:0] lp_id_V_fu_118;
+wire   [2:0] add_ln886_5_fu_486_p2;
+wire   [15:0] tmp_sender_id_V_fu_390_p4;
+wire   [15:0] add_ln886_fu_527_p2;
+wire   [9:0] tmp_19_fu_405_p4;
+wire   [6:0] trunc_ln1077_fu_401_p1;
+wire   [6:0] add_ln886_4_fu_442_p2;
+reg    ap_block_state8_on_subcall_done;
+reg   [7:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 wire    ap_ST_fsm_state2_blk;
 wire    ap_ST_fsm_state3_blk;
 wire    ap_ST_fsm_state4_blk;
 reg    ap_ST_fsm_state5_blk;
+wire    ap_ST_fsm_state6_blk;
+wire    ap_ST_fsm_state7_blk;
+reg    ap_ST_fsm_state8_blk;
 wire    ap_ce_reg;
 
 // power-on initialization
 initial begin
 #0 ap_done_reg = 1'b0;
-#0 ap_CS_fsm = 5'd1;
+#0 ap_CS_fsm = 8'd1;
 #0 cancellation_unit_free_head_V = 16'd0;
 #0 cancellation_unit_total_size_V = 16'd0;
-#0 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg = 1'b0;
+#0 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg = 1'b0;
+#0 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg = 1'b0;
 end
 
 lpcore_top_event_queue_top_0_s_event_queue_lp_oldest_unissued_V_RAM_AUTO_1R1W #(
@@ -301,53 +358,88 @@ cancellation_unit_buffer_event_send_time_V_U(
     .q0(cancellation_unit_buffer_event_send_time_V_q0)
 );
 
-lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231(
+lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start),
-    .ap_done(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done),
-    .ap_idle(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_idle),
-    .ap_ready(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready),
-    .current_V(current_V_reg_444),
-    .zext_ln145(tmp_lp_id_V_reg_429),
-    .cancellation_unit_output_stream_din(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din),
-    .cancellation_unit_output_stream_full_n(cancellation_unit_output_stream_full_n),
-    .cancellation_unit_output_stream_write(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write),
-    .tmp_to_time_V(tmp_to_time_V_reg_434),
-    .cancellation_unit_buffer_event_recv_time_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0),
-    .cancellation_unit_buffer_event_recv_time_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0),
-    .cancellation_unit_buffer_event_recv_time_V_q0(cancellation_unit_buffer_event_recv_time_V_q0),
-    .cancellation_unit_buffer_event_data_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0),
-    .cancellation_unit_buffer_event_data_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0),
-    .cancellation_unit_buffer_event_data_V_q0(cancellation_unit_buffer_event_data_V_q0),
-    .cancellation_unit_buffer_event_sender_id_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0),
-    .cancellation_unit_buffer_event_sender_id_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0),
-    .cancellation_unit_buffer_event_sender_id_V_q0(cancellation_unit_buffer_event_sender_id_V_q0),
-    .cancellation_unit_buffer_event_receiver_id_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0),
-    .cancellation_unit_buffer_event_receiver_id_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0),
-    .cancellation_unit_buffer_event_receiver_id_V_q0(cancellation_unit_buffer_event_receiver_id_V_q0),
-    .cancellation_unit_buffer_next_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0),
-    .cancellation_unit_buffer_next_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0),
-    .cancellation_unit_buffer_next_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0),
-    .cancellation_unit_buffer_next_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0),
+    .ap_start(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start),
+    .ap_done(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done),
+    .ap_idle(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_idle),
+    .ap_ready(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready),
+    .current_V_17(reg_336),
+    .zext_ln1073(trunc_ln88_reg_602),
+    .tmp_10(tmp_21_reg_560),
+    .removed_V_6_out_i(removed_V_fu_114),
+    .removed_V_6_out_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o),
+    .removed_V_6_out_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld),
+    .cancellation_unit_buffer_next_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0),
+    .cancellation_unit_buffer_next_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0),
+    .cancellation_unit_buffer_next_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0),
+    .cancellation_unit_buffer_next_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0),
     .cancellation_unit_buffer_next_V_q0(cancellation_unit_buffer_next_V_q0),
-    .cancellation_unit_lp_heads_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0),
-    .cancellation_unit_lp_heads_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0),
-    .cancellation_unit_lp_heads_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0),
-    .cancellation_unit_lp_heads_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0),
+    .cancellation_unit_buffer_event_send_time_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0),
+    .cancellation_unit_buffer_event_send_time_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0),
+    .cancellation_unit_buffer_event_send_time_V_q0(cancellation_unit_buffer_event_send_time_V_q0),
     .cancellation_unit_free_head_V_i(cancellation_unit_free_head_V),
-    .cancellation_unit_free_head_V_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o),
-    .cancellation_unit_free_head_V_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld),
-    .cancellation_unit_lp_sizes_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0),
-    .cancellation_unit_lp_sizes_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0),
-    .cancellation_unit_lp_sizes_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0),
-    .cancellation_unit_lp_sizes_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0),
+    .cancellation_unit_free_head_V_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o),
+    .cancellation_unit_free_head_V_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld),
+    .cancellation_unit_lp_sizes_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0),
+    .cancellation_unit_lp_sizes_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0),
+    .cancellation_unit_lp_sizes_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0),
+    .cancellation_unit_lp_sizes_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0),
+    .cancellation_unit_lp_sizes_V_q0(cancellation_unit_lp_sizes_V_q0),
+    .cancellation_unit_lp_heads_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0),
+    .cancellation_unit_lp_heads_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0),
+    .cancellation_unit_lp_heads_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0),
+    .cancellation_unit_lp_heads_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0)
+);
+
+lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303(
+    .ap_clk(ap_clk),
+    .ap_rst(ap_rst),
+    .ap_start(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start),
+    .ap_done(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done),
+    .ap_idle(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_idle),
+    .ap_ready(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready),
+    .current_V(reg_336),
+    .zext_ln145(tmp_lp_id_V_reg_584),
+    .cancellation_unit_output_stream_din(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din),
+    .cancellation_unit_output_stream_full_n(cancellation_unit_output_stream_full_n),
+    .cancellation_unit_output_stream_write(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write),
+    .tmp_to_time_V(tmp_to_time_V_reg_589),
+    .cancellation_unit_buffer_event_recv_time_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0),
+    .cancellation_unit_buffer_event_recv_time_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0),
+    .cancellation_unit_buffer_event_recv_time_V_q0(cancellation_unit_buffer_event_recv_time_V_q0),
+    .cancellation_unit_buffer_event_data_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0),
+    .cancellation_unit_buffer_event_data_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0),
+    .cancellation_unit_buffer_event_data_V_q0(cancellation_unit_buffer_event_data_V_q0),
+    .cancellation_unit_buffer_event_sender_id_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0),
+    .cancellation_unit_buffer_event_sender_id_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0),
+    .cancellation_unit_buffer_event_sender_id_V_q0(cancellation_unit_buffer_event_sender_id_V_q0),
+    .cancellation_unit_buffer_event_receiver_id_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0),
+    .cancellation_unit_buffer_event_receiver_id_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0),
+    .cancellation_unit_buffer_event_receiver_id_V_q0(cancellation_unit_buffer_event_receiver_id_V_q0),
+    .cancellation_unit_buffer_next_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0),
+    .cancellation_unit_buffer_next_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0),
+    .cancellation_unit_buffer_next_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0),
+    .cancellation_unit_buffer_next_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0),
+    .cancellation_unit_buffer_next_V_q0(cancellation_unit_buffer_next_V_q0),
+    .cancellation_unit_lp_heads_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0),
+    .cancellation_unit_lp_heads_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0),
+    .cancellation_unit_lp_heads_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0),
+    .cancellation_unit_lp_heads_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0),
+    .cancellation_unit_free_head_V_i(cancellation_unit_free_head_V),
+    .cancellation_unit_free_head_V_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o),
+    .cancellation_unit_free_head_V_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld),
+    .cancellation_unit_lp_sizes_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0),
+    .cancellation_unit_lp_sizes_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0),
+    .cancellation_unit_lp_sizes_V_we0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0),
+    .cancellation_unit_lp_sizes_V_d0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0),
     .cancellation_unit_lp_sizes_V_q0(cancellation_unit_lp_sizes_V_q0),
     .cancellation_unit_total_size_V_i(cancellation_unit_total_size_V),
-    .cancellation_unit_total_size_V_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o),
-    .cancellation_unit_total_size_V_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld),
-    .cancellation_unit_buffer_event_send_time_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0),
-    .cancellation_unit_buffer_event_send_time_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0),
+    .cancellation_unit_total_size_V_o(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o),
+    .cancellation_unit_total_size_V_o_ap_vld(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld),
+    .cancellation_unit_buffer_event_send_time_V_address0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0),
+    .cancellation_unit_buffer_event_send_time_V_ce0(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0),
     .cancellation_unit_buffer_event_send_time_V_q0(cancellation_unit_buffer_event_send_time_V_q0)
 );
 
@@ -365,7 +457,7 @@ always @ (posedge ap_clk) begin
     end else begin
         if ((ap_continue == 1'b1)) begin
             ap_done_reg <= 1'b0;
-        end else if (((1'b0 == ap_block_state5_on_subcall_done) & (1'b1 == ap_CS_fsm_state5))) begin
+        end else if (((1'b0 == ap_block_state8_on_subcall_done) & (1'b1 == ap_CS_fsm_state8))) begin
             ap_done_reg <= 1'b1;
         end
     end
@@ -373,72 +465,122 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= 1'b0;
+        grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= 1'b0;
     end else begin
-        if ((1'b1 == ap_CS_fsm_state4)) begin
-            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= 1'b1;
-        end else if ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready == 1'b1)) begin
-            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= 1'b0;
+        if ((1'b1 == ap_CS_fsm_state7)) begin
+            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= 1'b1;
+        end else if ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready == 1'b1)) begin
+            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_410 == 1'd1) & (tmp_s_reg_406 == 1'd1))) begin
+    if (ap_rst == 1'b1) begin
+        grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= 1'b0;
+    end else begin
+        if ((1'b1 == ap_CS_fsm_state4)) begin
+            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= 1'b1;
+        end else if ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready == 1'b1)) begin
+            grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= 1'b0;
+        end
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_565 == 1'd1) & (tmp_s_reg_538 == 1'd1))) begin
         cancellation_unit_free_head_V <= cancellation_unit_buffer_next_V_q0;
-    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o;
+    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o;
+    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
-        cancellation_unit_total_size_V <= zext_ln886_fu_360_p1;
-    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_total_size_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o;
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        cancellation_unit_total_size_V <= zext_ln886_fu_448_p1;
+    end else if (((icmp_ln1073_fu_480_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+        cancellation_unit_total_size_V <= sub_ln887_fu_509_p2;
+    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_total_size_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
-        cancellation_unit_buffer_next_V_addr_reg_414 <= zext_ln587_10_fu_338_p1;
-        cancellation_unit_lp_sizes_V_addr_reg_424 <= zext_ln587_11_fu_348_p1;
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        lp_id_V_fu_118 <= 3'd0;
+    end else if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+        lp_id_V_fu_118 <= add_ln886_5_fu_486_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state3)) begin
-        current_V_reg_444 <= cancellation_unit_lp_heads_V_q0;
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        removed_V_fu_114 <= 16'd0;
+    end else if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        removed_V_fu_114 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
-        icmp_ln1077_reg_410 <= icmp_ln1077_fu_327_p2;
+    if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        cancellation_unit_buffer_next_V_addr_reg_569 <= zext_ln587_12_fu_426_p1;
+        cancellation_unit_lp_sizes_V_addr_reg_579 <= zext_ln587_fu_436_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1))) begin
-        tmp_lp_id_V_reg_429 <= tmp_lp_id_V_fu_370_p1;
-        tmp_to_time_V_reg_434 <= {{cancellation_unit_rollback_info_stream_dout[47:16]}};
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        icmp_ln1077_reg_565 <= icmp_ln1077_fu_415_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state6) | (1'b1 == ap_CS_fsm_state3))) begin
+        reg_336 <= cancellation_unit_lp_heads_V_q0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        tmp_21_reg_560 <= cancellation_unit_commit_time_stream17_dout;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        tmp_5_reg_542 <= tmp_5_nbreadreq_fu_138_p3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1))) begin
+        tmp_lp_id_V_reg_584 <= tmp_lp_id_V_fu_458_p1;
+        tmp_to_time_V_reg_589 <= {{cancellation_unit_rollback_info_stream_dout[47:16]}};
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        tmp_reg_402 <= tmp_nbreadreq_fu_90_p3;
+        tmp_reg_534 <= tmp_nbreadreq_fu_122_p3;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
-        tmp_s_reg_406 <= tmp_s_nbreadreq_fu_98_p3;
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        tmp_s_reg_538 <= tmp_s_nbreadreq_fu_130_p3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+        trunc_ln88_reg_602 <= trunc_ln88_fu_497_p1;
     end
 end
 
 always @ (*) begin
-    if (((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1)))) begin
+    if (((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1)))) begin
         ap_ST_fsm_state1_blk = 1'b1;
     end else begin
         ap_ST_fsm_state1_blk = 1'b0;
@@ -452,15 +594,27 @@ assign ap_ST_fsm_state3_blk = 1'b0;
 assign ap_ST_fsm_state4_blk = 1'b0;
 
 always @ (*) begin
-    if ((1'b1 == ap_block_state5_on_subcall_done)) begin
+    if ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done == 1'b0)) begin
         ap_ST_fsm_state5_blk = 1'b1;
     end else begin
         ap_ST_fsm_state5_blk = 1'b0;
     end
 end
 
+assign ap_ST_fsm_state6_blk = 1'b0;
+
+assign ap_ST_fsm_state7_blk = 1'b0;
+
 always @ (*) begin
-    if (((1'b0 == ap_block_state5_on_subcall_done) & (1'b1 == ap_CS_fsm_state5))) begin
+    if ((1'b1 == ap_block_state8_on_subcall_done)) begin
+        ap_ST_fsm_state8_blk = 1'b1;
+    end else begin
+        ap_ST_fsm_state8_blk = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((1'b0 == ap_block_state8_on_subcall_done) & (1'b1 == ap_CS_fsm_state8))) begin
         ap_done = 1'b1;
     end else begin
         ap_done = ap_done_reg;
@@ -476,7 +630,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_state5_on_subcall_done) & (1'b1 == ap_CS_fsm_state5))) begin
+    if (((1'b0 == ap_block_state8_on_subcall_done) & (1'b1 == ap_CS_fsm_state8))) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -485,26 +639,26 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_event_data_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_data_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0;
+        cancellation_unit_buffer_event_data_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_data_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0;
     end else begin
         cancellation_unit_buffer_event_data_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_buffer_event_data_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_data_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_data_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0;
     end else begin
         cancellation_unit_buffer_event_data_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_buffer_event_data_V_we0 = 1'b1;
     end else begin
         cancellation_unit_buffer_event_data_V_we0 = 1'b0;
@@ -513,26 +667,26 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_event_receiver_id_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_receiver_id_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0;
+        cancellation_unit_buffer_event_receiver_id_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_receiver_id_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0;
     end else begin
         cancellation_unit_buffer_event_receiver_id_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_buffer_event_receiver_id_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_receiver_id_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_receiver_id_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0;
     end else begin
         cancellation_unit_buffer_event_receiver_id_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_buffer_event_receiver_id_V_we0 = 1'b1;
     end else begin
         cancellation_unit_buffer_event_receiver_id_V_we0 = 1'b0;
@@ -541,26 +695,26 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_event_recv_time_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_recv_time_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0;
+        cancellation_unit_buffer_event_recv_time_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_recv_time_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0;
     end else begin
         cancellation_unit_buffer_event_recv_time_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_buffer_event_recv_time_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_recv_time_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_recv_time_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0;
     end else begin
         cancellation_unit_buffer_event_recv_time_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_buffer_event_recv_time_V_we0 = 1'b1;
     end else begin
         cancellation_unit_buffer_event_recv_time_V_we0 = 1'b0;
@@ -569,26 +723,30 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_event_send_time_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_send_time_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0;
+        cancellation_unit_buffer_event_send_time_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_send_time_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_event_send_time_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0;
     end else begin
         cancellation_unit_buffer_event_send_time_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_buffer_event_send_time_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_send_time_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_send_time_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_event_send_time_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0;
     end else begin
         cancellation_unit_buffer_event_send_time_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_buffer_event_send_time_V_we0 = 1'b1;
     end else begin
         cancellation_unit_buffer_event_send_time_V_we0 = 1'b0;
@@ -597,26 +755,26 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_event_sender_id_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_sender_id_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0;
+        cancellation_unit_buffer_event_sender_id_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_sender_id_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0;
     end else begin
         cancellation_unit_buffer_event_sender_id_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_buffer_event_sender_id_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_event_sender_id_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_event_sender_id_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0;
     end else begin
         cancellation_unit_buffer_event_sender_id_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_buffer_event_sender_id_V_we0 = 1'b1;
     end else begin
         cancellation_unit_buffer_event_sender_id_V_we0 = 1'b0;
@@ -625,21 +783,25 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        cancellation_unit_buffer_next_V_address0 = cancellation_unit_buffer_next_V_addr_reg_414;
+        cancellation_unit_buffer_next_V_address0 = cancellation_unit_buffer_next_V_addr_reg_569;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_buffer_next_V_address0 = zext_ln587_10_fu_338_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_next_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0;
+        cancellation_unit_buffer_next_V_address0 = zext_ln587_12_fu_426_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_next_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_next_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0;
     end else begin
         cancellation_unit_buffer_next_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state2) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if (((1'b1 == ap_CS_fsm_state2) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1)))) begin
         cancellation_unit_buffer_next_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_next_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_next_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_next_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0;
     end else begin
         cancellation_unit_buffer_next_V_ce0 = 1'b0;
     end
@@ -648,25 +810,45 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
         cancellation_unit_buffer_next_V_d0 = cancellation_unit_lp_heads_V_q0;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_next_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_next_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_next_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0;
     end else begin
         cancellation_unit_buffer_next_V_d0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_410 == 1'd1) & (tmp_s_reg_406 == 1'd1))) begin
+    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_565 == 1'd1) & (tmp_s_reg_538 == 1'd1))) begin
         cancellation_unit_buffer_next_V_we0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_buffer_next_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_buffer_next_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_buffer_next_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0;
     end else begin
         cancellation_unit_buffer_next_V_we0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        cancellation_unit_commit_time_stream17_blk_n = cancellation_unit_commit_time_stream17_empty_n;
+    end else begin
+        cancellation_unit_commit_time_stream17_blk_n = 1'b1;
+    end
+end
+
+always @ (*) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (ap_predicate_op21_read_state1 == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+        cancellation_unit_commit_time_stream17_read = 1'b1;
+    end else begin
+        cancellation_unit_commit_time_stream17_read = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_input_stream_blk_n = cancellation_unit_input_stream_empty_n;
     end else begin
         cancellation_unit_input_stream_blk_n = 1'b1;
@@ -674,7 +856,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (ap_predicate_op13_read_state1 == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (ap_predicate_op25_read_state1 == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
         cancellation_unit_input_stream_read = 1'b1;
     end else begin
         cancellation_unit_input_stream_read = 1'b0;
@@ -682,42 +864,52 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1))) begin
-        cancellation_unit_lp_heads_V_address0 = zext_ln145_fu_384_p1;
-    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
-        cancellation_unit_lp_heads_V_address0 = zext_ln587_11_fu_348_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_heads_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0;
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        cancellation_unit_lp_heads_V_address0 = zext_ln1073_fu_492_p1;
+    end else if (((1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1))) begin
+        cancellation_unit_lp_heads_V_address0 = zext_ln145_fu_472_p1;
+    end else if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        cancellation_unit_lp_heads_V_address0 = zext_ln587_fu_436_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_heads_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_heads_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0;
     end else begin
         cancellation_unit_lp_heads_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1)))) begin
+    if (((1'b1 == ap_CS_fsm_state2) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0)) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1)))) begin
         cancellation_unit_lp_heads_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_heads_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_heads_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_heads_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0;
     end else begin
         cancellation_unit_lp_heads_V_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if (((1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_lp_heads_V_d0 = cancellation_unit_free_head_V;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_heads_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_heads_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_heads_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0;
     end else begin
         cancellation_unit_lp_heads_V_d0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_327_p2 == 1'd1) & (tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_lp_heads_V_we0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_heads_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_heads_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_heads_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0;
     end else begin
         cancellation_unit_lp_heads_V_we0 = 1'b0;
     end
@@ -725,21 +917,25 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        cancellation_unit_lp_sizes_V_address0 = cancellation_unit_lp_sizes_V_addr_reg_424;
+        cancellation_unit_lp_sizes_V_address0 = cancellation_unit_lp_sizes_V_addr_reg_579;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        cancellation_unit_lp_sizes_V_address0 = zext_ln587_11_fu_348_p1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_sizes_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0;
+        cancellation_unit_lp_sizes_V_address0 = zext_ln587_fu_436_p1;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_sizes_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_sizes_V_address0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0;
     end else begin
         cancellation_unit_lp_sizes_V_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state2) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if (((1'b1 == ap_CS_fsm_state2) | (~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1)))) begin
         cancellation_unit_lp_sizes_V_ce0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_sizes_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_sizes_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_sizes_V_ce0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0;
     end else begin
         cancellation_unit_lp_sizes_V_ce0 = 1'b0;
     end
@@ -747,34 +943,38 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        cancellation_unit_lp_sizes_V_d0 = add_ln886_fu_395_p2;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_sizes_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0;
+        cancellation_unit_lp_sizes_V_d0 = add_ln886_fu_527_p2;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_sizes_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_sizes_V_d0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0;
     end else begin
         cancellation_unit_lp_sizes_V_d0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_410 == 1'd1) & (tmp_s_reg_406 == 1'd1))) begin
+    if (((1'b1 == ap_CS_fsm_state2) & (icmp_ln1077_reg_565 == 1'd1) & (tmp_s_reg_538 == 1'd1))) begin
         cancellation_unit_lp_sizes_V_we0 = 1'b1;
-    end else if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_lp_sizes_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0;
+    end else if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_lp_sizes_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        cancellation_unit_lp_sizes_V_we0 = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0;
     end else begin
         cancellation_unit_lp_sizes_V_we0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state5) & (tmp_reg_402 == 1'd1))) begin
-        cancellation_unit_output_stream_write = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write;
+    if (((1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
+        cancellation_unit_output_stream_write = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write;
     end else begin
         cancellation_unit_output_stream_write = 1'b0;
     end
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1))) begin
         cancellation_unit_rollback_info_stream_blk_n = cancellation_unit_rollback_info_stream_empty_n;
     end else begin
         cancellation_unit_rollback_info_stream_blk_n = 1'b1;
@@ -782,7 +982,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1))) begin
         cancellation_unit_rollback_info_stream_read = 1'b1;
     end else begin
         cancellation_unit_rollback_info_stream_read = 1'b0;
@@ -792,16 +992,20 @@ end
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd0))) begin
+            if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
-            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_90_p3 == 1'd1))) begin
-                ap_NS_fsm = ap_ST_fsm_state3;
+            end else if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_nbreadreq_fu_122_p3 == 1'd1))) begin
+                ap_NS_fsm = ap_ST_fsm_state6;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end
         end
         ap_ST_fsm_state2 : begin
-            ap_NS_fsm = ap_ST_fsm_state5;
+            if (((1'b1 == ap_CS_fsm_state2) & ((tmp_s_reg_538 == 1'd1) | ((icmp_ln1073_fu_480_p2 == 1'd1) | (tmp_5_reg_542 == 1'd0))))) begin
+                ap_NS_fsm = ap_ST_fsm_state8;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state3;
+            end
         end
         ap_ST_fsm_state3 : begin
             ap_NS_fsm = ap_ST_fsm_state4;
@@ -810,10 +1014,23 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state5;
         end
         ap_ST_fsm_state5 : begin
-            if (((1'b0 == ap_block_state5_on_subcall_done) & (1'b1 == ap_CS_fsm_state5))) begin
-                ap_NS_fsm = ap_ST_fsm_state1;
+            if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+                ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state5;
+            end
+        end
+        ap_ST_fsm_state6 : begin
+            ap_NS_fsm = ap_ST_fsm_state7;
+        end
+        ap_ST_fsm_state7 : begin
+            ap_NS_fsm = ap_ST_fsm_state8;
+        end
+        ap_ST_fsm_state8 : begin
+            if (((1'b0 == ap_block_state8_on_subcall_done) & (1'b1 == ap_CS_fsm_state8))) begin
+                ap_NS_fsm = ap_ST_fsm_state1;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state8;
             end
         end
         default : begin
@@ -822,9 +1039,11 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln886_3_fu_354_p2 = (trunc_ln1077_fu_313_p1 + 7'd1);
+assign add_ln886_4_fu_442_p2 = (trunc_ln1077_fu_401_p1 + 7'd1);
 
-assign add_ln886_fu_395_p2 = (cancellation_unit_lp_sizes_V_q0 + 16'd1);
+assign add_ln886_5_fu_486_p2 = (lp_id_V_fu_118 + 3'd1);
+
+assign add_ln886_fu_527_p2 = (cancellation_unit_lp_sizes_V_q0 + 16'd1);
 
 assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
@@ -836,16 +1055,26 @@ assign ap_CS_fsm_state4 = ap_CS_fsm[32'd3];
 
 assign ap_CS_fsm_state5 = ap_CS_fsm[32'd4];
 
+assign ap_CS_fsm_state6 = ap_CS_fsm[32'd5];
+
+assign ap_CS_fsm_state7 = ap_CS_fsm[32'd6];
+
+assign ap_CS_fsm_state8 = ap_CS_fsm[32'd7];
+
 always @ (*) begin
-    ap_block_state1 = ((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_90_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op13_read_state1 == 1'b1)));
+    ap_block_state1 = ((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1)));
 end
 
 always @ (*) begin
-    ap_block_state5_on_subcall_done = ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done == 1'b0) & (tmp_reg_402 == 1'd1));
+    ap_block_state8_on_subcall_done = ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done == 1'b0) & (tmp_reg_534 == 1'd1));
 end
 
 always @ (*) begin
-    ap_predicate_op13_read_state1 = ((tmp_s_nbreadreq_fu_98_p3 == 1'd1) & (tmp_nbreadreq_fu_90_p3 == 1'd0));
+    ap_predicate_op21_read_state1 = ((tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0));
+end
+
+always @ (*) begin
+    ap_predicate_op25_read_state1 = ((tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0));
 end
 
 assign cancellation_unit_buffer_event_data_V_d0 = {{cancellation_unit_input_stream_dout[95:64]}};
@@ -858,30 +1087,42 @@ assign cancellation_unit_buffer_event_send_time_V_d0 = cancellation_unit_input_s
 
 assign cancellation_unit_buffer_event_sender_id_V_d0 = {{cancellation_unit_input_stream_dout[111:96]}};
 
-assign cancellation_unit_output_stream_din = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din;
+assign cancellation_unit_output_stream_din = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din;
 
-assign grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg;
+assign grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg;
 
-assign icmp_ln1077_fu_327_p2 = ((tmp_12_fu_317_p4 == 10'd0) ? 1'b1 : 1'b0);
+assign grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start = grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg;
 
-assign tmp_12_fu_317_p4 = {{cancellation_unit_total_size_V[15:6]}};
+assign icmp_ln1073_fu_480_p2 = ((lp_id_V_fu_118 == 3'd4) ? 1'b1 : 1'b0);
 
-assign tmp_lp_id_V_fu_370_p1 = cancellation_unit_rollback_info_stream_dout[1:0];
+assign icmp_ln1077_fu_415_p2 = ((tmp_19_fu_405_p4 == 10'd0) ? 1'b1 : 1'b0);
 
-assign tmp_nbreadreq_fu_90_p3 = cancellation_unit_rollback_info_stream_empty_n;
+assign sub_ln887_fu_509_p2 = (cancellation_unit_total_size_V - removed_V_fu_114);
 
-assign tmp_s_nbreadreq_fu_98_p3 = cancellation_unit_input_stream_empty_n;
+assign tmp_19_fu_405_p4 = {{cancellation_unit_total_size_V[15:6]}};
 
-assign tmp_sender_id_V_fu_298_p4 = {{cancellation_unit_input_stream_dout[111:96]}};
+assign tmp_5_nbreadreq_fu_138_p3 = cancellation_unit_commit_time_stream17_empty_n;
 
-assign trunc_ln1077_fu_313_p1 = cancellation_unit_total_size_V[6:0];
+assign tmp_lp_id_V_fu_458_p1 = cancellation_unit_rollback_info_stream_dout[1:0];
 
-assign zext_ln145_fu_384_p1 = tmp_lp_id_V_fu_370_p1;
+assign tmp_nbreadreq_fu_122_p3 = cancellation_unit_rollback_info_stream_empty_n;
 
-assign zext_ln587_10_fu_338_p1 = cancellation_unit_free_head_V;
+assign tmp_s_nbreadreq_fu_130_p3 = cancellation_unit_input_stream_empty_n;
 
-assign zext_ln587_11_fu_348_p1 = tmp_sender_id_V_fu_298_p4;
+assign tmp_sender_id_V_fu_390_p4 = {{cancellation_unit_input_stream_dout[111:96]}};
 
-assign zext_ln886_fu_360_p1 = add_ln886_3_fu_354_p2;
+assign trunc_ln1077_fu_401_p1 = cancellation_unit_total_size_V[6:0];
+
+assign trunc_ln88_fu_497_p1 = lp_id_V_fu_118[1:0];
+
+assign zext_ln1073_fu_492_p1 = lp_id_V_fu_118;
+
+assign zext_ln145_fu_472_p1 = tmp_lp_id_V_fu_458_p1;
+
+assign zext_ln587_12_fu_426_p1 = cancellation_unit_free_head_V;
+
+assign zext_ln587_fu_436_p1 = tmp_sender_id_V_fu_390_p4;
+
+assign zext_ln886_fu_448_p1 = add_ln886_4_fu_442_p2;
 
 endmodule //lpcore_top_cancellation_unit_top_0_s

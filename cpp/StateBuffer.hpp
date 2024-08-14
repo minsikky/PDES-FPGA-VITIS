@@ -35,8 +35,8 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 template <int ID>
 void state_buffer_top(
-    // StateBuffer &state_buffer,
     hls::stream<RollbackInfo> &state_buffer_rollback_info_stream,
+    hls::stream<ap_int<32>> &state_buffer_commit_time_stream,
     hls::stream<LPState> &state_buffer_input_stream,
     hls::stream<TimeWarpEvent> &issued_event_stream,
     hls::stream<EventProcessorInput> &event_processor_input_stream)
@@ -59,11 +59,11 @@ void state_buffer_top(
         EventProcessorInput input = {event, state};
         event_processor_input_stream.write(input);
     }
-    // else if (!commit_time_stream.empty()) // Can't enqueue or issue, so try to commit
-    // {
-    //     ap_int<32> commit_time = commit_time_stream.read();
-    //     state_buffer.commit(commit_time);
-    // }
+    else if (!state_buffer_commit_time_stream.empty()) // Can't enqueue or issue, so try to commit
+    {
+        ap_int<32> commit_time = state_buffer_commit_time_stream.read();
+        state_buffer.commit(commit_time);
+    }
 }
 
 void state_buffer_top_test(

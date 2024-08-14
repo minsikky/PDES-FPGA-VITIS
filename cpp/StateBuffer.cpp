@@ -201,12 +201,14 @@ void state_buffer_kernel(ap_uint<2> op, LPState state, LPState &result, bool &su
 
 void state_buffer_top_test(
     hls::stream<RollbackInfo> &state_buffer_rollback_info_stream,
+    hls::stream<ap_int<32>> &state_buffer_commit_time_stream,
     hls::stream<LPState> &state_buffer_input_stream,
     hls::stream<TimeWarpEvent> &issued_event_stream,
     hls::stream<EventProcessorInput> &event_processor_input_stream)
 {
     state_buffer_top<0>(
         state_buffer_rollback_info_stream,
+        state_buffer_commit_time_stream,
         state_buffer_input_stream,
         issued_event_stream,
         event_processor_input_stream);

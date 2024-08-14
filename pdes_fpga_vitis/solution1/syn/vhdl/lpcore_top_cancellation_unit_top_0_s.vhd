@@ -23,6 +23,11 @@ port (
     cancellation_unit_rollback_info_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
     cancellation_unit_rollback_info_stream_empty_n : IN STD_LOGIC;
     cancellation_unit_rollback_info_stream_read : OUT STD_LOGIC;
+    cancellation_unit_commit_time_stream17_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+    cancellation_unit_commit_time_stream17_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    cancellation_unit_commit_time_stream17_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+    cancellation_unit_commit_time_stream17_empty_n : IN STD_LOGIC;
+    cancellation_unit_commit_time_stream17_read : OUT STD_LOGIC;
     cancellation_unit_input_stream_dout : IN STD_LOGIC_VECTOR (128 downto 0);
     cancellation_unit_input_stream_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
     cancellation_unit_input_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
@@ -37,19 +42,27 @@ end;
 architecture behav of lpcore_top_cancellation_unit_top_0_s is 
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
-    constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (4 downto 0) := "00001";
-    constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (4 downto 0) := "00010";
-    constant ap_ST_fsm_state3 : STD_LOGIC_VECTOR (4 downto 0) := "00100";
-    constant ap_ST_fsm_state4 : STD_LOGIC_VECTOR (4 downto 0) := "01000";
-    constant ap_ST_fsm_state5 : STD_LOGIC_VECTOR (4 downto 0) := "10000";
+    constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
+    constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (7 downto 0) := "00000010";
+    constant ap_ST_fsm_state3 : STD_LOGIC_VECTOR (7 downto 0) := "00000100";
+    constant ap_ST_fsm_state4 : STD_LOGIC_VECTOR (7 downto 0) := "00001000";
+    constant ap_ST_fsm_state5 : STD_LOGIC_VECTOR (7 downto 0) := "00010000";
+    constant ap_ST_fsm_state6 : STD_LOGIC_VECTOR (7 downto 0) := "00100000";
+    constant ap_ST_fsm_state7 : STD_LOGIC_VECTOR (7 downto 0) := "01000000";
+    constant ap_ST_fsm_state8 : STD_LOGIC_VECTOR (7 downto 0) := "10000000";
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_boolean_1 : BOOLEAN := true;
+    constant ap_const_lv16_0 : STD_LOGIC_VECTOR (15 downto 0) := "0000000000000000";
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
     constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
     constant ap_const_lv32_2 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000010";
+    constant ap_const_lv32_5 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000101";
+    constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
     constant ap_const_lv32_3 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000011";
     constant ap_const_lv32_4 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000100";
-    constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
+    constant ap_const_lv32_6 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000110";
+    constant ap_const_lv32_7 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000111";
+    constant ap_const_lv3_0 : STD_LOGIC_VECTOR (2 downto 0) := "000";
     constant ap_const_lv32_70 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001110000";
     constant ap_const_lv32_7F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001111111";
     constant ap_const_lv32_20 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000100000";
@@ -58,18 +71,19 @@ architecture behav of lpcore_top_cancellation_unit_top_0_s is
     constant ap_const_lv32_5F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001011111";
     constant ap_const_lv32_60 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001100000";
     constant ap_const_lv32_6F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000001101111";
-    constant ap_const_lv32_6 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000110";
     constant ap_const_lv32_F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001111";
     constant ap_const_lv10_0 : STD_LOGIC_VECTOR (9 downto 0) := "0000000000";
     constant ap_const_lv7_1 : STD_LOGIC_VECTOR (6 downto 0) := "0000001";
     constant ap_const_lv32_10 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000010000";
     constant ap_const_lv32_2F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000101111";
+    constant ap_const_lv3_4 : STD_LOGIC_VECTOR (2 downto 0) := "100";
+    constant ap_const_lv3_1 : STD_LOGIC_VECTOR (2 downto 0) := "001";
     constant ap_const_lv16_1 : STD_LOGIC_VECTOR (15 downto 0) := "0000000000000001";
     constant ap_const_boolean_0 : BOOLEAN := false;
 
 attribute shreg_extract : string;
     signal ap_done_reg : STD_LOGIC := '0';
-    signal ap_CS_fsm : STD_LOGIC_VECTOR (4 downto 0) := "00001";
+    signal ap_CS_fsm : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
     attribute fsm_encoding : string;
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
     signal ap_CS_fsm_state1 : STD_LOGIC;
@@ -117,79 +131,161 @@ attribute shreg_extract : string;
     signal cancellation_unit_buffer_event_send_time_V_d0 : STD_LOGIC_VECTOR (31 downto 0);
     signal cancellation_unit_buffer_event_send_time_V_q0 : STD_LOGIC_VECTOR (31 downto 0);
     signal cancellation_unit_rollback_info_stream_blk_n : STD_LOGIC;
-    signal tmp_nbreadreq_fu_90_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_nbreadreq_fu_122_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal cancellation_unit_commit_time_stream17_blk_n : STD_LOGIC;
+    signal tmp_s_nbreadreq_fu_130_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_5_nbreadreq_fu_138_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal cancellation_unit_input_stream_blk_n : STD_LOGIC;
-    signal tmp_s_nbreadreq_fu_98_p3 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_reg_402 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_s_reg_406 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln1077_fu_327_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln1077_reg_410 : STD_LOGIC_VECTOR (0 downto 0);
-    signal cancellation_unit_buffer_next_V_addr_reg_414 : STD_LOGIC_VECTOR (5 downto 0);
-    signal cancellation_unit_lp_sizes_V_addr_reg_424 : STD_LOGIC_VECTOR (1 downto 0);
-    signal tmp_lp_id_V_fu_370_p1 : STD_LOGIC_VECTOR (1 downto 0);
-    signal tmp_lp_id_V_reg_429 : STD_LOGIC_VECTOR (1 downto 0);
-    signal tmp_to_time_V_reg_434 : STD_LOGIC_VECTOR (31 downto 0);
-    signal current_V_reg_444 : STD_LOGIC_VECTOR (15 downto 0);
+    signal reg_336 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state3 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_idle : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din : STD_LOGIC_VECTOR (128 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0 : STD_LOGIC;
-    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg : STD_LOGIC := '0';
+    signal ap_CS_fsm_state6 : STD_LOGIC;
+    attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
+    signal tmp_reg_534 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_s_reg_538 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_5_reg_542 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_21_reg_560 : STD_LOGIC_VECTOR (31 downto 0);
+    signal icmp_ln1077_fu_415_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln1077_reg_565 : STD_LOGIC_VECTOR (0 downto 0);
+    signal cancellation_unit_buffer_next_V_addr_reg_569 : STD_LOGIC_VECTOR (5 downto 0);
+    signal cancellation_unit_lp_sizes_V_addr_reg_579 : STD_LOGIC_VECTOR (1 downto 0);
+    signal tmp_lp_id_V_fu_458_p1 : STD_LOGIC_VECTOR (1 downto 0);
+    signal tmp_lp_id_V_reg_584 : STD_LOGIC_VECTOR (1 downto 0);
+    signal tmp_to_time_V_reg_589 : STD_LOGIC_VECTOR (31 downto 0);
+    signal trunc_ln88_fu_497_p1 : STD_LOGIC_VECTOR (1 downto 0);
+    signal trunc_ln88_reg_602 : STD_LOGIC_VECTOR (1 downto 0);
+    signal ap_CS_fsm_state2 : STD_LOGIC;
+    attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
+    signal icmp_ln1073_fu_480_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_idle : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_idle : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din : STD_LOGIC_VECTOR (128 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0 : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0 : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0 : STD_LOGIC;
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state4 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state4 : signal is "none";
     signal ap_CS_fsm_state5 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state5 : signal is "none";
-    signal zext_ln587_10_fu_338_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln587_11_fu_348_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln145_fu_384_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal ap_CS_fsm_state2 : STD_LOGIC;
-    attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal zext_ln886_fu_360_p1 : STD_LOGIC_VECTOR (15 downto 0);
-    signal ap_predicate_op13_read_state1 : BOOLEAN;
+    signal removed_V_fu_114 : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg : STD_LOGIC := '0';
+    signal ap_CS_fsm_state7 : STD_LOGIC;
+    attribute fsm_encoding of ap_CS_fsm_state7 : signal is "none";
+    signal ap_CS_fsm_state8 : STD_LOGIC;
+    attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
+    signal zext_ln587_12_fu_426_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln587_fu_436_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln145_fu_472_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln1073_fu_492_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal sub_ln887_fu_509_p2 : STD_LOGIC_VECTOR (15 downto 0);
+    signal zext_ln886_fu_448_p1 : STD_LOGIC_VECTOR (15 downto 0);
+    signal ap_predicate_op21_read_state1 : BOOLEAN;
+    signal ap_predicate_op25_read_state1 : BOOLEAN;
     signal ap_block_state1 : BOOLEAN;
-    signal tmp_sender_id_V_fu_298_p4 : STD_LOGIC_VECTOR (15 downto 0);
-    signal add_ln886_fu_395_p2 : STD_LOGIC_VECTOR (15 downto 0);
-    signal tmp_12_fu_317_p4 : STD_LOGIC_VECTOR (9 downto 0);
-    signal trunc_ln1077_fu_313_p1 : STD_LOGIC_VECTOR (6 downto 0);
-    signal add_ln886_3_fu_354_p2 : STD_LOGIC_VECTOR (6 downto 0);
-    signal ap_block_state5_on_subcall_done : BOOLEAN;
-    signal ap_NS_fsm : STD_LOGIC_VECTOR (4 downto 0);
+    signal lp_id_V_fu_118 : STD_LOGIC_VECTOR (2 downto 0);
+    signal add_ln886_5_fu_486_p2 : STD_LOGIC_VECTOR (2 downto 0);
+    signal tmp_sender_id_V_fu_390_p4 : STD_LOGIC_VECTOR (15 downto 0);
+    signal add_ln886_fu_527_p2 : STD_LOGIC_VECTOR (15 downto 0);
+    signal tmp_19_fu_405_p4 : STD_LOGIC_VECTOR (9 downto 0);
+    signal trunc_ln1077_fu_401_p1 : STD_LOGIC_VECTOR (6 downto 0);
+    signal add_ln886_4_fu_442_p2 : STD_LOGIC_VECTOR (6 downto 0);
+    signal ap_block_state8_on_subcall_done : BOOLEAN;
+    signal ap_NS_fsm : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_ST_fsm_state1_blk : STD_LOGIC;
     signal ap_ST_fsm_state2_blk : STD_LOGIC;
     signal ap_ST_fsm_state3_blk : STD_LOGIC;
     signal ap_ST_fsm_state4_blk : STD_LOGIC;
     signal ap_ST_fsm_state5_blk : STD_LOGIC;
+    signal ap_ST_fsm_state6_blk : STD_LOGIC;
+    signal ap_ST_fsm_state7_blk : STD_LOGIC;
+    signal ap_ST_fsm_state8_blk : STD_LOGIC;
     signal ap_ce_reg : STD_LOGIC;
+
+    component lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2 IS
+    port (
+        ap_clk : IN STD_LOGIC;
+        ap_rst : IN STD_LOGIC;
+        ap_start : IN STD_LOGIC;
+        ap_done : OUT STD_LOGIC;
+        ap_idle : OUT STD_LOGIC;
+        ap_ready : OUT STD_LOGIC;
+        current_V_17 : IN STD_LOGIC_VECTOR (15 downto 0);
+        zext_ln1073 : IN STD_LOGIC_VECTOR (1 downto 0);
+        tmp_10 : IN STD_LOGIC_VECTOR (31 downto 0);
+        removed_V_6_out_i : IN STD_LOGIC_VECTOR (15 downto 0);
+        removed_V_6_out_o : OUT STD_LOGIC_VECTOR (15 downto 0);
+        removed_V_6_out_o_ap_vld : OUT STD_LOGIC;
+        cancellation_unit_buffer_next_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
+        cancellation_unit_buffer_next_V_ce0 : OUT STD_LOGIC;
+        cancellation_unit_buffer_next_V_we0 : OUT STD_LOGIC;
+        cancellation_unit_buffer_next_V_d0 : OUT STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_buffer_next_V_q0 : IN STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_buffer_event_send_time_V_address0 : OUT STD_LOGIC_VECTOR (5 downto 0);
+        cancellation_unit_buffer_event_send_time_V_ce0 : OUT STD_LOGIC;
+        cancellation_unit_buffer_event_send_time_V_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        cancellation_unit_free_head_V_i : IN STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_free_head_V_o : OUT STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_free_head_V_o_ap_vld : OUT STD_LOGIC;
+        cancellation_unit_lp_sizes_V_address0 : OUT STD_LOGIC_VECTOR (1 downto 0);
+        cancellation_unit_lp_sizes_V_ce0 : OUT STD_LOGIC;
+        cancellation_unit_lp_sizes_V_we0 : OUT STD_LOGIC;
+        cancellation_unit_lp_sizes_V_d0 : OUT STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_lp_sizes_V_q0 : IN STD_LOGIC_VECTOR (15 downto 0);
+        cancellation_unit_lp_heads_V_address0 : OUT STD_LOGIC_VECTOR (1 downto 0);
+        cancellation_unit_lp_heads_V_ce0 : OUT STD_LOGIC;
+        cancellation_unit_lp_heads_V_we0 : OUT STD_LOGIC;
+        cancellation_unit_lp_heads_V_d0 : OUT STD_LOGIC_VECTOR (15 downto 0) );
+    end component;
+
 
     component lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1 IS
     port (
@@ -453,54 +549,89 @@ begin
         d0 => cancellation_unit_buffer_event_send_time_V_d0,
         q0 => cancellation_unit_buffer_event_send_time_V_q0);
 
-    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231 : component lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285 : component lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
-        ap_start => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start,
-        ap_done => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done,
-        ap_idle => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_idle,
-        ap_ready => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready,
-        current_V => current_V_reg_444,
-        zext_ln145 => tmp_lp_id_V_reg_429,
-        cancellation_unit_output_stream_din => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din,
-        cancellation_unit_output_stream_full_n => cancellation_unit_output_stream_full_n,
-        cancellation_unit_output_stream_write => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write,
-        tmp_to_time_V => tmp_to_time_V_reg_434,
-        cancellation_unit_buffer_event_recv_time_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0,
-        cancellation_unit_buffer_event_recv_time_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0,
-        cancellation_unit_buffer_event_recv_time_V_q0 => cancellation_unit_buffer_event_recv_time_V_q0,
-        cancellation_unit_buffer_event_data_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0,
-        cancellation_unit_buffer_event_data_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0,
-        cancellation_unit_buffer_event_data_V_q0 => cancellation_unit_buffer_event_data_V_q0,
-        cancellation_unit_buffer_event_sender_id_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0,
-        cancellation_unit_buffer_event_sender_id_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0,
-        cancellation_unit_buffer_event_sender_id_V_q0 => cancellation_unit_buffer_event_sender_id_V_q0,
-        cancellation_unit_buffer_event_receiver_id_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0,
-        cancellation_unit_buffer_event_receiver_id_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0,
-        cancellation_unit_buffer_event_receiver_id_V_q0 => cancellation_unit_buffer_event_receiver_id_V_q0,
-        cancellation_unit_buffer_next_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0,
-        cancellation_unit_buffer_next_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0,
-        cancellation_unit_buffer_next_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0,
-        cancellation_unit_buffer_next_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0,
+        ap_start => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start,
+        ap_done => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done,
+        ap_idle => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_idle,
+        ap_ready => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready,
+        current_V_17 => reg_336,
+        zext_ln1073 => trunc_ln88_reg_602,
+        tmp_10 => tmp_21_reg_560,
+        removed_V_6_out_i => removed_V_fu_114,
+        removed_V_6_out_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o,
+        removed_V_6_out_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld,
+        cancellation_unit_buffer_next_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0,
+        cancellation_unit_buffer_next_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0,
+        cancellation_unit_buffer_next_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0,
+        cancellation_unit_buffer_next_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0,
         cancellation_unit_buffer_next_V_q0 => cancellation_unit_buffer_next_V_q0,
-        cancellation_unit_lp_heads_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0,
-        cancellation_unit_lp_heads_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0,
-        cancellation_unit_lp_heads_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0,
-        cancellation_unit_lp_heads_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0,
+        cancellation_unit_buffer_event_send_time_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0,
+        cancellation_unit_buffer_event_send_time_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0,
+        cancellation_unit_buffer_event_send_time_V_q0 => cancellation_unit_buffer_event_send_time_V_q0,
         cancellation_unit_free_head_V_i => cancellation_unit_free_head_V,
-        cancellation_unit_free_head_V_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o,
-        cancellation_unit_free_head_V_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld,
-        cancellation_unit_lp_sizes_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0,
-        cancellation_unit_lp_sizes_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0,
-        cancellation_unit_lp_sizes_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0,
-        cancellation_unit_lp_sizes_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0,
+        cancellation_unit_free_head_V_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o,
+        cancellation_unit_free_head_V_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld,
+        cancellation_unit_lp_sizes_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0,
+        cancellation_unit_lp_sizes_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0,
+        cancellation_unit_lp_sizes_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0,
+        cancellation_unit_lp_sizes_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0,
+        cancellation_unit_lp_sizes_V_q0 => cancellation_unit_lp_sizes_V_q0,
+        cancellation_unit_lp_heads_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0,
+        cancellation_unit_lp_heads_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0,
+        cancellation_unit_lp_heads_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0,
+        cancellation_unit_lp_heads_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0);
+
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303 : component lpcore_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1
+    port map (
+        ap_clk => ap_clk,
+        ap_rst => ap_rst,
+        ap_start => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start,
+        ap_done => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done,
+        ap_idle => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_idle,
+        ap_ready => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready,
+        current_V => reg_336,
+        zext_ln145 => tmp_lp_id_V_reg_584,
+        cancellation_unit_output_stream_din => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din,
+        cancellation_unit_output_stream_full_n => cancellation_unit_output_stream_full_n,
+        cancellation_unit_output_stream_write => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write,
+        tmp_to_time_V => tmp_to_time_V_reg_589,
+        cancellation_unit_buffer_event_recv_time_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0,
+        cancellation_unit_buffer_event_recv_time_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0,
+        cancellation_unit_buffer_event_recv_time_V_q0 => cancellation_unit_buffer_event_recv_time_V_q0,
+        cancellation_unit_buffer_event_data_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0,
+        cancellation_unit_buffer_event_data_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0,
+        cancellation_unit_buffer_event_data_V_q0 => cancellation_unit_buffer_event_data_V_q0,
+        cancellation_unit_buffer_event_sender_id_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0,
+        cancellation_unit_buffer_event_sender_id_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0,
+        cancellation_unit_buffer_event_sender_id_V_q0 => cancellation_unit_buffer_event_sender_id_V_q0,
+        cancellation_unit_buffer_event_receiver_id_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0,
+        cancellation_unit_buffer_event_receiver_id_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0,
+        cancellation_unit_buffer_event_receiver_id_V_q0 => cancellation_unit_buffer_event_receiver_id_V_q0,
+        cancellation_unit_buffer_next_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0,
+        cancellation_unit_buffer_next_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0,
+        cancellation_unit_buffer_next_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0,
+        cancellation_unit_buffer_next_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0,
+        cancellation_unit_buffer_next_V_q0 => cancellation_unit_buffer_next_V_q0,
+        cancellation_unit_lp_heads_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0,
+        cancellation_unit_lp_heads_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0,
+        cancellation_unit_lp_heads_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0,
+        cancellation_unit_lp_heads_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0,
+        cancellation_unit_free_head_V_i => cancellation_unit_free_head_V,
+        cancellation_unit_free_head_V_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o,
+        cancellation_unit_free_head_V_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld,
+        cancellation_unit_lp_sizes_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0,
+        cancellation_unit_lp_sizes_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0,
+        cancellation_unit_lp_sizes_V_we0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0,
+        cancellation_unit_lp_sizes_V_d0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0,
         cancellation_unit_lp_sizes_V_q0 => cancellation_unit_lp_sizes_V_q0,
         cancellation_unit_total_size_V_i => cancellation_unit_total_size_V,
-        cancellation_unit_total_size_V_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o,
-        cancellation_unit_total_size_V_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld,
-        cancellation_unit_buffer_event_send_time_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0,
-        cancellation_unit_buffer_event_send_time_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0,
+        cancellation_unit_total_size_V_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o,
+        cancellation_unit_total_size_V_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld,
+        cancellation_unit_buffer_event_send_time_V_address0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0,
+        cancellation_unit_buffer_event_send_time_V_ce0 => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0,
         cancellation_unit_buffer_event_send_time_V_q0 => cancellation_unit_buffer_event_send_time_V_q0);
 
 
@@ -527,7 +658,7 @@ begin
             else
                 if ((ap_continue = ap_const_logic_1)) then 
                     ap_done_reg <= ap_const_logic_0;
-                elsif (((ap_const_boolean_0 = ap_block_state5_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
+                elsif (((ap_const_boolean_0 = ap_block_state8_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state8))) then 
                     ap_done_reg <= ap_const_logic_1;
                 end if; 
             end if;
@@ -535,16 +666,32 @@ begin
     end process;
 
 
-    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg_assign_proc : process(ap_clk)
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
-                grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= ap_const_logic_0;
+                grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= ap_const_logic_0;
+            else
+                if ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
+                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_ready = ap_const_logic_1)) then 
+                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg <= ap_const_logic_0;
+                end if; 
+            end if;
+        end if;
+    end process;
+
+
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg_assign_proc : process(ap_clk)
+    begin
+        if (ap_clk'event and ap_clk =  '1') then
+            if (ap_rst = '1') then
+                grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_ready = ap_const_logic_1)) then 
-                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg <= ap_const_logic_0;
+                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready = ap_const_logic_1)) then 
+                    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
@@ -554,10 +701,12 @@ begin
     cancellation_unit_free_head_V_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_410 = ap_const_lv1_1) and (tmp_s_reg_406 = ap_const_lv1_1))) then 
+            if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_565 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_1))) then 
                 cancellation_unit_free_head_V <= cancellation_unit_buffer_next_V_q0;
-            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-                cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_free_head_V_o;
+            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+                cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_free_head_V_o;
+            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
+                cancellation_unit_free_head_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_free_head_V_o;
             end if; 
         end if;
     end process;
@@ -565,44 +714,84 @@ begin
     cancellation_unit_total_size_V_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
-                cancellation_unit_total_size_V <= zext_ln886_fu_360_p1;
-            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-                cancellation_unit_total_size_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_total_size_V_o;
+            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+                cancellation_unit_total_size_V <= zext_ln886_fu_448_p1;
+            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_5_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
+                cancellation_unit_total_size_V <= sub_ln887_fu_509_p2;
+            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+                cancellation_unit_total_size_V <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o;
+            end if; 
+        end if;
+    end process;
+
+    lp_id_V_fu_118_assign_proc : process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_5_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+                lp_id_V_fu_118 <= ap_const_lv3_0;
+            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_5_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
+                lp_id_V_fu_118 <= add_ln886_5_fu_486_p2;
+            end if; 
+        end if;
+    end process;
+
+    removed_V_fu_114_assign_proc : process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_5_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+                removed_V_fu_114 <= ap_const_lv16_0;
+            elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
+                removed_V_fu_114 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_6_out_o;
             end if; 
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then
-                cancellation_unit_buffer_next_V_addr_reg_414 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-                cancellation_unit_lp_sizes_V_addr_reg_424 <= zext_ln587_11_fu_348_p1(2 - 1 downto 0);
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                cancellation_unit_buffer_next_V_addr_reg_569 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+                cancellation_unit_lp_sizes_V_addr_reg_579 <= zext_ln587_fu_436_p1(2 - 1 downto 0);
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((ap_const_logic_1 = ap_CS_fsm_state3)) then
-                current_V_reg_444 <= cancellation_unit_lp_heads_V_q0;
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                icmp_ln1077_reg_565 <= icmp_ln1077_fu_415_p2;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then
-                icmp_ln1077_reg_410 <= icmp_ln1077_fu_327_p2;
+            if (((ap_const_logic_1 = ap_CS_fsm_state6) or (ap_const_logic_1 = ap_CS_fsm_state3))) then
+                reg_336 <= cancellation_unit_lp_heads_V_q0;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1))) then
-                tmp_lp_id_V_reg_429 <= tmp_lp_id_V_fu_370_p1;
-                tmp_to_time_V_reg_434 <= cancellation_unit_rollback_info_stream_dout(47 downto 16);
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_5_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                tmp_21_reg_560 <= cancellation_unit_commit_time_stream17_dout;
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                tmp_5_reg_542 <= tmp_5_nbreadreq_fu_138_p3;
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1))) then
+                tmp_lp_id_V_reg_584 <= tmp_lp_id_V_fu_458_p1;
+                tmp_to_time_V_reg_589 <= cancellation_unit_rollback_info_stream_dout(47 downto 16);
             end if;
         end if;
     end process;
@@ -610,57 +799,83 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state1)) then
-                tmp_reg_402 <= tmp_nbreadreq_fu_90_p3;
+                tmp_reg_534 <= tmp_nbreadreq_fu_122_p3;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then
-                tmp_s_reg_406 <= tmp_s_nbreadreq_fu_98_p3;
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                tmp_s_reg_538 <= tmp_s_nbreadreq_fu_130_p3;
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_5_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then
+                trunc_ln88_reg_602 <= trunc_ln88_fu_497_p1;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, ap_CS_fsm_state5, ap_predicate_op13_read_state1, ap_block_state5_on_subcall_done)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_reg_538, tmp_5_reg_542, ap_CS_fsm_state2, icmp_ln1073_fu_480_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1, ap_block_state8_on_subcall_done)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
-                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then
+                if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
-                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1))) then
-                    ap_NS_fsm <= ap_ST_fsm_state3;
+                elsif ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1))) then
+                    ap_NS_fsm <= ap_ST_fsm_state6;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                ap_NS_fsm <= ap_ST_fsm_state5;
+                if (((ap_const_logic_1 = ap_CS_fsm_state2) and ((tmp_s_reg_538 = ap_const_lv1_1) or ((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) or (tmp_5_reg_542 = ap_const_lv1_0))))) then
+                    ap_NS_fsm <= ap_ST_fsm_state8;
+                else
+                    ap_NS_fsm <= ap_ST_fsm_state3;
+                end if;
             when ap_ST_fsm_state3 => 
                 ap_NS_fsm <= ap_ST_fsm_state4;
             when ap_ST_fsm_state4 => 
                 ap_NS_fsm <= ap_ST_fsm_state5;
             when ap_ST_fsm_state5 => 
-                if (((ap_const_boolean_0 = ap_block_state5_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state5))) then
-                    ap_NS_fsm <= ap_ST_fsm_state1;
+                if (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5))) then
+                    ap_NS_fsm <= ap_ST_fsm_state2;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state5;
                 end if;
+            when ap_ST_fsm_state6 => 
+                ap_NS_fsm <= ap_ST_fsm_state7;
+            when ap_ST_fsm_state7 => 
+                ap_NS_fsm <= ap_ST_fsm_state8;
+            when ap_ST_fsm_state8 => 
+                if (((ap_const_boolean_0 = ap_block_state8_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state8))) then
+                    ap_NS_fsm <= ap_ST_fsm_state1;
+                else
+                    ap_NS_fsm <= ap_ST_fsm_state8;
+                end if;
             when others =>  
-                ap_NS_fsm <= "XXXXX";
+                ap_NS_fsm <= "XXXXXXXX";
         end case;
     end process;
-    add_ln886_3_fu_354_p2 <= std_logic_vector(unsigned(trunc_ln1077_fu_313_p1) + unsigned(ap_const_lv7_1));
-    add_ln886_fu_395_p2 <= std_logic_vector(unsigned(cancellation_unit_lp_sizes_V_q0) + unsigned(ap_const_lv16_1));
+    add_ln886_4_fu_442_p2 <= std_logic_vector(unsigned(trunc_ln1077_fu_401_p1) + unsigned(ap_const_lv7_1));
+    add_ln886_5_fu_486_p2 <= std_logic_vector(unsigned(lp_id_V_fu_118) + unsigned(ap_const_lv3_1));
+    add_ln886_fu_527_p2 <= std_logic_vector(unsigned(cancellation_unit_lp_sizes_V_q0) + unsigned(ap_const_lv16_1));
     ap_CS_fsm_state1 <= ap_CS_fsm(0);
     ap_CS_fsm_state2 <= ap_CS_fsm(1);
     ap_CS_fsm_state3 <= ap_CS_fsm(2);
     ap_CS_fsm_state4 <= ap_CS_fsm(3);
     ap_CS_fsm_state5 <= ap_CS_fsm(4);
+    ap_CS_fsm_state6 <= ap_CS_fsm(5);
+    ap_CS_fsm_state7 <= ap_CS_fsm(6);
+    ap_CS_fsm_state8 <= ap_CS_fsm(7);
 
-    ap_ST_fsm_state1_blk_assign_proc : process(ap_start, ap_done_reg, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, ap_predicate_op13_read_state1)
+    ap_ST_fsm_state1_blk_assign_proc : process(ap_start, ap_done_reg, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if (((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) then 
+        if (((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) then 
             ap_ST_fsm_state1_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state1_blk <= ap_const_logic_0;
@@ -671,31 +886,43 @@ begin
     ap_ST_fsm_state3_blk <= ap_const_logic_0;
     ap_ST_fsm_state4_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state5_blk_assign_proc : process(ap_block_state5_on_subcall_done)
+    ap_ST_fsm_state5_blk_assign_proc : process(grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done)
     begin
-        if ((ap_const_boolean_1 = ap_block_state5_on_subcall_done)) then 
+        if ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state5_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state5_blk <= ap_const_logic_0;
         end if; 
     end process;
 
+    ap_ST_fsm_state6_blk <= ap_const_logic_0;
+    ap_ST_fsm_state7_blk <= ap_const_logic_0;
 
-    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, ap_predicate_op13_read_state1)
+    ap_ST_fsm_state8_blk_assign_proc : process(ap_block_state8_on_subcall_done)
     begin
-                ap_block_state1 <= ((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)));
+        if ((ap_const_boolean_1 = ap_block_state8_on_subcall_done)) then 
+            ap_ST_fsm_state8_blk <= ap_const_logic_1;
+        else 
+            ap_ST_fsm_state8_blk <= ap_const_logic_0;
+        end if; 
     end process;
 
 
-    ap_block_state5_on_subcall_done_assign_proc : process(tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done)
+    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-                ap_block_state5_on_subcall_done <= ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_done = ap_const_logic_0) and (tmp_reg_402 = ap_const_lv1_1));
+                ap_block_state1 <= ((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)));
     end process;
 
 
-    ap_done_assign_proc : process(ap_done_reg, ap_CS_fsm_state5, ap_block_state5_on_subcall_done)
+    ap_block_state8_on_subcall_done_assign_proc : process(tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done)
     begin
-        if (((ap_const_boolean_0 = ap_block_state5_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
+                ap_block_state8_on_subcall_done <= ((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_done = ap_const_logic_0) and (tmp_reg_534 = ap_const_lv1_1));
+    end process;
+
+
+    ap_done_assign_proc : process(ap_done_reg, ap_CS_fsm_state8, ap_block_state8_on_subcall_done)
+    begin
+        if (((ap_const_boolean_0 = ap_block_state8_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state8))) then 
             ap_done <= ap_const_logic_1;
         else 
             ap_done <= ap_done_reg;
@@ -713,15 +940,21 @@ begin
     end process;
 
 
-    ap_predicate_op13_read_state1_assign_proc : process(tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3)
+    ap_predicate_op21_read_state1_assign_proc : process(tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_5_nbreadreq_fu_138_p3)
     begin
-                ap_predicate_op13_read_state1 <= ((tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0));
+                ap_predicate_op21_read_state1 <= ((tmp_5_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0));
     end process;
 
 
-    ap_ready_assign_proc : process(ap_CS_fsm_state5, ap_block_state5_on_subcall_done)
+    ap_predicate_op25_read_state1_assign_proc : process(tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3)
     begin
-        if (((ap_const_boolean_0 = ap_block_state5_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
+                ap_predicate_op25_read_state1 <= ((tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0));
+    end process;
+
+
+    ap_ready_assign_proc : process(ap_CS_fsm_state8, ap_block_state8_on_subcall_done)
+    begin
+        if (((ap_const_boolean_0 = ap_block_state8_on_subcall_done) and (ap_const_logic_1 = ap_CS_fsm_state8))) then 
             ap_ready <= ap_const_logic_1;
         else 
             ap_ready <= ap_const_logic_0;
@@ -729,24 +962,24 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_event_data_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1)
+    cancellation_unit_buffer_event_data_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_event_data_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_data_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_address0;
+            cancellation_unit_buffer_event_data_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_data_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_address0;
         else 
             cancellation_unit_buffer_event_data_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_event_data_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_data_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_buffer_event_data_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_data_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_data_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_data_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_data_V_ce0;
         else 
             cancellation_unit_buffer_event_data_V_ce0 <= ap_const_logic_0;
         end if; 
@@ -754,9 +987,9 @@ begin
 
     cancellation_unit_buffer_event_data_V_d0 <= cancellation_unit_input_stream_dout(95 downto 64);
 
-    cancellation_unit_buffer_event_data_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, icmp_ln1077_fu_327_p2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_data_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, icmp_ln1077_fu_415_p2, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_buffer_event_data_V_we0 <= ap_const_logic_1;
         else 
             cancellation_unit_buffer_event_data_V_we0 <= ap_const_logic_0;
@@ -764,24 +997,24 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_event_receiver_id_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1)
+    cancellation_unit_buffer_event_receiver_id_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_event_receiver_id_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_receiver_id_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_address0;
+            cancellation_unit_buffer_event_receiver_id_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_receiver_id_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_address0;
         else 
             cancellation_unit_buffer_event_receiver_id_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_event_receiver_id_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_receiver_id_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_buffer_event_receiver_id_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_receiver_id_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_receiver_id_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_receiver_id_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_receiver_id_V_ce0;
         else 
             cancellation_unit_buffer_event_receiver_id_V_ce0 <= ap_const_logic_0;
         end if; 
@@ -789,9 +1022,9 @@ begin
 
     cancellation_unit_buffer_event_receiver_id_V_d0 <= cancellation_unit_input_stream_dout(127 downto 112);
 
-    cancellation_unit_buffer_event_receiver_id_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, icmp_ln1077_fu_327_p2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_receiver_id_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, icmp_ln1077_fu_415_p2, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_buffer_event_receiver_id_V_we0 <= ap_const_logic_1;
         else 
             cancellation_unit_buffer_event_receiver_id_V_we0 <= ap_const_logic_0;
@@ -799,24 +1032,24 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1)
+    cancellation_unit_buffer_event_recv_time_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_event_recv_time_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_recv_time_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_address0;
+            cancellation_unit_buffer_event_recv_time_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_recv_time_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_address0;
         else 
             cancellation_unit_buffer_event_recv_time_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_event_recv_time_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_recv_time_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_buffer_event_recv_time_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_recv_time_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_recv_time_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_recv_time_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_recv_time_V_ce0;
         else 
             cancellation_unit_buffer_event_recv_time_V_ce0 <= ap_const_logic_0;
         end if; 
@@ -824,9 +1057,9 @@ begin
 
     cancellation_unit_buffer_event_recv_time_V_d0 <= cancellation_unit_input_stream_dout(63 downto 32);
 
-    cancellation_unit_buffer_event_recv_time_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, icmp_ln1077_fu_327_p2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_recv_time_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, icmp_ln1077_fu_415_p2, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_buffer_event_recv_time_V_we0 <= ap_const_logic_1;
         else 
             cancellation_unit_buffer_event_recv_time_V_we0 <= ap_const_logic_0;
@@ -834,24 +1067,28 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_event_send_time_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1)
+    cancellation_unit_buffer_event_send_time_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_event_send_time_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_send_time_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_address0;
+            cancellation_unit_buffer_event_send_time_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_send_time_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_address0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_event_send_time_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_address0;
         else 
             cancellation_unit_buffer_event_send_time_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_event_send_time_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_send_time_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_buffer_event_send_time_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_send_time_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_send_time_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_send_time_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_send_time_V_ce0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_event_send_time_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_event_send_time_V_ce0;
         else 
             cancellation_unit_buffer_event_send_time_V_ce0 <= ap_const_logic_0;
         end if; 
@@ -859,9 +1096,9 @@ begin
 
     cancellation_unit_buffer_event_send_time_V_d0 <= cancellation_unit_input_stream_dout(32 - 1 downto 0);
 
-    cancellation_unit_buffer_event_send_time_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, icmp_ln1077_fu_327_p2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_send_time_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, icmp_ln1077_fu_415_p2, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_buffer_event_send_time_V_we0 <= ap_const_logic_1;
         else 
             cancellation_unit_buffer_event_send_time_V_we0 <= ap_const_logic_0;
@@ -869,24 +1106,24 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_event_sender_id_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1)
+    cancellation_unit_buffer_event_sender_id_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_event_sender_id_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_sender_id_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_address0;
+            cancellation_unit_buffer_event_sender_id_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_sender_id_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_address0;
         else 
             cancellation_unit_buffer_event_sender_id_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_event_sender_id_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_sender_id_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_buffer_event_sender_id_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_event_sender_id_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_event_sender_id_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_event_sender_id_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_event_sender_id_V_ce0;
         else 
             cancellation_unit_buffer_event_sender_id_V_ce0 <= ap_const_logic_0;
         end if; 
@@ -894,9 +1131,9 @@ begin
 
     cancellation_unit_buffer_event_sender_id_V_d0 <= cancellation_unit_input_stream_dout(111 downto 96);
 
-    cancellation_unit_buffer_event_sender_id_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, icmp_ln1077_fu_327_p2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_event_sender_id_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, icmp_ln1077_fu_415_p2, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_buffer_event_sender_id_V_we0 <= ap_const_logic_1;
         else 
             cancellation_unit_buffer_event_sender_id_V_we0 <= ap_const_logic_0;
@@ -904,59 +1141,87 @@ begin
     end process;
 
 
-    cancellation_unit_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, cancellation_unit_buffer_next_V_addr_reg_414, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0, ap_CS_fsm_state5, zext_ln587_10_fu_338_p1, ap_CS_fsm_state2)
+    cancellation_unit_buffer_next_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, cancellation_unit_buffer_next_V_addr_reg_569, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state8, zext_ln587_12_fu_426_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            cancellation_unit_buffer_next_V_address0 <= cancellation_unit_buffer_next_V_addr_reg_414;
+            cancellation_unit_buffer_next_V_address0 <= cancellation_unit_buffer_next_V_addr_reg_569;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_buffer_next_V_address0 <= zext_ln587_10_fu_338_p1(6 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_next_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_address0;
+            cancellation_unit_buffer_next_V_address0 <= zext_ln587_12_fu_426_p1(6 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_next_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_address0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_next_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_address0;
         else 
             cancellation_unit_buffer_next_V_address0 <= "XXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_next_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state2, ap_predicate_op13_read_state1)
+    cancellation_unit_buffer_next_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state2) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state2) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
             cancellation_unit_buffer_next_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_next_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_next_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_ce0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_next_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_ce0;
         else 
             cancellation_unit_buffer_next_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_next_V_d0_assign_proc : process(cancellation_unit_lp_heads_V_q0, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0, ap_CS_fsm_state5, ap_CS_fsm_state2)
+    cancellation_unit_buffer_next_V_d0_assign_proc : process(cancellation_unit_lp_heads_V_q0, tmp_reg_534, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0, ap_CS_fsm_state5, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
             cancellation_unit_buffer_next_V_d0 <= cancellation_unit_lp_heads_V_q0;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_next_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_d0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_next_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_d0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_next_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_d0;
         else 
             cancellation_unit_buffer_next_V_d0 <= "XXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_buffer_next_V_we0_assign_proc : process(tmp_reg_402, tmp_s_reg_406, icmp_ln1077_reg_410, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0, ap_CS_fsm_state5, ap_CS_fsm_state2)
+    cancellation_unit_buffer_next_V_we0_assign_proc : process(tmp_reg_534, tmp_s_reg_538, icmp_ln1077_reg_565, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0, ap_CS_fsm_state5, ap_CS_fsm_state8)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_410 = ap_const_lv1_1) and (tmp_s_reg_406 = ap_const_lv1_1))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_565 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_1))) then 
             cancellation_unit_buffer_next_V_we0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_buffer_next_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_buffer_next_V_we0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_buffer_next_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_buffer_next_V_we0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_buffer_next_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_buffer_next_V_we0;
         else 
             cancellation_unit_buffer_next_V_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_input_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3)
+    cancellation_unit_commit_time_stream17_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_commit_time_stream17_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_5_nbreadreq_fu_138_p3)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_5_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+            cancellation_unit_commit_time_stream17_blk_n <= cancellation_unit_commit_time_stream17_empty_n;
+        else 
+            cancellation_unit_commit_time_stream17_blk_n <= ap_const_logic_1;
+        end if; 
+    end process;
+
+
+    cancellation_unit_commit_time_stream17_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
+    begin
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_predicate_op21_read_state1 = ap_const_boolean_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+            cancellation_unit_commit_time_stream17_read <= ap_const_logic_1;
+        else 
+            cancellation_unit_commit_time_stream17_read <= ap_const_logic_0;
+        end if; 
+    end process;
+
+
+    cancellation_unit_input_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3)
+    begin
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_input_stream_blk_n <= cancellation_unit_input_stream_empty_n;
         else 
             cancellation_unit_input_stream_blk_n <= ap_const_logic_1;
@@ -964,9 +1229,9 @@ begin
     end process;
 
 
-    cancellation_unit_input_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, ap_predicate_op13_read_state1)
+    cancellation_unit_input_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_predicate_op13_read_state1 = ap_const_boolean_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_predicate_op25_read_state1 = ap_const_boolean_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             cancellation_unit_input_stream_read <= ap_const_logic_1;
         else 
             cancellation_unit_input_stream_read <= ap_const_logic_0;
@@ -974,120 +1239,138 @@ begin
     end process;
 
 
-    cancellation_unit_lp_heads_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, tmp_reg_402, icmp_ln1077_fu_327_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0, ap_CS_fsm_state5, zext_ln587_11_fu_348_p1, zext_ln145_fu_384_p1)
+    cancellation_unit_lp_heads_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_reg_534, icmp_ln1077_fu_415_p2, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state8, zext_ln587_fu_436_p1, zext_ln145_fu_472_p1, zext_ln1073_fu_492_p1)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_heads_V_address0 <= zext_ln145_fu_384_p1(2 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
-            cancellation_unit_lp_heads_V_address0 <= zext_ln587_11_fu_348_p1(2 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_heads_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_address0;
+        if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
+            cancellation_unit_lp_heads_V_address0 <= zext_ln1073_fu_492_p1(2 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_heads_V_address0 <= zext_ln145_fu_472_p1(2 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+            cancellation_unit_lp_heads_V_address0 <= zext_ln587_fu_436_p1(2 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_heads_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_address0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_heads_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_address0;
         else 
             cancellation_unit_lp_heads_V_address0 <= "XX";
         end if; 
     end process;
 
 
-    cancellation_unit_lp_heads_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, tmp_reg_402, icmp_ln1077_fu_327_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_lp_heads_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_reg_534, icmp_ln1077_fu_415_p2, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if (((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state2) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0)) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)))) then 
             cancellation_unit_lp_heads_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_heads_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_heads_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_ce0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_heads_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_ce0;
         else 
             cancellation_unit_lp_heads_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_lp_heads_V_d0_assign_proc : process(ap_CS_fsm_state1, cancellation_unit_free_head_V, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, tmp_reg_402, icmp_ln1077_fu_327_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0, ap_CS_fsm_state5)
+    cancellation_unit_lp_heads_V_d0_assign_proc : process(ap_CS_fsm_state1, cancellation_unit_free_head_V, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_reg_534, icmp_ln1077_fu_415_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0, ap_CS_fsm_state5, ap_CS_fsm_state8)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_lp_heads_V_d0 <= cancellation_unit_free_head_V;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_heads_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_d0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_heads_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_d0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_heads_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_d0;
         else 
             cancellation_unit_lp_heads_V_d0 <= "XXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_lp_heads_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_s_nbreadreq_fu_98_p3, tmp_reg_402, icmp_ln1077_fu_327_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0, ap_CS_fsm_state5, ap_predicate_op13_read_state1)
+    cancellation_unit_lp_heads_V_we0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_reg_534, icmp_ln1077_fu_415_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_327_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_98_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_lp_heads_V_we0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_heads_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_heads_V_we0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_heads_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_heads_V_we0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_heads_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_heads_V_we0;
         else 
             cancellation_unit_lp_heads_V_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_lp_sizes_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_402, cancellation_unit_lp_sizes_V_addr_reg_424, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0, ap_CS_fsm_state5, zext_ln587_11_fu_348_p1, ap_CS_fsm_state2)
+    cancellation_unit_lp_sizes_V_address0_assign_proc : process(ap_CS_fsm_state1, tmp_reg_534, cancellation_unit_lp_sizes_V_addr_reg_579, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0, ap_CS_fsm_state5, ap_CS_fsm_state8, zext_ln587_fu_436_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            cancellation_unit_lp_sizes_V_address0 <= cancellation_unit_lp_sizes_V_addr_reg_424;
+            cancellation_unit_lp_sizes_V_address0 <= cancellation_unit_lp_sizes_V_addr_reg_579;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            cancellation_unit_lp_sizes_V_address0 <= zext_ln587_11_fu_348_p1(2 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_sizes_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_address0;
+            cancellation_unit_lp_sizes_V_address0 <= zext_ln587_fu_436_p1(2 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_sizes_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_address0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_sizes_V_address0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_address0;
         else 
             cancellation_unit_lp_sizes_V_address0 <= "XX";
         end if; 
     end process;
 
 
-    cancellation_unit_lp_sizes_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state2, ap_predicate_op13_read_state1)
+    cancellation_unit_lp_sizes_V_ce0_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_reg_534, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state2) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state2) or (not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1)))) then 
             cancellation_unit_lp_sizes_V_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_sizes_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_sizes_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_ce0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_sizes_V_ce0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_ce0;
         else 
             cancellation_unit_lp_sizes_V_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_lp_sizes_V_d0_assign_proc : process(tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0, ap_CS_fsm_state5, ap_CS_fsm_state2, add_ln886_fu_395_p2)
+    cancellation_unit_lp_sizes_V_d0_assign_proc : process(tmp_reg_534, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0, ap_CS_fsm_state5, ap_CS_fsm_state8, add_ln886_fu_527_p2)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            cancellation_unit_lp_sizes_V_d0 <= add_ln886_fu_395_p2;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_sizes_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_d0;
+            cancellation_unit_lp_sizes_V_d0 <= add_ln886_fu_527_p2;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_sizes_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_d0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_sizes_V_d0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_d0;
         else 
             cancellation_unit_lp_sizes_V_d0 <= "XXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    cancellation_unit_lp_sizes_V_we0_assign_proc : process(tmp_reg_402, tmp_s_reg_406, icmp_ln1077_reg_410, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0, ap_CS_fsm_state5, ap_CS_fsm_state2)
+    cancellation_unit_lp_sizes_V_we0_assign_proc : process(tmp_reg_534, tmp_s_reg_538, icmp_ln1077_reg_565, ap_CS_fsm_state2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0, ap_CS_fsm_state5, ap_CS_fsm_state8)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_410 = ap_const_lv1_1) and (tmp_s_reg_406 = ap_const_lv1_1))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state2) and (icmp_ln1077_reg_565 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_1))) then 
             cancellation_unit_lp_sizes_V_we0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_lp_sizes_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_lp_sizes_V_we0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_lp_sizes_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_lp_sizes_V_we0;
+        elsif ((ap_const_logic_1 = ap_CS_fsm_state5)) then 
+            cancellation_unit_lp_sizes_V_we0 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_cancellation_unit_lp_sizes_V_we0;
         else 
             cancellation_unit_lp_sizes_V_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    cancellation_unit_output_stream_din <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_din;
+    cancellation_unit_output_stream_din <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_din;
 
-    cancellation_unit_output_stream_write_assign_proc : process(tmp_reg_402, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write, ap_CS_fsm_state5)
+    cancellation_unit_output_stream_write_assign_proc : process(tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write, ap_CS_fsm_state8)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state5) and (tmp_reg_402 = ap_const_lv1_1))) then 
-            cancellation_unit_output_stream_write <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_cancellation_unit_output_stream_write;
+        if (((ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
+            cancellation_unit_output_stream_write <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_output_stream_write;
         else 
             cancellation_unit_output_stream_write <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    cancellation_unit_rollback_info_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, tmp_nbreadreq_fu_90_p3)
+    cancellation_unit_rollback_info_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, tmp_nbreadreq_fu_122_p3)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1))) then 
             cancellation_unit_rollback_info_stream_blk_n <= cancellation_unit_rollback_info_stream_empty_n;
         else 
             cancellation_unit_rollback_info_stream_blk_n <= ap_const_logic_1;
@@ -1095,25 +1378,31 @@ begin
     end process;
 
 
-    cancellation_unit_rollback_info_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_90_p3, ap_predicate_op13_read_state1)
+    cancellation_unit_rollback_info_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op13_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_90_p3 = ap_const_lv1_1))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1))) then 
             cancellation_unit_rollback_info_stream_read <= ap_const_logic_1;
         else 
             cancellation_unit_rollback_info_stream_read <= ap_const_logic_0;
         end if; 
     end process;
 
-    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_231_ap_start_reg;
-    icmp_ln1077_fu_327_p2 <= "1" when (tmp_12_fu_317_p4 = ap_const_lv10_0) else "0";
-    tmp_12_fu_317_p4 <= cancellation_unit_total_size_V(15 downto 6);
-    tmp_lp_id_V_fu_370_p1 <= cancellation_unit_rollback_info_stream_dout(2 - 1 downto 0);
-    tmp_nbreadreq_fu_90_p3 <= (0=>(cancellation_unit_rollback_info_stream_empty_n), others=>'-');
-    tmp_s_nbreadreq_fu_98_p3 <= (0=>(cancellation_unit_input_stream_empty_n), others=>'-');
-    tmp_sender_id_V_fu_298_p4 <= cancellation_unit_input_stream_dout(111 downto 96);
-    trunc_ln1077_fu_313_p1 <= cancellation_unit_total_size_V(7 - 1 downto 0);
-    zext_ln145_fu_384_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_lp_id_V_fu_370_p1),64));
-    zext_ln587_10_fu_338_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(cancellation_unit_free_head_V),64));
-    zext_ln587_11_fu_348_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_sender_id_V_fu_298_p4),64));
-    zext_ln886_fu_360_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(add_ln886_3_fu_354_p2),16));
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg;
+    grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg;
+    icmp_ln1073_fu_480_p2 <= "1" when (lp_id_V_fu_118 = ap_const_lv3_4) else "0";
+    icmp_ln1077_fu_415_p2 <= "1" when (tmp_19_fu_405_p4 = ap_const_lv10_0) else "0";
+    sub_ln887_fu_509_p2 <= std_logic_vector(unsigned(cancellation_unit_total_size_V) - unsigned(removed_V_fu_114));
+    tmp_19_fu_405_p4 <= cancellation_unit_total_size_V(15 downto 6);
+    tmp_5_nbreadreq_fu_138_p3 <= (0=>(cancellation_unit_commit_time_stream17_empty_n), others=>'-');
+    tmp_lp_id_V_fu_458_p1 <= cancellation_unit_rollback_info_stream_dout(2 - 1 downto 0);
+    tmp_nbreadreq_fu_122_p3 <= (0=>(cancellation_unit_rollback_info_stream_empty_n), others=>'-');
+    tmp_s_nbreadreq_fu_130_p3 <= (0=>(cancellation_unit_input_stream_empty_n), others=>'-');
+    tmp_sender_id_V_fu_390_p4 <= cancellation_unit_input_stream_dout(111 downto 96);
+    trunc_ln1077_fu_401_p1 <= cancellation_unit_total_size_V(7 - 1 downto 0);
+    trunc_ln88_fu_497_p1 <= lp_id_V_fu_118(2 - 1 downto 0);
+    zext_ln1073_fu_492_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(lp_id_V_fu_118),64));
+    zext_ln145_fu_472_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_lp_id_V_fu_458_p1),64));
+    zext_ln587_12_fu_426_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(cancellation_unit_free_head_V),64));
+    zext_ln587_fu_436_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_sender_id_V_fu_390_p4),64));
+    zext_ln886_fu_448_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(add_ln886_4_fu_442_p2),16));
 end behav;

@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'event_queue_top_0_s'
 ================================================================
-* Date:           Wed Aug 14 16:55:43 2024
+* Date:           Wed Aug 14 17:50:14 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -130,9 +130,9 @@
     |ap_predicate_op55_read_state1    |       and|   0|  0|   2|           1|           1|
     |ap_predicate_op67_read_state1    |       and|   0|  0|   2|           1|           1|
     |ap_predicate_op89_write_state4   |       and|   0|  0|   2|           1|           1|
-    |tmp_1_nbreadreq_fu_160_p3        |       and|   0|  0|   2|           1|           0|
-    |tmp_2_nbreadreq_fu_168_p3        |       and|   0|  0|   2|           1|           0|
-    |tmp_4_nbreadreq_fu_184_p3        |       and|   0|  0|   2|           1|           0|
+    |tmp_3_nbreadreq_fu_184_p3        |       and|   0|  0|   2|           1|           0|
+    |tmp_6_nbreadreq_fu_160_p3        |       and|   0|  0|   2|           1|           0|
+    |tmp_7_nbreadreq_fu_168_p3        |       and|   0|  0|   2|           1|           0|
     |tmp_nbreadreq_fu_144_p3          |       and|   0|  0|   2|           1|           0|
     |tmp_s_nbreadreq_fu_152_p3        |       and|   0|  0|   2|           1|           0|
     |grp_fu_616_p2                    |      icmp|   0|  0|  13|          16|           8|
@@ -161,8 +161,7 @@
     |ap_NS_fsm                                            |  121|         24|    1|         24|
     |ap_done                                              |    9|          2|    1|          2|
     |causality_violation_stream_write                     |    9|          2|    1|          2|
-    |commit_time_stream_blk_n                             |    9|          2|    1|          2|
-    |current_V_5_fu_140                                   |    9|          2|   16|         32|
+    |current_V_8_fu_140                                   |    9|          2|   16|         32|
     |enqueue_event_stream_blk_n                           |    9|          2|    1|          2|
     |event_queue_buffer_event_data_V_address0             |   20|          4|    7|         28|
     |event_queue_buffer_event_data_V_ce0                  |   14|          3|    1|          3|
@@ -191,6 +190,7 @@
     |event_queue_buffer_next_V_ce0                        |   26|          5|    1|          5|
     |event_queue_buffer_next_V_d0                         |   26|          5|   16|         80|
     |event_queue_buffer_next_V_we0                        |   20|          4|    1|          4|
+    |event_queue_commit_time_stream15_blk_n               |    9|          2|    1|          2|
     |event_queue_free_head_V                              |   14|          3|   16|         48|
     |event_queue_full_stream_blk_n                        |    9|          2|    1|          2|
     |event_queue_full_stream_din                          |   14|          3|    1|          3|
@@ -236,10 +236,9 @@
     |and_ln77_reg_1002                                                    |   1|   0|    1|          0|
     |ap_CS_fsm                                                            |  23|   0|   23|          0|
     |ap_done_reg                                                          |   1|   0|    1|          0|
-    |commit_time_stream_read_reg_1117                                     |  32|   0|   32|          0|
-    |current_V_5_fu_140                                                   |  16|   0|   16|          0|
-    |current_V_8_reg_1204                                                 |  16|   0|   16|          0|
-    |current_V_9_reg_1216                                                 |  16|   0|   16|          0|
+    |current_V_11_reg_1216                                                |  16|   0|   16|          0|
+    |current_V_8_fu_140                                                   |  16|   0|   16|          0|
+    |current_V_9_reg_1204                                                 |  16|   0|   16|          0|
     |current_V_reg_1315                                                   |  16|   0|   16|          0|
     |earliest_lp_V_loc_fu_136                                             |   2|   0|    2|          0|
     |event_data_V_reg_1191                                                |  32|   0|   32|          0|
@@ -277,9 +276,10 @@
     |this_is_anti_message_V_reg_1263                                      |   7|   0|    7|          0|
     |this_receiver_id_V_reg_1258                                          |   7|   0|    7|          0|
     |this_sender_id_V_reg_1253                                            |   7|   0|    7|          0|
-    |tmp_1_reg_998                                                        |   1|   0|    1|          0|
-    |tmp_3_reg_1006                                                       |   1|   0|    1|          0|
-    |tmp_4_reg_1010                                                       |   1|   0|    1|          0|
+    |tmp_17_reg_1117                                                      |  32|   0|   32|          0|
+    |tmp_1_reg_1006                                                       |   1|   0|    1|          0|
+    |tmp_3_reg_1010                                                       |   1|   0|    1|          0|
+    |tmp_6_reg_998                                                        |   1|   0|    1|          0|
     |tmp_data_V_reg_1046                                                  |  32|   0|   32|          0|
     |tmp_is_anti_message_V_reg_1036                                       |   1|   0|    1|          0|
     |tmp_lp_id_V_reg_1072                                                 |   2|   0|    2|          0|
@@ -290,8 +290,8 @@
     |tmp_send_time_V_reg_1026                                             |  32|   0|   32|          0|
     |tmp_sender_id_V_reg_1051                                             |  16|   0|   16|          0|
     |tmp_to_time_V_reg_1077                                               |  32|   0|   32|          0|
-    |zext_ln587_4_reg_1227                                                |  16|   0|   64|         48|
-    |zext_ln587_5_reg_1125                                                |   2|   0|   64|         62|
+    |zext_ln587_6_reg_1227                                                |  16|   0|   64|         48|
+    |zext_ln587_7_reg_1125                                                |   2|   0|   64|         62|
     |zext_ln587_reg_1056                                                  |  16|   0|   64|         48|
     +---------------------------------------------------------------------+----+----+-----+-----------+
     |Total                                                                | 699|   0|  857|        158|
@@ -330,9 +330,11 @@
 |enqueue_event_stream_dout                        |   in|  129|     ap_fifo|              enqueue_event_stream|       pointer|
 |enqueue_event_stream_empty_n                     |   in|    1|     ap_fifo|              enqueue_event_stream|       pointer|
 |enqueue_event_stream_read                        |  out|    1|     ap_fifo|              enqueue_event_stream|       pointer|
-|commit_time_stream_dout                          |   in|   32|     ap_fifo|                commit_time_stream|       pointer|
-|commit_time_stream_empty_n                       |   in|    1|     ap_fifo|                commit_time_stream|       pointer|
-|commit_time_stream_read                          |  out|    1|     ap_fifo|                commit_time_stream|       pointer|
+|event_queue_commit_time_stream15_dout            |   in|   32|     ap_fifo|  event_queue_commit_time_stream15|       pointer|
+|event_queue_commit_time_stream15_num_data_valid  |   in|    2|     ap_fifo|  event_queue_commit_time_stream15|       pointer|
+|event_queue_commit_time_stream15_fifo_cap        |   in|    2|     ap_fifo|  event_queue_commit_time_stream15|       pointer|
+|event_queue_commit_time_stream15_empty_n         |   in|    1|     ap_fifo|  event_queue_commit_time_stream15|       pointer|
+|event_queue_commit_time_stream15_read            |  out|    1|     ap_fifo|  event_queue_commit_time_stream15|       pointer|
 |issued_event_stream_din                          |  out|  129|     ap_fifo|               issued_event_stream|       pointer|
 |issued_event_stream_num_data_valid               |   in|    2|     ap_fifo|               issued_event_stream|       pointer|
 |issued_event_stream_fifo_cap                     |   in|    2|     ap_fifo|               issued_event_stream|       pointer|

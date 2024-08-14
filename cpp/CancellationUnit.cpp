@@ -182,25 +182,6 @@ void cancellation_unit_kernel(ap_uint<2> op, TimeWarpEvent event, TimeWarpEvent 
     }
 }
 
-// template <int ID>
-// void cancellation_unit_top( // TODO: revise. This is just a placeholder
-//     hls::stream<RollbackInfo> &cancellation_unit_rollback_info_stream,
-//     hls::stream<TimeWarpEvent> &cancellation_unit_input_stream,
-//     hls::stream<TimeWarpEvent> &anti_message_stream)
-// {
-//     static CancellationUnit cancellation_unit;
-
-//     if (!cancellation_unit_rollback_info_stream.empty())
-//     {
-//         RollbackInfo rollback_info = cancellation_unit_rollback_info_stream.read();
-//         cancellation_unit.rollback(rollback_info, anti_message_stream);
-//     }
-//     else if (!cancellation_unit_input_stream.empty())
-//     {
-//         cancellation_unit.push(cancellation_unit_input_stream.read());
-//     }
-// }
-
 int test_cancellation_unit()
 {
     ap_uint<2> op;

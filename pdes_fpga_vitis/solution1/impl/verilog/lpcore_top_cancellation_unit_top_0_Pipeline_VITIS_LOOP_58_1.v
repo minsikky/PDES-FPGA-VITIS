@@ -147,7 +147,7 @@ reg    ap_block_state3_pp0_stage0_iter1;
 reg    ap_block_pp0_stage0_11001;
 wire   [63:0] zext_ln145_cast_fu_216_p1;
 reg   [63:0] zext_ln145_cast_reg_412;
-reg   [15:0] current_V_14_reg_420;
+reg   [15:0] current_V_17_reg_420;
 wire   [0:0] icmp_ln1069_fu_248_p2;
 wire   [63:0] zext_ln587_fu_254_p1;
 reg   [63:0] zext_ln587_reg_429;
@@ -170,9 +170,9 @@ reg   [15:0] reuse_reg1_fu_72;
 reg   [63:0] reuse_addr_reg_fu_76;
 reg   [15:0] reuse_reg_fu_80;
 wire   [15:0] add_ln887_fu_355_p2;
-reg   [15:0] current_V_8_fu_84;
-wire   [15:0] current_V_15_fu_338_p3;
-reg   [15:0] ap_sig_allocacmp_current_V_14;
+reg   [15:0] current_V_11_fu_84;
+wire   [15:0] current_V_18_fu_338_p3;
+reg   [15:0] ap_sig_allocacmp_current_V_17;
 reg    ap_block_pp0_stage0_01001;
 wire   [15:0] reuse_select_fu_348_p3;
 reg    ap_done_reg;
@@ -252,9 +252,9 @@ end
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         if ((ap_loop_init == 1'b1)) begin
-            current_V_8_fu_84 <= current_V;
+            current_V_11_fu_84 <= current_V;
         end else if ((ap_enable_reg_pp0_iter1 == 1'b1)) begin
-            current_V_8_fu_84 <= current_V_15_fu_338_p3;
+            current_V_11_fu_84 <= current_V_18_fu_338_p3;
         end
     end
 end
@@ -316,7 +316,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        current_V_14_reg_420 <= ap_sig_allocacmp_current_V_14;
+        current_V_17_reg_420 <= ap_sig_allocacmp_current_V_17;
         icmp_ln1069_reg_425 <= icmp_ln1069_fu_248_p2;
         zext_ln145_cast_reg_412[1 : 0] <= zext_ln145_cast_fu_216_p1[1 : 0];
     end
@@ -387,14 +387,14 @@ end
 always @ (*) begin
     if (((1'b0 == ap_block_pp0_stage0) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         if ((ap_loop_init == 1'b1)) begin
-            ap_sig_allocacmp_current_V_14 = current_V;
+            ap_sig_allocacmp_current_V_17 = current_V;
         end else if ((ap_enable_reg_pp0_iter1 == 1'b1)) begin
-            ap_sig_allocacmp_current_V_14 = current_V_15_fu_338_p3;
+            ap_sig_allocacmp_current_V_17 = current_V_18_fu_338_p3;
         end else begin
-            ap_sig_allocacmp_current_V_14 = current_V_8_fu_84;
+            ap_sig_allocacmp_current_V_17 = current_V_11_fu_84;
         end
     end else begin
-        ap_sig_allocacmp_current_V_14 = current_V_8_fu_84;
+        ap_sig_allocacmp_current_V_17 = current_V_11_fu_84;
     end
 end
 
@@ -456,7 +456,7 @@ end
 
 always @ (*) begin
     if (((icmp_ln1069_reg_425 == 1'd0) & (icmp_ln1081_fu_259_p2 == 1'd1) & (1'b0 == ap_block_pp0_stage1) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage1))) begin
-        cancellation_unit_free_head_V_o = current_V_14_reg_420;
+        cancellation_unit_free_head_V_o = current_V_17_reg_420;
     end else begin
         cancellation_unit_free_head_V_o = cancellation_unit_free_head_V_i;
     end
@@ -632,9 +632,9 @@ assign cancellation_unit_lp_sizes_V_d0 = ($signed(reuse_select_fu_348_p3) + $sig
 
 assign cancellation_unit_output_stream_din = {{{{{{{{{{1'd1}, {cancellation_unit_buffer_event_receiver_id_V_q0}}}, {cancellation_unit_buffer_event_sender_id_V_q0}}}, {cancellation_unit_buffer_event_data_V_q0}}}, {cancellation_unit_buffer_event_recv_time_V_q0}}}, {anti_message_send_time_V_reg_455}};
 
-assign current_V_15_fu_338_p3 = ((addr_cmp5_reg_493[0:0] == 1'b1) ? reuse_reg1_load_reg_488 : cancellation_unit_buffer_next_V_q0);
+assign current_V_18_fu_338_p3 = ((addr_cmp5_reg_493[0:0] == 1'b1) ? reuse_reg1_load_reg_488 : cancellation_unit_buffer_next_V_q0);
 
-assign icmp_ln1069_fu_248_p2 = ((ap_sig_allocacmp_current_V_14 == 16'd65535) ? 1'b1 : 1'b0);
+assign icmp_ln1069_fu_248_p2 = ((ap_sig_allocacmp_current_V_17 == 16'd65535) ? 1'b1 : 1'b0);
 
 assign icmp_ln1081_fu_259_p2 = (($signed(cancellation_unit_buffer_event_send_time_V_q0) > $signed(tmp_to_time_V)) ? 1'b1 : 1'b0);
 
@@ -642,7 +642,7 @@ assign reuse_select_fu_348_p3 = ((addr_cmp_reg_498[0:0] == 1'b1) ? reuse_reg_fu_
 
 assign zext_ln145_cast_fu_216_p1 = zext_ln145;
 
-assign zext_ln587_fu_254_p1 = ap_sig_allocacmp_current_V_14;
+assign zext_ln587_fu_254_p1 = ap_sig_allocacmp_current_V_17;
 
 always @ (posedge ap_clk) begin
     zext_ln145_cast_reg_412[63:2] <= 62'b00000000000000000000000000000000000000000000000000000000000000;
