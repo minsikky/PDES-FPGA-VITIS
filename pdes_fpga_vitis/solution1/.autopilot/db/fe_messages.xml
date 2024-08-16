@@ -11,86 +11,20 @@
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:148:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port = return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:149:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:150:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = event" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:151:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = result" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:175:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port = return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:176:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:177:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = state" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:178:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = result" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:179:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="cpp/LPCore.cpp:92:33" msg_body="unused parameter 'init_event_stream'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="" msg_id="207-5292" msg_severity="WARNING" msg_loc="cpp/LPCore.cpp:93:30" msg_body="unused parameter 'commit_time_stream'">
-        <args ClangWarningOption="unused-parameter"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/net/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csynth.tcl:40:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaContext="directive" ARG_PragmaFunction="lpcore_top" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=lpcore_top" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
-    </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:152:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
@@ -182,94 +116,103 @@
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
     <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
         <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:148:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port = return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:149:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:150:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = event" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:151:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = result" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
-    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/CancellationUnit.cpp:152:9" msg_body="HLS pragma dump">
-        <args ARG_PragmaFunction="cancellation_unit_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:175:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_ctrl_hs port = return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:176:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = op" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:177:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_none port = state" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:178:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = result" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="cpp/StateBuffer.cpp:179:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="state_buffer_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="ap_vld port = success" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/csynth.tcl:40:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="simulation_top" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=simulation_top" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:724:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="and_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:738:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="or_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/ap_int_ref.h:752:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="xor_reduce" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_task.h:31:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="task" ARG_PragmaIsValid="1" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
     </msg>
     <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:231:0" msg_body="Unrolling loop 'VITIS_LOOP_234_1' (cpp/EventQueue.cpp:234:23) in function 'EventQueue::commit' completely with a factor of 4">
         <args Factor="4" LoopLoc="cpp/EventQueue.cpp:234:23" LoopName="VITIS_LOOP_234_1"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/sys_defs.hpp:25:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'EventQueueEntry::EventQueueEntry() (.582.591.600.609.618.627.636.645.654.663.672.681.690.699.708.717.726.735.744.753.762.771.780.789.798.807)'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="EventQueueEntry::EventQueueEntry() (.582.591.600.609.618.627.636.645.654.663.672.681.690.699.708.717.726.735.744.753.762.771.780.789.798.807)"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:290:0" msg_body="Inlining function 'TimeWarpEvent::is_matching_anti_message(TimeWarpEvent const&amp;) const (.204.210.218.224.232.238.246.252.260.266.274.280.288.294.302.308.316.322.330.2061.2078.2127.2144.2193.2210.2259.2276.2325.2342.2391.2408.2457.2474.2523.2540.2589.2606.2655)' into 'EventQueue::process_anti_message(TimeWarpEvent const&amp;)'">
+        <args Callee="TimeWarpEvent::is_matching_anti_message(TimeWarpEvent const&amp;) const (.204.210.218.224.232.238.246.252.260.266.274.280.288.294.302.308.316.322.330.2061.2078.2127.2144.2193.2210.2259.2276.2325.2342.2391.2408.2457.2474.2523.2540.2589.2606.2655)" Caller="EventQueue::process_anti_message(TimeWarpEvent const&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:52:0" msg_body="Inlining function 'EventQueueEntry::EventQueueEntry() (.582.591.600.609.618.627.636.645.654.663.672.681.690.699.708.717.726.735.744.753.762.771.780.789.798.807)' into 'EventQueue::EventQueue()'">
-        <args Callee="EventQueueEntry::EventQueueEntry() (.582.591.600.609.618.627.636.645.654.663.672.681.690.699.708.717.726.735.744.753.762.771.780.789.798.807)" Caller="EventQueue::EventQueue()"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:52:0" msg_body="Inlining function 'EventQueue::reset() (.411.417.423.429.435.441.447.453.459.465.471.477.483.489.495.501.507.513.519.525.531.537.543.549.555.561.567.573.579.588.597.606.615.624.633.642.651.660.669.678.687.696.705.714.723.732.741.750.759.768.777.786.795.804)' into 'EventQueue::EventQueue()'">
-        <args Callee="EventQueue::reset() (.411.417.423.429.435.441.447.453.459.465.471.477.483.489.495.501.507.513.519.525.531.537.543.549.555.561.567.573.579.588.597.606.615.624.633.642.651.660.669.678.687.696.705.714.723.732.741.750.759.768.777.786.795.804)" Caller="EventQueue::EventQueue()"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.cpp:8:0" msg_body="Inlining function 'StateBuffer::reset()' into 'StateBuffer::StateBuffer()'">
-        <args Callee="StateBuffer::reset()" Caller="StateBuffer::StateBuffer()"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:12:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'CancellationEntry::CancellationEntry() (.150.159.168.177.186.198.210.222.234.246.258.270.282.294.306.318.330.342.354.366.378.390.402)'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="CancellationEntry::CancellationEntry() (.150.159.168.177.186.198.210.222.234.246.258.270.282.294.306.318.330.342.354.366.378.390.402)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.cpp:11:0" msg_body="Inlining function 'CancellationEntry::CancellationEntry() (.150.159.168.177.186.198.210.222.234.246.258.270.282.294.306.318.330.342.354.366.378.390.402)' into 'CancellationUnit::CancellationUnit()'">
-        <args Callee="CancellationEntry::CancellationEntry() (.150.159.168.177.186.198.210.222.234.246.258.270.282.294.306.318.330.342.354.366.378.390.402)" Caller="CancellationUnit::CancellationUnit()"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.cpp:11:0" msg_body="Inlining function 'CancellationUnit::reset() (.51.57.63.69.75.81.87.93.99.105.111.117.123.129.135.141.147.156.165.174.183.195.207.219.231.243.255.267.279.291.303.315.327.339.351.363.375.387.399)' into 'CancellationUnit::CancellationUnit()'">
-        <args Callee="CancellationUnit::reset() (.51.57.63.69.75.81.87.93.99.105.111.117.123.129.135.141.147.156.165.174.183.195.207.219.231.243.255.267.279.291.303.315.327.339.351.363.375.387.399)" Caller="CancellationUnit::CancellationUnit()"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LFSR_PRNG.cpp:15:0" msg_body="Inlining function 'LFSR_PRNG::LFSR_PRNG(ap_uint&lt;8&gt;)' into 'MultiLFSR_PRNG::add_generator(ap_uint&lt;8&gt;)'">
-        <args Callee="LFSR_PRNG::LFSR_PRNG(ap_uint&lt;8&gt;)" Caller="MultiLFSR_PRNG::add_generator(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LFSR_PRNG.cpp:34:0" msg_body="Inlining function 'MultiLFSR_PRNG::add_generator(ap_uint&lt;8&gt;)' into 'add_lfsr_prng(ap_uint&lt;8&gt;)'">
-        <args Callee="MultiLFSR_PRNG::add_generator(ap_uint&lt;8&gt;)" Caller="add_lfsr_prng(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:10:0" msg_body="Inlining function 'add_lfsr_prng(ap_uint&lt;8&gt;)' into 'EventProcessor::EventProcessor(ap_uint&lt;8&gt;)'">
-        <args Callee="add_lfsr_prng(ap_uint&lt;8&gt;)" Caller="EventProcessor::EventProcessor(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'VirtualLP::VirtualLP()' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="VirtualLP::VirtualLP()" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'EventQueue::EventQueue()' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="EventQueue::EventQueue()" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'StateBuffer::StateBuffer()' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="StateBuffer::StateBuffer()" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'CancellationUnit::CancellationUnit()' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="CancellationUnit::CancellationUnit()" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'EventProcessor::EventProcessor(ap_uint&lt;8&gt;)' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="EventProcessor::EventProcessor(ap_uint&lt;8&gt;)" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:5:0" msg_body="Inlining function 'VirtualLP::VirtualLP(int, unsigned int)' into 'LPCore::LPCore(ap_uint&lt;8&gt;)'">
-        <args Callee="VirtualLP::VirtualLP(int, unsigned int)" Caller="LPCore::LPCore(ap_uint&lt;8&gt;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.cpp:144:0" msg_body="Inlining function 'LPCore::LPCore(ap_uint&lt;8&gt;)' into '__cxx_global_var_init.1.60'">
-        <args Callee="LPCore::LPCore(ap_uint&lt;8&gt;)" Caller="__cxx_global_var_init.1.60"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.cpp:290:0" msg_body="Inlining function 'TimeWarpEvent::is_matching_anti_message(TimeWarpEvent const&amp;) const' into 'EventQueue::process_anti_message(TimeWarpEvent const&amp;)'">
-        <args Callee="TimeWarpEvent::is_matching_anti_message(TimeWarpEvent const&amp;) const" Caller="EventQueue::process_anti_message(TimeWarpEvent const&amp;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:59:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:59:0" msg_body="Inlining function 'EventQueue::rollback(RollbackInfo&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::rollback(RollbackInfo&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
         <args Callee="EventQueue::rollback(RollbackInfo&amp;)" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:59:0" msg_body="Inlining function 'EventQueue::process_anti_message(TimeWarpEvent const&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::process_anti_message(TimeWarpEvent const&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
         <args Callee="EventQueue::process_anti_message(TimeWarpEvent const&amp;)" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:59:0" msg_body="Inlining function 'EventQueue::is_full()' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::is_full()' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
         <args Callee="EventQueue::is_full()" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:59:0" msg_body="Inlining function 'EventQueue::issue(TimeWarpEvent&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::issue(TimeWarpEvent&amp;)' into 'void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
         <args Callee="EventQueue::issue(TimeWarpEvent&amp;)" Caller="void event_queue_top&lt;0&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
     </msg>
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::rollback(RollbackInfo&amp;)' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
@@ -281,8 +224,8 @@
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::push(LPState const&amp;)' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
         <args Callee="StateBuffer::push(LPState const&amp;)" Caller="void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
     </msg>
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::peek(ap_int&lt;16&gt;) const' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
         <args Callee="StateBuffer::peek(ap_int&lt;16&gt;) const" Caller="void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
@@ -290,35 +233,29 @@
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::commit(ap_int&lt;32&gt;)' into 'void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
         <args Callee="StateBuffer::commit(ap_int&lt;32&gt;)" Caller="void state_buffer_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/sys_defs.hpp:54:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'EventProcessorInput::EventProcessorInput()'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="EventProcessorInput::EventProcessorInput()"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/sys_defs.hpp:54:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'EventProcessorInput::EventProcessorInput()'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="EventProcessorInput::EventProcessorInput()"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LFSR_PRNG.cpp:23:0" msg_body="Inlining function 'LFSR_PRNG::generate() (.1034.1043.1052)' into 'MultiLFSR_PRNG::generate(int) (.1031.1040.1049)'">
-        <args Callee="LFSR_PRNG::generate() (.1034.1043.1052)" Caller="MultiLFSR_PRNG::generate(int) (.1031.1040.1049)"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LFSR_PRNG.cpp:23:0" msg_body="Inlining function 'LFSR_PRNG::generate() (.574.580.586.3188.3216.3226.3254)' into 'MultiLFSR_PRNG::generate(int) (.3178.3185.3213.3223.3251)'">
+        <args Callee="LFSR_PRNG::generate() (.574.580.586.3188.3216.3226.3254)" Caller="MultiLFSR_PRNG::generate(int) (.3178.3185.3213.3223.3251)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/LFSR_PRNG.cpp:39:0" msg_body="Inlining function 'MultiLFSR_PRNG::generate(int) (.1031.1040.1049)' into 'lfsr_random(int)'">
-        <args Callee="MultiLFSR_PRNG::generate(int) (.1031.1040.1049)" Caller="lfsr_random(int)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:22:0" msg_body="Inlining function 'LPMapping::get_idx(int)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:17:0" msg_body="Inlining function 'LPMapping::get_idx(int)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="LPMapping::get_idx(int)" Caller="EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:22:0" msg_body="Inlining function 'lfsr_random(int)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
-        <args Callee="lfsr_random(int)" Caller="EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:17:0" msg_body="Inlining function 'MultiLFSR_PRNG::generate(int) (.3178.3185.3213.3223.3251)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="MultiLFSR_PRNG::generate(int) (.3178.3185.3213.3223.3251)" Caller="EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:22:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent(ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;16&gt;, ap_int&lt;16&gt;, ap_uint&lt;1&gt;)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.cpp:17:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent(ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;16&gt;, ap_int&lt;16&gt;, ap_uint&lt;1&gt;)' into 'EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="TimeWarpEvent::TimeWarpEvent(ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;32&gt;, ap_int&lt;16&gt;, ap_int&lt;16&gt;, ap_uint&lt;1&gt;)" Caller="EventProcessor::process_event(TimeWarpEvent&amp;, LPState&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.hpp:33:0" msg_body="Inlining function 'EventProcessor::EventProcessor(ap_uint&lt;8&gt;)' into 'void event_processor_top&lt;0&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
-        <args Callee="EventProcessor::EventProcessor(ap_uint&lt;8&gt;)" Caller="void event_processor_top&lt;0&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
-    </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.hpp:33:0" msg_body="Inlining function 'EventProcessorInput::EventProcessorInput()' into 'void event_processor_top&lt;0&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.hpp:32:0" msg_body="Inlining function 'EventProcessorInput::EventProcessorInput()' into 'void event_processor_top&lt;0&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="EventProcessorInput::EventProcessorInput()" Caller="void event_processor_top&lt;0&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::rollback(RollbackInfo&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="CancellationUnit::rollback(RollbackInfo&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
-        <args Callee="TimeWarpEvent::TimeWarpEvent() (.189.201.213.225.237.249.261.273.285.297.309.321.333.345.357.369.381.393.405)" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::push(TimeWarpEvent const&amp;)' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="CancellationUnit::push(TimeWarpEvent const&amp;)" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
@@ -326,50 +263,140 @@
     <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::commit(ap_int&lt;32&gt;)' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
         <args Callee="CancellationUnit::commit(ap_int&lt;32&gt;)" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:81:31" msg_body="Aggregating fifo (hls::stream) variable 'causality_violation_stream' with compact=bit mode in 48-bits">
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::rollback(RollbackInfo&amp;)' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="EventQueue::rollback(RollbackInfo&amp;)" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::process_anti_message(TimeWarpEvent const&amp;)' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="EventQueue::process_anti_message(TimeWarpEvent const&amp;)" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::is_full()' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="EventQueue::is_full()" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventQueue.hpp:49:0" msg_body="Inlining function 'EventQueue::issue(TimeWarpEvent&amp;)' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)'">
+        <args Callee="EventQueue::issue(TimeWarpEvent&amp;)" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::rollback(RollbackInfo&amp;)' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::rollback(RollbackInfo&amp;)" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::is_full()' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::is_full()" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::push(LPState const&amp;)' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::push(LPState const&amp;)" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::peek(ap_int&lt;16&gt;) const' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::peek(ap_int&lt;16&gt;) const" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/StateBuffer.hpp:43:0" msg_body="Inlining function 'StateBuffer::commit(ap_int&lt;32&gt;)' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)'">
+        <args Callee="StateBuffer::commit(ap_int&lt;32&gt;)" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/EventProcessor.hpp:32:0" msg_body="Inlining function 'EventProcessorInput::EventProcessorInput()' into 'void event_processor_top&lt;1&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="EventProcessorInput::EventProcessorInput()" Caller="void event_processor_top&lt;1&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::rollback(RollbackInfo&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="CancellationUnit::rollback(RollbackInfo&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="TimeWarpEvent::TimeWarpEvent() (.15.18.130.211.353)" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::push(TimeWarpEvent const&amp;)' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="CancellationUnit::push(TimeWarpEvent const&amp;)" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="cpp/CancellationUnit.hpp:51:0" msg_body="Inlining function 'CancellationUnit::commit(ap_int&lt;32&gt;)' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)'">
+        <args Callee="CancellationUnit::commit(ap_int&lt;32&gt;)" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_init_event_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_init_event_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_event_queue_full_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_event_queue_full_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_anti_message_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_anti_message_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_enqueue_event_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_enqueue_event_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_output_event_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_output_event_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_cancellation_unit_output_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_cancellation_unit_output_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Applying array_partition to 'lpcore_commit_time_stream': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="lpcore_commit_time_stream"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:80:48" msg_body="Aggregating fifo (hls::stream) variable 'causality_violation_stream' with compact=bit mode in 48-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="48" HwTyName="fifo (hls::stream)" Name="causality_violation_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:85:32" msg_body="Aggregating fifo (hls::stream) variable 'cancellation_unit_input_stream' with compact=bit mode in 129-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:84:49" msg_body="Aggregating fifo (hls::stream) variable 'cancellation_unit_input_stream' with compact=bit mode in 129-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="cancellation_unit_input_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:89:31" msg_body="Aggregating fifo (hls::stream) variable 'cancellation_unit_rollback_info_stream' with compact=bit mode in 48-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:88:48" msg_body="Aggregating fifo (hls::stream) variable 'cancellation_unit_rollback_info_stream' with compact=bit mode in 48-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="48" HwTyName="fifo (hls::stream)" Name="cancellation_unit_rollback_info_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:88:31" msg_body="Aggregating fifo (hls::stream) variable 'state_buffer_rollback_info_stream' with compact=bit mode in 48-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:87:48" msg_body="Aggregating fifo (hls::stream) variable 'state_buffer_rollback_info_stream' with compact=bit mode in 48-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="48" HwTyName="fifo (hls::stream)" Name="state_buffer_rollback_info_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:87:31" msg_body="Aggregating fifo (hls::stream) variable 'event_queue_rollback_info_stream' with compact=bit mode in 48-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:86:48" msg_body="Aggregating fifo (hls::stream) variable 'event_queue_rollback_info_stream' with compact=bit mode in 48-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="48" HwTyName="fifo (hls::stream)" Name="event_queue_rollback_info_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:84:38" msg_body="Aggregating fifo (hls::stream) variable 'event_processor_input_stream' with compact=bit mode in 209-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:83:55" msg_body="Aggregating fifo (hls::stream) variable 'event_processor_input_stream' with compact=bit mode in 209-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="209" HwTyName="fifo (hls::stream)" Name="event_processor_input_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:83:26" msg_body="Aggregating fifo (hls::stream) variable 'state_buffer_input_stream' with compact=bit mode in 80-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:82:43" msg_body="Aggregating fifo (hls::stream) variable 'state_buffer_input_stream' with compact=bit mode in 80-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="80" HwTyName="fifo (hls::stream)" Name="state_buffer_input_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:82:32" msg_body="Aggregating fifo (hls::stream) variable 'issued_event_stream' with compact=bit mode in 129-bits">
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.hpp:81:49" msg_body="Aggregating fifo (hls::stream) variable 'issued_event_stream' with compact=bit mode in 129-bits">
         <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="issued_event_stream"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_commit_time_stream' with compact=bit mode in 32-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="32" HwTyName="fifo (hls::stream)" Name="lpcore_commit_time_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_commit_time_stream_1' with compact=bit mode in 32-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="32" HwTyName="fifo (hls::stream)" Name="lpcore_commit_time_stream_1"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'cancellation_unit_output_stream' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="cancellation_unit_output_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_commit_time_stream_0' with compact=bit mode in 32-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="32" HwTyName="fifo (hls::stream)" Name="lpcore_commit_time_stream_0"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'output_event_stream' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="output_event_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_cancellation_unit_output_stream_1' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_cancellation_unit_output_stream_1"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'enqueue_event_stream' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="enqueue_event_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_cancellation_unit_output_stream_0' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_cancellation_unit_output_stream_0"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'anti_message_stream' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="anti_message_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_output_event_stream_1' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_output_event_stream_1"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'event_queue_full_stream' with compact=bit mode in 1-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="1" HwTyName="fifo (hls::stream)" Name="event_queue_full_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_output_event_stream_0' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_output_event_stream_0"/>
     </msg>
-    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/LPCore.cpp:124:0" msg_body="Aggregating fifo (hls::stream) variable 'init_event_stream' with compact=bit mode in 129-bits">
-        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="init_event_stream"/>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_enqueue_event_stream_1' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_enqueue_event_stream_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_enqueue_event_stream_0' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_enqueue_event_stream_0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_anti_message_stream_1' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_anti_message_stream_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_anti_message_stream_0' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_anti_message_stream_0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_event_queue_full_stream_1' with compact=bit mode in 1-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="1" HwTyName="fifo (hls::stream)" Name="lpcore_event_queue_full_stream_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_event_queue_full_stream_0' with compact=bit mode in 1-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="1" HwTyName="fifo (hls::stream)" Name="lpcore_event_queue_full_stream_0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_init_event_stream_1' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_init_event_stream_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_AGGREGATE" msg_id="214-241" msg_severity="INFO" msg_loc="cpp/TimeWarpSimulation.cpp:12:0" msg_body="Aggregating fifo (hls::stream) variable 'lpcore_init_event_stream_0' with compact=bit mode in 129-bits">
+        <args AggregateTypeName="compact=bit" Bitwidth="129" HwTyName="fifo (hls::stream)" Name="lpcore_init_event_stream_0"/>
     </msg>
     <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_int&lt;32&gt;s' into 'lpcore_commit_control(hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;) (.1)'">
         <args Callee="_llvm.fpga.pack.none.i32.s_struct.ap_int&lt;32&gt;s" Caller="lpcore_commit_control(hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;) (.1)"/>
@@ -433,6 +460,51 @@
     </msg>
     <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents' into 'void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
         <args Callee="_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents" Caller="void cancellation_unit_top&lt;0&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i32.s_struct.ap_int&lt;32&gt;s' into 'lpcore_commit_control(hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;) (.4769.1)'">
+        <args Callee="_llvm.fpga.pack.none.i32.s_struct.ap_int&lt;32&gt;s" Caller="lpcore_commit_control(hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;) (.4769.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.bits.i129.s_struct.TimeWarpEvents.1' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.bits.i129.s_struct.TimeWarpEvents.1" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents' into 'void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents" Caller="void event_queue_top&lt;1&gt;(hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;bool, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;RollbackInfo, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.bits.i209.s_struct.EventProcessorInputs.1' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.bits.i209.s_struct.EventProcessorInputs.1" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.LPStates.i80.1' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.LPStates.i80.1" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i256.s_struct.EventProcessorInputs' into 'void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.none.i256.s_struct.EventProcessorInputs" Caller="void state_buffer_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;EventProcessorInput, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.EventProcessorInputs.i209.1' into 'void event_processor_top&lt;1&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.EventProcessorInputs.i209.1" Caller="void event_processor_top&lt;1&gt;(hls::stream&lt;EventProcessorInput, 0&gt;&amp;, hls::stream&lt;LPState, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.RollbackInfos.i48.1" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145:9" msg_body="Inlining function '_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.unpack.bits.s_struct.TimeWarpEvents.i129.1" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.bits.i129.s_struct.TimeWarpEvents.1' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.bits.i129.s_struct.TimeWarpEvents.1" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="/afs/eecs.umich.edu/soft/xilinx/2022.1/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174:9" msg_body="Inlining function '_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents' into 'void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)'">
+        <args Callee="_llvm.fpga.pack.none.i160.s_struct.TimeWarpEvents" Caller="void cancellation_unit_top&lt;1&gt;(hls::stream&lt;RollbackInfo, 0&gt;&amp;, hls::stream&lt;ap_int&lt;32&gt;, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;, hls::stream&lt;TimeWarpEvent, 0&gt;&amp;) (.1)"/>
     </msg>
 </xilinx:hls_fe_msgs>
 

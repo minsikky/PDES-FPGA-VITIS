@@ -1,7 +1,7 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
-//Date        : Sun Jul 28 03:50:55 2024
+//Date        : Thu Aug 15 18:01:14 2024
 //Host        : i1z running 64-bit Red Hat Enterprise Linux Server release 7.9 (Maipo)
 //Command     : generate_target bd_0_wrapper.bd
 //Design      : bd_0_wrapper
@@ -11,54 +11,182 @@
 
 module bd_0_wrapper
    (ap_clk,
-    ap_ctrl_done,
-    ap_ctrl_idle,
-    ap_ctrl_ready,
-    ap_ctrl_start,
     ap_rst,
-    input_r,
-    input_r_ap_vld,
-    output_event,
-    output_event_ap_vld,
-    success,
-    success_ap_vld);
+    lpcore_anti_message_stream_0_empty_n,
+    lpcore_anti_message_stream_0_rd_data,
+    lpcore_anti_message_stream_0_rd_en,
+    lpcore_anti_message_stream_1_empty_n,
+    lpcore_anti_message_stream_1_rd_data,
+    lpcore_anti_message_stream_1_rd_en,
+    lpcore_cancellation_unit_output_stream_0_full_n,
+    lpcore_cancellation_unit_output_stream_0_wr_data,
+    lpcore_cancellation_unit_output_stream_0_wr_en,
+    lpcore_cancellation_unit_output_stream_1_full_n,
+    lpcore_cancellation_unit_output_stream_1_wr_data,
+    lpcore_cancellation_unit_output_stream_1_wr_en,
+    lpcore_commit_time_stream_0_empty_n,
+    lpcore_commit_time_stream_0_rd_data,
+    lpcore_commit_time_stream_0_rd_en,
+    lpcore_commit_time_stream_1_empty_n,
+    lpcore_commit_time_stream_1_rd_data,
+    lpcore_commit_time_stream_1_rd_en,
+    lpcore_enqueue_event_stream_0_empty_n,
+    lpcore_enqueue_event_stream_0_rd_data,
+    lpcore_enqueue_event_stream_0_rd_en,
+    lpcore_enqueue_event_stream_1_empty_n,
+    lpcore_enqueue_event_stream_1_rd_data,
+    lpcore_enqueue_event_stream_1_rd_en,
+    lpcore_event_queue_full_stream_0_full_n,
+    lpcore_event_queue_full_stream_0_wr_data,
+    lpcore_event_queue_full_stream_0_wr_en,
+    lpcore_event_queue_full_stream_1_full_n,
+    lpcore_event_queue_full_stream_1_wr_data,
+    lpcore_event_queue_full_stream_1_wr_en,
+    lpcore_init_event_stream_0_empty_n,
+    lpcore_init_event_stream_0_rd_data,
+    lpcore_init_event_stream_0_rd_en,
+    lpcore_init_event_stream_1_empty_n,
+    lpcore_init_event_stream_1_rd_data,
+    lpcore_init_event_stream_1_rd_en,
+    lpcore_output_event_stream_0_full_n,
+    lpcore_output_event_stream_0_wr_data,
+    lpcore_output_event_stream_0_wr_en,
+    lpcore_output_event_stream_1_full_n,
+    lpcore_output_event_stream_1_wr_data,
+    lpcore_output_event_stream_1_wr_en);
   input ap_clk;
-  output ap_ctrl_done;
-  output ap_ctrl_idle;
-  output ap_ctrl_ready;
-  input ap_ctrl_start;
   input ap_rst;
-  input [129:0]input_r;
-  input input_r_ap_vld;
-  output [128:0]output_event;
-  output output_event_ap_vld;
-  output success;
-  output success_ap_vld;
+  input lpcore_anti_message_stream_0_empty_n;
+  input [128:0]lpcore_anti_message_stream_0_rd_data;
+  output lpcore_anti_message_stream_0_rd_en;
+  input lpcore_anti_message_stream_1_empty_n;
+  input [128:0]lpcore_anti_message_stream_1_rd_data;
+  output lpcore_anti_message_stream_1_rd_en;
+  input lpcore_cancellation_unit_output_stream_0_full_n;
+  output [128:0]lpcore_cancellation_unit_output_stream_0_wr_data;
+  output lpcore_cancellation_unit_output_stream_0_wr_en;
+  input lpcore_cancellation_unit_output_stream_1_full_n;
+  output [128:0]lpcore_cancellation_unit_output_stream_1_wr_data;
+  output lpcore_cancellation_unit_output_stream_1_wr_en;
+  input lpcore_commit_time_stream_0_empty_n;
+  input [31:0]lpcore_commit_time_stream_0_rd_data;
+  output lpcore_commit_time_stream_0_rd_en;
+  input lpcore_commit_time_stream_1_empty_n;
+  input [31:0]lpcore_commit_time_stream_1_rd_data;
+  output lpcore_commit_time_stream_1_rd_en;
+  input lpcore_enqueue_event_stream_0_empty_n;
+  input [128:0]lpcore_enqueue_event_stream_0_rd_data;
+  output lpcore_enqueue_event_stream_0_rd_en;
+  input lpcore_enqueue_event_stream_1_empty_n;
+  input [128:0]lpcore_enqueue_event_stream_1_rd_data;
+  output lpcore_enqueue_event_stream_1_rd_en;
+  input lpcore_event_queue_full_stream_0_full_n;
+  output [0:0]lpcore_event_queue_full_stream_0_wr_data;
+  output lpcore_event_queue_full_stream_0_wr_en;
+  input lpcore_event_queue_full_stream_1_full_n;
+  output [0:0]lpcore_event_queue_full_stream_1_wr_data;
+  output lpcore_event_queue_full_stream_1_wr_en;
+  input lpcore_init_event_stream_0_empty_n;
+  input [128:0]lpcore_init_event_stream_0_rd_data;
+  output lpcore_init_event_stream_0_rd_en;
+  input lpcore_init_event_stream_1_empty_n;
+  input [128:0]lpcore_init_event_stream_1_rd_data;
+  output lpcore_init_event_stream_1_rd_en;
+  input lpcore_output_event_stream_0_full_n;
+  output [128:0]lpcore_output_event_stream_0_wr_data;
+  output lpcore_output_event_stream_0_wr_en;
+  input lpcore_output_event_stream_1_full_n;
+  output [128:0]lpcore_output_event_stream_1_wr_data;
+  output lpcore_output_event_stream_1_wr_en;
 
   wire ap_clk;
-  wire ap_ctrl_done;
-  wire ap_ctrl_idle;
-  wire ap_ctrl_ready;
-  wire ap_ctrl_start;
   wire ap_rst;
-  wire [129:0]input_r;
-  wire input_r_ap_vld;
-  wire [128:0]output_event;
-  wire output_event_ap_vld;
-  wire success;
-  wire success_ap_vld;
+  wire lpcore_anti_message_stream_0_empty_n;
+  wire [128:0]lpcore_anti_message_stream_0_rd_data;
+  wire lpcore_anti_message_stream_0_rd_en;
+  wire lpcore_anti_message_stream_1_empty_n;
+  wire [128:0]lpcore_anti_message_stream_1_rd_data;
+  wire lpcore_anti_message_stream_1_rd_en;
+  wire lpcore_cancellation_unit_output_stream_0_full_n;
+  wire [128:0]lpcore_cancellation_unit_output_stream_0_wr_data;
+  wire lpcore_cancellation_unit_output_stream_0_wr_en;
+  wire lpcore_cancellation_unit_output_stream_1_full_n;
+  wire [128:0]lpcore_cancellation_unit_output_stream_1_wr_data;
+  wire lpcore_cancellation_unit_output_stream_1_wr_en;
+  wire lpcore_commit_time_stream_0_empty_n;
+  wire [31:0]lpcore_commit_time_stream_0_rd_data;
+  wire lpcore_commit_time_stream_0_rd_en;
+  wire lpcore_commit_time_stream_1_empty_n;
+  wire [31:0]lpcore_commit_time_stream_1_rd_data;
+  wire lpcore_commit_time_stream_1_rd_en;
+  wire lpcore_enqueue_event_stream_0_empty_n;
+  wire [128:0]lpcore_enqueue_event_stream_0_rd_data;
+  wire lpcore_enqueue_event_stream_0_rd_en;
+  wire lpcore_enqueue_event_stream_1_empty_n;
+  wire [128:0]lpcore_enqueue_event_stream_1_rd_data;
+  wire lpcore_enqueue_event_stream_1_rd_en;
+  wire lpcore_event_queue_full_stream_0_full_n;
+  wire [0:0]lpcore_event_queue_full_stream_0_wr_data;
+  wire lpcore_event_queue_full_stream_0_wr_en;
+  wire lpcore_event_queue_full_stream_1_full_n;
+  wire [0:0]lpcore_event_queue_full_stream_1_wr_data;
+  wire lpcore_event_queue_full_stream_1_wr_en;
+  wire lpcore_init_event_stream_0_empty_n;
+  wire [128:0]lpcore_init_event_stream_0_rd_data;
+  wire lpcore_init_event_stream_0_rd_en;
+  wire lpcore_init_event_stream_1_empty_n;
+  wire [128:0]lpcore_init_event_stream_1_rd_data;
+  wire lpcore_init_event_stream_1_rd_en;
+  wire lpcore_output_event_stream_0_full_n;
+  wire [128:0]lpcore_output_event_stream_0_wr_data;
+  wire lpcore_output_event_stream_0_wr_en;
+  wire lpcore_output_event_stream_1_full_n;
+  wire [128:0]lpcore_output_event_stream_1_wr_data;
+  wire lpcore_output_event_stream_1_wr_en;
 
   bd_0 bd_0_i
        (.ap_clk(ap_clk),
-        .ap_ctrl_done(ap_ctrl_done),
-        .ap_ctrl_idle(ap_ctrl_idle),
-        .ap_ctrl_ready(ap_ctrl_ready),
-        .ap_ctrl_start(ap_ctrl_start),
         .ap_rst(ap_rst),
-        .input_r(input_r),
-        .input_r_ap_vld(input_r_ap_vld),
-        .output_event(output_event),
-        .output_event_ap_vld(output_event_ap_vld),
-        .success(success),
-        .success_ap_vld(success_ap_vld));
+        .lpcore_anti_message_stream_0_empty_n(lpcore_anti_message_stream_0_empty_n),
+        .lpcore_anti_message_stream_0_rd_data(lpcore_anti_message_stream_0_rd_data),
+        .lpcore_anti_message_stream_0_rd_en(lpcore_anti_message_stream_0_rd_en),
+        .lpcore_anti_message_stream_1_empty_n(lpcore_anti_message_stream_1_empty_n),
+        .lpcore_anti_message_stream_1_rd_data(lpcore_anti_message_stream_1_rd_data),
+        .lpcore_anti_message_stream_1_rd_en(lpcore_anti_message_stream_1_rd_en),
+        .lpcore_cancellation_unit_output_stream_0_full_n(lpcore_cancellation_unit_output_stream_0_full_n),
+        .lpcore_cancellation_unit_output_stream_0_wr_data(lpcore_cancellation_unit_output_stream_0_wr_data),
+        .lpcore_cancellation_unit_output_stream_0_wr_en(lpcore_cancellation_unit_output_stream_0_wr_en),
+        .lpcore_cancellation_unit_output_stream_1_full_n(lpcore_cancellation_unit_output_stream_1_full_n),
+        .lpcore_cancellation_unit_output_stream_1_wr_data(lpcore_cancellation_unit_output_stream_1_wr_data),
+        .lpcore_cancellation_unit_output_stream_1_wr_en(lpcore_cancellation_unit_output_stream_1_wr_en),
+        .lpcore_commit_time_stream_0_empty_n(lpcore_commit_time_stream_0_empty_n),
+        .lpcore_commit_time_stream_0_rd_data(lpcore_commit_time_stream_0_rd_data),
+        .lpcore_commit_time_stream_0_rd_en(lpcore_commit_time_stream_0_rd_en),
+        .lpcore_commit_time_stream_1_empty_n(lpcore_commit_time_stream_1_empty_n),
+        .lpcore_commit_time_stream_1_rd_data(lpcore_commit_time_stream_1_rd_data),
+        .lpcore_commit_time_stream_1_rd_en(lpcore_commit_time_stream_1_rd_en),
+        .lpcore_enqueue_event_stream_0_empty_n(lpcore_enqueue_event_stream_0_empty_n),
+        .lpcore_enqueue_event_stream_0_rd_data(lpcore_enqueue_event_stream_0_rd_data),
+        .lpcore_enqueue_event_stream_0_rd_en(lpcore_enqueue_event_stream_0_rd_en),
+        .lpcore_enqueue_event_stream_1_empty_n(lpcore_enqueue_event_stream_1_empty_n),
+        .lpcore_enqueue_event_stream_1_rd_data(lpcore_enqueue_event_stream_1_rd_data),
+        .lpcore_enqueue_event_stream_1_rd_en(lpcore_enqueue_event_stream_1_rd_en),
+        .lpcore_event_queue_full_stream_0_full_n(lpcore_event_queue_full_stream_0_full_n),
+        .lpcore_event_queue_full_stream_0_wr_data(lpcore_event_queue_full_stream_0_wr_data),
+        .lpcore_event_queue_full_stream_0_wr_en(lpcore_event_queue_full_stream_0_wr_en),
+        .lpcore_event_queue_full_stream_1_full_n(lpcore_event_queue_full_stream_1_full_n),
+        .lpcore_event_queue_full_stream_1_wr_data(lpcore_event_queue_full_stream_1_wr_data),
+        .lpcore_event_queue_full_stream_1_wr_en(lpcore_event_queue_full_stream_1_wr_en),
+        .lpcore_init_event_stream_0_empty_n(lpcore_init_event_stream_0_empty_n),
+        .lpcore_init_event_stream_0_rd_data(lpcore_init_event_stream_0_rd_data),
+        .lpcore_init_event_stream_0_rd_en(lpcore_init_event_stream_0_rd_en),
+        .lpcore_init_event_stream_1_empty_n(lpcore_init_event_stream_1_empty_n),
+        .lpcore_init_event_stream_1_rd_data(lpcore_init_event_stream_1_rd_data),
+        .lpcore_init_event_stream_1_rd_en(lpcore_init_event_stream_1_rd_en),
+        .lpcore_output_event_stream_0_full_n(lpcore_output_event_stream_0_full_n),
+        .lpcore_output_event_stream_0_wr_data(lpcore_output_event_stream_0_wr_data),
+        .lpcore_output_event_stream_0_wr_en(lpcore_output_event_stream_0_wr_en),
+        .lpcore_output_event_stream_1_full_n(lpcore_output_event_stream_1_full_n),
+        .lpcore_output_event_stream_1_wr_data(lpcore_output_event_stream_1_wr_data),
+        .lpcore_output_event_stream_1_wr_en(lpcore_output_event_stream_1_wr_en));
 endmodule

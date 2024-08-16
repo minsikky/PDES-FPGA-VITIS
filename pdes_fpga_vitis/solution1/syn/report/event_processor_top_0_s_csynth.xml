@@ -18,26 +18,26 @@
 <PipelineType>no</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>2.841</EstimatedClockPeriod>
+<EstimatedClockPeriod>3.454</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
 <Best-caseLatency>1</Best-caseLatency>
-<Average-caseLatency>2</Average-caseLatency>
-<Worst-caseLatency>4</Worst-caseLatency>
+<Average-caseLatency>3</Average-caseLatency>
+<Worst-caseLatency>6</Worst-caseLatency>
 <Best-caseRealTimeLatency>5.000 ns</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>10.000 ns</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>20.000 ns</Worst-caseRealTimeLatency>
+<Average-caseRealTimeLatency>15.000 ns</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>30.000 ns</Worst-caseRealTimeLatency>
 <Interval-min>1</Interval-min>
-<Interval-max>4</Interval-max>
+<Interval-max>6</Interval-max>
 </SummaryOfOverallLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
 <BRAM_18K>0</BRAM_18K>
-<FF>117</FF>
-<LUT>188</LUT>
+<FF>152</FF>
+<LUT>339</LUT>
 <URAM>0</URAM>
 <DSP>0</DSP>
 </Resources>
@@ -239,8 +239,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>output_event_stream_din</name>
-<Object>output_event_stream</Object>
+<name>lpcore_output_event_stream_0_din</name>
+<Object>lpcore_output_event_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -250,8 +250,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>output_event_stream_full_n</name>
-<Object>output_event_stream</Object>
+<name>lpcore_output_event_stream_0_full_n</name>
+<Object>lpcore_output_event_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -261,8 +261,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>output_event_stream_write</name>
-<Object>output_event_stream</Object>
+<name>lpcore_output_event_stream_0_write</name>
+<Object>lpcore_output_event_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>

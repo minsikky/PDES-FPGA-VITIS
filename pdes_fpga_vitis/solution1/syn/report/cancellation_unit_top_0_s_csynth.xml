@@ -304,8 +304,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>cancellation_unit_output_stream_din</name>
-<Object>cancellation_unit_output_stream</Object>
+<name>lpcore_cancellation_unit_output_stream_0_din</name>
+<Object>lpcore_cancellation_unit_output_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -315,8 +315,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>cancellation_unit_output_stream_full_n</name>
-<Object>cancellation_unit_output_stream</Object>
+<name>lpcore_cancellation_unit_output_stream_0_full_n</name>
+<Object>lpcore_cancellation_unit_output_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>
@@ -326,8 +326,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>cancellation_unit_output_stream_write</name>
-<Object>cancellation_unit_output_stream</Object>
+<name>lpcore_cancellation_unit_output_stream_0_write</name>
+<Object>lpcore_cancellation_unit_output_stream_0</Object>
 <Type>pointer</Type>
 <Scope></Scope>
 <IOProtocol>ap_fifo</IOProtocol>

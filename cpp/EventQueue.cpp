@@ -427,25 +427,123 @@ void event_queue_kernel(
     }
 }
 
-void event_queue_top_test(
-    hls::stream<TimeWarpEvent> &init_event_stream,
-    hls::stream<bool> &event_queue_full_stream,
-    hls::stream<RollbackInfo> &rollback_info_stream,
-    hls::stream<TimeWarpEvent> &anti_message_stream,
-    hls::stream<TimeWarpEvent> &enqueue_event_stream,
-    hls::stream<ap_int<32>> &commit_time_stream,
-    hls::stream<TimeWarpEvent> &issued_event_stream,
-    hls::stream<RollbackInfo> &causality_violation_stream)
+void event_queue_top_test()
 {
-    event_queue_top<0>(
-        init_event_stream,
-        event_queue_full_stream,
-        rollback_info_stream,
-        anti_message_stream,
-        enqueue_event_stream,
-        commit_time_stream,
-        issued_event_stream,
-        causality_violation_stream);
+    hls::stream<TimeWarpEvent> init_event_stream[2];
+    hls::stream<bool> event_queue_full_stream[2];
+    hls::stream<RollbackInfo> rollback_info_stream[2];
+    hls::stream<TimeWarpEvent> anti_message_stream[2];
+    hls::stream<TimeWarpEvent> enqueue_event_stream[2];
+    hls::stream<ap_int<32>> commit_time_stream[2];
+    hls::stream<TimeWarpEvent> issued_event_stream[2];
+    hls::stream<RollbackInfo> causality_violation_stream[2];
+
+    hls::task event_queue_task_0(event_queue_top<0>, 
+        init_event_stream[0],
+        event_queue_full_stream[0],
+        rollback_info_stream[0],
+        anti_message_stream[0],
+        enqueue_event_stream[0],
+        commit_time_stream[0],
+        issued_event_stream[0],
+        causality_violation_stream[0]);
+    
+    // hls::task event_queue_task_1(event_queue_top, 
+    //     init_event_stream[1],
+    //     event_queue_full_stream[1],
+    //     rollback_info_stream[1],
+    //     anti_message_stream[1],
+    //     enqueue_event_stream[1],
+    //     commit_time_stream[1],
+    //     issued_event_stream[1],
+    //     causality_violation_stream[1]);
+
+    // Test the event queue
+    const int NUM_TEST_EVENTS = 16;
+    std::vector<TimeWarpEvent> original_events;
+
+    // Helper function to generate a random event
+    auto generate_event = [](int i) -> TimeWarpEvent
+    {
+        return TimeWarpEvent{
+            static_cast<ap_int<32>>(i),              // send_time
+            static_cast<ap_int<32>>(rand() % 10000), // recv_time
+            static_cast<ap_int<32>>(i),              // data
+            static_cast<ap_int<16>>(rand() % 4),     // sender_id
+            static_cast<ap_int<16>>(rand() % 4),     // receiver_id
+            static_cast<ap_uint<1>>(0)               // is_anti_message
+        };
+    };
+
+    // Helper function to enqueue events
+    auto enqueue_events = [&](int idx)
+    {
+        int enqueued_count = 0;
+        original_events.clear();
+        for (int i = 0; i < NUM_TEST_EVENTS; ++i)
+        {
+            TimeWarpEvent event;
+            event = generate_event(i+(idx+1)*NUM_TEST_EVENTS);
+            original_events.push_back(event);
+            enqueue_event_stream[idx].write(event);
+            // g_event_queue.print_event_queue();
+            enqueued_count++;
+        }
+        std::cout << "Enqueued " << enqueued_count << " events." << std::endl;
+        // Print all enqueued events
+        std::cout << "Enqueued events:" << std::endl;
+        for (size_t i = 0; i < original_events.size(); ++i)
+        {
+            const auto &entry = original_events[i];
+            std::cout << "Event " << i << ": "
+                      << "send_time=" << entry.send_time
+                      << ", recv_time=" << entry.recv_time
+                      << ", data=" << entry.data
+                      << ", sender_id=" << entry.sender_id
+                      << ", receiver_id=" << entry.receiver_id
+                      << ", is_anti_message=" << entry.is_anti_message
+                      << std::endl;
+        }
+        std::cout << std::endl; // Add an extra newline for better readability
+        return true;
+    };
+
+
+    // Helper function to issue events
+    auto issue_events = [&](int idx, int num_to_issue)
+    {
+        std::vector<TimeWarpEvent> issued_events;
+        int issued_count = 0;
+        for (int i = 0; i < num_to_issue; ++i)
+        {
+            issued_events.push_back(issued_event_stream[idx].read());
+            issued_count++;
+        }
+        std::cout << "Issued " << issued_count << " events." << std::endl;
+        // Print all issued entries
+        std::cout << "Issued events:" << std::endl;
+        for (size_t i = 0; i < issued_events.size(); ++i)
+        {
+            const auto &entry = issued_events[i];
+            std::cout << "Event " << i << ": "
+                      << "send_time=" << entry.send_time
+                      << ", recv_time=" << entry.recv_time
+                      << ", data=" << entry.data
+                      << ", sender_id=" << entry.sender_id
+                      << ", receiver_id=" << entry.receiver_id
+                      << ", is_anti_message=" << entry.is_anti_message
+                      << std::endl;
+        }
+        std::cout << std::endl; // Add an extra newline for better readability
+
+        return issued_count;
+    };
+
+    enqueue_events(0);
+    issue_events(0, NUM_TEST_EVENTS);
+
+    enqueue_events(1);
+    issue_events(1, NUM_TEST_EVENTS);
 }
 
 int test_event_queue()

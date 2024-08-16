@@ -1,28 +1,23 @@
 #include "TimeWarpSimulation.hpp"
-#include "LPMapping.hpp"
-#include "EventQueue.hpp"
 
-TimeWarpSimulation::TimeWarpSimulation() : gvt(0), stall_count(0) {
-    for (int i = 0; i < NUM_LPCORE; i++) {
-        lpcores[i] = LPCore(i);
-    }
-}
+void simulation_top(
+    hls::stream<TimeWarpEvent> lpcore_init_event_stream[NUM_LPCORE]
+)
+{
+    hls::stream<bool> lpcore_event_queue_full_stream[NUM_LPCORE];
+    hls::stream<TimeWarpEvent> lpcore_anti_message_stream[NUM_LPCORE];
+    hls::stream<TimeWarpEvent> lpcore_enqueue_event_stream[NUM_LPCORE];
+    hls::stream<LVT> lpcore_lvt_stream[NUM_LPCORE];
+    hls::stream<ap_int<32>> gvt_stream;
+    hls::stream<TimeWarpEvent> lpcore_output_event_stream[NUM_LPCORE];
+    hls::stream<TimeWarpEvent> lpcore_cancellation_unit_output_stream[NUM_LPCORE];
+    hls::stream<ap_int<32>> lpcore_commit_time_stream[NUM_LPCORE];
 
-bool TimeWarpSimulation::route_event(const TimeWarpEvent &event) {
-    int dest_lp_id = event.receiver_id;
-    int dest_core_id = LPMapping::get_core_id(dest_lp_id);
-    return lpcores[dest_core_id].recv_event(event);
-}
+    // Create GlobalControl tasks
+    hls_thread_local hls::task event_router_task(event_router_top, lpcore_output_event_stream, lpcore_cancellation_unit_output_stream, lpcore_enqueue_event_stream, lpcore_anti_message_stream);
+    hls_thread_local hls::task gvt_tracker_task(gvt_tracker_top, lpcore_lvt_stream, gvt_stream);
+    hls_thread_local hls::task commit_control_task(commit_control_top, gvt_stream, lpcore_event_queue_full_stream, lpcore_commit_time_stream);
 
-void TimeWarpSimulation::handle_persistent_stall() {
-    // Implement logic to handle persistent stalls
-    // This could involve:
-    // 1. Forcing a GVT calculation and fossil collection
-    // 2. Adjusting load balancing
-    // 3. Increasing event queue or state buffer sizes if possible
-    // 4. Logging a warning or error
-    // calculate_gvt();
-    // fossil_collection();
-    // balance_load();
-    // If stall persists, you might need to abort the simulation or take more drastic measures
+    // Create LPCore tasks
+    BOOST_PP_REPEAT(NUM_LPCORE, CREATE_TASK, ~)
 }

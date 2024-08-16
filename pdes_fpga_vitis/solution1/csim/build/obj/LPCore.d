@@ -28,6 +28,4 @@ obj/LPCore.o: ../../../../cpp/LPCore.cpp ../../../../cpp/LPCore.hpp \
  ../../../../cpp/StateBuffer.hpp ../../../../cpp/CancellationUnit.hpp \
  ../../../../cpp/EventProcessor.hpp ../../../../cpp/LFSR_PRNG.hpp \
  ../../../../cpp/LPMapping.hpp ../../../../cpp/EventRouter.hpp \
- ../../../../cpp/RollbackControl.hpp \
- ../../../../cpp/CommitControlDummy.hpp \
- ../../../../cpp/TimeWarpSimulation.hpp
+ ../../../../cpp/LPCoreControl.hpp ../../../../cpp/TimeWarpSimulation.hpp

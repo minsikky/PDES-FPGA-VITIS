@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'process_event'
 ================================================================
-* Date:           Wed Aug 14 17:50:16 2024
+* Date:           Thu Aug 15 17:58:32 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -20,7 +20,7 @@
     +--------+---------+----------+------------+
     |  Clock |  Target | Estimated| Uncertainty|
     +--------+---------+----------+------------+
-    |ap_clk  |  5.00 ns|  2.841 ns|     1.35 ns|
+    |ap_clk  |  5.00 ns|  3.454 ns|     1.35 ns|
     +--------+---------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
     |   min   |   max   |    min   |    max    | min | max |   Type  |
     +---------+---------+----------+-----------+-----+-----+---------+
-    |        1|        3|  5.000 ns|  15.000 ns|    1|    3|       no|
+    |        1|        4|  5.000 ns|  20.000 ns|    1|    4|       no|
     +---------+---------+----------+-----------+-----+-----+---------+
 
     + Detail: 
@@ -49,14 +49,14 @@
 |       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
 +-----------------+---------+------+--------+--------+-----+
 |DSP              |        -|     -|       -|       -|    -|
-|Expression       |        -|     -|       0|      53|    -|
+|Expression       |        -|     -|       0|     147|    -|
 |FIFO             |        -|     -|       -|       -|    -|
 |Instance         |        -|     -|       -|       -|    -|
-|Memory           |        0|     -|      12|       3|    0|
-|Multiplexer      |        -|     -|       -|      67|    -|
-|Register         |        -|     -|      17|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|     119|    -|
+|Register         |        -|     -|      41|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |        0|     0|      29|     123|    0|
+|Total            |        0|     0|      41|     266|    0|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
@@ -71,14 +71,7 @@
     N/A
 
     * Memory: 
-    +-----------------------------------+-------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
-    |               Memory              |                            Module                           | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
-    +-----------------------------------+-------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
-    |event_processor_prng_U             |process_event_event_processor_prng_ROM_AUTO_1R               |        0|  4|   1|    0|     4|    4|     1|           16|
-    |g_multi_prng_generators_state_V_U  |process_event_g_multi_prng_generators_state_V_RAM_AUTO_1R1W  |        0|  8|   2|    0|    16|    8|     1|          128|
-    +-----------------------------------+-------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
-    |Total                              |                                                             |        0| 12|   3|    0|    20|   12|     2|          144|
-    +-----------------------------------+-------------------------------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    N/A
 
     * FIFO: 
     N/A
@@ -87,43 +80,56 @@
     +---------------------------------+----------+----+---+----+------------+------------+
     |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |new_event_recv_time_V_fu_278_p2  |         +|   0|  0|  39|          32|          32|
-    |ap_block_state4                  |        or|   0|  0|   2|           1|           1|
-    |rhs_1_fu_239_p2                  |       xor|   0|  0|   2|           1|           1|
-    |rhs_fu_201_p2                    |       xor|   0|  0|   2|           1|           1|
-    |xor_ln232_1_fu_195_p2            |       xor|   0|  0|   2|           1|           1|
-    |xor_ln232_fu_189_p2              |       xor|   0|  0|   2|           1|           1|
-    |xor_ln8_1_fu_233_p2              |       xor|   0|  0|   2|           1|           1|
-    |xor_ln8_fu_227_p2                |       xor|   0|  0|   2|           1|           1|
+    |new_event_recv_time_V_fu_429_p2  |         +|   0|  0|  39|          32|          32|
+    |sub_ln10_1_fu_217_p2             |         -|   0|  0|  24|           1|          17|
+    |sub_ln10_fu_197_p2               |         -|   0|  0|  24|           1|          17|
+    |and_ln24_fu_271_p2               |       and|   0|  0|   2|           1|           1|
+    |icmp_ln24_1_fu_265_p2            |      icmp|   0|  0|  13|          16|           1|
+    |icmp_ln24_fu_249_p2              |      icmp|   0|  0|  13|          16|           3|
+    |ap_block_state1                  |        or|   0|  0|   2|           1|           1|
+    |ap_block_state5                  |        or|   0|  0|   2|           1|           1|
+    |idx_fu_241_p3                    |    select|   0|  0|  16|           1|          17|
+    |rhs_1_fu_397_p2                  |       xor|   0|  0|   2|           1|           1|
+    |rhs_fu_325_p2                    |       xor|   0|  0|   2|           1|           1|
+    |xor_ln232_1_fu_319_p2            |       xor|   0|  0|   2|           1|           1|
+    |xor_ln232_3_fu_385_p2            |       xor|   0|  0|   2|           1|           1|
+    |xor_ln232_4_fu_391_p2            |       xor|   0|  0|   2|           1|           1|
+    |xor_ln232_fu_313_p2              |       xor|   0|  0|   2|           1|           1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |Total                            |          |   0|  0|  53|          39|          39|
+    |Total                            |          |   0|  0| 147|          76|          96|
     +---------------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
-    +------------------------------------------+----+-----------+-----+-----------+
-    |                   Name                   | LUT| Input Size| Bits| Total Bits|
-    +------------------------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                                 |  26|          5|    1|          5|
-    |cancellation_unit_input_stream_blk_n      |   9|          2|    1|          2|
-    |g_multi_prng_generators_state_V_address0  |  14|          3|    4|         12|
-    |output_event_stream_blk_n                 |   9|          2|    1|          2|
-    |state_buffer_input_stream_blk_n           |   9|          2|    1|          2|
-    +------------------------------------------+----+-----------+-----+-----------+
-    |Total                                     |  67|         14|    8|         23|
-    +------------------------------------------+----+-----------+-----+-----------+
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                             |  31|          6|    1|          6|
+    |ap_phi_mux_ret_V_4_phi_fu_167_p4      |   9|          2|    2|          4|
+    |cancellation_unit_input_stream_blk_n  |   9|          2|    1|          2|
+    |lpcore_output_event_stream_1_blk_n    |   9|          2|    1|          2|
+    |rand_time_V_1_reg_151                 |   9|          2|    8|         16|
+    |ret_V_4_reg_163                       |   9|          2|    2|          4|
+    |state_buffer_input_stream_blk_n       |   9|          2|    1|          2|
+    |this_prng_generators_address0         |  20|          4|    4|         16|
+    |this_prng_generators_d0               |  14|          3|    8|         24|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 | 119|         25|   28|         76|
+    +--------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +----------------------+---+----+-----+-----------+
-    |         Name         | FF| LUT| Bits| Const Bits|
-    +----------------------+---+----+-----+-----------+
-    |ap_CS_fsm             |  4|   0|    4|          0|
-    |rhs_1_reg_356         |  1|   0|    1|          0|
-    |rhs_reg_345           |  1|   0|    1|          0|
-    |this_state_V_reg_340  |  4|   0|    4|          0|
-    |trunc_ln1544_reg_351  |  7|   0|    7|          0|
-    +----------------------+---+----+-----+-----------+
-    |Total                 | 17|   0|   17|          0|
-    +----------------------+---+----+-----+-----------+
+    +------------------------+----+----+-----+-----------+
+    |          Name          | FF | LUT| Bits| Const Bits|
+    +------------------------+----+----+-----+-----------+
+    |and_ln24_reg_473        |   1|   0|    1|          0|
+    |ap_CS_fsm               |   5|   0|    5|          0|
+    |idx_reg_467             |  17|   0|   17|          0|
+    |rand_time_V_1_reg_151   |   8|   0|    8|          0|
+    |ret_V_4_reg_163         |   2|   0|    2|          0|
+    |this_state_V_1_reg_482  |   4|   0|    4|          0|
+    |this_state_V_reg_477    |   4|   0|    4|          0|
+    +------------------------+----+----+-----+-----------+
+    |Total                   |  41|   0|   41|          0|
+    +------------------------+----+----+-----+-----------+
 
 
 
@@ -140,19 +146,24 @@
 |ap_done                                        |  out|    1|  ap_ctrl_hs|                   process_event|  return value|
 |ap_idle                                        |  out|    1|  ap_ctrl_hs|                   process_event|  return value|
 |ap_ready                                       |  out|    1|  ap_ctrl_hs|                   process_event|  return value|
-|p_read                                         |   in|   32|     ap_none|                          p_read|        scalar|
-|p_read1                                        |   in|    2|     ap_none|                         p_read1|        scalar|
-|p_read2                                        |   in|    1|     ap_none|                         p_read2|        scalar|
-|p_read3                                        |   in|   16|     ap_none|                         p_read3|        scalar|
-|p_read5                                        |   in|   32|     ap_none|                         p_read5|        scalar|
+|this_prng_generators_address0                  |  out|    4|   ap_memory|            this_prng_generators|         array|
+|this_prng_generators_ce0                       |  out|    1|   ap_memory|            this_prng_generators|         array|
+|this_prng_generators_we0                       |  out|    1|   ap_memory|            this_prng_generators|         array|
+|this_prng_generators_d0                        |  out|    8|   ap_memory|            this_prng_generators|         array|
+|this_prng_generators_q0                        |   in|    8|   ap_memory|            this_prng_generators|         array|
+|p_read1                                        |   in|   32|     ap_none|                         p_read1|        scalar|
+|p_read2                                        |   in|   16|     ap_none|                         p_read2|        scalar|
+|p_read3                                        |   in|    1|     ap_none|                         p_read3|        scalar|
+|p_read4                                        |   in|   16|     ap_none|                         p_read4|        scalar|
+|p_read6                                        |   in|   32|     ap_none|                         p_read6|        scalar|
 |state_buffer_input_stream_din                  |  out|   80|     ap_fifo|       state_buffer_input_stream|       pointer|
 |state_buffer_input_stream_num_data_valid       |   in|    2|     ap_fifo|       state_buffer_input_stream|       pointer|
 |state_buffer_input_stream_fifo_cap             |   in|    2|     ap_fifo|       state_buffer_input_stream|       pointer|
 |state_buffer_input_stream_full_n               |   in|    1|     ap_fifo|       state_buffer_input_stream|       pointer|
 |state_buffer_input_stream_write                |  out|    1|     ap_fifo|       state_buffer_input_stream|       pointer|
-|output_event_stream_din                        |  out|  129|     ap_fifo|             output_event_stream|       pointer|
-|output_event_stream_full_n                     |   in|    1|     ap_fifo|             output_event_stream|       pointer|
-|output_event_stream_write                      |  out|    1|     ap_fifo|             output_event_stream|       pointer|
+|lpcore_output_event_stream_1_din               |  out|  129|     ap_fifo|    lpcore_output_event_stream_1|       pointer|
+|lpcore_output_event_stream_1_full_n            |   in|    1|     ap_fifo|    lpcore_output_event_stream_1|       pointer|
+|lpcore_output_event_stream_1_write             |  out|    1|     ap_fifo|    lpcore_output_event_stream_1|       pointer|
 |cancellation_unit_input_stream_din             |  out|  129|     ap_fifo|  cancellation_unit_input_stream|       pointer|
 |cancellation_unit_input_stream_num_data_valid  |   in|    2|     ap_fifo|  cancellation_unit_input_stream|       pointer|
 |cancellation_unit_input_stream_fifo_cap        |   in|    2|     ap_fifo|  cancellation_unit_input_stream|       pointer|

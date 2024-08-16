@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'commit_Pipeline_VITIS_LOOP_237_23'
 ================================================================
-* Date:           Wed Aug 14 17:50:13 2024
+* Date:           Thu Aug 15 17:58:29 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -58,10 +58,10 @@
 |FIFO             |        -|     -|       -|       -|    -|
 |Instance         |        -|     -|       -|       -|    -|
 |Memory           |        -|     -|       -|       -|    -|
-|Multiplexer      |        -|     -|       -|     115|    -|
-|Register         |        -|     -|     214|       -|    -|
+|Multiplexer      |        -|     -|       -|     143|    -|
+|Register         |        -|     -|     246|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |        0|     0|     214|     289|    0|
+|Total            |        0|     0|     246|     317|    0|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
@@ -82,62 +82,66 @@
     N/A
 
     * Expression: 
-    +--------------------------+----------+----+---+----+------------+------------+
-    |       Variable Name      | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
-    +--------------------------+----------+----+---+----+------------+------------+
-    |add_ln887_fu_232_p2       |         +|   0|  0|  23|          16|           2|
-    |addr_cmp5_fu_163_p2       |      icmp|   0|  0|  29|          64|           2|
-    |addr_cmp_fu_199_p2        |      icmp|   0|  0|  29|          64|          64|
-    |icmp_ln1065_14_fu_261_p2  |      icmp|   0|  0|  13|          16|           2|
-    |icmp_ln1065_fu_256_p2     |      icmp|   0|  0|  13|          16|          16|
-    |icmp_ln1069_fu_177_p2     |      icmp|   0|  0|  13|          16|           2|
-    |icmp_ln1085_fu_188_p2     |      icmp|   0|  0|  20|          32|          32|
-    |commit_entry_V_fu_169_p3  |    select|   0|  0|  16|           1|          16|
-    |reuse_select_fu_244_p3    |    select|   0|  0|  16|           1|          16|
-    |ap_enable_pp0             |       xor|   0|  0|   2|           1|           2|
-    +--------------------------+----------+----+---+----+------------+------------+
-    |Total                     |          |   0|  0| 174|         227|         154|
-    +--------------------------+----------+----+---+----+------------+------------+
+    +----------------------------+----------+----+---+----+------------+------------+
+    |        Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------+----------+----+---+----+------------+------------+
+    |add_ln887_fu_269_p2         |         +|   0|  0|  23|          16|           2|
+    |addr_cmp9_fu_215_p2         |      icmp|   0|  0|  29|          64|           2|
+    |addr_cmp_fu_252_p2          |      icmp|   0|  0|  29|          64|          64|
+    |icmp_ln1065_24_fu_309_p2    |      icmp|   0|  0|  13|          16|           2|
+    |icmp_ln1065_fu_304_p2       |      icmp|   0|  0|  13|          16|          16|
+    |icmp_ln1069_fu_229_p2       |      icmp|   0|  0|  13|          16|           2|
+    |icmp_ln1085_fu_240_p2       |      icmp|   0|  0|  20|          32|          32|
+    |commit_entry_V_1_fu_221_p3  |    select|   0|  0|  16|           1|          16|
+    |reuse_select_fu_287_p3      |    select|   0|  0|  16|           1|          16|
+    |ap_enable_pp0               |       xor|   0|  0|   2|           1|           2|
+    +----------------------------+----------+----+---+----+------------+------------+
+    |Total                       |          |   0|  0| 174|         227|         154|
+    +----------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
-    +-------------------------------------------+----+-----------+-----+-----------+
-    |                    Name                   | LUT| Input Size| Bits| Total Bits|
-    +-------------------------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                                  |  20|          4|    1|          4|
-    |ap_done_int                                |   9|          2|    1|          2|
-    |ap_enable_reg_pp0_iter0                    |   9|          2|    1|          2|
-    |ap_enable_reg_pp0_iter1                    |   9|          2|    1|          2|
-    |event_queue_free_head_V_o                  |   9|          2|   16|         32|
-    |event_queue_lp_youngest_issued_V_address0  |  14|          3|    2|          6|
-    |event_queue_size_V_o                       |   9|          2|   16|         32|
-    |reuse_addr_reg2_fu_42                      |   9|          2|   62|        124|
-    |reuse_addr_reg_fu_50                       |   9|          2|   64|        128|
-    |reuse_reg1_fu_46                           |   9|          2|   16|         32|
-    |reuse_reg_fu_54                            |   9|          2|   16|         32|
-    +-------------------------------------------+----+-----------+-----+-----------+
-    |Total                                      | 115|         25|  196|        396|
-    +-------------------------------------------+----+-----------+-----+-----------+
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  20|          4|    1|          4|
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter0  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |commit_entry_V_fu_66     |   9|          2|   16|         32|
+    |reuse_addr_reg6_fu_50    |   9|          2|   62|        124|
+    |reuse_addr_reg_fu_58     |   9|          2|   64|        128|
+    |reuse_reg5_fu_54         |   9|          2|   16|         32|
+    |reuse_reg_fu_62          |   9|          2|   16|         32|
+    |this_4_address0          |  14|          3|    2|          6|
+    |this_6_3_out             |  14|          3|   16|         48|
+    |this_8_3_fu_70           |   9|          2|   16|         32|
+    |this_8_3_out             |  14|          3|   16|         48|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 143|         31|  228|        492|
+    +-------------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +-----------------------------+----+----+-----+-----------+
-    |             Name            | FF | LUT| Bits| Const Bits|
-    +-----------------------------+----+----+-----+-----------+
-    |addr_cmp_reg_351             |   1|   0|    1|          0|
-    |ap_CS_fsm                    |   3|   0|    3|          0|
-    |ap_done_reg                  |   1|   0|    1|          0|
-    |ap_enable_reg_pp0_iter0_reg  |   1|   0|    1|          0|
-    |ap_enable_reg_pp0_iter1      |   1|   0|    1|          0|
-    |commit_entry_V_reg_306       |  16|   0|   16|          0|
-    |icmp_ln1069_reg_312          |   1|   0|    1|          0|
-    |reuse_addr_reg2_fu_42        |  62|   0|   64|          2|
-    |reuse_addr_reg_fu_50         |  64|   0|   64|          0|
-    |reuse_reg1_fu_46             |  16|   0|   16|          0|
-    |reuse_reg_fu_54              |  16|   0|   16|          0|
-    |reuse_reg_load_reg_346       |  16|   0|   16|          0|
-    |zext_ln587_reg_316           |  16|   0|   64|         48|
-    +-----------------------------+----+----+-----+-----------+
-    |Total                        | 214|   0|  264|         50|
-    +-----------------------------+----+----+-----+-----------+
+    +-------------------------------+----+----+-----+-----------+
+    |              Name             | FF | LUT| Bits| Const Bits|
+    +-------------------------------+----+----+-----+-----------+
+    |addr_cmp_reg_433               |   1|   0|    1|          0|
+    |ap_CS_fsm                      |   3|   0|    3|          0|
+    |ap_done_reg                    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0_reg    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1        |   1|   0|    1|          0|
+    |commit_entry_V_1_reg_388       |  16|   0|   16|          0|
+    |commit_entry_V_fu_66           |  16|   0|   16|          0|
+    |commit_entry_V_load_2_reg_423  |  16|   0|   16|          0|
+    |icmp_ln1069_reg_394            |   1|   0|    1|          0|
+    |reuse_addr_reg6_fu_50          |  62|   0|   64|          2|
+    |reuse_addr_reg_fu_58           |  64|   0|   64|          0|
+    |reuse_reg5_fu_54               |  16|   0|   16|          0|
+    |reuse_reg_fu_62                |  16|   0|   16|          0|
+    |this_8_3_fu_70                 |  16|   0|   16|          0|
+    |zext_ln587_reg_398             |  16|   0|   64|         48|
+    +-------------------------------+----+----+-----+-----------+
+    |Total                          | 246|   0|  296|         50|
+    +-------------------------------+----+----+-----+-----------+
 
 
 
@@ -145,45 +149,45 @@
 == Interface
 ================================================================
 * Summary: 
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
-|                   RTL Ports                   | Dir | Bits|  Protocol  |             Source Object            |    C Type    |
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
-|ap_clk                                         |   in|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|ap_rst                                         |   in|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|ap_start                                       |   in|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|ap_done                                        |  out|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|ap_idle                                        |  out|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|ap_ready                                       |  out|    1|  ap_ctrl_hs|     commit_Pipeline_VITIS_LOOP_237_23|  return value|
-|event_queue_lp_tails_V_address0                |  out|    2|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_ce0                     |  out|    1|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_we0                     |  out|    1|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_d0                      |  out|   16|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_youngest_issued_V_address0      |  out|    2|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_ce0           |  out|    1|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_we0           |  out|    1|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_d0            |  out|   16|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_q0            |   in|   16|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_heads_V_address0                |  out|    2|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_ce0                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_we0                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_d0                      |  out|   16|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_address1                |  out|    2|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_ce1                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_q1                      |   in|   16|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_buffer_next_V_address0             |  out|    7|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_ce0                  |  out|    1|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_we0                  |  out|    1|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_d0                   |  out|   16|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_q0                   |   in|   16|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_event_recv_time_V_address0  |  out|    7|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|event_queue_buffer_event_recv_time_V_ce0       |  out|    1|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|event_queue_buffer_event_recv_time_V_q0        |   in|   32|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|commit_time                                    |   in|   32|     ap_none|                           commit_time|        scalar|
-|event_queue_size_V_i                           |   in|   16|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_size_V_o                           |  out|   16|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_size_V_o_ap_vld                    |  out|    1|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_free_head_V_i                      |   in|   16|     ap_ovld|               event_queue_free_head_V|       pointer|
-|event_queue_free_head_V_o                      |  out|   16|     ap_ovld|               event_queue_free_head_V|       pointer|
-|event_queue_free_head_V_o_ap_vld               |  out|    1|     ap_ovld|               event_queue_free_head_V|       pointer|
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
++---------------------+-----+-----+------------+-----------------------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |           Source Object           |    C Type    |
++---------------------+-----+-----+------------+-----------------------------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|  commit_Pipeline_VITIS_LOOP_237_23|  return value|
+|this_8_2_reload      |   in|   16|     ap_none|                    this_8_2_reload|        scalar|
+|this_6_2_reload      |   in|   16|     ap_none|                    this_6_2_reload|        scalar|
+|this_2_address0      |  out|    2|   ap_memory|                             this_2|         array|
+|this_2_ce0           |  out|    1|   ap_memory|                             this_2|         array|
+|this_2_we0           |  out|    1|   ap_memory|                             this_2|         array|
+|this_2_d0            |  out|   16|   ap_memory|                             this_2|         array|
+|this_4_address0      |  out|    2|   ap_memory|                             this_4|         array|
+|this_4_ce0           |  out|    1|   ap_memory|                             this_4|         array|
+|this_4_we0           |  out|    1|   ap_memory|                             this_4|         array|
+|this_4_d0            |  out|   16|   ap_memory|                             this_4|         array|
+|this_4_q0            |   in|   16|   ap_memory|                             this_4|         array|
+|this_1_address0      |  out|    2|   ap_memory|                             this_1|         array|
+|this_1_ce0           |  out|    1|   ap_memory|                             this_1|         array|
+|this_1_we0           |  out|    1|   ap_memory|                             this_1|         array|
+|this_1_d0            |  out|   16|   ap_memory|                             this_1|         array|
+|this_1_address1      |  out|    2|   ap_memory|                             this_1|         array|
+|this_1_ce1           |  out|    1|   ap_memory|                             this_1|         array|
+|this_1_q1            |   in|   16|   ap_memory|                             this_1|         array|
+|this_0_2_address0    |  out|    7|   ap_memory|                           this_0_2|         array|
+|this_0_2_ce0         |  out|    1|   ap_memory|                           this_0_2|         array|
+|this_0_2_we0         |  out|    1|   ap_memory|                           this_0_2|         array|
+|this_0_2_d0          |  out|   16|   ap_memory|                           this_0_2|         array|
+|this_0_2_q0          |   in|   16|   ap_memory|                           this_0_2|         array|
+|this_0_0_1_address0  |  out|    7|   ap_memory|                         this_0_0_1|         array|
+|this_0_0_1_ce0       |  out|    1|   ap_memory|                         this_0_0_1|         array|
+|this_0_0_1_q0        |   in|   32|   ap_memory|                         this_0_0_1|         array|
+|commit_time          |   in|   32|     ap_none|                        commit_time|        scalar|
+|this_8_3_out         |  out|   16|      ap_vld|                       this_8_3_out|       pointer|
+|this_8_3_out_ap_vld  |  out|    1|      ap_vld|                       this_8_3_out|       pointer|
+|this_6_3_out         |  out|   16|      ap_vld|                       this_6_3_out|       pointer|
+|this_6_3_out_ap_vld  |  out|    1|      ap_vld|                       this_6_3_out|       pointer|
++---------------------+-----+-----+------------+-----------------------------------+--------------+
 

@@ -28,5 +28,4 @@ obj/main.o: ../../../../cpp/main.cpp ../../../../cpp/EventQueue.hpp \
  ../../../../cpp/VirtualLP.hpp ../../../../cpp/CancellationUnit.hpp \
  ../../../../cpp/EventProcessor.hpp ../../../../cpp/LFSR_PRNG.hpp \
  ../../../../cpp/LPMapping.hpp ../../../../cpp/EventRouter.hpp \
- ../../../../cpp/RollbackControl.hpp \
- ../../../../cpp/CommitControlDummy.hpp
+ ../../../../cpp/LPCoreControl.hpp

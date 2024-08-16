@@ -1,0 +1,697 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
+| Date              : Thu Aug 15 18:05:42 2024
+| Host              : i1z running 64-bit Red Hat Enterprise Linux Server release 7.9 (Maipo)
+| Command           : report_timing -max_paths 10 -file ./report/simulation_top_timing_paths_synth.rpt
+| Design            : bd_0_wrapper
+| Device            : xczu7ev-ffvc1156
+| Speed File        : -2  PRODUCTION 1.29 08-03-2020
+| Temperature Grade : E
+-------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[0]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[10]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[11]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[12]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[13]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_14_14/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_14_14/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_14_14/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_14_14/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[14]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[14]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[14]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_15_15/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_15_15/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_15_15/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_15_15/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[15]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[15]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[15]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[1]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[1]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[1]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_2_2/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_2_2/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_2_2/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_2_2/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[2]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[2]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[2]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+Slack (MET) :             2.372ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (ap_clk rise@5.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        2.609ns  (logic 0.731ns (28.018%)  route 1.878ns (71.982%))
+  Logic Levels:           10  (CARRY8=2 LUT3=1 LUT4=1 LUT6=4 MUXF7=1 RAMS64E=1)
+  Clock Path Skew:        -0.009ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.021ns = ( 5.021 - 5.000 ) 
+    Source Clock Delay      (SCD):    0.030ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.030     0.030    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_FDRE_C_Q)         0.077     0.107 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/Q
+                         net (fo=103, unplaced)       0.174     0.281    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/SRL_SIG_reg[0][16]
+                         LUT3 (Prop_LUT3_I1_O)        0.053     0.334 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8/O
+                         net (fo=7, unplaced)         0.210     0.544    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/q1_reg[1]_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     0.582 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0/O
+                         net (fo=1, unplaced)         0.233     0.815    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0_n_0
+                         CARRY8 (Prop_CARRY8_DI[0]_CO[7])
+                                                      0.140     0.955 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4/CO[7]
+                         net (fo=1, unplaced)         0.005     0.960    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4_n_0
+                         CARRY8 (Prop_CARRY8_CI_CO[7])
+                                                      0.022     0.982 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2/CO[7]
+                         net (fo=10, unplaced)        0.149     1.131    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/icmp_ln1065_22_reg_704_reg[0]_0[0]
+                         LUT4 (Prop_LUT4_I1_O)        0.070     1.201 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0/O
+                         net (fo=7, unplaced)         0.210     1.411    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0_n_0
+                         LUT6 (Prop_LUT6_I4_O)        0.038     1.449 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0/O
+                         net (fo=1, unplaced)         0.185     1.634    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0_n_0
+                         LUT6 (Prop_LUT6_I3_O)        0.038     1.672 f  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8/O
+                         net (fo=1, unplaced)         0.185     1.857    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/q0_reg[15]_1
+                         LUT6 (Prop_LUT6_I1_O)        0.038     1.895 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11/O
+                         net (fo=32, unplaced)        0.272     2.167    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_3_3/A0
+                         RAMS64E (Prop_RAMS64E_ADR0_O)
+                                                      0.150     2.317 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_3_3/HIGH/O
+                         net (fo=1, unplaced)         0.024     2.341    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_3_3/O1
+                         MUXF7 (Prop_MUXF7_I1_O)      0.067     2.408 r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_3_3/F7/O
+                         net (fo=1, unplaced)         0.231     2.639    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q00__2[3]
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)     5.000     5.000 r  
+                                                      0.000     5.000 r  ap_clk (IN)
+                         net (fo=9707, unset)         0.021     5.021    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ap_clk
+                         FDRE                                         r  bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[3]/C
+                         clock pessimism              0.000     5.021    
+                         clock uncertainty           -0.035     4.986    
+                         FDRE (Setup_FDRE_C_D)        0.025     5.011    bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[3]
+  -------------------------------------------------------------------
+                         required time                          5.011    
+                         arrival time                          -2.639    
+  -------------------------------------------------------------------
+                         slack                                  2.372    
+
+
+
+

@@ -17,7 +17,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/VirtualLP.cpp ../../../../cpp/StateBuffer.cpp ../../../../cpp/RollbackControl.cpp ../../../../cpp/LPMapping.cpp ../../../../cpp/LPCore.cpp ../../../../cpp/LFSR_PRNG.cpp ../../../../cpp/EventRouter.cpp ../../../../cpp/EventQueue.cpp ../../../../cpp/EventProcessor.cpp ../../../../cpp/CommitControlDummy.cpp ../../../../cpp/CancellationUnit.cpp
+HLS_SOURCES = ../../../../cpp/main.cpp ../../../../cpp/CancellationUnit.cpp ../../../../cpp/EventProcessor.cpp ../../../../cpp/EventQueue.cpp ../../../../cpp/EventRouter.cpp ../../../../cpp/LFSR_PRNG.cpp ../../../../cpp/LPCore.cpp ../../../../cpp/LPCoreControl.cpp ../../../../cpp/LPMapping.cpp ../../../../cpp/RollbackControl.cpp ../../../../cpp/StateBuffer.cpp ../../../../cpp/TimeWarpSimulation.cpp ../../../../cpp/VirtualLP.cpp
 
 override TARGET := csim.exe
 
@@ -54,7 +54,7 @@ IFLAG += -D__SIM_FIR__
 IFLAG += -D__SIM_DDS__
 
 IFLAG += -D__DSP48E2__
-IFLAG += -Wno-unknown-pragmas 
+IFLAG += -Wno-unknown-pragmas -I../../../../../../../../../usr/include -I../../../../../../../usr/include 
 IFLAG += -g
 DFLAG += -D__xilinx_ip_top= -DAESL_TB
 CCFLAG += -Werror=return-type
@@ -74,53 +74,11 @@ $(ObjDir)/main.o: ../../../../cpp/main.cpp $(ObjDir)/.dir
 
 -include $(ObjDir)/main.d
 
-$(ObjDir)/VirtualLP.o: ../../../../cpp/VirtualLP.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/VirtualLP.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/CancellationUnit.o: ../../../../cpp/CancellationUnit.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/CancellationUnit.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/VirtualLP.d
-
-$(ObjDir)/StateBuffer.o: ../../../../cpp/StateBuffer.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/StateBuffer.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/StateBuffer.d
-
-$(ObjDir)/RollbackControl.o: ../../../../cpp/RollbackControl.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/RollbackControl.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/RollbackControl.d
-
-$(ObjDir)/LPMapping.o: ../../../../cpp/LPMapping.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/LPMapping.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/LPMapping.d
-
-$(ObjDir)/LPCore.o: ../../../../cpp/LPCore.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/LPCore.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/LPCore.d
-
-$(ObjDir)/LFSR_PRNG.o: ../../../../cpp/LFSR_PRNG.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/LFSR_PRNG.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/LFSR_PRNG.d
-
-$(ObjDir)/EventRouter.o: ../../../../cpp/EventRouter.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/EventRouter.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/EventRouter.d
-
-$(ObjDir)/EventQueue.o: ../../../../cpp/EventQueue.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/EventQueue.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/EventQueue.d
+-include $(ObjDir)/CancellationUnit.d
 
 $(ObjDir)/EventProcessor.o: ../../../../cpp/EventProcessor.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../cpp/EventProcessor.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
@@ -128,14 +86,62 @@ $(ObjDir)/EventProcessor.o: ../../../../cpp/EventProcessor.cpp $(ObjDir)/.dir
 
 -include $(ObjDir)/EventProcessor.d
 
-$(ObjDir)/CommitControlDummy.o: ../../../../cpp/CommitControlDummy.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/CommitControlDummy.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/EventQueue.o: ../../../../cpp/EventQueue.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/EventQueue.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/CommitControlDummy.d
+-include $(ObjDir)/EventQueue.d
 
-$(ObjDir)/CancellationUnit.o: ../../../../cpp/CancellationUnit.cpp $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../../cpp/CancellationUnit.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+$(ObjDir)/EventRouter.o: ../../../../cpp/EventRouter.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/EventRouter.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
--include $(ObjDir)/CancellationUnit.d
+-include $(ObjDir)/EventRouter.d
+
+$(ObjDir)/LFSR_PRNG.o: ../../../../cpp/LFSR_PRNG.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/LFSR_PRNG.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/LFSR_PRNG.d
+
+$(ObjDir)/LPCore.o: ../../../../cpp/LPCore.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/LPCore.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/LPCore.d
+
+$(ObjDir)/LPCoreControl.o: ../../../../cpp/LPCoreControl.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/LPCoreControl.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/LPCoreControl.d
+
+$(ObjDir)/LPMapping.o: ../../../../cpp/LPMapping.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/LPMapping.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/LPMapping.d
+
+$(ObjDir)/RollbackControl.o: ../../../../cpp/RollbackControl.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/RollbackControl.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/RollbackControl.d
+
+$(ObjDir)/StateBuffer.o: ../../../../cpp/StateBuffer.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/StateBuffer.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/StateBuffer.d
+
+$(ObjDir)/TimeWarpSimulation.o: ../../../../cpp/TimeWarpSimulation.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/TimeWarpSimulation.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/TimeWarpSimulation.d
+
+$(ObjDir)/VirtualLP.o: ../../../../cpp/VirtualLP.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../cpp/VirtualLP.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/VirtualLP.d

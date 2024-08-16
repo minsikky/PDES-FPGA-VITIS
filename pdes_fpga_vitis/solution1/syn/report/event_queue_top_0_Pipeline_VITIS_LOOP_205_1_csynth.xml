@@ -151,8 +151,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_lp_oldest_unissued_V_address0</name>
-<Object>event_queue_lp_oldest_unissued_V</Object>
+<name>event_queue_lp_oldest_unissued_V_1_address0</name>
+<Object>event_queue_lp_oldest_unissued_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -162,8 +162,8 @@
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_lp_oldest_unissued_V_ce0</name>
-<Object>event_queue_lp_oldest_unissued_V</Object>
+<name>event_queue_lp_oldest_unissued_V_1_ce0</name>
+<Object>event_queue_lp_oldest_unissued_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -173,8 +173,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_lp_oldest_unissued_V_q0</name>
-<Object>event_queue_lp_oldest_unissued_V</Object>
+<name>event_queue_lp_oldest_unissued_V_1_q0</name>
+<Object>event_queue_lp_oldest_unissued_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -184,8 +184,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_buffer_event_recv_time_V_address0</name>
-<Object>event_queue_buffer_event_recv_time_V</Object>
+<name>event_queue_buffer_event_recv_time_V_1_address0</name>
+<Object>event_queue_buffer_event_recv_time_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -195,8 +195,8 @@
 <Attribute>address</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_buffer_event_recv_time_V_ce0</name>
-<Object>event_queue_buffer_event_recv_time_V</Object>
+<name>event_queue_buffer_event_recv_time_V_1_ce0</name>
+<Object>event_queue_buffer_event_recv_time_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>
@@ -206,8 +206,8 @@
 <Attribute>control</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>event_queue_buffer_event_recv_time_V_q0</name>
-<Object>event_queue_buffer_event_recv_time_V</Object>
+<name>event_queue_buffer_event_recv_time_V_1_q0</name>
+<Object>event_queue_buffer_event_recv_time_V_1</Object>
 <Type>array</Type>
 <Scope>global</Scope>
 <IOProtocol>ap_memory</IOProtocol>

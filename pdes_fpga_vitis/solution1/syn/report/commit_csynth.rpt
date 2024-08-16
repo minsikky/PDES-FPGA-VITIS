@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'commit'
 ================================================================
-* Date:           Wed Aug 14 17:50:13 2024
+* Date:           Thu Aug 15 17:58:30 2024
 
 * Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
 * Project:        pdes_fpga_vitis
@@ -34,15 +34,15 @@
 
     + Detail: 
         * Instance: 
-        +---------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |                                             |                                   |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
-        |                   Instance                  |               Module              |   min   |   max   |    min   |    max   | min | max |   Type  |
-        +---------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_32   |commit_Pipeline_VITIS_LOOP_237_2   |        ?|        ?|         ?|         ?|    ?|    ?|       no|
-        |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_52  |commit_Pipeline_VITIS_LOOP_237_21  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
-        |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_71  |commit_Pipeline_VITIS_LOOP_237_22  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
-        |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_90  |commit_Pipeline_VITIS_LOOP_237_23  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
-        +---------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                              |                                   |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                   Instance                   |               Module              |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82    |commit_Pipeline_VITIS_LOOP_237_2   |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104  |commit_Pipeline_VITIS_LOOP_237_21  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123  |commit_Pipeline_VITIS_LOOP_237_22  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142  |commit_Pipeline_VITIS_LOOP_237_23  |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+        +----------------------------------------------+-----------------------------------+---------+---------+----------+----------+-----+-----+---------+
 
         * Loop: 
         N/A
@@ -59,12 +59,12 @@
 |DSP              |        -|     -|       -|       -|    -|
 |Expression       |        -|     -|       -|       -|    -|
 |FIFO             |        -|     -|       -|       -|    -|
-|Instance         |        -|     -|     860|    1156|    -|
+|Instance         |        -|     -|     988|    1268|    -|
 |Memory           |        -|     -|       -|       -|    -|
-|Multiplexer      |        -|     -|       -|     673|    -|
-|Register         |        -|     -|      12|       -|    -|
+|Multiplexer      |        -|     -|       -|     574|    -|
+|Register         |        -|     -|     141|       -|    -|
 +-----------------+---------+------+--------+--------+-----+
-|Total            |        0|     0|     872|    1829|    0|
+|Total            |        0|     0|    1129|    1842|    0|
 +-----------------+---------+------+--------+--------+-----+
 |Available        |      624|  1728|  460800|  230400|   96|
 +-----------------+---------+------+--------+--------+-----+
@@ -73,16 +73,16 @@
 
 + Detail: 
     * Instance: 
-    +---------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
-    |                   Instance                  |               Module              | BRAM_18K| DSP|  FF | LUT | URAM|
-    +---------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
-    |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_32   |commit_Pipeline_VITIS_LOOP_237_2   |        0|   0|  216|  289|    0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_52  |commit_Pipeline_VITIS_LOOP_237_21  |        0|   0|  215|  289|    0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_71  |commit_Pipeline_VITIS_LOOP_237_22  |        0|   0|  215|  289|    0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_90  |commit_Pipeline_VITIS_LOOP_237_23  |        0|   0|  214|  289|    0|
-    +---------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
-    |Total                                        |                                   |        0|   0|  860| 1156|    0|
-    +---------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
+    +----------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
+    |                   Instance                   |               Module              | BRAM_18K| DSP|  FF | LUT | URAM|
+    +----------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
+    |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82    |commit_Pipeline_VITIS_LOOP_237_2   |        0|   0|  248|  317|    0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104  |commit_Pipeline_VITIS_LOOP_237_21  |        0|   0|  247|  317|    0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123  |commit_Pipeline_VITIS_LOOP_237_22  |        0|   0|  247|  317|    0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142  |commit_Pipeline_VITIS_LOOP_237_23  |        0|   0|  246|  317|    0|
+    +----------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
+    |Total                                         |                                   |        0|   0|  988| 1268|    0|
+    +----------------------------------------------+-----------------------------------+---------+----+-----+-----+-----+
 
     * DSP: 
     N/A
@@ -97,50 +97,54 @@
     N/A
 
     * Multiplexer: 
-    +-----------------------------------------------+----+-----------+-----+-----------+
-    |                      Name                     | LUT| Input Size| Bits| Total Bits|
-    +-----------------------------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                                      |  49|          9|    1|          9|
-    |event_queue_buffer_event_recv_time_V_address0  |  26|          5|    7|         35|
-    |event_queue_buffer_event_recv_time_V_ce0       |  26|          5|    1|          5|
-    |event_queue_buffer_next_V_address0             |  26|          5|    7|         35|
-    |event_queue_buffer_next_V_ce0                  |  26|          5|    1|          5|
-    |event_queue_buffer_next_V_d0                   |  26|          5|   16|         80|
-    |event_queue_buffer_next_V_we0                  |  26|          5|    1|          5|
-    |event_queue_free_head_V_o                      |  26|          5|   16|         80|
-    |event_queue_free_head_V_o_ap_vld               |  26|          5|    1|          5|
-    |event_queue_lp_heads_V_address0                |  26|          5|    2|         10|
-    |event_queue_lp_heads_V_address1                |  26|          5|    2|         10|
-    |event_queue_lp_heads_V_ce0                     |  26|          5|    1|          5|
-    |event_queue_lp_heads_V_ce1                     |  26|          5|    1|          5|
-    |event_queue_lp_heads_V_d0                      |  26|          5|   16|         80|
-    |event_queue_lp_heads_V_we0                     |  26|          5|    1|          5|
-    |event_queue_lp_tails_V_address0                |  26|          5|    2|         10|
-    |event_queue_lp_tails_V_ce0                     |  26|          5|    1|          5|
-    |event_queue_lp_tails_V_d0                      |  26|          5|   16|         80|
-    |event_queue_lp_tails_V_we0                     |  26|          5|    1|          5|
-    |event_queue_lp_youngest_issued_V_address0      |  26|          5|    2|         10|
-    |event_queue_lp_youngest_issued_V_ce0           |  26|          5|    1|          5|
-    |event_queue_lp_youngest_issued_V_d0            |  26|          5|   16|         80|
-    |event_queue_lp_youngest_issued_V_we0           |  26|          5|    1|          5|
-    |event_queue_size_V_o                           |  26|          5|   16|         80|
-    |event_queue_size_V_o_ap_vld                    |  26|          5|    1|          5|
-    +-----------------------------------------------+----+-----------+-----+-----------+
-    |Total                                          | 673|        129|  131|        659|
-    +-----------------------------------------------+----+-----------+-----+-----------+
+    +---------------------+----+-----------+-----+-----------+
+    |         Name        | LUT| Input Size| Bits| Total Bits|
+    +---------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm            |  54|         10|    1|         10|
+    |this_0_0_1_address0  |  26|          5|    7|         35|
+    |this_0_0_1_ce0       |  26|          5|    1|          5|
+    |this_0_2_address0    |  26|          5|    7|         35|
+    |this_0_2_ce0         |  26|          5|    1|          5|
+    |this_0_2_d0          |  26|          5|   16|         80|
+    |this_0_2_we0         |  26|          5|    1|          5|
+    |this_1_address0      |  26|          5|    2|         10|
+    |this_1_address1      |  26|          5|    2|         10|
+    |this_1_ce0           |  26|          5|    1|          5|
+    |this_1_ce1           |  26|          5|    1|          5|
+    |this_1_d0            |  26|          5|   16|         80|
+    |this_1_we0           |  26|          5|    1|          5|
+    |this_2_address0      |  26|          5|    2|         10|
+    |this_2_ce0           |  26|          5|    1|          5|
+    |this_2_d0            |  26|          5|   16|         80|
+    |this_2_we0           |  26|          5|    1|          5|
+    |this_4_address0      |  26|          5|    2|         10|
+    |this_4_ce0           |  26|          5|    1|          5|
+    |this_4_d0            |  26|          5|   16|         80|
+    |this_4_we0           |  26|          5|    1|          5|
+    +---------------------+----+-----------+-----+-----------+
+    |Total                | 574|        110|   97|        490|
+    +---------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +----------------------------------------------------------+---+----+-----+-----------+
-    |                           Name                           | FF| LUT| Bits| Const Bits|
-    +----------------------------------------------------------+---+----+-----+-----------+
-    |ap_CS_fsm                                                 |  8|   0|    8|          0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_52_ap_start_reg  |  1|   0|    1|          0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_71_ap_start_reg  |  1|   0|    1|          0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_90_ap_start_reg  |  1|   0|    1|          0|
-    |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_32_ap_start_reg   |  1|   0|    1|          0|
-    +----------------------------------------------------------+---+----+-----+-----------+
-    |Total                                                     | 12|   0|   12|          0|
-    +----------------------------------------------------------+---+----+-----+-----------+
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |                            Name                           | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                  |   9|   0|    9|          0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104_ap_start_reg  |   1|   0|    1|          0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123_ap_start_reg  |   1|   0|    1|          0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142_ap_start_reg  |   1|   0|    1|          0|
+    |grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82_ap_start_reg    |   1|   0|    1|          0|
+    |this_6_0_loc_fu_56                                         |  16|   0|   16|          0|
+    |this_6_1_loc_fu_48                                         |  16|   0|   16|          0|
+    |this_6_2_loc_fu_40                                         |  16|   0|   16|          0|
+    |this_6_3_loc_fu_32                                         |  16|   0|   16|          0|
+    |this_8_0_loc_fu_60                                         |  16|   0|   16|          0|
+    |this_8_1_loc_fu_52                                         |  16|   0|   16|          0|
+    |this_8_2_loc_fu_44                                         |  16|   0|   16|          0|
+    |this_8_3_loc_fu_36                                         |  16|   0|   16|          0|
+    +-----------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                      | 141|   0|  141|          0|
+    +-----------------------------------------------------------+----+----+-----+-----------+
 
 
 
@@ -148,45 +152,43 @@
 == Interface
 ================================================================
 * Summary: 
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
-|                   RTL Ports                   | Dir | Bits|  Protocol  |             Source Object            |    C Type    |
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
-|ap_clk                                         |   in|    1|  ap_ctrl_hs|                                commit|  return value|
-|ap_rst                                         |   in|    1|  ap_ctrl_hs|                                commit|  return value|
-|ap_start                                       |   in|    1|  ap_ctrl_hs|                                commit|  return value|
-|ap_done                                        |  out|    1|  ap_ctrl_hs|                                commit|  return value|
-|ap_idle                                        |  out|    1|  ap_ctrl_hs|                                commit|  return value|
-|ap_ready                                       |  out|    1|  ap_ctrl_hs|                                commit|  return value|
-|commit_time                                    |   in|   32|     ap_none|                           commit_time|        scalar|
-|event_queue_buffer_event_recv_time_V_address0  |  out|    7|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|event_queue_buffer_event_recv_time_V_ce0       |  out|    1|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|event_queue_buffer_event_recv_time_V_q0        |   in|   32|   ap_memory|  event_queue_buffer_event_recv_time_V|         array|
-|event_queue_buffer_next_V_address0             |  out|    7|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_ce0                  |  out|    1|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_we0                  |  out|    1|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_d0                   |  out|   16|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_buffer_next_V_q0                   |   in|   16|   ap_memory|             event_queue_buffer_next_V|         array|
-|event_queue_lp_heads_V_address0                |  out|    2|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_ce0                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_we0                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_d0                      |  out|   16|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_address1                |  out|    2|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_ce1                     |  out|    1|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_heads_V_q1                      |   in|   16|   ap_memory|                event_queue_lp_heads_V|         array|
-|event_queue_lp_tails_V_address0                |  out|    2|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_ce0                     |  out|    1|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_we0                     |  out|    1|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_tails_V_d0                      |  out|   16|   ap_memory|                event_queue_lp_tails_V|         array|
-|event_queue_lp_youngest_issued_V_address0      |  out|    2|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_ce0           |  out|    1|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_we0           |  out|    1|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_d0            |  out|   16|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_lp_youngest_issued_V_q0            |   in|   16|   ap_memory|      event_queue_lp_youngest_issued_V|         array|
-|event_queue_size_V_i                           |   in|   16|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_size_V_o                           |  out|   16|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_size_V_o_ap_vld                    |  out|    1|     ap_ovld|                    event_queue_size_V|       pointer|
-|event_queue_free_head_V_i                      |   in|   16|     ap_ovld|               event_queue_free_head_V|       pointer|
-|event_queue_free_head_V_o                      |  out|   16|     ap_ovld|               event_queue_free_head_V|       pointer|
-|event_queue_free_head_V_o_ap_vld               |  out|    1|     ap_ovld|               event_queue_free_head_V|       pointer|
-+-----------------------------------------------+-----+-----+------------+--------------------------------------+--------------+
++---------------------+-----+-----+------------+--------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  | Source Object|    C Type    |
++---------------------+-----+-----+------------+--------------+--------------+
+|ap_clk               |   in|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_rst               |   in|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_start             |   in|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_done              |  out|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_idle              |  out|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_ready             |  out|    1|  ap_ctrl_hs|        commit|  return value|
+|ap_return_0          |  out|   16|  ap_ctrl_hs|        commit|  return value|
+|ap_return_1          |  out|   16|  ap_ctrl_hs|        commit|  return value|
+|this_0_0_1_address0  |  out|    7|   ap_memory|    this_0_0_1|         array|
+|this_0_0_1_ce0       |  out|    1|   ap_memory|    this_0_0_1|         array|
+|this_0_0_1_q0        |   in|   32|   ap_memory|    this_0_0_1|         array|
+|this_0_2_address0    |  out|    7|   ap_memory|      this_0_2|         array|
+|this_0_2_ce0         |  out|    1|   ap_memory|      this_0_2|         array|
+|this_0_2_we0         |  out|    1|   ap_memory|      this_0_2|         array|
+|this_0_2_d0          |  out|   16|   ap_memory|      this_0_2|         array|
+|this_0_2_q0          |   in|   16|   ap_memory|      this_0_2|         array|
+|this_1_address0      |  out|    2|   ap_memory|        this_1|         array|
+|this_1_ce0           |  out|    1|   ap_memory|        this_1|         array|
+|this_1_we0           |  out|    1|   ap_memory|        this_1|         array|
+|this_1_d0            |  out|   16|   ap_memory|        this_1|         array|
+|this_1_address1      |  out|    2|   ap_memory|        this_1|         array|
+|this_1_ce1           |  out|    1|   ap_memory|        this_1|         array|
+|this_1_q1            |   in|   16|   ap_memory|        this_1|         array|
+|this_2_address0      |  out|    2|   ap_memory|        this_2|         array|
+|this_2_ce0           |  out|    1|   ap_memory|        this_2|         array|
+|this_2_we0           |  out|    1|   ap_memory|        this_2|         array|
+|this_2_d0            |  out|   16|   ap_memory|        this_2|         array|
+|this_4_address0      |  out|    2|   ap_memory|        this_4|         array|
+|this_4_ce0           |  out|    1|   ap_memory|        this_4|         array|
+|this_4_we0           |  out|    1|   ap_memory|        this_4|         array|
+|this_4_d0            |  out|   16|   ap_memory|        this_4|         array|
+|this_4_q0            |   in|   16|   ap_memory|        this_4|         array|
+|p_read               |   in|   16|     ap_none|        p_read|        scalar|
+|p_read1              |   in|   16|     ap_none|       p_read1|        scalar|
+|commit_time          |   in|   32|     ap_none|   commit_time|        scalar|
++---------------------+-----+-----+------------+--------------+--------------+
 

@@ -2,182 +2,182 @@
       "name": "",
       "directive": [
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "1",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "2",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "3",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "4",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "5",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "6",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "7",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "8",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "9",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "10",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "11",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         },
         {
-          "functionName": "lpcore_top",
+          "functionName": "simulation_top",
           "label": "",
           "functionLabel": "",
           "id": "12",
-          "sourceFile": "\/net\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
+          "sourceFile": "\/n\/higgins\/z\/minsikky\/PDES-FPGA-VITIS\/pdes_fpga_vitis\/solution1\/csynth.tcl",
           "sourceLine": "40",
           "pragma": {
             "name": "TOP",
             "option": [{
                 "name": "name",
-                "value": "lpcore_top"
+                "value": "simulation_top"
               }]
           }
         }

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="event_queue_kernel" xd:componentRef="event_queue_kernel" xd:initiationInterval="x" xd:clockPeriod="5" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
-  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
-  <xd:arg xd:name="*(input)" xd:originalName="input" xd:direction="in" xd:interfaceRef="input_r" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="130"/>
-  <xd:arg xd:name="*(output_event)" xd:originalName="output_event" xd:direction="out" xd:interfaceRef="output_event" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="129"/>
-  <xd:arg xd:name="*(success)" xd:originalName="success" xd:direction="out" xd:interfaceRef="success" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="1"/>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="simulation_top" xd:componentRef="simulation_top" xd:initiationInterval="x" xd:clockPeriod="5" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:arg xd:name="*(lpcore_init_event_stream_0)" xd:originalName="lpcore_init_event_stream" xd:direction="in" xd:interfaceRef="lpcore_init_event_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_init_event_stream_1)" xd:originalName="lpcore_init_event_stream" xd:direction="in" xd:interfaceRef="lpcore_init_event_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_event_queue_full_stream_0)" xd:originalName="lpcore_event_queue_full_stream" xd:direction="out" xd:interfaceRef="lpcore_event_queue_full_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="1" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_event_queue_full_stream_1)" xd:originalName="lpcore_event_queue_full_stream" xd:direction="out" xd:interfaceRef="lpcore_event_queue_full_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="1" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_anti_message_stream_0)" xd:originalName="lpcore_anti_message_stream" xd:direction="in" xd:interfaceRef="lpcore_anti_message_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_anti_message_stream_1)" xd:originalName="lpcore_anti_message_stream" xd:direction="in" xd:interfaceRef="lpcore_anti_message_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_enqueue_event_stream_0)" xd:originalName="lpcore_enqueue_event_stream" xd:direction="in" xd:interfaceRef="lpcore_enqueue_event_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_enqueue_event_stream_1)" xd:originalName="lpcore_enqueue_event_stream" xd:direction="in" xd:interfaceRef="lpcore_enqueue_event_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_output_event_stream_0)" xd:originalName="lpcore_output_event_stream" xd:direction="out" xd:interfaceRef="lpcore_output_event_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_output_event_stream_1)" xd:originalName="lpcore_output_event_stream" xd:direction="out" xd:interfaceRef="lpcore_output_event_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_cancellation_unit_output_stream_0)" xd:originalName="lpcore_cancellation_unit_output_stream" xd:direction="out" xd:interfaceRef="lpcore_cancellation_unit_output_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_cancellation_unit_output_stream_1)" xd:originalName="lpcore_cancellation_unit_output_stream" xd:direction="out" xd:interfaceRef="lpcore_cancellation_unit_output_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="129" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(lpcore_commit_time_stream_0)" xd:originalName="lpcore_commit_time_stream" xd:direction="in" xd:interfaceRef="lpcore_commit_time_stream_0" xd:busTypeRef="acc_fifo" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(lpcore_commit_time_stream_1)" xd:originalName="lpcore_commit_time_stream" xd:direction="in" xd:interfaceRef="lpcore_commit_time_stream_1" xd:busTypeRef="acc_fifo" xd:dataWidth="32" xd:bufferDirection="in"/>
   <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
-  <xd:resourceEstimates xd:LUT="2305" xd:FF="1538" xd:BRAM="0" xd:DSP="0"/>
+  <xd:resourceEstimates xd:LUT="15432" xd:FF="9634" xd:BRAM="0" xd:DSP="0"/>
 </xd:acceleratorMap>

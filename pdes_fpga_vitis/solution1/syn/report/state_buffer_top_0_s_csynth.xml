@@ -33,7 +33,7 @@
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <VITIS_LOOP_75_1>
-<TripCount>4</TripCount>
+<TripCount>2</TripCount>
 <Latency>undef</Latency>
 <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
 <IterationLatency>undef</IterationLatency>
@@ -46,8 +46,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>4</BRAM_18K>
-<FF>610</FF>
-<LUT>1128</LUT>
+<FF>601</FF>
+<LUT>1126</LUT>
 <URAM>0</URAM>
 <DSP>0</DSP>
 </Resources>

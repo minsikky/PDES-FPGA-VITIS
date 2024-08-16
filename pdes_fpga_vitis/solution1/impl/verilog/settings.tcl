@@ -6,12 +6,12 @@
 #
 # Settings for Vivado implementation flow
 #
-set top_module event_queue_kernel
+set top_module simulation_top
 set language verilog
 set family zynquplus
 set device xczu7ev
-set package -ffvf1517
-set speed -3-e
+set package -ffvc1156
+set speed -2-e
 set clock ap_clk
 set fsm_ext "off"
 

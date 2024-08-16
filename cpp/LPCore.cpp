@@ -102,19 +102,21 @@ void lpcore_top(
     hls::stream<TimeWarpEvent> &anti_message_stream,
     hls::stream<TimeWarpEvent> &enqueue_event_stream,
     // OUTPUT OF THE LPCORE
+    hls::stream<LVT> &lvt_stream,
     hls::stream<TimeWarpEvent> &output_event_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
     // COMMIT SIGNAL FROM GLOBAL CONTROLLER
-    hls::stream<ap_int<32>> &lpcore_commit_time_stream)
+    hls::stream<ap_int<32>> &commit_time_stream)
 {
     lpcore_kernel<0>(
         init_event_stream,
         event_queue_full_stream,
         anti_message_stream,
         enqueue_event_stream,
+        lvt_stream,
         output_event_stream,
         cancellation_unit_output_stream,
-        lpcore_commit_time_stream);
+        commit_time_stream);
 }
 
 void test_lpcore()

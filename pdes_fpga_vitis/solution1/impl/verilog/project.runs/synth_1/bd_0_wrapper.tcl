@@ -72,7 +72,7 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_msg_config  -id {[BD 41-1265]}  -severity {CRITICAL WARNING}  -new_severity {INFO} 
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xczu7ev-ffvf1517-3-e
+create_project -in_memory -part xczu7ev-ffvc1156-2-e
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -91,7 +91,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
 add_files /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd
-set_property used_in_implementation false [get_files -all /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/event_queue_kernel_ooc.xdc]
+set_property used_in_implementation false [get_files -all /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/simulation_top_ooc.xdc]
 set_property used_in_implementation false [get_files -all /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/bd_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
@@ -103,8 +103,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/event_queue_kernel.xdc
-set_property used_in_implementation false [get_files /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/event_queue_kernel.xdc]
+read_xdc /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/simulation_top.xdc
+set_property used_in_implementation false [get_files /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/simulation_top.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
@@ -112,7 +112,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top bd_0_wrapper -part xczu7ev-ffvf1517-3-e -mode out_of_context
+synth_design -top bd_0_wrapper -part xczu7ev-ffvc1156-2-e -mode out_of_context
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

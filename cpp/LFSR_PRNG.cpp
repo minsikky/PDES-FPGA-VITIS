@@ -26,16 +26,3 @@ ap_uint<8> MultiLFSR_PRNG::generate(int generator_id) {
     }
     return 0; // Error: invalid generator_id
 }
-
-// Global instance of MultiLFSR_PRNG
-MultiLFSR_PRNG g_multi_prng;
-
-// Function to add a new PRNG
-int add_lfsr_prng(ap_uint<8> seed) {
-    return g_multi_prng.add_generator(seed);
-}
-
-// Function to generate a random number from a specific PRNG
-ap_uint<8> lfsr_random(int generator_id) {
-    return g_multi_prng.generate(generator_id);
-}

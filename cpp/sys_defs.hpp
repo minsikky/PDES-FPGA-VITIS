@@ -44,6 +44,12 @@ struct LPState
     ap_uint<32> rng_state;
 };
 
+// LVT
+struct LVT {
+    ap_int<16> lp_id;
+    ap_int<32> lvt;
+};
+
 struct StateEntry
 {
     LPState state;

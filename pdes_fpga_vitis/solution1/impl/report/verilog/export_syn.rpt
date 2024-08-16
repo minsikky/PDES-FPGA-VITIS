@@ -2,12 +2,12 @@
 == Vivado RTL Synthesis Results
 ================================================================
 + General Information:
-    * Date:            Sun Jul 28 03:54:49 EDT 2024
+    * Date:            Thu Aug 15 18:05:59 EDT 2024
     * Version:         2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
     * Project:         pdes_fpga_vitis
     * Solution:        solution1 (Vivado IP Flow Target)
     * Product family:  zynquplus
-    * Target device:   xczu7ev-ffvf1517-3-e
+    * Target device:   xczu7ev-ffvc1156-2-e
 
 
 ================================================================
@@ -30,8 +30,8 @@
 ================================================================
 == RTL Synthesis Resource Summary
 ================================================================
-LUT:              1314
-FF:               1243
+LUT:              7401
+FF:               8272
 DSP:              0
 BRAM:             0
 URAM:             0
@@ -46,33 +46,218 @@ SRL:              0
 | Timing     | Period (ns) |
 +------------+-------------+
 | Target     | 5.000       |
-| Post-Route | 1.978       |
+| Post-Route | 2.628       |
 +------------+-------------+
 
 
 ================================================================
 == RTL Synthesis Resources
 ================================================================
-+----------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+--------------------------------------+--------+
-| Name                                                     | LUT  | FF   | DSP | BRAM | URAM | SRL | Pragma | Impl | Latency | Variable                             | Source |
-+----------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+--------------------------------------+--------+
-| inst                                                     | 1314 | 1243 |     |      |      |     |        |      |         |                                      |        |
-|   (inst)                                                 | 158  | 732  |     |      |      |     |        |      |         |                                      |        |
-|   g_event_queue_heap_data_V_U                            | 138  | 32   |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_1p                                  |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_data_V            |        |
-|   g_event_queue_heap_is_anti_message_V_U                 | 5    | 1    |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_1p                                  |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_is_anti_message_V |        |
-|   g_event_queue_heap_receiver_id_V_U                     | 69   | 16   |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_1p                                  |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_receiver_id_V     |        |
-|   g_event_queue_heap_recv_time_V_U                       | 271  | 64   |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_s2p                                 |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_recv_time_V       |        |
-|   g_event_queue_heap_send_time_V_U                       | 140  | 32   |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_1p                                  |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_send_time_V       |        |
-|   g_event_queue_heap_sender_id_V_U                       | 69   | 16   |     |      |      |     |        |      |         |                                      |        |
-|     bind_storage ram_1p                                  |      |      |     |      |      |     |        | auto | 1       | g_event_queue_heap_sender_id_V       |        |
-|   grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 | 79   | 85   |     |      |      |     |        |      |         |                                      |        |
-|   grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460 | 385  | 265  |     |      |      |     |        |      |         |                                      |        |
-+----------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+--------------------------------------+--------+
++-----------------------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+------------------------------------------------+-------------------+
+| Name                                                                  | LUT  | FF   | DSP | BRAM | URAM | SRL | Pragma | Impl | Latency | Variable                                       | Source            |
++-----------------------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+------------------------------------------------+-------------------+
+| inst                                                                  | 7401 | 8272 |     |      |      |     |        |      |         |                                                |                   |
+|   lpcore_kernel_0_U0                                                  | 3701 | 4136 |     |      |      |     |        |      |         |                                                |                   |
+|     cancellation_unit_commit_time_stream_U                            | 41   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_commit_time_stream           | cpp/LPCore.hpp:91 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_commit_time_stream           | cpp/LPCore.hpp:91 |
+|     cancellation_unit_input_stream_U                                  | 88   | 168  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_input_stream                 |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_input_stream                 |                   |
+|     cancellation_unit_rollback_info_stream_U                          | 43   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_rollback_info_stream         |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_rollback_info_stream         |                   |
+|     cancellation_unit_top_0_U0                                        | 457  | 489  |     |      |      |     |        |      |         |                                                |                   |
+|       (cancellation_unit_top_0_U0)                                    | 29   | 155  |     |      |      |     |        |      |         |                                                |                   |
+|       cancellation_unit_buffer_event_receiver_id_V_1_U                | 2    | 2    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_receiver_id_V_1 |                   |
+|       cancellation_unit_buffer_event_recv_time_V_1_U                  | 32   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_recv_time_V_1   |                   |
+|       cancellation_unit_buffer_event_send_time_V_1_U                  | 65   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_send_time_V_1   |                   |
+|       cancellation_unit_buffer_event_sender_id_V_1_U                  | 16   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_sender_id_V_1   |                   |
+|       cancellation_unit_buffer_next_V_1_U                             | 37   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_next_V_1              |                   |
+|       cancellation_unit_lp_heads_V_1_U                                | 36   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_lp_heads_V_1                 |                   |
+|       grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303     | 171  | 141  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303) | 122  | 139  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285     | 69   | 79   |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285) | 14   | 77   |     |      |      |     |        |      |         |                                                |                   |
+|     causality_violation_stream_U                                      | 37   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | causality_violation_stream                     |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | causality_violation_stream                     |                   |
+|     event_processor_input_stream_U                                    | 68   | 134  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_processor_input_stream                   |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_processor_input_stream                   |                   |
+|     event_processor_top_0_U0                                          | 77   | 106  |     |      |      |     |        |      |         |                                                |                   |
+|       (event_processor_top_0_U0)                                      | 3    | 70   |     |      |      |     |        |      |         |                                                |                   |
+|       event_processor_prng_generators_state_V_1_U                     | 9    | 8    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_processor_prng_generators_state_V_1      |                   |
+|       grp_process_event_fu_66                                         | 65   | 28   |     |      |      |     |        |      |         |                                                |                   |
+|     event_queue_commit_time_stream_U                                  | 40   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_commit_time_stream                 | cpp/LPCore.hpp:89 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_commit_time_stream                 | cpp/LPCore.hpp:89 |
+|     event_queue_rollback_info_stream_U                                | 76   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_rollback_info_stream               |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_rollback_info_stream               |                   |
+|     event_queue_top_0_U0                                              | 2031 | 2038 |     |      |      |     |        |      |         |                                                |                   |
+|       (event_queue_top_0_U0)                                          | 48   | 695  |     |      |      |     |        |      |         |                                                |                   |
+|       event_queue_buffer_event_data_V_1_U                             | 107  | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_data_V_1              |                   |
+|       event_queue_buffer_event_is_anti_message_V_1_U                  | 6    | 1    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_is_anti_message_V_1   |                   |
+|       event_queue_buffer_event_receiver_id_V_1_U                      | 63   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_receiver_id_V_1       |                   |
+|       event_queue_buffer_event_recv_time_V_1_U                        | 299  | 64   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_s2p                                          |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_recv_time_V_1         |                   |
+|       event_queue_buffer_event_send_time_V_1_U                        | 107  | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_send_time_V_1         |                   |
+|       event_queue_buffer_event_sender_id_V_1_U                        | 55   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_sender_id_V_1         |                   |
+|       event_queue_buffer_is_issued_V_1_U                              | 2    | 1    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_is_issued_V_1               |                   |
+|       event_queue_buffer_next_V_1_U                                   | 88   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_next_V_1                    |                   |
+|       event_queue_lp_heads_V_1_U                                      | 67   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_s2p                                          |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_heads_V_1                       |                   |
+|       event_queue_lp_oldest_unissued_V_1_U                            | 104  | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_oldest_unissued_V_1             |                   |
+|       event_queue_lp_youngest_issued_V_1_U                            | 21   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_youngest_issued_V_1             |                   |
+|       event_queue_lvt_V_1_U                                           | 78   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lvt_V_1                            |                   |
+|       grp_commit_fu_513                                               | 612  | 693  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_commit_fu_513)                                           | 48   | 141  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_enqueue_fu_540                                              | 277  | 202  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_531          | 30   | 65   |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_531)      | 23   | 63   |     |      |      |     |        |      |         |                                                |                   |
+|       grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_580          | 98   | 109  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_580)      | 59   | 107  |     |      |      |     |        |      |         |                                                |                   |
+|     issued_event_stream_U                                             | 53   | 102  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | issued_event_stream                            |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | issued_event_stream                            |                   |
+|     state_buffer_commit_time_stream_U                                 | 40   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_commit_time_stream                | cpp/LPCore.hpp:90 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_commit_time_stream                | cpp/LPCore.hpp:90 |
+|     state_buffer_input_stream_U                                       | 53   | 100  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_input_stream                      |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_input_stream                      |                   |
+|     state_buffer_rollback_info_stream_U                               | 41   | 70   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_rollback_info_stream              |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_rollback_info_stream              |                   |
+|     state_buffer_top_0_U0                                             | 556  | 509  |     |      |      |     |        |      |         |                                                |                   |
+|       (state_buffer_top_0_U0)                                         | 90   | 241  |     |      |      |     |        |      |         |                                                |                   |
+|       state_buffer_buffer_next_V_1_U                                  | 46   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_next_V_1                   |                   |
+|       state_buffer_buffer_state_lp_id_V_1_U                           | 34   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_state_lp_id_V_1            |                   |
+|       state_buffer_buffer_state_lvt_V_1_U                             | 98   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_state_lvt_V_1              |                   |
+|       state_buffer_lp_heads_V_1_U                                     | 25   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_lp_heads_V_1                      |                   |
+|   lpcore_kernel_1_U0                                                  | 3700 | 4136 |     |      |      |     |        |      |         |                                                |                   |
+|     cancellation_unit_commit_time_stream_U                            | 41   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_commit_time_stream           | cpp/LPCore.hpp:91 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_commit_time_stream           | cpp/LPCore.hpp:91 |
+|     cancellation_unit_input_stream_U                                  | 88   | 168  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_input_stream                 |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_input_stream                 |                   |
+|     cancellation_unit_rollback_info_stream_U                          | 43   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_rollback_info_stream         |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | cancellation_unit_rollback_info_stream         |                   |
+|     cancellation_unit_top_1_U0                                        | 457  | 489  |     |      |      |     |        |      |         |                                                |                   |
+|       (cancellation_unit_top_1_U0)                                    | 29   | 155  |     |      |      |     |        |      |         |                                                |                   |
+|       cancellation_unit_buffer_event_receiver_id_V_U                  | 2    | 2    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_receiver_id_V   |                   |
+|       cancellation_unit_buffer_event_recv_time_V_U                    | 32   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_recv_time_V     |                   |
+|       cancellation_unit_buffer_event_send_time_V_U                    | 65   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_send_time_V     |                   |
+|       cancellation_unit_buffer_event_sender_id_V_U                    | 16   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_event_sender_id_V     |                   |
+|       cancellation_unit_buffer_next_V_U                               | 37   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_buffer_next_V                |                   |
+|       cancellation_unit_lp_heads_V_U                                  | 36   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | cancellation_unit_lp_heads_V                   |                   |
+|       grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303     | 171  | 141  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303) | 122  | 139  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285     | 69   | 79   |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285) | 14   | 77   |     |      |      |     |        |      |         |                                                |                   |
+|     causality_violation_stream_U                                      | 37   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | causality_violation_stream                     |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | causality_violation_stream                     |                   |
+|     event_processor_input_stream_U                                    | 68   | 134  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_processor_input_stream                   |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_processor_input_stream                   |                   |
+|     event_processor_top_1_U0                                          | 77   | 106  |     |      |      |     |        |      |         |                                                |                   |
+|       (event_processor_top_1_U0)                                      | 3    | 70   |     |      |      |     |        |      |         |                                                |                   |
+|       event_processor_prng_generators_state_V_U                       | 9    | 8    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_processor_prng_generators_state_V        |                   |
+|       grp_process_event_fu_66                                         | 65   | 28   |     |      |      |     |        |      |         |                                                |                   |
+|     event_queue_commit_time_stream_U                                  | 40   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_commit_time_stream                 | cpp/LPCore.hpp:89 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_commit_time_stream                 | cpp/LPCore.hpp:89 |
+|     event_queue_rollback_info_stream_U                                | 76   | 72   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_rollback_info_stream               |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | event_queue_rollback_info_stream               |                   |
+|     event_queue_top_1_U0                                              | 2030 | 2038 |     |      |      |     |        |      |         |                                                |                   |
+|       (event_queue_top_1_U0)                                          | 48   | 695  |     |      |      |     |        |      |         |                                                |                   |
+|       event_queue_buffer_event_data_V_U                               | 107  | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_data_V                |                   |
+|       event_queue_buffer_event_is_anti_message_V_U                    | 5    | 1    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_is_anti_message_V     |                   |
+|       event_queue_buffer_event_receiver_id_V_U                        | 65   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_receiver_id_V         |                   |
+|       event_queue_buffer_event_recv_time_V_U                          | 283  | 64   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_s2p                                          |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_recv_time_V           |                   |
+|       event_queue_buffer_event_send_time_V_U                          | 107  | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_send_time_V           |                   |
+|       event_queue_buffer_event_sender_id_V_U                          | 55   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_event_sender_id_V           |                   |
+|       event_queue_buffer_is_issued_V_U                                | 2    | 1    |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_is_issued_V                 |                   |
+|       event_queue_buffer_next_V_U                                     | 103  | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_buffer_next_V                      |                   |
+|       event_queue_lp_heads_V_U                                        | 69   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_s2p                                          |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_heads_V                         |                   |
+|       event_queue_lp_oldest_unissued_V_U                              | 106  | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_oldest_unissued_V               |                   |
+|       event_queue_lp_youngest_issued_V_U                              | 21   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lp_youngest_issued_V               |                   |
+|       event_queue_lvt_V_U                                             | 77   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | event_queue_lvt_V                              |                   |
+|       grp_commit_fu_513                                               | 611  | 693  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_commit_fu_513)                                           | 48   | 141  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_enqueue_fu_540                                              | 274  | 202  |     |      |      |     |        |      |         |                                                |                   |
+|       grp_event_queue_top_1_Pipeline_VITIS_LOOP_205_1_fu_531          | 30   | 65   |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_event_queue_top_1_Pipeline_VITIS_LOOP_205_1_fu_531)      | 23   | 63   |     |      |      |     |        |      |         |                                                |                   |
+|       grp_event_queue_top_1_Pipeline_VITIS_LOOP_271_1_fu_580          | 98   | 109  |     |      |      |     |        |      |         |                                                |                   |
+|         (grp_event_queue_top_1_Pipeline_VITIS_LOOP_271_1_fu_580)      | 59   | 107  |     |      |      |     |        |      |         |                                                |                   |
+|     issued_event_stream_U                                             | 53   | 102  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | issued_event_stream                            |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | issued_event_stream                            |                   |
+|     state_buffer_commit_time_stream_U                                 | 40   | 68   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_commit_time_stream                | cpp/LPCore.hpp:90 |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_commit_time_stream                | cpp/LPCore.hpp:90 |
+|     state_buffer_input_stream_U                                       | 53   | 100  |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_input_stream                      |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_input_stream                      |                   |
+|     state_buffer_rollback_info_stream_U                               | 41   | 70   |     |      |      |     |        |      |         |                                                |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_rollback_info_stream              |                   |
+|       bind_storage fifo                                               |      |      |     |      |      |     |        | srl  | 0       | state_buffer_rollback_info_stream              |                   |
+|     state_buffer_top_1_U0                                             | 556  | 509  |     |      |      |     |        |      |         |                                                |                   |
+|       (state_buffer_top_1_U0)                                         | 90   | 241  |     |      |      |     |        |      |         |                                                |                   |
+|       state_buffer_buffer_next_V_U                                    | 46   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_next_V                     |                   |
+|       state_buffer_buffer_state_lp_id_V_U                             | 34   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_state_lp_id_V              |                   |
+|       state_buffer_buffer_state_lvt_V_U                               | 98   | 32   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_buffer_state_lvt_V                |                   |
+|       state_buffer_lp_heads_V_U                                       | 25   | 16   |     |      |      |     |        |      |         |                                                |                   |
+|         bind_storage ram_1p                                           |      |      |     |      |      |     |        | auto | 1       | state_buffer_lp_heads_V                        |                   |
++-----------------------------------------------------------------------+------+------+-----+------+------+-----+--------+------+---------+------------------------------------------------+-------------------+
 
 
 ================================================================
@@ -81,11 +266,11 @@ SRL:              0
 +-----------------------------------------------------------+-----------+--------+--------+
 | Criteria                                                  | Guideline | Actual | Status |
 +-----------------------------------------------------------+-----------+--------+--------+
-| LUT                                                       | 70%       | 0.57%  | OK     |
-| FD                                                        | 50%       | 0.27%  | OK     |
-| LUTRAM+SRL                                                | 25%       | 0.32%  | OK     |
-| CARRY8                                                    | 25%       | 0.10%  | OK     |
-| MUXF7                                                     | 15%       | 0.14%  | OK     |
+| LUT                                                       | 70%       | 3.21%  | OK     |
+| FD                                                        | 50%       | 1.80%  | OK     |
+| LUTRAM+SRL                                                | 25%       | 1.41%  | OK     |
+| CARRY8                                                    | 25%       | 0.50%  | OK     |
+| MUXF7                                                     | 15%       | 0.42%  | OK     |
 | DSP                                                       | 80%       | 0.00%  | OK     |
 | RAMB/FIFO                                                 | 80%       | 0.00%  | OK     |
 | URAM                                                      | 80%       | 0.00%  | OK     |
@@ -93,7 +278,7 @@ SRL:              0
 | BUFGCE* + BUFGCTRL                                        | 24        | 0      | OK     |
 | DONT_TOUCH (cells/nets)                                   | 0         | 0      | OK     |
 | MARK_DEBUG (nets)                                         | 0         | 0      | OK     |
-| Control Sets                                              | 4320      | 35     | OK     |
+| Control Sets                                              | 4320      | 358    | OK     |
 | Average Fanout for modules > 100k cells                   | 4         | 0      | OK     |
 | Non-FD high fanout nets > 10k loads                       | 0         | 0      | OK     |
 +-----------------------------------------------------------+-----------+--------+--------+
@@ -103,8 +288,8 @@ SRL:              0
 | TIMING-14 (LUT on the clock tree)                         | 0         | 0      | OK     |
 | TIMING-35 (No common node in paths with the same clock)   | 0         | 0      | OK     |
 +-----------------------------------------------------------+-----------+--------+--------+
-| Number of paths above max LUT budgeting (0.250ns)         | 0         | 0      | OK     |
-| Number of paths above max Net budgeting (0.177ns)         | 0         | 0      | OK     |
+| Number of paths above max LUT budgeting (0.300ns)         | 0         | 0      | OK     |
+| Number of paths above max Net budgeting (0.208ns)         | 0         | 0      | OK     |
 +-----------------------------------------------------------+-----------+--------+--------+
 
 
@@ -112,100 +297,115 @@ SRL:              0
 == RTL Synthesis Timing Paths
 ================================================================
 * Timing was met
-+-------+-------+--------------------------------+------------------------------------------+--------------+------------+----------------+----------------+--------------+
-| Path  | SLACK | STARTPOINT PIN                 | ENDPOINT PIN                             | LOGIC LEVELS | MAX FANOUT | DATAPATH DELAY | DATAPATH LOGIC | DATAPATH NET |
-|       |       |                                |                                          |              |            |                |          DELAY |        DELAY |
-+-------+-------+--------------------------------+------------------------------------------+--------------+------------+----------------+----------------+--------------+
-| Path1 | 3.022 | g_event_queue_size_V_reg[15]/C | g_event_queue_heap_data_V_U/q0_reg[0]/D  |            7 |        351 |          1.959 |          0.495 |        1.464 |
-| Path2 | 3.022 | g_event_queue_size_V_reg[15]/C | g_event_queue_heap_data_V_U/q0_reg[10]/D |            7 |        351 |          1.959 |          0.495 |        1.464 |
-| Path3 | 3.022 | g_event_queue_size_V_reg[15]/C | g_event_queue_heap_data_V_U/q0_reg[11]/D |            7 |        351 |          1.959 |          0.495 |        1.464 |
-| Path4 | 3.022 | g_event_queue_size_V_reg[15]/C | g_event_queue_heap_data_V_U/q0_reg[12]/D |            7 |        351 |          1.959 |          0.495 |        1.464 |
-| Path5 | 3.022 | g_event_queue_size_V_reg[15]/C | g_event_queue_heap_data_V_U/q0_reg[13]/D |            7 |        351 |          1.959 |          0.495 |        1.464 |
-+-------+-------+--------------------------------+------------------------------------------+--------------+------------+----------------+----------------+--------------+
++-------+-------+----------------------------------------------------------------+----------------------------------------------------------------------------------+--------------+------------+----------------+----------------+--------------+
+| Path  | SLACK | STARTPOINT PIN                                                 | ENDPOINT PIN                                                                     | LOGIC LEVELS | MAX FANOUT | DATAPATH DELAY | DATAPATH LOGIC | DATAPATH NET |
+|       |       |                                                                |                                                                                  |              |            |                |          DELAY |        DELAY |
++-------+-------+----------------------------------------------------------------+----------------------------------------------------------------------------------+--------------+------------+----------------+----------------+--------------+
+| Path1 | 2.372 | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]/D  |           10 |        103 |          2.609 |          0.731 |        1.878 |
+| Path2 | 2.372 | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]/D |           10 |        103 |          2.609 |          0.731 |        1.878 |
+| Path3 | 2.372 | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]/D |           10 |        103 |          2.609 |          0.731 |        1.878 |
+| Path4 | 2.372 | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]/D |           10 |        103 |          2.609 |          0.731 |        1.878 |
+| Path5 | 2.372 | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]/D |           10 |        103 |          2.609 |          0.731 |        1.878 |
++-------+-------+----------------------------------------------------------------+----------------------------------------------------------------------------------+--------------+------------+----------------+----------------+--------------+
 
-    +------------------------------------------------------------------------------+----------------------+
-    | Path1 Cells                                                                  | Primitive Type       |
-    +------------------------------------------------------------------------------+----------------------+
-    | g_event_queue_size_V_reg[15]                                                 | REGISTER.SDR.FDRE    |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4            | CLB.LUT.LUT4         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3            | CLB.LUT.LUT6         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1            | CLB.LUT.LUT5         |
-    | g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0                   | CLB.LUT.LUT6         |
-    | grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3 | CLB.LUT.LUT3         |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/LOW                            | CLB.LUTRAM.RAM128X1S |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/F7                             | CLB.MUXF.MUXF7       |
-    | g_event_queue_heap_data_V_U/q0_reg[0]                                        | REGISTER.SDR.FDRE    |
-    +------------------------------------------------------------------------------+----------------------+
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | Path1 Cells                                                                                                | Primitive Type       |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep                                               | REGISTER.SDR.FDRE    |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8               | CLB.LUT.LUT3         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0        | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0                       | CLB.LUT.LUT4         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11 | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/HIGH                 | CLB.LUTRAM.RAM128X1S |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/F7                   | CLB.MUXF.MUXF7       |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]                              | REGISTER.SDR.FDRE    |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
 
-    +------------------------------------------------------------------------------+----------------------+
-    | Path2 Cells                                                                  | Primitive Type       |
-    +------------------------------------------------------------------------------+----------------------+
-    | g_event_queue_size_V_reg[15]                                                 | REGISTER.SDR.FDRE    |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4            | CLB.LUT.LUT4         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3            | CLB.LUT.LUT6         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1            | CLB.LUT.LUT5         |
-    | g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0                   | CLB.LUT.LUT6         |
-    | grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3 | CLB.LUT.LUT3         |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/LOW                          | CLB.LUTRAM.RAM128X1S |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/F7                           | CLB.MUXF.MUXF7       |
-    | g_event_queue_heap_data_V_U/q0_reg[10]                                       | REGISTER.SDR.FDRE    |
-    +------------------------------------------------------------------------------+----------------------+
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | Path2 Cells                                                                                                | Primitive Type       |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep                                               | REGISTER.SDR.FDRE    |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8               | CLB.LUT.LUT3         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0        | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0                       | CLB.LUT.LUT4         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11 | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/HIGH               | CLB.LUTRAM.RAM128X1S |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/F7                 | CLB.MUXF.MUXF7       |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]                             | REGISTER.SDR.FDRE    |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
 
-    +------------------------------------------------------------------------------+----------------------+
-    | Path3 Cells                                                                  | Primitive Type       |
-    +------------------------------------------------------------------------------+----------------------+
-    | g_event_queue_size_V_reg[15]                                                 | REGISTER.SDR.FDRE    |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4            | CLB.LUT.LUT4         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3            | CLB.LUT.LUT6         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1            | CLB.LUT.LUT5         |
-    | g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0                   | CLB.LUT.LUT6         |
-    | grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3 | CLB.LUT.LUT3         |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/LOW                          | CLB.LUTRAM.RAM128X1S |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/F7                           | CLB.MUXF.MUXF7       |
-    | g_event_queue_heap_data_V_U/q0_reg[11]                                       | REGISTER.SDR.FDRE    |
-    +------------------------------------------------------------------------------+----------------------+
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | Path3 Cells                                                                                                | Primitive Type       |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep                                               | REGISTER.SDR.FDRE    |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8               | CLB.LUT.LUT3         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0        | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0                       | CLB.LUT.LUT4         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11 | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/HIGH               | CLB.LUTRAM.RAM128X1S |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/F7                 | CLB.MUXF.MUXF7       |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]                             | REGISTER.SDR.FDRE    |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
 
-    +------------------------------------------------------------------------------+----------------------+
-    | Path4 Cells                                                                  | Primitive Type       |
-    +------------------------------------------------------------------------------+----------------------+
-    | g_event_queue_size_V_reg[15]                                                 | REGISTER.SDR.FDRE    |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4            | CLB.LUT.LUT4         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3            | CLB.LUT.LUT6         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1            | CLB.LUT.LUT5         |
-    | g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0                   | CLB.LUT.LUT6         |
-    | grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3 | CLB.LUT.LUT3         |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/LOW                          | CLB.LUTRAM.RAM128X1S |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/F7                           | CLB.MUXF.MUXF7       |
-    | g_event_queue_heap_data_V_U/q0_reg[12]                                       | REGISTER.SDR.FDRE    |
-    +------------------------------------------------------------------------------+----------------------+
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | Path4 Cells                                                                                                | Primitive Type       |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep                                               | REGISTER.SDR.FDRE    |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8               | CLB.LUT.LUT3         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0        | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0                       | CLB.LUT.LUT4         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11 | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/HIGH               | CLB.LUTRAM.RAM128X1S |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/F7                 | CLB.MUXF.MUXF7       |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]                             | REGISTER.SDR.FDRE    |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
 
-    +------------------------------------------------------------------------------+----------------------+
-    | Path5 Cells                                                                  | Primitive Type       |
-    +------------------------------------------------------------------------------+----------------------+
-    | g_event_queue_size_V_reg[15]                                                 | REGISTER.SDR.FDRE    |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4            | CLB.LUT.LUT4         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3            | CLB.LUT.LUT6         |
-    | g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1            | CLB.LUT.LUT5         |
-    | g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0                   | CLB.LUT.LUT6         |
-    | grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3 | CLB.LUT.LUT3         |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/LOW                          | CLB.LUTRAM.RAM128X1S |
-    | g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/F7                           | CLB.MUXF.MUXF7       |
-    | g_event_queue_heap_data_V_U/q0_reg[13]                                       | REGISTER.SDR.FDRE    |
-    +------------------------------------------------------------------------------+----------------------+
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | Path5 Cells                                                                                                | Primitive Type       |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep                                               | REGISTER.SDR.FDRE    |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8               | CLB.LUT.LUT3         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0        | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2        | CLB.CARRY.CARRY8     |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0                       | CLB.LUT.LUT4         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8                       | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11 | CLB.LUT.LUT6         |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/HIGH               | CLB.LUTRAM.RAM128X1S |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/F7                 | CLB.MUXF.MUXF7       |
+    | lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]                             | REGISTER.SDR.FDRE    |
+    +------------------------------------------------------------------------------------------------------------+----------------------+
 
 
 ================================================================
 == RTL Synthesis Vivado Reports
 ================================================================
-+--------------------------+---------------------------------------------------------------------------+
-| Report Type              | Report Location                                                           |
-+--------------------------+---------------------------------------------------------------------------+
-| design_analysis          | impl/verilog/report/event_queue_kernel_design_analysis_synth.rpt          |
-| failfast                 | impl/verilog/report/event_queue_kernel_failfast_synth.rpt                 |
-| timing                   | impl/verilog/report/event_queue_kernel_timing_synth.rpt                   |
-| timing_paths             | impl/verilog/report/event_queue_kernel_timing_paths_synth.rpt             |
-| utilization              | impl/verilog/report/event_queue_kernel_utilization_synth.rpt              |
-| utilization_hierarchical | impl/verilog/report/event_queue_kernel_utilization_hierarchical_synth.rpt |
-+--------------------------+---------------------------------------------------------------------------+
++--------------------------+-----------------------------------------------------------------------+
+| Report Type              | Report Location                                                       |
++--------------------------+-----------------------------------------------------------------------+
+| design_analysis          | impl/verilog/report/simulation_top_design_analysis_synth.rpt          |
+| failfast                 | impl/verilog/report/simulation_top_failfast_synth.rpt                 |
+| timing                   | impl/verilog/report/simulation_top_timing_synth.rpt                   |
+| timing_paths             | impl/verilog/report/simulation_top_timing_paths_synth.rpt             |
+| utilization              | impl/verilog/report/simulation_top_utilization_synth.rpt              |
+| utilization_hierarchical | impl/verilog/report/simulation_top_utilization_hierarchical_synth.rpt |
++--------------------------+-----------------------------------------------------------------------+
 
 

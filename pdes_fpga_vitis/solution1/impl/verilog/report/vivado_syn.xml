@@ -6,31 +6,31 @@
 </RunData>
 <TimingReport>
   <TargetClockPeriod>5.000</TargetClockPeriod>
-  <AchievedClockPeriod>1.978</AchievedClockPeriod>
+  <AchievedClockPeriod>2.628</AchievedClockPeriod>
   <CLOCK_NAME>ap_clk</CLOCK_NAME>
-  <CP_FINAL>1.978</CP_FINAL>
+  <CP_FINAL>2.628</CP_FINAL>
   <CP_ROUTE>NA</CP_ROUTE>
-  <CP_SYNTH>1.978</CP_SYNTH>
+  <CP_SYNTH>2.628</CP_SYNTH>
   <CP_TARGET>5.000</CP_TARGET>
-  <SLACK_FINAL>3.022</SLACK_FINAL>
+  <SLACK_FINAL>2.372</SLACK_FINAL>
   <SLACK_ROUTE></SLACK_ROUTE>
-  <SLACK_SYNTH>3.022</SLACK_SYNTH>
+  <SLACK_SYNTH>2.372</SLACK_SYNTH>
   <TIMING_MET>TRUE</TIMING_MET>
   <TNS_FINAL>0.000</TNS_FINAL>
   <TNS_ROUTE>NA</TNS_ROUTE>
   <TNS_SYNTH>0.000</TNS_SYNTH>
-  <WNS_FINAL>3.022</WNS_FINAL>
+  <WNS_FINAL>2.372</WNS_FINAL>
   <WNS_ROUTE>NA</WNS_ROUTE>
-  <WNS_SYNTH>3.022</WNS_SYNTH>
+  <WNS_SYNTH>2.372</WNS_SYNTH>
 </TimingReport>
 <AreaReport>
   <Resources>
     <BRAM>0</BRAM>
     <CLB>0</CLB>
     <DSP>0</DSP>
-    <FF>1243</FF>
+    <FF>8272</FF>
     <LATCH>0</LATCH>
-    <LUT>1314</LUT>
+    <LUT>7401</LUT>
     <SRL>0</SRL>
     <URAM>0</URAM>
   </Resources>
@@ -44,99 +44,545 @@
   </AvailableResources>
 </AreaReport>
 <RtlModules>
-  <RtlModule CELL="inst" DEPTH="0" FILE_NAME="bd_0_hls_inst_0.v" ORIG_REF_NAME="event_queue_kernel" TOP_CELL="bd_0_i/hls_inst/inst">
-    <SubModules count="8">g_event_queue_heap_data_V_U g_event_queue_heap_is_anti_message_V_U g_event_queue_heap_receiver_id_V_U g_event_queue_heap_recv_time_V_U g_event_queue_heap_send_time_V_U g_event_queue_heap_sender_id_V_U grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480 grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460</SubModules>
-    <Resources FF="1243" LUT="1314" LUTRAM="322" LogicLUT="992"/>
-    <LocalResources FF="732" LUT="158" LogicLUT="158"/>
+  <RtlModule CELL="inst" DEPTH="0" FILE_NAME="bd_0_hls_inst_0.v" ORIG_REF_NAME="simulation_top" TOP_CELL="bd_0_i/hls_inst/inst">
+    <SubModules count="2">lpcore_kernel_0_U0 lpcore_kernel_1_U0</SubModules>
+    <Resources FF="8272" LUT="7401" LUTRAM="1436" LogicLUT="5965"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_data_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W">
-    <Resources FF="32" LUT="138" LUTRAM="64" LogicLUT="74"/>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0" DEPTH="1" FILE_NAME="simulation_top.v" ORIG_REF_NAME="simulation_top_lpcore_kernel_0_s">
+    <SubModules count="15">cancellation_unit_commit_time_stream_U cancellation_unit_input_stream_U cancellation_unit_rollback_info_stream_U cancellation_unit_top_0_U0 causality_violation_stream_U event_processor_input_stream_U event_processor_top_0_U0 event_queue_commit_time_stream_U event_queue_rollback_info_stream_U event_queue_top_0_U0 issued_event_stream_U state_buffer_commit_time_stream_U state_buffer_input_stream_U state_buffer_rollback_info_stream_U state_buffer_top_0_U0</SubModules>
+    <Resources FF="4136" LUT="3701" LUTRAM="718" LogicLUT="2983"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_is_anti_message_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_is_anti_message_V_RAM_AUTO_1R1W">
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S">
+    <Resources FF="68" LUT="41" LogicLUT="41"/>
+    <LocalResources FF="4" LUT="8" LogicLUT="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_input_stream_U" BINDMODULE="simulation_top_fifo_w129_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w129_d2_S">
+    <Resources FF="168" LUT="88" LogicLUT="88"/>
+    <LocalResources FF="4" LUT="6" LogicLUT="6"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S">
+    <Resources FF="72" LUT="43" LogicLUT="43"/>
+    <LocalResources FF="4" LUT="8" LogicLUT="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s">
+    <SubModules count="8">cancellation_unit_buffer_event_receiver_id_V_1_U cancellation_unit_buffer_event_recv_time_V_1_U cancellation_unit_buffer_event_send_time_V_1_U cancellation_unit_buffer_event_sender_id_V_1_U cancellation_unit_buffer_next_V_1_U cancellation_unit_lp_heads_V_1_U grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303 grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285</SubModules>
+    <Resources FF="489" LUT="457" LUTRAM="114" LogicLUT="343"/>
+    <LocalResources FF="155" LUT="29" LogicLUT="29"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_buffer_event_receiver_id_V_1_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud">
+    <Resources FF="2" LUT="2" LUTRAM="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_buffer_event_recv_time_V_1_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_1_RAM_AUbkb" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_1_RAM_AUbkb">
+    <Resources FF="32" LUT="32" LUTRAM="32"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_buffer_event_send_time_V_1_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="65" LUTRAM="32" LogicLUT="33"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_buffer_event_sender_id_V_1_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud">
+    <Resources FF="16" LUT="16" LUTRAM="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_buffer_next_V_1_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="37" LUTRAM="16" LogicLUT="21"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/cancellation_unit_lp_heads_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="36" LUTRAM="16" LogicLUT="20"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="141" LUT="171" LogicLUT="171"/>
+    <LocalResources FF="139" LUT="122" LogicLUT="122"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="49" LogicLUT="49"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_0_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="79" LUT="69" LogicLUT="69"/>
+    <LocalResources FF="77" LUT="14" LogicLUT="14"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/cancellation_unit_top_0_U0/grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="55" LogicLUT="55"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/causality_violation_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S">
+    <Resources FF="72" LUT="37" LogicLUT="37"/>
+    <LocalResources FF="4" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_processor_input_stream_U" BINDMODULE="simulation_top_fifo_w209_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w209_d2_S">
+    <Resources FF="134" LUT="68" LogicLUT="68"/>
+    <LocalResources FF="4" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_processor_top_0_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_event_processor_top_0_s">
+    <SubModules count="2">event_processor_prng_generators_state_V_1_U grp_process_event_fu_66</SubModules>
+    <Resources FF="106" LUT="77" LUTRAM="8" LogicLUT="69"/>
+    <LocalResources FF="70" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_processor_top_0_U0/event_processor_prng_generators_state_V_1_U" BINDMODULE="simulation_top_event_processor_top_0_s_event_processor_prng_generators_state_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_processor_top_0_s.v" ORIG_REF_NAME="simulation_top_event_processor_top_0_s_event_processor_prng_generators_state_V_1_RAM_AUTO_1R1W">
+    <Resources FF="8" LUT="9" LUTRAM="8" LogicLUT="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_processor_top_0_U0/grp_process_event_fu_66" DEPTH="3" FILE_NAME="simulation_top_event_processor_top_0_s.v" ORIG_REF_NAME="simulation_top_process_event">
+    <Resources FF="28" LUT="65" LogicLUT="65"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S">
+    <Resources FF="68" LUT="40" LogicLUT="40"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S">
+    <Resources FF="72" LUT="76" LogicLUT="76"/>
+    <LocalResources FF="4" LUT="9" LogicLUT="9"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s">
+    <SubModules count="16">event_queue_buffer_event_data_V_1_U event_queue_buffer_event_is_anti_message_V_1_U event_queue_buffer_event_receiver_id_V_1_U event_queue_buffer_event_recv_time_V_1_U event_queue_buffer_event_send_time_V_1_U event_queue_buffer_event_sender_id_V_1_U event_queue_buffer_is_issued_V_1_U event_queue_buffer_next_V_1_U event_queue_lp_heads_V_1_U event_queue_lp_oldest_unissued_V_1_U event_queue_lp_youngest_issued_V_1_U event_queue_lvt_V_1_U grp_commit_fu_513 grp_enqueue_fu_540 grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_531 grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_580</SubModules>
+    <Resources FF="2038" LUT="2031" LUTRAM="452" LogicLUT="1579"/>
+    <LocalResources FF="695" LUT="48" LogicLUT="48"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_data_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="107" LUTRAM="64" LogicLUT="43"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_is_anti_message_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W">
+    <Resources FF="1" LUT="6" LUTRAM="2" LogicLUT="4"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_receiver_id_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="63" LUTRAM="32" LogicLUT="31"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_recv_time_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="64" LUT="299" LUTRAM="128" LogicLUT="171"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_send_time_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="107" LUTRAM="64" LogicLUT="43"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_event_sender_id_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="55" LUTRAM="32" LogicLUT="23"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_is_issued_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W">
+    <Resources FF="1" LUT="2" LUTRAM="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_buffer_next_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="88" LUTRAM="32" LogicLUT="56"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_lp_heads_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="67" LUTRAM="32" LogicLUT="35"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_lp_oldest_unissued_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="104" LUTRAM="16" LogicLUT="88"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_lp_youngest_issued_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="21" LUTRAM="16" LogicLUT="5"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/event_queue_lvt_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="78" LUTRAM="32" LogicLUT="46"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_commit">
+    <SubModules count="4">grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104 grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123 grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142 grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82</SubModules>
+    <Resources FF="693" LUT="612" LogicLUT="612"/>
+    <LocalResources FF="141" LUT="48" LogicLUT="48"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_21">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="147" LogicLUT="147"/>
+    <LocalResources FF="136" LUT="111" LogicLUT="111"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_21.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="36" LogicLUT="36"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_22">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="147" LogicLUT="147"/>
+    <LocalResources FF="136" LUT="110" LogicLUT="110"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_22.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="37" LogicLUT="37"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_23">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="124" LogicLUT="124"/>
+    <LocalResources FF="136" LUT="88" LogicLUT="88"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_23.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="36" LogicLUT="36"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="146" LogicLUT="146"/>
+    <LocalResources FF="136" LUT="109" LogicLUT="109"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="37" LogicLUT="37"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_enqueue_fu_540" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_enqueue">
+    <Resources FF="202" LUT="277" LogicLUT="277"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_531" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_Pipeline_VITIS_LOOP_205_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="65" LUT="30" LogicLUT="30"/>
+    <LocalResources FF="63" LUT="23" LogicLUT="23"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_event_queue_top_0_Pipeline_VITIS_LOOP_205_1_fu_531/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_event_queue_top_0_Pipeline_VITIS_LOOP_205_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_580" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_Pipeline_VITIS_LOOP_271_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="109" LUT="98" LogicLUT="98"/>
+    <LocalResources FF="107" LUT="59" LogicLUT="59"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/event_queue_top_0_U0/grp_event_queue_top_0_Pipeline_VITIS_LOOP_271_1_fu_580/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_event_queue_top_0_Pipeline_VITIS_LOOP_271_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="39" LogicLUT="39"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/issued_event_stream_U" BINDMODULE="simulation_top_fifo_w129_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w129_d2_S">
+    <Resources FF="102" LUT="53" LogicLUT="53"/>
+    <LocalResources FF="4" LUT="4" LogicLUT="4"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S">
+    <Resources FF="68" LUT="40" LogicLUT="40"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_input_stream_U" BINDMODULE="simulation_top_fifo_w80_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w80_d2_S">
+    <Resources FF="100" LUT="53" LogicLUT="53"/>
+    <LocalResources FF="4" LUT="4" LogicLUT="4"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S">
+    <Resources FF="70" LUT="41" LogicLUT="41"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_0_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_0_s">
+    <SubModules count="6">grp_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1_fu_342 grp_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2_fu_324 state_buffer_buffer_next_V_1_U state_buffer_buffer_state_lp_id_V_1_U state_buffer_buffer_state_lvt_V_1_U state_buffer_lp_heads_V_1_U</SubModules>
+    <Resources FF="509" LUT="556" LUTRAM="144" LogicLUT="412"/>
+    <LocalResources FF="241" LUT="90" LogicLUT="90"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/grp_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1_fu_342" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="122" LUT="126" LogicLUT="126"/>
+    <LocalResources FF="120" LUT="73" LogicLUT="73"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/grp_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1_fu_342/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_state_buffer_top_0_Pipeline_VITIS_LOOP_131_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="53" LogicLUT="53"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/grp_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2_fu_324" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="66" LUT="137" LogicLUT="137"/>
+    <LocalResources FF="64" LUT="70" LogicLUT="70"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/grp_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2_fu_324/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="67" LogicLUT="67"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/state_buffer_buffer_next_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="46" LUTRAM="32" LogicLUT="14"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/state_buffer_buffer_state_lp_id_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="34" LUTRAM="32" LogicLUT="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/state_buffer_buffer_state_lvt_V_1_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="98" LUTRAM="64" LogicLUT="34"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_0_U0/state_buffer_top_0_U0/state_buffer_lp_heads_V_1_U" BINDMODULE="simulation_top_state_buffer_top_0_s_state_buffer_lp_heads_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_0_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_0_s_state_buffer_lp_heads_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="25" LUTRAM="16" LogicLUT="9"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0" DEPTH="1" FILE_NAME="simulation_top.v" ORIG_REF_NAME="simulation_top_lpcore_kernel_1_s">
+    <SubModules count="15">cancellation_unit_commit_time_stream_U cancellation_unit_input_stream_U cancellation_unit_rollback_info_stream_U cancellation_unit_top_1_U0 causality_violation_stream_U event_processor_input_stream_U event_processor_top_1_U0 event_queue_commit_time_stream_U event_queue_rollback_info_stream_U event_queue_top_1_U0 issued_event_stream_U state_buffer_commit_time_stream_U state_buffer_input_stream_U state_buffer_rollback_info_stream_U state_buffer_top_1_U0</SubModules>
+    <Resources FF="4136" LUT="3700" LUTRAM="718" LogicLUT="2982"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S_x">
+    <Resources FF="68" LUT="41" LogicLUT="41"/>
+    <LocalResources FF="4" LUT="8" LogicLUT="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_input_stream_U" BINDMODULE="simulation_top_fifo_w129_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w129_d2_S_x">
+    <Resources FF="168" LUT="88" LogicLUT="88"/>
+    <LocalResources FF="4" LUT="6" LogicLUT="6"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S_x">
+    <Resources FF="72" LUT="43" LogicLUT="43"/>
+    <LocalResources FF="4" LUT="8" LogicLUT="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_1_s">
+    <SubModules count="8">cancellation_unit_buffer_event_receiver_id_V_U cancellation_unit_buffer_event_recv_time_V_U cancellation_unit_buffer_event_send_time_V_U cancellation_unit_buffer_event_sender_id_V_U cancellation_unit_buffer_next_V_U cancellation_unit_lp_heads_V_U grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303 grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285</SubModules>
+    <Resources FF="489" LUT="457" LUTRAM="114" LogicLUT="343"/>
+    <LocalResources FF="155" LUT="29" LogicLUT="29"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_buffer_event_receiver_id_V_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud">
+    <Resources FF="2" LUT="2" LUTRAM="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_buffer_event_recv_time_V_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_1_RAM_AUbkb" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_recv_time_V_1_RAM_AUbkb">
+    <Resources FF="32" LUT="32" LUTRAM="32"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_buffer_event_send_time_V_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_data_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="65" LUTRAM="32" LogicLUT="33"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_buffer_event_sender_id_V_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_event_sender_id_V_1_RAM_AUcud">
+    <Resources FF="16" LUT="16" LUTRAM="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_buffer_next_V_U" BINDMODULE="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_0_s_cancellation_unit_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="37" LUTRAM="16" LogicLUT="21"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/cancellation_unit_lp_heads_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="36" LUTRAM="16" LogicLUT="20"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="141" LUT="171" LogicLUT="171"/>
+    <LocalResources FF="139" LUT="122" LogicLUT="122"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="49" LogicLUT="49"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285" DEPTH="3" FILE_NAME="simulation_top_cancellation_unit_top_1_s.v" ORIG_REF_NAME="simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="79" LUT="69" LogicLUT="69"/>
+    <LocalResources FF="77" LUT="14" LogicLUT="14"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/cancellation_unit_top_1_U0/grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="55" LogicLUT="55"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/causality_violation_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S_x">
+    <Resources FF="72" LUT="37" LogicLUT="37"/>
+    <LocalResources FF="4" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_processor_input_stream_U" BINDMODULE="simulation_top_fifo_w209_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w209_d2_S_x">
+    <Resources FF="134" LUT="68" LogicLUT="68"/>
+    <LocalResources FF="4" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_processor_top_1_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_event_processor_top_1_s">
+    <SubModules count="2">event_processor_prng_generators_state_V_U grp_process_event_fu_66</SubModules>
+    <Resources FF="106" LUT="77" LUTRAM="8" LogicLUT="69"/>
+    <LocalResources FF="70" LUT="3" LogicLUT="3"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_processor_top_1_U0/event_processor_prng_generators_state_V_U" BINDMODULE="simulation_top_event_processor_top_1_s_event_processor_prng_generators_state_V_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_processor_top_1_s.v" ORIG_REF_NAME="simulation_top_event_processor_top_1_s_event_processor_prng_generators_state_V_RAM_AUTO_1R1W">
+    <Resources FF="8" LUT="9" LUTRAM="8" LogicLUT="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_processor_top_1_U0/grp_process_event_fu_66" DEPTH="3" FILE_NAME="simulation_top_event_processor_top_1_s.v" ORIG_REF_NAME="simulation_top_process_event">
+    <Resources FF="28" LUT="65" LogicLUT="65"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S_x">
+    <Resources FF="68" LUT="40" LogicLUT="40"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S_x">
+    <Resources FF="72" LUT="76" LogicLUT="76"/>
+    <LocalResources FF="4" LUT="9" LogicLUT="9"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_1_s">
+    <SubModules count="16">event_queue_buffer_event_data_V_U event_queue_buffer_event_is_anti_message_V_U event_queue_buffer_event_receiver_id_V_U event_queue_buffer_event_recv_time_V_U event_queue_buffer_event_send_time_V_U event_queue_buffer_event_sender_id_V_U event_queue_buffer_is_issued_V_U event_queue_buffer_next_V_U event_queue_lp_heads_V_U event_queue_lp_oldest_unissued_V_U event_queue_lp_youngest_issued_V_U event_queue_lvt_V_U grp_commit_fu_513 grp_enqueue_fu_540 grp_event_queue_top_1_Pipeline_VITIS_LOOP_205_1_fu_531 grp_event_queue_top_1_Pipeline_VITIS_LOOP_271_1_fu_580</SubModules>
+    <Resources FF="2038" LUT="2030" LUTRAM="452" LogicLUT="1578"/>
+    <LocalResources FF="695" LUT="48" LogicLUT="48"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_data_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="107" LUTRAM="64" LogicLUT="43"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_is_anti_message_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W">
     <Resources FF="1" LUT="5" LUTRAM="2" LogicLUT="3"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_receiver_id_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W">
-    <Resources FF="16" LUT="69" LUTRAM="32" LogicLUT="37"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="65" LUTRAM="32" LogicLUT="33"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_recv_time_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_recv_time_V_RAM_AUTO_1R1W">
-    <Resources FF="64" LUT="271" LUTRAM="128" LogicLUT="143"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_recv_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="64" LUT="283" LUTRAM="128" LogicLUT="155"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_send_time_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_send_time_V_RAM_AUTO_1R1W">
-    <Resources FF="32" LUT="140" LUTRAM="64" LogicLUT="76"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_send_time_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="107" LUTRAM="64" LogicLUT="43"/>
   </RtlModule>
-  <RtlModule CELL="inst/g_event_queue_heap_sender_id_V_U" BINDMODULE="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_g_event_queue_heap_sender_id_V_RAM_AUTO_1R1W">
-    <Resources FF="16" LUT="69" LUTRAM="32" LogicLUT="37"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_sender_id_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="55" LUTRAM="32" LogicLUT="23"/>
   </RtlModule>
-  <RtlModule CELL="inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_33_1">
-    <Resources FF="85" LUT="79" LogicLUT="79"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_is_issued_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_is_anti_message_V_1_RAM_AUTO_1R1W">
+    <Resources FF="1" LUT="2" LUTRAM="2"/>
   </RtlModule>
-  <RtlModule CELL="inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_49_1_fu_460" DEPTH="1" FILE_NAME="event_queue_kernel.v" ORIG_REF_NAME="event_queue_kernel_event_queue_kernel_Pipeline_VITIS_LOOP_49_1">
-    <Resources FF="265" LUT="385" LogicLUT="385"/>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="103" LUTRAM="32" LogicLUT="71"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_lp_heads_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="69" LUTRAM="32" LogicLUT="37"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_lp_oldest_unissued_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="106" LUTRAM="16" LogicLUT="90"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_lp_youngest_issued_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="21" LUTRAM="16" LogicLUT="5"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_lvt_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="77" LUTRAM="32" LogicLUT="45"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_commit">
+    <SubModules count="4">grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104 grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123 grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142 grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82</SubModules>
+    <Resources FF="693" LUT="611" LogicLUT="611"/>
+    <LocalResources FF="141" LUT="48" LogicLUT="48"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_21">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="146" LogicLUT="146"/>
+    <LocalResources FF="136" LUT="110" LogicLUT="110"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_21_fu_104/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_21.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="36" LogicLUT="36"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_22">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="147" LogicLUT="147"/>
+    <LocalResources FF="136" LUT="110" LogicLUT="110"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_22_fu_123/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_22.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="37" LogicLUT="37"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_23">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="124" LogicLUT="124"/>
+    <LocalResources FF="136" LUT="88" LogicLUT="88"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_23_fu_142/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_23.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="36" LogicLUT="36"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82" DEPTH="4" FILE_NAME="simulation_top_commit.v" ORIG_REF_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="138" LUT="146" LogicLUT="146"/>
+    <LocalResources FF="136" LUT="109" LogicLUT="109"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_commit_fu_513/grp_commit_Pipeline_VITIS_LOOP_237_2_fu_82/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="5" FILE_NAME="simulation_top_commit_Pipeline_VITIS_LOOP_237_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="37" LogicLUT="37"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_enqueue">
+    <Resources FF="202" LUT="274" LogicLUT="274"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_event_queue_top_1_Pipeline_VITIS_LOOP_205_1_fu_531" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_1_Pipeline_VITIS_LOOP_205_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="65" LUT="30" LogicLUT="30"/>
+    <LocalResources FF="63" LUT="23" LogicLUT="23"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_event_queue_top_1_Pipeline_VITIS_LOOP_205_1_fu_531/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_event_queue_top_1_Pipeline_VITIS_LOOP_205_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_event_queue_top_1_Pipeline_VITIS_LOOP_271_1_fu_580" DEPTH="3" FILE_NAME="simulation_top_event_queue_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_1_Pipeline_VITIS_LOOP_271_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="109" LUT="98" LogicLUT="98"/>
+    <LocalResources FF="107" LUT="59" LogicLUT="59"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_event_queue_top_1_Pipeline_VITIS_LOOP_271_1_fu_580/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_event_queue_top_1_Pipeline_VITIS_LOOP_271_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="39" LogicLUT="39"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/issued_event_stream_U" BINDMODULE="simulation_top_fifo_w129_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w129_d2_S_x">
+    <Resources FF="102" LUT="53" LogicLUT="53"/>
+    <LocalResources FF="4" LUT="4" LogicLUT="4"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_commit_time_stream_U" BINDMODULE="simulation_top_fifo_w32_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w32_d2_S_x">
+    <Resources FF="68" LUT="40" LogicLUT="40"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_input_stream_U" BINDMODULE="simulation_top_fifo_w80_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w80_d2_S_x">
+    <Resources FF="100" LUT="53" LogicLUT="53"/>
+    <LocalResources FF="4" LUT="4" LogicLUT="4"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_rollback_info_stream_U" BINDMODULE="simulation_top_fifo_w48_d2_S" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_fifo_w48_d2_S_x">
+    <Resources FF="70" LUT="41" LogicLUT="41"/>
+    <LocalResources FF="4" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0" DEPTH="2" FILE_NAME="simulation_top_lpcore_kernel_1_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_1_s">
+    <SubModules count="6">grp_state_buffer_top_1_Pipeline_VITIS_LOOP_131_1_fu_342 grp_state_buffer_top_1_Pipeline_VITIS_LOOP_81_2_fu_324 state_buffer_buffer_next_V_U state_buffer_buffer_state_lp_id_V_U state_buffer_buffer_state_lvt_V_U state_buffer_lp_heads_V_U</SubModules>
+    <Resources FF="509" LUT="556" LUTRAM="144" LogicLUT="412"/>
+    <LocalResources FF="241" LUT="90" LogicLUT="90"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/grp_state_buffer_top_1_Pipeline_VITIS_LOOP_131_1_fu_342" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_1_Pipeline_VITIS_LOOP_131_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="122" LUT="126" LogicLUT="126"/>
+    <LocalResources FF="120" LUT="73" LogicLUT="73"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/grp_state_buffer_top_1_Pipeline_VITIS_LOOP_131_1_fu_342/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_state_buffer_top_1_Pipeline_VITIS_LOOP_131_1.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="53" LogicLUT="53"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/grp_state_buffer_top_1_Pipeline_VITIS_LOOP_81_2_fu_324" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_1_Pipeline_VITIS_LOOP_81_2">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="66" LUT="137" LogicLUT="137"/>
+    <LocalResources FF="64" LUT="70" LogicLUT="70"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/grp_state_buffer_top_1_Pipeline_VITIS_LOOP_81_2_fu_324/flow_control_loop_pipe_sequential_init_U" BINDMODULE="simulation_top_flow_control_loop_pipe_sequential_init" DEPTH="4" FILE_NAME="simulation_top_state_buffer_top_1_Pipeline_VITIS_LOOP_81_2.v" ORIG_REF_NAME="simulation_top_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="67" LogicLUT="67"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/state_buffer_buffer_next_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="46" LUTRAM="32" LogicLUT="14"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/state_buffer_buffer_state_lp_id_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_sender_id_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="34" LUTRAM="32" LogicLUT="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/state_buffer_buffer_state_lvt_V_U" BINDMODULE="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_event_queue_top_0_s_event_queue_buffer_event_send_time_V_1_RAM_AUTO_1R1W">
+    <Resources FF="32" LUT="98" LUTRAM="64" LogicLUT="34"/>
+  </RtlModule>
+  <RtlModule CELL="inst/lpcore_kernel_1_U0/state_buffer_top_1_U0/state_buffer_lp_heads_V_U" BINDMODULE="simulation_top_state_buffer_top_0_s_state_buffer_lp_heads_V_1_RAM_AUTO_1R1W" DEPTH="3" FILE_NAME="simulation_top_state_buffer_top_1_s.v" ORIG_REF_NAME="simulation_top_state_buffer_top_0_s_state_buffer_lp_heads_V_1_RAM_AUTO_1R1W">
+    <Resources FF="16" LUT="25" LUTRAM="16" LogicLUT="9"/>
   </RtlModule>
 </RtlModules>
 <TimingPaths>
-  <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[0]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]/C">
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_0_0/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[0]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+  <TPATH DATAPATH_DELAY="2.609" DATAPATH_LOGIC_DELAY="0.731" DATAPATH_NET_DELAY="1.878" ENDPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]/D" LOGIC_LEVELS="10" MAX_FANOUT="103" SLACK="2.372" STARTPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="842"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="10"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/HIGH" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_0_0/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[0]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
   </TPATH>
-  <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[10]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]/C">
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_10_10/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[10]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+  <TPATH DATAPATH_DELAY="2.609" DATAPATH_LOGIC_DELAY="0.731" DATAPATH_NET_DELAY="1.878" ENDPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]/D" LOGIC_LEVELS="10" MAX_FANOUT="103" SLACK="2.372" STARTPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="842"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="10"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/HIGH" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_10_10/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[10]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
   </TPATH>
-  <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[11]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]/C">
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_11_11/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[11]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+  <TPATH DATAPATH_DELAY="2.609" DATAPATH_LOGIC_DELAY="0.731" DATAPATH_NET_DELAY="1.878" ENDPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]/D" LOGIC_LEVELS="10" MAX_FANOUT="103" SLACK="2.372" STARTPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="842"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="10"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/HIGH" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_11_11/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[11]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
   </TPATH>
-  <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[12]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]/C">
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_12_12/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[12]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+  <TPATH DATAPATH_DELAY="2.609" DATAPATH_LOGIC_DELAY="0.731" DATAPATH_NET_DELAY="1.878" ENDPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]/D" LOGIC_LEVELS="10" MAX_FANOUT="103" SLACK="2.372" STARTPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="842"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="10"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/HIGH" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_12_12/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[12]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
   </TPATH>
-  <TPATH DATAPATH_DELAY="1.959" DATAPATH_LOGIC_DELAY="0.495" DATAPATH_NET_DELAY="1.464" ENDPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[13]/D" LOGIC_LEVELS="7" MAX_FANOUT="351" SLACK="3.022" STARTPOINT_PIN="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]/C">
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_size_V_reg[15]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="488"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_4" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/temp_send_time_V_reg_754[31]_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_recv_time_V_U/ram_reg_0_127_0_0_i_13__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/grp_event_queue_kernel_Pipeline_VITIS_LOOP_33_1_fu_480/ram_reg_0_127_0_0_i_3" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="465"/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/LOW" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/ram_reg_0_127_13_13/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
-    <CELL  NAME="bd_0_i/hls_inst/inst/g_event_queue_heap_data_V_U/q0_reg[13]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
+  <TPATH DATAPATH_DELAY="2.609" DATAPATH_LOGIC_DELAY="0.731" DATAPATH_NET_DELAY="1.878" ENDPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]/D" LOGIC_LEVELS="10" MAX_FANOUT="103" SLACK="2.372" STARTPOINT_PIN="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/ap_CS_fsm_reg[7]_rep" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="842"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_1_1_i_1__8" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm[8]_i_30__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_4" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_recv_time_V_U/ap_CS_fsm_reg[8]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="349"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_69__0" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_48__0" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="331"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/grp_enqueue_fu_540/ram_reg_0_127_0_0_i_14__8" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="10"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_event_receiver_id_V_U/ram_reg_0_127_0_0_i_3__11" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="864"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/HIGH" PRIMITIVE_TYPE="CLB.LUTRAM.RAM128X1S" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/ram_reg_0_127_13_13/F7" PRIMITIVE_TYPE="CLB.MUXF.MUXF7" LINE_NUMBER=""/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/lpcore_kernel_1_U0/event_queue_top_1_U0/event_queue_buffer_next_V_U/q0_reg[13]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="34"/>
   </TPATH>
 </TimingPaths>
 <VivadoReportFiles>
-  <ReportFile TYPE="design_analysis" PATH="verilog/report/event_queue_kernel_design_analysis_synth.rpt"/>
-  <ReportFile TYPE="failfast" PATH="verilog/report/event_queue_kernel_failfast_synth.rpt"/>
-  <ReportFile TYPE="timing" PATH="verilog/report/event_queue_kernel_timing_synth.rpt"/>
-  <ReportFile TYPE="timing_paths" PATH="verilog/report/event_queue_kernel_timing_paths_synth.rpt"/>
-  <ReportFile TYPE="utilization" PATH="verilog/report/event_queue_kernel_utilization_synth.rpt"/>
-  <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/event_queue_kernel_utilization_hierarchical_synth.rpt"/>
+  <ReportFile TYPE="design_analysis" PATH="verilog/report/simulation_top_design_analysis_synth.rpt"/>
+  <ReportFile TYPE="failfast" PATH="verilog/report/simulation_top_failfast_synth.rpt"/>
+  <ReportFile TYPE="timing" PATH="verilog/report/simulation_top_timing_synth.rpt"/>
+  <ReportFile TYPE="timing_paths" PATH="verilog/report/simulation_top_timing_paths_synth.rpt"/>
+  <ReportFile TYPE="utilization" PATH="verilog/report/simulation_top_utilization_synth.rpt"/>
+  <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/simulation_top_utilization_hierarchical_synth.rpt"/>
 </VivadoReportFiles>
 </profile>

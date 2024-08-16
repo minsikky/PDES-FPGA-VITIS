@@ -73,7 +73,7 @@ OPTRACE "bd_0_hls_inst_0_synth_1" START { ROLLUP_AUTO }
 set_msg_config  -id {[BD 41-1265]}  -severity {CRITICAL WARNING}  -new_severity {INFO} 
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xczu7ev-ffvf1517-3-e
+create_project -in_memory -part xczu7ev-ffvc1156-2-e
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -91,7 +91,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_ip -quiet /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0.xci
-set_property used_in_implementation false [get_files -all /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/event_queue_kernel_ooc.xdc]
+set_property used_in_implementation false [get_files -all /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/simulation_top_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -114,7 +114,7 @@ if { $cacheID == "" } {
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top bd_0_hls_inst_0 -part xczu7ev-ffvf1517-3-e -directive sdx_optimization_effort_high -incremental_mode off -mode out_of_context
+synth_design -top bd_0_hls_inst_0 -part xczu7ev-ffvc1156-2-e -directive sdx_optimization_effort_high -incremental_mode off -mode out_of_context
 OPTRACE "synth_design" END { }
 OPTRACE "Write IP Cache" START { }
 

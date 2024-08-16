@@ -36,17 +36,7 @@ public:
 
 void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, EventQueueEntry &result_entry, bool &success);
 
-// void event_queue_top(
-//     EventQueue &event_queue,
-//     hls::stream<bool> &event_queue_full_stream,
-//     hls::stream<RollbackInfo> &rollback_info_stream,
-//     hls::stream<TimeWarpEvent> &anti_message_stream,
-//     hls::stream<TimeWarpEvent> &enqueue_event_stream,
-//     hls::stream<ap_int<32>> &commit_time_stream,
-//     hls::stream<TimeWarpEvent> &issued_event_stream,
-//     hls::stream<RollbackInfo> &causality_violation_stream);
-
-template<int ID>
+template <int ID>
 void event_queue_top(
     hls::stream<TimeWarpEvent> &init_event_stream,
     hls::stream<bool> &event_queue_full_stream,
@@ -95,22 +85,14 @@ void event_queue_top(
     {
         ap_int<32> commit_time = commit_time_stream.read();
         event_queue.commit(commit_time);
-        if (!event_queue.is_full())
+        if (event_queue.is_full()) // Commit didn't clear up event queue space at all. Re-trigger commit.
         {
-            event_queue_full_stream.write(false);
+            event_queue_full_stream.write(true);
         }
     }
 }
 
-void event_queue_top_test(
-    hls::stream<TimeWarpEvent> &init_event_stream,
-    hls::stream<bool> &event_queue_full_stream,
-    hls::stream<RollbackInfo> &rollback_info_stream,
-    hls::stream<TimeWarpEvent> &anti_message_stream,
-    hls::stream<TimeWarpEvent> &enqueue_event_stream,
-    hls::stream<ap_int<32>> &commit_time_stream,
-    hls::stream<TimeWarpEvent> &issued_event_stream,
-    hls::stream<RollbackInfo> &causality_violation_stream);
+void event_queue_top_test();
 
 int test_event_queue();
 

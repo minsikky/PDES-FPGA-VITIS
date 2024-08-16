@@ -29,5 +29,4 @@ obj/CancellationUnit.o: ../../../../cpp/CancellationUnit.cpp \
  ../../../../cpp/EventQueue.hpp ../../../../cpp/StateBuffer.hpp \
  ../../../../cpp/EventProcessor.hpp ../../../../cpp/LFSR_PRNG.hpp \
  ../../../../cpp/LPMapping.hpp ../../../../cpp/EventRouter.hpp \
- ../../../../cpp/RollbackControl.hpp \
- ../../../../cpp/CommitControlDummy.hpp
+ ../../../../cpp/LPCoreControl.hpp

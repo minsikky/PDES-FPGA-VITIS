@@ -1,0 +1,15 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../cpp/main.cpp in debug mode
+   Compiling ../../../../cpp/VirtualLP.cpp in debug mode
+   Compiling ../../../../cpp/StateBuffer.cpp in debug mode
+   Compiling ../../../../cpp/RollbackControl.cpp in debug mode
+   Compiling ../../../../cpp/LPMapping.cpp in debug mode
+   Compiling ../../../../cpp/LPCoreControl.cpp in debug mode
+   Compiling ../../../../cpp/LPCore.cpp in debug mode
+   Compiling ../../../../cpp/LFSR_PRNG.cpp in debug mode
+   Compiling ../../../../cpp/EventRouter.cpp in debug mode
+   Compiling ../../../../cpp/EventQueue.cpp in debug mode
+   Compiling ../../../../cpp/EventProcessor.cpp in debug mode
+   Compiling ../../../../cpp/CancellationUnit.cpp in debug mode
+   Generating csim.exe

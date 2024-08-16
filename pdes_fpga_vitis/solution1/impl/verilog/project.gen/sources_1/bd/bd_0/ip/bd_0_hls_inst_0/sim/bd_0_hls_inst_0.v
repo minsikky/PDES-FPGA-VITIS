@@ -47,70 +47,198 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:hls:event_queue_kernel:1.0
-// IP Revision: 2113664690
+// IP VLNV: xilinx.com:hls:simulation_top:1.0
+// IP Revision: 2113691459
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "HLS" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module bd_0_hls_inst_0 (
-  input_r_ap_vld,
-  output_event_ap_vld,
-  success_ap_vld,
+  lpcore_init_event_stream_0_dout,
+  lpcore_init_event_stream_0_empty_n,
+  lpcore_init_event_stream_0_read,
+  lpcore_init_event_stream_1_dout,
+  lpcore_init_event_stream_1_empty_n,
+  lpcore_init_event_stream_1_read,
+  lpcore_event_queue_full_stream_0_din,
+  lpcore_event_queue_full_stream_0_full_n,
+  lpcore_event_queue_full_stream_0_write,
+  lpcore_event_queue_full_stream_1_din,
+  lpcore_event_queue_full_stream_1_full_n,
+  lpcore_event_queue_full_stream_1_write,
+  lpcore_anti_message_stream_0_dout,
+  lpcore_anti_message_stream_0_empty_n,
+  lpcore_anti_message_stream_0_read,
+  lpcore_anti_message_stream_1_dout,
+  lpcore_anti_message_stream_1_empty_n,
+  lpcore_anti_message_stream_1_read,
+  lpcore_enqueue_event_stream_0_dout,
+  lpcore_enqueue_event_stream_0_empty_n,
+  lpcore_enqueue_event_stream_0_read,
+  lpcore_enqueue_event_stream_1_dout,
+  lpcore_enqueue_event_stream_1_empty_n,
+  lpcore_enqueue_event_stream_1_read,
+  lpcore_output_event_stream_0_din,
+  lpcore_output_event_stream_0_full_n,
+  lpcore_output_event_stream_0_write,
+  lpcore_output_event_stream_1_din,
+  lpcore_output_event_stream_1_full_n,
+  lpcore_output_event_stream_1_write,
+  lpcore_cancellation_unit_output_stream_0_din,
+  lpcore_cancellation_unit_output_stream_0_full_n,
+  lpcore_cancellation_unit_output_stream_0_write,
+  lpcore_cancellation_unit_output_stream_1_din,
+  lpcore_cancellation_unit_output_stream_1_full_n,
+  lpcore_cancellation_unit_output_stream_1_write,
+  lpcore_commit_time_stream_0_dout,
+  lpcore_commit_time_stream_0_empty_n,
+  lpcore_commit_time_stream_0_read,
+  lpcore_commit_time_stream_1_dout,
+  lpcore_commit_time_stream_1_empty_n,
+  lpcore_commit_time_stream_1_read,
   ap_clk,
-  ap_rst,
-  ap_start,
-  ap_done,
-  ap_idle,
-  ap_ready,
-  input_r,
-  output_event,
-  success
+  ap_rst
 );
 
-input wire input_r_ap_vld;
-output wire output_event_ap_vld;
-output wire success_ap_vld;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_0 RD_DATA" *)
+input wire [128 : 0] lpcore_init_event_stream_0_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_0 EMPTY_N" *)
+input wire lpcore_init_event_stream_0_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_0 RD_EN" *)
+output wire lpcore_init_event_stream_0_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_1 RD_DATA" *)
+input wire [128 : 0] lpcore_init_event_stream_1_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_1 EMPTY_N" *)
+input wire lpcore_init_event_stream_1_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_init_event_stream_1 RD_EN" *)
+output wire lpcore_init_event_stream_1_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_0 WR_DATA" *)
+output wire [0 : 0] lpcore_event_queue_full_stream_0_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_0 FULL_N" *)
+input wire lpcore_event_queue_full_stream_0_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_0 WR_EN" *)
+output wire lpcore_event_queue_full_stream_0_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_1 WR_DATA" *)
+output wire [0 : 0] lpcore_event_queue_full_stream_1_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_1 FULL_N" *)
+input wire lpcore_event_queue_full_stream_1_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_event_queue_full_stream_1 WR_EN" *)
+output wire lpcore_event_queue_full_stream_1_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_0 RD_DATA" *)
+input wire [128 : 0] lpcore_anti_message_stream_0_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_0 EMPTY_N" *)
+input wire lpcore_anti_message_stream_0_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_0 RD_EN" *)
+output wire lpcore_anti_message_stream_0_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_1 RD_DATA" *)
+input wire [128 : 0] lpcore_anti_message_stream_1_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_1 EMPTY_N" *)
+input wire lpcore_anti_message_stream_1_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_anti_message_stream_1 RD_EN" *)
+output wire lpcore_anti_message_stream_1_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_0 RD_DATA" *)
+input wire [128 : 0] lpcore_enqueue_event_stream_0_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_0 EMPTY_N" *)
+input wire lpcore_enqueue_event_stream_0_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_0 RD_EN" *)
+output wire lpcore_enqueue_event_stream_0_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_1 RD_DATA" *)
+input wire [128 : 0] lpcore_enqueue_event_stream_1_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_1 EMPTY_N" *)
+input wire lpcore_enqueue_event_stream_1_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_enqueue_event_stream_1 RD_EN" *)
+output wire lpcore_enqueue_event_stream_1_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_0 WR_DATA" *)
+output wire [128 : 0] lpcore_output_event_stream_0_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_0 FULL_N" *)
+input wire lpcore_output_event_stream_0_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_0 WR_EN" *)
+output wire lpcore_output_event_stream_0_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_1 WR_DATA" *)
+output wire [128 : 0] lpcore_output_event_stream_1_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_1 FULL_N" *)
+input wire lpcore_output_event_stream_1_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_output_event_stream_1 WR_EN" *)
+output wire lpcore_output_event_stream_1_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_0 WR_DATA" *)
+output wire [128 : 0] lpcore_cancellation_unit_output_stream_0_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_0 FULL_N" *)
+input wire lpcore_cancellation_unit_output_stream_0_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_0 WR_EN" *)
+output wire lpcore_cancellation_unit_output_stream_0_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_1 WR_DATA" *)
+output wire [128 : 0] lpcore_cancellation_unit_output_stream_1_din;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_1 FULL_N" *)
+input wire lpcore_cancellation_unit_output_stream_1_full_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_write:1.0 lpcore_cancellation_unit_output_stream_1 WR_EN" *)
+output wire lpcore_cancellation_unit_output_stream_1_write;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_0 RD_DATA" *)
+input wire [31 : 0] lpcore_commit_time_stream_0_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_0 EMPTY_N" *)
+input wire lpcore_commit_time_stream_0_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_0 RD_EN" *)
+output wire lpcore_commit_time_stream_0_read;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_1 RD_DATA" *)
+input wire [31 : 0] lpcore_commit_time_stream_1_dout;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_1 EMPTY_N" *)
+input wire lpcore_commit_time_stream_1_empty_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:acc_fifo_read:1.0 lpcore_commit_time_stream_1 RD_EN" *)
+output wire lpcore_commit_time_stream_1_read;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ap_clk, ASSOCIATED_RESET ap_rst, FREQ_HZ 200000000.0, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN bd_0_ap_clk_0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ap_clk CLK" *)
 input wire ap_clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ap_rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ap_rst RST" *)
 input wire ap_rst;
-(* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start" *)
-input wire ap_start;
-(* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl done" *)
-output wire ap_done;
-(* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle" *)
-output wire ap_idle;
-(* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl ready" *)
-output wire ap_ready;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME input_r, LAYERED_METADATA undef" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 input_r DATA" *)
-input wire [129 : 0] input_r;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME output_event, LAYERED_METADATA undef" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 output_event DATA" *)
-output wire [128 : 0] output_event;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME success, LAYERED_METADATA undef" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 success DATA" *)
-output wire success;
 
 (* SDX_KERNEL = "true" *)
 (* SDX_KERNEL_TYPE = "hls" *)
 (* SDX_KERNEL_SIM_INST = "" *)
-  event_queue_kernel inst (
-    .input_r_ap_vld(input_r_ap_vld),
-    .output_event_ap_vld(output_event_ap_vld),
-    .success_ap_vld(success_ap_vld),
+  simulation_top inst (
+    .lpcore_init_event_stream_0_dout(lpcore_init_event_stream_0_dout),
+    .lpcore_init_event_stream_0_empty_n(lpcore_init_event_stream_0_empty_n),
+    .lpcore_init_event_stream_0_read(lpcore_init_event_stream_0_read),
+    .lpcore_init_event_stream_1_dout(lpcore_init_event_stream_1_dout),
+    .lpcore_init_event_stream_1_empty_n(lpcore_init_event_stream_1_empty_n),
+    .lpcore_init_event_stream_1_read(lpcore_init_event_stream_1_read),
+    .lpcore_event_queue_full_stream_0_din(lpcore_event_queue_full_stream_0_din),
+    .lpcore_event_queue_full_stream_0_full_n(lpcore_event_queue_full_stream_0_full_n),
+    .lpcore_event_queue_full_stream_0_write(lpcore_event_queue_full_stream_0_write),
+    .lpcore_event_queue_full_stream_1_din(lpcore_event_queue_full_stream_1_din),
+    .lpcore_event_queue_full_stream_1_full_n(lpcore_event_queue_full_stream_1_full_n),
+    .lpcore_event_queue_full_stream_1_write(lpcore_event_queue_full_stream_1_write),
+    .lpcore_anti_message_stream_0_dout(lpcore_anti_message_stream_0_dout),
+    .lpcore_anti_message_stream_0_empty_n(lpcore_anti_message_stream_0_empty_n),
+    .lpcore_anti_message_stream_0_read(lpcore_anti_message_stream_0_read),
+    .lpcore_anti_message_stream_1_dout(lpcore_anti_message_stream_1_dout),
+    .lpcore_anti_message_stream_1_empty_n(lpcore_anti_message_stream_1_empty_n),
+    .lpcore_anti_message_stream_1_read(lpcore_anti_message_stream_1_read),
+    .lpcore_enqueue_event_stream_0_dout(lpcore_enqueue_event_stream_0_dout),
+    .lpcore_enqueue_event_stream_0_empty_n(lpcore_enqueue_event_stream_0_empty_n),
+    .lpcore_enqueue_event_stream_0_read(lpcore_enqueue_event_stream_0_read),
+    .lpcore_enqueue_event_stream_1_dout(lpcore_enqueue_event_stream_1_dout),
+    .lpcore_enqueue_event_stream_1_empty_n(lpcore_enqueue_event_stream_1_empty_n),
+    .lpcore_enqueue_event_stream_1_read(lpcore_enqueue_event_stream_1_read),
+    .lpcore_output_event_stream_0_din(lpcore_output_event_stream_0_din),
+    .lpcore_output_event_stream_0_full_n(lpcore_output_event_stream_0_full_n),
+    .lpcore_output_event_stream_0_write(lpcore_output_event_stream_0_write),
+    .lpcore_output_event_stream_1_din(lpcore_output_event_stream_1_din),
+    .lpcore_output_event_stream_1_full_n(lpcore_output_event_stream_1_full_n),
+    .lpcore_output_event_stream_1_write(lpcore_output_event_stream_1_write),
+    .lpcore_cancellation_unit_output_stream_0_din(lpcore_cancellation_unit_output_stream_0_din),
+    .lpcore_cancellation_unit_output_stream_0_full_n(lpcore_cancellation_unit_output_stream_0_full_n),
+    .lpcore_cancellation_unit_output_stream_0_write(lpcore_cancellation_unit_output_stream_0_write),
+    .lpcore_cancellation_unit_output_stream_1_din(lpcore_cancellation_unit_output_stream_1_din),
+    .lpcore_cancellation_unit_output_stream_1_full_n(lpcore_cancellation_unit_output_stream_1_full_n),
+    .lpcore_cancellation_unit_output_stream_1_write(lpcore_cancellation_unit_output_stream_1_write),
+    .lpcore_commit_time_stream_0_dout(lpcore_commit_time_stream_0_dout),
+    .lpcore_commit_time_stream_0_empty_n(lpcore_commit_time_stream_0_empty_n),
+    .lpcore_commit_time_stream_0_read(lpcore_commit_time_stream_0_read),
+    .lpcore_commit_time_stream_1_dout(lpcore_commit_time_stream_1_dout),
+    .lpcore_commit_time_stream_1_empty_n(lpcore_commit_time_stream_1_empty_n),
+    .lpcore_commit_time_stream_1_read(lpcore_commit_time_stream_1_read),
     .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(ap_start),
-    .ap_done(ap_done),
-    .ap_idle(ap_idle),
-    .ap_ready(ap_ready),
-    .input_r(input_r),
-    .output_event(output_event),
-    .success(success)
+    .ap_rst(ap_rst)
   );
 endmodule

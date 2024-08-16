@@ -36,18 +36,9 @@ public:
 
 void event_queue_kernel(ap_uint<3> op, TimeWarpEvent event, ap_int<16> lp_id, ap_int<32> time, EventQueueEntry &result_entry, bool &success);
 
-// void event_queue_top(
-//     EventQueue &event_queue,
-//     hls::stream<bool> &event_queue_full_stream,
-//     hls::stream<RollbackInfo> &rollback_info_stream,
-//     hls::stream<TimeWarpEvent> &anti_message_stream,
-//     hls::stream<TimeWarpEvent> &enqueue_event_stream,
-//     hls::stream<ap_int<32>> &commit_time_stream,
-//     hls::stream<TimeWarpEvent> &issued_event_stream,
-//     hls::stream<RollbackInfo> &causality_violation_stream);
-
-template<int ID>
+template <int ID>
 void event_queue_top(
+    hls::stream<TimeWarpEvent> &init_event_stream,
     hls::stream<bool> &event_queue_full_stream,
     hls::stream<RollbackInfo> &rollback_info_stream,
     hls::stream<TimeWarpEvent> &anti_message_stream,
@@ -57,8 +48,13 @@ void event_queue_top(
     hls::stream<RollbackInfo> &causality_violation_stream)
 {
     static EventQueue event_queue;
-    // Priority: rollback > anti_message > enqueue > issue > commit
-    if (!rollback_info_stream.empty()) // Rollback
+    // Priority: init_event > rollback > anti_message > enqueue > issue > commit
+    if (!init_event_stream.empty()) {
+        TimeWarpEvent init_event = init_event_stream.read();
+        event_queue.enqueue(init_event, causality_violation_stream);
+        // Shouldn't be full after initialization
+    }
+    else if (!rollback_info_stream.empty()) // Rollback
     {
         RollbackInfo rollback_info = rollback_info_stream.read();
         event_queue.rollback(rollback_info);
@@ -95,6 +91,8 @@ void event_queue_top(
         }
     }
 }
+
+void event_queue_top_test();
 
 int test_event_queue();
 

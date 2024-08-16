@@ -6,6 +6,6 @@
 
 Family       : zynquplus
 Device       : xczu7ev
-Package      : -ffvf1517
-Speed Grade  : -3-e
+Package      : -ffvc1156
+Speed Grade  : -2-e
 Clock Period : 5.000 ns
