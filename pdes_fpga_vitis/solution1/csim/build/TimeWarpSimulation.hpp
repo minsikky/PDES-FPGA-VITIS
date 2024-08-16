@@ -6,6 +6,7 @@
 #include <utility>
 #include "constants.hpp"
 #include "LPCore.hpp"
+#include "GlobalControl.hpp"
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
@@ -16,6 +17,7 @@
     hls::stream<bool> lpcore_event_queue_full_stream##n; \
     hls::stream<TimeWarpEvent> lpcore_anti_message_stream##n; \
     hls::stream<TimeWarpEvent> lpcore_enqueue_event_stream##n; \
+    hls::stream<LVT> lpcore_lvt_stream##n; \
     hls::stream<TimeWarpEvent> lpcore_output_event_stream##n; \
     hls::stream<TimeWarpEvent> lpcore_cancellation_unit_output_stream##n; \
     hls::stream<ap_int<32>> lpcore_commit_time_stream##n;
@@ -23,14 +25,17 @@
 // Macro to create a single task
 #define CREATE_TASK(z, n, unused) \
     hls::task t_##n(lpcore_kernel<n>, \
-        lpcore_init_event_stream##n, \
-        lpcore_event_queue_full_stream##n, \
-        lpcore_anti_message_stream##n, \
-        lpcore_enqueue_event_stream##n, \
-        lpcore_output_event_stream##n, \
-        lpcore_cancellation_unit_output_stream##n, \
-        lpcore_commit_time_stream##n);
+        lpcore_init_event_stream[n], \
+        lpcore_event_queue_full_stream[n], \
+        lpcore_anti_message_stream[n], \
+        lpcore_enqueue_event_stream[n], \
+        lpcore_lvt_stream[n], \
+        lpcore_output_event_stream[n], \
+        lpcore_cancellation_unit_output_stream[n], \
+        lpcore_commit_time_stream[n]);
 
-void simulation_top();
+void simulation_top(
+    hls::stream<TimeWarpEvent> lpcore_init_event_stream[NUM_LPCORE]
+);
 
 #endif // TIME_WARP_SIMULATION_HPP

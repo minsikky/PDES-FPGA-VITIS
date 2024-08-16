@@ -135,7 +135,7 @@ wire    ap_block_pp0_stage2;
 reg   [15:0] current_V_16_fu_44;
 wire    ap_loop_init;
 reg   [15:0] ap_sig_allocacmp_current_V_18;
-wire   [0:0] icmp_ln1081_2_fu_192_p2;
+wire   [0:0] icmp_ln1081_3_fu_192_p2;
 reg    ap_done_reg;
 wire    ap_continue_int;
 reg    ap_done_int;
@@ -413,7 +413,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage1_11001) & (ap_enable_reg_pp0_iter1 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage1) & (((icmp_ln1065_reg_256 == 1'd1) & (event_queue_buffer_is_issued_V_1_load_reg_252 == 1'd1) & (icmp_ln1081_reg_243 == 1'd1)) | ((icmp_ln1081_2_fu_192_p2 == 1'd1) & (event_queue_buffer_is_issued_V_1_load_reg_252 == 1'd1) & (icmp_ln1081_reg_243 == 1'd1))))) begin
+    if (((1'b0 == ap_block_pp0_stage1_11001) & (ap_enable_reg_pp0_iter1 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage1) & (((icmp_ln1065_reg_256 == 1'd1) & (event_queue_buffer_is_issued_V_1_load_reg_252 == 1'd1) & (icmp_ln1081_reg_243 == 1'd1)) | ((icmp_ln1081_3_fu_192_p2 == 1'd1) & (event_queue_buffer_is_issued_V_1_load_reg_252 == 1'd1) & (icmp_ln1081_reg_243 == 1'd1))))) begin
         event_queue_lp_oldest_unissued_V_1_we0 = 1'b1;
     end else begin
         event_queue_lp_oldest_unissued_V_1_we0 = 1'b0;
@@ -557,7 +557,7 @@ assign icmp_ln1065_fu_181_p2 = ((event_queue_lp_oldest_unissued_V_1_q0 == 16'd65
 
 assign icmp_ln1069_fu_143_p2 = ((ap_sig_allocacmp_current_V_18 == 16'd65535) ? 1'b1 : 1'b0);
 
-assign icmp_ln1081_2_fu_192_p2 = (($signed(event_queue_buffer_event_recv_time_V_1_q0) > $signed(event_queue_buffer_event_recv_time_V_1_load_reg_238)) ? 1'b1 : 1'b0);
+assign icmp_ln1081_3_fu_192_p2 = (($signed(event_queue_buffer_event_recv_time_V_1_q0) > $signed(event_queue_buffer_event_recv_time_V_1_load_reg_238)) ? 1'b1 : 1'b0);
 
 assign icmp_ln1081_fu_155_p2 = (($signed(event_queue_buffer_event_recv_time_V_1_q1) > $signed(tmp_to_time_V)) ? 1'b1 : 1'b0);
 

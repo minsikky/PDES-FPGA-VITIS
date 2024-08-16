@@ -20,6 +20,8 @@ port (
     current_V : IN STD_LOGIC_VECTOR (15 downto 0);
     zext_ln145 : IN STD_LOGIC_VECTOR (1 downto 0);
     lpcore_cancellation_unit_output_stream_1_din : OUT STD_LOGIC_VECTOR (128 downto 0);
+    lpcore_cancellation_unit_output_stream_1_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    lpcore_cancellation_unit_output_stream_1_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
     lpcore_cancellation_unit_output_stream_1_full_n : IN STD_LOGIC;
     lpcore_cancellation_unit_output_stream_1_write : OUT STD_LOGIC;
     tmp_to_time_V : IN STD_LOGIC_VECTOR (31 downto 0);

@@ -34,6 +34,8 @@ port (
     cancellation_unit_input_stream_empty_n : IN STD_LOGIC;
     cancellation_unit_input_stream_read : OUT STD_LOGIC;
     lpcore_cancellation_unit_output_stream_0_din : OUT STD_LOGIC_VECTOR (128 downto 0);
+    lpcore_cancellation_unit_output_stream_0_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    lpcore_cancellation_unit_output_stream_0_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
     lpcore_cancellation_unit_output_stream_0_full_n : IN STD_LOGIC;
     lpcore_cancellation_unit_output_stream_0_write : OUT STD_LOGIC );
 end;
@@ -80,6 +82,7 @@ architecture behav of simulation_top_cancellation_unit_top_0_s is
     constant ap_const_lv3_1 : STD_LOGIC_VECTOR (2 downto 0) := "001";
     constant ap_const_lv16_1 : STD_LOGIC_VECTOR (15 downto 0) := "0000000000000001";
     constant ap_const_boolean_0 : BOOLEAN := false;
+    constant ap_const_lv2_0 : STD_LOGIC_VECTOR (1 downto 0) := "00";
 
 attribute shreg_extract : string;
     signal ap_done_reg : STD_LOGIC := '0';
@@ -134,7 +137,7 @@ attribute shreg_extract : string;
     signal tmp_nbreadreq_fu_122_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal cancellation_unit_commit_time_stream17_blk_n : STD_LOGIC;
     signal tmp_s_nbreadreq_fu_130_p3 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_8_nbreadreq_fu_138_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_3_nbreadreq_fu_138_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal cancellation_unit_input_stream_blk_n : STD_LOGIC;
     signal reg_336 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state3 : STD_LOGIC;
@@ -143,8 +146,8 @@ attribute shreg_extract : string;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
     signal tmp_reg_534 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_s_reg_538 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_8_reg_542 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_36_reg_560 : STD_LOGIC_VECTOR (31 downto 0);
+    signal tmp_3_reg_542 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_44_reg_560 : STD_LOGIC_VECTOR (31 downto 0);
     signal icmp_ln1077_fu_415_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln1077_reg_565 : STD_LOGIC_VECTOR (0 downto 0);
     signal cancellation_unit_buffer_next_V_1_addr_reg_569 : STD_LOGIC_VECTOR (5 downto 0);
@@ -235,7 +238,7 @@ attribute shreg_extract : string;
     signal add_ln886_9_fu_486_p2 : STD_LOGIC_VECTOR (2 downto 0);
     signal tmp_sender_id_V_fu_390_p4 : STD_LOGIC_VECTOR (15 downto 0);
     signal add_ln886_fu_527_p2 : STD_LOGIC_VECTOR (15 downto 0);
-    signal tmp_34_fu_405_p4 : STD_LOGIC_VECTOR (9 downto 0);
+    signal tmp_42_fu_405_p4 : STD_LOGIC_VECTOR (9 downto 0);
     signal trunc_ln1077_fu_401_p1 : STD_LOGIC_VECTOR (6 downto 0);
     signal add_ln886_8_fu_442_p2 : STD_LOGIC_VECTOR (6 downto 0);
     signal ap_block_state8_on_subcall_done : BOOLEAN;
@@ -260,7 +263,7 @@ attribute shreg_extract : string;
         ap_ready : OUT STD_LOGIC;
         current_V_32 : IN STD_LOGIC_VECTOR (15 downto 0);
         zext_ln1073 : IN STD_LOGIC_VECTOR (1 downto 0);
-        tmp_16 : IN STD_LOGIC_VECTOR (31 downto 0);
+        tmp_20 : IN STD_LOGIC_VECTOR (31 downto 0);
         removed_V_14_out_i : IN STD_LOGIC_VECTOR (15 downto 0);
         removed_V_14_out_o : OUT STD_LOGIC_VECTOR (15 downto 0);
         removed_V_14_out_o_ap_vld : OUT STD_LOGIC;
@@ -298,6 +301,8 @@ attribute shreg_extract : string;
         current_V : IN STD_LOGIC_VECTOR (15 downto 0);
         zext_ln145 : IN STD_LOGIC_VECTOR (1 downto 0);
         lpcore_cancellation_unit_output_stream_0_din : OUT STD_LOGIC_VECTOR (128 downto 0);
+        lpcore_cancellation_unit_output_stream_0_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        lpcore_cancellation_unit_output_stream_0_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         lpcore_cancellation_unit_output_stream_0_full_n : IN STD_LOGIC;
         lpcore_cancellation_unit_output_stream_0_write : OUT STD_LOGIC;
         tmp_to_time_V : IN STD_LOGIC_VECTOR (31 downto 0);
@@ -559,7 +564,7 @@ begin
         ap_ready => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready,
         current_V_32 => reg_336,
         zext_ln1073 => trunc_ln88_reg_602,
-        tmp_16 => tmp_36_reg_560,
+        tmp_20 => tmp_44_reg_560,
         removed_V_14_out_i => removed_V_fu_114,
         removed_V_14_out_o => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_14_out_o,
         removed_V_14_out_o_ap_vld => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_14_out_o_ap_vld,
@@ -595,6 +600,8 @@ begin
         current_V => reg_336,
         zext_ln145 => tmp_lp_id_V_reg_584,
         lpcore_cancellation_unit_output_stream_0_din => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_0_din,
+        lpcore_cancellation_unit_output_stream_0_num_data_valid => ap_const_lv2_0,
+        lpcore_cancellation_unit_output_stream_0_fifo_cap => ap_const_lv2_0,
         lpcore_cancellation_unit_output_stream_0_full_n => lpcore_cancellation_unit_output_stream_0_full_n,
         lpcore_cancellation_unit_output_stream_0_write => grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_0_write,
         tmp_to_time_V => tmp_to_time_V_reg_589,
@@ -716,7 +723,7 @@ begin
         if (ap_clk'event and ap_clk = '1') then
             if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (icmp_ln1077_fu_415_p2 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_1) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
                 cancellation_unit_total_size_V_1 <= zext_ln886_fu_448_p1;
-            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_8_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
+            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_3_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
                 cancellation_unit_total_size_V_1 <= sub_ln887_fu_509_p2;
             elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_1_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8) and (tmp_reg_534 = ap_const_lv1_1))) then 
                 cancellation_unit_total_size_V_1 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_1_o;
@@ -727,9 +734,9 @@ begin
     lp_id_V_fu_118_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_8_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_3_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
                 lp_id_V_fu_118 <= ap_const_lv3_0;
-            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_8_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
+            elsif (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_3_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then 
                 lp_id_V_fu_118 <= add_ln886_9_fu_486_p2;
             end if; 
         end if;
@@ -738,7 +745,7 @@ begin
     removed_V_fu_114_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_8_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+            if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0) or ((cancellation_unit_rollback_info_stream_empty_n = ap_const_logic_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_1)) or ((cancellation_unit_input_stream_empty_n = ap_const_logic_0) and (ap_predicate_op25_read_state1 = ap_const_boolean_1)) or ((cancellation_unit_commit_time_stream17_empty_n = ap_const_logic_0) and (ap_predicate_op21_read_state1 = ap_const_boolean_1)))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_3_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
                 removed_V_fu_114 <= ap_const_lv16_0;
             elsif (((grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_14_out_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state5))) then 
                 removed_V_fu_114 <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_14_out_o;
@@ -773,16 +780,16 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_8_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
-                tmp_36_reg_560 <= cancellation_unit_commit_time_stream17_dout;
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                tmp_3_reg_542 <= tmp_3_nbreadreq_fu_138_p3;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
-                tmp_8_reg_542 <= tmp_8_nbreadreq_fu_138_p3;
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_3_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then
+                tmp_44_reg_560 <= cancellation_unit_commit_time_stream17_dout;
             end if;
         end if;
     end process;
@@ -814,13 +821,13 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_8_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then
+            if (((icmp_ln1073_fu_480_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2) and (tmp_3_reg_542 = ap_const_lv1_1) and (tmp_s_reg_538 = ap_const_lv1_0))) then
                 trunc_ln88_reg_602 <= trunc_ln88_fu_497_p1;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_reg_538, tmp_8_reg_542, ap_CS_fsm_state2, icmp_ln1073_fu_480_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1, ap_block_state8_on_subcall_done)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, cancellation_unit_rollback_info_stream_empty_n, cancellation_unit_commit_time_stream17_empty_n, cancellation_unit_input_stream_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_reg_538, tmp_3_reg_542, ap_CS_fsm_state2, icmp_ln1073_fu_480_p2, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_done, ap_CS_fsm_state5, ap_CS_fsm_state8, ap_predicate_op21_read_state1, ap_predicate_op25_read_state1, ap_block_state8_on_subcall_done)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -832,7 +839,7 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if (((ap_const_logic_1 = ap_CS_fsm_state2) and ((tmp_s_reg_538 = ap_const_lv1_1) or ((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) or (tmp_8_reg_542 = ap_const_lv1_0))))) then
+                if (((ap_const_logic_1 = ap_CS_fsm_state2) and ((tmp_s_reg_538 = ap_const_lv1_1) or ((icmp_ln1073_fu_480_p2 = ap_const_lv1_1) or (tmp_3_reg_542 = ap_const_lv1_0))))) then
                     ap_NS_fsm <= ap_ST_fsm_state8;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state3;
@@ -940,9 +947,9 @@ begin
     end process;
 
 
-    ap_predicate_op21_read_state1_assign_proc : process(tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_8_nbreadreq_fu_138_p3)
+    ap_predicate_op21_read_state1_assign_proc : process(tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_3_nbreadreq_fu_138_p3)
     begin
-                ap_predicate_op21_read_state1 <= ((tmp_8_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0));
+                ap_predicate_op21_read_state1 <= ((tmp_3_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0));
     end process;
 
 
@@ -1199,9 +1206,9 @@ begin
     end process;
 
 
-    cancellation_unit_commit_time_stream17_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_commit_time_stream17_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_8_nbreadreq_fu_138_p3)
+    cancellation_unit_commit_time_stream17_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, cancellation_unit_commit_time_stream17_empty_n, tmp_nbreadreq_fu_122_p3, tmp_s_nbreadreq_fu_130_p3, tmp_3_nbreadreq_fu_138_p3)
     begin
-        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_8_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
+        if ((not(((ap_done_reg = ap_const_logic_1) or (ap_start = ap_const_logic_0))) and (ap_const_logic_1 = ap_CS_fsm_state1) and (tmp_3_nbreadreq_fu_138_p3 = ap_const_lv1_1) and (tmp_s_nbreadreq_fu_130_p3 = ap_const_lv1_0) and (tmp_nbreadreq_fu_122_p3 = ap_const_lv1_0))) then 
             cancellation_unit_commit_time_stream17_blk_n <= cancellation_unit_commit_time_stream17_empty_n;
         else 
             cancellation_unit_commit_time_stream17_blk_n <= ap_const_logic_1;
@@ -1379,7 +1386,7 @@ begin
     grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_ap_start_reg;
     grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start_reg;
     icmp_ln1073_fu_480_p2 <= "1" when (lp_id_V_fu_118 = ap_const_lv3_4) else "0";
-    icmp_ln1077_fu_415_p2 <= "1" when (tmp_34_fu_405_p4 = ap_const_lv10_0) else "0";
+    icmp_ln1077_fu_415_p2 <= "1" when (tmp_42_fu_405_p4 = ap_const_lv10_0) else "0";
     lpcore_cancellation_unit_output_stream_0_din <= grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_0_din;
 
     lpcore_cancellation_unit_output_stream_0_write_assign_proc : process(tmp_reg_534, grp_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_0_write, ap_CS_fsm_state8)
@@ -1392,8 +1399,8 @@ begin
     end process;
 
     sub_ln887_fu_509_p2 <= std_logic_vector(unsigned(cancellation_unit_total_size_V_1) - unsigned(removed_V_fu_114));
-    tmp_34_fu_405_p4 <= cancellation_unit_total_size_V_1(15 downto 6);
-    tmp_8_nbreadreq_fu_138_p3 <= (0=>(cancellation_unit_commit_time_stream17_empty_n), others=>'-');
+    tmp_3_nbreadreq_fu_138_p3 <= (0=>(cancellation_unit_commit_time_stream17_empty_n), others=>'-');
+    tmp_42_fu_405_p4 <= cancellation_unit_total_size_V_1(15 downto 6);
     tmp_lp_id_V_fu_458_p1 <= cancellation_unit_rollback_info_stream_dout(2 - 1 downto 0);
     tmp_nbreadreq_fu_122_p3 <= (0=>(cancellation_unit_rollback_info_stream_empty_n), others=>'-');
     tmp_s_nbreadreq_fu_130_p3 <= (0=>(cancellation_unit_input_stream_empty_n), others=>'-');

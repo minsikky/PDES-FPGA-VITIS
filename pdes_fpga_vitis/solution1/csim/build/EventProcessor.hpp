@@ -19,6 +19,7 @@ public:
     EventProcessor(ap_uint<8> lpcore_id);
     void process_event(TimeWarpEvent &event, LPState &state,
                        hls::stream<LPState> &state_buffer_input_stream,
+                       hls::stream<LVT> &lvt_stream,
                        hls::stream<TimeWarpEvent> &output_event_stream,
                        hls::stream<TimeWarpEvent> &cancellation_unit_input_stream);
 };
@@ -27,6 +28,7 @@ template <int ID>
 void event_processor_top(
     hls::stream<EventProcessorInput> &event_processor_input_stream,
     hls::stream<LPState> &state_buffer_input_stream,
+    hls::stream<LVT> &lvt_stream,
     hls::stream<TimeWarpEvent> &output_event_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_input_stream)
 {
@@ -36,7 +38,7 @@ void event_processor_top(
         EventProcessorInput input = event_processor_input_stream.read();
         TimeWarpEvent event = input.event;
         LPState state = input.state;
-        event_processor.process_event(event, state, state_buffer_input_stream, output_event_stream, cancellation_unit_input_stream);
+        event_processor.process_event(event, state, state_buffer_input_stream, lvt_stream, output_event_stream, cancellation_unit_input_stream);
     }
 }
 

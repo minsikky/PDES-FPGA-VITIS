@@ -151,8 +151,8 @@
 <Attribute>data</Attribute>
 </RtlPorts>
 <RtlPorts>
-<name>tmp_16</name>
-<Object>tmp_16</Object>
+<name>tmp_20</name>
+<Object>tmp_20</Object>
 <Type>scalar</Type>
 <Scope></Scope>
 <IOProtocol>ap_none</IOProtocol>

@@ -49,7 +49,7 @@ void cancellation_unit_top( // TODO: revise. This is just a placeholder
     hls::stream<TimeWarpEvent> &cancellation_unit_input_stream,
     hls::stream<TimeWarpEvent> &anti_message_stream)
 {
-    CancellationUnit cancellation_unit;
+    static CancellationUnit cancellation_unit;
 
     if (!cancellation_unit_rollback_info_stream.empty())
     {

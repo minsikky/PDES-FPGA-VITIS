@@ -72,14 +72,14 @@
 			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp</location>
 		</link>
 		<link>
-			<name>source/EventRouter.cpp</name>
+			<name>source/GlobalControl.cpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventRouter.cpp</location>
+			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/GlobalControl.cpp</location>
 		</link>
 		<link>
-			<name>source/EventRouter.hpp</name>
+			<name>source/GlobalControl.hpp</name>
 			<type>1</type>
-			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventRouter.hpp</location>
+			<location>/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/GlobalControl.hpp</location>
 		</link>
 		<link>
 			<name>source/LFSR_PRNG.cpp</name>

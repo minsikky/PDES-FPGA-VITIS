@@ -29,4 +29,4 @@ obj/TimeWarpSimulation.o: ../../../../cpp/TimeWarpSimulation.cpp \
  ../../../../cpp/EventQueue.hpp ../../../../cpp/StateBuffer.hpp \
  ../../../../cpp/CancellationUnit.hpp ../../../../cpp/EventProcessor.hpp \
  ../../../../cpp/LFSR_PRNG.hpp ../../../../cpp/LPMapping.hpp \
- ../../../../cpp/EventRouter.hpp ../../../../cpp/LPCoreControl.hpp
+ ../../../../cpp/LPCoreControl.hpp ../../../../cpp/GlobalControl.hpp

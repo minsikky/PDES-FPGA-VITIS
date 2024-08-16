@@ -16,7 +16,7 @@ module simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2 (
         ap_ready,
         current_V_27,
         zext_ln1073,
-        tmp_14,
+        tmp_18,
         removed_V_11_out_i,
         removed_V_11_out_o,
         removed_V_11_out_o_ap_vld,
@@ -54,7 +54,7 @@ output   ap_idle;
 output   ap_ready;
 input  [15:0] current_V_27;
 input  [1:0] zext_ln1073;
-input  [31:0] tmp_14;
+input  [31:0] tmp_18;
 input  [15:0] removed_V_11_out_i;
 output  [15:0] removed_V_11_out_o;
 output   removed_V_11_out_o_ap_vld;
@@ -426,7 +426,7 @@ assign icmp_ln1065_fu_169_p2 = ((prev_V_fu_48 == 16'd65535) ? 1'b1 : 1'b0);
 
 assign icmp_ln1069_fu_149_p2 = ((ap_sig_allocacmp_current_V == 16'd65535) ? 1'b1 : 1'b0);
 
-assign icmp_ln1085_fu_161_p2 = (($signed(cancellation_unit_buffer_event_send_time_V_q0) > $signed(tmp_14)) ? 1'b1 : 1'b0);
+assign icmp_ln1085_fu_161_p2 = (($signed(cancellation_unit_buffer_event_send_time_V_q0) > $signed(tmp_18)) ? 1'b1 : 1'b0);
 
 assign removed_V_fu_184_p2 = (removed_V_11_out_i + 16'd1);
 

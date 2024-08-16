@@ -114,6 +114,8 @@ attribute shreg_extract : string;
         ap_idle : OUT STD_LOGIC;
         ap_ready : OUT STD_LOGIC;
         lpcore_commit_time_stream_0_dout : IN STD_LOGIC_VECTOR (31 downto 0);
+        lpcore_commit_time_stream_0_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        lpcore_commit_time_stream_0_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         lpcore_commit_time_stream_0_empty_n : IN STD_LOGIC;
         lpcore_commit_time_stream_0_read : OUT STD_LOGIC;
         event_queue_commit_time_stream15_din : OUT STD_LOGIC_VECTOR (31 downto 0);
@@ -176,6 +178,8 @@ begin
         ap_idle => lpcore_commit_control_U0_ap_idle,
         ap_ready => lpcore_commit_control_U0_ap_ready,
         lpcore_commit_time_stream_0_dout => lpcore_commit_time_stream_0_dout,
+        lpcore_commit_time_stream_0_num_data_valid => ap_const_lv2_0,
+        lpcore_commit_time_stream_0_fifo_cap => ap_const_lv2_0,
         lpcore_commit_time_stream_0_empty_n => lpcore_commit_time_stream_0_empty_n,
         lpcore_commit_time_stream_0_read => lpcore_commit_control_U0_lpcore_commit_time_stream_0_read,
         event_queue_commit_time_stream15_din => lpcore_commit_control_U0_event_queue_commit_time_stream15_din,

@@ -28,7 +28,14 @@ port (
     state_buffer_input_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
     state_buffer_input_stream_full_n : IN STD_LOGIC;
     state_buffer_input_stream_write : OUT STD_LOGIC;
+    lpcore_lvt_stream_0_din : OUT STD_LOGIC_VECTOR (47 downto 0);
+    lpcore_lvt_stream_0_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    lpcore_lvt_stream_0_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+    lpcore_lvt_stream_0_full_n : IN STD_LOGIC;
+    lpcore_lvt_stream_0_write : OUT STD_LOGIC;
     lpcore_output_event_stream_0_din : OUT STD_LOGIC_VECTOR (128 downto 0);
+    lpcore_output_event_stream_0_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+    lpcore_output_event_stream_0_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
     lpcore_output_event_stream_0_full_n : IN STD_LOGIC;
     lpcore_output_event_stream_0_write : OUT STD_LOGIC;
     cancellation_unit_input_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
@@ -72,28 +79,30 @@ attribute shreg_extract : string;
     attribute fsm_encoding of ap_CS_fsm_state1 : signal is "none";
     signal event_processor_prng_generators_state_V_1_q0 : STD_LOGIC_VECTOR (7 downto 0);
     signal event_processor_input_stream_blk_n : STD_LOGIC;
-    signal tmp_nbreadreq_fu_52_p3 : STD_LOGIC_VECTOR (0 downto 0);
-    signal tmp_reg_131 : STD_LOGIC_VECTOR (0 downto 0);
-    signal event_receiver_id_V_reg_135 : STD_LOGIC_VECTOR (15 downto 0);
-    signal event_is_anti_message_V_reg_140 : STD_LOGIC_VECTOR (0 downto 0);
-    signal state_lp_id_V_reg_145 : STD_LOGIC_VECTOR (15 downto 0);
-    signal state_rng_state_V_reg_150 : STD_LOGIC_VECTOR (31 downto 0);
-    signal event_recv_time_V_reg_155 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_process_event_fu_66_ap_start : STD_LOGIC;
-    signal grp_process_event_fu_66_ap_done : STD_LOGIC;
-    signal grp_process_event_fu_66_ap_idle : STD_LOGIC;
-    signal grp_process_event_fu_66_ap_ready : STD_LOGIC;
-    signal grp_process_event_fu_66_this_prng_generators_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_process_event_fu_66_this_prng_generators_ce0 : STD_LOGIC;
-    signal grp_process_event_fu_66_this_prng_generators_we0 : STD_LOGIC;
-    signal grp_process_event_fu_66_this_prng_generators_d0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal grp_process_event_fu_66_state_buffer_input_stream_din : STD_LOGIC_VECTOR (79 downto 0);
-    signal grp_process_event_fu_66_state_buffer_input_stream_write : STD_LOGIC;
-    signal grp_process_event_fu_66_lpcore_output_event_stream_1_din : STD_LOGIC_VECTOR (128 downto 0);
-    signal grp_process_event_fu_66_lpcore_output_event_stream_1_write : STD_LOGIC;
-    signal grp_process_event_fu_66_cancellation_unit_input_stream_din : STD_LOGIC_VECTOR (128 downto 0);
-    signal grp_process_event_fu_66_cancellation_unit_input_stream_write : STD_LOGIC;
-    signal grp_process_event_fu_66_ap_start_reg : STD_LOGIC := '0';
+    signal tmp_nbreadreq_fu_54_p3 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tmp_reg_135 : STD_LOGIC_VECTOR (0 downto 0);
+    signal event_receiver_id_V_reg_139 : STD_LOGIC_VECTOR (15 downto 0);
+    signal event_is_anti_message_V_reg_144 : STD_LOGIC_VECTOR (0 downto 0);
+    signal state_lp_id_V_reg_149 : STD_LOGIC_VECTOR (15 downto 0);
+    signal state_rng_state_V_reg_154 : STD_LOGIC_VECTOR (31 downto 0);
+    signal event_recv_time_V_reg_159 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_process_event_fu_68_ap_start : STD_LOGIC;
+    signal grp_process_event_fu_68_ap_done : STD_LOGIC;
+    signal grp_process_event_fu_68_ap_idle : STD_LOGIC;
+    signal grp_process_event_fu_68_ap_ready : STD_LOGIC;
+    signal grp_process_event_fu_68_this_prng_generators_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_process_event_fu_68_this_prng_generators_ce0 : STD_LOGIC;
+    signal grp_process_event_fu_68_this_prng_generators_we0 : STD_LOGIC;
+    signal grp_process_event_fu_68_this_prng_generators_d0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal grp_process_event_fu_68_state_buffer_input_stream_din : STD_LOGIC_VECTOR (79 downto 0);
+    signal grp_process_event_fu_68_state_buffer_input_stream_write : STD_LOGIC;
+    signal grp_process_event_fu_68_lpcore_lvt_stream_1_din : STD_LOGIC_VECTOR (47 downto 0);
+    signal grp_process_event_fu_68_lpcore_lvt_stream_1_write : STD_LOGIC;
+    signal grp_process_event_fu_68_lpcore_output_event_stream_1_din : STD_LOGIC_VECTOR (128 downto 0);
+    signal grp_process_event_fu_68_lpcore_output_event_stream_1_write : STD_LOGIC;
+    signal grp_process_event_fu_68_cancellation_unit_input_stream_din : STD_LOGIC_VECTOR (128 downto 0);
+    signal grp_process_event_fu_68_cancellation_unit_input_stream_write : STD_LOGIC;
+    signal grp_process_event_fu_68_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal ap_CS_fsm_state3 : STD_LOGIC;
@@ -129,7 +138,14 @@ attribute shreg_extract : string;
         state_buffer_input_stream_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         state_buffer_input_stream_full_n : IN STD_LOGIC;
         state_buffer_input_stream_write : OUT STD_LOGIC;
+        lpcore_lvt_stream_1_din : OUT STD_LOGIC_VECTOR (47 downto 0);
+        lpcore_lvt_stream_1_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        lpcore_lvt_stream_1_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
+        lpcore_lvt_stream_1_full_n : IN STD_LOGIC;
+        lpcore_lvt_stream_1_write : OUT STD_LOGIC;
         lpcore_output_event_stream_1_din : OUT STD_LOGIC_VECTOR (128 downto 0);
+        lpcore_output_event_stream_1_num_data_valid : IN STD_LOGIC_VECTOR (1 downto 0);
+        lpcore_output_event_stream_1_fifo_cap : IN STD_LOGIC_VECTOR (1 downto 0);
         lpcore_output_event_stream_1_full_n : IN STD_LOGIC;
         lpcore_output_event_stream_1_write : OUT STD_LOGIC;
         cancellation_unit_input_stream_din : OUT STD_LOGIC_VECTOR (128 downto 0);
@@ -166,43 +182,50 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst,
-        address0 => grp_process_event_fu_66_this_prng_generators_address0,
-        ce0 => grp_process_event_fu_66_this_prng_generators_ce0,
-        we0 => grp_process_event_fu_66_this_prng_generators_we0,
-        d0 => grp_process_event_fu_66_this_prng_generators_d0,
+        address0 => grp_process_event_fu_68_this_prng_generators_address0,
+        ce0 => grp_process_event_fu_68_this_prng_generators_ce0,
+        we0 => grp_process_event_fu_68_this_prng_generators_we0,
+        d0 => grp_process_event_fu_68_this_prng_generators_d0,
         q0 => event_processor_prng_generators_state_V_1_q0);
 
-    grp_process_event_fu_66 : component simulation_top_process_event
+    grp_process_event_fu_68 : component simulation_top_process_event
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
-        ap_start => grp_process_event_fu_66_ap_start,
-        ap_done => grp_process_event_fu_66_ap_done,
-        ap_idle => grp_process_event_fu_66_ap_idle,
-        ap_ready => grp_process_event_fu_66_ap_ready,
-        this_prng_generators_address0 => grp_process_event_fu_66_this_prng_generators_address0,
-        this_prng_generators_ce0 => grp_process_event_fu_66_this_prng_generators_ce0,
-        this_prng_generators_we0 => grp_process_event_fu_66_this_prng_generators_we0,
-        this_prng_generators_d0 => grp_process_event_fu_66_this_prng_generators_d0,
+        ap_start => grp_process_event_fu_68_ap_start,
+        ap_done => grp_process_event_fu_68_ap_done,
+        ap_idle => grp_process_event_fu_68_ap_idle,
+        ap_ready => grp_process_event_fu_68_ap_ready,
+        this_prng_generators_address0 => grp_process_event_fu_68_this_prng_generators_address0,
+        this_prng_generators_ce0 => grp_process_event_fu_68_this_prng_generators_ce0,
+        this_prng_generators_we0 => grp_process_event_fu_68_this_prng_generators_we0,
+        this_prng_generators_d0 => grp_process_event_fu_68_this_prng_generators_d0,
         this_prng_generators_q0 => event_processor_prng_generators_state_V_1_q0,
-        p_read1 => event_recv_time_V_reg_155,
-        p_read2 => event_receiver_id_V_reg_135,
-        p_read3 => event_is_anti_message_V_reg_140,
-        p_read4 => state_lp_id_V_reg_145,
-        p_read6 => state_rng_state_V_reg_150,
-        state_buffer_input_stream_din => grp_process_event_fu_66_state_buffer_input_stream_din,
+        p_read1 => event_recv_time_V_reg_159,
+        p_read2 => event_receiver_id_V_reg_139,
+        p_read3 => event_is_anti_message_V_reg_144,
+        p_read4 => state_lp_id_V_reg_149,
+        p_read6 => state_rng_state_V_reg_154,
+        state_buffer_input_stream_din => grp_process_event_fu_68_state_buffer_input_stream_din,
         state_buffer_input_stream_num_data_valid => ap_const_lv2_0,
         state_buffer_input_stream_fifo_cap => ap_const_lv2_0,
         state_buffer_input_stream_full_n => state_buffer_input_stream_full_n,
-        state_buffer_input_stream_write => grp_process_event_fu_66_state_buffer_input_stream_write,
-        lpcore_output_event_stream_1_din => grp_process_event_fu_66_lpcore_output_event_stream_1_din,
+        state_buffer_input_stream_write => grp_process_event_fu_68_state_buffer_input_stream_write,
+        lpcore_lvt_stream_1_din => grp_process_event_fu_68_lpcore_lvt_stream_1_din,
+        lpcore_lvt_stream_1_num_data_valid => ap_const_lv2_0,
+        lpcore_lvt_stream_1_fifo_cap => ap_const_lv2_0,
+        lpcore_lvt_stream_1_full_n => lpcore_lvt_stream_0_full_n,
+        lpcore_lvt_stream_1_write => grp_process_event_fu_68_lpcore_lvt_stream_1_write,
+        lpcore_output_event_stream_1_din => grp_process_event_fu_68_lpcore_output_event_stream_1_din,
+        lpcore_output_event_stream_1_num_data_valid => ap_const_lv2_0,
+        lpcore_output_event_stream_1_fifo_cap => ap_const_lv2_0,
         lpcore_output_event_stream_1_full_n => lpcore_output_event_stream_0_full_n,
-        lpcore_output_event_stream_1_write => grp_process_event_fu_66_lpcore_output_event_stream_1_write,
-        cancellation_unit_input_stream_din => grp_process_event_fu_66_cancellation_unit_input_stream_din,
+        lpcore_output_event_stream_1_write => grp_process_event_fu_68_lpcore_output_event_stream_1_write,
+        cancellation_unit_input_stream_din => grp_process_event_fu_68_cancellation_unit_input_stream_din,
         cancellation_unit_input_stream_num_data_valid => ap_const_lv2_0,
         cancellation_unit_input_stream_fifo_cap => ap_const_lv2_0,
         cancellation_unit_input_stream_full_n => cancellation_unit_input_stream_full_n,
-        cancellation_unit_input_stream_write => grp_process_event_fu_66_cancellation_unit_input_stream_write);
+        cancellation_unit_input_stream_write => grp_process_event_fu_68_cancellation_unit_input_stream_write);
 
 
 
@@ -236,16 +259,16 @@ begin
     end process;
 
 
-    grp_process_event_fu_66_ap_start_reg_assign_proc : process(ap_clk)
+    grp_process_event_fu_68_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
-                grp_process_event_fu_66_ap_start_reg <= ap_const_logic_0;
+                grp_process_event_fu_68_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-                    grp_process_event_fu_66_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_process_event_fu_66_ap_ready = ap_const_logic_1)) then 
-                    grp_process_event_fu_66_ap_start_reg <= ap_const_logic_0;
+                    grp_process_event_fu_68_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_process_event_fu_68_ap_ready = ap_const_logic_1)) then 
+                    grp_process_event_fu_68_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
@@ -254,12 +277,12 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                event_is_anti_message_V_reg_140 <= event_processor_input_stream_dout(128 downto 128);
-                event_receiver_id_V_reg_135 <= event_processor_input_stream_dout(127 downto 112);
-                event_recv_time_V_reg_155 <= event_processor_input_stream_dout(63 downto 32);
-                state_lp_id_V_reg_145 <= event_processor_input_stream_dout(144 downto 129);
-                state_rng_state_V_reg_150 <= event_processor_input_stream_dout(208 downto 177);
+            if (((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                event_is_anti_message_V_reg_144 <= event_processor_input_stream_dout(128 downto 128);
+                event_receiver_id_V_reg_139 <= event_processor_input_stream_dout(127 downto 112);
+                event_recv_time_V_reg_159 <= event_processor_input_stream_dout(63 downto 32);
+                state_lp_id_V_reg_149 <= event_processor_input_stream_dout(144 downto 129);
+                state_rng_state_V_reg_154 <= event_processor_input_stream_dout(208 downto 177);
             end if;
         end if;
     end process;
@@ -267,18 +290,18 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state1)) then
-                tmp_reg_131 <= tmp_nbreadreq_fu_52_p3;
+                tmp_reg_135 <= tmp_nbreadreq_fu_54_p3;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_52_p3, ap_CS_fsm_state3, ap_block_state3_on_subcall_done)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_54_p3, ap_CS_fsm_state3, ap_block_state3_on_subcall_done)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
-                if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_52_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_54_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
-                elsif ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
+                elsif ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state1;
@@ -299,9 +322,9 @@ begin
     ap_CS_fsm_state2 <= ap_CS_fsm(1);
     ap_CS_fsm_state3 <= ap_CS_fsm(2);
 
-    ap_ST_fsm_state1_blk_assign_proc : process(ap_start, ap_done_reg, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_52_p3)
+    ap_ST_fsm_state1_blk_assign_proc : process(ap_start, ap_done_reg, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_54_p3)
     begin
-        if (((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) then 
+        if (((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) then 
             ap_ST_fsm_state1_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state1_blk <= ap_const_logic_0;
@@ -320,15 +343,15 @@ begin
     end process;
 
 
-    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_52_p3)
+    ap_block_state1_assign_proc : process(ap_start, ap_done_reg, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_54_p3)
     begin
-                ap_block_state1 <= ((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)));
+                ap_block_state1 <= ((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)));
     end process;
 
 
-    ap_block_state3_on_subcall_done_assign_proc : process(tmp_reg_131, grp_process_event_fu_66_ap_done)
+    ap_block_state3_on_subcall_done_assign_proc : process(tmp_reg_135, grp_process_event_fu_68_ap_done)
     begin
-                ap_block_state3_on_subcall_done <= ((grp_process_event_fu_66_ap_done = ap_const_logic_0) and (tmp_reg_131 = ap_const_lv1_1));
+                ap_block_state3_on_subcall_done <= ((grp_process_event_fu_68_ap_done = ap_const_logic_0) and (tmp_reg_135 = ap_const_lv1_1));
     end process;
 
 
@@ -361,21 +384,21 @@ begin
         end if; 
     end process;
 
-    cancellation_unit_input_stream_din <= grp_process_event_fu_66_cancellation_unit_input_stream_din;
+    cancellation_unit_input_stream_din <= grp_process_event_fu_68_cancellation_unit_input_stream_din;
 
-    cancellation_unit_input_stream_write_assign_proc : process(tmp_reg_131, grp_process_event_fu_66_cancellation_unit_input_stream_write, ap_CS_fsm_state3)
+    cancellation_unit_input_stream_write_assign_proc : process(tmp_reg_135, grp_process_event_fu_68_cancellation_unit_input_stream_write, ap_CS_fsm_state3)
     begin
-        if (((tmp_reg_131 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
-            cancellation_unit_input_stream_write <= grp_process_event_fu_66_cancellation_unit_input_stream_write;
+        if (((tmp_reg_135 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
+            cancellation_unit_input_stream_write <= grp_process_event_fu_68_cancellation_unit_input_stream_write;
         else 
             cancellation_unit_input_stream_write <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    event_processor_input_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_52_p3)
+    event_processor_input_stream_blk_n_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_54_p3)
     begin
-        if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1))) and (tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             event_processor_input_stream_blk_n <= event_processor_input_stream_empty_n;
         else 
             event_processor_input_stream_blk_n <= ap_const_logic_1;
@@ -383,37 +406,48 @@ begin
     end process;
 
 
-    event_processor_input_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_52_p3)
+    event_processor_input_stream_read_assign_proc : process(ap_start, ap_done_reg, ap_CS_fsm_state1, event_processor_input_stream_empty_n, tmp_nbreadreq_fu_54_p3)
     begin
-        if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_52_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
+        if ((not(((ap_start = ap_const_logic_0) or (ap_done_reg = ap_const_logic_1) or ((tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (event_processor_input_stream_empty_n = ap_const_logic_0)))) and (tmp_nbreadreq_fu_54_p3 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then 
             event_processor_input_stream_read <= ap_const_logic_1;
         else 
             event_processor_input_stream_read <= ap_const_logic_0;
         end if; 
     end process;
 
-    grp_process_event_fu_66_ap_start <= grp_process_event_fu_66_ap_start_reg;
-    lpcore_output_event_stream_0_din <= grp_process_event_fu_66_lpcore_output_event_stream_1_din;
+    grp_process_event_fu_68_ap_start <= grp_process_event_fu_68_ap_start_reg;
+    lpcore_lvt_stream_0_din <= grp_process_event_fu_68_lpcore_lvt_stream_1_din;
 
-    lpcore_output_event_stream_0_write_assign_proc : process(tmp_reg_131, grp_process_event_fu_66_lpcore_output_event_stream_1_write, ap_CS_fsm_state3)
+    lpcore_lvt_stream_0_write_assign_proc : process(tmp_reg_135, grp_process_event_fu_68_lpcore_lvt_stream_1_write, ap_CS_fsm_state3)
     begin
-        if (((tmp_reg_131 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
-            lpcore_output_event_stream_0_write <= grp_process_event_fu_66_lpcore_output_event_stream_1_write;
+        if (((tmp_reg_135 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
+            lpcore_lvt_stream_0_write <= grp_process_event_fu_68_lpcore_lvt_stream_1_write;
+        else 
+            lpcore_lvt_stream_0_write <= ap_const_logic_0;
+        end if; 
+    end process;
+
+    lpcore_output_event_stream_0_din <= grp_process_event_fu_68_lpcore_output_event_stream_1_din;
+
+    lpcore_output_event_stream_0_write_assign_proc : process(tmp_reg_135, grp_process_event_fu_68_lpcore_output_event_stream_1_write, ap_CS_fsm_state3)
+    begin
+        if (((tmp_reg_135 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
+            lpcore_output_event_stream_0_write <= grp_process_event_fu_68_lpcore_output_event_stream_1_write;
         else 
             lpcore_output_event_stream_0_write <= ap_const_logic_0;
         end if; 
     end process;
 
-    state_buffer_input_stream_din <= grp_process_event_fu_66_state_buffer_input_stream_din;
+    state_buffer_input_stream_din <= grp_process_event_fu_68_state_buffer_input_stream_din;
 
-    state_buffer_input_stream_write_assign_proc : process(tmp_reg_131, grp_process_event_fu_66_state_buffer_input_stream_write, ap_CS_fsm_state3)
+    state_buffer_input_stream_write_assign_proc : process(tmp_reg_135, grp_process_event_fu_68_state_buffer_input_stream_write, ap_CS_fsm_state3)
     begin
-        if (((tmp_reg_131 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
-            state_buffer_input_stream_write <= grp_process_event_fu_66_state_buffer_input_stream_write;
+        if (((tmp_reg_135 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state3))) then 
+            state_buffer_input_stream_write <= grp_process_event_fu_68_state_buffer_input_stream_write;
         else 
             state_buffer_input_stream_write <= ap_const_logic_0;
         end if; 
     end process;
 
-    tmp_nbreadreq_fu_52_p3 <= (0=>(event_processor_input_stream_empty_n), others=>'-');
+    tmp_nbreadreq_fu_54_p3 <= (0=>(event_processor_input_stream_empty_n), others=>'-');
 end behav;

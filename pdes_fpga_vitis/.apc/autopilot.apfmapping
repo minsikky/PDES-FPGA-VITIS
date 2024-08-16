@@ -19,14 +19,14 @@
     <originFiles name="LPCore.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LPCore.cpp"/>
     <originFiles name="LFSR_PRNG.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LFSR_PRNG.hpp"/>
     <originFiles name="LFSR_PRNG.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/LFSR_PRNG.cpp"/>
-    <originFiles name="EventRouter.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventRouter.hpp"/>
-    <originFiles name="EventRouter.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventRouter.cpp"/>
     <originFiles name="EventQueue.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.hpp"/>
     <originFiles name="EventQueue.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventQueue.cpp"/>
     <originFiles name="EventProcessor.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventProcessor.hpp"/>
     <originFiles name="EventProcessor.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/EventProcessor.cpp"/>
     <originFiles name="CancellationUnit.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/CancellationUnit.hpp"/>
     <originFiles name="CancellationUnit.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/CancellationUnit.cpp"/>
+    <originFiles name="GlobalControl.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/GlobalControl.cpp"/>
+    <originFiles name="GlobalControl.hpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/GlobalControl.hpp"/>
   </source>
   <testbench>
     <originFiles name="main.cpp" path="/n/higgins/z/minsikky/PDES-FPGA-VITIS/cpp/main.cpp"/>

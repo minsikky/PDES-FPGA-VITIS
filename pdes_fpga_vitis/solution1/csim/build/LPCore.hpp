@@ -10,7 +10,6 @@
 #include "StateBuffer.hpp"
 #include "CancellationUnit.hpp"
 #include "EventProcessor.hpp"
-#include "EventRouter.hpp"
 #include "LPMapping.hpp"
 #include "LPCoreControl.hpp"
 
@@ -72,6 +71,7 @@ void lpcore_kernel(
     hls::stream<TimeWarpEvent> &anti_message_stream,
     hls::stream<TimeWarpEvent> &enqueue_event_stream,
     // OUTPUT OF THE LPCORE
+    hls::stream<LVT> &lvt_stream,
     hls::stream<TimeWarpEvent> &output_event_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
     // COMMIT SIGNAL FROM GLOBAL CONTROLLER
@@ -90,10 +90,10 @@ void lpcore_kernel(
     hls_thread_local hls::stream<ap_int<32>> state_buffer_commit_time_stream;
     hls_thread_local hls::stream<ap_int<32>> cancellation_unit_commit_time_stream;
 
-    hls_thread_local hls::task lpcore_control_task(lpcore_control_top, causality_violation_stream, event_queue_rollback_info_stream, state_buffer_rollback_info_stream, cancellation_unit_rollback_info_stream, commit_time_stream, event_queue_commit_time_stream, state_buffer_commit_time_stream, cancellation_unit_commit_time_stream);
+    hls_thread_local hls::task lpcore_control_task(lpcore_control_top<ID>, causality_violation_stream, event_queue_rollback_info_stream, state_buffer_rollback_info_stream, cancellation_unit_rollback_info_stream, commit_time_stream, event_queue_commit_time_stream, state_buffer_commit_time_stream, cancellation_unit_commit_time_stream);
     hls_thread_local hls::task event_queue_task(event_queue_top<ID>, init_event_stream, event_queue_full_stream, event_queue_rollback_info_stream, anti_message_stream, enqueue_event_stream, event_queue_commit_time_stream, issued_event_stream, causality_violation_stream);
     hls_thread_local hls::task state_buffer_task(state_buffer_top<ID>, state_buffer_rollback_info_stream, state_buffer_commit_time_stream, state_buffer_input_stream, issued_event_stream, event_processor_input_stream);
-    hls_thread_local hls::task event_processor_task(event_processor_top<ID>, event_processor_input_stream, state_buffer_input_stream, output_event_stream, cancellation_unit_input_stream);
+    hls_thread_local hls::task event_processor_task(event_processor_top<ID>, event_processor_input_stream, state_buffer_input_stream, lvt_stream, output_event_stream, cancellation_unit_input_stream);
     hls_thread_local hls::task cancellation_unit_task(cancellation_unit_top<ID>, cancellation_unit_rollback_info_stream, cancellation_unit_commit_time_stream, cancellation_unit_input_stream, cancellation_unit_output_stream);
 }
 
@@ -106,6 +106,7 @@ void lpcore_top(
     hls::stream<TimeWarpEvent> &anti_message_stream,
     hls::stream<TimeWarpEvent> &enqueue_event_stream,
     // OUTPUT OF THE LPCORE
+    hls::stream<LVT> &lvt_stream,
     hls::stream<TimeWarpEvent> &output_event_stream,
     hls::stream<TimeWarpEvent> &cancellation_unit_output_stream,
     // COMMIT SIGNAL FROM GLOBAL CONTROLLER

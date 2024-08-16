@@ -10,7 +10,7 @@
         <config_export format="ip_catalog" rtl="verilog" vivado_clock="200MHz"/>
     </config>
     <UIConfigurations>
-        <UIAutosynConf boardInfo="Zynq UltraScale+ ZCU104 Evaluation Board (xczu7ev-ffvc1156-2-e) " hideTrivialOp="true" isBasedOnBoard="true" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
+        <UIAutosynConf boardInfo="Zynq UltraScale+ ZCU104 Evaluation Board (xczu7ev-ffvc1156-2-e) " hideTrivialOp="true" isBasedOnBoard="true" isSolutionDirty="true" isStopAskAgain="false" showDetailDesignViewer="false">
             <Platform>xilinx/zynquplus/zynquplus</Platform>
             <customLibs/>
         </UIAutosynConf>
@@ -40,8 +40,8 @@
             </RTLs>
         </UIAutoSimConf>
     </UIConfigurations>
-    <ExportDesign askAgain="true" evaluate="true" flow="true" flowChoice="syn" formatName="ip_catalog" rtl="vlog" rtlButton="true" rtlCombo="verilog">
-        <Format formatName="ip_catalog" description="" vendor="" library="" ipname="simulation_top" version="1.0" display_name="" taxonomy=""/>
+    <ExportDesign askAgain="true" evaluate="false" flow="true" flowChoice="syn" formatName="ip_catalog" rtl="vhdl" rtlButton="true" rtlCombo="verilog">
+        <Format formatName="ip_catalog"/>
         <Format formatName="sysgen"/>
         <Format formatName="sysgen_ise"/>
         <Format formatName="syn_dcp"/>

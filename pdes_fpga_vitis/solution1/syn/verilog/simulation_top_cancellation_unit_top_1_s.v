@@ -31,6 +31,8 @@ module simulation_top_cancellation_unit_top_1_s (
         cancellation_unit_input_stream_empty_n,
         cancellation_unit_input_stream_read,
         lpcore_cancellation_unit_output_stream_1_din,
+        lpcore_cancellation_unit_output_stream_1_num_data_valid,
+        lpcore_cancellation_unit_output_stream_1_fifo_cap,
         lpcore_cancellation_unit_output_stream_1_full_n,
         lpcore_cancellation_unit_output_stream_1_write
 );
@@ -67,6 +69,8 @@ input  [1:0] cancellation_unit_input_stream_fifo_cap;
 input   cancellation_unit_input_stream_empty_n;
 output   cancellation_unit_input_stream_read;
 output  [128:0] lpcore_cancellation_unit_output_stream_1_din;
+input  [1:0] lpcore_cancellation_unit_output_stream_1_num_data_valid;
+input  [1:0] lpcore_cancellation_unit_output_stream_1_fifo_cap;
 input   lpcore_cancellation_unit_output_stream_1_full_n;
 output   lpcore_cancellation_unit_output_stream_1_write;
 
@@ -127,15 +131,15 @@ reg    cancellation_unit_rollback_info_stream_blk_n;
 wire   [0:0] tmp_nbreadreq_fu_122_p3;
 reg    cancellation_unit_commit_time_stream17_blk_n;
 wire   [0:0] tmp_s_nbreadreq_fu_130_p3;
-wire   [0:0] tmp_5_nbreadreq_fu_138_p3;
+wire   [0:0] tmp_7_nbreadreq_fu_138_p3;
 reg    cancellation_unit_input_stream_blk_n;
 reg   [15:0] reg_336;
 wire    ap_CS_fsm_state3;
 wire    ap_CS_fsm_state6;
 reg   [0:0] tmp_reg_534;
 reg   [0:0] tmp_s_reg_538;
-reg   [0:0] tmp_5_reg_542;
-reg   [31:0] tmp_33_reg_560;
+reg   [0:0] tmp_7_reg_542;
+reg   [31:0] tmp_41_reg_560;
 wire   [0:0] icmp_ln1077_fu_415_p2;
 reg   [0:0] icmp_ln1077_reg_565;
 reg   [5:0] cancellation_unit_buffer_next_V_addr_reg_569;
@@ -221,7 +225,7 @@ reg   [2:0] lp_id_V_fu_118;
 wire   [2:0] add_ln886_7_fu_486_p2;
 wire   [15:0] tmp_sender_id_V_fu_390_p4;
 wire   [15:0] add_ln886_fu_527_p2;
-wire   [9:0] tmp_31_fu_405_p4;
+wire   [9:0] tmp_39_fu_405_p4;
 wire   [6:0] trunc_ln1077_fu_401_p1;
 wire   [6:0] add_ln886_6_fu_442_p2;
 reg    ap_block_state8_on_subcall_done;
@@ -367,7 +371,7 @@ simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2 grp_cancellation
     .ap_ready(grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_ap_ready),
     .current_V_27(reg_336),
     .zext_ln1073(trunc_ln88_reg_602),
-    .tmp_14(tmp_33_reg_560),
+    .tmp_18(tmp_41_reg_560),
     .removed_V_11_out_i(removed_V_fu_114),
     .removed_V_11_out_o(grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_11_out_o),
     .removed_V_11_out_o_ap_vld(grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_11_out_o_ap_vld),
@@ -403,6 +407,8 @@ simulation_top_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1 grp_cancellation
     .current_V(reg_336),
     .zext_ln145(tmp_lp_id_V_reg_584),
     .lpcore_cancellation_unit_output_stream_1_din(grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_1_din),
+    .lpcore_cancellation_unit_output_stream_1_num_data_valid(2'd0),
+    .lpcore_cancellation_unit_output_stream_1_fifo_cap(2'd0),
     .lpcore_cancellation_unit_output_stream_1_full_n(lpcore_cancellation_unit_output_stream_1_full_n),
     .lpcore_cancellation_unit_output_stream_1_write(grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_1_write),
     .tmp_to_time_V(tmp_to_time_V_reg_589),
@@ -500,7 +506,7 @@ end
 always @ (posedge ap_clk) begin
     if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (icmp_ln1077_fu_415_p2 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd1) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_total_size_V <= zext_ln886_fu_448_p1;
-    end else if (((icmp_ln1073_fu_480_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+    end else if (((icmp_ln1073_fu_480_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2) & (tmp_7_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
         cancellation_unit_total_size_V <= sub_ln887_fu_509_p2;
     end else if (((grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state8) & (tmp_reg_534 == 1'd1))) begin
         cancellation_unit_total_size_V <= grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303_cancellation_unit_total_size_V_o;
@@ -508,15 +514,15 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_7_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         lp_id_V_fu_118 <= 3'd0;
-    end else if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+    end else if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_7_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
         lp_id_V_fu_118 <= add_ln886_7_fu_486_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0) | ((cancellation_unit_rollback_info_stream_empty_n == 1'b0) & (tmp_nbreadreq_fu_122_p3 == 1'd1)) | ((cancellation_unit_input_stream_empty_n == 1'b0) & (ap_predicate_op25_read_state1 == 1'b1)) | ((cancellation_unit_commit_time_stream17_empty_n == 1'b0) & (ap_predicate_op21_read_state1 == 1'b1))) & (1'b1 == ap_CS_fsm_state1) & (tmp_7_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         removed_V_fu_114 <= 16'd0;
     end else if (((grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_11_out_o_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
         removed_V_fu_114 <= grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_removed_V_11_out_o;
@@ -543,14 +549,14 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
-        tmp_33_reg_560 <= cancellation_unit_commit_time_stream17_dout;
+    if (((1'b1 == ap_CS_fsm_state1) & (tmp_7_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+        tmp_41_reg_560 <= cancellation_unit_commit_time_stream17_dout;
     end
 end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_state1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
-        tmp_5_reg_542 <= tmp_5_nbreadreq_fu_138_p3;
+        tmp_7_reg_542 <= tmp_7_nbreadreq_fu_138_p3;
     end
 end
 
@@ -574,7 +580,7 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_5_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
+    if (((icmp_ln1073_fu_480_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2) & (tmp_7_reg_542 == 1'd1) & (tmp_s_reg_538 == 1'd0))) begin
         trunc_ln88_reg_602 <= trunc_ln88_fu_497_p1;
     end
 end
@@ -832,7 +838,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
+    if ((~((ap_done_reg == 1'b1) | (ap_start == 1'b0)) & (1'b1 == ap_CS_fsm_state1) & (tmp_7_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0))) begin
         cancellation_unit_commit_time_stream17_blk_n = cancellation_unit_commit_time_stream17_empty_n;
     end else begin
         cancellation_unit_commit_time_stream17_blk_n = 1'b1;
@@ -1001,7 +1007,7 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            if (((1'b1 == ap_CS_fsm_state2) & ((tmp_s_reg_538 == 1'd1) | ((icmp_ln1073_fu_480_p2 == 1'd1) | (tmp_5_reg_542 == 1'd0))))) begin
+            if (((1'b1 == ap_CS_fsm_state2) & ((tmp_s_reg_538 == 1'd1) | ((icmp_ln1073_fu_480_p2 == 1'd1) | (tmp_7_reg_542 == 1'd0))))) begin
                 ap_NS_fsm = ap_ST_fsm_state8;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state3;
@@ -1070,7 +1076,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    ap_predicate_op21_read_state1 = ((tmp_5_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0));
+    ap_predicate_op21_read_state1 = ((tmp_7_nbreadreq_fu_138_p3 == 1'd1) & (tmp_s_nbreadreq_fu_130_p3 == 1'd0) & (tmp_nbreadreq_fu_122_p3 == 1'd0));
 end
 
 always @ (*) begin
@@ -1093,15 +1099,15 @@ assign grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_93_2_fu_285_ap_start = gr
 
 assign icmp_ln1073_fu_480_p2 = ((lp_id_V_fu_118 == 3'd4) ? 1'b1 : 1'b0);
 
-assign icmp_ln1077_fu_415_p2 = ((tmp_31_fu_405_p4 == 10'd0) ? 1'b1 : 1'b0);
+assign icmp_ln1077_fu_415_p2 = ((tmp_39_fu_405_p4 == 10'd0) ? 1'b1 : 1'b0);
 
 assign lpcore_cancellation_unit_output_stream_1_din = grp_cancellation_unit_top_1_Pipeline_VITIS_LOOP_58_1_fu_303_lpcore_cancellation_unit_output_stream_1_din;
 
 assign sub_ln887_fu_509_p2 = (cancellation_unit_total_size_V - removed_V_fu_114);
 
-assign tmp_31_fu_405_p4 = {{cancellation_unit_total_size_V[15:6]}};
+assign tmp_39_fu_405_p4 = {{cancellation_unit_total_size_V[15:6]}};
 
-assign tmp_5_nbreadreq_fu_138_p3 = cancellation_unit_commit_time_stream17_empty_n;
+assign tmp_7_nbreadreq_fu_138_p3 = cancellation_unit_commit_time_stream17_empty_n;
 
 assign tmp_lp_id_V_fu_458_p1 = cancellation_unit_rollback_info_stream_dout[1:0];
 

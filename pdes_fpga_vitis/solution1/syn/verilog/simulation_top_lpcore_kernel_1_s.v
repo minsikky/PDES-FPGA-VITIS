@@ -20,6 +20,9 @@ module simulation_top_lpcore_kernel_1_s (
         lpcore_enqueue_event_stream_1_dout,
         lpcore_enqueue_event_stream_1_empty_n,
         lpcore_enqueue_event_stream_1_read,
+        lpcore_lvt_stream_1_din,
+        lpcore_lvt_stream_1_full_n,
+        lpcore_lvt_stream_1_write,
         lpcore_output_event_stream_1_din,
         lpcore_output_event_stream_1_full_n,
         lpcore_output_event_stream_1_write,
@@ -47,6 +50,9 @@ output   lpcore_anti_message_stream_1_read;
 input  [128:0] lpcore_enqueue_event_stream_1_dout;
 input   lpcore_enqueue_event_stream_1_empty_n;
 output   lpcore_enqueue_event_stream_1_read;
+output  [47:0] lpcore_lvt_stream_1_din;
+input   lpcore_lvt_stream_1_full_n;
+output   lpcore_lvt_stream_1_write;
 output  [128:0] lpcore_output_event_stream_1_din;
 input   lpcore_output_event_stream_1_full_n;
 output   lpcore_output_event_stream_1_write;
@@ -110,6 +116,8 @@ wire    event_processor_top_1_U0_ap_ready;
 wire    event_processor_top_1_U0_event_processor_input_stream_read;
 wire   [79:0] event_processor_top_1_U0_state_buffer_input_stream_din;
 wire    event_processor_top_1_U0_state_buffer_input_stream_write;
+wire   [47:0] event_processor_top_1_U0_lpcore_lvt_stream_1_din;
+wire    event_processor_top_1_U0_lpcore_lvt_stream_1_write;
 wire   [128:0] event_processor_top_1_U0_lpcore_output_event_stream_1_din;
 wire    event_processor_top_1_U0_lpcore_output_event_stream_1_write;
 wire   [128:0] event_processor_top_1_U0_cancellation_unit_input_stream_din;
@@ -222,6 +230,8 @@ simulation_top_event_queue_top_1_s event_queue_top_1_U0(
     .lpcore_init_event_stream_1_empty_n(lpcore_init_event_stream_1_empty_n),
     .lpcore_init_event_stream_1_read(event_queue_top_1_U0_lpcore_init_event_stream_1_read),
     .lpcore_event_queue_full_stream_1_din(event_queue_top_1_U0_lpcore_event_queue_full_stream_1_din),
+    .lpcore_event_queue_full_stream_1_num_data_valid(2'd0),
+    .lpcore_event_queue_full_stream_1_fifo_cap(2'd0),
     .lpcore_event_queue_full_stream_1_full_n(lpcore_event_queue_full_stream_1_full_n),
     .lpcore_event_queue_full_stream_1_write(event_queue_top_1_U0_lpcore_event_queue_full_stream_1_write),
     .event_queue_rollback_info_stream_dout(event_queue_rollback_info_stream_dout),
@@ -230,9 +240,13 @@ simulation_top_event_queue_top_1_s event_queue_top_1_U0(
     .event_queue_rollback_info_stream_empty_n(event_queue_rollback_info_stream_empty_n),
     .event_queue_rollback_info_stream_read(event_queue_top_1_U0_event_queue_rollback_info_stream_read),
     .lpcore_anti_message_stream_1_dout(lpcore_anti_message_stream_1_dout),
+    .lpcore_anti_message_stream_1_num_data_valid(2'd0),
+    .lpcore_anti_message_stream_1_fifo_cap(2'd0),
     .lpcore_anti_message_stream_1_empty_n(lpcore_anti_message_stream_1_empty_n),
     .lpcore_anti_message_stream_1_read(event_queue_top_1_U0_lpcore_anti_message_stream_1_read),
     .lpcore_enqueue_event_stream_1_dout(lpcore_enqueue_event_stream_1_dout),
+    .lpcore_enqueue_event_stream_1_num_data_valid(2'd0),
+    .lpcore_enqueue_event_stream_1_fifo_cap(2'd0),
     .lpcore_enqueue_event_stream_1_empty_n(lpcore_enqueue_event_stream_1_empty_n),
     .lpcore_enqueue_event_stream_1_read(event_queue_top_1_U0_lpcore_enqueue_event_stream_1_read),
     .event_queue_commit_time_stream15_dout(event_queue_commit_time_stream_dout),
@@ -305,7 +319,14 @@ simulation_top_event_processor_top_1_s event_processor_top_1_U0(
     .state_buffer_input_stream_fifo_cap(state_buffer_input_stream_fifo_cap),
     .state_buffer_input_stream_full_n(state_buffer_input_stream_full_n),
     .state_buffer_input_stream_write(event_processor_top_1_U0_state_buffer_input_stream_write),
+    .lpcore_lvt_stream_1_din(event_processor_top_1_U0_lpcore_lvt_stream_1_din),
+    .lpcore_lvt_stream_1_num_data_valid(2'd0),
+    .lpcore_lvt_stream_1_fifo_cap(2'd0),
+    .lpcore_lvt_stream_1_full_n(lpcore_lvt_stream_1_full_n),
+    .lpcore_lvt_stream_1_write(event_processor_top_1_U0_lpcore_lvt_stream_1_write),
     .lpcore_output_event_stream_1_din(event_processor_top_1_U0_lpcore_output_event_stream_1_din),
+    .lpcore_output_event_stream_1_num_data_valid(2'd0),
+    .lpcore_output_event_stream_1_fifo_cap(2'd0),
     .lpcore_output_event_stream_1_full_n(lpcore_output_event_stream_1_full_n),
     .lpcore_output_event_stream_1_write(event_processor_top_1_U0_lpcore_output_event_stream_1_write),
     .cancellation_unit_input_stream_din(event_processor_top_1_U0_cancellation_unit_input_stream_din),
@@ -339,6 +360,8 @@ simulation_top_cancellation_unit_top_1_s cancellation_unit_top_1_U0(
     .cancellation_unit_input_stream_empty_n(cancellation_unit_input_stream_empty_n),
     .cancellation_unit_input_stream_read(cancellation_unit_top_1_U0_cancellation_unit_input_stream_read),
     .lpcore_cancellation_unit_output_stream_1_din(cancellation_unit_top_1_U0_lpcore_cancellation_unit_output_stream_1_din),
+    .lpcore_cancellation_unit_output_stream_1_num_data_valid(2'd0),
+    .lpcore_cancellation_unit_output_stream_1_fifo_cap(2'd0),
     .lpcore_cancellation_unit_output_stream_1_full_n(lpcore_cancellation_unit_output_stream_1_full_n),
     .lpcore_cancellation_unit_output_stream_1_write(cancellation_unit_top_1_U0_lpcore_cancellation_unit_output_stream_1_write)
 );
@@ -537,6 +560,10 @@ assign lpcore_event_queue_full_stream_1_din = event_queue_top_1_U0_lpcore_event_
 assign lpcore_event_queue_full_stream_1_write = event_queue_top_1_U0_lpcore_event_queue_full_stream_1_write;
 
 assign lpcore_init_event_stream_1_read = event_queue_top_1_U0_lpcore_init_event_stream_1_read;
+
+assign lpcore_lvt_stream_1_din = event_processor_top_1_U0_lpcore_lvt_stream_1_din;
+
+assign lpcore_lvt_stream_1_write = event_processor_top_1_U0_lpcore_lvt_stream_1_write;
 
 assign lpcore_output_event_stream_1_din = event_processor_top_1_U0_lpcore_output_event_stream_1_din;
 

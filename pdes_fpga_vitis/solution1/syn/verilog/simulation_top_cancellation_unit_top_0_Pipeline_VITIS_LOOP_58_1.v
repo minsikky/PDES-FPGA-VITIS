@@ -17,6 +17,8 @@ module simulation_top_cancellation_unit_top_0_Pipeline_VITIS_LOOP_58_1 (
         current_V,
         zext_ln145,
         lpcore_cancellation_unit_output_stream_0_din,
+        lpcore_cancellation_unit_output_stream_0_num_data_valid,
+        lpcore_cancellation_unit_output_stream_0_fifo_cap,
         lpcore_cancellation_unit_output_stream_0_full_n,
         lpcore_cancellation_unit_output_stream_0_write,
         tmp_to_time_V,
@@ -69,6 +71,8 @@ output   ap_ready;
 input  [15:0] current_V;
 input  [1:0] zext_ln145;
 output  [128:0] lpcore_cancellation_unit_output_stream_0_din;
+input  [1:0] lpcore_cancellation_unit_output_stream_0_num_data_valid;
+input  [1:0] lpcore_cancellation_unit_output_stream_0_fifo_cap;
 input   lpcore_cancellation_unit_output_stream_0_full_n;
 output   lpcore_cancellation_unit_output_stream_0_write;
 input  [31:0] tmp_to_time_V;

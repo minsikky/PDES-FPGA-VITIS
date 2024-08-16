@@ -112,7 +112,7 @@ attribute shreg_extract : string;
     signal current_V_16_fu_44 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_loop_init : STD_LOGIC;
     signal ap_sig_allocacmp_current_V_18 : STD_LOGIC_VECTOR (15 downto 0);
-    signal icmp_ln1081_2_fu_192_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln1081_3_fu_192_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_done_reg : STD_LOGIC := '0';
     signal ap_continue_int : STD_LOGIC;
     signal ap_done_int : STD_LOGIC;
@@ -577,9 +577,9 @@ begin
 
     event_queue_lp_oldest_unissued_V_1_d0 <= current_V_18_reg_209_pp0_iter1_reg;
 
-    event_queue_lp_oldest_unissued_V_1_we0_assign_proc : process(ap_enable_reg_pp0_iter1, ap_CS_fsm_pp0_stage1, ap_block_pp0_stage1_11001, icmp_ln1081_reg_243, event_queue_buffer_is_issued_V_1_load_reg_252, icmp_ln1065_reg_256, icmp_ln1081_2_fu_192_p2)
+    event_queue_lp_oldest_unissued_V_1_we0_assign_proc : process(ap_enable_reg_pp0_iter1, ap_CS_fsm_pp0_stage1, ap_block_pp0_stage1_11001, icmp_ln1081_reg_243, event_queue_buffer_is_issued_V_1_load_reg_252, icmp_ln1065_reg_256, icmp_ln1081_3_fu_192_p2)
     begin
-        if (((ap_const_boolean_0 = ap_block_pp0_stage1_11001) and (ap_enable_reg_pp0_iter1 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage1) and (((icmp_ln1065_reg_256 = ap_const_lv1_1) and (event_queue_buffer_is_issued_V_1_load_reg_252 = ap_const_lv1_1) and (icmp_ln1081_reg_243 = ap_const_lv1_1)) or ((icmp_ln1081_2_fu_192_p2 = ap_const_lv1_1) and (event_queue_buffer_is_issued_V_1_load_reg_252 = ap_const_lv1_1) and (icmp_ln1081_reg_243 = ap_const_lv1_1))))) then 
+        if (((ap_const_boolean_0 = ap_block_pp0_stage1_11001) and (ap_enable_reg_pp0_iter1 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage1) and (((icmp_ln1065_reg_256 = ap_const_lv1_1) and (event_queue_buffer_is_issued_V_1_load_reg_252 = ap_const_lv1_1) and (icmp_ln1081_reg_243 = ap_const_lv1_1)) or ((icmp_ln1081_3_fu_192_p2 = ap_const_lv1_1) and (event_queue_buffer_is_issued_V_1_load_reg_252 = ap_const_lv1_1) and (icmp_ln1081_reg_243 = ap_const_lv1_1))))) then 
             event_queue_lp_oldest_unissued_V_1_we0 <= ap_const_logic_1;
         else 
             event_queue_lp_oldest_unissued_V_1_we0 <= ap_const_logic_0;
@@ -608,7 +608,7 @@ begin
 
     icmp_ln1065_fu_181_p2 <= "1" when (event_queue_lp_oldest_unissued_V_1_q0 = ap_const_lv16_FFFF) else "0";
     icmp_ln1069_fu_143_p2 <= "1" when (ap_sig_allocacmp_current_V_18 = ap_const_lv16_FFFF) else "0";
-    icmp_ln1081_2_fu_192_p2 <= "1" when (signed(event_queue_buffer_event_recv_time_V_1_q0) > signed(event_queue_buffer_event_recv_time_V_1_load_reg_238)) else "0";
+    icmp_ln1081_3_fu_192_p2 <= "1" when (signed(event_queue_buffer_event_recv_time_V_1_q0) > signed(event_queue_buffer_event_recv_time_V_1_load_reg_238)) else "0";
     icmp_ln1081_fu_155_p2 <= "1" when (signed(event_queue_buffer_event_recv_time_V_1_q1) > signed(tmp_to_time_V)) else "0";
     zext_ln145_cast_fu_130_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(zext_ln145),64));
     zext_ln587_14_fu_187_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(event_queue_lp_oldest_unissued_V_1_q0),64));

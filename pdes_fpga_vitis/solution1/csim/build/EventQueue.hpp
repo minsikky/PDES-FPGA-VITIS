@@ -85,9 +85,9 @@ void event_queue_top(
     {
         ap_int<32> commit_time = commit_time_stream.read();
         event_queue.commit(commit_time);
-        if (!event_queue.is_full())
+        if (event_queue.is_full()) // Commit didn't clear up event queue space at all. Re-trigger commit.
         {
-            event_queue_full_stream.write(false);
+            event_queue_full_stream.write(true);
         }
     }
 }

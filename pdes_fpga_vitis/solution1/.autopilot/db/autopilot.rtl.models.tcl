@@ -1,15 +1,24 @@
 set SynModuleInfo {
-  {SRCNAME lpcore_rollback_control MODELNAME lpcore_rollback_control RTLNAME simulation_top_lpcore_rollback_control}
-  {SRCNAME lpcore_commit_control MODELNAME lpcore_commit_control RTLNAME simulation_top_lpcore_commit_control}
-  {SRCNAME lpcore_control_top<0> MODELNAME lpcore_control_top_0_s RTLNAME simulation_top_lpcore_control_top_0_s}
-  {SRCNAME commit_Pipeline_VITIS_LOOP_237_2 MODELNAME commit_Pipeline_VITIS_LOOP_237_2 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_2
+  {SRCNAME event_router_top MODELNAME event_router_top RTLNAME simulation_top_event_router_top}
+  {SRCNAME gvt_tracker_top_Pipeline_VITIS_LOOP_34_1 MODELNAME gvt_tracker_top_Pipeline_VITIS_LOOP_34_1 RTLNAME simulation_top_gvt_tracker_top_Pipeline_VITIS_LOOP_34_1
     SUBMODULES {
       {MODELNAME simulation_top_flow_control_loop_pipe_sequential_init RTLNAME simulation_top_flow_control_loop_pipe_sequential_init BINDTYPE interface TYPE internal_upc_flow_control INSTNAME simulation_top_flow_control_loop_pipe_sequential_init_U}
     }
   }
-  {SRCNAME commit_Pipeline_VITIS_LOOP_237_21 MODELNAME commit_Pipeline_VITIS_LOOP_237_21 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_21}
+  {SRCNAME gvt_tracker_top_Pipeline_VITIS_LOOP_34_11 MODELNAME gvt_tracker_top_Pipeline_VITIS_LOOP_34_11 RTLNAME simulation_top_gvt_tracker_top_Pipeline_VITIS_LOOP_34_11}
+  {SRCNAME gvt_tracker_top MODELNAME gvt_tracker_top RTLNAME simulation_top_gvt_tracker_top
+    SUBMODULES {
+      {MODELNAME simulation_top_gvt_tracker_top_lvt_arr_V_RAM_AUTO_1R1W RTLNAME simulation_top_gvt_tracker_top_lvt_arr_V_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
+    }
+  }
+  {SRCNAME commit_control_top MODELNAME commit_control_top RTLNAME simulation_top_commit_control_top}
+  {SRCNAME lpcore_rollback_control MODELNAME lpcore_rollback_control RTLNAME simulation_top_lpcore_rollback_control}
+  {SRCNAME lpcore_commit_control MODELNAME lpcore_commit_control RTLNAME simulation_top_lpcore_commit_control}
+  {SRCNAME lpcore_control_top<0> MODELNAME lpcore_control_top_0_s RTLNAME simulation_top_lpcore_control_top_0_s}
+  {SRCNAME commit_Pipeline_VITIS_LOOP_237_2 MODELNAME commit_Pipeline_VITIS_LOOP_237_2 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_2}
   {SRCNAME commit_Pipeline_VITIS_LOOP_237_22 MODELNAME commit_Pipeline_VITIS_LOOP_237_22 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_22}
   {SRCNAME commit_Pipeline_VITIS_LOOP_237_23 MODELNAME commit_Pipeline_VITIS_LOOP_237_23 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_23}
+  {SRCNAME commit_Pipeline_VITIS_LOOP_237_24 MODELNAME commit_Pipeline_VITIS_LOOP_237_24 RTLNAME simulation_top_commit_Pipeline_VITIS_LOOP_237_24}
   {SRCNAME commit MODELNAME commit RTLNAME simulation_top_commit}
   {SRCNAME event_queue_top<0>_Pipeline_VITIS_LOOP_205_1 MODELNAME event_queue_top_0_Pipeline_VITIS_LOOP_205_1 RTLNAME simulation_top_event_queue_top_0_Pipeline_VITIS_LOOP_205_1}
   {SRCNAME enqueue MODELNAME enqueue RTLNAME simulation_top_enqueue}
@@ -23,7 +32,6 @@ set SynModuleInfo {
       {MODELNAME simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W RTLNAME simulation_top_event_queue_top_0_s_event_queue_buffer_next_V_1_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
       {MODELNAME simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W RTLNAME simulation_top_event_queue_top_0_s_event_queue_lp_heads_V_1_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
       {MODELNAME simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W RTLNAME simulation_top_event_queue_top_0_s_event_queue_lp_tails_V_1_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
-      {MODELNAME simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W RTLNAME simulation_top_event_queue_top_0_s_event_queue_lvt_V_1_RAM_AUTO_1R1W BINDTYPE storage TYPE ram IMPL auto LATENCY 2 ALLOW_PRAGMA 1}
     }
   }
   {SRCNAME state_buffer_top<0>_Pipeline_VITIS_LOOP_81_2 MODELNAME state_buffer_top_0_Pipeline_VITIS_LOOP_81_2 RTLNAME simulation_top_state_buffer_top_0_Pipeline_VITIS_LOOP_81_2}
@@ -84,6 +92,14 @@ set SynModuleInfo {
       {MODELNAME simulation_top_fifo_w129_d2_S_x RTLNAME simulation_top_fifo_w129_d2_S_x BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
       {MODELNAME simulation_top_fifo_w80_d2_S_x RTLNAME simulation_top_fifo_w80_d2_S_x BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
       {MODELNAME simulation_top_fifo_w209_d2_S_x RTLNAME simulation_top_fifo_w209_d2_S_x BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
+    }
+  }
+  {SRCNAME KPN.1 MODELNAME KPN_1 RTLNAME simulation_top_KPN_1
+    SUBMODULES {
+      {MODELNAME simulation_top_fifo_w129_d2_S_x0 RTLNAME simulation_top_fifo_w129_d2_S_x0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
+      {MODELNAME simulation_top_fifo_w48_d2_S_x0 RTLNAME simulation_top_fifo_w48_d2_S_x0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
+      {MODELNAME simulation_top_fifo_w32_d2_S_x0 RTLNAME simulation_top_fifo_w32_d2_S_x0 BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
+      {MODELNAME simulation_top_fifo_w1_d2_S RTLNAME simulation_top_fifo_w1_d2_S BINDTYPE storage TYPE fifo IMPL srl ALLOW_PRAGMA 1 INSTNAME {$InstName}}
     }
   }
   {SRCNAME simulation_top MODELNAME simulation_top RTLNAME simulation_top IS_TOP 1}

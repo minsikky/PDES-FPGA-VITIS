@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="simulation_top_simulation_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=3.650000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=34,HLS_SYN_DSP=0,HLS_SYN_FF=9634,HLS_SYN_LUT=15432,HLS_VERSION=2022_1}" *)
+(* CORE_GENERATION_INFO="simulation_top_simulation_top,hls_ip_2022_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xczu7ev-ffvc1156-2-e,HLS_INPUT_CLOCK=5.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=3.937000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=34,HLS_SYN_DSP=0,HLS_SYN_FF=11443,HLS_SYN_LUT=17259,HLS_VERSION=2022_1}" *)
 
 module simulation_top (
         lpcore_init_event_stream_0_dout,
@@ -16,42 +16,6 @@ module simulation_top (
         lpcore_init_event_stream_1_dout,
         lpcore_init_event_stream_1_empty_n,
         lpcore_init_event_stream_1_read,
-        lpcore_event_queue_full_stream_0_din,
-        lpcore_event_queue_full_stream_0_full_n,
-        lpcore_event_queue_full_stream_0_write,
-        lpcore_event_queue_full_stream_1_din,
-        lpcore_event_queue_full_stream_1_full_n,
-        lpcore_event_queue_full_stream_1_write,
-        lpcore_anti_message_stream_0_dout,
-        lpcore_anti_message_stream_0_empty_n,
-        lpcore_anti_message_stream_0_read,
-        lpcore_anti_message_stream_1_dout,
-        lpcore_anti_message_stream_1_empty_n,
-        lpcore_anti_message_stream_1_read,
-        lpcore_enqueue_event_stream_0_dout,
-        lpcore_enqueue_event_stream_0_empty_n,
-        lpcore_enqueue_event_stream_0_read,
-        lpcore_enqueue_event_stream_1_dout,
-        lpcore_enqueue_event_stream_1_empty_n,
-        lpcore_enqueue_event_stream_1_read,
-        lpcore_output_event_stream_0_din,
-        lpcore_output_event_stream_0_full_n,
-        lpcore_output_event_stream_0_write,
-        lpcore_output_event_stream_1_din,
-        lpcore_output_event_stream_1_full_n,
-        lpcore_output_event_stream_1_write,
-        lpcore_cancellation_unit_output_stream_0_din,
-        lpcore_cancellation_unit_output_stream_0_full_n,
-        lpcore_cancellation_unit_output_stream_0_write,
-        lpcore_cancellation_unit_output_stream_1_din,
-        lpcore_cancellation_unit_output_stream_1_full_n,
-        lpcore_cancellation_unit_output_stream_1_write,
-        lpcore_commit_time_stream_0_dout,
-        lpcore_commit_time_stream_0_empty_n,
-        lpcore_commit_time_stream_0_read,
-        lpcore_commit_time_stream_1_dout,
-        lpcore_commit_time_stream_1_empty_n,
-        lpcore_commit_time_stream_1_read,
         ap_clk,
         ap_rst
 );
@@ -63,160 +27,27 @@ output   lpcore_init_event_stream_0_read;
 input  [128:0] lpcore_init_event_stream_1_dout;
 input   lpcore_init_event_stream_1_empty_n;
 output   lpcore_init_event_stream_1_read;
-output  [0:0] lpcore_event_queue_full_stream_0_din;
-input   lpcore_event_queue_full_stream_0_full_n;
-output   lpcore_event_queue_full_stream_0_write;
-output  [0:0] lpcore_event_queue_full_stream_1_din;
-input   lpcore_event_queue_full_stream_1_full_n;
-output   lpcore_event_queue_full_stream_1_write;
-input  [128:0] lpcore_anti_message_stream_0_dout;
-input   lpcore_anti_message_stream_0_empty_n;
-output   lpcore_anti_message_stream_0_read;
-input  [128:0] lpcore_anti_message_stream_1_dout;
-input   lpcore_anti_message_stream_1_empty_n;
-output   lpcore_anti_message_stream_1_read;
-input  [128:0] lpcore_enqueue_event_stream_0_dout;
-input   lpcore_enqueue_event_stream_0_empty_n;
-output   lpcore_enqueue_event_stream_0_read;
-input  [128:0] lpcore_enqueue_event_stream_1_dout;
-input   lpcore_enqueue_event_stream_1_empty_n;
-output   lpcore_enqueue_event_stream_1_read;
-output  [128:0] lpcore_output_event_stream_0_din;
-input   lpcore_output_event_stream_0_full_n;
-output   lpcore_output_event_stream_0_write;
-output  [128:0] lpcore_output_event_stream_1_din;
-input   lpcore_output_event_stream_1_full_n;
-output   lpcore_output_event_stream_1_write;
-output  [128:0] lpcore_cancellation_unit_output_stream_0_din;
-input   lpcore_cancellation_unit_output_stream_0_full_n;
-output   lpcore_cancellation_unit_output_stream_0_write;
-output  [128:0] lpcore_cancellation_unit_output_stream_1_din;
-input   lpcore_cancellation_unit_output_stream_1_full_n;
-output   lpcore_cancellation_unit_output_stream_1_write;
-input  [31:0] lpcore_commit_time_stream_0_dout;
-input   lpcore_commit_time_stream_0_empty_n;
-output   lpcore_commit_time_stream_0_read;
-input  [31:0] lpcore_commit_time_stream_1_dout;
-input   lpcore_commit_time_stream_1_empty_n;
-output   lpcore_commit_time_stream_1_read;
 input   ap_clk;
 input   ap_rst;
 
-wire    lpcore_kernel_0_U0_lpcore_init_event_stream_0_read;
-wire   [0:0] lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_din;
-wire    lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_write;
-wire    lpcore_kernel_0_U0_lpcore_anti_message_stream_0_read;
-wire    lpcore_kernel_0_U0_lpcore_enqueue_event_stream_0_read;
-wire   [128:0] lpcore_kernel_0_U0_lpcore_output_event_stream_0_din;
-wire    lpcore_kernel_0_U0_lpcore_output_event_stream_0_write;
-wire   [128:0] lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_din;
-wire    lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_write;
-wire    lpcore_kernel_0_U0_lpcore_commit_time_stream_0_read;
-wire    lpcore_kernel_0_U0_ap_ready;
-wire    lpcore_kernel_1_U0_lpcore_init_event_stream_1_read;
-wire   [0:0] lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_din;
-wire    lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_write;
-wire    lpcore_kernel_1_U0_lpcore_anti_message_stream_1_read;
-wire    lpcore_kernel_1_U0_lpcore_enqueue_event_stream_1_read;
-wire   [128:0] lpcore_kernel_1_U0_lpcore_output_event_stream_1_din;
-wire    lpcore_kernel_1_U0_lpcore_output_event_stream_1_write;
-wire   [128:0] lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_din;
-wire    lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_write;
-wire    lpcore_kernel_1_U0_lpcore_commit_time_stream_1_read;
-wire    lpcore_kernel_1_U0_ap_ready;
+wire    KPN_1_U0_lpcore_init_event_stream_0_read;
+wire    KPN_1_U0_lpcore_init_event_stream_1_read;
+wire    KPN_1_U0_ap_ready;
 
-simulation_top_lpcore_kernel_0_s lpcore_kernel_0_U0(
+simulation_top_KPN_1 KPN_1_U0(
     .lpcore_init_event_stream_0_dout(lpcore_init_event_stream_0_dout),
     .lpcore_init_event_stream_0_empty_n(lpcore_init_event_stream_0_empty_n),
-    .lpcore_init_event_stream_0_read(lpcore_kernel_0_U0_lpcore_init_event_stream_0_read),
-    .lpcore_event_queue_full_stream_0_din(lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_din),
-    .lpcore_event_queue_full_stream_0_full_n(lpcore_event_queue_full_stream_0_full_n),
-    .lpcore_event_queue_full_stream_0_write(lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_write),
-    .lpcore_anti_message_stream_0_dout(lpcore_anti_message_stream_0_dout),
-    .lpcore_anti_message_stream_0_empty_n(lpcore_anti_message_stream_0_empty_n),
-    .lpcore_anti_message_stream_0_read(lpcore_kernel_0_U0_lpcore_anti_message_stream_0_read),
-    .lpcore_enqueue_event_stream_0_dout(lpcore_enqueue_event_stream_0_dout),
-    .lpcore_enqueue_event_stream_0_empty_n(lpcore_enqueue_event_stream_0_empty_n),
-    .lpcore_enqueue_event_stream_0_read(lpcore_kernel_0_U0_lpcore_enqueue_event_stream_0_read),
-    .lpcore_output_event_stream_0_din(lpcore_kernel_0_U0_lpcore_output_event_stream_0_din),
-    .lpcore_output_event_stream_0_full_n(lpcore_output_event_stream_0_full_n),
-    .lpcore_output_event_stream_0_write(lpcore_kernel_0_U0_lpcore_output_event_stream_0_write),
-    .lpcore_cancellation_unit_output_stream_0_din(lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_din),
-    .lpcore_cancellation_unit_output_stream_0_full_n(lpcore_cancellation_unit_output_stream_0_full_n),
-    .lpcore_cancellation_unit_output_stream_0_write(lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_write),
-    .lpcore_commit_time_stream_0_dout(lpcore_commit_time_stream_0_dout),
-    .lpcore_commit_time_stream_0_empty_n(lpcore_commit_time_stream_0_empty_n),
-    .lpcore_commit_time_stream_0_read(lpcore_kernel_0_U0_lpcore_commit_time_stream_0_read),
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_ready(lpcore_kernel_0_U0_ap_ready)
-);
-
-simulation_top_lpcore_kernel_1_s lpcore_kernel_1_U0(
+    .lpcore_init_event_stream_0_read(KPN_1_U0_lpcore_init_event_stream_0_read),
     .lpcore_init_event_stream_1_dout(lpcore_init_event_stream_1_dout),
     .lpcore_init_event_stream_1_empty_n(lpcore_init_event_stream_1_empty_n),
-    .lpcore_init_event_stream_1_read(lpcore_kernel_1_U0_lpcore_init_event_stream_1_read),
-    .lpcore_event_queue_full_stream_1_din(lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_din),
-    .lpcore_event_queue_full_stream_1_full_n(lpcore_event_queue_full_stream_1_full_n),
-    .lpcore_event_queue_full_stream_1_write(lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_write),
-    .lpcore_anti_message_stream_1_dout(lpcore_anti_message_stream_1_dout),
-    .lpcore_anti_message_stream_1_empty_n(lpcore_anti_message_stream_1_empty_n),
-    .lpcore_anti_message_stream_1_read(lpcore_kernel_1_U0_lpcore_anti_message_stream_1_read),
-    .lpcore_enqueue_event_stream_1_dout(lpcore_enqueue_event_stream_1_dout),
-    .lpcore_enqueue_event_stream_1_empty_n(lpcore_enqueue_event_stream_1_empty_n),
-    .lpcore_enqueue_event_stream_1_read(lpcore_kernel_1_U0_lpcore_enqueue_event_stream_1_read),
-    .lpcore_output_event_stream_1_din(lpcore_kernel_1_U0_lpcore_output_event_stream_1_din),
-    .lpcore_output_event_stream_1_full_n(lpcore_output_event_stream_1_full_n),
-    .lpcore_output_event_stream_1_write(lpcore_kernel_1_U0_lpcore_output_event_stream_1_write),
-    .lpcore_cancellation_unit_output_stream_1_din(lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_din),
-    .lpcore_cancellation_unit_output_stream_1_full_n(lpcore_cancellation_unit_output_stream_1_full_n),
-    .lpcore_cancellation_unit_output_stream_1_write(lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_write),
-    .lpcore_commit_time_stream_1_dout(lpcore_commit_time_stream_1_dout),
-    .lpcore_commit_time_stream_1_empty_n(lpcore_commit_time_stream_1_empty_n),
-    .lpcore_commit_time_stream_1_read(lpcore_kernel_1_U0_lpcore_commit_time_stream_1_read),
+    .lpcore_init_event_stream_1_read(KPN_1_U0_lpcore_init_event_stream_1_read),
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_ready(lpcore_kernel_1_U0_ap_ready)
+    .ap_ready(KPN_1_U0_ap_ready)
 );
 
-assign lpcore_anti_message_stream_0_read = lpcore_kernel_0_U0_lpcore_anti_message_stream_0_read;
+assign lpcore_init_event_stream_0_read = KPN_1_U0_lpcore_init_event_stream_0_read;
 
-assign lpcore_anti_message_stream_1_read = lpcore_kernel_1_U0_lpcore_anti_message_stream_1_read;
-
-assign lpcore_cancellation_unit_output_stream_0_din = lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_din;
-
-assign lpcore_cancellation_unit_output_stream_0_write = lpcore_kernel_0_U0_lpcore_cancellation_unit_output_stream_0_write;
-
-assign lpcore_cancellation_unit_output_stream_1_din = lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_din;
-
-assign lpcore_cancellation_unit_output_stream_1_write = lpcore_kernel_1_U0_lpcore_cancellation_unit_output_stream_1_write;
-
-assign lpcore_commit_time_stream_0_read = lpcore_kernel_0_U0_lpcore_commit_time_stream_0_read;
-
-assign lpcore_commit_time_stream_1_read = lpcore_kernel_1_U0_lpcore_commit_time_stream_1_read;
-
-assign lpcore_enqueue_event_stream_0_read = lpcore_kernel_0_U0_lpcore_enqueue_event_stream_0_read;
-
-assign lpcore_enqueue_event_stream_1_read = lpcore_kernel_1_U0_lpcore_enqueue_event_stream_1_read;
-
-assign lpcore_event_queue_full_stream_0_din = lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_din;
-
-assign lpcore_event_queue_full_stream_0_write = lpcore_kernel_0_U0_lpcore_event_queue_full_stream_0_write;
-
-assign lpcore_event_queue_full_stream_1_din = lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_din;
-
-assign lpcore_event_queue_full_stream_1_write = lpcore_kernel_1_U0_lpcore_event_queue_full_stream_1_write;
-
-assign lpcore_init_event_stream_0_read = lpcore_kernel_0_U0_lpcore_init_event_stream_0_read;
-
-assign lpcore_init_event_stream_1_read = lpcore_kernel_1_U0_lpcore_init_event_stream_1_read;
-
-assign lpcore_output_event_stream_0_din = lpcore_kernel_0_U0_lpcore_output_event_stream_0_din;
-
-assign lpcore_output_event_stream_0_write = lpcore_kernel_0_U0_lpcore_output_event_stream_0_write;
-
-assign lpcore_output_event_stream_1_din = lpcore_kernel_1_U0_lpcore_output_event_stream_1_din;
-
-assign lpcore_output_event_stream_1_write = lpcore_kernel_1_U0_lpcore_output_event_stream_1_write;
+assign lpcore_init_event_stream_1_read = KPN_1_U0_lpcore_init_event_stream_1_read;
 
 endmodule //simulation_top

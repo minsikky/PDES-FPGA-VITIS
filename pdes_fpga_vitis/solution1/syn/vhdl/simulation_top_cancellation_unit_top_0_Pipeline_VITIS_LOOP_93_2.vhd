@@ -19,7 +19,7 @@ port (
     ap_ready : OUT STD_LOGIC;
     current_V_32 : IN STD_LOGIC_VECTOR (15 downto 0);
     zext_ln1073 : IN STD_LOGIC_VECTOR (1 downto 0);
-    tmp_16 : IN STD_LOGIC_VECTOR (31 downto 0);
+    tmp_20 : IN STD_LOGIC_VECTOR (31 downto 0);
     removed_V_14_out_i : IN STD_LOGIC_VECTOR (15 downto 0);
     removed_V_14_out_o : OUT STD_LOGIC_VECTOR (15 downto 0);
     removed_V_14_out_o_ap_vld : OUT STD_LOGIC;
@@ -437,7 +437,7 @@ begin
 
     icmp_ln1065_fu_169_p2 <= "1" when (prev_V_fu_48 = ap_const_lv16_FFFF) else "0";
     icmp_ln1069_fu_149_p2 <= "1" when (ap_sig_allocacmp_current_V = ap_const_lv16_FFFF) else "0";
-    icmp_ln1085_fu_161_p2 <= "1" when (signed(cancellation_unit_buffer_event_send_time_V_1_q0) > signed(tmp_16)) else "0";
+    icmp_ln1085_fu_161_p2 <= "1" when (signed(cancellation_unit_buffer_event_send_time_V_1_q0) > signed(tmp_20)) else "0";
 
     removed_V_14_out_o_assign_proc : process(removed_V_14_out_i, ap_CS_fsm_state2, icmp_ln1085_fu_161_p2, removed_V_fu_184_p2)
     begin

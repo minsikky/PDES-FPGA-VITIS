@@ -28,5 +28,4 @@ obj/CancellationUnit.o: ../../../../cpp/CancellationUnit.cpp \
  ../../../../cpp/LPCore.hpp ../../../../cpp/VirtualLP.hpp \
  ../../../../cpp/EventQueue.hpp ../../../../cpp/StateBuffer.hpp \
  ../../../../cpp/EventProcessor.hpp ../../../../cpp/LFSR_PRNG.hpp \
- ../../../../cpp/LPMapping.hpp ../../../../cpp/EventRouter.hpp \
- ../../../../cpp/LPCoreControl.hpp
+ ../../../../cpp/LPMapping.hpp ../../../../cpp/LPCoreControl.hpp

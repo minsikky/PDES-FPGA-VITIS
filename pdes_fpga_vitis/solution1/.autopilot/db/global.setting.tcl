@@ -42,7 +42,7 @@ set SCTraceFileName mytrace
 set SCTraceFileFormat vcd
 set SCTraceOption all
 set TargetInfo xczu7ev:-ffvc1156:-2-e
-set SourceFiles {sc {} c {../../cpp/CancellationUnit.cpp ../../cpp/EventProcessor.cpp ../../cpp/EventQueue.cpp ../../cpp/EventRouter.cpp ../../cpp/LFSR_PRNG.cpp ../../cpp/LPCore.cpp ../../cpp/LPCoreControl.cpp ../../cpp/LPMapping.cpp ../../cpp/RollbackControl.cpp ../../cpp/StateBuffer.cpp ../../cpp/TimeWarpSimulation.cpp ../../cpp/VirtualLP.cpp}}
+set SourceFiles {sc {} c {../../cpp/VirtualLP.cpp ../../cpp/TimeWarpSimulation.cpp ../../cpp/StateBuffer.cpp ../../cpp/RollbackControl.cpp ../../cpp/LPMapping.cpp ../../cpp/LPCoreControl.cpp ../../cpp/LPCore.cpp ../../cpp/LFSR_PRNG.cpp ../../cpp/GlobalControl.cpp ../../cpp/EventQueue.cpp ../../cpp/EventProcessor.cpp ../../cpp/CancellationUnit.cpp}}
 set SourceFlags {sc {} c {{} {} {} {} {} {} {} {} {} {} {} {}}}
 set DirectiveFile /n/higgins/z/minsikky/PDES-FPGA-VITIS/pdes_fpga_vitis/solution1/solution1.directive
 set TBFiles {verilog ../../cpp/main.cpp bc ../../cpp/main.cpp vhdl ../../cpp/main.cpp sc ../../cpp/main.cpp cas ../../cpp/main.cpp c {}}

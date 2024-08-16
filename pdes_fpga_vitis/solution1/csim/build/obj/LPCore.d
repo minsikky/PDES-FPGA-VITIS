@@ -27,5 +27,5 @@ obj/LPCore.o: ../../../../cpp/LPCore.cpp ../../../../cpp/LPCore.hpp \
  ../../../../cpp/EventQueue.hpp ../../../../cpp/constants.hpp \
  ../../../../cpp/StateBuffer.hpp ../../../../cpp/CancellationUnit.hpp \
  ../../../../cpp/EventProcessor.hpp ../../../../cpp/LFSR_PRNG.hpp \
- ../../../../cpp/LPMapping.hpp ../../../../cpp/EventRouter.hpp \
- ../../../../cpp/LPCoreControl.hpp ../../../../cpp/TimeWarpSimulation.hpp
+ ../../../../cpp/LPMapping.hpp ../../../../cpp/LPCoreControl.hpp \
+ ../../../../cpp/TimeWarpSimulation.hpp ../../../../cpp/GlobalControl.hpp

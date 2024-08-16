@@ -1,0 +1,146 @@
+
+
+================================================================
+== Vitis HLS Report for 'KPN_1'
+================================================================
+* Date:           Fri Aug 16 17:28:42 2024
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
+* Project:        pdes_fpga_vitis
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.937 ns|     1.35 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|  dataflow|
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +-----------------------+--------------------+---------+---------+-----------+----------+-----+-----+----------+
+        |                       |                    |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline |
+        |        Instance       |       Module       |   min   |   max   |    min    |    max   | min | max |   Type   |
+        +-----------------------+--------------------+---------+---------+-----------+----------+-----+-----+----------+
+        |event_router_top_U0    |event_router_top    |        1|        1|   5.000 ns|  5.000 ns|    1|    1|        no|
+        |gvt_tracker_top_U0     |gvt_tracker_top     |        2|       20|  10.000 ns|  0.100 us|    2|   20|        no|
+        |commit_control_top_U0  |commit_control_top  |        0|        0|       0 ns|      0 ns|    0|    0|        no|
+        |lpcore_kernel_0_U0     |lpcore_kernel_0_s   |        ?|        ?|          ?|         ?|    ?|    ?|  dataflow|
+        |lpcore_kernel_1_U0     |lpcore_kernel_1_s   |        ?|        ?|          ?|         ?|    ?|    ?|  dataflow|
+        +-----------------------+--------------------+---------+---------+-----------+----------+-----+-----+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       -|       -|    -|
+|FIFO             |        -|     -|    1485|    1005|    -|
+|Instance         |       34|     -|    9958|   16254|    0|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|       -|    -|
+|Register         |        -|     -|       -|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       34|     0|   11443|   17259|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        5|     0|       2|       7|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-----------------------+--------------------+---------+----+------+------+-----+
+    |        Instance       |       Module       | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +-----------------------+--------------------+---------+----+------+------+-----+
+    |commit_control_top_U0  |commit_control_top  |        0|   0|    34|    75|    0|
+    |event_router_top_U0    |event_router_top    |        0|   0|     4|   179|    0|
+    |gvt_tracker_top_U0     |gvt_tracker_top     |        0|   0|   286|   560|    0|
+    |lpcore_kernel_0_U0     |lpcore_kernel_0_s   |       17|   0|  4817|  7720|    0|
+    |lpcore_kernel_1_U0     |lpcore_kernel_1_s   |       17|   0|  4817|  7720|    0|
+    +-----------------------+--------------------+---------+----+------+------+-----+
+    |Total                  |                    |       34|   0|  9958| 16254|    0|
+    +-----------------------+--------------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +--------------------------------------------+---------+----+----+-----+------+-----+---------+
+    |                    Name                    | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +--------------------------------------------+---------+----+----+-----+------+-----+---------+
+    |gvt_stream_U                                |        0|  99|   0|    -|     2|   32|       64|
+    |lpcore_anti_message_stream_0_U              |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_anti_message_stream_1_U              |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_cancellation_unit_output_stream_0_U  |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_cancellation_unit_output_stream_1_U  |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_commit_time_stream_0_U               |        0|  99|   0|    -|     2|   32|       64|
+    |lpcore_commit_time_stream_1_U               |        0|  99|   0|    -|     2|   32|       64|
+    |lpcore_enqueue_event_stream_0_U             |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_enqueue_event_stream_1_U             |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_event_queue_full_stream_0_U          |        0|  99|   0|    -|     2|    1|        2|
+    |lpcore_event_queue_full_stream_1_U          |        0|  99|   0|    -|     2|    1|        2|
+    |lpcore_lvt_stream_0_U                       |        0|  99|   0|    -|     2|   48|       96|
+    |lpcore_lvt_stream_1_U                       |        0|  99|   0|    -|     2|   48|       96|
+    |lpcore_output_event_stream_0_U              |        0|  99|   0|    -|     2|  129|      258|
+    |lpcore_output_event_stream_1_U              |        0|  99|   0|    -|     2|  129|      258|
+    +--------------------------------------------+---------+----+----+-----+------+-----+---------+
+    |Total                                       |        0|1485|   0|    0|    30| 1226|     2452|
+    +--------------------------------------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------------------+-----+-----+--------------+----------------------------+--------------+
+|              RTL Ports             | Dir | Bits|   Protocol   |        Source Object       |    C Type    |
++------------------------------------+-----+-----+--------------+----------------------------+--------------+
+|lpcore_init_event_stream_0_dout     |   in|  129|       ap_fifo|  lpcore_init_event_stream_0|       pointer|
+|lpcore_init_event_stream_0_empty_n  |   in|    1|       ap_fifo|  lpcore_init_event_stream_0|       pointer|
+|lpcore_init_event_stream_0_read     |  out|    1|       ap_fifo|  lpcore_init_event_stream_0|       pointer|
+|lpcore_init_event_stream_1_dout     |   in|  129|       ap_fifo|  lpcore_init_event_stream_1|       pointer|
+|lpcore_init_event_stream_1_empty_n  |   in|    1|       ap_fifo|  lpcore_init_event_stream_1|       pointer|
+|lpcore_init_event_stream_1_read     |  out|    1|       ap_fifo|  lpcore_init_event_stream_1|       pointer|
+|ap_clk                              |   in|    1|  ap_ctrl_none|                       KPN.1|  return value|
+|ap_rst                              |   in|    1|  ap_ctrl_none|                       KPN.1|  return value|
+|ap_ready                            |  out|    1|  ap_ctrl_none|                       KPN.1|  return value|
++------------------------------------+-----+-----+--------------+----------------------------+--------------+
+

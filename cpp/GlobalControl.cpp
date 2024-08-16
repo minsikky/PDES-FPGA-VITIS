@@ -43,10 +43,10 @@ ap_int<32> update_min(ap_int<32> lvt_arr[NUM_LPS])
 
 void gvt_tracker_top(
     hls::stream<LVT> lpcore_lvt_stream[NUM_LPCORE],
-    hls::stream<ap_int<32>> gvt_stream)
+    hls::stream<ap_int<32>> &gvt_stream)
 {
     static ap_int<32> lvt_arr[NUM_LPS] = {0};
-#pragma HLS array_partition variable = lvt_arr cyclic factor = NUM_LPCORE
+    // #pragma HLS array_partition variable = lvt_arr cyclic factor = NUM_LPCORE
     static ap_int<32> gvt = 0;
 
     // Update LVTs
@@ -69,7 +69,7 @@ void gvt_tracker_top(
 
 // Commit Control
 void commit_control_top(
-    hls::stream<ap_int<32>> gvt_stream,
+    hls::stream<ap_int<32>> &gvt_stream,
     hls::stream<bool> lpcore_event_queue_full_stream[NUM_LPCORE],
     hls::stream<ap_int<32>> lpcore_commit_time_stream[NUM_LPCORE])
 {
@@ -93,4 +93,19 @@ void commit_control_top(
             }
         }
     }
+}
+
+void global_control_top(
+    hls::stream<TimeWarpEvent> lpcore_output_event_stream[NUM_LPCORE],
+    hls::stream<TimeWarpEvent> lpcore_cancellation_unit_output_stream[NUM_LPCORE],
+    hls::stream<TimeWarpEvent> lpcore_enqueue_event_stream[NUM_LPCORE],
+    hls::stream<TimeWarpEvent> lpcore_anti_message_stream[NUM_LPCORE],
+    hls::stream<LVT> lpcore_lvt_stream[NUM_LPCORE],
+    hls::stream<bool> lpcore_event_queue_full_stream[NUM_LPCORE],
+    hls::stream<ap_int<32>> lpcore_commit_time_stream[NUM_LPCORE])
+{
+    hls::stream<ap_int<32>> gvt_stream;
+    hls::task event_router_task(event_router_top, lpcore_output_event_stream, lpcore_cancellation_unit_output_stream, lpcore_enqueue_event_stream, lpcore_anti_message_stream);
+    hls::task gvt_tracker_task(gvt_tracker_top, lpcore_lvt_stream, gvt_stream);
+    hls::task commit_control_task(commit_control_top, gvt_stream, lpcore_event_queue_full_stream, lpcore_commit_time_stream);
 }

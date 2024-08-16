@@ -41,7 +41,7 @@ void state_buffer_top(
     hls::stream<TimeWarpEvent> &issued_event_stream,
     hls::stream<EventProcessorInput> &event_processor_input_stream)
 {
-    StateBuffer state_buffer;
+    static StateBuffer state_buffer;
     // Priority: rollback > push > issue > commit
     if (!state_buffer_rollback_info_stream.empty()) // Rollback
     {

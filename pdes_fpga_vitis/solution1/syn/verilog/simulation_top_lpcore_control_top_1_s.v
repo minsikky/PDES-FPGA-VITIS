@@ -130,6 +130,8 @@ simulation_top_lpcore_commit_control_2 lpcore_commit_control_2_U0(
     .ap_idle(lpcore_commit_control_2_U0_ap_idle),
     .ap_ready(lpcore_commit_control_2_U0_ap_ready),
     .lpcore_commit_time_stream_1_dout(lpcore_commit_time_stream_1_dout),
+    .lpcore_commit_time_stream_1_num_data_valid(2'd0),
+    .lpcore_commit_time_stream_1_fifo_cap(2'd0),
     .lpcore_commit_time_stream_1_empty_n(lpcore_commit_time_stream_1_empty_n),
     .lpcore_commit_time_stream_1_read(lpcore_commit_control_2_U0_lpcore_commit_time_stream_1_read),
     .event_queue_commit_time_stream15_din(lpcore_commit_control_2_U0_event_queue_commit_time_stream15_din),

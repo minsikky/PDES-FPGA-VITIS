@@ -16,6 +16,8 @@ module simulation_top_lpcore_commit_control_2 (
         ap_idle,
         ap_ready,
         lpcore_commit_time_stream_1_dout,
+        lpcore_commit_time_stream_1_num_data_valid,
+        lpcore_commit_time_stream_1_fifo_cap,
         lpcore_commit_time_stream_1_empty_n,
         lpcore_commit_time_stream_1_read,
         event_queue_commit_time_stream15_din,
@@ -45,6 +47,8 @@ input   ap_continue;
 output   ap_idle;
 output   ap_ready;
 input  [31:0] lpcore_commit_time_stream_1_dout;
+input  [1:0] lpcore_commit_time_stream_1_num_data_valid;
+input  [1:0] lpcore_commit_time_stream_1_fifo_cap;
 input   lpcore_commit_time_stream_1_empty_n;
 output   lpcore_commit_time_stream_1_read;
 output  [31:0] event_queue_commit_time_stream15_din;
